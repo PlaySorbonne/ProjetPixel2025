@@ -20,4 +20,8 @@ var type : TileTypes = TileTypes.Rock
 
 func set_type(new_type : TileTypes) -> void:
 	type = new_type
-	add_child(TILE_TYPES_RES[type].instantiate())
+	var hex_tile : Node3D = TILE_TYPES_RES[type].instantiate()
+	self.add_child(hex_tile)
+	hex_tile.position = Vector3(0.0, 1.0, 0.0)
+	var t := create_tween().set_trans(Tween.TRANS_ELASTIC)
+	t.tween_property(hex_tile, "position", Vector3.ZERO, 1.0)
