@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://w4sswcm183q5"]
+[gd_scene load_steps=3 format=3 uid="uid://w4sswcm183q5"]
 
 [ext_resource type="Script" uid="uid://cavefs5388hk3" path="res://scripts/default_tile.gd" id="1_myny2"]
+[ext_resource type="PackedScene" uid="uid://hgrjh5h7rvo8" path="res://resources/3d_models/tiles/hex_water.fbx" id="2_myny2"]
 
 [node name="DefaultTile" type="Node3D"]
 script = ExtResource("1_myny2")
+
+[node name="hex_water" parent="." instance=ExtResource("2_myny2")]
