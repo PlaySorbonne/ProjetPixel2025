@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnn16qnpvw2gh"]
+
+[ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="1_01p5y"]
+[ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
+[ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h40o1"]
+render_priority = 0
+shader = ExtResource("3_aer3i")
+shader_parameter/color1 = Color(0, 1, 1, 0.0235294)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/threshold = 0.2
+shader_parameter/fresnel_sharpness = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wr5m4"]
+material = SubResource("ShaderMaterial_h40o1")
+radius = 2.25
+height = 4.5
+
+[node name="Spaceship" type="Node3D"]
+script = ExtResource("1_wr5m4")
+
+[node name="Transporter" parent="." instance=ExtResource("1_01p5y")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481473, 0, 0)
+mesh = SubResource("SphereMesh_wr5m4")
