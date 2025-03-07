@@ -14,3 +14,7 @@ config/name="ProjetPixel2"
 run/main_scene="uid://cipkud1dh3vju"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GV="*res://scripts/global/global_variables.gd"
