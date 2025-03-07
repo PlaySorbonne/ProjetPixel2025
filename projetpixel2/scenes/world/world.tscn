@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=2 format=3 uid="uid://cipkud1dh3vju"]
+
+[ext_resource type="PackedScene" uid="uid://b76pi81h5i3ie" path="res://scenes/world/levels/level_environment.tscn" id="1_dphjl"]
 
 [node name="World" type="Node3D"]
+
+[node name="LevelEnvironment" parent="." instance=ExtResource("1_dphjl")]
