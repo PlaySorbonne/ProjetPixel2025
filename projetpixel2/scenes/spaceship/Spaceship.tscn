@@ -18,13 +18,13 @@ material = SubResource("ShaderMaterial_h40o1")
 radius = 2.25
 height = 4.5
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
-size = Vector3(2.21545, 1, 1.38779)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_aer3i"]
 radius = 2.25
 
-[node name="Spaceship" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
+size = Vector3(2.21545, 1, 1.38779)
+
+[node name="Spaceship" type="StaticBody3D"]
 script = ExtResource("1_wr5m4")
 
 [node name="Transporter" parent="." instance=ExtResource("1_01p5y")]
@@ -34,23 +34,20 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
 mesh = SubResource("SphereMesh_wr5m4")
 
-[node name="ShipBody" type="StaticBody3D" parent="."]
+[node name="CollisionShield" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+shape = SubResource("SphereShape3D_aer3i")
 
-[node name="CollisionShip" type="CollisionShape3D" parent="ShipBody"]
+[node name="CollisionShip" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2222, 0, 0.0502777)
 shape = SubResource("BoxShape3D_aer3i")
 
-[node name="ShipHealth" type="Node" parent="ShipBody"]
+[node name="ShipHealth" type="Node" parent="."]
 script = ExtResource("4_h40o1")
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
-[node name="ShieldBody" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
-
-[node name="CollisionShield" type="CollisionShape3D" parent="ShieldBody"]
-shape = SubResource("SphereShape3D_aer3i")
-
-[node name="ShieldHealth" type="Node" parent="ShieldBody"]
+[node name="ShieldHealth" type="Node" parent="."]
 script = ExtResource("4_h40o1")
-health = 500
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
+
+[connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]

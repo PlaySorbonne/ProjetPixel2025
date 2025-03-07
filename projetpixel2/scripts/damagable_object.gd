@@ -1,5 +1,5 @@
 extends Node
-class_name DamagableObject
+class_name DamageableObject
 
 
 signal hit(damage_amount : int, new_health : int)
@@ -36,7 +36,7 @@ static var damage_table : Dictionary = {
 @export var health : int = 100
 @export var type := DamagableTypes.Neutral
 @export var defense := 1.0
-@export var damage_threshold := 10
+@export var damage_threshold := 0
 @export var element_resistances : Dictionary[DamagingTypes, float] = {
 	DamagingTypes.Neutral : 0.0,
 	DamagingTypes.TrueDamage : 0.0,
@@ -52,7 +52,7 @@ static func compute_defense_reduction(obj_defense : float) -> float:
 	return 1 - pow(2.71828, -1/K * obj_defense)
 
 static func compute_damage(damage_amount : int, damaging_type : DamagingTypes, 
-									hit_obj : DamagableObject) -> int:
+									hit_obj : DamageableObject) -> int:
 	# damage equation
 	var total_damage : int = int(damage_amount * compute_type_coeff(damaging_type, 
 	hit_obj.type, hit_obj.element_resistances) * (1-compute_defense_reduction(hit_obj.defense)))
@@ -63,9 +63,10 @@ static func compute_damage(damage_amount : int, damaging_type : DamagingTypes,
 	return total_damage
 
 func damage(damage_amount : int, damage_type : DamagingTypes) -> void:
-	health -= compute_damage(damage_amount, damage_type, self)
+	var total_damage := compute_damage(damage_amount, damage_type, self)
+	health -= total_damage
 	if health < 0:
 		health = 0
-	emit_signal("hit", damage_amount, health)
+	emit_signal("hit", total_damage, health)
 	if health == 0:
 		emit_signal("death")
