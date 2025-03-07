@@ -8,6 +8,8 @@ signal death
 enum DamagableTypes {Neutral, Energy, Structure}
 enum DamagingTypes {Neutral, TrueDamage, Energy, Fire}
 
+const K : int = 500     # used in the defense equation -> the smaller K is, the faster defense increases
+
 static var damage_table : Dictionary = {
 	DamagingTypes.Neutral : {
 		DamagableTypes.Neutral : 1.0,
@@ -47,7 +49,7 @@ static func compute_type_coeff(damaging_type : DamagingTypes, damaged_type : Dam
 	return damage_table[damaging_type][damaged_type] * (1-resistances[damaging_type])
 
 static func compute_defense_reduction(obj_defense : float) -> float:
-	return pow(1-2.71828, -1/100 * obj_defense)
+	return 1 - pow(2.71828, -1/K * obj_defense)
 
 static func compute_damage(damage_amount : int, damaging_type : DamagingTypes, 
 									hit_obj : DamagableObject) -> int:
