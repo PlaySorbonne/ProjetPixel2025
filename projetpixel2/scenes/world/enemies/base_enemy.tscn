@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6wednpvk2t26"]
+
+[ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
+[ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
+
+[node name="BaseEnemy" type="Node3D"]
+script = ExtResource("1_ey0w8")
+
+[node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]

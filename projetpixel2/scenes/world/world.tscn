@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=4 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://sxuqk4l06qmy" path="res://resources/3d_models/tiles/hex_sand.fbx" id="2_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="3_1fp7r"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_sl2e5")
@@ -13,4 +14,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545192, 0)
 transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 0, 7.45998, 8.86547)
 
 [node name="hex_sand" parent="." instance=ExtResource("2_sl2e5")]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1.01206, 0)
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_1fp7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81459, 4.76837e-07, -1.78361)
