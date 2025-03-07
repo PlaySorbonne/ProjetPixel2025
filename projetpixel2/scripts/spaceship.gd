@@ -29,3 +29,8 @@ func shield_damage_animation() -> void:
 func _on_shield_health_hit(damage_amount: int, new_health: int) -> void:
 	print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
+
+func _on_shield_health_death() -> void:
+	$CollisionShip.disabled = true
+	$ShieldShader.visible = false
+	damageable = $ShipHealth

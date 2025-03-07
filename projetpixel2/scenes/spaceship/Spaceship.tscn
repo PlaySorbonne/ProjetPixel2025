@@ -50,4 +50,5 @@ metadata/_custom_type_script = "uid://f0gd0vfal03l"
 script = ExtResource("4_h40o1")
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
+[connection signal="death" from="ShieldHealth" to="." method="_on_shield_health_death"]
 [connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]
