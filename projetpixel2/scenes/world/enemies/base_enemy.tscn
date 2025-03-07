@@ -1,9 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6wednpvk2t26"]
+[gd_scene load_steps=5 format=3 uid="uid://c6wednpvk2t26"]
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
 [ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
+[ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/DamagableObject.tscn" id="3_sxqs1"]
 
-[node name="BaseEnemy" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0w8"]
+radius = 0.25
+height = 1.0
+
+[node name="BaseEnemy" type="CharacterBody3D"]
 script = ExtResource("1_ey0w8")
 
 [node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44608, 0)
+shape = SubResource("CapsuleShape3D_ey0w8")
+
+[node name="DamagableObject" parent="." instance=ExtResource("3_sxqs1")]
+
+[connection signal="death" from="DamagableObject" to="." method="_on_damagable_object_death"]
+[connection signal="hit" from="DamagableObject" to="." method="_on_damagable_object_hit"]

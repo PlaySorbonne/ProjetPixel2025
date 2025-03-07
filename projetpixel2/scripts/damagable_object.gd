@@ -1,10 +1,11 @@
 extends Node
 class_name DamagableObject
 
+
 signal hit(damage_amount : int, new_health : int)
 signal death
 
-var health : int = 100
+@export var health : int = 100
 
 func damage(damage_amount : int) -> void:
 	health -= damage_amount

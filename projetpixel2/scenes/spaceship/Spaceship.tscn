@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnn16qnpvw2gh"]
+[gd_scene load_steps=9 format=3 uid="uid://cnn16qnpvw2gh"]
 
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="1_01p5y"]
 [ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
 [ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
+[ext_resource type="Script" uid="uid://f0gd0vfal03l" path="res://scripts/damagable_object.gd" id="4_h40o1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h40o1"]
 render_priority = 0
 shader = ExtResource("3_aer3i")
 shader_parameter/color1 = Color(0, 1, 1, 0.0235294)
 shader_parameter/color2 = Color(1, 1, 1, 1)
-shader_parameter/threshold = 0.2
+shader_parameter/threshold = 0.0
 shader_parameter/fresnel_sharpness = 5.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_wr5m4"]
@@ -39,8 +40,17 @@ mesh = SubResource("SphereMesh_wr5m4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2222, 0, 0.0502777)
 shape = SubResource("BoxShape3D_aer3i")
 
+[node name="ShipHealth" type="Node" parent="ShipBody"]
+script = ExtResource("4_h40o1")
+metadata/_custom_type_script = "uid://f0gd0vfal03l"
+
 [node name="ShieldBody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
 
 [node name="CollisionShield" type="CollisionShape3D" parent="ShieldBody"]
 shape = SubResource("SphereShape3D_aer3i")
+
+[node name="ShieldHealth" type="Node" parent="ShieldBody"]
+script = ExtResource("4_h40o1")
+health = 500
+metadata/_custom_type_script = "uid://f0gd0vfal03l"

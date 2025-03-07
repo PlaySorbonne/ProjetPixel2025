@@ -22,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1.01206, 0)
 
 [node name="BaseEnemy" parent="." instance=ExtResource("3_1fp7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81459, 4.76837e-07, -1.78361)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03035, 4.76837e-07, -0.315562)
 
 [node name="rocks_A" parent="." instance=ExtResource("9_tytul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054242, 0, 4.91326)
