@@ -11,3 +11,6 @@ script = ExtResource("1_sl2e5")
 
 [node name="PlayerCamera" parent="." instance=ExtResource("3_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 0.549679, 0.835376, 0, -0.835376, 0.549679, 0, 5.5186, 4.09881)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545192, 0)

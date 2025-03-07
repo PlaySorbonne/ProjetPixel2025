@@ -13,7 +13,7 @@ const TILE_TYPES_RES : Dictionary[TileTypes, Resource] = {
 static func spawn_tile(tile_position : Vector3, tile_type : TileTypes = TileTypes.Rock) -> void:
 	var tile : DefaultTile = DEFAULT_TILE_RES.instantiate()
 	tile.set_type(tile_type)
-	
+	GV.world.add_child(tile)
 	tile.position = tile_position
 
 var type : TileTypes = TileTypes.Rock
