@@ -34,19 +34,34 @@ static var damage_table : Dictionary = {
 @export var health : int = 100
 @export var type := DamagableTypes.Neutral
 @export var defense := 1.0
+@export var damage_threshold := 10
+@export var element_resistances : Dictionary[DamagingTypes, float] = {
+	DamagingTypes.Neutral : 0.0,
+	DamagingTypes.TrueDamage : 0.0,
+	DamagingTypes.Energy : 0.0,
+	DamagingTypes.Fire : 0.0
+}
 
-static func compute_type_coeff(damaging_type : DamagingTypes, damaged_type : DamagableTypes) -> float:
-	return damage_table[damaging_type][damaged_type]
+static func compute_type_coeff(damaging_type : DamagingTypes, damaged_type : DamagableTypes,
+			resistances : Dictionary[DamagingTypes, float]) -> float:
+	return damage_table[damaging_type][damaged_type] * (1-resistances[damaging_type])
 
-static func compute_damage(damage_amount : int, damage_type : DamagingTypes, 
-				damaged_type : DamagableTypes, defense : float) -> int:
-	var type_coeff : float = compute_type_coeff(damage_type, damaged_type)
+static func compute_defense_reduction(obj_defense : float) -> float:
+	return pow(1-2.71828, -1/100 * obj_defense)
+
+static func compute_damage(damage_amount : int, damaging_type : DamagingTypes, 
+									hit_obj : DamagableObject) -> int:
+	# damage equation
+	var total_damage : int = int(damage_amount * compute_type_coeff(damaging_type, 
+	hit_obj.type, hit_obj.element_resistances) * (1-compute_defense_reduction(hit_obj.defense)))
 	
-	return int(damage_amount * type_coeff / defense)
+	# check damage threshold
+	if total_damage <= hit_obj.damage_threshold:
+		total_damage = 0
+	return total_damage
 
 func damage(damage_amount : int, damage_type : DamagingTypes) -> void:
-	var type_coeff : float = compute_type_coeff(damage_type, type)
-	health -= damage_amount
+	health -= compute_damage(damage_amount, damage_type, self)
 	if health < 0:
 		health = 0
 	emit_signal("hit", damage_amount, health)
