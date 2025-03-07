@@ -6,3 +6,4 @@
 script = ExtResource("1_61jux")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+current = true
