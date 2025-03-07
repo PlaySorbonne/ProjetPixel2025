@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=9 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://sxuqk4l06qmy" path="res://resources/3d_models/tiles/hex_sand.fbx" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
+[ext_resource type="PackedScene" uid="uid://bvhsyo71udaqo" path="res://resources/3d_models/space_station/fbx/rocks_A.fbx" id="9_tytul"]
+[ext_resource type="PackedScene" uid="uid://36pjq0uybfx4" path="res://resources/3d_models/space_station/fbx/rocks_B.fbx" id="10_t634p"]
+[ext_resource type="PackedScene" uid="uid://dxg64vxw6rck4" path="res://resources/3d_models/space_station/fbx/rock_A.fbx" id="11_6hctx"]
+[ext_resource type="PackedScene" uid="uid://cdx1q2lxhqw1x" path="res://resources/3d_models/space_station/fbx/rock_B.fbx" id="12_ues17"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_sl2e5")
@@ -18,3 +23,36 @@ transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -1.01206, 0)
 
 [node name="BaseEnemy" parent="." instance=ExtResource("3_1fp7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81459, 4.76837e-07, -1.78361)
+
+[node name="rocks_A" parent="." instance=ExtResource("9_tytul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054242, 0, 4.91326)
+
+[node name="rocks_B" parent="." instance=ExtResource("10_t634p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.21933, 4.76837e-07, -5.31276)
+
+[node name="rocks_B2" parent="." instance=ExtResource("10_t634p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3618, 4.76837e-07, 2.58045)
+
+[node name="rock_A" parent="." instance=ExtResource("11_6hctx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93392, -4.76837e-07, 3.62645)
+
+[node name="rock_B" parent="." instance=ExtResource("12_ues17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51169, 0, -4.46386)
+
+[node name="rock_B2" parent="." instance=ExtResource("12_ues17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49118, 0, 7.72291)
+
+[node name="rock_B3" parent="." instance=ExtResource("12_ues17")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3961, 0, 0.273778)
+
+[node name="rocks_A2" parent="." instance=ExtResource("9_tytul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77988, 0, 6.73007)
+
+[node name="rocks_A3" parent="." instance=ExtResource("9_tytul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.20608, 0, -2.76529)
+
+[node name="rocks_A4" parent="." instance=ExtResource("9_tytul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48945, 0, -2.02813)
+
+[node name="Spaceship" parent="." instance=ExtResource("8_j2gmx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)
