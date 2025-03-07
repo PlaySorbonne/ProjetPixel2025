@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnn16qnpvw2gh"]
+[gd_scene load_steps=7 format=3 uid="uid://cnn16qnpvw2gh"]
 
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="1_01p5y"]
 [ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
@@ -17,6 +17,9 @@ material = SubResource("ShaderMaterial_h40o1")
 radius = 2.25
 height = 4.5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
+size = Vector3(2.21545, 1, 1.38779)
+
 [node name="Spaceship" type="Node3D"]
 script = ExtResource("1_wr5m4")
 
@@ -26,3 +29,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481473, 0, 0)
 mesh = SubResource("SphereMesh_wr5m4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2222, 0, 0.0502777)
+shape = SubResource("BoxShape3D_aer3i")
