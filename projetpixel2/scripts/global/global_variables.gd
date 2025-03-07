@@ -1,4 +1,4 @@
 extends Node
 
 var world : World
-var enemy_target : Node3D
+var space_ship : Spaceship
