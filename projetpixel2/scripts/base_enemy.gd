@@ -39,7 +39,7 @@ func _on_damageable_object_death() -> void:
 	queue_free()
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
-	if "damageable" in body:
+	if "damageable" in body and body is Spaceship:
 		overlapping_enemies.append(body)
 
 func _on_damage_area_body_exited(body: Node3D) -> void:
