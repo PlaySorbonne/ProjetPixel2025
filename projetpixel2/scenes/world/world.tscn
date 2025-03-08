@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=10 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://sxuqk4l06qmy" path="res://resources/3d_models/tiles/hex_sand.fbx" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
+[ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bvhsyo71udaqo" path="res://resources/3d_models/space_station/fbx/rocks_A.fbx" id="9_tytul"]
 [ext_resource type="PackedScene" uid="uid://36pjq0uybfx4" path="res://resources/3d_models/space_station/fbx/rocks_B.fbx" id="10_t634p"]
 [ext_resource type="PackedScene" uid="uid://dxg64vxw6rck4" path="res://resources/3d_models/space_station/fbx/rock_A.fbx" id="11_6hctx"]
@@ -56,3 +57,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.180
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18135, 0.357662, 0.000508308)
+
+[node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56212, 1.54439, -0.0225539)

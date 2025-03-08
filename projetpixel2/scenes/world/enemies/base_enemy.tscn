@@ -12,6 +12,7 @@ height = 1.0
 
 [node name="BaseEnemy" type="CharacterBody3D"]
 script = ExtResource("1_ey0w8")
+speed = 3.0
 
 [node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
 
@@ -20,13 +21,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44608, 0)
 shape = SubResource("CapsuleShape3D_ey0w8")
 
 [node name="DamageableObject" parent="." instance=ExtResource("3_sxqs1")]
+health = 50
 
 [node name="DamageArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 shape = SubResource("BoxShape3D_sxqs1")
 
-[connection signal="death" from="DamageableObject" to="." method="_on_damagable_object_death"]
-[connection signal="hit" from="DamageableObject" to="." method="_on_damagable_object_hit"]
+[connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
