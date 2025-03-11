@@ -4,6 +4,7 @@ class_name Spaceship
 var shields := 500.0
 var health := 100.0
 var has_shields := true
+var alive := true
 
 var _update_shield_shaders_color := false
 var _shield_shader_color : Color
@@ -26,6 +27,10 @@ func shield_damage_animation() -> void:
 	await t.finished
 	_update_shield_shaders_color = false
 
+func stop_all_towers() -> void:
+	for tower : TowerBase in GV.towers:
+		tower.set_tower_enable(false)
+
 func _on_shield_health_hit(damage_amount: int, new_health: int) -> void:
 	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
@@ -39,5 +44,12 @@ func _on_ship_health_hit(damage_amount: int, new_health: int) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	pass
 
-func _on_ship_health_death() -> void:
+func death() -> void:
+	if not alive:
+		return
+	alive = false
 	visible = false
+	stop_all_towers()
+
+func _on_ship_health_death() -> void:
+	death()
