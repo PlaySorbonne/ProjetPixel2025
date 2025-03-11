@@ -8,6 +8,9 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 var time_before_shoot := 0.0
 var focused_enemies : Array[BaseEnemy] = []
 
+func _ready() -> void:
+	GV.towers.append(self)
+
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
