@@ -6,8 +6,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_041tc"]
 radius = 10.0
 
-[node name="TowerBase" type="Area3D"]
+[node name="TowerBase" type="Area3D" groups=["tower"]]
 script = ExtResource("1_041tc")
+shoot_delay = 1.0
 
 [node name="blasterM" parent="." instance=ExtResource("1_1xctq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)

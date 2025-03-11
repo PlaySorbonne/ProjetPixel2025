@@ -4,10 +4,12 @@ class_name TowerBase
 
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 
-var shoot_delay := 0.25
+@export var shoot_delay := 0.25
 var time_before_shoot := 0.0
 var focused_enemies : Array[BaseEnemy] = []
 
+func set_tower_enable(new_enable : bool) -> void:
+	set_process(new_enable)
 
 func shoot(enemy : BaseEnemy) -> void:
 	time_before_shoot = shoot_delay

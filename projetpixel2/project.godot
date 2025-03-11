@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GV="*res://scripts/global/global_variables.gd"
 
+[global_group]
+
+tower="In game defensive structures"
+
 [input]
 
 move_forward={

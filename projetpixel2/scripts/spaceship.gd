@@ -34,3 +34,9 @@ func _on_shield_health_death() -> void:
 	$CollisionShip.disabled = true
 	$ShieldShader.visible = false
 	damageable = $ShipHealth
+
+func _on_ship_health_hit(damage_amount: int, new_health: int) -> void:
+	print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
+
+func _on_ship_health_death() -> void:
+	visible = false
