@@ -27,7 +27,7 @@ func shield_damage_animation() -> void:
 	_update_shield_shaders_color = false
 
 func _on_shield_health_hit(damage_amount: int, new_health: int) -> void:
-	print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
+	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
 
 func _on_shield_health_death() -> void:
@@ -36,7 +36,8 @@ func _on_shield_health_death() -> void:
 	damageable = $ShipHealth
 
 func _on_ship_health_hit(damage_amount: int, new_health: int) -> void:
-	print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
+	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
+	pass
 
 func _on_ship_health_death() -> void:
 	visible = false
