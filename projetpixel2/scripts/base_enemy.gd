@@ -36,7 +36,7 @@ func attack() -> void:
 	current_attack_delay = attack_delay
 
 func _on_damageable_object_death() -> void:
-	print("death")
+	#print("death")
 	queue_free()
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
