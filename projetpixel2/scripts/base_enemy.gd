@@ -3,6 +3,8 @@ class_name BaseEnemy
 
 enum States {Moving, Attacking, Dead}
 
+static var number_of_enemies := 0
+
 @export var health : int = 100
 @export var speed : float = 5.0
 @export var damage_amount : int = 10
@@ -13,6 +15,7 @@ var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
 var current_state := States.Moving
 var current_animation := ""
+var enemy_id := 0
 
 @onready var damageable : DamageableObject = $DamageableObject
 @onready var target : Node3D = GV.space_ship
@@ -22,6 +25,12 @@ var current_animation := ""
 
 func _ready() -> void:
 	damageable.health = health
+	set_enemy_id()
+	print("enemy " + str(enemy_id) + " spawned!")
+
+func set_enemy_id() -> void:
+	enemy_id = number_of_enemies
+	number_of_enemies += 1
 
 func _physics_process(_delta: float) -> void:
 	if current_state == States.Dead:
