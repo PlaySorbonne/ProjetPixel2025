@@ -8,9 +8,9 @@ signal enemy_killed
 static var number_of_enemies := 0
 
 @export var health : int = 100
-@export var speed : float = 5.0
+@export var movement_speed : float = 1.5
 @export var damage_amount : int = 10
-@export var attack_delay : float = 1.0
+@export var attack_speed : float = 0.5
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
 
 var overlapping_enemies : Array[Node3D] = []
@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		mesh_animations.play("sprint")
-		velocity = position.direction_to(target.position) * speed
+		velocity = position.direction_to(target.position) * movement_speed
 		mesh.look_at(target.position)
 		move_and_slide() 
 	if len(overlapping_enemies) > 0:
@@ -53,7 +53,7 @@ func attack() -> void:
 		var enemy_dmg : DamageableObject = enemy.damageable
 		enemy_dmg.damage(damage_amount, attack_type)
 	mesh_animations.play("attack-melee-right")
-	attack_timer.start(attack_delay)
+	attack_timer.start(1.0/attack_speed)
 
 func _on_timer_attacking_timeout() -> void:
 	if current_state == States.Attacking:
