@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
 [ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
-[ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/DamagableObject.tscn" id="3_sxqs1"]
+[ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/damagable_object.tscn" id="3_sxqs1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0w8"]
 radius = 0.25
