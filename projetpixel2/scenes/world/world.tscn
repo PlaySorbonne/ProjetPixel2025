@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://sxuqk4l06qmy" path="res://resources/3d_models/tiles/hex_sand.fbx" id="2_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
-[ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
+[ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bvhsyo71udaqo" path="res://resources/3d_models/space_station/fbx/rocks_A.fbx" id="9_tytul"]
 [ext_resource type="PackedScene" uid="uid://b8jfaq1p25y4p" path="res://scenes/gameplay_systems/wave_manager.tscn" id="10_gb53w"]
