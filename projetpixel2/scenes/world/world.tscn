@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=12 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://sxuqk4l06qmy" path="res://resources/3d_models/tiles/hex_sand.fbx" id="2_sl2e5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bvhsyo71udaqo" path="res://resources/3d_models/space_station/fbx/rocks_A.fbx" id="9_tytul"]
 [ext_resource type="PackedScene" uid="uid://b8jfaq1p25y4p" path="res://scenes/gameplay_systems/wave_manager.tscn" id="10_gb53w"]
 [ext_resource type="PackedScene" uid="uid://36pjq0uybfx4" path="res://resources/3d_models/space_station/fbx/rocks_B.fbx" id="10_t634p"]
+[ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://dxg64vxw6rck4" path="res://resources/3d_models/space_station/fbx/rock_A.fbx" id="11_6hctx"]
 [ext_resource type="PackedScene" uid="uid://cdx1q2lxhqw1x" path="res://resources/3d_models/space_station/fbx/rock_B.fbx" id="12_ues17"]
 
@@ -72,3 +73,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594201, 0.357662, 9.6317)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56212, 1.54439, -0.0225539)
 
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
+
+[node name="Mouse3dInteraction" parent="." instance=ExtResource("11_5qq27")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqj0xmkv0v5ml"]
+
+[ext_resource type="Script" uid="uid://cco1qce15qwmo" path="res://scripts/mouse_3d_interaction.gd" id="1_43kj7"]
+
+[node name="Mouse3dInteraction" type="Node3D"]
+script = ExtResource("1_43kj7")
