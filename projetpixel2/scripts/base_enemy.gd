@@ -3,6 +3,8 @@ class_name BaseEnemy
 
 enum States {Moving, Attacking, Dead}
 
+signal enemy_killed
+
 static var number_of_enemies := 0
 
 @export var health : int = 100
@@ -26,7 +28,7 @@ var enemy_id := 0
 func _ready() -> void:
 	damageable.health = health
 	set_enemy_id()
-	print("enemy " + str(enemy_id) + " spawned!")
+	#print("enemy " + str(enemy_id) + " spawned!")
 
 func set_enemy_id() -> void:
 	enemy_id = number_of_enemies
@@ -61,9 +63,11 @@ func death() -> void:
 	if current_state == States.Dead:
 		return
 	current_state = States.Dead
+	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
 	await(mesh_animations.animation_finished)
 	await(get_tree().create_timer(1.0).timeout)
+	emit_signal("enemy_killed")
 	queue_free()
 
 func _on_damageable_object_death() -> void:
