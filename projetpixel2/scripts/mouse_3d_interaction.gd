@@ -9,9 +9,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse = event.position
 	if Input.is_action_just_pressed("click"):
-		get_mouse_world_pos(mouse)
+		mouse_get_world_object(mouse)
 
-func get_mouse_world_pos(mouse : Vector2) -> Vector3:
+func mouse_get_world_object(mouse : Vector2) -> Node:
 	var space := get_world_3d().direct_space_state
 	var start := get_viewport().get_camera_3d().project_ray_origin(mouse)
 	var end := get_viewport().get_camera_3d().project_position(mouse, DIST)
@@ -22,7 +22,7 @@ func get_mouse_world_pos(mouse : Vector2) -> Vector3:
 	
 	if result.is_empty():
 		print("mouse clicked nothing")
-		return Vector3.ZERO
+		return null
 	else:
 		var debug_text := "mouse clicked: " + str(result["collider"])
 		var collider_node : Node = result["collider"]
@@ -32,4 +32,4 @@ func get_mouse_world_pos(mouse : Vector2) -> Vector3:
 		else:
 			debug_text += " ; not damageable"
 		print(debug_text)
-		return Vector3.ZERO
+		return collider_node
