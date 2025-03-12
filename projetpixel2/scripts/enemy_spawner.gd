@@ -2,6 +2,8 @@
 extends Node3D
 class_name EnemySpawner
 
+var wave_manager : WaveManager = null
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		GV.spawners.append(self)
