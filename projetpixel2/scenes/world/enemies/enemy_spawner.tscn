@@ -4,3 +4,7 @@
 
 [node name="EnemySpawner" type="Node3D"]
 script = ExtResource("1_k67l2")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+radius = 1.0
+height = 0.25
