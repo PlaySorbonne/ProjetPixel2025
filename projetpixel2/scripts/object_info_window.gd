@@ -7,19 +7,24 @@ var selected_clickable : ClickableObject = null
 var obj_damageable : DamageableObject = null
 
 func _ready() -> void:
-	pass
+	$Label.text = ""
 
 func select_object(new_obj : Node3D) -> void:
+	if new_obj == null:
+		deselect_object()
+		return
 	selected_object = new_obj
-	selected_clickable = selected_clickable.clickable
+	selected_clickable = selected_object.clickable
 	if "damageable" in selected_object:
 		obj_damageable = selected_object.damageable
 		obj_damageable.connect("hit", selected_obj_hit)
 	else:
 		obj_damageable = null
+	update_object_infos()
 
 func deselect_object() -> void:
 	selected_object = null
+	$Label.text = "No selected object."
 
 func selected_obj_hit(_dmg : int, _new_health : int) -> void:
 	update_object_infos()
