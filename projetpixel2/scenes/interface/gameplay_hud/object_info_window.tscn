@@ -1,9 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://dujy41m0drx3b"]
+[gd_scene load_steps=7 format=3 uid="uid://dujy41m0drx3b"]
 
 [ext_resource type="Script" uid="uid://4bi2ge5l5jiu" path="res://scripts/object_info_window.gd" id="1_fiebo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fiebo"]
 font_size = 32
+
+[sub_resource type="Animation" id="Animation_fiebo"]
+resource_name = "show"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.392292, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fv5cf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_oc3xf"]
+resource_name = "hide"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.329877, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oc3xf"]
+_data = {
+&"RESET": SubResource("Animation_fv5cf"),
+&"hide": SubResource("Animation_oc3xf"),
+&"show": SubResource("Animation_fiebo")
+}
 
 [node name="ObjectInfoWindow" type="Control"]
 layout_mode = 3
@@ -12,14 +66,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(960, 1080)
 script = ExtResource("1_fiebo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -108.0
+offset_top = -141.0
 offset_right = 578.0
 grow_vertical = 0
 text = "Object Name
@@ -27,3 +91,8 @@ Object description
 HP: 100/100"
 label_settings = SubResource("LabelSettings_fiebo")
 vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oc3xf")
+}
