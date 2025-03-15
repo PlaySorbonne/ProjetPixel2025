@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://36pjq0uybfx4" path="res://resources/3d_models/space_station/fbx/rocks_B.fbx" id="10_t634p"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://dxg64vxw6rck4" path="res://resources/3d_models/space_station/fbx/rock_A.fbx" id="11_6hctx"]
-[ext_resource type="PackedScene" uid="uid://dujy41m0drx3b" path="res://scenes/interface/gameplay_hud/object_info_window.tscn" id="12_dlabj"]
+[ext_resource type="PackedScene" uid="uid://chhjuwxnir6c8" path="res://scenes/interface/gameplay_hud/player_hud.tscn" id="12_dlabj"]
 [ext_resource type="PackedScene" uid="uid://cdx1q2lxhqw1x" path="res://resources/3d_models/space_station/fbx/rock_B.fbx" id="12_ues17"]
 
 [node name="World" type="Node3D"]
@@ -79,6 +79,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9842, 1.54439, 6.43463)
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
 
 [node name="Mouse3dInteraction" parent="." node_paths=PackedStringArray("obj_info_window") instance=ExtResource("11_5qq27")]
-obj_info_window = NodePath("../ObjectInfoWindow")
+obj_info_window = NodePath("../PlayerHud/hud_control/ObjectInfoWindow")
 
-[node name="ObjectInfoWindow" parent="." instance=ExtResource("12_dlabj")]
+[node name="PlayerHud" parent="." instance=ExtResource("12_dlabj")]
+
+[editable path="PlayerHud"]

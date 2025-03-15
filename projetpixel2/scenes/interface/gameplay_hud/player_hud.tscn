@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://chhjuwxnir6c8"]
+
+[ext_resource type="PackedScene" uid="uid://dujy41m0drx3b" path="res://scenes/interface/gameplay_hud/object_info_window.tscn" id="1_hrk04"]
+[ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_ldeku")
+
+[node name="hud_control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ObjectInfoWindow" parent="hud_control" instance=ExtResource("1_hrk04")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.797
+anchor_right = 0.286
+offset_top = 0.239929
+offset_right = 0.880005
