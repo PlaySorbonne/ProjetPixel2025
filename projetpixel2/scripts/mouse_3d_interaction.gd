@@ -17,7 +17,8 @@ func _input(event: InputEvent) -> void:
 
 func deselect_current_object() -> void:
 	if get_node_or_null(selected_object_path) != null:
-		
+		if "clickable" in selected_object_path:
+			pass
 
 func click_object(obj : Node3D) -> void:
 	pass
