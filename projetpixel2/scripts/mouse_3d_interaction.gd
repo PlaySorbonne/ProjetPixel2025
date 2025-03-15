@@ -10,7 +10,7 @@ var selected_object : Node3D = null
 var selected_object_path : String = ""
 
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse = event.position
 	if Input.is_action_just_pressed("click"):

@@ -2,8 +2,10 @@ extends Node3D
 class_name LevelEnvironment
 
 func _ready() -> void:
-	await(get_tree().process_frame)
-	generate_map(Vector2i(10, 10), Vector2(-10, -10))
+	pass
+	
+	#await(get_tree().process_frame)
+	#generate_map(Vector2i(10, 10), Vector2(-10, -10))
 
 func generate_map(map_size : Vector2i, offset : Vector2) -> void:
 	var tiles : Array = []

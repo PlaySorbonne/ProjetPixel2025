@@ -10,7 +10,6 @@ class_name PlayerHud
 func _ready() -> void:
 	pass
 
-
 func _on_mouse_3d_interaction_select_new_object(object: Node3D) -> void:
 	if object == null:
 		mouse_cursor_hint.add_mouse_hint()
