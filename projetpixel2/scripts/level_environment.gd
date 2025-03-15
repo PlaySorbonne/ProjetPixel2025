@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 class_name LevelEnvironment
 
 func _ready() -> void:

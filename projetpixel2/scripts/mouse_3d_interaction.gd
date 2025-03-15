@@ -8,6 +8,7 @@ signal select_new_object(object : Node3D)
 var mouse := Vector2.ZERO
 var selected_object : Node3D = null
 var selected_object_path : String = ""
+var clicked_location : Vector3
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -48,7 +49,12 @@ func mouse_get_world_object(mouse : Vector2) -> Node3D:
 	if result.is_empty():
 		return null
 	else:
-		var collider_node : Node3D = result["collider"]
-		if "damageable" in collider_node:
-			var collider_dmg : DamageableObject = collider_node.damageable
-		return collider_node
+		clicked_location = result["position"]
+		if not "clickable" in result["collider"]:
+			return null
+		else:
+			var collider_node : Node3D = result["collider"]
+			clicked_location = result["position"]
+			if "damageable" in collider_node:
+				var collider_dmg : DamageableObject = collider_node.damageable
+			return collider_node
