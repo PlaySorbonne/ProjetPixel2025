@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GV="*res://scripts/global/global_variables.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [global_group]
 
 tower="In game defensive structures"

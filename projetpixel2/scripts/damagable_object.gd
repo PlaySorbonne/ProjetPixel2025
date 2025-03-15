@@ -33,7 +33,8 @@ static var damage_table : Dictionary = {
 	},
 }
 
-@export var health : int = 100
+@export var max_health : int = 100
+@export var health : int = max_health
 @export var type := DamagableTypes.Neutral
 @export var defense := 1.0
 @export var damage_threshold := 0
