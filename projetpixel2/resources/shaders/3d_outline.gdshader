@@ -3,9 +3,11 @@ render_mode cull_front, unshaded; // Render only front-facing polygons to create
 
 // Uniforms for controlling outline properties
 uniform vec4 outline_color : source_color; // Color of the outline
-uniform float outline_width : hint_range(0.0, 5.0) = 1.0; // Thickness of the outline
+uniform float outline_width : hint_range(0.0, 100.0) = 5.0; // Thickness of the outline
 uniform float fade_start : hint_range(0.0, 100.0) = 10.0; // Distance at which fading starts
 uniform float fade_end : hint_range(0.0, 100.0) = 30.0; // Distance at which outline becomes invisible
+uniform float oscillation_scale : hint_range(0.0, 1.0) = 0.025;
+uniform float oscillation_speed : hint_range(0.0, 15.0) = 8.0;
 
 void vertex() {
 	// Convert the vertex position to clip space
@@ -32,6 +34,6 @@ void fragment() {
 	float fade = clamp(1.0 - (dist - fade_start) / (fade_end - fade_start), 0.0, 1.0);
 
 	// Apply fade effect
-	ALBEDO = outline_color.rgb;
+	ALBEDO = sin(TIME * oscillation_speed) * oscillation_scale + outline_color.rgb;
 	ALPHA = outline_color.a * fade; // Multiply alpha by fade factor
 }
