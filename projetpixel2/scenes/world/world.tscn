@@ -71,7 +71,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9221, 0.357662, -5.87291)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594201, 0.357662, 9.6317)
 
 [node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.56212, 1.54439, -0.0225539)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39019, 1.54439, 0.600005)
+
+[node name="TowerBase2" parent="." instance=ExtResource("9_1yooq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9842, 1.54439, 6.43463)
 
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
 

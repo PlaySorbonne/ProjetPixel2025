@@ -8,6 +8,9 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 var time_before_shoot := 0.0
 var focused_enemies : Array[BaseEnemy] = []
 
+# components
+@onready var clickable : ClickableObject = $ClickableObject
+
 func _ready() -> void:
 	GV.towers.append(self)
 
@@ -30,6 +33,6 @@ func _process(delta: float) -> void:
 		else:
 			shoot(focused_enemies[0])
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		focused_enemies.append(body)

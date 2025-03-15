@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dujy41m0drx3b"]
+[gd_scene load_steps=3 format=3 uid="uid://dujy41m0drx3b"]
 
 [ext_resource type="Script" uid="uid://4bi2ge5l5jiu" path="res://scripts/object_info_window.gd" id="1_fiebo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fiebo"]
+font_size = 32
 
 [node name="ObjectInfoWindow" type="Control"]
 layout_mode = 3
@@ -16,10 +19,11 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -103.0
-offset_right = 287.0
+offset_top = -108.0
+offset_right = 578.0
 grow_vertical = 0
 text = "Object Name
 Object description
 HP: 100/100"
+label_settings = SubResource("LabelSettings_fiebo")
 vertical_alignment = 2

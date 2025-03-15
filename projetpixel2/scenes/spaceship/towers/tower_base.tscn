@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene load_steps=6 format=3 uid="uid://cgrlyuyns6mos"]
 
 [ext_resource type="PackedScene" uid="uid://baa3bj1y0ah5y" path="res://resources/3d_models/blasters/blasterM.fbx" id="1_1xctq"]
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
+[ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_041tc"]
 radius = 10.0
 
-[node name="TowerBase" type="Area3D" groups=["tower"]]
+[node name="TowerBase" type="StaticBody3D" groups=["tower"]]
 script = ExtResource("1_041tc")
 shoot_delay = 1.0
 
@@ -14,9 +17,19 @@ shoot_delay = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_041tc")
+shape = SubResource("SphereShape3D_ih0ua")
 
 [node name="ProjectileSpawnPos" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.522711)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
+custom_nodes = [NodePath("../blasterM/blasterM")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_041tc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="blasterM"]
