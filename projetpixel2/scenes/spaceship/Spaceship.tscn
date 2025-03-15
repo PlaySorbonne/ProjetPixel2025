@@ -51,7 +51,8 @@ metadata/_custom_type_script = "uid://f0gd0vfal03l"
 script = ExtResource("4_h40o1")
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
-[node name="ClickableObject" parent="." instance=ExtResource("5_6nyhl")]
+[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
+custom_nodes = [NodePath("../Transporter/Transporter")]
 
 [connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
 [connection signal="hit" from="ShipHealth" to="." method="_on_ship_health_hit"]

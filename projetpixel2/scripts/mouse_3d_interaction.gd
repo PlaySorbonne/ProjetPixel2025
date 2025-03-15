@@ -19,11 +19,15 @@ func _input(event: InputEvent) -> void:
 			deselect_current_object()
 
 func deselect_current_object() -> void:
-	if get_node_or_null(selected_object_path) != null and "clickable" in selected_object:
+	if get_node_or_null(selected_object_path) != null:
 		var obj_clickable : ClickableObject = selected_object.clickable
 		obj_clickable.deselect()
+	selected_object = null
+	selected_object_path = ""
 
 func click_object(obj : Node3D) -> void:
+	selected_object = obj
+	selected_object_path = obj.get_path()
 	var obj_clickable : ClickableObject = selected_object.clickable
 	obj_clickable.select()
 
@@ -37,15 +41,9 @@ func mouse_get_world_object(mouse : Vector2) -> Node3D:
 	var result := space.intersect_ray(params)
 	
 	if result.is_empty():
-		print("mouse clicked nothing")
 		return null
 	else:
-		var debug_text := "mouse clicked: " + str(result["collider"])
 		var collider_node : Node3D = result["collider"]
 		if "damageable" in collider_node:
 			var collider_dmg : DamageableObject = collider_node.damageable
-			debug_text += " ; with " + str(collider_dmg.health) + " hitpoints"
-		else:
-			debug_text += " ; not damageable"
-		print(debug_text)
 		return collider_node
