@@ -5,15 +5,10 @@ const DIST := 1000.0
 
 signal select_new_object(object : Node3D)
 
-@export var obj_info_window : ObjectInfoWindow = null
-
 var mouse := Vector2.ZERO
 var selected_object : Node3D = null
 var selected_object_path : String = ""
 
-
-func _ready() -> void:
-	self.connect("select_new_object", obj_info_window.select_object)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

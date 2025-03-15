@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw2bxr43x5b3o"]
+
+[ext_resource type="Texture2D" uid="uid://daydt5f6khaw5" path="res://resources/images/ui_assets/target_a.png" id="1_a6btw"]
+[ext_resource type="Script" uid="uid://b3dmdev4odlag" path="res://scripts/mouse_cursor_hint.gd" id="1_eg40u"]
+
+[node name="MouseCursorHint" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eg40u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("1_a6btw")
