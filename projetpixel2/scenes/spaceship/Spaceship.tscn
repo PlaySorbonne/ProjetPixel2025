@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnn16qnpvw2gh"]
+[gd_scene load_steps=10 format=3 uid="uid://cnn16qnpvw2gh"]
 
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="1_01p5y"]
 [ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
 [ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
 [ext_resource type="Script" uid="uid://f0gd0vfal03l" path="res://scripts/damagable_object.gd" id="4_h40o1"]
+[ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="5_6nyhl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h40o1"]
 render_priority = 0
@@ -50,7 +51,11 @@ metadata/_custom_type_script = "uid://f0gd0vfal03l"
 script = ExtResource("4_h40o1")
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
+[node name="ClickableObject" parent="." instance=ExtResource("5_6nyhl")]
+
 [connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
 [connection signal="hit" from="ShipHealth" to="." method="_on_ship_health_hit"]
 [connection signal="death" from="ShieldHealth" to="." method="_on_shield_health_death"]
 [connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]
+
+[editable path="Transporter"]

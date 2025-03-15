@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6wednpvk2t26"]
+[gd_scene load_steps=7 format=3 uid="uid://c6wednpvk2t26"]
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
 [ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
 [ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/damagable.tscn" id="3_sxqs1"]
+[ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="4_stxmo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0w8"]
 radius = 0.25
@@ -32,6 +33,8 @@ health = 50
 shape = SubResource("BoxShape3D_sxqs1")
 
 [node name="TimerAttacking" type="Timer" parent="."]
+
+[node name="ClickableObject" parent="." instance=ExtResource("4_stxmo")]
 
 [connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

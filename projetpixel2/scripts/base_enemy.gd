@@ -19,7 +19,10 @@ var current_state := States.Moving
 var current_animation := ""
 var enemy_id := 0
 
+# components
 @onready var damageable : DamageableObject = $DamageableObject
+@onready var clickable : ClickableObject = $ClickableObject
+
 @onready var target : Node3D = GV.space_ship
 @onready var mesh : Node3D = $"figurine-cube"
 @onready var mesh_animations : AnimationPlayer = $"figurine-cube/AnimationPlayer"

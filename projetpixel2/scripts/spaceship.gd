@@ -9,8 +9,10 @@ var alive := true
 var _update_shield_shaders_color := false
 var _shield_shader_color : Color
 
+# components
 @onready var damageable : DamageableObject = $ShieldHealth
 @onready var shield_shaders : MeshInstance3D = $ShieldShader
+@onready var clickable : ClickableObject = $ClickableObject
 
 func _ready() -> void:
 	GV.space_ship = self
