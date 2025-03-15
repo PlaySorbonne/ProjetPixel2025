@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=7 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="PackedScene" uid="uid://dujy41m0drx3b" path="res://scenes/interface/gameplay_hud/object_info_window.tscn" id="1_hrk04"]
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="PackedScene" uid="uid://dwkgsacjwux1i" path="res://scenes/interface/gameplay_hud/create_tower_window.tscn" id="3_vhdig"]
 [ext_resource type="PackedScene" uid="uid://dw2bxr43x5b3o" path="res://scenes/interface/gameplay_hud/mouse_cursor_hint.tscn" id="4_06apd"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
+[ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_ldeku")
@@ -41,6 +42,8 @@ offset_right = -394.0
 offset_bottom = 364.0
 
 [node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
+
+[node name="TowerSpawner" parent="." instance=ExtResource("6_pfuso")]
 
 [connection signal="tower_placed" from="hud_control/CreateTowerWindow" to="." method="_on_create_tower_window_tower_placed"]
 [connection signal="select_new_object" from="Mouse3dInteraction" to="." method="_on_mouse_3d_interaction_select_new_object"]

@@ -2,9 +2,12 @@ extends CanvasLayer
 class_name PlayerHud
 
 
+# components
 @onready var object_info : ObjectInfoWindow = $hud_control/ObjectInfoWindow
 @onready var create_towers : CreateTowerWindow = $hud_control/CreateTowerWindow
 @onready var mouse_cursor_hint : MouseCursorHint = $MouseCursorHint
+@onready var tower_spawner : TowerSpawner = $TowerSpawner
+@onready var mouse_3d_interaction : Mouse3dInteraction = $Mouse3dInteraction
 
 
 func _ready() -> void:
@@ -21,4 +24,7 @@ func _on_mouse_3d_interaction_select_new_object(object: Node3D) -> void:
 		create_towers.hide_window()
 
 func _on_create_tower_window_tower_placed() -> void:
-	pass # Replace with function body.
+	tower_spawner.spawn_tower(
+		TowersData.tower_types[0],
+		mouse_3d_interaction.clicked_location
+	)
