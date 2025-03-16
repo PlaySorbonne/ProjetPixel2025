@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt0sfajn3i7tr"]
+
+[ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
+[ext_resource type="Texture2D" uid="uid://8wjsvuo0fwq5" path="res://resources/images/ace_of_spades.png" id="2_qlpjb"]
+[ext_resource type="Shader" uid="uid://dfayigrurpeyn" path="res://resources/shaders/card_3d_effect.gdshader" id="2_xtsg7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nggt0"]
+shader = ExtResource("2_xtsg7")
+shader_parameter/mouse_screen_pos = Vector2(0, 0)
+shader_parameter/hovering = 0.0
+shader_parameter/screen_scale = 1.0
+
+[node name="CardObject" type="Button" node_paths=PackedStringArray("normal")]
+anchors_preset = -1
+anchor_left = 0.098
+anchor_top = 0.142
+anchor_right = 0.098
+anchor_bottom = 0.142
+offset_left = -183.16
+offset_top = -156.36
+offset_right = 422.84
+offset_bottom = 734.64
+script = ExtResource("1_xkj05")
+normal = NodePath("Chip/Suit")
+
+[node name="Chip" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nggt0")
+position = Vector2(302, 449)
+texture = ExtResource("2_qlpjb")
+
+[node name="Suit" type="Marker2D" parent="Chip"]
