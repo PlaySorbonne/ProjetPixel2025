@@ -14,6 +14,8 @@ var oldpos := Vector2(0,0)
 var veldir2 := Vector2(0,0)
 var oldpos2 := Vector2(0,0)
 var is_mouse_over := false
+var is_grabbed := false
+var mouse_grab_offset : Vector2
 
 @onready var card_object : CardObject = get_parent()
 
@@ -27,6 +29,13 @@ func _process(delta: float) -> void:
 	TIME += delta
 	if enabled:
 		process_shader_effect()
+		process_card_movement()
+
+func process_card_movement() -> void:
+	if is_grabbed:
+		card_object.global_position = card_object.get_global_mouse_position() - mouse_grab_offset
+	else:
+		pass
 
 func process_shader_effect() -> void:
 	var material := chip.material
@@ -47,6 +56,7 @@ func process_shader_effect() -> void:
 			blaa = 0
 	suit.material = material
 
+# card_object signals processing 
 func _on_card_object_mouse_entered() -> void:
 	is_mouse_over = true
 
@@ -54,7 +64,8 @@ func _on_card_object_mouse_exited() -> void:
 	is_mouse_over = false
 
 func _on_card_object_button_down() -> void:
-	pass # Replace with function body.
+	mouse_grab_offset = card_object.get_global_mouse_position() - card_object.global_position
+	is_grabbed = true
 
 func _on_card_object_button_up() -> void:
-	pass # Replace with function body.
+	is_grabbed = false
