@@ -1,6 +1,6 @@
 extends Node
 
-const ROTATION_LIMIT := 75.0
+const ROTATION_LIMIT := 50.0
 const FOLLOW_SPEED := 20.0
 const ROTATION_RETURN_SPEED: float = 10.0 
 
@@ -20,7 +20,7 @@ var last_position := Vector2.ZERO
 
 @onready var card_object : CardObject = get_parent()
 @onready var initial_position : Vector2 = card_object.global_position
-@onready var original_rotation := card_object.rotation
+@onready var initial_rotation := card_object.rotation
 
 
 func _process(delta: float) -> void:
@@ -55,6 +55,11 @@ func process_card_movement(delta : float) -> void:
 		target_rotation,
 		ROTATION_RETURN_SPEED * delta
 	)
+	# reset
+	if not is_grabbed:
+		if abs(chip.rotation - initial_rotation) < 0.005 and (card_object.global_position
+								).distance_squared_to(initial_position) < 10.0:
+			at_rest = true
 
 func process_shader_effect() -> void:
 	var material := chip.material
@@ -75,9 +80,6 @@ func process_shader_effect() -> void:
 			blaa = 0
 	suit.material = material
 
-func start_movement() -> void:
-	at_rest = false
-
 # card_object signals processing 
 func _on_card_object_mouse_entered() -> void:
 	is_mouse_over = true
@@ -88,8 +90,7 @@ func _on_card_object_mouse_exited() -> void:
 func _on_card_object_button_down() -> void:
 	mouse_grab_offset = card_object.get_global_mouse_position() - card_object.global_position
 	is_grabbed = true
-	start_movement()
+	at_rest = false
 
 func _on_card_object_button_up() -> void:
 	is_grabbed = false
-	start_movement()
