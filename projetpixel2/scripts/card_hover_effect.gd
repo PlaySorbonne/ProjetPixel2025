@@ -2,12 +2,12 @@ extends Node
 
 const ROTATION_LIMIT := 50.0
 const FOLLOW_SPEED := 20.0
-const ROTATION_RETURN_SPEED: float = 10.0 
+const ROTATION_RETURN_SPEED: float = 10.0
 
 @export var normal : Marker2D
 @export var enabled : bool = true
-@export var chip : Sprite2D 
-@export var suit : Sprite2D 
+@export var chip : Sprite2D
+@export var suit : Sprite2D
 
 var TIME := 0
 var value := 2000
@@ -15,8 +15,8 @@ var blaa := 0
 var is_mouse_over := false
 var is_grabbed := false
 var mouse_grab_offset : Vector2
-var at_rest := true 
-var last_position := Vector2.ZERO  
+var at_rest := true
+var last_position := Vector2.ZERO
 
 @onready var card_object : CardObject = get_parent()
 @onready var initial_position : Vector2 = card_object.global_position
