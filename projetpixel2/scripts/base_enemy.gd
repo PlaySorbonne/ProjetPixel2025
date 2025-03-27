@@ -13,6 +13,7 @@ static var number_of_enemies := 0
 @export var attack_speed : float = 0.5
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
 
+var status_effects : Array[StatusEffectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
 var current_state := States.Moving
