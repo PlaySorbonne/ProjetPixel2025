@@ -9,6 +9,9 @@ signal tower_switched_mode
 signal tower_collected_xp
 signal tower_upgraded
 
+@export var cards_tower : Array[CardObject] = []
+@export var cards_projectile : Array[CardObject] = []
+@export var cards_enemy : Array[CardObject] = []
 
 @export var shoot_delay := 0.25
 var time_before_shoot := 0.0
