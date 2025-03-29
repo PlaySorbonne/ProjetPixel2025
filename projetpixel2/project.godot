@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GV="*res://scripts/global/global_variables.gd"
 TowersData="*res://scripts/global/towers_data.gd"
+RunData="*res://scripts/global/run_data.gd"
 
 [display]
 
