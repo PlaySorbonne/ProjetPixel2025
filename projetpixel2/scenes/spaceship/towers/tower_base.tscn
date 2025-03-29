@@ -11,7 +11,6 @@ radius = 10.0
 
 [node name="TowerBase" type="StaticBody3D" groups=["tower"]]
 script = ExtResource("1_041tc")
-shoot_delay = 1.0
 
 [node name="blasterM" parent="." instance=ExtResource("1_1xctq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)
@@ -30,6 +29,11 @@ custom_nodes = [NodePath("../blasterM/blasterM")]
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_041tc")
 
+[node name="TimerShoot" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
 
 [editable path="blasterM"]
