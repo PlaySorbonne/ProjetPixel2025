@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=8 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
-[ext_resource type="PackedScene" uid="uid://dwkgsacjwux1i" path="res://scenes/interface/gameplay_hud/create_tower_window.tscn" id="3_vhdig"]
 [ext_resource type="PackedScene" uid="uid://dw2bxr43x5b3o" path="res://scenes/interface/gameplay_hud/mouse_cursor_hint.tscn" id="4_06apd"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
@@ -25,13 +24,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CreateTowerWindow" parent="hud_control" instance=ExtResource("3_vhdig")]
+[node name="CreateTowersWindow" type="Control" parent="hud_control"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.833
-anchor_top = 0.891
-offset_left = 0.639893
-offset_top = -0.280029
+anchor_left = 0.733854
+anchor_top = 0.19537
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MouseCursorHint" parent="." instance=ExtResource("4_06apd")]
 offset_left = -394.0
@@ -147,7 +148,6 @@ label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="tower_placed" from="hud_control/CreateTowerWindow" to="." method="_on_create_tower_window_tower_placed"]
 [connection signal="select_new_object" from="Mouse3dInteraction" to="." method="_on_mouse_3d_interaction_select_new_object"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
