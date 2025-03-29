@@ -14,6 +14,16 @@ var in_combo := false
 func _ready() -> void:
 	GV.hud = self
 	RunData.connect("enemy_killed", new_kill)
+	RunData.connect("experience_gained", update_experience)
+	RunData.connect("level_gained", update_level)
+	update_level()
+
+func update_experience() -> void:
+	$ExperienceBar.value = RunData.current_experience
+
+func update_level() -> void:
+	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
+	$ExperienceBar.max_value = RunData.level_experience_threshold
 
 func new_kill() -> void:
 	$ComboCounter/ComboTimer.start(RunData.combo_max_time)

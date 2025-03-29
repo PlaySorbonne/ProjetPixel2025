@@ -2,15 +2,26 @@ extends Node
 
 signal enemy_killed
 signal experience_gained
+signal level_gained
 
 # experience points
 var experience_needed_equation : Expression = default_levelling_expression()
-var current_level := 1
-var level_experience_threshold : int = experience_needed_equation.execute()
+var current_level := 1:
+	set(value):
+		current_level = value
+		emit_signal("level_gained")
+var level_experience_threshold : int =  get_level_experience_threshold()
 var current_experience := 0:
 	set(value):
-		current_experience = value
+		if value >= level_experience_threshold:
+			current_experience = value - level_experience_threshold
+			current_level += 1
+		else:
+			current_experience = value
 		emit_signal("experience_gained")
+
+func get_level_experience_threshold() -> int:
+	return experience_needed_equation.execute([], self)
 
 # combo
 var current_combo := 0:
@@ -30,7 +41,8 @@ var total_alpha_kills := 0
 
 func default_levelling_expression() -> Expression:
 	var expr : Expression = Expression.new()
-	expr.parse("next_level * 50 + pow(next_level, 2)")
+	var expr_str := "(current_level+1) * 50 + pow((current_level+1), 2)"
+	var err = expr.parse(expr_str)
 	return expr
 
 func new_kill(enemy_type : String, is_alpha : bool) -> void:
@@ -45,7 +57,7 @@ func reset_run_data() -> void:
 	# experience
 	experience_needed_equation = default_levelling_expression()
 	current_level = 1
-	level_experience_threshold = experience_needed_equation.execute()
+	level_experience_threshold = experience_needed_equation.execute([], self)
 	current_experience = 0
 	# combo
 	current_combo = 0

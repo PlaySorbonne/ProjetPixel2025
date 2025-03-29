@@ -15,6 +15,7 @@ static var enemy_types : Array[String] = ["Puncher"]
 @export var damage_amount : int = 10
 @export var attack_speed : float = 0.5
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
+@export var experience_points := 8
 
 var status_effects : Array[StatusEffectBase] = []
 var overlapping_enemies : Array[Node3D] = []
@@ -74,6 +75,7 @@ func death() -> void:
 	mesh_animations.play("die")
 	emit_signal("enemy_killed")
 	RunData.new_kill(enemy_type, is_alpha)
+	RunData.current_experience += experience_points
 	await(mesh_animations.animation_finished)
 	await(get_tree().create_timer(1.0).timeout)
 	queue_free()
