@@ -25,5 +25,7 @@ func add_to_tower(tower : TowerBase) -> void:
 			tower.cards_enemy.append(self)
 		"projectile_critical_hit", "projectile_hit_enemy":
 			tower.cards_projectile.append(self)
+		"added_to_tower":
+			pass
 		_:
 			print_debug("card_object: incorrect card_signal detected")

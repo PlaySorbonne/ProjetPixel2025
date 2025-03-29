@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=9 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="PackedScene" uid="uid://dwkgsacjwux1i" path="res://scenes/interface/gameplay_hud/create_tower_window.tscn" id="3_vhdig"]
 [ext_resource type="PackedScene" uid="uid://dw2bxr43x5b3o" path="res://scenes/interface/gameplay_hud/mouse_cursor_hint.tscn" id="4_06apd"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
+[ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxin7"]
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfuso"]
+font_size = 42
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_ldeku")
@@ -62,6 +66,90 @@ vertical_alignment = 1
 [node name="ComboTimer" type="Timer" parent="ComboCounter"]
 one_shot = true
 
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_htfe5")
+
+[node name="ButtonContinue" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.357292
+anchor_top = 0.284259
+anchor_right = 0.642708
+anchor_bottom = 0.37037
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseMenu/ButtonContinue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+label_settings = SubResource("LabelSettings_pfuso")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRestart" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.357292
+anchor_top = 0.457407
+anchor_right = 0.642708
+anchor_bottom = 0.543519
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseMenu/ButtonRestart"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+label_settings = SubResource("LabelSettings_pfuso")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonQuit" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.357292
+anchor_top = 0.637037
+anchor_right = 0.642708
+anchor_bottom = 0.723148
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="PauseMenu/ButtonQuit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_pfuso")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="tower_placed" from="hud_control/CreateTowerWindow" to="." method="_on_create_tower_window_tower_placed"]
 [connection signal="select_new_object" from="Mouse3dInteraction" to="." method="_on_mouse_3d_interaction_select_new_object"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]

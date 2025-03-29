@@ -10,7 +10,7 @@ signal tower_collected_xp
 signal tower_upgraded
 
 @export_group("Tower Stats")
-@export var projectile_type : PackedScene = PROJECTILE_RES
+@export var projectile_res : PackedScene = PROJECTILE_RES
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0
 
@@ -40,7 +40,7 @@ func shoot(enemy : BaseEnemy) -> void:
 		#pass
 	can_shoot = false
 	look_at(enemy.position)
-	var projectile := PROJECTILE_RES.instantiate()
+	var projectile := projectile_res.instantiate()
 	GV.world.add_child(projectile)
 	projectile.position = $ProjectileSpawnPos.global_position
 	projectile.direction = projectile.position.direction_to(enemy.position)
