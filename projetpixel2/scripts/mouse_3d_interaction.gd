@@ -22,6 +22,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			deselect_current_object()
 			click_object(obj)
 			emit_signal("select_new_object", obj)
+	elif event.is_action_pressed("click"):
+		if selected_object != null and is_instance_valid(selected_object):
+			print("Select object " + str(selected_object))
+		else:
+			print("No object selected!")
+
 
 func deselect_current_object() -> void:
 	if get_node_or_null(selected_object_path) != null:
