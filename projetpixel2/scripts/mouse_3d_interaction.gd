@@ -14,15 +14,14 @@ var clicked_location : Vector3
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse = event.position
-	if Input.is_action_just_pressed("click"):
 		var obj : Node3D = mouse_get_world_object(mouse)
-		if obj != selected_object and obj != null:
+		if obj == null:
+			deselect_current_object()
+			emit_signal("select_new_object", null)
+		elif obj != selected_object:
 			deselect_current_object()
 			click_object(obj)
 			emit_signal("select_new_object", obj)
-		else:
-			deselect_current_object()
-			emit_signal("select_new_object", null)
 
 func deselect_current_object() -> void:
 	if get_node_or_null(selected_object_path) != null:
