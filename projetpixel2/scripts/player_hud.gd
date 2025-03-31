@@ -18,6 +18,14 @@ func _ready() -> void:
 	RunData.connect("level_gained", update_level)
 	update_level()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("click"):
+		if mouse_3d_interaction.selected_object != null and is_instance_valid(
+								mouse_3d_interaction.selected_object):
+			print("Select object " + str(mouse_3d_interaction.selected_object))
+		else:
+			print("No object selected!")
+
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
 
