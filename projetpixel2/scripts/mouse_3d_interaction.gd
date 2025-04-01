@@ -28,7 +28,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			print("No object selected!")
 
-
 func deselect_current_object() -> void:
 	if get_node_or_null(selected_object_path) != null:
 		var obj_clickable : ClickableObject = selected_object.clickable

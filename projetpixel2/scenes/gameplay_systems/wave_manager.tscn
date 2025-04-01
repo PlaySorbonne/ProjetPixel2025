@@ -12,6 +12,13 @@ offset_right = 129.0
 offset_bottom = 45.0
 text = "Next Wave"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.129688
+anchor_bottom = 0.857407
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
