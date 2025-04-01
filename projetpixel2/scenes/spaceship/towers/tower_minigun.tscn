@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgosdw7k57g6"]
+
+[ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="1_8d2or"]
+
+[node name="TowerMinigun" instance=ExtResource("1_8d2or")]
+tower_name = "Minigun"
+fire_rate = 5.0
+
+[editable path="blasterM"]

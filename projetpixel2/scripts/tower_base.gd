@@ -9,6 +9,8 @@ signal tower_switched_mode
 signal tower_collected_xp
 signal tower_upgraded
 
+@export var tower_name := "TowerBase"
+
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
 @export var number_of_projectiles := 1
