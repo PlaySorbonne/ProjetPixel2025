@@ -43,16 +43,16 @@ transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18135, 0.357662, 0.000508308)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
 
 [node name="EnemySpawner2" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18818, 0.357662, 5.3803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
 
 [node name="EnemySpawner3" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9221, 0.357662, -5.87291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
 
 [node name="EnemySpawner4" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0594201, 0.357662, 9.6317)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
 
 [node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39019, 1.54439, 0.600005)
