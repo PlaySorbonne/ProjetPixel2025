@@ -7,7 +7,7 @@ class EnemyWave:
 	var wave_number : int = 0
 	var wave_difficulty : float = 1.0
 	var wave_enemies : Array[BaseEnemy] = []
-	var wave_number_of_enemies : int = 15
+	var wave_number_of_enemies : int = 5
 	var wave_duration := 30.0
 	var is_boss_wave := false
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 	initialize_spawners()
 	for i : int in range(9):
 		var n_v := EnemyWave.new()
-		n_v.wave_number_of_enemies += randi_range(i, i*2)
+		n_v.wave_number_of_enemies += randi_range(i*2, i*4)
 		n_v.wave_number = i+1
 		n_v.wave_difficulty = n_v.wave_number_of_enemies
 		n_v.wave_duration = 30.0
@@ -60,6 +60,7 @@ func spawn_next_wave() -> void:
 	for spawner : EnemySpawner in GV.spawners:
 		spawner.spawn_wave(current_wave.wave_number_of_enemies / len(GV.spawners))
 	current_wave_id += 1
+	$CanvasLayer/VBoxContainer/LabelWave.text = "Current wave:\nWave " + str(current_wave_id)
 	if current_wave_id < max_wave:
 		wave_buttons[current_wave_id].set_next_wave()
 		$Timer.start(waves[current_wave_id].wave_duration)

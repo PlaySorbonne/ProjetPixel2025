@@ -13,7 +13,7 @@ func set_next_wave(is_next := true) -> void:
 
 func set_wave(w : WaveManager.EnemyWave) -> void:
 	wave = w
-	$Button.text = "Next wave (" + str(wave.wave_number_of_enemies) + ")"
+	$Button.text = "Wave "+str(wave.wave_number)+" ("+str(wave.wave_number_of_enemies)+")"
 
 func remove_button() -> void:
 	is_triggered = true
