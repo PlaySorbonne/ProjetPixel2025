@@ -14,7 +14,7 @@ var clicked_location : Vector3
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse = event.position
-		var obj : Node3D = mouse_get_world_object(mouse)
+		var obj : Node3D = mouse_get_world_object()
 		if obj == null:
 			deselect_current_object()
 			emit_signal("select_new_object", null)
@@ -41,7 +41,7 @@ func click_object(obj : Node3D) -> void:
 	var obj_clickable : ClickableObject = selected_object.clickable
 	obj_clickable.select()
 
-func mouse_get_world_object(mouse : Vector2) -> Node3D:
+func get_mouse_raycast() -> Dictionary:
 	var space := get_world_3d().direct_space_state
 	var start := get_viewport().get_camera_3d().project_ray_origin(mouse)
 	var end := get_viewport().get_camera_3d().project_position(mouse, DIST)
@@ -49,7 +49,14 @@ func mouse_get_world_object(mouse : Vector2) -> Node3D:
 	params.from = start
 	params.to = end
 	var result := space.intersect_ray(params)
-	
+	return result
+
+func mouse_get_world_position() -> Vector3:
+	var result := get_mouse_raycast()
+	return result["position"]
+
+func mouse_get_world_object() -> Node3D:
+	var result := get_mouse_raycast()
 	if result.is_empty():
 		return null
 	else:
