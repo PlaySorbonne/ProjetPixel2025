@@ -39,7 +39,7 @@ func update_combo_label() -> void:
 func _on_create_tower_window_tower_placed() -> void:
 	tower_spawner.spawn_tower(
 		TowersData.tower_types[0],
-		mouse_3d_interaction.clicked_location
+		mouse_3d_interaction.mouse_3d_position
 	)
 
 func _on_combo_timer_timeout() -> void:

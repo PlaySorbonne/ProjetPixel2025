@@ -8,8 +8,11 @@ signal select_new_object(object : Node3D)
 var mouse := Vector2.ZERO
 var selected_object : Node3D = null
 var selected_object_path : String = ""
-var clicked_location : Vector3
+var mouse_3d_position : Vector3
 
+
+func _ready() -> void:
+	GV.mouse_3d_interaction = self
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -60,12 +63,12 @@ func mouse_get_world_object() -> Node3D:
 	if result.is_empty():
 		return null
 	else:
-		clicked_location = result["position"]
+		mouse_3d_position = result["position"]
 		if not "clickable" in result["collider"]:
 			return null
 		else:
 			var collider_node : Node3D = result["collider"]
-			clicked_location = result["position"]
+			mouse_3d_position = result["position"]
 			if "damageable" in collider_node:
 				var collider_dmg : DamageableObject = collider_node.damageable
 			return collider_node

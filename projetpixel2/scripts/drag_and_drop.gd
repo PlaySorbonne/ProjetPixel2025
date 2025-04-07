@@ -1,10 +1,11 @@
 extends Control
-class_name DragAndDrop
+class_name DragAndDrop3D
 
 signal dragged
 signal dropped
 
-@export var dragged_object : Node2D = null
+@export var dragged_object : Node3D = null
+@export var can_be_dragged := true
 
 var is_dragged := false
 
@@ -19,6 +20,6 @@ func drop() -> void:
 
 func _process(delta: float) -> void:
 	if is_dragged:
-		dragged_object.global_position = get_global_mouse_position()
+		dragged_object.global_position = GV.mouse_3d_interaction.mouse_3d_position
 		if Input.is_action_just_released("click"):
 			drop()
