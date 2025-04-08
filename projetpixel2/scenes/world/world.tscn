@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=13 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="5_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://b5gr3yymlr5t3" path="res://scenes/world/levels/environments/environment_test.tscn" id="7_bq33v"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
@@ -37,7 +38,7 @@ script = ExtResource("1_sl2e5")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545192, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="PlayerCamera" parent="." instance=ExtResource("2_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 0, 7.45998, 8.86547)
 
 [node name="Spaceship" parent="." instance=ExtResource("8_j2gmx")]

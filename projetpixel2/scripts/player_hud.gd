@@ -2,7 +2,11 @@ extends CanvasLayer
 class_name PlayerHud
 
 
+const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
+const TOWERS_OFFSET := Vector2(-10, 0)
+
 var in_combo := false
+var available_towers := 0
 
 # components
 @onready var mouse_cursor_hint : MouseCursorHint = $MouseCursorHint
@@ -17,6 +21,11 @@ func _ready() -> void:
 	RunData.connect("experience_gained", update_experience)
 	RunData.connect("level_gained", update_level)
 	update_level()
+	
+	await get_tree().create_timer(1).timeout
+	for i in range(99):
+		add_available_tower()
+		await get_tree().create_timer(5).timeout
 
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
@@ -35,6 +44,16 @@ func new_kill() -> void:
 
 func update_combo_label() -> void:
 	combo_label.text = "Combo: " + str(RunData.current_combo)
+
+func add_available_tower() -> void:
+	print_debug("new tower!")
+	var tower_pos := GV.player_camera.project_position(
+		Vector2(50, 50) + TOWERS_OFFSET * available_towers, 50.0)
+	available_towers += 1
+	var new_tower := TOWER_RES.instantiate()
+	new_tower.is_hologram = true
+	GV.world.add_child(new_tower)
+	new_tower.position = tower_pos
 
 func _on_create_tower_window_tower_placed() -> void:
 	tower_spawner.spawn_tower(

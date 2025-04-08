@@ -97,5 +97,6 @@ func _on_clickable_object_object_unselected() -> void:
 	# drop is handled in drag&drop component
 
 func _on_drag_and_drop_dropped() -> void:
+	# tower is a hologram
 	$CollisionShape3D.disabled = false
 	spawn_from_hologram()

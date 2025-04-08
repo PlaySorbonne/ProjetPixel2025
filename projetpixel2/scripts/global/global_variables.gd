@@ -9,6 +9,7 @@ var spawners : Array[EnemySpawner] = []
 var wave_manager : WaveManager = null
 var hud : PlayerHud = null
 var mouse_3d_interaction : Mouse3dInteraction = null
+var player_camera : PlayerCamera = null
 
 
 func reset_gameplay_variables() -> void:
@@ -19,3 +20,4 @@ func reset_gameplay_variables() -> void:
 	wave_manager = null
 	hud = null
 	mouse_3d_interaction = null
+	player_camera = null
