@@ -9,24 +9,23 @@ signal tower_fired
 signal tower_switched_mode
 signal tower_collected_xp
 signal tower_upgraded
+signal enemy_hit
+signal enemy_killed
+signal projectile_critical_hit
+signal projectile_destroyed
 
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
+@export var cards : Array[CardObject] = []
 
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0
 
-@export_group("Cards")
-@export var cards_tower : Array[CardObject] = []
-@export var cards_projectile : Array[CardObject] = []
-@export var cards_enemy : Array[CardObject] = []
-
 @onready var shoot_delay := 1.0 / fire_rate
 var can_shoot := true
 var focused_enemies : Array[BaseEnemy] = []
-var cards : Dictionary[String, Array] = {}
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -37,6 +36,13 @@ func _ready() -> void:
 		$TimerShoot.start()
 	else:
 		set_hologram()
+
+func add_card(card: CardObject) -> void:
+	card.tower = self
+	cards.append(card)
+	# connect signal specified in the card to corresponding tower 
+	# signal, to execution of card effect
+	self.connect(card.card_signal, card.execute_card)
 
 func set_hologram(autodrag := true) -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES
