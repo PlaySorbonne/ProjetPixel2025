@@ -41,5 +41,6 @@ can_be_dragged = false
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
 [connection signal="object_selected" from="ClickableObject" to="." method="_on_clickable_object_object_selected"]
 [connection signal="object_unselected" from="ClickableObject" to="." method="_on_clickable_object_object_unselected"]
+[connection signal="dropped" from="DragAndDrop" to="." method="_on_drag_and_drop_dropped"]
 
 [editable path="blasterM"]

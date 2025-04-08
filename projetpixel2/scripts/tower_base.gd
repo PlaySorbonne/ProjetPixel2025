@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 class_name TowerBase
 
 
@@ -41,6 +41,13 @@ func _ready() -> void:
 func set_hologram() -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES
 	$DragAndDrop.can_be_dragged = true
+	$Area3D/CollisionShape3D.disabled = true
+
+func spawn_from_hologram() -> void:
+	is_hologram = false
+	$blasterM/blasterM.material_override = null
+	$DragAndDrop.can_be_dragged = false
+	$Area3D/CollisionShape3D.disabled = false
 
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
@@ -82,8 +89,13 @@ func _on_timer_shoot_timeout() -> void:
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:
-		$DragAndDrop.is_dragged = true
+		$DragAndDrop.drag()
+		$CollisionShape3D.disabled = true
 
 func _on_clickable_object_object_unselected() -> void:
-	if is_hologram:
-		$DragAndDrop.is_dragged = false
+	pass
+	# drop is handled in drag&drop component
+
+func _on_drag_and_drop_dropped() -> void:
+	$CollisionShape3D.disabled = false
+	spawn_from_hologram()
