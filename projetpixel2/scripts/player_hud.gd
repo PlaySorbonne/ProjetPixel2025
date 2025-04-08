@@ -21,11 +21,6 @@ func _ready() -> void:
 	RunData.connect("experience_gained", update_experience)
 	RunData.connect("level_gained", update_level)
 	update_level()
-	
-	await get_tree().create_timer(1).timeout
-	for i in range(99):
-		add_available_tower()
-		await get_tree().create_timer(5).timeout
 
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
@@ -65,3 +60,8 @@ func _on_combo_timer_timeout() -> void:
 	in_combo = false
 	RunData.current_combo = 0
 	update_combo_label()
+
+
+func _on_button_spawn_tower_pressed() -> void:
+	await get_tree().create_timer(0.1).timeout
+	add_available_tower()

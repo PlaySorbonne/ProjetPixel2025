@@ -1,8 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=8 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
-[ext_resource type="PackedScene" uid="uid://0h0qddcnbfn4" path="res://scenes/interface/gameplay_hud/tower_spawn_button.tscn" id="2_jxin7"]
-[ext_resource type="PackedScene" uid="uid://clgosdw7k57g6" path="res://scenes/spaceship/towers/tower_minigun.tscn" id="3_pfuso"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
@@ -56,7 +54,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CreateTowersWindow" type="Control" parent="hud_control"]
+[node name="CardsWindow" type="Control" parent="hud_control"]
 layout_mode = 1
 anchor_left = 0.794792
 anchor_top = 0.19537
@@ -66,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="HFlowContainer" type="HFlowContainer" parent="hud_control/CreateTowersWindow"]
+[node name="HFlowContainer" type="HFlowContainer" parent="hud_control/CardsWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,12 +72,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TowerSpawnButton" parent="hud_control/CreateTowersWindow/HFlowContainer" instance=ExtResource("2_jxin7")]
-layout_mode = 2
-
-[node name="TowerSpawnButton2" parent="hud_control/CreateTowersWindow/HFlowContainer" instance=ExtResource("2_jxin7")]
-layout_mode = 2
-tower_ref = ExtResource("3_pfuso")
+[node name="ButtonSpawnTower" type="Button" parent="hud_control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.946875
+anchor_top = 0.847222
+anchor_right = 0.980208
+anchor_bottom = 0.903704
+offset_top = -6.10352e-05
+text = "Tower"
+metadata/_edit_use_anchors_ = true
 
 [node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
 
@@ -189,6 +191,7 @@ label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]

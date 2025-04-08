@@ -14,4 +14,4 @@ func _physics_process(delta: float) -> void:
 		direction += Vector3.FORWARD
 	if Input.is_action_pressed("move_backward"):
 		direction += Vector3.BACK
-	position += direction * SPEED * delta
+	position += (direction * SPEED * delta)

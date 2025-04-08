@@ -38,10 +38,13 @@ func _ready() -> void:
 	else:
 		set_hologram()
 
-func set_hologram() -> void:
+func set_hologram(autodrag := true) -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES
 	$DragAndDrop.can_be_dragged = true
 	$Area3D/CollisionShape3D.disabled = true
+	if autodrag:
+		$DragAndDrop.drag()
+		$CollisionShape3D.disabled = true
 
 func spawn_from_hologram() -> void:
 	is_hologram = false
