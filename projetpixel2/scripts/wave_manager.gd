@@ -54,8 +54,9 @@ func initialize_spawners() -> void:
 		spawner.wave_manager = self
 
 func spawn_next_wave() -> void:
-	if current_wave_id < max_wave:
-		wave_buttons[current_wave_id].remove_button()
+	if current_wave_id >= max_wave:
+		return
+	wave_buttons[current_wave_id].remove_button()
 	var current_wave : EnemyWave = waves[current_wave_id]
 	for spawner : EnemySpawner in GV.spawners:
 		spawner.spawn_wave(current_wave.wave_number_of_enemies / len(GV.spawners))

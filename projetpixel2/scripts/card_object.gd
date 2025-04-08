@@ -48,14 +48,12 @@ static func load_cards_data() -> void:
 			var err := new_card.trigger_condition.parse(csv_line[5])
 			if err != Error.OK:
 				print_debug("error parsing card: " + new_card.name + " -> bad condition [" + csv_line[5] + "]")
-				card_valid = false
 		new_card.effect = []
 		for effect_line : String in csv_line[6].split("\n"):
 			var effect_expr := Expression.new()
 			var err := effect_expr.parse(effect_line)
 			if err != Error.OK:
 				print_debug("error parsing card: " + new_card.name + " -> bad effect [" + csv_line[6] + "]")
-				card_valid = false
 			new_card.effect.append(effect_expr)
 		if card_valid:
 			cards_data[new_card.name] = new_card
