@@ -12,6 +12,7 @@ signal tower_upgraded
 signal enemy_hit
 signal enemy_killed
 signal projectile_critical_hit
+signal projectile_hit
 signal projectile_destroyed
 
 @export var tower_name := "TowerBase"
@@ -23,7 +24,6 @@ signal projectile_destroyed
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0
 
-@onready var shoot_delay := 1.0 / fire_rate
 var can_shoot := true
 var focused_enemies : Array[BaseEnemy] = []
 
@@ -72,7 +72,7 @@ func shoot(enemy : BaseEnemy) -> void:
 	GV.world.add_child(projectile)
 	projectile.position = $ProjectileSpawnPos.global_position
 	projectile.direction = projectile.position.direction_to(enemy.position)
-	$TimerShoot.start(shoot_delay)
+	$TimerShoot.start(1.0 / fire_rate)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
