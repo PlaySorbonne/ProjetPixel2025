@@ -6,21 +6,29 @@ const OUTLINE_SHADER : Material = preload("res://resources/materials/3d_outline_
 
 signal object_selected
 signal object_unselected
+signal object_hovered
+signal object_unhovered
 
 @export var custom_nodes : Array[MeshInstance3D] = []
 
 @onready var selected_nodes : Array[MeshInstance3D] = init_selected_node3d()
 
 
-func select() -> void:
-	emit_signal("object_selected")
+func hover() -> void:
+	emit_signal("object_hovered")
 	for mesh_node : MeshInstance3D in selected_nodes:
 		mesh_node.material_overlay = OUTLINE_SHADER
 
-func deselect() -> void:
-	emit_signal("object_unselected")
+func unhover() -> void:
+	emit_signal("object_unhovered")
 	for mesh_node : MeshInstance3D in selected_nodes:
 		mesh_node.material_overlay = null
+
+func select() -> void:
+	emit_signal("object_selected")
+
+func deselect() -> void:
+	emit_signal("object_unselected")
 
 func init_selected_node3d() -> Array[MeshInstance3D]:
 	if custom_nodes.is_empty():

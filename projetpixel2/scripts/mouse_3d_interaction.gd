@@ -6,6 +6,8 @@ const DIST := 1000.0
 signal select_new_object(object : Node3D)
 
 var mouse := Vector2.ZERO
+var hovered_object : Node3D = null
+var hovered_object_path : String = ""
 var selected_object : Node3D = null
 var selected_object_path : String = ""
 var mouse_3d_position : Vector3
@@ -19,17 +21,33 @@ func _unhandled_input(event: InputEvent) -> void:
 		mouse = event.position
 		var obj : Node3D = mouse_get_world_object()
 		if obj == null:
-			deselect_current_object()
+			unhover_object()
 			emit_signal("select_new_object", null)
-		elif obj != selected_object:
-			deselect_current_object()
-			click_object(obj)
+		elif obj != hovered_object:
+			unhover_object()
+			hover_object(obj)
 			emit_signal("select_new_object", obj)
 	elif event.is_action_pressed("click"):
-		if selected_object != null and is_instance_valid(selected_object):
+		if get_node_or_null(hovered_object_path) != null:
+			deselect_current_object()
+			click_object(hovered_object)
 			print("Select object " + str(selected_object))
 		else:
+			deselect_current_object()
 			print("No object selected!")
+
+func hover_object(obj : Node3D) -> void:
+	hovered_object = obj
+	hovered_object_path = obj.get_path()
+	var obj_clickable : ClickableObject = hovered_object.clickable
+	obj_clickable.hover()
+
+func unhover_object() -> void:
+	if get_node_or_null(hovered_object_path) != null:
+		var obj_clickable : ClickableObject = hovered_object.clickable
+		obj_clickable.unhover()
+	hovered_object = null
+	hovered_object_path = ""
 
 func deselect_current_object() -> void:
 	if get_node_or_null(selected_object_path) != null:

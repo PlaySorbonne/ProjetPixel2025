@@ -3,6 +3,7 @@ class_name TowerBase
 
 
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
+const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 
 signal tower_fired
 signal tower_switched_mode
@@ -10,6 +11,7 @@ signal tower_collected_xp
 signal tower_upgraded
 
 @export var tower_name := "TowerBase"
+@export var is_hologram := false
 
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -31,6 +33,14 @@ var cards : Dictionary[String, Array] = {}
 
 func _ready() -> void:
 	GV.towers.append(self)
+	if not is_hologram:
+		$TimerShoot.start()
+	else:
+		set_hologram()
+
+func set_hologram() -> void:
+	$blasterM/blasterM.material_override = HOLOGRAM_RES
+	$DragAndDrop.can_be_dragged = true
 
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
@@ -69,3 +79,11 @@ func _on_timer_shoot_timeout() -> void:
 			else:
 				shoot(focused_enemies[focused_enemy])
 				break
+
+func _on_clickable_object_object_selected() -> void:
+	if is_hologram:
+		$DragAndDrop.is_dragged = true
+
+func _on_clickable_object_object_unselected() -> void:
+	if is_hologram:
+		$DragAndDrop.is_dragged = false

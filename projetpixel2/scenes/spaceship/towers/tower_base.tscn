@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene load_steps=7 format=3 uid="uid://cgrlyuyns6mos"]
 
 [ext_resource type="PackedScene" uid="uid://baa3bj1y0ah5y" path="res://resources/3d_models/blasters/blasterM.fbx" id="1_1xctq"]
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
+[ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]
 
@@ -21,9 +22,6 @@ shape = SubResource("SphereShape3D_ih0ua")
 [node name="ProjectileSpawnPos" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.522711)
 
-[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
-custom_nodes = [NodePath("../blasterM/blasterM")]
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -31,9 +29,17 @@ shape = SubResource("SphereShape3D_041tc")
 
 [node name="TimerShoot" type="Timer" parent="."]
 one_shot = true
-autostart = true
+
+[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
+custom_nodes = [NodePath("../blasterM/blasterM")]
+
+[node name="DragAndDrop" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
+dragged_object = NodePath("..")
+can_be_dragged = false
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
+[connection signal="object_selected" from="ClickableObject" to="." method="_on_clickable_object_object_selected"]
+[connection signal="object_unselected" from="ClickableObject" to="." method="_on_clickable_object_object_unselected"]
 
 [editable path="blasterM"]
