@@ -31,6 +31,7 @@ var enemy : BaseEnemy
 static func load_cards_data() -> void:
 	cards_data = {}
 	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
+	card_file.get_csv_line() # remove the top line, which is just titles
 	while not card_file.eof_reached():
 		var card_valid := true
 		var csv_line : PackedStringArray = card_file.get_csv_line()
