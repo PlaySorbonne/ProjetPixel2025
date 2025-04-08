@@ -9,10 +9,17 @@ class Card:
 	var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
 	var trigger_condition : Expression  # a boolean function to make sure the effect triggers
 	var effect : Array[Expression] # the method to call when the effect triggers
+	
+	func card_to_string() -> String:
+		var card_string = "card[name='"+name+"', description='"+description
+		card_string += "', value="+str(value)+", rarity="+str(rarity)+", trigger_signal='"
+		card_string += trigger_signal+"', trigger_condition='"+str(trigger_condition)
+		card_string += "', effect="+str(effect)+"']"
+		return card_string
 
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
 
-const CARDS_FILE_PATH := "tower_cards_data"
+const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 
 static var cards_data : Dictionary[String, Card] = {}
 
@@ -20,7 +27,6 @@ var card := Card.new()
 var tower : TowerBase
 var projectile : ProjectileBase
 var enemy : BaseEnemy
-
 
 static func load_cards_data() -> void:
 	cards_data = {}
@@ -32,6 +38,7 @@ static func load_cards_data() -> void:
 		new_card.name = csv_line[0]
 		new_card.description = csv_line[1]
 		new_card.value = int(csv_line[2])
+		@warning_ignore("int_as_enum_without_cast")
 		new_card.rarity = int(csv_line[3])
 		new_card.trigger_signal = csv_line[4]
 		new_card.trigger_condition = Expression.new()
@@ -53,7 +60,9 @@ static func load_cards_data() -> void:
 		if card_valid:
 			cards_data[new_card.name] = new_card
 	card_file.close()
-	print_debug("parse complete, dictionary = " + str(cards_data))
+	print("parse complete, dictionary:")
+	for k : String in cards_data.keys():
+		print("\n" + k + " : " + cards_data[k].card_to_string())
 
 func execute_card() -> bool:
 	# if trigger condition ok, execute effect
