@@ -17,7 +17,7 @@ signal projectile_destroyed
 
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
-@export var cards : Array[CardObject] = []
+@export var cards : Array[Card] = []
 
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -37,16 +37,16 @@ func _ready() -> void:
 	else:
 		set_hologram()
 
-func add_card(card: CardObject) -> void:
-	card.tower = self
-	cards.append(card)
-	if card.card_signal != "":
+func add_card(card_obj: CardObject) -> void:
+	card_obj.tower = self
+	cards.append(card_obj.card)
+	if card_obj.card.trigger_signal != "":
 		# connect signal specified in the card to corresponding tower 
 		# signal, to execution of card effect
-		self.connect(card.card_signal, card.execute_card)
+		self.connect(card_obj.card.trigger_signal, card_obj.execute_card)
 	else:
 		# if there is no signal, trigger the card immediately
-		card.execute_card()
+		card_obj.execute_card()
 
 func set_hologram(autodrag := true) -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES

@@ -5,17 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
 
 [node name="CardObject" type="Button"]
-anchors_preset = -1
-anchor_left = 0.116
-anchor_top = 0.206
-anchor_right = 0.116
-anchor_bottom = 0.206
-offset_left = -217.72
-offset_top = -225.48
-offset_right = 217.28
-offset_bottom = 226.52
-pivot_offset = Vector2(217.5, 226)
+offset_right = 194.0
+offset_bottom = 205.0
+pivot_offset = Vector2(97, 102.5)
 focus_mode = 0
+mouse_filter = 1
 flat = true
 script = ExtResource("1_xkj05")
 
@@ -26,7 +20,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_xkj05")
+expand_mode = 1
 stretch_mode = 4
 
 [node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]
@@ -34,3 +30,5 @@ dragged_object = NodePath("..")
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="dragged" from="DragAndDrop2D" to="." method="_on_drag_and_drop_2d_dragged"]
+[connection signal="dropped" from="DragAndDrop2D" to="." method="_on_drag_and_drop_2d_dropped"]

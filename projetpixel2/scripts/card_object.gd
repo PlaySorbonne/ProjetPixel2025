@@ -1,62 +1,6 @@
 extends Button
 class_name CardObject
 
-class Card:
-	var name := "blank_card"
-	var description := "blank description"
-	var value := 1
-	var rarity : CardRarities = CardRarities.Common
-	var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
-	var trigger_condition : Expression  # a boolean function to make sure the effect triggers
-	var effect : Array[Expression] # the method to call when the effect triggers
-	
-	func parse_from_csv(csv_line : PackedStringArray) -> void:
-		name = csv_line[0]
-		description = csv_line[1]
-		value = int(csv_line[2])
-		@warning_ignore("int_as_enum_without_cast")
-		rarity = int(csv_line[3])
-		trigger_signal = csv_line[4]
-		trigger_condition = Expression.new()
-		if csv_line[5] == "":
-			trigger_condition.parse("true")
-		else:
-			var err := trigger_condition.parse(csv_line[5])
-			if err != Error.OK:
-				print_debug("error parsing card: " + name + " -> bad condition [" + csv_line[5] + "]")
-		effect = []
-		for effect_line : String in csv_line[6].split("\n"):
-			var effect_expr := Expression.new()
-			var err := effect_expr.parse(effect_line)
-			if err != Error.OK:
-				print_debug("error parsing card: " + name + " -> bad effect [" + csv_line[6] + "]")
-			effect.append(effect_expr)
-	
-	func card_to_string() -> String:
-		var card_string = "card[name='"+name+"', description='"+description
-		card_string += "', value="+str(value)+", rarity="+str(rarity)+", trigger_signal='"
-		card_string += trigger_signal+"', trigger_condition='"+str(trigger_condition)
-		card_string += "', effect="+str(effect)+"']"
-		return card_string
-
-enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
-
-const CARDS_FILE_PATH := "res://game_design/card_data.csv"
-
-static var cards_data : Dictionary[String, Card] = {}
-
-static func load_cards_data() -> void:
-	cards_data = {}
-	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
-	card_file.get_csv_line() # remove the top line, which is just titles
-	while not card_file.eof_reached():
-		var new_card := Card.new()
-		new_card.parse_from_csv(card_file.get_csv_line())
-		cards_data[new_card.name] = new_card
-	card_file.close()
-	print("parse complete, dictionary:")
-	for k : String in cards_data.keys():
-		print("\n" + k + " : " + cards_data[k].card_to_string())
 
 var card := Card.new()
 var tower : TowerBase
@@ -78,3 +22,30 @@ func _on_button_down() -> void:
 
 func _on_button_up() -> void:
 	$DragAndDrop2D.release()
+
+func _on_drag_and_drop_2d_dragged() -> void:
+	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
+
+func _on_drag_and_drop_2d_dropped() -> void:
+	$TextureRect.modulate = Color.WHITE
+	# interaction2D
+	#TODO
+	print_debug("TODO: handle card 2d interactions (other cards, buttons, etc)")
+	
+	# interaction3D
+	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
+	if spatial_object != null:
+		# match bahavior on spatial object
+		if spatial_object is TowerBase:
+			var hovered_tower : TowerBase = spatial_object
+			hovered_tower.add_card(self)
+		elif spatial_object is BaseEnemy:
+			#TODO
+			print_debug("TODO: handle card dropped on enemy")
+		elif spatial_object is Spaceship:
+			#TODO
+			print_debug("TODO: handle card dropped on spaceship")
+	
+	# no interaction: return to original position
+	#TODO
+	print_debug("TODO: return card to original pos if dropped on nothing")

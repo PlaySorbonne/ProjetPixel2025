@@ -6,4 +6,4 @@ func _ready() -> void:
 	GV.world = self
 	
 	
-	CardObject.load_cards_data()
+	Card.load_cards_data()
