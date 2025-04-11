@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bt4juamc0hdea"]
 
-[ext_resource type="Script" uid="uid://dwxcefi66buor" path="res://scripts/drag_and_drop.gd" id="1_6log5"]
+[ext_resource type="Script" uid="uid://dwxcefi66buor" path="res://scripts/drag_and_drop_3d.gd" id="1_6log5"]
 
-[node name="DragAndDrop" type="Node"]
+[node name="DragAndDrop3D" type="Node"]
 script = ExtResource("1_6log5")

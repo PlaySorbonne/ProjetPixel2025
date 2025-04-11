@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ioadxkqkiabq"]
+
+[ext_resource type="Script" uid="uid://by6tagtce6h1r" path="res://scripts/drag_and_drop_2s.gd" id="1_qgx7e"]
+
+[node name="DragAndDrop2D" type="Node"]
+script = ExtResource("1_qgx7e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
