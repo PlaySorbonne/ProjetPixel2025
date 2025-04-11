@@ -31,7 +31,9 @@ func gain_level() -> void:
 	if RunData.current_level > 1:
 		var new_card : CardObject = CARD_OBJ_RES.instantiate()
 		self.add_child(new_card)
-		new_card.position = Vector2(100, 100)
+		new_card.position = Vector2(
+			randf_range(100, 800),
+			800.0)
 		new_card.card = Card.get_random_card()
 
 func update_level() -> void:
