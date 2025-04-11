@@ -102,7 +102,7 @@ func _on_timer_shoot_timeout() -> void:
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:
-		$DragAndDrop.drag()
+		$DragAndDrop.press()
 		$CollisionShape3D.disabled = true
 
 func _on_clickable_object_object_unselected() -> void:

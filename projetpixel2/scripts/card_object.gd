@@ -39,17 +39,11 @@ class Card:
 		card_string += "', effect="+str(effect)+"']"
 		return card_string
 
-
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
 
 const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 
 static var cards_data : Dictionary[String, Card] = {}
-
-var card := Card.new()
-var tower : TowerBase
-var projectile : ProjectileBase
-var enemy : BaseEnemy
 
 static func load_cards_data() -> void:
 	cards_data = {}
@@ -64,6 +58,12 @@ static func load_cards_data() -> void:
 	for k : String in cards_data.keys():
 		print("\n" + k + " : " + cards_data[k].card_to_string())
 
+var card := Card.new()
+var tower : TowerBase
+var projectile : ProjectileBase
+var enemy : BaseEnemy
+
+
 func execute_card() -> bool:
 	# if trigger condition ok, execute effect
 	if card.card_trigger_condition.execute([], self):
@@ -72,3 +72,9 @@ func execute_card() -> bool:
 		return true
 	else:
 		return false
+
+func _on_button_down() -> void:
+	$DragAndDrop2D.press()
+
+func _on_button_up() -> void:
+	$DragAndDrop2D.release()
