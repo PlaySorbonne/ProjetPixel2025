@@ -7,6 +7,7 @@ const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
 
 static var cards_data : Dictionary[String, Card] = {}
+static var current_deck : Array[Card] = []
 
 var name := "blank_card"
 var description := "blank description"
@@ -32,12 +33,20 @@ static func load_cards_data() -> void:
 	print("parse complete, dictionary:")
 	for k : String in cards_data.keys():
 		print("\n" + k + " : " + cards_data[k].card_to_string())
+	for card : Card in cards_data.values():
+		current_deck.append(card)
+
+static func draw_first_deck_dard() -> Card:
+	return current_deck.pop_front()
+
+static func get_random_card() -> Card:
+	return current_deck.pick_random()
 
 func execute_card() -> bool:
 	# if trigger condition ok, execute effect
 	if trigger_condition.execute([], self):
-		for effect : Expression in effect:
-			effect.execute([], self)
+		for effect_line : Expression in effect:
+			var err = effect_line.execute([], self)
 		return true
 	else:
 		return false

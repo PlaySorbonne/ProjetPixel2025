@@ -13,6 +13,7 @@ height = 1.0
 
 [node name="BaseEnemy" type="CharacterBody3D"]
 script = ExtResource("1_ey0w8")
+experience_points = 20
 
 [node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

@@ -2,7 +2,10 @@ extends Button
 class_name CardObject
 
 
-var card := Card.new()
+var card : Card:
+	set(value):
+		card = value
+		$Label.text = card.name
 
 
 func _on_button_down() -> void:

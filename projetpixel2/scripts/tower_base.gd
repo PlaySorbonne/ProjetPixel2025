@@ -51,6 +51,7 @@ func add_card(card_obj: CardObject) -> void:
 	else:
 		# if there is no signal, trigger the card immediately
 		card.execute_card()
+		print("execute card now")
 	card_obj.destroy_card_object()
 
 func set_hologram(autodrag := true) -> void:

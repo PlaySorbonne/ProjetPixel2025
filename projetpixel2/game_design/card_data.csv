@@ -1,4 +1,8 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect
 Explosion,"Sometimes, the projectiles explode the projectile into 7 fireballs on hit.",100,3,projectile_hit,"randi_range(0, 4) == 0","projectile.set_element(Fire)
 projectile.split(7, Circle)"
-Speed Up,Doubles the fire rate of the tower.,75,1,,,tower.fire_rate *= 2
+Speed Up,Doubles the fire rate of the tower.,75,1,,,"tower.set('fire_rate', tower.fire_rate + 1.0)
+print('TOWER.FIRE_RATE = ' + str(tower.fire_rate)) 
+print('VALUE BEFORE = ' + str(value))
+set('value', value + 100)
+print('VALUE AFTER+100 = ' + str(value))"

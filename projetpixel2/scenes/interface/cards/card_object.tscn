@@ -1,17 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt0sfajn3i7tr"]
+[gd_scene load_steps=5 format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
 [ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="2_xkj05"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_qlpjb"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.180392)
+shadow_offset = Vector2(1.5, 1.5)
+
 [node name="CardObject" type="Button"]
-offset_right = 194.0
-offset_bottom = 205.0
+anchors_preset = -1
+anchor_right = 0.0494792
+anchor_bottom = 0.0953704
 pivot_offset = Vector2(97, 102.5)
 focus_mode = 0
 mouse_filter = 1
 flat = true
 script = ExtResource("1_xkj05")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -27,6 +35,20 @@ stretch_mode = 4
 
 [node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]
 dragged_object = NodePath("..")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Card_name"
+label_settings = SubResource("LabelSettings_qlpjb")
+horizontal_alignment = 1
+clip_text = true
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

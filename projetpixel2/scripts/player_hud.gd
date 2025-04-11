@@ -2,6 +2,7 @@ extends CanvasLayer
 class_name PlayerHud
 
 
+const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
 const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
 const TOWERS_OFFSET := Vector2(-10, 0)
 
@@ -19,11 +20,19 @@ func _ready() -> void:
 	GV.hud = self
 	RunData.connect("enemy_killed", new_kill)
 	RunData.connect("experience_gained", update_experience)
-	RunData.connect("level_gained", update_level)
+	RunData.connect("level_gained", gain_level)
 	update_level()
 
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
+
+func gain_level() -> void:
+	update_level()
+	if RunData.current_level > 1:
+		var new_card : CardObject = CARD_OBJ_RES.instantiate()
+		self.add_child(new_card)
+		new_card.position = Vector2(100, 100)
+		new_card.card = Card.get_random_card()
 
 func update_level() -> void:
 	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
