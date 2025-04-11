@@ -38,15 +38,20 @@ func _ready() -> void:
 		set_hologram()
 
 func add_card(card_obj: CardObject) -> void:
-	card_obj.tower = self
-	cards.append(card_obj.card)
-	if card_obj.card.trigger_signal != "":
+	var card : Card = card_obj.card
+	card.tower = self
+	cards.append(card)
+	if card.trigger_signal != "":
 		# connect signal specified in the card to corresponding tower 
 		# signal, to execution of card effect
-		self.connect(card_obj.card.trigger_signal, card_obj.execute_card)
+		if self.has_signal(card.trigger_signal):
+			self.connect(card.trigger_signal, card.execute_card)
+		else:
+			print_debug("TOWER DOESN'T HAVE SIGNAL " + card.trigger_signal)
 	else:
 		# if there is no signal, trigger the card immediately
-		card_obj.execute_card()
+		card.execute_card()
+	card_obj.destroy_card_object()
 
 func set_hologram(autodrag := true) -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES

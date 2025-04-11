@@ -3,19 +3,7 @@ class_name CardObject
 
 
 var card := Card.new()
-var tower : TowerBase
-var projectile : ProjectileBase
-var enemy : BaseEnemy
 
-
-func execute_card() -> bool:
-	# if trigger condition ok, execute effect
-	if card.card_trigger_condition.execute([], self):
-		for effect : Expression in card.effect:
-			effect.execute([], self)
-		return true
-	else:
-		return false
 
 func _on_button_down() -> void:
 	$DragAndDrop2D.press()
@@ -49,3 +37,6 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	# no interaction: return to original position
 	#TODO
 	print_debug("TODO: return card to original pos if dropped on nothing")
+
+func destroy_card_object() -> void:
+	queue_free()

@@ -15,6 +15,32 @@ var rarity : CardRarities = CardRarities.Common
 var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
 var trigger_condition : Expression  # a boolean function to make sure the effect triggers
 var effect : Array[Expression] # the method to call when the effect triggers
+# active variables
+var tower : TowerBase
+var projectile : ProjectileBase
+var enemy : BaseEnemy
+
+static func load_cards_data() -> void:
+	cards_data = {}
+	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
+	card_file.get_csv_line() # remove the top line, which is just titles
+	while not card_file.eof_reached():
+		var new_card := Card.new()
+		new_card.parse_from_csv(card_file.get_csv_line())
+		cards_data[new_card.name] = new_card
+	card_file.close()
+	print("parse complete, dictionary:")
+	for k : String in cards_data.keys():
+		print("\n" + k + " : " + cards_data[k].card_to_string())
+
+func execute_card() -> bool:
+	# if trigger condition ok, execute effect
+	if trigger_condition.execute([], self):
+		for effect : Expression in effect:
+			effect.execute([], self)
+		return true
+	else:
+		return false
 
 func parse_from_csv(csv_line : PackedStringArray) -> void:
 	name = csv_line[0]
@@ -44,16 +70,3 @@ func card_to_string() -> String:
 	card_string += trigger_signal+"', trigger_condition='"+str(trigger_condition)
 	card_string += "', effect="+str(effect)+"']"
 	return card_string
-
-static func load_cards_data() -> void:
-	cards_data = {}
-	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
-	card_file.get_csv_line() # remove the top line, which is just titles
-	while not card_file.eof_reached():
-		var new_card := Card.new()
-		new_card.parse_from_csv(card_file.get_csv_line())
-		cards_data[new_card.name] = new_card
-	card_file.close()
-	print("parse complete, dictionary:")
-	for k : String in cards_data.keys():
-		print("\n" + k + " : " + cards_data[k].card_to_string())
