@@ -1,16 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt0sfajn3i7tr"]
+[gd_scene load_steps=3 format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
-[ext_resource type="Texture2D" uid="uid://8wjsvuo0fwq5" path="res://resources/images/ace_of_spades.png" id="2_qlpjb"]
-[ext_resource type="Shader" uid="uid://dfayigrurpeyn" path="res://resources/shaders/card_3d_effect.gdshader" id="2_xtsg7"]
-[ext_resource type="Texture2D" uid="uid://qfope8ri5diu" path="res://resources/images/ace_of_spades_suit.png" id="4_nggt0"]
-[ext_resource type="Script" uid="uid://beh7r4t3nc1mj" path="res://scripts/card_hover_effect.gd" id="4_xtsg7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nggt0"]
-shader = ExtResource("2_xtsg7")
-shader_parameter/mouse_screen_pos = Vector2(0, 0)
-shader_parameter/hovering = 0.0
-shader_parameter/screen_scale = 1.0
+[ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="2_xkj05"]
 
 [node name="CardObject" type="Button"]
 anchors_preset = -1
@@ -20,30 +11,19 @@ anchor_right = 0.098
 anchor_bottom = 0.142
 offset_left = -183.16
 offset_top = -156.36
-offset_right = 416.84
-offset_bottom = 723.64
+offset_right = 251.84
+offset_bottom = 295.64
 pivot_offset = Vector2(300, 440)
 focus_mode = 0
 flat = true
 script = ExtResource("1_xkj05")
 
-[node name="Chip" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_nggt0")
-position = Vector2(299, 442)
-texture = ExtResource("2_qlpjb")
-
-[node name="Suit" type="Sprite2D" parent="Chip"]
-texture = ExtResource("4_nggt0")
-
-[node name="Normal" type="Marker2D" parent="Chip"]
-
-[node name="CardHoverEffect" type="Node" parent="." node_paths=PackedStringArray("normal", "chip", "suit")]
-script = ExtResource("4_xtsg7")
-normal = NodePath("../Chip/Normal")
-chip = NodePath("../Chip")
-suit = NodePath("../Chip/Suit")
-
-[connection signal="button_down" from="." to="CardHoverEffect" method="_on_card_object_button_down"]
-[connection signal="button_up" from="." to="CardHoverEffect" method="_on_card_object_button_up"]
-[connection signal="mouse_entered" from="." to="CardHoverEffect" method="_on_card_object_mouse_entered"]
-[connection signal="mouse_exited" from="." to="CardHoverEffect" method="_on_card_object_mouse_exited"]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xkj05")
+stretch_mode = 4
