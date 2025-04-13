@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc6p0gf5xhlgi"]
+[gd_scene load_steps=3 format=3 uid="uid://cc6p0gf5xhlgi"]
 
 [ext_resource type="Script" uid="uid://bgu8sf6y2j2yn" path="res://scripts/next_wave_button.gd" id="1_ue2g8"]
+[ext_resource type="PackedScene" uid="uid://jl3gv6r2c8ku" path="res://scenes/gameplay_systems/mouse_detection_2d.tscn" id="2_ufntj"]
 
 [node name="NextWaveButton" type="Control"]
 custom_minimum_size = Vector2(0, 75)
@@ -20,7 +21,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 disabled = true
 text = "Next wave"
+
+[node name="MouseDetection2d" parent="." instance=ExtResource("2_ufntj")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

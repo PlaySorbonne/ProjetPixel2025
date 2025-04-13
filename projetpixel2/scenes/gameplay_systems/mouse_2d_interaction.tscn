@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://g214vu1y26k1"]
+
+[ext_resource type="Script" uid="uid://blrg5jiamk8dp" path="res://scripts/mouse_2d_interaction.gd" id="1_dkqeq"]
+
+[node name="Mouse2dInteraction" type="Node"]
+script = ExtResource("1_dkqeq")

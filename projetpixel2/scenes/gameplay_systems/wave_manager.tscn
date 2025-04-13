@@ -18,6 +18,7 @@ anchors_preset = -1
 anchor_right = 0.0901042
 anchor_bottom = 0.857407
 grow_vertical = 2
+mouse_filter = 2
 alignment = 2
 metadata/_edit_use_anchors_ = true
 

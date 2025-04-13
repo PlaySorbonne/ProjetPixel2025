@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=10 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
+[ext_resource type="PackedScene" uid="uid://jl3gv6r2c8ku" path="res://scenes/gameplay_systems/mouse_detection_2d.tscn" id="2_pfuso"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
+[ext_resource type="PackedScene" uid="uid://g214vu1y26k1" path="res://scenes/gameplay_systems/mouse_2d_interaction.tscn" id="5_pfuso"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
 
@@ -29,6 +31,7 @@ offset_right = 0.839844
 offset_bottom = -0.23999
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 show_percentage = false
 
 [node name="Label" type="Label" parent="ExperienceBar"]
@@ -44,6 +47,8 @@ label_settings = SubResource("LabelSettings_htfe5")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="MouseDetection2d" parent="ExperienceBar" instance=ExtResource("2_pfuso")]
 
 [node name="hud_control" type="Control" parent="."]
 layout_mode = 3
@@ -84,7 +89,7 @@ offset_top = -6.10352e-05
 text = "Tower"
 metadata/_edit_use_anchors_ = true
 
-[node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
+[node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" instance=ExtResource("2_pfuso")]
 
 [node name="TowerSpawner" parent="." instance=ExtResource("6_pfuso")]
 
@@ -110,6 +115,8 @@ vertical_alignment = 1
 
 [node name="ComboTimer" type="Timer" parent="ComboCounter"]
 one_shot = true
+
+[node name="MouseDetection2d" parent="ComboCounter" instance=ExtResource("2_pfuso")]
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
@@ -191,6 +198,10 @@ text = "Quit"
 label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
+
+[node name="Mouse2dInteraction" parent="." instance=ExtResource("5_pfuso")]
 
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
