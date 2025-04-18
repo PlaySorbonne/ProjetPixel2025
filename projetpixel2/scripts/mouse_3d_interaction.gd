@@ -31,6 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if get_node_or_null(hovered_object_path) != null:
 			deselect_current_object()
 			click_object(hovered_object)
+			InfoPopup.add_popup(selected_object)
 			print("Select object " + str(selected_object))
 		else:
 			deselect_current_object()

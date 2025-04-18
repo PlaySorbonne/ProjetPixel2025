@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=13 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
+[ext_resource type="PackedScene" uid="uid://7rm78j5yaeo2" path="res://scenes/interface/gameplay_hud/info_popup.tscn" id="9_gb53w"]
 [ext_resource type="PackedScene" uid="uid://b8jfaq1p25y4p" path="res://scenes/gameplay_systems/wave_manager.tscn" id="10_gb53w"]
 [ext_resource type="PackedScene" uid="uid://chhjuwxnir6c8" path="res://scenes/interface/gameplay_hud/player_hud.tscn" id="12_dlabj"]
 
@@ -74,5 +75,11 @@ environment = SubResource("Environment_bq33v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41647, 1.08648, 0)
 light_color = Color(0.524277, 0.755889, 1, 1)
 omni_attenuation = 0.25
+
+[node name="InfoPopup" parent="." instance=ExtResource("9_gb53w")]
+offset_left = 1275.0
+offset_top = 382.0
+offset_right = 1521.0
+offset_bottom = 531.0
 
 [editable path="PlayerHud"]

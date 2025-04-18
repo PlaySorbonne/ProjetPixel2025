@@ -9,8 +9,8 @@ var _hovered_nodes_stack : Array[Control] = []
 func _ready() -> void:
 	GV.mouse_2d_interaction = self
 
-func _process(delta: float) -> void:
-	print("hovered node = " + str(hovered_node) + " ; stack = " + str(_hovered_nodes_stack))
+#func _process(delta: float) -> void:
+	#print("hovered node = " + str(hovered_node) + " ; stack = " + str(_hovered_nodes_stack))
 
 func get_hovered_node() -> Control:
 	if is_instance_valid(hovered_node):
