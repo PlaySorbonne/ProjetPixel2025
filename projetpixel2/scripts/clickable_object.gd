@@ -25,10 +25,14 @@ func unhover() -> void:
 		mesh_node.material_overlay = null
 
 func select() -> void:
-	emit_signal("object_selected")
+	if not GV.is_dragging_object:
+		emit_signal("object_selected")
+		print("OBJECT SELECTED")
 
 func deselect() -> void:
-	emit_signal("object_unselected")
+	if not GV.is_dragging_object:
+		emit_signal("object_unselected")
+		print("OBJECT UNSELECTED")
 
 func init_selected_node3d() -> Array[MeshInstance3D]:
 	if custom_nodes.is_empty():

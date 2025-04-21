@@ -5,22 +5,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_fiebo"]
 font_size = 32
 
-[sub_resource type="Animation" id="Animation_fiebo"]
-resource_name = "show"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.392292, 1),
-"update": 0,
-"values": [Vector2(1, 0), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_fv5cf"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,6 +34,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.329877, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fiebo"]
+resource_name = "show"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.392292, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oc3xf"]

@@ -23,10 +23,12 @@ func _input(event: InputEvent) -> void:
 func _on_drag_and_drop_2d_dragged() -> void:
 	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	is_dragged = true
+	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_drag_and_drop_2d_dropped() -> void:
 	is_dragged = false
+	GV.is_dragging_object = false
 	print("CARD RELEASED!!!!")
 	$TextureRect.modulate = Color.WHITE
 	# interaction2D

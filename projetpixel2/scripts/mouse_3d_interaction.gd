@@ -27,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			unhover_object()
 			hover_object(obj)
 			emit_signal("select_new_object", obj)
-	elif event.is_action_pressed("click"):
+	elif event.is_action_pressed("click") and not GV.is_dragging_object:
 		if get_node_or_null(hovered_object_path) != null:
 			deselect_current_object()
 			click_object(hovered_object)

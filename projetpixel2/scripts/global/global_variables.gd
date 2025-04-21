@@ -11,6 +11,7 @@ var hud : PlayerHud = null
 var mouse_3d_interaction : Mouse3dInteraction = null
 var mouse_2d_interaction : Mouse2DInteraction = null
 var player_camera : PlayerCamera = null
+var is_dragging_object := false
 
 
 func reset_gameplay_variables() -> void:
@@ -23,3 +24,4 @@ func reset_gameplay_variables() -> void:
 	mouse_3d_interaction = null
 	mouse_2d_interaction = null
 	player_camera = null
+	is_dragging_object = false
