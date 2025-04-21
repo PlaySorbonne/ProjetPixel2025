@@ -39,7 +39,6 @@ func damage_body(body : BaseEnemy) -> void:
 			projectile.damage_type)
 
 func split(number_of_children : int, total_angle : float, children_multiplier := 0.9) -> void:
-	#TODO
 	var angle_increment := total_angle / float(number_of_children)
 	var initial_angle : float
 	for i : int in range(number_of_children):
@@ -47,6 +46,8 @@ func split(number_of_children : int, total_angle : float, children_multiplier :=
 		new_projectile.projectile = projectile.split_projectile(children_multiplier)
 		GV.world.add_child(new_projectile)
 		new_projectile.global_position = global_position
+		#TODO: angle maths
+		# :{
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
