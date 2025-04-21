@@ -100,10 +100,11 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	if not is_bonus:
 		can_shoot = false
 	look_at(enemy.position)
-	var projectile := projectile_res.instantiate()
-	GV.world.add_child(projectile)
-	projectile.position = $ProjectileSpawnPos.global_position
-	projectile.direction = projectile.position.direction_to(enemy.position)
+	var projectile_obj := projectile_res.instantiate()
+	projectile_obj.projectile = projectile_template.duplicate()
+	GV.world.add_child(projectile_obj)
+	projectile_obj.position = $ProjectileSpawnPos.global_position
+	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
 	if not is_bonus:
 		$TimerShoot.start(1.0 / fire_rate)
 		for _i : int in range(number_of_projectiles-1):

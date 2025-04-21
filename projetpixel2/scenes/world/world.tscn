@@ -60,7 +60,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39019, 1.54439, 0.600005)
 
 [node name="TowerBase2" parent="." instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18947, 1.54439, 3.70155)
-number_of_projectiles = 20
+number_of_projectiles = 3
 
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
 
