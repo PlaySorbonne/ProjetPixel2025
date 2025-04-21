@@ -3,7 +3,9 @@ class_name ProjectileBase
 
 var direction : Vector3 
 var speed : float = 20.0
-var damage_amount : int = 50
+var damage : int = 50
+var size := 1.0
+var pierce := false
 var damage_type := DamageableObject.DamagingTypes.Neutral
 
 func _ready() -> void:
@@ -15,4 +17,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
-		body.damageable.damage(damage_amount, damage_type)
+		body.damageable.damage(damage, damage_type)
+		if not pierce:
+			queue_free()
