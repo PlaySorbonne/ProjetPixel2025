@@ -1,6 +1,8 @@
 extends Node3D
 class_name ProjectileBase
 
+const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
+
 static var critical_hits_number := 0
 static var hits_number := 0
 
@@ -36,8 +38,15 @@ func damage_body(body : BaseEnemy) -> void:
 			projectile.damage, 
 			projectile.damage_type)
 
-func split(number_of_children : int, total_angle : float) -> void:
-	pass
+func split(number_of_children : int, total_angle : float, children_multiplier := 0.9) -> void:
+	#TODO
+	var angle_increment := total_angle / float(number_of_children)
+	var initial_angle : float
+	for i : int in range(number_of_children):
+		var new_projectile : ProjectileBase = PROJECTILE_RES.instantiate()
+		new_projectile.projectile = projectile.split_projectile(children_multiplier)
+		GV.world.add_child(new_projectile)
+		new_projectile.global_position = global_position
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
