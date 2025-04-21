@@ -1,8 +1,11 @@
 extends Node3D
 class_name ProjectileBase
 
-static var crit_num := 0
-static var hit_num := 0
+static var critical_hits_number := 0
+static var hits_number := 0
+
+signal projectile_hit
+signal projectile_critical_hit
 
 @export_category("Projectile stats")
 @export var speed : float = 1.0
@@ -29,14 +32,14 @@ func _physics_process(delta: float) -> void:
 func damage_body(body : BaseEnemy) -> void:
 	var is_crit : bool
 	is_crit = RunData.roll_probability(critical_hit_chance)
-	hit_num += 1
+	hits_number += 1
+	emit_signal("projectile_hit")
 	if is_crit:
-		print("CRITICAL HIT!")
-		crit_num += 1
+		emit_signal("projectile_critical_hit")
+		critical_hits_number += 1
 		body.damageable.damage_critical(damage, damage_type, critical_hit_intensity)
 	else:
 		body.damageable.damage(damage, damage_type)
-	print("crit ration = " + str(crit_num) + "/" + str(hit_num) + " = " + str(crit_num/float(hit_num)))
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:

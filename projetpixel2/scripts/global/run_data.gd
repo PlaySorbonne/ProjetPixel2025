@@ -5,7 +5,7 @@ signal experience_gained
 signal level_gained
 
 # probability
-var probability_multiplier := 1.0
+var probability_multiplier := 0.5
 var better_luck := false
 func roll_probability(base_probability : float) -> bool:
 	if better_luck:
