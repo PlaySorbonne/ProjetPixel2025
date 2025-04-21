@@ -18,6 +18,7 @@ signal projectile_destroyed
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
 @export var cards : Array[Card] = []
+@export var enemy_choice := get_closest_enemy
 
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -71,18 +72,36 @@ func spawn_from_hologram() -> void:
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
-func shoot(enemy : BaseEnemy) -> void:
+func shoot_bonus() -> void:
+	shoot(focused_enemies[0], true)
+
+func get_closest_enemy() -> BaseEnemy:
+	if len(focused_enemies) == 0:
+		return null
+	var closest_enemy : BaseEnemy = focused_enemies[0]
+	var min_dist : float = global_position.distance_squared_to(closest_enemy.global_position)
+	for i : int in range(1, len(focused_enemies)):
+		var enemy : BaseEnemy = focused_enemies[i]
+		var dist := global_position.distance_squared_to(enemy.global_position)
+		if dist < min_dist:
+			enemy = closest_enemy
+			min_dist = dist
+	return closest_enemy
+
+func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	# idea: have a var "prepared_projectile", pass it to every card connected
 	# to "tower_fired" and each card can modify prepared_projectile before actually shooting?
 	#for card : CardObject in cards["tower_fired"]:
 		#pass
-	can_shoot = false
+	if not is_bonus:
+		can_shoot = false
 	look_at(enemy.position)
 	var projectile := projectile_res.instantiate()
 	GV.world.add_child(projectile)
 	projectile.position = $ProjectileSpawnPos.global_position
 	projectile.direction = projectile.position.direction_to(enemy.position)
-	$TimerShoot.start(1.0 / fire_rate)
+	if not is_bonus:
+		$TimerShoot.start(1.0 / fire_rate)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
