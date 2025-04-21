@@ -10,6 +10,10 @@ signal projectile_hit
 signal projectile_critical_hit
 
 var projectile : Projectile
+var size := 1.0:
+	set(value):
+		size = value
+		scale = Vector3.ONE * size
 
 var direction : Vector3 
 var base_speed := 20.0
