@@ -8,3 +8,10 @@ func _ready() -> void:
 	
 	
 	Card.load_cards_data()
+	while true:
+		var rend := 0.0
+		for i in range(1000):
+			rend += RunData.random_float(0.0, 1.0)
+		rend /= 1000.0
+		print("random average = " + str(rend))
+		await get_tree().create_timer(1.0).timeout

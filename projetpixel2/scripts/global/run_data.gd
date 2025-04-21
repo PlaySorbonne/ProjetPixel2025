@@ -4,6 +4,16 @@ signal enemy_killed
 signal experience_gained
 signal level_gained
 
+# probability
+var probability_multiplier := 1.0
+var better_luck := false
+func random_float(min_number : float, max_number : float) -> float:
+	if better_luck:
+		return max_number
+	else:
+		var rand : float = randf_range(min_number, max_number) * probability_multiplier
+		return clamp(rand, min_number, max_number)
+
 # experience points
 var experience_needed_equation : Expression = default_levelling_expression()
 var current_level := 1:

@@ -20,7 +20,7 @@ signal projectile_destroyed
 @export var cards : Array[Card] = []
 @export var enemy_choice := get_closest_enemy # method used to select the targeted enemy
 
-@export_group("Tower Stats")
+@export_group("Tower stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0

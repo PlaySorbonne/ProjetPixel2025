@@ -63,6 +63,10 @@ static func compute_damage(damage_amount : int, damaging_type : DamagingTypes,
 		total_damage = 0
 	return total_damage
 
+func damage_critical(damage_amount : int, damage_type : DamagingTypes,
+											crit_intensity : float) -> void:
+	damage(damage_amount * crit_intensity, damage_type)
+
 func damage(damage_amount : int, damage_type : DamagingTypes) -> void:
 	var total_damage := compute_damage(damage_amount, damage_type, self)
 	health -= total_damage
