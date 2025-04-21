@@ -7,17 +7,11 @@ signal level_gained
 # probability
 var probability_multiplier := 1.0
 var better_luck := false
-func random_float(min_number : float, max_number : float, max_better := true) -> float:
+func roll_probability(base_probability : float) -> bool:
 	if better_luck:
-		# best possible case scenario
-		if max_better:
-			return max_number
-		else:
-			return min_number
-	else:
-		# weighted probabilities (good and bad)
-		var rand : float = randf_range(min_number, max_number) * probability_multiplier
-		return clamp(rand, min_number, max_number)
+		return true
+	var final_probability = clamp(base_probability * probability_multiplier, 0.0, 1.0)
+	return randf() < final_probability
 
 # experience points
 var experience_needed_equation : Expression = default_levelling_expression()

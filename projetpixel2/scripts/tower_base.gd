@@ -83,6 +83,8 @@ func get_closest_enemy() -> BaseEnemy:
 	var min_dist : float = global_position.distance_squared_to(closest_enemy.global_position)
 	for i : int in range(1, len(focused_enemies)):
 		var enemy : BaseEnemy = focused_enemies[i]
+		if not is_instance_valid(enemy):
+			return null
 		var dist := global_position.distance_squared_to(enemy.global_position)
 		if dist < min_dist:
 			enemy = closest_enemy
