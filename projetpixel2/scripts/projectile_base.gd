@@ -7,17 +7,7 @@ static var hits_number := 0
 signal projectile_hit
 signal projectile_critical_hit
 
-@export_category("Projectile stats")
-@export var speed : float = 1.0
-@export var damage : int = 50
-@export var size := 1.0:
-	set(value):
-		size = value
-		scale = Vector3(size, size, size)
-@export var pierce := false
-@export var damage_type := DamageableObject.DamagingTypes.Neutral
-@export var critical_hit_chance := 0.01
-@export var critical_hit_intensity := 10.0
+var projectile : Projectile
 
 var direction : Vector3 
 var base_speed := 20.0
@@ -27,22 +17,30 @@ func _ready() -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	position += direction * base_speed * speed * delta
+	position += direction * base_speed * projectile.speed * delta
 
 func damage_body(body : BaseEnemy) -> void:
 	var is_crit : bool
-	is_crit = RunData.roll_probability(critical_hit_chance)
+	is_crit = RunData.roll_probability(projectile.critical_hit_chance)
 	hits_number += 1
 	emit_signal("projectile_hit")
 	if is_crit:
 		emit_signal("projectile_critical_hit")
 		critical_hits_number += 1
-		body.damageable.damage_critical(damage, damage_type, critical_hit_intensity)
+		body.damageable.damage_critical(
+			projectile.damage, 
+			projectile.damage_type, 
+			projectile.critical_hit_intensity)
 	else:
-		body.damageable.damage(damage, damage_type)
+		body.damageable.damage(
+			projectile.damage, 
+			projectile.damage_type)
+
+func split(number_of_children : int, total_angle : float) -> void:
+	pass
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		damage_body(body)
-		if not pierce:
+		if not projectile.pierce:
 			queue_free()

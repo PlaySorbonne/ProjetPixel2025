@@ -24,6 +24,7 @@ signal projectile_destroyed
 @export var projectile_res : PackedScene = PROJECTILE_RES
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0
+@export var projectile_template : Projectile = Projectile.new()
 
 var can_shoot := true
 var focused_enemies : Array[BaseEnemy] = []
