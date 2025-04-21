@@ -1,19 +1,25 @@
 extends Node3D
 class_name ProjectileBase
 
+@export_category("Gameplay variables")
+@export var speed : float = 1.0
+@export var damage : int = 50
+@export var size := 1.0:
+	set(value):
+		size = value
+		scale = Vector3(size, size, size)
+@export var pierce := false
+@export var damage_type := DamageableObject.DamagingTypes.Neutral
+
 var direction : Vector3 
-var speed : float = 20.0
-var damage : int = 50
-var size := 1.0
-var pierce := false
-var damage_type := DamageableObject.DamagingTypes.Neutral
+var base_speed := 20.0
 
 func _ready() -> void:
 	await get_tree().create_timer(3.0).timeout
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
+	position += direction * base_speed * speed * delta
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
