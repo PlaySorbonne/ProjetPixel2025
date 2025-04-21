@@ -18,7 +18,7 @@ signal projectile_destroyed
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
 @export var cards : Array[Card] = []
-@export var enemy_choice := get_closest_enemy
+@export var enemy_choice := get_closest_enemy # method used to select the targeted enemy
 
 @export_group("Tower Stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -72,8 +72,9 @@ func spawn_from_hologram() -> void:
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
-func shoot_bonus() -> void:
-	shoot(focused_enemies[0], true)
+func _process(delta: float) -> void:
+	pass
+	#print("focused_enemies -> " + str(len(focused_enemies)))
 
 func get_closest_enemy() -> BaseEnemy:
 	if len(focused_enemies) == 0:
@@ -103,10 +104,13 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	if not is_bonus:
 		$TimerShoot.start(1.0 / fire_rate)
 
+func shoot_bonus() -> void:
+	shoot(enemy_choice.call(), true)
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is BaseEnemy:
+	if body is BaseEnemy and not(body in focused_enemies):
 		focused_enemies.append(body)
-		body.connect("enemy_killed", remove_focus_enemy)
+		body.connect("enemy_killed", self.remove_focus_enemy.bind(body))
 		if can_shoot:
 			shoot(body)
 
@@ -116,14 +120,9 @@ func remove_focus_enemy(enemy : BaseEnemy) -> void:
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
 	if len(focused_enemies) > 0:
-		while len(focused_enemies) > 0:
-			var focused_enemy := len(focused_enemies) - 1
-			if not is_instance_valid(focused_enemies[focused_enemy]):
-				focused_enemies.pop_back()
-				focused_enemy -= 1
-			else:
-				shoot(focused_enemies[focused_enemy])
-				break
+		var focused_enemy : BaseEnemy = enemy_choice.call()
+		if focused_enemy != null:
+			shoot(focused_enemy)
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:
