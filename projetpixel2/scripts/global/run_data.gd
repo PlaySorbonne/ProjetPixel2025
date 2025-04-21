@@ -7,10 +7,15 @@ signal level_gained
 # probability
 var probability_multiplier := 1.0
 var better_luck := false
-func random_float(min_number : float, max_number : float) -> float:
+func random_float(min_number : float, max_number : float, max_better := true) -> float:
 	if better_luck:
-		return max_number
+		# best possible case scenario
+		if max_better:
+			return max_number
+		else:
+			return min_number
 	else:
+		# weighted probabilities (good and bad)
 		var rand : float = randf_range(min_number, max_number) * probability_multiplier
 		return clamp(rand, min_number, max_number)
 
