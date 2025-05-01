@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://xvoaid5apb0q"]
+
+[ext_resource type="Script" uid="uid://bjowjncx7q7y5" path="res://scripts/damage_popup.gd" id="1_2761c"]
+
+[node name="DamagePopup" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+sorting_offset = 1.0
+billboard = 1
+text = "999"
+font_size = 52
+outline_size = 24
+script = ExtResource("1_2761c")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
