@@ -29,7 +29,6 @@ func _on_drag_and_drop_2d_dragged() -> void:
 func _on_drag_and_drop_2d_dropped() -> void:
 	is_dragged = false
 	GV.is_dragging_object = false
-	print("CARD RELEASED!!!!")
 	$TextureRect.modulate = Color.WHITE
 	# interaction2D
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
@@ -57,7 +56,6 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		elif spatial_object is Spaceship:
 			#TODO
 			print_debug("TODO: handle card dropped on spaceship")
-		return
 	
 	# no interaction: return to original position
 	#TODO
