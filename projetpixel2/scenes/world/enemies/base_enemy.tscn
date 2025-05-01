@@ -12,6 +12,7 @@ height = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxqs1"]
 
 [node name="BaseEnemy" type="CharacterBody3D"]
+collision_layer = 3
 script = ExtResource("1_ey0w8")
 experience_points = 20
 

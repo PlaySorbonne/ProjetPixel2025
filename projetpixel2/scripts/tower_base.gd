@@ -27,11 +27,11 @@ signal projectile_destroyed
 @export var projectile_template : Projectile = Projectile.new()
 
 var can_shoot := true
-var focused_enemies : Array[BaseEnemy] = []
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
 @onready var projectile_spawn_pos := $blasterM/ProjectileSpawnPos
+@onready var area3d := $Area3D
 
 func _ready() -> void:
 	GV.towers.append(self)
@@ -78,13 +78,17 @@ func _process(delta: float) -> void:
 	pass
 	#print("focused_enemies -> " + str(len(focused_enemies)))
 
+func get_focused_enemies() -> Array[Node3D]:
+	return area3d.get_overlapping_bodies()
+
 func get_closest_enemy() -> BaseEnemy:
-	if len(focused_enemies) == 0:
+	var nb_focused_enemies := len(get_focused_enemies())
+	if nb_focused_enemies == 0:
 		return null
-	var closest_enemy : BaseEnemy = focused_enemies[0]
+	var closest_enemy : BaseEnemy = get_focused_enemies()[0]
 	var min_dist : float = global_position.distance_squared_to(closest_enemy.global_position)
-	for i : int in range(1, len(focused_enemies)):
-		var enemy : BaseEnemy = focused_enemies[i]
+	for i : int in range(1, nb_focused_enemies):
+		var enemy : BaseEnemy = get_focused_enemies()[i]
 		if not is_instance_valid(enemy):
 			return null
 		var dist := global_position.distance_squared_to(enemy.global_position)
@@ -122,18 +126,12 @@ func shoot_bonus(enemy : BaseEnemy = null) -> void:
 	shoot(enemy, true)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is BaseEnemy and not(body in focused_enemies):
-		focused_enemies.append(body)
-		body.connect("enemy_killed", self.remove_focus_enemy.bind(body))
-		if can_shoot:
-			shoot(body)
-
-func remove_focus_enemy(enemy : BaseEnemy) -> void:
-	focused_enemies.erase(enemy)
+	if body is BaseEnemy and can_shoot:
+		shoot(body)
 
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
-	if len(focused_enemies) > 0:
+	if len(get_focused_enemies()) > 0:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
 			shoot(focused_enemy)
