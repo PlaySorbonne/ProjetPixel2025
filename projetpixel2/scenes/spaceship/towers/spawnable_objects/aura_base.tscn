@@ -27,6 +27,7 @@ one_shot = true
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ev8qp")
 radius = 1.0
+height = 1.0
 
 [connection signal="timeout" from="TimerTick" to="." method="_on_timer_tick_timeout"]
 [connection signal="timeout" from="TimerLifespan" to="." method="_on_timer_lifespan_timeout"]

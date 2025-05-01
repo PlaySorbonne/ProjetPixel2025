@@ -2,7 +2,7 @@ extends Area3D
 class_name AuraBase
 
 
-var tick_time := 0.5
+var tick_time := 0.25
 var lifespan := 5.0
 var radius := 2.5
 
