@@ -18,8 +18,9 @@ var experience_needed_equation : Expression = default_levelling_expression()
 var current_level := 1:
 	set(value):
 		current_level = value
+		level_experience_threshold = get_level_experience_threshold()
 		emit_signal("level_gained")
-var level_experience_threshold : int =  get_level_experience_threshold()
+var level_experience_threshold : int = get_level_experience_threshold()
 var current_experience := 0:
 	set(value):
 		if value >= level_experience_threshold:
@@ -50,7 +51,7 @@ var total_alpha_kills := 0
 
 func default_levelling_expression() -> Expression:
 	var expr : Expression = Expression.new()
-	var expr_str := "(current_level+1) * 50 + pow((current_level+1), 2)"
+	var expr_str := "(current_level+1) * 50 + pow((current_level+1), 4.0)"
 	var err = expr.parse(expr_str)
 	return expr
 
