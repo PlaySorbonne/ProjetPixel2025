@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbjkmf42egwgo"]
+[gd_scene load_steps=4 format=3 uid="uid://cbjkmf42egwgo"]
 
 [ext_resource type="PackedScene" uid="uid://b1dmdb34ckt7l" path="res://scenes/spaceship/towers/spawnable_objects/aura_base.tscn" id="1_iix75"]
 [ext_resource type="Script" uid="uid://d0wckd68o42v7" path="res://scripts/burning_aura.gd" id="2_feicb"]
@@ -7,17 +7,8 @@
 resource_local_to_scene = true
 radius = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feicb"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(1, 1, 1, 0.6)
-
 [node name="BurningAura" instance=ExtResource("1_iix75")]
 script = ExtResource("2_feicb")
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CylinderShape3D_feicb")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="3"]
-material_override = SubResource("StandardMaterial3D_feicb")
-radius = 1.0

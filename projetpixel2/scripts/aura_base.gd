@@ -4,11 +4,12 @@ class_name AuraBase
 
 var tick_time := 0.5
 var lifespan := 5.0
-var radius := 1.0
+var radius := 2.5
 
 
 func _ready() -> void:
 	$CollisionShape3D.shape.radius = radius
+	$CSGCylinder3D.radius = radius
 	$TimerTick.start(tick_time)
 	$TimerLifespan.start(lifespan)
 
