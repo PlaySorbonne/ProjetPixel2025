@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene load_steps=8 format=3 uid="uid://cgrlyuyns6mos"]
 
 [ext_resource type="PackedScene" uid="uid://baa3bj1y0ah5y" path="res://resources/3d_models/blasters/blasterM.fbx" id="1_1xctq"]
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
+[ext_resource type="ArrayMesh" uid="uid://0dgoaj7ytnv4" path="res://resources/3d_models/towers_placeholder/meshes/tower_1.res" id="3_47ana"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
 
@@ -15,6 +16,10 @@ script = ExtResource("1_041tc")
 
 [node name="blasterM" parent="." instance=ExtResource("1_1xctq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)
+
+[node name="blasterM" parent="blasterM" index="0"]
+transform = Transform3D(-20, 1.74846e-06, 7.64274e-14, 0, -8.74228e-07, 20, 1.74846e-06, 20, 8.74228e-07, 0, 0, 0.202008)
+mesh = ExtResource("3_47ana")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ih0ua")
