@@ -36,7 +36,7 @@ var enemy_id := 0
 func _ready() -> void:
 	damageable.health = health
 	set_enemy_id()
-	print("enemy " + str(enemy_id) + " spawned!")
+	#print("enemy " + str(enemy_id) + " spawned!")
 
 func set_enemy_id() -> void:
 	enemy_id = number_of_enemies
