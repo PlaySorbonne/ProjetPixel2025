@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbjkmf42egwgo"]
+
+[ext_resource type="PackedScene" uid="uid://b1dmdb34ckt7l" path="res://scenes/spaceship/towers/spawnable_objects/aura_base.tscn" id="1_iix75"]
+[ext_resource type="Script" uid="uid://d0wckd68o42v7" path="res://scripts/burning_aura.gd" id="2_feicb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_feicb"]
+resource_local_to_scene = true
+radius = 1.0
+
+[node name="BurningAura" instance=ExtResource("1_iix75")]
+script = ExtResource("2_feicb")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_feicb")

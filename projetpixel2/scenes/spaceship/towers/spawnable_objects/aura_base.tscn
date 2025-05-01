@@ -7,7 +7,17 @@ resource_local_to_scene = true
 radius = 1.0
 
 [node name="AuraBase" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_ev8qp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_agltf")
+
+[node name="TimerTick" type="Timer" parent="."]
+
+[node name="TimerLifespan" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimerTick" to="." method="_on_timer_tick_timeout"]
+[connection signal="timeout" from="TimerLifespan" to="." method="_on_timer_lifespan_timeout"]
