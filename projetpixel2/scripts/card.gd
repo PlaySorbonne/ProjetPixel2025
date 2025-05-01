@@ -5,6 +5,7 @@ class_name Card
 const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
+enum CardFamilies {Military, Scientists, Traders, Revolution}
 
 static var cards_data : Dictionary[String, Card] = {}
 static var current_deck : Array[Card] = []
@@ -13,6 +14,7 @@ var name := "blank_card"
 var description := "blank description"
 var value := 1
 var rarity : CardRarities = CardRarities.Common
+var family : CardFamilies = CardFamilies.Military
 var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
 var trigger_condition : Callable  # a boolean function to make sure the effect triggers
 var effect : Callable # the method to call when the effect triggers
@@ -56,27 +58,33 @@ func parse_from_csv(csv_line : PackedStringArray) -> void:
 	description = csv_line[1]
 	value = int(csv_line[2])
 	@warning_ignore("int_as_enum_without_cast")
-	rarity = int(csv_line[3])
+	rarity = CardRarities.get(csv_line[3])
 	trigger_signal = csv_line[4]
 	
 	var card_code_source : GDScript = GDScript.new()
 	# create condition code
-	card_code_source.source_code = "func check_condition(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
-	if csv_line[5] == "":
-		card_code_source.source_code += "\n\treturn true"
+	if csv_line[5].begins_with("#"):
+		card_code_source.source_code = csv_line[5]
 	else:
-		card_code_source.source_code += "\n\treturn " + csv_line[5]
-	
+		card_code_source.source_code = "func check_condition(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
+		if csv_line[5] == "":
+			card_code_source.source_code += "\n\treturn true"
+		else:
+			card_code_source.source_code += "\n\treturn " + csv_line[5]
 	# create effect code
-	card_code_source.source_code += "\n\nfunc run_effect(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
-	for effect_line : String in csv_line[6].split("\n"):
-		card_code_source.source_code += "\n\t" + effect_line
-	
+	if csv_line[6].begins_with("#"):
+		card_code_source.source_code += csv_line[6]
+	else:
+		card_code_source.source_code += "\n\nfunc run_effect(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
+		for effect_line : String in csv_line[6].split("\n"):
+			card_code_source.source_code += "\n\t" + effect_line
 	# create resource and connect everything
 	card_code_source.reload()
 	card_code = card_code_source.new()
 	trigger_condition = Callable(card_code, "check_condition")
 	effect = Callable(card_code, "run_effect")
+	
+	family = CardFamilies.get(csv_line[7])
 
 func card_to_string() -> String:
 	var card_string = "card[name='"+name+"', description='"+description
