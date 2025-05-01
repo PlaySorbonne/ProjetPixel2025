@@ -107,7 +107,11 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	var projectile_obj := projectile_res.instantiate()
 	projectile_obj.projectile = projectile_template.duplicate()
 	GV.world.add_child(projectile_obj)
-	projectile_obj.position = $ProjectileSpawnPos.global_position
+	projectile_obj.position = Vector3(
+		$ProjectileSpawnPos.global_position.x,
+		enemy.position.y,
+		$ProjectileSpawnPos.global_position.z
+	)
 	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
 	if not is_bonus:
 		$TimerShoot.start(1.0 / fire_rate)
