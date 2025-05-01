@@ -21,11 +21,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)
 transform = Transform3D(-20, 1.74846e-06, 7.64274e-14, 0, -8.74228e-07, 20, 1.74846e-06, 20, 8.74228e-07, 0, 0, 0.202008)
 mesh = ExtResource("3_47ana")
 
+[node name="ProjectileSpawnPos" type="Node3D" parent="blasterM"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.525934)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ih0ua")
-
-[node name="ProjectileSpawnPos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.522711)
 
 [node name="Area3D" type="Area3D" parent="."]
 

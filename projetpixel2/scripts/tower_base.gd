@@ -31,6 +31,7 @@ var focused_enemies : Array[BaseEnemy] = []
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
+@onready var projectile_spawn_pos := $blasterM/ProjectileSpawnPos
 
 func _ready() -> void:
 	GV.towers.append(self)
@@ -104,9 +105,9 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	projectile_obj.projectile = projectile_template.duplicate()
 	GV.world.add_child(projectile_obj)
 	projectile_obj.position = Vector3(
-		$ProjectileSpawnPos.global_position.x,
+		projectile_spawn_pos.global_position.x,
 		enemy.position.y,
-		$ProjectileSpawnPos.global_position.z
+		projectile_spawn_pos.global_position.z
 	)
 	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
 	if not is_bonus:
