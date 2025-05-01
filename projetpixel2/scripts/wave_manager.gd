@@ -36,6 +36,17 @@ func _ready() -> void:
 		if i==0:
 			button.set_next_wave()
 
+func generate_new_wave() -> void:
+	var wave_num := max_wave
+	var new_wave := EnemyWave.new()
+	new_wave.wave_number_of_enemies += randi_range(wave_num*3, wave_num*5)
+	new_wave.wave_number = max_wave + 1
+	new_wave.wave_difficulty = new_wave.wave_number_of_enemies
+	new_wave.wave_duration = 30.0
+	new_wave.is_boss_wave = false
+	waves.append(new_wave)
+	var button := add_wave_button(new_wave)
+
 func _process(delta: float) -> void:
 	$CanvasLayer/VBoxContainer/Label.text = str(int($Timer.time_left))
 
@@ -54,8 +65,6 @@ func initialize_spawners() -> void:
 		spawner.wave_manager = self
 
 func spawn_next_wave() -> void:
-	if current_wave_id >= max_wave:
-		return
 	wave_buttons[current_wave_id].remove_button()
 	var current_wave : EnemyWave = waves[current_wave_id]
 	for spawner : EnemySpawner in GV.spawners:
@@ -65,7 +74,7 @@ func spawn_next_wave() -> void:
 	if current_wave_id < max_wave:
 		wave_buttons[current_wave_id].set_next_wave()
 		$Timer.start(waves[current_wave_id].wave_duration)
-	print_debug("TODO: GENERATE ANOTHER WAVE")
+	generate_new_wave()
 
 func _on_timer_timeout() -> void:
 	spawn_next_wave()
