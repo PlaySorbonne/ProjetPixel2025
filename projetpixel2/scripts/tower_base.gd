@@ -115,6 +115,7 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	)
 	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
 	if not is_bonus:
+		emit_signal("tower_fired")
 		$TimerShoot.start(1.0 / fire_rate)
 		for _i : int in range(number_of_projectiles-1):
 			await get_tree().create_timer(1.0 / (fire_rate * 10.0)).timeout
@@ -124,6 +125,10 @@ func shoot_bonus(enemy : BaseEnemy = null) -> void:
 	if enemy == null:
 		enemy = enemy_choice.call()
 	shoot(enemy, true)
+
+func shoot_bonus_with_delay(delay : float) -> void:
+	await get_tree().create_timer(delay).timeout
+	shoot(enemy_choice.call(), true)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy and can_shoot:
