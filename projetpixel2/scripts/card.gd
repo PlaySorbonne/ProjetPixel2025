@@ -14,8 +14,9 @@ var description := "blank description"
 var value := 1
 var rarity : CardRarities = CardRarities.Common
 var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
-var trigger_condition : Expression  # a boolean function to make sure the effect triggers
-var effect : Array[Expression] # the method to call when the effect triggers
+var trigger_condition : Callable  # a boolean function to make sure the effect triggers
+var effect : Callable # the method to call when the effect triggers
+var card_code : RefCounted
 # active variables
 var tower : TowerBase
 var projectile : ProjectileBase
@@ -44,9 +45,8 @@ static func get_random_card() -> Card:
 
 func execute_card() -> bool:
 	# if trigger condition ok, execute effect
-	if trigger_condition.execute([], self):
-		for effect_line : Expression in effect:
-			var err = effect_line.execute([], self)
+	if trigger_condition.callv([tower, projectile, enemy]):
+		effect.callv([tower, projectile, enemy])
 		return true
 	else:
 		return false
@@ -58,20 +58,25 @@ func parse_from_csv(csv_line : PackedStringArray) -> void:
 	@warning_ignore("int_as_enum_without_cast")
 	rarity = int(csv_line[3])
 	trigger_signal = csv_line[4]
-	trigger_condition = Expression.new()
+	
+	var card_code_source : GDScript = GDScript.new()
+	# create condition code
+	card_code_source.source_code = "func check_condition(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
 	if csv_line[5] == "":
-		trigger_condition.parse("true")
+		card_code_source.source_code += "\n\treturn true"
 	else:
-		var err := trigger_condition.parse(csv_line[5])
-		if err != Error.OK:
-			print_debug("error parsing card: " + name + " -> bad condition [" + csv_line[5] + "]")
-	effect = []
+		card_code_source.source_code += "\n\treturn " + csv_line[5]
+	
+	# create effect code
+	card_code_source.source_code += "\n\nfunc run_effect(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
 	for effect_line : String in csv_line[6].split("\n"):
-		var effect_expr := Expression.new()
-		var err := effect_expr.parse(effect_line)
-		if err != Error.OK:
-			print_debug("error parsing card: " + name + " -> bad effect [" + csv_line[6] + "]")
-		effect.append(effect_expr)
+		card_code_source.source_code += "\n\t" + effect_line
+	
+	# create resource and connect everything
+	card_code_source.reload()
+	card_code = card_code_source.new()
+	trigger_condition = Callable(card_code, "check_condition")
+	effect = Callable(card_code, "run_effect")
 
 func card_to_string() -> String:
 	var card_string = "card[name='"+name+"', description='"+description
