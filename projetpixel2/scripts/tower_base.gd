@@ -25,6 +25,7 @@ signal projectile_destroyed
 @export var number_of_projectiles := 1
 @export var fire_rate := 1.0
 @export var projectile_template : Projectile = Projectile.new()
+@export var max_number_of_cards := 5
 
 var can_shoot := true
 
@@ -40,7 +41,12 @@ func _ready() -> void:
 	else:
 		set_hologram()
 
+func can_add_card() -> bool:
+	return cards.size() < max_number_of_cards
+
 func add_card(card_obj: CardObject) -> void:
+	if not can_add_card():
+		return 
 	var card : Card = card_obj.card
 	card.tower = self
 	cards.append(card)
