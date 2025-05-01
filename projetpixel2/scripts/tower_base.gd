@@ -12,8 +12,6 @@ signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
 signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal projectile_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal projectile_destroyed(projectile : ProjectileBase, enemy : BaseEnemy)
 
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
@@ -114,6 +112,7 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	))
 	var projectile_obj := projectile_res.instantiate()
 	projectile_obj.projectile = projectile_template.duplicate()
+	projectile_obj.tower = self
 	GV.world.add_child(projectile_obj)
 	projectile_obj.position = Vector3(
 		projectile_spawn_pos.global_position.x,

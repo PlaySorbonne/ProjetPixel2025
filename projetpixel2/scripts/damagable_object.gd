@@ -64,10 +64,10 @@ static func compute_damage(damage_amount : int, damaging_type : DamagingTypes,
 	return total_damage
 
 func damage_critical(damage_amount : int, damage_type : DamagingTypes,
-											crit_intensity : float) -> void:
-	damage(damage_amount * crit_intensity, damage_type, true)
+											crit_intensity : float) -> bool:
+	return damage(damage_amount * crit_intensity, damage_type, true)
 
-func damage(damage_amount : int, damage_type : DamagingTypes, is_crit := false) -> void:
+func damage(damage_amount : int, damage_type : DamagingTypes, is_crit := false) -> bool:
 	var total_damage := compute_damage(damage_amount, damage_type, self)
 	health -= total_damage
 	DamagePopup.display_damage(get_parent(), damage_amount, is_crit)
@@ -76,3 +76,6 @@ func damage(damage_amount : int, damage_type : DamagingTypes, is_crit := false) 
 	emit_signal("hit", total_damage, health)
 	if health == 0:
 		emit_signal("death")
+		return true
+	else:
+		return false

@@ -9,6 +9,7 @@ static var hits_number := 0
 signal projectile_hit
 signal projectile_critical_hit
 
+var tower : TowerBase
 var projectile : Projectile
 var size := 1.0:
 	set(value):
@@ -29,18 +30,21 @@ func damage_body(body : BaseEnemy) -> void:
 	var is_crit : bool
 	is_crit = RunData.roll_probability(projectile.critical_hit_chance)
 	hits_number += 1
-	emit_signal("projectile_hit")
+	tower.enemy_hit.emit(self, body)
+	var killed : bool
 	if is_crit:
-		emit_signal("projectile_critical_hit")
+		tower.projectile_critical_hit.emit(self, body)
 		critical_hits_number += 1
-		body.damageable.damage_critical(
+		killed = body.damageable.damage_critical(
 			projectile.damage, 
 			projectile.damage_type, 
 			projectile.critical_hit_intensity)
 	else:
-		body.damageable.damage(
+		killed = body.damageable.damage(
 			projectile.damage, 
 			projectile.damage_type)
+	if killed:
+		tower.enemy_killed.emit(self, body)
 
 func split(number_of_children : int, total_angle : float, children_multiplier := 0.9) -> void:
 	var angle_increment := total_angle / float(number_of_children)
