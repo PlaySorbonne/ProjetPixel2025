@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://clempawymskoy"]
+
+[ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="1_vfp8p"]
+[ext_resource type="Script" uid="uid://dtuqvdw0wa48f" path="res://scripts/tower_card_3d_indicator.gd" id="2_b8l64"]
+
+[node name="TowerCardIndicator" type="Sprite3D"]
+billboard = 1
+texture = ExtResource("1_vfp8p")
+script = ExtResource("2_b8l64")

@@ -56,6 +56,7 @@ func add_card(card_obj: CardObject) -> void:
 		card.execute_card()
 		print("execute card now")
 	card_obj.destroy_card_object()
+	TowerCard3DIndicator.add_card_indicator(self)
 
 func set_hologram(autodrag := true) -> void:
 	$blasterM/blasterM.material_override = HOLOGRAM_RES
