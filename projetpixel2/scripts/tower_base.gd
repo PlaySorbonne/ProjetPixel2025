@@ -99,7 +99,11 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 		#pass
 	if not is_bonus:
 		can_shoot = false
-	look_at(enemy.position)
+	look_at(Vector3(
+		enemy.position.x,
+		position.y,
+		enemy.position.z
+	))
 	var projectile_obj := projectile_res.instantiate()
 	projectile_obj.projectile = projectile_template.duplicate()
 	GV.world.add_child(projectile_obj)
