@@ -19,10 +19,6 @@ var trigger_signal : String = "tower_fired" # the target's signal that triggers 
 var trigger_condition : Callable  # a boolean function to make sure the effect triggers
 var effect : Callable # the method to call when the effect triggers
 var card_code : RefCounted
-# active variables
-var tower : TowerBase
-var projectile : ProjectileBase
-var enemy : BaseEnemy
 
 static func load_cards_data() -> void:
 	cards_data = {}
@@ -45,10 +41,13 @@ static func draw_first_deck_dard() -> Card:
 static func get_random_card() -> Card:
 	return current_deck.pick_random()
 
-func execute_card() -> bool:
-	# if trigger condition ok, execute effect
-	if trigger_condition.callv([tower, projectile, enemy]):
-		effect.callv([tower, projectile, enemy])
+func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
+	print("projectile = " + str(projectile))
+	print("enemy = " + str(enemy))
+	card_code.projectile = projectile
+	card_code.enemy = enemy
+	if trigger_condition.call():
+		effect.call()
 		return true
 	else:
 		return false
@@ -62,11 +61,12 @@ func parse_from_csv(csv_line : PackedStringArray) -> void:
 	trigger_signal = csv_line[4]
 	
 	var card_code_source : GDScript = GDScript.new()
+	card_code_source.source_code = "extends CardBase\n"
 	# create condition code
 	if csv_line[5].begins_with("#"):
-		card_code_source.source_code = csv_line[5]
+		card_code_source.source_code += csv_line[5]
 	else:
-		card_code_source.source_code = "func check_condition(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
+		card_code_source.source_code += "func check_condition():"
 		if csv_line[5] == "":
 			card_code_source.source_code += "\n\treturn true"
 		else:
@@ -75,7 +75,7 @@ func parse_from_csv(csv_line : PackedStringArray) -> void:
 	if csv_line[6].begins_with("#"):
 		card_code_source.source_code += csv_line[6]
 	else:
-		card_code_source.source_code += "\n\nfunc run_effect(tower : TowerBase = null, projectile : ProjectileBase = null, enemy : BaseEnemy = null):"
+		card_code_source.source_code += "\n\nfunc run_effect():"
 		for effect_line : String in csv_line[6].split("\n"):
 			card_code_source.source_code += "\n\t" + effect_line
 	# create resource and connect everything

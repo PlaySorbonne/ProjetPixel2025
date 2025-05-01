@@ -5,15 +5,15 @@ class_name TowerBase
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 
-signal tower_fired
-signal tower_switched_mode
-signal tower_collected_xp
-signal tower_upgraded
-signal enemy_hit
-signal enemy_killed
-signal projectile_critical_hit
-signal projectile_hit
-signal projectile_destroyed
+signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
+signal tower_switched_mode(projectile : ProjectileBase, enemy : BaseEnemy)
+signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
+signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
+signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
+signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
+signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
+signal projectile_hit(projectile : ProjectileBase, enemy : BaseEnemy)
+signal projectile_destroyed(projectile : ProjectileBase, enemy : BaseEnemy)
 
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
@@ -48,7 +48,7 @@ func add_card(card_obj: CardObject) -> void:
 	if not can_add_card():
 		return 
 	var card : Card = card_obj.card
-	card.tower = self
+	card.card_code.tower = self
 	cards.append(card)
 	if card.trigger_signal != "":
 		# connect signal specified in the card to corresponding tower 
@@ -59,7 +59,7 @@ func add_card(card_obj: CardObject) -> void:
 			print_debug("TOWER DOESN'T HAVE SIGNAL " + card.trigger_signal)
 	else:
 		# if there is no signal, trigger the card immediately
-		card.execute_card()
+		card.execute_card(null, null)
 		print("execute card now")
 	card_obj.destroy_card_object()
 	TowerCard3DIndicator.add_card_indicator(self)
@@ -122,7 +122,7 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	)
 	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
 	if not is_bonus:
-		emit_signal("tower_fired")
+		tower_fired.emit(projectile_obj, null)
 		$TimerShoot.start(1.0 / fire_rate)
 		for _i : int in range(number_of_projectiles-1):
 			await get_tree().create_timer(1.0 / (fire_rate * 10.0)).timeout

@@ -1,7 +1,2 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Explosion,"Sometimes, the projectiles become huge upon killing an enemy.",,Common,enemy_killed,RunData.roll_probability(0.25),projectile.size = projectile.size  * 5.0,Scientists,
-Speed Up,Improves the fire rate of the tower.,,Common,,,tower.fire_rate *= 1.5,Military,
-Pierce,The projectiles can pierce enemies.,,Rare,,,tower.projectile_template.pierce = true,Military,
-Max combo,Adds the current combo to tower damage.,,Common,,,tower.projectile_template.damage += RunData.current_combo,Traders,
-Lucky trigger,"When firing, the tower sometimes fire an additonal projectile. Scales with number of projectiles.",,Common,tower_fired,RunData.roll_probability(0.15),tower.shoot_bonus_with_delay(0.25),Scientists,
-Projectiles Up,Increase the number of projectiles fired by the tower.,,Common,,,tower.number_of_projectiles += 1,Military,
+Firestorm,Creates a fiery aura around projectiles.,,Rare,enemy_killed,,spawn_burning_aura(enemy.position),Military,

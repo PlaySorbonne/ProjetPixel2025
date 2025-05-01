@@ -1,4 +1,5 @@
 extends AuraBase
+class_name BurningAura
 
 
 var damage_per_tick := 5

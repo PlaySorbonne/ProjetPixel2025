@@ -3,7 +3,7 @@ class_name CardObject
 
 
 var card : Card:
-	set(value):
+	set(value):	
 		card = value
 		$Label.text = card.name
 var is_dragged := false
