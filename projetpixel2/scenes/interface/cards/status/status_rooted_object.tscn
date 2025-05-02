@@ -8,6 +8,7 @@ albedo_color = Color(0, 0.8, 0, 1)
 
 [node name="StatusBurningObject" instance=ExtResource("1_ua1mj")]
 script = ExtResource("2_ua1mj")
+status_type = 1
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_ua1mj")

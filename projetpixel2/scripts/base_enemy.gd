@@ -73,8 +73,8 @@ func _on_timer_attacking_timeout() -> void:
 func death() -> void:
 	if current_state == States.Dead:
 		return
-	emit_signal("enemy_killed")
 	current_state = States.Dead
+	emit_signal("enemy_killed")
 	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
 	RunData.new_kill(enemy_type, is_alpha)

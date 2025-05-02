@@ -1,7 +1,7 @@
 extends Resource
 class_name StatusBase
 
-enum StatusEffects {Burning, Rooted, Poisoned, Bleeding, Frozen}
+enum StatusEffects {Burning, Rooted, Poisoned, Bleeding, Frozen, Linked}
 
 var status_type : StatusEffects
 

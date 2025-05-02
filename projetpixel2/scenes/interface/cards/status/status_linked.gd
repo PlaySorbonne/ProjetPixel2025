@@ -12,4 +12,4 @@ func stack_status_effect(effect_object : StatusObjectBase) -> void:
 	var status_linked : StatusLinked = effect_object.status
 
 func apply_effect(enemy : BaseEnemy) -> void:
-	enemy.can_move = false
+	pass
