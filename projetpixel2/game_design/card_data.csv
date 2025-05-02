@@ -1,2 +1,2 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_killed,RunData.roll_probability(0.5),spawn_burning_aura(enemy.position),Traders,
+Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_killed,RunData.roll_probability(0.1),spawn_burning_aura(enemy.position),Traders,
