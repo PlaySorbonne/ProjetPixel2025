@@ -1,4 +1,4 @@
-extends Node
+extends Node3D
 class_name StatusObjectBase
 
 
@@ -9,3 +9,7 @@ var status : StatusBase
 
 func reset_timer(new_time : float) -> void:
 	$TimerLifespan.start(new_time)
+
+func _on_timer_lifespan_timeout() -> void:
+	enemy.status_effects.erase(self)
+	queue_free()
