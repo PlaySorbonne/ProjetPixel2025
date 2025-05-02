@@ -3,7 +3,7 @@ class_name StatusBurning
 
 
 var tick_damage : int = 5
-var tick_time : float = 0.25
+var tick_time : float = 0.5
 var total_time : float = 3.0
 
 
