@@ -20,6 +20,19 @@ var trigger_condition : Callable  # a boolean function to make sure the effect t
 var effect : Callable # the method to call when the effect triggers
 var card_code : RefCounted
 
+static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
+	match card_rarity:
+		CardRarities.Common:
+			return 1.0
+		CardRarities.Uncommon:
+			return 1.25
+		CardRarities.Rare:
+			return 1.75
+		CardRarities.Legendary:
+			return 2.5
+		_:
+			return 4.0
+
 static func load_cards_data() -> void:
 	cards_data = {}
 	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
