@@ -1,15 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://bukhpbpu0wodx"]
+[gd_scene load_steps=8 format=3 uid="uid://neqx5sqoaxuh"]
 
-[ext_resource type="Script" uid="uid://bqfg16n6hu2p7" path="res://scripts/status_burning_object.gd" id="1_tmcyw"]
+[ext_resource type="PackedScene" uid="uid://50n8m4uyr5pr" path="res://scenes/interface/cards/status/status_object_base.tscn" id="1_tmcyw"]
+[ext_resource type="Script" uid="uid://bqfg16n6hu2p7" path="res://scripts/status_burning_object.gd" id="2_vecdo"]
 
-[node name="StatusBurningObject" type="Node"]
-script = ExtResource("1_tmcyw")
-status_type = null
+[sub_resource type="Curve" id="Curve_vecdo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.274306, 1), 0.0, 0.0, 0, 0, Vector2(0.645833, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
-[node name="TimerLifespan" type="Timer" parent="."]
-one_shot = true
+[sub_resource type="CurveTexture" id="CurveTexture_018pv"]
+curve = SubResource("Curve_vecdo")
 
-[node name="TimerTick" type="Timer" parent="."]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vecdo"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 1, 0)
+spread = 40.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_018pv")
 
-[connection signal="timeout" from="TimerLifespan" to="." method="_on_timer_lifespan_timeout"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vecdo"]
+albedo_color = Color(2, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vecdo"]
+material = SubResource("StandardMaterial3D_vecdo")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[node name="StatusBurningObject" instance=ExtResource("1_tmcyw")]
+script = ExtResource("2_vecdo")
+
+[node name="TimerTick" type="Timer" parent="." index="1"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="2"]
+process_material = SubResource("ParticleProcessMaterial_vecdo")
+draw_pass_1 = SubResource("SphereMesh_vecdo")
+
 [connection signal="timeout" from="TimerTick" to="." method="_on_timer_tick_timeout"]
