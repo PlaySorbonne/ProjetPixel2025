@@ -2,11 +2,20 @@ extends Button
 class_name CardObject
 
 
+const FAMILY_COLORS := {
+	Card.CardFamilies.Military : Color.RED,
+	Card.CardFamilies.Scientists : Color.SKY_BLUE,
+	Card.CardFamilies.Traders : Color.YELLOW,
+	Card.CardFamilies.Revolution : Color.WHITE,
+}
+
 var card : Card:
 	set(value):	
 		card = value
 		$Label.text = card.name
+		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
 var is_dragged := false
+
 
 func _on_button_down() -> void:
 	$DragAndDrop2D.press()
