@@ -78,7 +78,7 @@ func death() -> void:
 	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
 	RunData.new_kill(enemy_type, is_alpha)
-	RunData.current_experience += experience_points
+	RunData.gain_experience(experience_points)
 	await(mesh_animations.animation_finished)
 	await(get_tree().create_timer(3.0).timeout)
 	queue_free()

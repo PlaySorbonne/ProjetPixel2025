@@ -8,14 +8,10 @@ signal level_gained
 var probability_multiplier := 1.0
 var better_luck := false
 func roll_probability(base_probability : float) -> bool:
-	print("ROLL PROBABILITY(" + str(base_probability) + ")")
 	if better_luck:
-		print("\tbetter luck -> true")
 		return true
 	var final_probability = clamp(base_probability * probability_multiplier, 0.0, 1.0)
 	var rd : float = randf() 
-	print("\trd / final_probability = " + str(rd) + " / " + str(final_probability))
-	print("\treturn ----> " + str(rd < final_probability))
 	return rd < final_probability
 
 # experience points
@@ -26,6 +22,7 @@ var current_level := 1:
 		level_experience_threshold = get_level_experience_threshold()
 		emit_signal("level_gained")
 var level_experience_threshold : int = get_level_experience_threshold()
+var experience_multiplier := 1.0
 var current_experience := 0:
 	set(value):
 		if value >= level_experience_threshold:
@@ -34,6 +31,9 @@ var current_experience := 0:
 		else:
 			current_experience = value
 		emit_signal("experience_gained")
+
+func gain_experience(amount : int) -> void:
+	current_experience += int(amount * experience_multiplier) 
 
 func get_level_experience_threshold() -> int:
 	return experience_needed_equation.execute([], self)
@@ -74,6 +74,7 @@ func reset_run_data() -> void:
 	current_level = 1
 	level_experience_threshold = experience_needed_equation.execute([], self)
 	current_experience = 0
+	experience_multiplier = 1.0
 	# combo
 	current_combo = 0
 	max_run_combo = 0

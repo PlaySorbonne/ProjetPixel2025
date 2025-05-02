@@ -43,12 +43,9 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
 	print("control object = " + str(control_object))
 	if control_object != null:
-		if control_object is NextWaveButton:
-			print_debug("card dropped on NextWaveButton")
-		elif control_object is ComboCounter:
-			print_debug("card dropped on ComboCounter")
-		elif control_object is ExperienceBar:
-			print_debug("card dropped on ExperienceBar")
+		if control_object.has_method("drop_card"):
+			print("card dropped on " + str(control_object))
+			control_object.drop_card(card)
 		destroy_card_object()
 		return
 	

@@ -53,6 +53,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="MouseDetection2d" parent="ExperienceBar" instance=ExtResource("2_pfuso")]
 
+[node name="TimerExperienceMult" type="Timer" parent="ExperienceBar"]
+
 [node name="hud_control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -207,6 +209,7 @@ vertical_alignment = 1
 
 [node name="Mouse2dInteraction" parent="." instance=ExtResource("5_pfuso")]
 
+[connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
