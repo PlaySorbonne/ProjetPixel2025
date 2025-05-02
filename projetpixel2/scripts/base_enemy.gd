@@ -17,7 +17,7 @@ static var enemy_types : Array[String] = ["Puncher"]
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
 @export var experience_points := 8
 
-var status_effects : Array[StatusEffectBase] = []
+var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
 var current_state := States.Moving
@@ -32,6 +32,7 @@ var enemy_id := 0
 @onready var mesh : Node3D = $"figurine-cube"
 @onready var mesh_animations : AnimationPlayer = $"figurine-cube/AnimationPlayer"
 @onready var attack_timer : Timer = $TimerAttacking
+
 
 func _ready() -> void:
 	damageable.health = health

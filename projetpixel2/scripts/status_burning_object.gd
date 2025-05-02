@@ -1,0 +1,2 @@
+extends StatusObjectBase
+class_name StatusBurningObject
