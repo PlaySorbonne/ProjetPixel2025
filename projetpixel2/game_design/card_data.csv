@@ -1,3 +1,2 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_hit,RunData.roll_probability(0.5),"var burning := StatusRooted.new()
-burning.inflict_status(enemy)",Traders,
+Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_hit,RunData.roll_probability(0.5),StatusRooted.new().inflict_status(enemy),Traders,
