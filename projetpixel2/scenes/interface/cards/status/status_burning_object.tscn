@@ -4,3 +4,12 @@
 
 [node name="StatusBurningObject" type="Node"]
 script = ExtResource("1_tmcyw")
+status_type = null
+
+[node name="TimerLifespan" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerTick" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerLifespan" to="." method="_on_timer_lifespan_timeout"]
+[connection signal="timeout" from="TimerTick" to="." method="_on_timer_tick_timeout"]
