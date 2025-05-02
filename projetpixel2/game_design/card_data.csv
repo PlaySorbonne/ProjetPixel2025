@@ -1,4 +1,2 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Speed Up,Improves the fire rate of the tower.,,Common,,,tower.fire_rate *= 1.5,Military,
-Pierce,The projectiles can pierce enemies.,,Rare,,,tower.projectile_template.pierce = true,Military,
 Link,Apply link effect to hit enemies,,Legendary,enemy_hit,,StatusLinked.new().inflict_status(enemy),Revolution,
