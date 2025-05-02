@@ -11,5 +11,8 @@ func reset_timer(new_time : float) -> void:
 	$TimerLifespan.start(new_time)
 
 func _on_timer_lifespan_timeout() -> void:
+	remove_effect()
+
+func remove_effect() -> void:
 	enemy.status_effects.erase(self)
 	queue_free()

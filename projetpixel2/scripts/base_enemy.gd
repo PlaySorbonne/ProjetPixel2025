@@ -20,6 +20,7 @@ static var enemy_types : Array[String] = ["Puncher"]
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
+var can_move := true
 var current_state := States.Moving
 var current_animation := ""
 var enemy_id := 0
@@ -47,10 +48,11 @@ func _physics_process(_delta: float) -> void:
 	if current_state == States.Dead:
 		return
 	if current_state == States.Moving:
-		mesh_animations.play("sprint")
-		velocity = position.direction_to(target.position) * movement_speed
-		mesh.look_at(target.position)
-		move_and_slide() 
+		if can_move:
+			mesh_animations.play("sprint")
+			velocity = position.direction_to(target.position) * movement_speed
+			mesh.look_at(target.position)
+			move_and_slide() 
 	if len(overlapping_enemies) > 0:
 		attack()
 

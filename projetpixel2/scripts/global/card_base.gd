@@ -4,7 +4,6 @@ class_name CardBase
 const BURNING_AURA := preload("res://scenes/spaceship/towers/spawnable_objects/burning_aura.tscn")
 
 
-
 # active variables
 var tower : TowerBase
 var projectile : ProjectileBase
@@ -17,6 +16,7 @@ func spawn_burning_aura(aura_position : Vector3) -> BurningAura:
 func spawn_burning_aura_on_obj(parent_object : Node3D, 
 									offset := Vector3.ZERO) -> BurningAura:
 	return spawn_object_on_object(BURNING_AURA.instantiate(), parent_object, offset)
+
 
 
 
