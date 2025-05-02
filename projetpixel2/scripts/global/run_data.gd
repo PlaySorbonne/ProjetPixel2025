@@ -56,7 +56,7 @@ var total_alpha_kills := 0
 
 func default_levelling_expression() -> Expression:
 	var expr : Expression = Expression.new()
-	var expr_str := "(current_level+1) * 50 + pow((current_level+1), 4.0)"
+	var expr_str := "(current_level+1) * 50 + pow((current_level+1), 3.0)"
 	var err = expr.parse(expr_str)
 	return expr
 
