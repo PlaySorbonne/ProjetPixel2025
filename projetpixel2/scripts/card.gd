@@ -55,8 +55,6 @@ static func get_random_card() -> Card:
 	return current_deck.pick_random()
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
-	print("projectile = " + str(projectile))
-	print("enemy = " + str(enemy))
 	card_code.projectile = projectile
 	card_code.enemy = enemy
 	if trigger_condition.call():
