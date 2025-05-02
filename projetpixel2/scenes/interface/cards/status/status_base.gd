@@ -17,7 +17,7 @@ func stack_status_effect(effect_object : StatusObjectBase) -> void:
 func apply_effect(enemy : BaseEnemy) -> void:
 	print_debug("Implement apply_effect() is child status effects!")
 
-func infict_status(enemy : BaseEnemy) -> void:
+func inflict_status(enemy : BaseEnemy) -> void:
 	var has_effect := false
 	for effect_object : StatusObjectBase in enemy.status_effects:
 		if effect_object.status_type == status_type:

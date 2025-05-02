@@ -1,11 +1,12 @@
 extends Area3D
 class_name AuraBase
 
+enum EffectApplication {onTick, onEnteredExited}
 
-var tick_time := 0.25
-var lifespan := 5.0
-var radius := 2.5
-
+@export var tick_time := 0.25
+@export var lifespan := 5.0
+@export var radius := 2.5
+@export var effect_application_time := EffectApplication.onTick
 
 func _ready() -> void:
 	$CollisionShape3D.shape.radius = radius

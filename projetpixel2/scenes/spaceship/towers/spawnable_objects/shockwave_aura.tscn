@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://m74w2m3wivys"]
+
+[ext_resource type="PackedScene" uid="uid://b1dmdb34ckt7l" path="res://scenes/spaceship/towers/spawnable_objects/aura_base.tscn" id="1_wg4nw"]
+[ext_resource type="Script" uid="uid://cq7p40l5a1xrx" path="res://scripts/shockwave_aura.gd" id="2_nrkru"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jqa6b"]
+resource_local_to_scene = true
+radius = 1.0
+
+[node name="ShockwaveAura" instance=ExtResource("1_wg4nw")]
+script = ExtResource("2_nrkru")
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_jqa6b")

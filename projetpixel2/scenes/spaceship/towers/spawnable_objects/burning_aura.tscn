@@ -17,6 +17,7 @@ albedo_color = Color(1, 1, 1, 0.211765)
 
 [node name="BurningAura" instance=ExtResource("1_iix75")]
 script = ExtResource("2_feicb")
+tick_time = 0.5
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("CylinderShape3D_feicb")
