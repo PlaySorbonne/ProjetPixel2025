@@ -1,2 +1,2 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Firestorm,Creates a fiery aura around projectiles.,,Rare,enemy_killed,,spawn_burning_aura(enemy.position),Military,
+Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_killed,RunData.roll_probability(0.5),spawn_burning_aura(enemy.position),Traders,

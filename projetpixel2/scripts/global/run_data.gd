@@ -5,13 +5,18 @@ signal experience_gained
 signal level_gained
 
 # probability
-var probability_multiplier := 0.5
+var probability_multiplier := 1.0
 var better_luck := false
 func roll_probability(base_probability : float) -> bool:
+	print("ROLL PROBABILITY(" + str(base_probability) + ")")
 	if better_luck:
+		print("\tbetter luck -> true")
 		return true
 	var final_probability = clamp(base_probability * probability_multiplier, 0.0, 1.0)
-	return randf() < final_probability
+	var rd : float = randf() 
+	print("\trd / final_probability = " + str(rd) + " / " + str(final_probability))
+	print("\treturn ----> " + str(rd < final_probability))
+	return rd < final_probability
 
 # experience points
 var experience_needed_equation : Expression = default_levelling_expression()
