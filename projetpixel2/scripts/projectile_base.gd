@@ -6,9 +6,6 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 static var critical_hits_number := 0
 static var hits_number := 0
 
-signal projectile_hit
-signal projectile_critical_hit
-
 var tower : TowerBase
 var projectile : Projectile
 var size := 1.0:
@@ -61,4 +58,5 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		damage_body(body)
 		if not projectile.pierce:
+			await get_tree().process_frame
 			queue_free()

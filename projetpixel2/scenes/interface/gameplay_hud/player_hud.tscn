@@ -54,6 +54,7 @@ metadata/_edit_use_anchors_ = true
 [node name="MouseDetection2d" parent="ExperienceBar" instance=ExtResource("2_pfuso")]
 
 [node name="TimerExperienceMult" type="Timer" parent="ExperienceBar"]
+one_shot = true
 
 [node name="hud_control" type="Control" parent="."]
 layout_mode = 3

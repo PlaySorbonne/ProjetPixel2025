@@ -33,6 +33,7 @@ var current_experience := 0:
 		emit_signal("experience_gained")
 
 func gain_experience(amount : int) -> void:
+	print("GAIN " + str(amount) + " * " + str(experience_multiplier))
 	current_experience += int(amount * experience_multiplier) 
 
 func get_level_experience_threshold() -> int:
