@@ -103,6 +103,9 @@ func get_closest_enemy() -> BaseEnemy:
 	return closest_enemy
 
 func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
+	if not is_instance_valid(enemy):
+		print_debug("Invalid enemy targeted")
+		return
 	if not is_bonus:
 		can_shoot = false
 	look_at(Vector3(
