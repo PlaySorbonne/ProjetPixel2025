@@ -11,6 +11,7 @@ shadow_color = Color(0, 0, 0, 0.180392)
 shadow_offset = Vector2(1.5, 1.5)
 
 [node name="CardObject" type="Button"]
+custom_minimum_size = Vector2(95, 103)
 anchors_preset = -1
 anchor_right = 0.0494792
 anchor_bottom = 0.0953704
@@ -22,6 +23,7 @@ script = ExtResource("1_xkj05")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(95, 103)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,9 +41,11 @@ dragged_object = NodePath("..")
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = -0.048
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.56
 offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 2

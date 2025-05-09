@@ -2,6 +2,8 @@ extends Button
 class_name CardObject
 
 
+signal card_clicked
+
 const FAMILY_COLORS := {
 	Card.CardFamilies.Military : Color.RED,
 	Card.CardFamilies.Scientists : Color.SKY_BLUE,
@@ -18,7 +20,15 @@ var is_dragged := false
 
 
 func _on_button_down() -> void:
+	card_clicked.emit()
 	$DragAndDrop2D.press()
+
+func release_card() -> void:
+	await get_tree().process_frame
+	$DragAndDrop2D.was_just_pressed = false
+	$DragAndDrop2D.drop()
+	$DragAndDrop2D.release()
+	is_dragged = false
 
 func _input(event: InputEvent) -> void:
 	if not is_dragged:
@@ -41,7 +51,7 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	$TextureRect.modulate = Color.WHITE
 	# interaction2D
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
-	print("control object = " + str(control_object))
+	#print("control object = " + str(control_object))
 	if control_object != null:
 		if control_object.has_method("drop_card"):
 			print("card dropped on " + str(control_object))

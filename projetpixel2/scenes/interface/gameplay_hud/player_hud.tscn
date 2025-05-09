@@ -19,6 +19,7 @@ font_size = 40
 font_size = 42
 
 [node name="PlayerHud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_ldeku")
 
 [node name="ExperienceBar" type="ProgressBar" parent="."]
@@ -64,25 +65,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="CardsWindow" type="Control" parent="hud_control"]
-layout_mode = 1
-anchor_left = 0.794792
-anchor_top = 0.19537
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="HFlowContainer" type="HFlowContainer" parent="hud_control/CardsWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ButtonSpawnTower" type="Button" parent="hud_control"]
 layout_mode = 1
@@ -209,6 +191,24 @@ vertical_alignment = 1
 [node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
 
 [node name="Mouse2dInteraction" parent="." instance=ExtResource("5_pfuso")]
+
+[node name="CardsContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.104167
+anchor_top = 0.824074
+anchor_right = 0.932813
+anchor_bottom = 0.919444
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NewCardsContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.294271
+anchor_top = 0.430556
+anchor_right = 0.676042
+anchor_bottom = 0.525926
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]

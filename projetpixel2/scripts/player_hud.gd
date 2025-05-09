@@ -8,6 +8,8 @@ const TOWERS_OFFSET := Vector2(-10, 0)
 
 var in_combo := false
 var available_towers := 0
+var new_level_cards : Array[CardObject] = []
+var number_of_choosable_cards := 3
 
 # components
 @onready var mouse_cursor_hint : MouseCursorHint = $MouseCursorHint
@@ -29,12 +31,25 @@ func update_experience() -> void:
 func gain_level() -> void:
 	update_level()
 	if RunData.current_level > 1:
-		var new_card : CardObject = CARD_OBJ_RES.instantiate()
-		self.add_child(new_card)
-		new_card.position = Vector2(
-			randf_range(100, 800),
-			800.0)
-		new_card.card = Card.get_random_card()
+		Engine.time_scale = 0.0
+		new_level_cards = []
+		for i : int in range(number_of_choosable_cards):
+			var new_card : CardObject = CARD_OBJ_RES.instantiate()
+			$NewCardsContainer.add_child(new_card)
+			new_card.card_clicked.connect(on_card_level_clicked.bind(new_card))
+			new_level_cards.append(new_card)
+			new_card.card = Card.get_random_card()
+
+func on_card_level_clicked(chosen_card : CardObject) -> void:
+	Engine.time_scale = 1.0
+	chosen_card.card_clicked.disconnect(on_card_level_clicked)
+	for card : CardObject in new_level_cards:
+		if card != chosen_card:
+			card.destroy_card_object()
+	chosen_card.release_card()
+	chosen_card.get_parent().remove_child(chosen_card)
+	$CardsContainer.add_child(chosen_card)
+	new_level_cards = []
 
 func update_level() -> void:
 	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)

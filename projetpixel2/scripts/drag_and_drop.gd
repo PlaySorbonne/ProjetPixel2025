@@ -8,6 +8,9 @@ const CLICK_MAX_TIME := 0.2
 
 @export var can_be_dragged := true
 
+# handles both
+# (1)pressing mouse button and dragging and 
+# (2)clicking, then moving, then clicking again
 var is_dragged := false
 var was_just_pressed := false
 var is_pressed := false:
