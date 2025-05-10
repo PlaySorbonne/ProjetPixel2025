@@ -4,6 +4,7 @@ class_name WaveManager
 
 enum EnemyTypes {Basic, Runner, Tank}
 
+const MAX_ENEMY_TYPES_PER_WAVE := 2
 const NEXT_BUTTON_RES := preload("res://scenes/interface/gameplay_hud/next_wave_button.tscn")
 const ENEMY_RES : Dictionary[EnemyTypes, PackedScene] = {
 	EnemyTypes.Basic : preload("res://scenes/world/enemies/base_enemy.tscn"),
@@ -14,6 +15,11 @@ const ENEMY_DIFFICULTIES : Dictionary[EnemyTypes, float]= {
 	EnemyTypes.Basic : 1.0,
 	EnemyTypes.Runner : 0.7,
 	EnemyTypes.Tank : 4.5,
+}
+const ENEMY_PROBABILITIES : Dictionary[EnemyTypes, float] = {
+	EnemyTypes.Basic : 0.5,
+	EnemyTypes.Runner : 0.75,
+	EnemyTypes.Tank : 0.25,
 }
 
 class EnemyWave:
@@ -78,6 +84,28 @@ func initialize_spawners() -> void:
 	for spawner : EnemySpawner in GV.spawners:
 		spawner.wave_manager = self
 
+func pick_random_weighted(array: Array, weights: Array) -> Variant:
+	print("array =", array, " ; weights =", weights)
+	var sum:float = 0.0
+	for val in weights:
+		sum += val
+	
+	var normalizedWeights = []
+	for val in weights:
+		normalizedWeights.append(val / sum)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var rnd = rng.randf()
+	var i = 0
+	var summer:float = 0.0
+
+	for val in normalizedWeights:
+		summer += val
+		if summer >= rnd:
+			return array[i]
+		i += 1
+	return null
+
 func spawn_next_wave() -> void:
 	wave_buttons[current_wave_id].remove_button()
 	var current_wave : EnemyWave = waves[current_wave_id]
@@ -86,11 +114,21 @@ func spawn_next_wave() -> void:
 		distributed_enemies.append([])
 	var wave_budget : float = current_wave.wave_difficulty
 	# define which enemies will be in the wave (change later, bad system)
-	var types_of_wave_enemies : Array[EnemyTypes] = [EnemyTypes.Basic, EnemyTypes.Runner, EnemyTypes.Tank]
-	types_of_wave_enemies.remove_at(randi()%len(types_of_wave_enemies))
+	var random_types : Array = EnemyTypes.values()
+	random_types.shuffle()
+	var types_of_wave_enemies : Array[EnemyTypes] = []
+	var enemy_weights : Array[float] = []
+	for _i in range(MAX_ENEMY_TYPES_PER_WAVE):
+		var type_index : int = randi_range(0, len(random_types) - 1)
+		types_of_wave_enemies.append(random_types[type_index])
+		enemy_weights.append(ENEMY_PROBABILITIES[random_types[type_index]])
+		random_types.remove_at(type_index)
 	# add enemies to the wave until budget runs out
 	while wave_budget > 0.0:
-		var enemy_type : EnemyTypes = types_of_wave_enemies.pick_random()
+		var enemy_type : EnemyTypes = pick_random_weighted(
+			types_of_wave_enemies,
+			enemy_weights
+		)
 		wave_budget -= ENEMY_DIFFICULTIES[enemy_type]
 		var selected_spawner : int = randi_range(0, len(distributed_enemies)-1)
 		distributed_enemies[selected_spawner].append(ENEMY_RES[enemy_type].instantiate())
