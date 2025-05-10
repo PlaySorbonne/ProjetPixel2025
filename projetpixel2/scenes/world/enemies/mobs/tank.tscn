@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8h1y4dev0chi"]
+
+[ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_6o34r"]
+
+[node name="Tank" instance=ExtResource("1_6o34r")]
+health = 500
+movement_speed = 0.75
+damage_amount = 70
+attack_speed = 0.25
+experience_points = 150
+
+[editable path="figurine-cube"]
