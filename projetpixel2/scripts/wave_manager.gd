@@ -2,7 +2,7 @@ extends Node
 class_name WaveManager
 
 
-enum EnemyTypes {Basic, Runner, Tank}
+enum EnemyTypes {Basic, Runner, Tank, Rock}
 
 const MAX_ENEMY_TYPES_PER_WAVE := 2
 const NEXT_BUTTON_RES := preload("res://scenes/interface/gameplay_hud/next_wave_button.tscn")
@@ -10,16 +10,19 @@ const ENEMY_RES : Dictionary[EnemyTypes, PackedScene] = {
 	EnemyTypes.Basic : preload("res://scenes/world/enemies/base_enemy.tscn"),
 	EnemyTypes.Runner : preload("res://scenes/world/enemies/mobs/runner.tscn"),
 	EnemyTypes.Tank : preload("res://scenes/world/enemies/mobs/tank.tscn"),
+	EnemyTypes.Rock : preload("res://scenes/world/enemies/mobs/rock.tscn"),
 }
 const ENEMY_DIFFICULTIES : Dictionary[EnemyTypes, float]= {
 	EnemyTypes.Basic : 1.0,
 	EnemyTypes.Runner : 0.7,
 	EnemyTypes.Tank : 4.5,
+	EnemyTypes.Rock : 4.0,
 }
 const ENEMY_PROBABILITIES : Dictionary[EnemyTypes, float] = {
 	EnemyTypes.Basic : 0.5,
 	EnemyTypes.Runner : 0.75,
 	EnemyTypes.Tank : 0.25,
+	EnemyTypes.Rock : 0.6,
 }
 
 class EnemyWave:

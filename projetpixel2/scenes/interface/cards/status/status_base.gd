@@ -19,6 +19,7 @@ func apply_effect(enemy : BaseEnemy) -> void:
 
 func inflict_status(enemy : BaseEnemy) -> void:
 	var has_effect := false
+	enemy.status_inflicted.emit(status_type)
 	for effect_object : StatusObjectBase in enemy.status_effects:
 		if effect_object.status.get_status_object_ref() == get_status_object_ref():
 			stack_status_effect(effect_object)

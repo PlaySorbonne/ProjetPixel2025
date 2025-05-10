@@ -4,6 +4,7 @@ class_name BaseEnemy
 enum States {Moving, Attacking, Dead}
 
 signal enemy_killed
+signal status_inflicted(status_type : StatusBase.StatusEffects)
 
 static var number_of_enemies := 0
 static var enemy_types : Array[String] = ["Puncher"]

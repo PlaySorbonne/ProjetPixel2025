@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8h1y4dev0chi"]
+[gd_scene load_steps=4 format=3 uid="uid://cocf7ikucw14y"]
 
-[ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_6o34r"]
+[ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_xle50"]
+[ext_resource type="Script" uid="uid://bgecywqc8mw18" path="res://scripts/enemy_rock.gd" id="2_qgeih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
 resource_local_to_scene = true
-albedo_color = Color(0.360949, 0.360949, 0.360949, 1)
+albedo_color = Color(0.853003, 0.000190381, 0.000104925, 1)
 
-[node name="Tank" instance=ExtResource("1_6o34r")]
-health = 1000
-movement_speed = 0.7
-damage_amount = 70
-attack_speed = 0.25
-experience_points = 150
+[node name="Rock" instance=ExtResource("1_xle50")]
+script = ExtResource("2_qgeih")
+health = 250
+movement_speed = 1.5
+experience_points = 8
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, 0, 0)
@@ -33,5 +33,8 @@ material_override = SubResource("StandardMaterial3D_6o34r")
 
 [node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
 material_override = SubResource("StandardMaterial3D_6o34r")
+
+[connection signal="status_inflicted" from="." to="." method="_on_status_inflicted"]
+[connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
 
 [editable path="figurine-cube"]

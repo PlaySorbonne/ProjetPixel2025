@@ -2,7 +2,7 @@ extends Node
 class_name DamageableObject
 
 
-signal hit(damage_amount : int, new_health : int)
+signal hit(damage_amount : int, new_health : int, damage_type : DamagingTypes)
 signal death
 
 enum DamagableTypes {Neutral, Energy, Structure}
@@ -73,7 +73,7 @@ func damage(damage_amount : int, damage_type : DamagingTypes, is_crit := false) 
 	DamagePopup.display_damage(get_parent(), damage_amount, is_crit)
 	if health < 0:
 		health = 0
-	emit_signal("hit", total_damage, health)
+	emit_signal("hit", total_damage, health, damage_type)
 	if health == 0:
 		emit_signal("death")
 		return true
