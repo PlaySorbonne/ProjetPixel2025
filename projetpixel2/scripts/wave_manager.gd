@@ -38,6 +38,7 @@ var wave_buttons : Array[NextWaveButton] = []
 var current_wave_id : int = 0
 var max_wave := 0
 var wave_enemies : Array = []
+var is_last_wave_spawned := false
 
 # components
 @onready var vbox_container := $CanvasLayer/VBoxContainer
@@ -60,6 +61,8 @@ func _ready() -> void:
 			button.set_next_wave()
 
 func generate_new_wave() -> void:
+	if max_wave == 20:
+		return
 	var wave_num := max_wave
 	var new_wave := EnemyWave.new()
 	new_wave.wave_number_of_enemies += randi_range(wave_num*3, wave_num*5)
@@ -88,7 +91,6 @@ func initialize_spawners() -> void:
 		spawner.wave_manager = self
 
 func pick_random_weighted(array: Array, weights: Array) -> Variant:
-	print("array =", array, " ; weights =", weights)
 	var sum:float = 0.0
 	for val in weights:
 		sum += val
@@ -110,6 +112,15 @@ func pick_random_weighted(array: Array, weights: Array) -> Variant:
 	return null
 
 func spawn_next_wave() -> void:
+	# FOR DEMO ONLY -> limit waves to 20 and spawn boss on last wave
+	if is_last_wave_spawned:
+		return
+	if current_wave_id == 2:
+		is_last_wave_spawned = true
+		var boss := preload("res://scenes/world/enemies/mobs/demo_boss.tscn").instantiate()
+		GV.spawners[1].spawn_wave([boss])
+		return
+		
 	wave_buttons[current_wave_id].remove_button()
 	var current_wave : EnemyWave = waves[current_wave_id]
 	var distributed_enemies : Array[Array] = []

@@ -16,7 +16,7 @@ signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 @export var tower_name := "TowerBase"
 @export var is_hologram := false
 @export var cards : Array[Card] = []
-@export var enemy_choice := get_closest_enemy # method used to select the targeted enemy
+@export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
 
 @export_group("Tower stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -85,6 +85,27 @@ func _process(delta: float) -> void:
 
 func get_focused_enemies() -> Array[Node3D]:
 	return area3d.get_overlapping_bodies()
+
+func get_spaceship_closest_enemy() -> BaseEnemy:
+	var nb_focused_enemies := len(get_focused_enemies())
+	print("nb_focused_enemies = " + str(nb_focused_enemies))
+	if nb_focused_enemies == 0:
+		return null
+	var closest_enemy : BaseEnemy = get_focused_enemies()[0]
+	var min_dist : float = GV.space_ship.global_position.distance_squared_to(
+							closest_enemy.global_position)
+	print("\tinit min_dist = ", min_dist)
+	for i : int in range(1, nb_focused_enemies):
+		var enemy : BaseEnemy = get_focused_enemies()[i]
+		if not is_instance_valid(enemy):
+			print("PROBLEME")
+			return null
+		var dist := GV.space_ship.global_position.distance_squared_to(enemy.global_position)
+		if dist < min_dist:
+			print("\tmin_dist = ", dist)
+			enemy = closest_enemy
+			min_dist = dist
+	return closest_enemy
 
 func get_closest_enemy() -> BaseEnemy:
 	var nb_focused_enemies := len(get_focused_enemies())

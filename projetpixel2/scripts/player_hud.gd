@@ -96,7 +96,6 @@ func _on_combo_timer_timeout() -> void:
 	RunData.current_combo = 0
 	update_combo_label()
 
-
 func _on_button_spawn_tower_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	add_available_tower()
