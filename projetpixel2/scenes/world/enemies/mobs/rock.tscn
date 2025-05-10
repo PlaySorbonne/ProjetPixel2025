@@ -9,6 +9,7 @@ albedo_color = Color(0.853003, 0.000190381, 0.000104925, 1)
 
 [node name="Rock" instance=ExtResource("1_xle50")]
 script = ExtResource("2_qgeih")
+max_minions = 15
 health = 250
 movement_speed = 1.5
 experience_points = 8

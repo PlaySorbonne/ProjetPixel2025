@@ -51,7 +51,7 @@ func _ready() -> void:
 		var n_v := EnemyWave.new()
 		n_v.wave_difficulty += randi_range(i*2, i*4)
 		n_v.wave_number = i+1
-		n_v.wave_number_of_enemies = n_v.wave_number_of_enemies
+		n_v.wave_number_of_enemies = n_v.wave_difficulty
 		n_v.wave_duration = 30.0
 		n_v.is_boss_wave = false
 		waves.append(n_v)

@@ -22,7 +22,7 @@ var current_level := 1:
 		level_experience_threshold = get_level_experience_threshold()
 		emit_signal("level_gained")
 var level_experience_threshold : int = get_level_experience_threshold()
-var experience_multiplier := 1.0
+var experience_multiplier := 3.0
 var current_experience := 0:
 	set(value):
 		if value >= level_experience_threshold:
