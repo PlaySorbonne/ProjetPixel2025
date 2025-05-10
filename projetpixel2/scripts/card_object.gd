@@ -17,6 +17,7 @@ var card : Card:
 		$Label.text = card.name
 		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
 var is_dragged := false
+var can_be_dropped_on_objects := false
 
 
 func _on_button_down() -> void:
@@ -49,6 +50,9 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	is_dragged = false
 	GV.is_dragging_object = false
 	$TextureRect.modulate = Color.WHITE
+	if not can_be_dropped_on_objects:
+		mouse_filter = Control.MOUSE_FILTER_PASS
+		return
 	# interaction2D
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
 	#print("control object = " + str(control_object))

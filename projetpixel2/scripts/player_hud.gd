@@ -50,6 +50,8 @@ func on_card_level_clicked(chosen_card : CardObject) -> void:
 	chosen_card.get_parent().remove_child(chosen_card)
 	$CardsContainer.add_child(chosen_card)
 	new_level_cards = []
+	await get_tree().process_frame
+	chosen_card.can_be_dropped_on_objects = true
 
 func update_level() -> void:
 	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
