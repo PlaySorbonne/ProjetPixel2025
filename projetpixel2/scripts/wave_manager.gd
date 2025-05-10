@@ -61,7 +61,7 @@ func _ready() -> void:
 			button.set_next_wave()
 
 func generate_new_wave() -> void:
-	if max_wave == 20:
+	if max_wave == 15:
 		return
 	var wave_num := max_wave
 	var new_wave := EnemyWave.new()
@@ -112,10 +112,10 @@ func pick_random_weighted(array: Array, weights: Array) -> Variant:
 	return null
 
 func spawn_next_wave() -> void:
-	# FOR DEMO ONLY -> limit waves to 20 and spawn boss on last wave
+	# FOR DEMO ONLY -> limit waves to 15 and spawn boss on last wave
 	if is_last_wave_spawned:
 		return
-	if current_wave_id == 20:
+	if current_wave_id == 15:
 		is_last_wave_spawned = true
 		var boss := preload("res://scenes/world/enemies/mobs/demo_boss.tscn").instantiate()
 		GV.spawners[1].spawn_wave([boss])

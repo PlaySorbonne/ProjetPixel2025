@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://7gu8ljbj26ot"]
+
+[ext_resource type="Script" uid="uid://cm8ltbpqlcsh5" path="res://scripts/game_over_screen.gd" id="1_lbd7n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mc2me"]
+font_size = 39
+
+[node name="GameOverScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_lbd7n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.505473, 0, 0.0553534, 0.619608)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 355.0
+offset_top = 86.0
+offset_right = -431.0
+offset_bottom = -434.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+Perdu :(
+Tu peux continuer à jouer stv
+y a un boss à la vague 15
+Si t'appuies sur echap ou Ctrl y a un menu pause pour recommencer.
+
+bisous :3"
+label_settings = SubResource("LabelSettings_mc2me")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.355208
+anchor_top = 0.659259
+anchor_right = 0.588542
+anchor_bottom = 0.746296
+text = "cool super bisous à toi aussi"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.355208
+anchor_top = 0.659259
+anchor_right = 0.588542
+anchor_bottom = 0.746296
+offset_left = -4.0
+offset_top = 140.0
+offset_right = -4.0
+offset_bottom = 140.0
+text = "ok boomer"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
