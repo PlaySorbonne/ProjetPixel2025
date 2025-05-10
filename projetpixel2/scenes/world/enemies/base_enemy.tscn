@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6wednpvk2t26"]
+[gd_scene load_steps=8 format=3 uid="uid://c6wednpvk2t26"]
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
 [ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
+[ext_resource type="Material" uid="uid://dnfscyqu0co3x" path="res://resources/materials/default_enemy_material.tres" id="3_j3mfv"]
 [ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/damagable.tscn" id="3_sxqs1"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="4_stxmo"]
 
@@ -22,6 +23,24 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="figurine-cube" parent="figurine-cube" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
+material_override = ExtResource("3_j3mfv")
+
+[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
+material_override = ExtResource("3_j3mfv")
+
+[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
+material_override = ExtResource("3_j3mfv")
+
+[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
+material_override = ExtResource("3_j3mfv")
+
+[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
+material_override = ExtResource("3_j3mfv")
+
+[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
+material_override = ExtResource("3_j3mfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44608, 0)
