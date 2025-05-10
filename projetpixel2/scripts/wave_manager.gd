@@ -16,7 +16,7 @@ const ENEMY_DIFFICULTIES : Dictionary[EnemyTypes, float]= {
 	EnemyTypes.Basic : 1.0,
 	EnemyTypes.Runner : 0.7,
 	EnemyTypes.Tank : 4.5,
-	EnemyTypes.Rock : 4.0,
+	EnemyTypes.Rock : 3.5,
 }
 const ENEMY_PROBABILITIES : Dictionary[EnemyTypes, float] = {
 	EnemyTypes.Basic : 0.5,

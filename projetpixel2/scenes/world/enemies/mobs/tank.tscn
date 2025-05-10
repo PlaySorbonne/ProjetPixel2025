@@ -11,7 +11,7 @@ health = 1000
 movement_speed = 0.7
 damage_amount = 70
 attack_speed = 0.25
-experience_points = 150
+experience_points = 125
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, 0, 0)
