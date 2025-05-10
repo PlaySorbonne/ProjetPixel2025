@@ -1,11 +1,24 @@
 extends Node
 class_name WaveManager
 
+
+enum EnemyTypes {Basic, Runner, Tank}
+
 const NEXT_BUTTON_RES := preload("res://scenes/interface/gameplay_hud/next_wave_button.tscn")
+const ENEMY_RES : Dictionary[EnemyTypes, PackedScene] = {
+	EnemyTypes.Basic : preload("res://scenes/world/enemies/base_enemy.tscn"),
+	EnemyTypes.Runner : preload("res://scenes/world/enemies/mobs/runner.tscn"),
+	EnemyTypes.Tank : preload("res://scenes/world/enemies/mobs/tank.tscn"),
+}
+const ENEMY_DIFFICULTIES : Dictionary[EnemyTypes, float]= {
+	EnemyTypes.Basic : 1.0,
+	EnemyTypes.Runner : 0.7,
+	EnemyTypes.Tank : 4.5,
+}
 
 class EnemyWave:
 	var wave_number : int = 0
-	var wave_difficulty : float = 1.0
+	var wave_difficulty : float = 5.0
 	var wave_enemies : Array[BaseEnemy] = []
 	var wave_number_of_enemies : int = 5
 	var wave_duration := 30.0
@@ -15,6 +28,7 @@ var waves : Array[EnemyWave] = []
 var wave_buttons : Array[NextWaveButton] = []
 var current_wave_id : int = 0
 var max_wave := 0
+var wave_enemies : Array = []
 
 # components
 @onready var vbox_container := $CanvasLayer/VBoxContainer
@@ -26,9 +40,9 @@ func _ready() -> void:
 	initialize_spawners()
 	for i : int in range(9):
 		var n_v := EnemyWave.new()
-		n_v.wave_number_of_enemies += randi_range(i*2, i*4)
+		n_v.wave_difficulty += randi_range(i*2, i*4)
 		n_v.wave_number = i+1
-		n_v.wave_difficulty = n_v.wave_number_of_enemies
+		n_v.wave_number_of_enemies = n_v.wave_number_of_enemies
 		n_v.wave_duration = 30.0
 		n_v.is_boss_wave = false
 		waves.append(n_v)
@@ -67,8 +81,23 @@ func initialize_spawners() -> void:
 func spawn_next_wave() -> void:
 	wave_buttons[current_wave_id].remove_button()
 	var current_wave : EnemyWave = waves[current_wave_id]
-	for spawner : EnemySpawner in GV.spawners:
-		spawner.spawn_wave(current_wave.wave_number_of_enemies / len(GV.spawners))
+	var distributed_enemies : Array[Array] = []
+	for _i : int in range(len(GV.spawners)):
+		distributed_enemies.append([])
+	var wave_budget : float = current_wave.wave_difficulty
+	# define which enemies will be in the wave (change later, bad system)
+	var types_of_wave_enemies : Array[EnemyTypes] = [EnemyTypes.Basic, EnemyTypes.Runner, EnemyTypes.Tank]
+	types_of_wave_enemies.remove_at(randi()%len(types_of_wave_enemies))
+	# add enemies to the wave until budget runs out
+	while wave_budget > 0.0:
+		var enemy_type : EnemyTypes = types_of_wave_enemies.pick_random()
+		wave_budget -= ENEMY_DIFFICULTIES[enemy_type]
+		var selected_spawner : int = randi_range(0, len(distributed_enemies)-1)
+		distributed_enemies[selected_spawner].append(ENEMY_RES[enemy_type].instantiate())
+	# spawn enemies
+	for i : int in range(len(GV.spawners)):
+		var spawner : EnemySpawner = GV.spawners[i]
+		spawner.spawn_wave(distributed_enemies[i])
 	current_wave_id += 1
 	$CanvasLayer/VBoxContainer/LabelWave.text = "Current wave:\nWave " + str(current_wave_id)
 	if current_wave_id < max_wave:
