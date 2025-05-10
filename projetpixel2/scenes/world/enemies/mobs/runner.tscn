@@ -9,4 +9,7 @@ damage_amount = 1
 attack_speed = 2.0
 experience_points = 15
 
+[node name="figurine-cube" parent="." index="0"]
+transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)
+
 [editable path="figurine-cube"]
