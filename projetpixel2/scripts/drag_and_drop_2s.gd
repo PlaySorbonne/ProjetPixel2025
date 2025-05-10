@@ -12,5 +12,6 @@ func drag() -> void:
 	offset = dragged_object.global_position - $Control.get_global_mouse_position()
 
 func _process(delta: float) -> void:
+	#print("id_dr	agged =", is_dragged, " ; dragged_object =", dragged_object)
 	if is_dragged:
 		dragged_object.global_position = $Control.get_global_mouse_position() + offset

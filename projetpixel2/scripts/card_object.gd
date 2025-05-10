@@ -26,9 +26,9 @@ func _on_button_down() -> void:
 func release_card() -> void:
 	await get_tree().process_frame
 	$DragAndDrop2D.was_just_pressed = false
-	$DragAndDrop2D.drop()
 	$DragAndDrop2D.release()
 	is_dragged = false
+	$DragAndDrop2D.drop()
 
 func _input(event: InputEvent) -> void:
 	if not is_dragged:
