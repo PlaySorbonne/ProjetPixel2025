@@ -7,7 +7,7 @@ const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
 const TOWERS_OFFSET := Vector2(-10, 0)
 
 var in_combo := false
-var available_towers := 0
+var available_towers := 2
 var new_level_cards : Array[CardObject] = []
 var number_of_choosable_cards := 3
 
@@ -75,10 +75,11 @@ func update_combo_label() -> void:
 	combo_label.text = "Combo: " + str(RunData.current_combo)
 
 func add_available_tower() -> void:
-	print_debug("new tower!")
+	if available_towers == 0:
+		return
 	var tower_pos := GV.player_camera.project_position(
 		Vector2(50, 50) + TOWERS_OFFSET * available_towers, 50.0)
-	available_towers += 1
+	available_towers -= 1
 	var new_tower := TOWER_RES.instantiate()
 	new_tower.is_hologram = true
 	GV.world.add_child(new_tower)
@@ -99,3 +100,7 @@ func _on_combo_timer_timeout() -> void:
 func _on_button_spawn_tower_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	add_available_tower()
+	if available_towers == 0:
+		$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
+	else:
+		$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"

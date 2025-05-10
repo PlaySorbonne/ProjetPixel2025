@@ -72,12 +72,12 @@ mouse_filter = 2
 [node name="ButtonSpawnTower" type="Button" parent="hud_control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.946875
+anchor_left = 0.945833
 anchor_top = 0.847222
-anchor_right = 0.980208
+anchor_right = 0.9875
 anchor_bottom = 0.903704
 offset_top = -6.10352e-05
-text = "Tower"
+text = "Tower (2)"
 metadata/_edit_use_anchors_ = true
 
 [node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" instance=ExtResource("2_pfuso")]
