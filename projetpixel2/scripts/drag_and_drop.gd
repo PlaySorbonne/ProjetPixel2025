@@ -23,7 +23,7 @@ var is_pressed := false:
 			drag()
 			was_just_pressed = true
 			var timer : SceneTreeTimer = get_tree().create_timer(CLICK_MAX_TIME)
-			timer.connect("timeout", reset_just_pressed)
+			timer.timeout.connect(reset_just_pressed)
 		else:
 			if is_dragged and (not was_just_pressed):
 				drop()
