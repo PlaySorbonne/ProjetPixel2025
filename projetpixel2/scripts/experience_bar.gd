@@ -32,4 +32,5 @@ func set_experience_multiplier(mult : float, duration : float) -> void:
 
 func _on_timer_experience_mult_timeout() -> void:
 	RunData.experience_multiplier -= current_exp_multiplier
+	current_exp_multiplier = 0.0
 	self_modulate = Color.WHITE
