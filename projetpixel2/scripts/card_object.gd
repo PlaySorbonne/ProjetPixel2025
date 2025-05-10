@@ -16,8 +16,15 @@ var card : Card:
 		card = value
 		$Label.text = card.name
 		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
+		$TextureRect/Description.text = card.description
 var is_dragged := false
-var can_be_dropped_on_objects := false
+var can_be_dropped_on_objects := false:
+	set(value):
+		can_be_dropped_on_objects = value
+		if can_be_dropped_on_objects:
+			$TextureRect/Description.visible = false
+		else:
+			$TextureRect/Description.visible = true
 
 
 func _on_button_down() -> void:
