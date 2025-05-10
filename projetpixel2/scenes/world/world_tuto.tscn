@@ -8,6 +8,13 @@
 [node name="WorldTuto" type="CanvasLayer"]
 script = ExtResource("1_2ih4g")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 789.0
+offset_top = 498.0
+offset_right = 908.0
+offset_bottom = 521.0
+text = "azy faut cliquer"
+
 [node name="TextureRect1" type="TextureRect" parent="."]
 visible = false
 anchors_preset = 15

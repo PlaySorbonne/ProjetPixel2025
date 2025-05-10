@@ -115,7 +115,7 @@ func spawn_next_wave() -> void:
 	# FOR DEMO ONLY -> limit waves to 20 and spawn boss on last wave
 	if is_last_wave_spawned:
 		return
-	if current_wave_id == 2:
+	if current_wave_id == 20:
 		is_last_wave_spawned = true
 		var boss := preload("res://scenes/world/enemies/mobs/demo_boss.tscn").instantiate()
 		GV.spawners[1].spawn_wave([boss])
