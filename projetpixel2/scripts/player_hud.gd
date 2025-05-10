@@ -25,6 +25,12 @@ func _ready() -> void:
 	RunData.connect("level_gained", gain_level)
 	update_level()
 
+func clear_card_description() -> void:
+	$LabelCardDescription.text = ""
+
+func update_card_description(new_text := "") -> void:
+	$LabelCardDescription.text = new_text
+
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
 

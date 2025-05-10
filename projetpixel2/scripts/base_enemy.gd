@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 	if current_state == States.Moving:
 		if can_move:
 			mesh_animations.play("sprint")
-			velocity = position.direction_to(target.position) * movement_speed
+			velocity = position.direction_to(target.position) * movement_speed * 1.5
 			mesh.look_at(target.position)
 			move_and_slide() 
 	if len(overlapping_enemies) > 0:

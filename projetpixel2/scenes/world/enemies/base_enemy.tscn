@@ -16,6 +16,7 @@ height = 1.0
 collision_layer = 3
 script = ExtResource("1_ey0w8")
 health = 101
+movement_speed = 1.0
 experience_points = 20
 
 [node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
@@ -47,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44608, 0)
 shape = SubResource("CapsuleShape3D_ey0w8")
 
 [node name="DamageableObject" parent="." instance=ExtResource("3_sxqs1")]
+max_health = 101
 health = 50
 
 [node name="DamageArea" type="Area3D" parent="."]

@@ -8,7 +8,7 @@ albedo_color = Color(0.65, 0, 0, 1)
 
 [node name="Tank" instance=ExtResource("1_6o34r")]
 health = 1000
-movement_speed = 1.0
+movement_speed = 0.7
 damage_amount = 70
 attack_speed = 0.25
 experience_points = 150

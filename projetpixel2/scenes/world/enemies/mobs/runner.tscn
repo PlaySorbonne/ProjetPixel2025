@@ -8,7 +8,7 @@ albedo_color = Color(0.691715, 0.415165, 0.0834946, 1)
 
 [node name="Runner" instance=ExtResource("1_bwjc1")]
 health = 60
-movement_speed = 2.0
+movement_speed = 1.5
 damage_amount = 1
 attack_speed = 2.0
 experience_points = 15

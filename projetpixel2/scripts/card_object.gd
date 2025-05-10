@@ -45,10 +45,12 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	is_dragged = true
 	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	GV.hud.update_card_description(card.description)
 
 func _on_drag_and_drop_2d_dropped() -> void:
 	is_dragged = false
 	GV.is_dragging_object = false
+	GV.hud.clear_card_description()
 	$TextureRect.modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
 		mouse_filter = Control.MOUSE_FILTER_PASS
