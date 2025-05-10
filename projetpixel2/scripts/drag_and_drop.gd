@@ -15,7 +15,7 @@ var is_dragged := false
 var was_just_pressed := false
 var is_pressed := false:
 	set(value):
-		print("set pressed to", value)
+		#print("set pressed to ", value)
 		is_pressed = value
 		if is_pressed:
 			if is_dragged:
