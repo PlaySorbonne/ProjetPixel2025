@@ -5,37 +5,37 @@ class_name DamageableObject
 signal hit(damage_amount : int, new_health : int, damage_type : DamagingTypes)
 signal death
 
-enum DamagableTypes {Neutral, Energy, Structure}
+enum DamageableTypes {Neutral, Energy, Structure}
 enum DamagingTypes {Neutral, TrueDamage, Energy, Fire}
 
 const K : int = 500     # used in the defense equation -> the smaller K is, the faster defense increases
 
 static var damage_table : Dictionary = {
 	DamagingTypes.Neutral : {
-		DamagableTypes.Neutral : 1.0,
-		DamagableTypes.Energy : 0.8,
-		DamagableTypes.Structure : 1.0,
+		DamageableTypes.Neutral : 1.0,
+		DamageableTypes.Energy : 0.8,
+		DamageableTypes.Structure : 1.0,
 	},
 	DamagingTypes.TrueDamage : {
-		DamagableTypes.Neutral : 1.0,
-		DamagableTypes.Energy : 1.0,
-		DamagableTypes.Structure : 1.0,
+		DamageableTypes.Neutral : 1.0,
+		DamageableTypes.Energy : 1.0,
+		DamageableTypes.Structure : 1.0,
 	},
 	DamagingTypes.Energy : {
-		DamagableTypes.Neutral : 1.0,
-		DamagableTypes.Energy : 0.5,
-		DamagableTypes.Structure : 1.5,
+		DamageableTypes.Neutral : 1.0,
+		DamageableTypes.Energy : 0.5,
+		DamageableTypes.Structure : 1.5,
 	},
 	DamagingTypes.Fire : {
-		DamagableTypes.Neutral : 1.0,
-		DamagableTypes.Energy : 1.5,
-		DamagableTypes.Structure : 0.75,
+		DamageableTypes.Neutral : 1.0,
+		DamageableTypes.Energy : 1.5,
+		DamageableTypes.Structure : 0.75,
 	},
 }
 
 @export var max_health : int = 100
 @export var health : int = max_health
-@export var type := DamagableTypes.Neutral
+@export var type := DamageableTypes.Neutral
 @export var defense := 1.0
 @export var damage_threshold := 0
 @export var element_resistances : Dictionary[DamagingTypes, float] = {
@@ -45,7 +45,7 @@ static var damage_table : Dictionary = {
 	DamagingTypes.Fire : 0.0
 }
 
-static func compute_type_coeff(damaging_type : DamagingTypes, damaged_type : DamagableTypes,
+static func compute_type_coeff(damaging_type : DamagingTypes, damaged_type : DamageableTypes,
 			resistances : Dictionary[DamagingTypes, float]) -> float:
 	return damage_table[damaging_type][damaged_type] * (1-resistances[damaging_type])
 
