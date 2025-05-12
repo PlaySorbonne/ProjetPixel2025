@@ -88,13 +88,13 @@ func get_focused_enemies() -> Array[Node3D]:
 
 func get_spaceship_closest_enemy() -> BaseEnemy:
 	var nb_focused_enemies := len(get_focused_enemies())
-	print("nb_focused_enemies = " + str(nb_focused_enemies))
+	#print("nb_focused_enemies = " + str(nb_focused_enemies))
 	if nb_focused_enemies == 0:
 		return null
 	var closest_enemy : BaseEnemy = get_focused_enemies()[0]
 	var min_dist : float = GV.space_ship.global_position.distance_squared_to(
 							closest_enemy.global_position)
-	print("\tinit min_dist = ", min_dist)
+	#print("\tinit min_dist = ", min_dist)
 	for i : int in range(1, nb_focused_enemies):
 		var enemy : BaseEnemy = get_focused_enemies()[i]
 		if not is_instance_valid(enemy):
@@ -102,7 +102,7 @@ func get_spaceship_closest_enemy() -> BaseEnemy:
 			return null
 		var dist := GV.space_ship.global_position.distance_squared_to(enemy.global_position)
 		if dist < min_dist:
-			print("\tmin_dist = ", dist)
+			#print("\tmin_dist = ", dist)
 			enemy = closest_enemy
 			min_dist = dist
 	return closest_enemy
@@ -184,3 +184,11 @@ func _on_drag_and_drop_dropped() -> void:
 	# tower is a hologram
 	$CollisionShape3D.disabled = false
 	spawn_from_hologram()
+
+func _on_clickable_object_object_hovered() -> void:
+	pass
+#	print("hello")
+
+func _on_clickable_object_object_unhovered() -> void:
+	pass
+#	print("goodbye")

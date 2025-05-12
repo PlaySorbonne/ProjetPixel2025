@@ -1,15 +1,23 @@
 extends ColorRect
 class_name InfoPopup
 
-const INFO_POPUP := preload("res://scenes/interface/gameplay_hud/info_popup.tscn")
+const INFO_POPUP := preload("res://scenes/interface/gameplay_hud/info_popups/info_popup.tscn")
 
-static var popups : Dictionary[Node,InfoPopup] = {}
+static var popups : Dictionary[Node, InfoPopup] = {}
 
 static func reset_popups() -> void:
 	popups.clear()
 
 static func add_popup(obj : Node) -> void:
 	var popup : InfoPopup
+	print("obj.get_class() = " + str(obj.get_class()))
+	print("obj is Tower = " + str(obj is TowerBase))
+	if obj is TowerBase:
+		print("create tower popup")
+	elif obj is Spaceship:
+		print("create spaceship popup")
+	elif obj is BaseEnemy:
+		print("create enemy popup")
 	if obj in popups.keys():
 		popup = popups[obj]
 	else:

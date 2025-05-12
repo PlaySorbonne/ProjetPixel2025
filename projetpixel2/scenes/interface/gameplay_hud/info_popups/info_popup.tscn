@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://7rm78j5yaeo2"]
 
-[ext_resource type="Script" uid="uid://6yewfw0tuxpr" path="res://scripts/info_popup.gd" id="1_5hilq"]
-[ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="2_w4ov4"]
+[ext_resource type="Script" uid="uid://6yewfw0tuxpr" path="res://scripts/info_popup.gd" id="1_tkdbl"]
+[ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="2_wvwaa"]
 
 [node name="InfoPopup" type="ColorRect"]
 offset_right = 246.0
 offset_bottom = 149.0
 color = Color(0.194349, 0.194349, 0.194349, 1)
-script = ExtResource("1_5hilq")
+script = ExtResource("1_tkdbl")
 
 [node name="CloseButton" type="Button" parent="."]
 z_index = 1
@@ -39,7 +39,7 @@ grow_vertical = 0
 text = "description description description"
 autowrap_mode = 2
 
-[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_w4ov4")]
+[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_wvwaa")]
 dragged_object = NodePath("..")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
