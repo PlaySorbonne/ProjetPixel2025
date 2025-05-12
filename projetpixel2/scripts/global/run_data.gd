@@ -70,6 +70,7 @@ func new_kill(enemy_type : String, is_alpha : bool) -> void:
 		alpha_kills[enemy_type] += 1
 
 func reset_run_data() -> void:
+	Engine.time_scale = 1.0
 	# experience
 	experience_needed_equation = default_levelling_expression()
 	current_level = 1
