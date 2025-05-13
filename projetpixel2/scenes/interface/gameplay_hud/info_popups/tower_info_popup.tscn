@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4qqkqs2ba0ta"]
+
+[ext_resource type="PackedScene" uid="uid://7rm78j5yaeo2" path="res://scenes/interface/gameplay_hud/info_popups/info_popup.tscn" id="1_4vond"]
+[ext_resource type="Script" uid="uid://b8us0cbhgbx64" path="res://scripts/tower_info_popup.gd" id="2_a3dv5"]
+
+[node name="TowerInfoPopup" instance=ExtResource("1_4vond")]
+script = ExtResource("2_a3dv5")

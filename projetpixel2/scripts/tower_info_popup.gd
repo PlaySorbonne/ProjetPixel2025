@@ -1,0 +1,2 @@
+extends InfoPopup
+class_name TowerInfoPopup

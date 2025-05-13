@@ -31,12 +31,10 @@ static func add_popup(obj : Node) -> void:
 
 var object : Node
 var object_name : String
-var object_description : String
 
 
 func _ready() -> void:
 	$LabelTitle.text = object_name
-	$LabelDescription.text = object_description
 	popups[object] = self
 
 func _on_close_button_pressed() -> void:
