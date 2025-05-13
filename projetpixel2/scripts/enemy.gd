@@ -25,8 +25,7 @@ enum EnemyTypes {
 @export var attack_speed : float = 0.5
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
 @export var experience_points := 8
-#@export var resource drop := 1
+@export var resource_drop := 1
 @export var spawn_probability := 0.5
 @export var min_wave := -1
 @export var max_wave := -1
-@export var possible_pairings : Array[String] = []
