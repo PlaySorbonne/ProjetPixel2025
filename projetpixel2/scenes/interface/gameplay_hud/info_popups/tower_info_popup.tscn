@@ -4,4 +4,31 @@
 [ext_resource type="Script" uid="uid://b8us0cbhgbx64" path="res://scripts/tower_info_popup.gd" id="2_a3dv5"]
 
 [node name="TowerInfoPopup" instance=ExtResource("1_4vond")]
+offset_right = 276.0
+offset_bottom = 169.0
 script = ExtResource("2_a3dv5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.630872
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0"]
+layout_mode = 2
+
+[node name="LabelCard1" type="Label" parent="ScrollContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Speed Up"
+
+[node name="LabelCard2" type="Label" parent="ScrollContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "Firestorm"
+
+[node name="LabelCard3" type="Label" parent="ScrollContainer/VBoxContainer" index="2"]
+layout_mode = 2
+text = "Speed Up"

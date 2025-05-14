@@ -11,11 +11,15 @@ script = ExtResource("1_tkdbl")
 
 [node name="CloseButton" type="Button" parent="."]
 z_index = 1
-layout_mode = 0
-offset_left = 230.0
-offset_top = -4.0
-offset_right = 248.0
-offset_bottom = 27.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 7.0
+offset_bottom = 20.0
+grow_horizontal = 0
 text = "X"
 
 [node name="LabelTitle" type="Label" parent="."]
@@ -26,6 +30,16 @@ anchor_bottom = 0.154
 offset_bottom = 0.053997
 grow_horizontal = 2
 text = "title"
+
+[node name="LabelDescription" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.201342
+anchor_right = 1.0
+anchor_bottom = 0.583893
+grow_horizontal = 2
+text = "description"
+metadata/_edit_use_anchors_ = true
 
 [node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_wvwaa")]
 dragged_object = NodePath("..")
