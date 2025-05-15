@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dn0avg3apfnil" path="res://scripts/player_spaceship_info_popup.gd" id="2_2wber"]
 
 [node name="SpaceshipInfoPopup" instance=ExtResource("1_f8hjk")]
-offset_right = 463.0
+offset_right = 323.0
 offset_bottom = 278.0
 script = ExtResource("2_2wber")
 
@@ -15,5 +15,26 @@ text = "Voyager One"
 
 [node name="LabelDescription" parent="." index="2"]
 anchor_top = 0.107914
-anchor_bottom = 0.413669
+anchor_bottom = 0.489209
 text = "A probe spaceship used by the Galactic Confederation to do star wars shit idc."
+
+[node name="LabelShields" type="Label" parent="." index="4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.809353
+anchor_right = 0.455108
+anchor_bottom = 1.0
+grow_vertical = 0
+text = "Shields:"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelHealth" type="Label" parent="." index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541796
+anchor_top = 0.802158
+anchor_right = 0.996904
+anchor_bottom = 0.992806
+grow_vertical = 0
+text = "Health:"
+metadata/_edit_use_anchors_ = true

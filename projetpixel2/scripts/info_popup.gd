@@ -2,13 +2,6 @@ extends ColorRect
 class_name InfoPopup
 
 
-enum PopupTypes {
-	Default,
-	TowerPopup,
-	SpaceshipPopup,
-	EnemyPopup
-}
-
 static var popups : Dictionary[Node, InfoPopup] = {}
 
 static func reset_popups() -> void:
@@ -31,8 +24,7 @@ static func add_popup(obj : Node) -> void:
 		elif obj is Spaceship:
 			popup = SpaceshipInfoPopup.popup_res.instantiate()
 		elif obj is BaseEnemy:
-			pass
-			#popup = INFO_POPUP[PopupTypes.EnemyPopup].instantiate()
+			popup = EnemyInfoPopup.popup_res.instantiate()
 		else:
 			print_debug('want to create popup for unknown object: ' + str(obj.get_class()))
 			return
@@ -43,13 +35,7 @@ static func add_popup(obj : Node) -> void:
 
 
 var object : Node
-var object_name : String
-var object_description : String
 
-
-func _ready() -> void:
-	$LabelTitle.text = object_name
-	$LabelDescription.text = object_description
 
 func _on_close_button_pressed() -> void:
 	popups.erase(object)

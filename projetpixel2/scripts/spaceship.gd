@@ -42,7 +42,7 @@ func stop_all_towers() -> void:
 	for tower : TowerBase in GV.towers:
 		tower.set_tower_enable(false)
 
-func _on_shield_health_hit(damage_amount: int, new_health: int) -> void:
+func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
 	hit.emit()
@@ -52,7 +52,7 @@ func _on_shield_health_death() -> void:
 	$ShieldShader.visible = false
 	damageable = $ShipHealth
 
-func _on_ship_health_hit(damage_amount: int, new_health: int) -> void:
+func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	hit.emit()
 

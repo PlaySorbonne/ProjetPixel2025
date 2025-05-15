@@ -46,11 +46,13 @@ shape = SubResource("BoxShape3D_aer3i")
 [node name="ShipHealth" type="Node" parent="."]
 script = ExtResource("4_h40o1")
 max_health = 400
+health = 400
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
 [node name="ShieldHealth" type="Node" parent="."]
 script = ExtResource("4_h40o1")
 max_health = 250
+health = 250
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
