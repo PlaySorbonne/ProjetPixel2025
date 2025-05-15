@@ -1,5 +1,5 @@
 extends ColorRect
-class_name InfoPopupBase
+class_name InfoPopup
 
 
 enum PopupTypes {
@@ -9,46 +9,36 @@ enum PopupTypes {
 	EnemyPopup
 }
 
-
-const INFO_POPUP : Dictionary[PopupTypes, PackedScene]= {
-	PopupTypes.Default : preload("res://scenes/interface/gameplay_hud/info_popups/info_popup.tscn"),
-	PopupTypes.TowerPopup : preload("res://scenes/interface/gameplay_hud/info_popups/tower_info_popup.tscn"),
-#	PopupTypes.SpaceshipPopup : preload("res://scenes/interface/gameplay_hud/info_popups/spaceship_info_popup.tscn"),
-#	PopupTypes.EnemyPopup : preload("res://scenes/interface/gameplay_hud/info_popups/enemy_info_popup.tscn")
-}
-
-static var popups : Dictionary[Node, InfoPopupBase] = {}
+static var popups : Dictionary[Node, InfoPopup] = {}
 
 static func reset_popups() -> void:
 	popups.clear()
 
 static func remove_all_popups() -> void:
-	for popup : InfoPopupBase in popups.values():
+	for popup : InfoPopup in popups.values():
 		popup.close_popup()
 	reset_popups()
 
 static func add_popup(obj : Node) -> void:
-	print_debug("PROBLEM WITH PARSING POPUP CLASS WITH ENEMY AND SPACESHIP POPUPS")
-	var popup : InfoPopupBase
+	var popup : InfoPopup
 	if obj in popups.keys():
 		popup = popups[obj]
 	else:
 		if obj is TowerBase:
-			popup = INFO_POPUP[PopupTypes.TowerPopup].instantiate()
+			popup = TowerInfoPopup.popup_res.instantiate()
 			var tower_popup : TowerInfoPopup = popup
 			tower_popup.tower = obj
 		elif obj is Spaceship:
-			pass
-			#popup = INFO_POPUP[PopupTypes.SpaceshipPopup].instantiate()
+			popup = SpaceshipInfoPopup.popup_res.instantiate()
 		elif obj is BaseEnemy:
 			pass
 			#popup = INFO_POPUP[PopupTypes.EnemyPopup].instantiate()
 		else:
-			print('obj type is unknown: ' + str(obj.get_class()))
-			popup = INFO_POPUP[PopupTypes.Default].instantiate()
+			print_debug('want to create popup for unknown object: ' + str(obj.get_class()))
+			return
 		popup.object = obj
-		GV.hud.add_child(popup)
 		popups[obj] = popup
+		GV.hud.add_child(popup)
 	popup.position = popup.get_global_mouse_position() + Vector2(100, -50)
 
 
@@ -60,7 +50,6 @@ var object_description : String
 func _ready() -> void:
 	$LabelTitle.text = object_name
 	$LabelDescription.text = object_description
-	popups[object] = self
 
 func _on_close_button_pressed() -> void:
 	popups.erase(object)

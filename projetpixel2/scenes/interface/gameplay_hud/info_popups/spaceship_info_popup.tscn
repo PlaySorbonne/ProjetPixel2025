@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctrefsdmo8jyr"]
+
+[ext_resource type="PackedScene" uid="uid://7rm78j5yaeo2" path="res://scenes/interface/gameplay_hud/info_popups/info_popup.tscn" id="1_f8hjk"]
+[ext_resource type="Script" uid="uid://dn0avg3apfnil" path="res://scripts/player_spaceship_info_popup.gd" id="2_2wber"]
+
+[node name="SpaceshipInfoPopup" instance=ExtResource("1_f8hjk")]
+offset_right = 463.0
+offset_bottom = 278.0
+script = ExtResource("2_2wber")
+
+[node name="LabelTitle" parent="." index="1"]
+anchor_bottom = 0.097
+offset_bottom = 0.0339985
+text = "Voyager One"
+
+[node name="LabelDescription" parent="." index="2"]
+anchor_top = 0.107914
+anchor_bottom = 0.413669
+text = "A probe spaceship used by the Galactic Confederation to do star wars shit idc."

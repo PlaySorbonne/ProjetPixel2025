@@ -2,7 +2,7 @@ extends Node3D
 class_name World
 
 func _ready() -> void:
-	InfoPopupBase.reset_popups()
+	InfoPopup.reset_popups()
 	RunData.reset_run_data()
 	GV.world = self
 	

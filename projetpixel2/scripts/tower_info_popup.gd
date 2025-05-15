@@ -1,8 +1,10 @@
-extends InfoPopupBase
+extends InfoPopup
 class_name TowerInfoPopup
 
 
 const CARD_INFOS := preload("res://scenes/interface/gameplay_hud/info_popups/card_infos.tscn")
+
+static var popup_res := load("res://scenes/interface/gameplay_hud/info_popups/tower_info_popup.tscn")
 
 
 var tower : TowerBase
