@@ -11,6 +11,8 @@ func _ready() -> void:
 	enemy_obj = object
 	enemy_obj.enemy_hit.connect(update_enemy_health_infos)
 	update_enemy_health_infos()
+	$LabelTitle.text = enemy_obj.enemy_data.enemy_type
+	$LabelDescription.text = enemy_obj.enemy_data.description
 
 func update_enemy_health_infos() -> void:
 	$LabelHealth.text = "Health:\n     " + str(enemy_obj.get_health()
