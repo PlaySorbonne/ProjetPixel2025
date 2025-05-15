@@ -4,6 +4,7 @@ class_name BaseEnemy
 enum States {Moving, Attacking, Dead}
 
 signal enemy_killed
+signal enemy_hit
 signal status_inflicted(status_type : StatusBase.StatusEffects)
 
 static var number_of_enemies := 0
@@ -40,6 +41,9 @@ func _ready() -> void:
 	damageable.health = health
 	set_enemy_id()
 	#print("enemy " + str(enemy_id) + " spawned!")
+
+func get_health() -> int:
+	return $DamageableObject.health
 
 func set_enemy_id() -> void:
 	enemy_id = number_of_enemies
@@ -93,3 +97,6 @@ func _on_damage_area_body_entered(body: Node3D) -> void:
 
 func _on_damage_area_body_exited(body: Node3D) -> void:
 	overlapping_enemies.erase(body)
+
+func _on_damageable_object_hit(damage_amount: int, new_health: int, damage_type: DamageableObject.DamagingTypes) -> void:
+	enemy_hit.emit()

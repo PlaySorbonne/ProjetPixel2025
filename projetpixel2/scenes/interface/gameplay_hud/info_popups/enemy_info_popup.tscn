@@ -5,3 +5,16 @@
 
 [node name="EnemyInfoPopup" instance=ExtResource("1_tyhxg")]
 script = ExtResource("2_4eg42")
+
+[node name="LabelHealth" type="Label" parent="." index="3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.644295
+anchor_right = 0.548781
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Health: 
+     1000/10000"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true

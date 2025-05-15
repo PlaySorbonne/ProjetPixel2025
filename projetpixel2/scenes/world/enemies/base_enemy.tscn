@@ -62,6 +62,7 @@ shape = SubResource("BoxShape3D_sxqs1")
 custom_nodes = [NodePath("../figurine-cube/figurine-cube/root/leg-left"), NodePath("../figurine-cube/figurine-cube/root/leg-right"), NodePath("../figurine-cube/figurine-cube/root/torso"), NodePath("../figurine-cube/figurine-cube/root/torso/arm-left"), NodePath("../figurine-cube/figurine-cube/root/torso/arm-right"), NodePath("../figurine-cube/figurine-cube/root/torso/head")]
 
 [connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
+[connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
 [connection signal="timeout" from="TimerAttacking" to="." method="_on_timer_attacking_timeout"]
