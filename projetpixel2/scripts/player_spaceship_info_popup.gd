@@ -10,7 +10,6 @@ func _ready() -> void:
 	update_ship_health_infos()
 
 func update_ship_health_infos() -> void:
-	print("UPDATE THINGY UI")
 	$LabelHealth.text = "Health:\n     " + str(GV.space_ship.get_health()
 											) + "/" + str(GV.space_ship.max_health)
 	$LabelShields.text = "Shields:\n     " + str(GV.space_ship.get_shields()
