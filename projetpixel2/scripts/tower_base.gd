@@ -5,6 +5,7 @@ class_name TowerBase
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 
+signal tower_card_added(card: Card)
 signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
 signal tower_switched_mode(projectile : ProjectileBase, enemy : BaseEnemy)
 signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
@@ -14,6 +15,7 @@ signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
 signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 
 @export var tower_name := "TowerBase"
+@export_multiline var tower_description := "Most standardized galactic exploration tower drone model. Capable of shooting balistic projectiles and collecting minerals from the ground."
 @export var is_hologram := false
 @export var cards : Array[Card] = []
 @export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
@@ -48,6 +50,7 @@ func add_card(card_obj: CardObject) -> void:
 	var card : Card = card_obj.card
 	card.card_code.tower = self
 	cards.append(card)
+	tower_card_added.emit(card)
 	if card.trigger_signal != "":
 		# connect signal specified in the card to corresponding tower 
 		# signal, to execution of card effect

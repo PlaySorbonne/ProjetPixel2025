@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dl7c2fgghl20k"]
+
+[ext_resource type="Script" uid="uid://dceruh1afv3mg" path="res://scripts/card_infos.gd" id="1_lx5qb"]
+
+[node name="CardInfos" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lx5qb")
+
+[node name="LabelName" type="Label" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Name"
+
+[node name="LabelEffect" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "effect description"
+autowrap_mode = 2

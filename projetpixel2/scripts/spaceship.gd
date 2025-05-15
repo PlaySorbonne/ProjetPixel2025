@@ -1,8 +1,11 @@
 extends Node3D
 class_name Spaceship
 
-var shields := 500.0
-var health := 100.0
+
+signal hit
+
+var max_shields := 250
+var max_health := 400
 var has_shields := true
 var alive := true
 
@@ -21,6 +24,12 @@ func _process(_delta: float) -> void:
 	if _update_shield_shaders_color:
 		shield_shaders.mesh.material.set_shader_parameter("color1", _shield_shader_color)
 
+func get_health() -> int:
+	return $ShipHealth.health
+
+func get_shields() -> int:
+	return $ShieldHealth.health
+
 func shield_damage_animation() -> void:
 	_update_shield_shaders_color = true
 	var t := create_tween().set_ease(Tween.EASE_OUT)
@@ -36,6 +45,7 @@ func stop_all_towers() -> void:
 func _on_shield_health_hit(damage_amount: int, new_health: int) -> void:
 	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
+	hit.emit()
 
 func _on_shield_health_death() -> void:
 	$CollisionShip.disabled = true
@@ -44,7 +54,7 @@ func _on_shield_health_death() -> void:
 
 func _on_ship_health_hit(damage_amount: int, new_health: int) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
-	pass
+	hit.emit()
 
 func death() -> void:
 	if not alive:
