@@ -1,13 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=14 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
+[ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_1yooq"]
 [ext_resource type="PackedScene" uid="uid://b5gr3yymlr5t3" path="res://scenes/world/levels/environments/environment_test.tscn" id="7_bq33v"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://b8jfaq1p25y4p" path="res://scenes/gameplay_systems/wave_manager.tscn" id="10_gb53w"]
 [ext_resource type="PackedScene" uid="uid://chhjuwxnir6c8" path="res://scenes/interface/gameplay_hud/player_hud.tscn" id="12_dlabj"]
+
+[sub_resource type="Resource" id="Resource_gb53w"]
+script = ExtResource("6_1yooq")
+speed = 1.0
+damage = 50
+size = 1.0
+pierce = false
+damage_type = 0
+critical_hit_chance = 0.01
+critical_hit_intensity = 10.0
+metadata/_custom_type_script = "uid://75ev58yopohy"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bq33v"]
 sky_top_color = Color(0.631616, 0.693409, 0.779542, 1)
@@ -57,6 +69,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
 
 [node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39019, 0.523706, 0.600005)
+tower_name = null
+projectile_template = SubResource("Resource_gb53w")
 
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
 

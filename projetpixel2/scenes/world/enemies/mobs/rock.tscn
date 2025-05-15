@@ -36,6 +36,5 @@ material_override = SubResource("StandardMaterial3D_6o34r")
 material_override = SubResource("StandardMaterial3D_6o34r")
 
 [connection signal="status_inflicted" from="." to="." method="_on_status_inflicted"]
-[connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
 
 [editable path="figurine-cube"]

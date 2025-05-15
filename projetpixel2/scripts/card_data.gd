@@ -1,5 +1,5 @@
 extends Resource
-class_name Card
+class_name CardData
 
 
 const CARDS_FILE_PATH := "res://game_design/card_data.csv"
@@ -7,8 +7,8 @@ const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
 enum CardFamilies {Military, Scientists, Traders, Revolution}
 
-static var cards_data : Dictionary[String, Card] = {}
-static var current_deck : Array[Card] = []
+static var cards_data : Dictionary[String, CardData] = {}
+static var current_deck : Array[CardData] = []
 
 var name := "blank_card"
 var description := "blank description"
@@ -38,20 +38,20 @@ static func load_cards_data() -> void:
 	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
 	card_file.get_csv_line() # remove the top line, which is just titles
 	while not card_file.eof_reached():
-		var new_card := Card.new()
+		var new_card := CardData.new()
 		new_card.parse_from_csv(card_file.get_csv_line())
 		cards_data[new_card.name] = new_card
 	card_file.close()
 	print("parse complete, dictionary:")
 	for k : String in cards_data.keys():
 		print("\n" + k + " : " + cards_data[k].card_to_string())
-	for card : Card in cards_data.values():
+	for card : CardData in cards_data.values():
 		current_deck.append(card)
 
-static func draw_first_deck_dard() -> Card:
+static func draw_first_deck_dard() -> CardData:
 	return current_deck.pop_front()
 
-static func get_random_card() -> Card:
+static func get_random_card() -> CardData:
 	return current_deck.pick_random()
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:

@@ -2,7 +2,7 @@ extends HBoxContainer
 class_name CardInfos
 
 
-var card : Card:
+var card : CardData:
 	set(new_val):
 		card = new_val
 		if is_inside_tree():

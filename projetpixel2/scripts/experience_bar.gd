@@ -5,17 +5,17 @@ class_name ExperienceBar
 var current_exp_multiplier := 0.0
 
 
-func drop_card(card : Card) -> void:
-	var rarity_multiplier : float = Card.rarity_to_multiplier(card.rarity)
+func drop_card(card : CardData) -> void:
+	var rarity_multiplier : float = CardData.rarity_to_multiplier(card.rarity)
 	match card.family:
-		Card.CardFamilies.Military:
+		CardData.CardFamilies.Military:
 			RunData.gain_experience(
 					RunData.level_experience_threshold / 5.0 * rarity_multiplier)
-		Card.CardFamilies.Scientists:
+		CardData.CardFamilies.Scientists:
 			set_experience_multiplier(0.5 + rarity_multiplier/2.0, 30.0)
-		Card.CardFamilies.Traders:
+		CardData.CardFamilies.Traders:
 			RunData.current_combo += int(100 * rarity_multiplier)
-		Card.CardFamilies.Revolution:
+		CardData.CardFamilies.Revolution:
 			RunData.current_experience = 0
 
 func set_experience_multiplier(mult : float, duration : float) -> void:

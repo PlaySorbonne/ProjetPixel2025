@@ -6,7 +6,7 @@ func _ready() -> void:
 	RunData.reset_run_data()
 	GV.world = self
 	
-	Card.load_cards_data()
+	CardData.load_cards_data()
 
 
 func _process(delta: float) -> void:

@@ -5,13 +5,13 @@ class_name CardObject
 signal card_clicked
 
 const FAMILY_COLORS := {
-	Card.CardFamilies.Military : Color.RED,
-	Card.CardFamilies.Scientists : Color.SKY_BLUE,
-	Card.CardFamilies.Traders : Color.YELLOW,
-	Card.CardFamilies.Revolution : Color.WHITE,
+	CardData.CardFamilies.Military : Color.RED,
+	CardData.CardFamilies.Scientists : Color.SKY_BLUE,
+	CardData.CardFamilies.Traders : Color.YELLOW,
+	CardData.CardFamilies.Revolution : Color.WHITE,
 }
 
-var card : Card:
+var card : CardData:
 	set(value):	
 		card = value
 		$Label.text = card.name

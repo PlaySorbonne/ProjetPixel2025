@@ -44,7 +44,7 @@ func gain_level() -> void:
 			$NewCardsContainer.add_child(new_card)
 			new_card.card_clicked.connect(on_card_level_clicked.bind(new_card))
 			new_level_cards.append(new_card)
-			new_card.card = Card.get_random_card()
+			new_card.card = CardData.get_random_card()
 
 func on_card_level_clicked(chosen_card : CardObject) -> void:
 	Engine.time_scale = 1.0

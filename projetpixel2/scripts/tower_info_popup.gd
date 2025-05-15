@@ -15,10 +15,10 @@ func _ready() -> void:
 	$LabelTitle.text = tower.tower_name
 	$LabelDescription.text = tower.tower_description
 	tower.tower_card_added.connect(add_card_infos)
-	for card : Card in tower.cards:
+	for card : CardData in tower.cards:
 		add_card_infos(card)
 
-func add_card_infos(new_card : Card) -> void:
+func add_card_infos(new_card : CardData) -> void:
 	var card_infos := CARD_INFOS.instantiate()
 	card_infos.card = new_card
 	cards_container.add_child(card_infos)

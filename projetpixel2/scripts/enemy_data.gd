@@ -1,5 +1,5 @@
 extends Resource
-class_name Enemy
+class_name EnemyData
 
 
 enum EnemyTypes {
