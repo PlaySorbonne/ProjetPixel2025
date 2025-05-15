@@ -1,17 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://doji36oev5mki"]
+[gd_scene load_steps=5 format=3 uid="uid://doji36oev5mki"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_8im5f"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_2lx4o"]
+
+[sub_resource type="Resource" id="Resource_3bgd8"]
+resource_local_to_scene = true
+script = ExtResource("2_2lx4o")
+enemy_type = "FireproofRunner"
+description = "A small runner immune to fire, spawned by the Golem when burned."
+mob_type = 0
+is_alpha = false
+difficulty = 0.7
+hitpoints = 40
+speed = 1.5
+defense = 0.7
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 2
+attack_speed = 2.5
+attack_type = 3
+experience_points = 30
+resource_drop = 1
+spawn_probability = 0.75
+min_wave = 10
+max_wave = 50
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwjc1"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="FireproofRunner" instance=ExtResource("1_8im5f")]
-health = 10
-movement_speed = 1.7
-damage_amount = 1
-attack_speed = 2.0
-experience_points = 15
+enemy_data = SubResource("Resource_3bgd8")
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)

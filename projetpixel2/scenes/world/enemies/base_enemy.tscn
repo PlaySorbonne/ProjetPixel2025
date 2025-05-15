@@ -1,10 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6wednpvk2t26"]
+[gd_scene load_steps=10 format=3 uid="uid://c6wednpvk2t26"]
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
 [ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_v2fdl"]
 [ext_resource type="Material" uid="uid://dnfscyqu0co3x" path="res://resources/materials/default_enemy_material.tres" id="3_j3mfv"]
 [ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/damagable.tscn" id="3_sxqs1"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="4_stxmo"]
+
+[sub_resource type="Resource" id="Resource_sfjnn"]
+resource_local_to_scene = true
+script = ExtResource("2_v2fdl")
+enemy_type = "EnemyBase"
+description = "Most basic enemy. The first one we discovered in this part of the universe."
+mob_type = 0
+is_alpha = false
+difficulty = 1.0
+hitpoints = 100
+speed = 1.0
+defense = 1.0
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 10
+attack_speed = 0.5
+attack_type = 0
+experience_points = 20
+resource_drop = 1
+spawn_probability = 0.5
+min_wave = -1
+max_wave = -1
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0w8"]
 radius = 0.25
@@ -15,9 +40,7 @@ height = 1.0
 [node name="BaseEnemy" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_ey0w8")
-health = 101
-movement_speed = 1.0
-experience_points = 20
+enemy_data = SubResource("Resource_sfjnn")
 
 [node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

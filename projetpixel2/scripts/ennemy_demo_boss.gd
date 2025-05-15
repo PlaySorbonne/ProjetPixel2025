@@ -12,9 +12,9 @@ func death() -> void:
 		super.death()
 		return
 	elif lives == 1:
-		health = 4000
-	$DamageableObject.max_health = health
-	$DamageableObject.health = health
+		enemy_data.health = 4000
+	$DamageableObject.max_health = enemy_data.health
+	$DamageableObject.health = enemy_data.health
 	var rooted := StatusRooted.new()
 	rooted.inflict_status(self)
 	$DamageableObject.defense = 100.0
@@ -28,8 +28,7 @@ func _on_timer_minion_timeout() -> void:
 	minion.global_position = global_position
 
 func _on_damageable_object_hit(damage_amount: int, new_health: int, damage_type: DamageableObject.DamagingTypes) -> void:
-	$Label3D.text = str(new_health) + " / " + str(health)
-
+	$Label3D.text = str(enemy_data.health) + " / " + str(enemy_data.health)
 
 func _on_timer_defense_timeout() -> void:
 	$DamageableObject.defense = 1.0

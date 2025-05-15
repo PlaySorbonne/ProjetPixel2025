@@ -11,7 +11,7 @@ enum EnemyTypes {
 
 
 @export var enemy_type : String = "EnemyBase"
-@export var description := ""
+@export_multiline var description := ""
 @export var mob_type : EnemyTypes = EnemyTypes.Insectoid
 @export var is_alpha := false
 @export var difficulty := 1.0
@@ -19,7 +19,7 @@ enum EnemyTypes {
 @export var speed := 1.0
 @export var defense := 1.0
 @export var defense_type : DamageableObject.DamageableTypes
-@export var resistances : Dictionary[DamageableObject.DamageableTypes, float] = {}
+@export var resistances : Dictionary[DamageableObject.DamagingTypes, float] = {}
 @export var damage_threshold := 0
 @export var damage : int = 10
 @export var attack_speed : float = 0.5

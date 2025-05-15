@@ -10,14 +10,7 @@ signal status_inflicted(status_type : StatusBase.StatusEffects)
 static var number_of_enemies := 0
 static var enemy_types : Array[String] = ["Puncher"]
 
-@export var enemy_type := enemy_types[0]
-@export var is_alpha := false
-@export var health : int = 100
-@export var movement_speed : float = 1.5
-@export var damage_amount : int = 10
-@export var attack_speed : float = 0.5
-@export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
-@export var experience_points := 8
+@export var enemy_data : EnemyData
 
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
@@ -38,7 +31,7 @@ var enemy_id := 0
 
 
 func _ready() -> void:
-	damageable.health = health
+	damageable.health = enemy_data.hitpoints
 	set_enemy_id()
 	#print("enemy " + str(enemy_id) + " spawned!")
 
@@ -55,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 	if current_state == States.Moving:
 		if can_move:
 			mesh_animations.play("sprint")
-			velocity = position.direction_to(target.position) * movement_speed * 1.5
+			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
 			mesh.look_at(target.position)
 			move_and_slide() 
 	if len(overlapping_enemies) > 0:
@@ -67,9 +60,9 @@ func attack() -> void:
 	current_state = States.Attacking
 	for enemy : Node3D in overlapping_enemies:
 		var enemy_dmg : DamageableObject = enemy.damageable
-		enemy_dmg.damage(damage_amount, attack_type)
+		enemy_dmg.damage(enemy_data.damage, enemy_data.attack_type)
 	mesh_animations.play("attack-melee-right")
-	attack_timer.start(1.0/attack_speed)
+	attack_timer.start(1.0/enemy_data.attack_speed)
 
 func _on_timer_attacking_timeout() -> void:
 	if current_state == States.Attacking:
@@ -82,8 +75,8 @@ func death() -> void:
 	emit_signal("enemy_killed")
 	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
-	RunData.new_kill(enemy_type, is_alpha)
-	RunData.gain_experience(experience_points)
+	RunData.new_kill(enemy_data.enemy_type, enemy_data.is_alpha)
+	RunData.gain_experience(enemy_data.experience_points)
 	await(mesh_animations.animation_finished)
 	await(get_tree().create_timer(3.0).timeout)
 	queue_free()

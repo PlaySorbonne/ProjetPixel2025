@@ -64,10 +64,16 @@ func default_levelling_expression() -> Expression:
 func new_kill(enemy_type : String, is_alpha : bool) -> void:
 	emit_signal("enemy_killed")
 	total_kills += 1
-	enemy_kills[enemy_type] += 1
+	if enemy_kills.has(enemy_type):
+		enemy_kills[enemy_type] += 1
+	else:
+		enemy_kills[enemy_type] = 1
 	if is_alpha:
 		total_alpha_kills += 1
-		alpha_kills[enemy_type] += 1
+		if alpha_kills.has(enemy_type):
+			alpha_kills[enemy_type] += 1
+		else:
+			alpha_kills[enemy_type] = 1
 
 func reset_run_data() -> void:
 	Engine.time_scale = 1.0
@@ -84,8 +90,5 @@ func reset_run_data() -> void:
 	# stats
 	enemy_kills.clear()
 	alpha_kills.clear()
-	for enemy_type : String in BaseEnemy.enemy_types:
-		enemy_kills[enemy_type] = 0
-		alpha_kills[enemy_type] = 0
 	total_kills = 0
 	total_alpha_kills = 0

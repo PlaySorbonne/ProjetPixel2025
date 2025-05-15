@@ -1,18 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://deix6gohaapif"]
+[gd_scene load_steps=6 format=3 uid="uid://deix6gohaapif"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_vopqk"]
 [ext_resource type="Script" uid="uid://d1ghqp2o5egeo" path="res://scripts/ennemy_demo_boss.gd" id="2_15374"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="3_b0vb1"]
+
+[sub_resource type="Resource" id="Resource_pwftm"]
+resource_local_to_scene = true
+script = ExtResource("3_b0vb1")
+enemy_type = "DemoBoss"
+description = "A huge goliath extremely resistant to our attacks. It seems to regenerate when badly hurt."
+mob_type = 2
+is_alpha = true
+difficulty = 9.5
+hitpoints = 2000
+speed = 0.45
+defense = 1.5
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 125
+attack_speed = 0.2
+attack_type = 0
+experience_points = 1000
+resource_drop = 10
+spawn_probability = 0.1
+min_wave = 15
+max_wave = -1
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
 resource_local_to_scene = true
 
 [node name="DemoBoss" instance=ExtResource("1_vopqk")]
 script = ExtResource("2_15374")
-health = 2000
-movement_speed = 0.4
-damage_amount = 150
-attack_speed = 0.2
-experience_points = 1000
+enemy_data = SubResource("Resource_pwftm")
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0, 0, 0)
@@ -52,7 +73,6 @@ outline_size = 24
 [node name="TimerDefense" type="Timer" parent="." index="8"]
 one_shot = true
 
-[connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
 [connection signal="timeout" from="TimerMinion" to="." method="_on_timer_minion_timeout"]
 [connection signal="timeout" from="TimerDefense" to="." method="_on_timer_defense_timeout"]
 

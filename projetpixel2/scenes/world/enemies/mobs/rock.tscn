@@ -1,7 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cocf7ikucw14y"]
+[gd_scene load_steps=6 format=3 uid="uid://cocf7ikucw14y"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_xle50"]
 [ext_resource type="Script" uid="uid://bgecywqc8mw18" path="res://scripts/enemy_rock.gd" id="2_qgeih"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="3_b78ks"]
+
+[sub_resource type="Resource" id="Resource_68oic"]
+resource_local_to_scene = true
+script = ExtResource("3_b78ks")
+enemy_type = "Golem"
+description = "Strange sentient (?) boulder. Spawns little creatures when burned."
+mob_type = 2
+is_alpha = false
+difficulty = 3.5
+hitpoints = 250
+speed = 0.7
+defense = 1.2
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 25
+attack_speed = 0.4
+attack_type = 0
+experience_points = 75
+resource_drop = 1
+spawn_probability = 0.6
+min_wave = 2
+max_wave = -1
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
 resource_local_to_scene = true
@@ -10,9 +35,7 @@ albedo_color = Color(0.853003, 0.000190381, 0.000104925, 1)
 [node name="Rock" instance=ExtResource("1_xle50")]
 script = ExtResource("2_qgeih")
 max_minions = 15
-health = 250
-movement_speed = 1.5
-experience_points = 50
+enemy_data = SubResource("Resource_68oic")
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)

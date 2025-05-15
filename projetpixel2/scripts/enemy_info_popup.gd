@@ -14,4 +14,4 @@ func _ready() -> void:
 
 func update_enemy_health_infos() -> void:
 	$LabelHealth.text = "Health:\n     " + str(enemy_obj.get_health()
-									)+ "/" + str(enemy_obj.health)
+									)+ "/" + str(enemy_obj.enemy_data.hitpoints)

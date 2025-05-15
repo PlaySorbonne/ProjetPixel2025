@@ -38,10 +38,10 @@ var object : Node
 
 
 func _on_close_button_pressed() -> void:
-	popups.erase(object)
 	close_popup()
 
 func close_popup() -> void:
+	popups.erase(object)
 	queue_free()
 
 func _on_gui_input(event: InputEvent) -> void:

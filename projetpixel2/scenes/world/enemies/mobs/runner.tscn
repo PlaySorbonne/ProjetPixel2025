@@ -1,17 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://dolab87otvvep"]
+[gd_scene load_steps=5 format=3 uid="uid://dolab87otvvep"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_bwjc1"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_lnbhj"]
+
+[sub_resource type="Resource" id="Resource_0d6ec"]
+resource_local_to_scene = true
+script = ExtResource("2_lnbhj")
+enemy_type = "Runner"
+description = "Small runner. Usually met in groups."
+mob_type = 0
+is_alpha = false
+difficulty = 0.7
+hitpoints = 60
+speed = 1.5
+defense = 1.0
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 3
+attack_speed = 2.25
+attack_type = 0
+experience_points = 30
+resource_drop = 1
+spawn_probability = 0.75
+min_wave = -1
+max_wave = -1
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwjc1"]
 resource_local_to_scene = true
 albedo_color = Color(0.691715, 0.415165, 0.0834946, 1)
 
 [node name="Runner" instance=ExtResource("1_bwjc1")]
-health = 60
-movement_speed = 1.5
-damage_amount = 1
-attack_speed = 2.0
-experience_points = 15
+enemy_data = SubResource("Resource_0d6ec")
 
 [node name="figurine-cube" parent="." index="0"]
 transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)
