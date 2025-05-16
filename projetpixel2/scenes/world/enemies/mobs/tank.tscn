@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 script = ExtResource("2_tb3p3")
 enemy_type = "Tank"
-description = "Gro caillou"
+description = "Gro kayou"
 mob_type = 0
 is_alpha = false
 difficulty = 4.5

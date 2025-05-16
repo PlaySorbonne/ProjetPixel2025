@@ -5,9 +5,6 @@ func _ready() -> void:
 	InfoPopup.reset_popups()
 	RunData.reset_run_data()
 	GV.world = self
-	
+	# parse cards data from game design csv file
 	CardData.load_cards_data()
-
-
-func _process(delta: float) -> void:
-	pass
+	#TODO: do the same with enemy data csv

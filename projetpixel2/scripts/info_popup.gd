@@ -26,7 +26,7 @@ static func add_popup(obj : Node) -> void:
 		elif obj is BaseEnemy:
 			popup = EnemyInfoPopup.popup_res.instantiate()
 		else:
-			print_debug('want to create popup for unknown object: ' + str(obj.get_class()))
+			print_debug('trying to create popup for unknown object: ' + str(obj.get_class()))
 			return
 		popup.object = obj
 		popups[obj] = popup

@@ -42,9 +42,9 @@ static func load_cards_data() -> void:
 		new_card.parse_from_csv(card_file.get_csv_line())
 		cards_data[new_card.name] = new_card
 	card_file.close()
-	print("parse complete, dictionary:")
-	for k : String in cards_data.keys():
-		print("\n" + k + " : " + cards_data[k].card_to_string())
+	#print("parse complete, dictionary:")
+	#for k : String in cards_data.keys():
+		#print("\n" + k + " : " + cards_data[k].card_to_string())
 	for card : CardData in cards_data.values():
 		current_deck.append(card)
 

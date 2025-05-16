@@ -12,7 +12,7 @@ const FAMILY_COLORS := {
 }
 
 var card : CardData:
-	set(value):	
+	set(value):
 		card = value
 		$Label.text = card.name
 		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
@@ -28,26 +28,49 @@ var can_be_dropped_on_objects := false:
 
 
 func _on_button_down() -> void:
+	print('button down')
 	card_clicked.emit()
 	$DragAndDrop2D.press()
 
 func release_card() -> void:
+	print("release_card")
 	await get_tree().process_frame
 	$DragAndDrop2D.was_just_pressed = false
 	$DragAndDrop2D.release()
-	is_dragged = false
+	is_dragged = true
 	$DragAndDrop2D.drop()
 
+func _process(_delta: float) -> void:
+	return
+	print("drag_and_drop.is_pressed = " + str(
+$DragAndDrop2D.is_pressed) + " ; drag_and_drop.was_just_pressed = " + str(
+$DragAndDrop2D.was_just_pressed) + " ; mouse = " + str(mouse_filter))
+
+"""
+"can_be_dropped_on_objects = "+ str(can_be_dropped_on_objects
+) + " ; is_dragged = " + str(is_dragged) + " ; drag_and_drop.is_dragged = " + str(
+$DragAndDrop2D.is_dragged) + 
+"""
+
 func _input(event: InputEvent) -> void:
+	var debug_text := "INPUT DETECTED"
 	if not is_dragged:
+		debug_text += ("   not dragged -> return")
+		print(debug_text)
 		return
 	if event is InputEventMouseButton:
 		if event.is_released():
 			$DragAndDrop2D.release()
+			debug_text += ("   release")
 		else:
 			$DragAndDrop2D.press()
+			debug_text += ("   press")
+	else:
+		debug_text += ("   event is not InputEventMouseButton")
+	print(debug_text)
 
 func _on_drag_and_drop_2d_dragged() -> void:
+	print("_on_drag_and_drop_2d_dragged")
 	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	is_dragged = true
 	GV.is_dragging_object = true
@@ -55,11 +78,13 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	GV.hud.update_card_description(card.description)
 
 func _on_drag_and_drop_2d_dropped() -> void:
+	print("_on_drag_and_drop_2d_dropped")
 	is_dragged = false
 	GV.is_dragging_object = false
 	GV.hud.clear_card_description()
 	$TextureRect.modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
+		print("HYAAAAAAAAAAAAAAH")
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return
 	# interaction2D
@@ -88,7 +113,7 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	
 	# no interaction: return to original position
 	#TODO
-	print_debug("TODO: return card to original pos if dropped on nothing")
+	#print_debug("TODO: return card to original pos if dropped on nothing")
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:
