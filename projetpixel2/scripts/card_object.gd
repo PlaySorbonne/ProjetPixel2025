@@ -25,6 +25,7 @@ var can_be_dropped_on_objects := false:
 			$TextureRect/Description.visible = false
 		else:
 			$TextureRect/Description.visible = true
+var deck_position : Vector2
 
 
 func _on_button_down() -> void:
@@ -71,6 +72,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_drag_and_drop_2d_dragged() -> void:
 	print("_on_drag_and_drop_2d_dragged")
+	deck_position = position
 	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	is_dragged = true
 	GV.is_dragging_object = true
@@ -111,9 +113,13 @@ func _on_drag_and_drop_2d_dropped() -> void:
 			#TODO
 			print_debug("TODO: handle card dropped on spaceship")
 	
-	# no interaction: return to original position
-	#TODO
-	#print_debug("TODO: return card to original pos if dropped on nothing")
+	return_to_hand()
+
+func return_to_hand() -> void:
+	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
+				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
+				).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", deck_position, 0.175)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:
