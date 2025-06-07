@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7lcb6thi2mf3"]
+
+[ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
+[ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
+
+[node name="PersistentMenu" type="Node"]
+script = ExtResource("1_4l422")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_6apcv")]
