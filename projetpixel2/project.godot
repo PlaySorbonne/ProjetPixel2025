@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ProjetPixel2"
-run/main_scene="uid://c4qs321pymfg5"
+run/main_scene="uid://b7lcb6thi2mf3"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

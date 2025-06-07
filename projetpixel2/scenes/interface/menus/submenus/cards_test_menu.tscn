@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bbgcyhqn2ru1"]
+[gd_scene load_steps=2 format=3 uid="uid://bbgcyhqn2ru1"]
+
+[ext_resource type="Script" uid="uid://dixy851x2nlan" path="res://scripts/cards_test_menu.gd" id="1_ios4e"]
 
 [node name="CardsTestMenu" type="Control"]
 layout_mode = 3
@@ -7,3 +9,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ios4e")

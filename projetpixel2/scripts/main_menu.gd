@@ -1,2 +1,13 @@
-extends Control
+extends Submenu
 class_name MainMenu
+
+
+
+func _on_button_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+
+func _on_button_tutorial_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/world/world_tuto.tscn")
+
+func _on_button_debug_cards_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/interface/menus/submenus/cards_test_menu.tscn")

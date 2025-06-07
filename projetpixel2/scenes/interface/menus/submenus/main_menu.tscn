@@ -10,3 +10,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_331ia")
+
+[node name="ButtonPlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.383333
+anchor_top = 0.35463
+anchor_right = 0.5875
+anchor_bottom = 0.455556
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonTutorial" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.832812
+anchor_top = 0.881481
+anchor_right = 0.965104
+anchor_bottom = 0.95
+text = "Tutorial"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonDebugCards" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0244792
+anchor_top = 0.739815
+anchor_right = 0.198437
+anchor_bottom = 0.778704
+text = "DEBUG: Cards"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ButtonTutorial" to="." method="_on_button_tutorial_pressed"]
+[connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]
