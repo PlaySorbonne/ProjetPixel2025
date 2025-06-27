@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=6 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
+[ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="3_acse1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acse1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4l422"]
+top_radius = 20.0
+bottom_radius = 20.0
+height = 1.0
 
 [node name="PersistentMenu" type="Node"]
 script = ExtResource("1_4l422")
@@ -9,3 +18,22 @@ script = ExtResource("1_4l422")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_6apcv")]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Environment" type="Node3D" parent="World"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.614892, 0)
+material_override = SubResource("StandardMaterial3D_acse1")
+mesh = SubResource("CylinderMesh_4l422")
+
+[node name="Transporter" parent="World/Environment" instance=ExtResource("3_acse1")]
+transform = Transform3D(-0.880643, 0, 0.473781, 0, 1, 0, -0.473781, 0, -0.880643, -1.24191, -0.228299, -0.444328)
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(0.996622, -0.0308222, 0.0761269, 7.635e-09, 0.926909, 0.375286, -0.0821299, -0.374018, 0.923778, 3.64637, 5.00903, 7.84693)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 5.09676, 6.68149)

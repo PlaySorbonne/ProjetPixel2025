@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckama6l5hm14f"]
+[gd_scene load_steps=3 format=3 uid="uid://ckama6l5hm14f"]
 
 [ext_resource type="Script" uid="uid://dndovhm6ykkt3" path="res://scripts/main_menu.gd" id="1_331ia"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_331ia"]
+font_size = 64
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,41 +17,55 @@ script = ExtResource("1_331ia")
 [node name="ButtonPlay" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.383333
-anchor_top = 0.35463
-anchor_right = 0.5875
-anchor_bottom = 0.455556
+anchor_left = 0.552083
+anchor_top = 0.391667
+anchor_right = 0.75625
+anchor_bottom = 0.492593
 text = "Play"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonQuit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.381771
-anchor_top = 0.587037
-anchor_right = 0.498437
-anchor_bottom = 0.641667
+anchor_left = 0.552604
+anchor_top = 0.659259
+anchor_right = 0.669271
+anchor_bottom = 0.713889
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonTutorial" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0234375
-anchor_top = 0.803704
-anchor_right = 0.155729
-anchor_bottom = 0.872223
+anchor_left = 0.552604
+anchor_top = 0.540741
+anchor_right = 0.684896
+anchor_bottom = 0.60926
 text = "Tutorial"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDebugCards" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.909259
-anchor_right = 0.198958
-anchor_bottom = 0.948148
+anchor_left = 0.829687
+anchor_top = 0.931481
+anchor_right = 0.971875
+anchor_bottom = 0.97037
 text = "DEBUG: Cards"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.505208
+anchor_top = 0.109259
+anchor_right = 0.905438
+anchor_bottom = 0.274704
+offset_right = 0.559937
+offset_bottom = 0.319977
+text = "Tower survivor évolution
+alpha crafting plus"
+label_settings = SubResource("LabelSettings_331ia")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
