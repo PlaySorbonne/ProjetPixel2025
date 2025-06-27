@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw10xulpwvdlw"]
 
 [ext_resource type="Script" uid="uid://dt62he5kpr82f" path="res://scripts/collection_menu.gd" id="1_wyo71"]
-[ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_back.tscn" id="2_f6ruf"]
+[ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_f6ruf"]
 
 [node name="CollectionMenu" type="Control"]
 layout_mode = 3

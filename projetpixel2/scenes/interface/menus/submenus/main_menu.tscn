@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckama6l5hm14f"]
+[gd_scene load_steps=4 format=3 uid="uid://ckama6l5hm14f"]
 
 [ext_resource type="Script" uid="uid://dndovhm6ykkt3" path="res://scripts/main_menu.gd" id="1_331ia"]
+[ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_xbdrf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_331ia"]
 font_size = 64
@@ -15,15 +16,17 @@ grow_vertical = 2
 script = ExtResource("1_331ia")
 submenu_pos = Vector2(0, 0)
 
-[node name="ButtonPlay" type="Button" parent="."]
+[node name="ButtonPlay" parent="." instance=ExtResource("2_xbdrf")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.552083
-anchor_top = 0.391667
-anchor_right = 0.75625
+anchor_left = 0.552604
+anchor_top = 0.394444
+anchor_right = 0.755729
 anchor_bottom = 0.492593
+grow_horizontal = 2
+grow_vertical = 2
 text = "Play"
-metadata/_edit_use_anchors_ = true
+next_screen = 2
+camera_marker = 1
 
 [node name="ButtonQuit" type="Button" parent="."]
 layout_mode = 1
@@ -34,6 +37,18 @@ anchor_right = 0.669271
 anchor_bottom = 0.916667
 text = "Quit"
 metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCollection" parent="." instance=ExtResource("2_xbdrf")]
+layout_mode = 1
+anchor_left = 0.553125
+anchor_top = 0.649074
+anchor_right = 0.685417
+anchor_bottom = 0.716667
+grow_horizontal = 2
+grow_vertical = 2
+text = "Collection"
+next_screen = 1
+camera_marker = 2
 
 [node name="ButtonDiscord" type="Button" parent="."]
 layout_mode = 1
@@ -95,16 +110,6 @@ anchor_bottom = 0.60926
 text = "Settings [TODO]"
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonCollection" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.552604
-anchor_top = 0.649074
-anchor_right = 0.684896
-anchor_bottom = 0.717593
-text = "Collection"
-metadata/_edit_use_anchors_ = true
-
 [node name="ButtonCredits" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -139,7 +144,5 @@ alpha crafting plus)"
 label_settings = SubResource("LabelSettings_331ia")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="ButtonCollection" to="." method="_on_button_collection_pressed"]
 [connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]

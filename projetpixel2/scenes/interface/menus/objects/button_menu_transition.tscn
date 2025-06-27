@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1up105omtpki"]
 
-[ext_resource type="Script" uid="uid://cgyo6fkiwss7k" path="res://scripts/button_back.gd" id="1_r5rgp"]
+[ext_resource type="Script" uid="uid://cgyo6fkiwss7k" path="res://scripts/button_menu_transition.gd" id="1_r5rgp"]
 
-[node name="ButtonBack" type="Button"]
+[node name="ButtonMenuTransition" type="Button"]
 anchors_preset = -1
 anchor_left = 0.0114583
 anchor_top = 0.913889
