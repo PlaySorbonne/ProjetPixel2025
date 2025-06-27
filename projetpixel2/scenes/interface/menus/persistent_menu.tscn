@@ -77,6 +77,9 @@ transform = Transform3D(0.949825, 0.117383, -0.289921, 8.90004e-09, 0.926909, 0.
 [node name="MarkerCamMission" type="Marker3D" parent="World"]
 transform = Transform3D(0.97875, 0.0769561, -0.190072, -1.60492e-08, 0.926909, 0.375286, 0.20506, -0.367311, 0.907212, 0.132795, 3.11517, 2.60178)
 
+[node name="MarkerCamStartGame" type="Marker3D" parent="World"]
+transform = Transform3D(0.946649, 0.153772, -0.283213, 0, 0.878817, 0.477159, 0.322266, -0.451702, 0.831932, 0.338, 2.955, 1.542)
+
 [node name="Camera3DPlay" type="Camera3D" parent="World"]
 transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 3.21501, 4.80605)
 

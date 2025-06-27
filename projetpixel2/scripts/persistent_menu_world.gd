@@ -3,7 +3,7 @@ class_name PersistentMenuWorld
 
 
 enum CameraMarkers {TitleScreen, CollectionScreen, PlayScreen, MissionScreen, 
-	CraftScreen, ResearchScreen}
+	CraftScreen, ResearchScreen, StartGame}
 
 @onready var camera_3d := $Camera3D
 @onready var markers_dict : Dictionary[CameraMarkers, Marker3D] = {
@@ -12,7 +12,8 @@ enum CameraMarkers {TitleScreen, CollectionScreen, PlayScreen, MissionScreen,
 	CameraMarkers.PlayScreen : $MarkerCamPlay,
 	CameraMarkers.ResearchScreen : $MarkerCamResearch,
 	CameraMarkers.CraftScreen : $MarkerCamCraft,
-	CameraMarkers.MissionScreen : $MarkerCamMission
+	CameraMarkers.MissionScreen : $MarkerCamMission,
+	CameraMarkers.StartGame : $MarkerCamStartGame
 }
 
 
