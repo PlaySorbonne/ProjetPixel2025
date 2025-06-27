@@ -34,6 +34,56 @@ anchor_bottom = 0.713889
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
+[node name="ButtonDiscord" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0291667
+anchor_top = 0.919444
+anchor_right = 0.0640625
+anchor_bottom = 0.974074
+text = "Discrd"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonInsta" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0833333
+anchor_top = 0.918519
+anchor_right = 0.118229
+anchor_bottom = 0.973148
+text = "Insta"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonWebsite" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.135937
+anchor_top = 0.918519
+anchor_right = 0.170833
+anchor_bottom = 0.973148
+text = "Web"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonBugReport" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.866667
+anchor_top = 0.847222
+anchor_right = 0.983334
+anchor_bottom = 0.901852
+text = "Bug Report"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonPatchNotes" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.866667
+anchor_top = 0.92037
+anchor_right = 0.983334
+anchor_bottom = 0.975
+text = "Patch Notes"
+metadata/_edit_use_anchors_ = true
+
 [node name="ButtonTutorial" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -47,10 +97,10 @@ metadata/_edit_use_anchors_ = true
 [node name="ButtonDebugCards" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.829687
-anchor_top = 0.931481
-anchor_right = 0.971875
-anchor_bottom = 0.97037
+anchor_left = 0.840625
+anchor_top = 0.782407
+anchor_right = 0.982813
+anchor_bottom = 0.821296
 text = "DEBUG: Cards"
 metadata/_edit_use_anchors_ = true
 

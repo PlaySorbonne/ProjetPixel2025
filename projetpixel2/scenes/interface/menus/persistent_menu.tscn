@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="3_acse1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acse1"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(0.92, 0.46, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4l422"]
 top_radius = 20.0
@@ -36,4 +36,5 @@ transform = Transform3D(0.996622, -0.0308222, 0.0761269, 7.635e-09, 0.926909, 0.
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 5.09676, 6.68149)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 4.0694, 8.22984)
+light_energy = 2.0
