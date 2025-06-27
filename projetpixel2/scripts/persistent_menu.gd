@@ -23,5 +23,6 @@ func transition_to_menu(new_menu : Submenu) -> void:
 	tween.tween_property(current_menu, "position", 
 				current_menu.size * current_menu_transition, MENU_TRANSITION_TIME)
 	
+	current_menu.queue_free()
 	current_menu = new_menu
 	current_pos = new_menu.submenu_pos

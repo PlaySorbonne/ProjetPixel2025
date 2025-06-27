@@ -14,19 +14,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_331ia")
-submenu_pos = Vector2(0, 0)
 
 [node name="ButtonPlay" parent="." instance=ExtResource("2_xbdrf")]
 layout_mode = 1
-anchor_left = 0.552604
-anchor_top = 0.394444
-anchor_right = 0.755729
-anchor_bottom = 0.492593
+anchor_left = 0.552083
+anchor_top = 0.4
+anchor_right = 0.755208
+anchor_bottom = 0.498149
+offset_left = 0.0
+offset_top = 0.0
+offset_right = -0.00012207
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
 next_screen = 2
-camera_marker = 1
+camera_marker = 2
 
 [node name="ButtonQuit" type="Button" parent="."]
 layout_mode = 1
@@ -40,15 +43,19 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ButtonCollection" parent="." instance=ExtResource("2_xbdrf")]
 layout_mode = 1
-anchor_left = 0.553125
-anchor_top = 0.649074
-anchor_right = 0.685417
-anchor_bottom = 0.716667
+anchor_left = 0.552083
+anchor_top = 0.648148
+anchor_right = 0.684375
+anchor_bottom = 0.715741
+offset_left = 0.0
+offset_top = 6.10352e-05
+offset_right = -0.00012207
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "Collection"
 next_screen = 1
-camera_marker = 2
+camera_marker = 1
 
 [node name="ButtonDiscord" type="Button" parent="."]
 layout_mode = 1

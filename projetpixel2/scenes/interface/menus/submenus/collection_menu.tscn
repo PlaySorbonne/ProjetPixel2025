@@ -11,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wyo71")
-submenu_pos = Vector2(-1, 0)
 
 [node name="ButtonAchievements" type="Button" parent="."]
 layout_mode = 1
@@ -65,9 +64,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_f6ruf")]
 layout_mode = 1
-anchor_left = 0.0296875
-anchor_right = 0.090625
+anchor_left = 0.0208333
+anchor_right = 0.0817708
 anchor_bottom = 0.958333
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Tab" type="ColorRect" parent="."]
 layout_mode = 1

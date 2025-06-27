@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc4nb4a10ke3l"]
+[gd_scene load_steps=3 format=3 uid="uid://cc4nb4a10ke3l"]
 
 [ext_resource type="Script" uid="uid://bn8cfwbxx6nfu" path="res://scripts/mission_menu.gd" id="1_4u1yp"]
+[ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_laif5"]
 
 [node name="MissionMenu" type="Control"]
 layout_mode = 3
@@ -41,5 +42,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="ButtonBack" parent="." instance=ExtResource("2_laif5")]
+layout_mode = 1
+anchor_left = 0.0260417
+anchor_top = 0.918519
+anchor_right = 0.0984375
+anchor_bottom = 0.968518
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+next_screen = 2
+camera_marker = 2
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
