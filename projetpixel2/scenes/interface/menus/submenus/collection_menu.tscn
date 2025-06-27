@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw10xulpwvdlw"]
+[gd_scene load_steps=3 format=3 uid="uid://dw10xulpwvdlw"]
 
 [ext_resource type="Script" uid="uid://dt62he5kpr82f" path="res://scripts/collection_menu.gd" id="1_wyo71"]
+[ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_back.tscn" id="2_f6ruf"]
 
 [node name="CollectionMenu" type="Control"]
 layout_mode = 3
@@ -62,15 +63,11 @@ anchor_bottom = 0.130556
 text = "Tutorials"
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonBack" type="Button" parent="."]
+[node name="ButtonBack" parent="." instance=ExtResource("2_f6ruf")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0114583
-anchor_top = 0.913889
-anchor_right = 0.109375
-anchor_bottom = 0.973148
-text = "Back"
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.0296875
+anchor_right = 0.090625
+anchor_bottom = 0.958333
 
 [node name="Tab" type="ColorRect" parent="."]
 layout_mode = 1
@@ -93,5 +90,3 @@ grow_vertical = 2
 text = "current tab"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

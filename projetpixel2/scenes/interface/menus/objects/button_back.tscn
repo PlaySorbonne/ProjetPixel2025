@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1up105omtpki"]
+
+[ext_resource type="Script" uid="uid://cgyo6fkiwss7k" path="res://scripts/button_back.gd" id="1_r5rgp"]
+
+[node name="ButtonBack" type="Button"]
+anchors_preset = -1
+anchor_left = 0.0114583
+anchor_top = 0.913889
+anchor_right = 0.109375
+anchor_bottom = 0.973148
+text = "Back"
+script = ExtResource("1_r5rgp")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
