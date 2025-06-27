@@ -28,9 +28,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.552604
-anchor_top = 0.659259
+anchor_top = 0.862037
 anchor_right = 0.669271
-anchor_bottom = 0.713889
+anchor_bottom = 0.916667
 text = "Quit"
 metadata/_edit_use_anchors_ = true
 
@@ -84,14 +84,34 @@ anchor_bottom = 0.975
 text = "Patch Notes"
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonTutorial" type="Button" parent="."]
+[node name="ButtonSettings" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.552604
 anchor_top = 0.540741
 anchor_right = 0.684896
 anchor_bottom = 0.60926
-text = "Tutorial"
+text = "Settings"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCollection" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552604
+anchor_top = 0.649074
+anchor_right = 0.684896
+anchor_bottom = 0.717593
+text = "Collection"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCredits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552604
+anchor_top = 0.757408
+anchor_right = 0.684896
+anchor_bottom = 0.825927
+text = "Credits"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDebugCards" type="Button" parent="."]
@@ -120,5 +140,4 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="ButtonTutorial" to="." method="_on_button_tutorial_pressed"]
 [connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]
