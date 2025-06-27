@@ -22,7 +22,6 @@ func transition_to_menu() -> void:
 	pass
 
 func go_to_screen(new_screen : PackedScene, to_camera_marker : Marker3D) -> void:
-	print("new screen = " + str(new_screen) + " ; camera marker = " + str(to_camera_marker))
 	GV.persistent_menu_world.camera_movement(to_camera_marker)
 	var new_screen_obj : Submenu = new_screen.instantiate()
 	GV.persistent_menu.transition_to_menu(new_screen_obj)

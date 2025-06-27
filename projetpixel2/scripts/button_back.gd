@@ -8,9 +8,6 @@ class_name BackButton
 @onready var parent_submenu : Submenu = get_parent()
 
 
-func _ready() -> void:
-	print("previous screen = " + str(previous_screen))
-
 func _on_pressed() -> void:
 	parent_submenu.go_to_screen(
 		Submenu.SCREENS[previous_screen],
