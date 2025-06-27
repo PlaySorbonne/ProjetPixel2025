@@ -125,7 +125,7 @@ anchor_bottom = 0.821296
 text = "DEBUG: Cards [TODO]"
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.505208
@@ -134,8 +134,8 @@ anchor_right = 0.905438
 anchor_bottom = 0.274704
 offset_right = 0.559937
 offset_bottom = 0.319977
-text = "Tower survivor évolution
-alpha crafting plus"
+text = "Tower survivor (évolution
+alpha crafting plus)"
 label_settings = SubResource("LabelSettings_331ia")
 metadata/_edit_use_anchors_ = true
 
