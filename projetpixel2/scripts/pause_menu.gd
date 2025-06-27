@@ -27,4 +27,6 @@ func _on_button_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_button_quit_pressed() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	GV.reset_gameplay_variables()
+	get_tree().change_scene_to_file("res://scenes/interface/menus/persistent_menu.tscn")
