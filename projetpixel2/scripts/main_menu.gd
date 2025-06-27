@@ -23,4 +23,4 @@ func _on_button_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_button_collection_pressed() -> void:
-	go_to_screen(MENU_COLLECTION)
+	go_to_screen(MENU_COLLECTION, GV.persistent_menu_world.marker_cam_collection)
