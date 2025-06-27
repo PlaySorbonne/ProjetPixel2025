@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_331ia")
+submenu_pos = Vector2(0, 0)
 
 [node name="ButtonPlay" type="Button" parent="."]
 layout_mode = 1
@@ -71,7 +72,7 @@ anchor_left = 0.866667
 anchor_top = 0.847222
 anchor_right = 0.983334
 anchor_bottom = 0.901852
-text = "Bug Report"
+text = "Bug Report [TODO]"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPatchNotes" type="Button" parent="."]
@@ -81,7 +82,7 @@ anchor_left = 0.866667
 anchor_top = 0.92037
 anchor_right = 0.983334
 anchor_bottom = 0.975
-text = "Patch Notes"
+text = "Patch Notes [TODO]"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSettings" type="Button" parent="."]
@@ -91,7 +92,7 @@ anchor_left = 0.552604
 anchor_top = 0.540741
 anchor_right = 0.684896
 anchor_bottom = 0.60926
-text = "Settings"
+text = "Settings [TODO]"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonCollection" type="Button" parent="."]
@@ -111,7 +112,7 @@ anchor_left = 0.552604
 anchor_top = 0.757408
 anchor_right = 0.684896
 anchor_bottom = 0.825927
-text = "Credits"
+text = "Credits [TODO]"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDebugCards" type="Button" parent="."]
@@ -121,7 +122,7 @@ anchor_left = 0.840625
 anchor_top = 0.782407
 anchor_right = 0.982813
 anchor_bottom = 0.821296
-text = "DEBUG: Cards"
+text = "DEBUG: Cards [TODO]"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="."]
@@ -140,4 +141,5 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="ButtonCollection" to="." method="_on_button_collection_pressed"]
 [connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]

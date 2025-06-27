@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw10xulpwvdlw"]
+
+[ext_resource type="Script" uid="uid://dt62he5kpr82f" path="res://scripts/collection_menu.gd" id="1_wyo71"]
+
+[node name="CollectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wyo71")
+
+[node name="ButtonAchievements" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0703125
+anchor_top = 0.0703704
+anchor_right = 0.172396
+anchor_bottom = 0.12963
+text = "Achievements"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCards" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.176042
+anchor_top = 0.0703704
+anchor_right = 0.273958
+anchor_bottom = 0.12963
+text = "Cards"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonMobs" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278125
+anchor_top = 0.0703704
+anchor_right = 0.376042
+anchor_bottom = 0.12963
+text = "Mobs"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonCutscenes" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38125
+anchor_top = 0.0712963
+anchor_right = 0.479167
+anchor_bottom = 0.130556
+text = "Cutscenes"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonTutorials" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.484375
+anchor_top = 0.0712963
+anchor_right = 0.582292
+anchor_bottom = 0.130556
+text = "Tutorials"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0114583
+anchor_top = 0.913889
+anchor_right = 0.109375
+anchor_bottom = 0.973148
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="Tab" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0729167
+anchor_top = 0.15463
+anchor_right = 0.819792
+anchor_bottom = 0.862037
+offset_bottom = 3.05176e-05
+color = Color(0, 0, 0, 0.207843)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Tab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "current tab"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
