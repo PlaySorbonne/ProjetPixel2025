@@ -10,3 +10,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4u1yp")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0557292
+anchor_top = 0.0490741
+anchor_right = 0.205729
+anchor_bottom = 0.087037
+text = "MISSION MENU"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonPlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.821354
+anchor_top = 0.883333
+anchor_right = 0.934375
+anchor_bottom = 0.937037
+offset_top = -6.10352e-05
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="FadeTransition" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]

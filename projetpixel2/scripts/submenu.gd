@@ -3,6 +3,11 @@ class_name Submenu
 
 
 const MAIN_MENU := preload("res://scenes/interface/menus/submenus/main_menu.tscn")
+const COLLECTION_MENU := preload("res://scenes/interface/menus/submenus/collection_menu.tscn")
+const PLAY_MENU := preload("res://scenes/interface/menus/submenus/play_menu.tscn")
+const MISSION_MENU := preload("res://scenes/interface/menus/submenus/mission_menu.tscn")
+const RESEARCH_MENU := preload("res://scenes/interface/menus/submenus/research_menu.tscn")
+const CRAFT_MENU := preload("res://scenes/interface/menus/submenus/craft_menu.tscn")
 
 var persistent_menu : PersistentMenu = null
 @export var submenu_pos := Vector2(1, 0)
