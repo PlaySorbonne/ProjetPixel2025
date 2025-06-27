@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=12 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
@@ -12,6 +12,22 @@ albedo_color = Color(0.92, 0.46, 0, 1)
 top_radius = 20.0
 bottom_radius = 20.0
 height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_mp0u6"]
+radius = 20.0
+height = 40.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mp0u6"]
+albedo_color = Color(0, 0.841753, 0.951815, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mp0u6"]
+
+[sub_resource type="Sky" id="Sky_lbr2l"]
+sky_material = SubResource("ProceduralSkyMaterial_mp0u6")
+
+[sub_resource type="Environment" id="Environment_s88ef"]
+background_mode = 2
+sky = SubResource("Sky_lbr2l")
 
 [node name="PersistentMenu" type="Node"]
 script = ExtResource("1_4l422")
@@ -33,12 +49,24 @@ mesh = SubResource("CylinderMesh_4l422")
 [node name="Transporter" parent="World/Environment" instance=ExtResource("3_acse1")]
 transform = Transform3D(-0.880643, 0, 0.473781, 0, 1, 0, -0.473781, 0, -0.880643, -1.24191, -0.228299, -0.444328)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Environment"]
+transform = Transform3D(1, 0, 0, 0, 0.999843, -0.0177142, 0, 0.0177142, 0.999843, -108.252, 167.837, -144.546)
+mesh = SubResource("SphereMesh_mp0u6")
+surface_material_override/0 = SubResource("StandardMaterial3D_mp0u6")
+
 [node name="Camera3D" type="Camera3D" parent="World"]
-transform = Transform3D(0.862254, -0.0764436, 0.500674, 0.0298948, 0.994502, 0.100358, -0.505593, -0.0715663, 0.859799, 3.87476, 2.28945, 2.29108)
+transform = Transform3D(0.995539, -0.0573971, -0.0748852, 0.0106809, 0.857139, -0.514975, 0.0937451, 0.511878, 0.853928, 3.87476, 7.68911, 8.60393)
+environment = SubResource("Environment_s88ef")
 current = true
 
+[node name="MarkerCamTitle" type="Marker3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.793683, -0.608332, 0, 0.608332, 0.793683, 3.87476, 7.68911, 8.60393)
+
 [node name="Camera3DMain" type="Camera3D" parent="World"]
-transform = Transform3D(0.996622, -0.0308222, 0.0761269, 7.635e-09, 0.926909, 0.375286, -0.0821299, -0.374018, 0.923778, 3.64637, 5.00903, 7.84693)
+transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 4.01908, 6.0854)
+
+[node name="MarkerCamMainMenu" type="Marker3D" parent="World"]
+transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 4.01908, 6.0854)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 4.0694, 8.22984)
@@ -46,9 +74,6 @@ light_energy = 2.0
 
 [node name="MarkerCamCollection" type="Marker3D" parent="World"]
 transform = Transform3D(0.862254, -0.0764436, 0.500674, 0.0298948, 0.994502, 0.100358, -0.505593, -0.0715663, 0.859799, 3.87476, 2.28945, 2.29108)
-
-[node name="MarkerCamMainMenu" type="Marker3D" parent="World"]
-transform = Transform3D(0.996622, -0.0308222, 0.0761269, 7.635e-09, 0.926909, 0.375286, -0.0821299, -0.374018, 0.923778, 3.64637, 5.00903, 7.84693)
 
 [node name="MarkerCamPlay" type="Marker3D" parent="World"]
 transform = Transform3D(0.83945, 0.0295246, -0.542634, 0.0298947, 0.994502, 0.100358, 0.542613, -0.100467, 0.833953, -3.08907, 2.28945, 2.92441)
