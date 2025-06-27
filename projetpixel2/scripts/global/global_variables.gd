@@ -13,6 +13,7 @@ var mouse_2d_interaction : Mouse2DInteraction = null
 var player_camera : PlayerCamera = null
 var is_dragging_object := false
 var persistent_menu : PersistentMenu = null
+var persistent_menu_world : PersistentMenuWorld = null
 
 
 func reset_gameplay_variables() -> void:

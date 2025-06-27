@@ -2,11 +2,15 @@ extends Submenu
 class_name MainMenu
 
 
-const MENU_COLLECTION : Submenu = preload("res://scenes/interface/menus/submenus/collection_menu.tscn")
+const MENU_COLLECTION := preload("res://scenes/interface/menus/submenus/collection_menu.tscn")
 
 
 
 func _on_button_play_pressed() -> void:
+	GV.persistent_menu_world.camera_movement(GV.persistent_menu_world.marker_cam_play)
+	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property($FadeTransition, "color", Color.BLACK, 0.5)
+	await tween.finished
 	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
 
 func _on_button_tutorial_pressed() -> void:
