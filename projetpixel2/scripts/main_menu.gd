@@ -4,7 +4,7 @@ class_name MainMenu
 
 func _on_button_play_pressed() -> void:
 	GV.persistent_menu_world.camera_movement(GV.persistent_menu_world.marker_cam_play)
-	#go_to_screen()
+	go_to_screen(PLAY_MENU, GV.persistent_menu_world.marker_cam_main_menu)
 
 func _on_button_tutorial_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/world/world_tuto.tscn")

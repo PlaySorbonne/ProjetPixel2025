@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wyo71")
+submenu_pos = Vector2(-1, 0)
 
 [node name="ButtonAchievements" type="Button" parent="."]
 layout_mode = 1

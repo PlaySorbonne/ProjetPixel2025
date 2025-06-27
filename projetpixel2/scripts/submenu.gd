@@ -22,4 +22,4 @@ func go_to_screen(new_screen : PackedScene, to_camera_marker : Marker3D) -> void
 	GV.persistent_menu.transition_to_menu(new_screen_obj)
 
 func go_to_title_screen() -> void:
-	go_to_screen(MAIN_MENU, GV.persistent_menu_world.marker_cam_main_menu)
+	go_to_screen(MAIN_MENU, GV.persistent_menu_world.marker_cam_title)
