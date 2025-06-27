@@ -62,18 +62,24 @@ current = true
 [node name="MarkerCamTitle" type="Marker3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 0.793683, -0.608332, 0, 0.608332, 0.793683, 3.87476, 7.68911, 8.60393)
 
-[node name="Camera3DMain" type="Camera3D" parent="World"]
-transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 4.01908, 6.0854)
-
-[node name="MarkerCamMainMenu" type="Marker3D" parent="World"]
-transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 4.01908, 6.0854)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 4.0694, 8.22984)
-light_energy = 2.0
-
 [node name="MarkerCamCollection" type="Marker3D" parent="World"]
 transform = Transform3D(0.862254, -0.0764436, 0.500674, 0.0298948, 0.994502, 0.100358, -0.505593, -0.0715663, 0.859799, 3.87476, 2.28945, 2.29108)
 
 [node name="MarkerCamPlay" type="Marker3D" parent="World"]
-transform = Transform3D(0.83945, 0.0295246, -0.542634, 0.0298947, 0.994502, 0.100358, 0.542613, -0.100467, 0.833953, -3.08907, 2.28945, 2.92441)
+transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 3.21501, 4.80605)
+
+[node name="MarkerCamResearch" type="Marker3D" parent="World"]
+transform = Transform3D(0.846983, 0.19951, -0.492764, 8.90004e-09, 0.926909, 0.375286, 0.53162, -0.317861, 0.785076, -4.15924, 2.51865, 1.09596)
+
+[node name="MarkerCamCraft" type="Marker3D" parent="World"]
+transform = Transform3D(0.949825, 0.117383, -0.289921, 8.90004e-09, 0.926909, 0.375286, 0.312783, -0.356456, 0.880401, -2.04964, 1.20491, 2.85299)
+
+[node name="MarkerCamMission" type="Marker3D" parent="World"]
+transform = Transform3D(0.97875, 0.0769561, -0.190072, -1.60492e-08, 0.926909, 0.375286, 0.20506, -0.367311, 0.907212, 0.132795, 3.11517, 2.60178)
+
+[node name="Camera3DPlay" type="Camera3D" parent="World"]
+transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0.375286, 0.0421895, -0.374952, 0.926084, -1.23903, 3.21501, 4.80605)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 4.0694, 8.22984)
+light_energy = 2.0

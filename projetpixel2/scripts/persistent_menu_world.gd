@@ -2,20 +2,23 @@ extends Node3D
 class_name PersistentMenuWorld
 
 
-enum CameraMarkers {main_menu, play_menu, collection_menu, title_screen}
+enum CameraMarkers {TitleScreen, CollectionScreen, PlayScreen, MissionScreen, 
+	CraftScreen, ResearchScreen}
 
 @onready var camera_3d := $Camera3D
 @onready var markers_dict : Dictionary[CameraMarkers, Marker3D] = {
-	CameraMarkers.main_menu : $MarkerCamMainMenu,
-	CameraMarkers.play_menu : $MarkerCamPlay,
-	CameraMarkers.collection_menu : $MarkerCamCollection,
-	CameraMarkers.title_screen : $MarkerCamTitle,
+	CameraMarkers.TitleScreen : $MarkerCamTitle,
+	CameraMarkers.CollectionScreen : $MarkerCamCollection,
+	CameraMarkers.PlayScreen : $MarkerCamPlay,
+	CameraMarkers.ResearchScreen : $MarkerCamResearch,
+	CameraMarkers.CraftScreen : $MarkerCamCraft,
+	CameraMarkers.MissionScreen : $MarkerCamMission
 }
 
 
 func _ready() -> void:
 	GV.persistent_menu_world = self
-	camera_3d.transform = markers_dict[CameraMarkers.title_screen].transform
+	camera_3d.transform = markers_dict[CameraMarkers.TitleScreen].transform
 
 func camera_movement(to_marker : Marker3D) -> void:
 	var tween := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
