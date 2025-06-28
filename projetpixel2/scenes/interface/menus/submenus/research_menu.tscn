@@ -24,3 +24,102 @@ offset_right = 0.0
 offset_bottom = 0.0
 next_screen = 2
 camera_marker = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0369792
+anchor_top = 0.0694444
+anchor_right = 0.696042
+anchor_bottom = 0.871333
+offset_right = 0.599976
+offset_bottom = -0.0400391
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.765104
+anchor_top = 0.480556
+anchor_right = 0.928333
+anchor_bottom = 0.712074
+offset_right = 0.599976
+offset_bottom = -0.0400391
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.76875
+anchor_top = 0.502778
+anchor_right = 0.927604
+anchor_bottom = 0.598148
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nom, description, stats de l'alien sur débloqués"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0916667
+anchor_top = 0.189815
+anchor_right = 0.634375
+anchor_bottom = 0.639815
+grow_horizontal = 2
+grow_vertical = 2
+text = "inventaire du loot alien
+UI pour associer différents items à l'anatomie des monstres
+démarrer de nouvelles missions de recherche
+lancer l'analyse d'un alien (confirmer l'association d'items à l'anatomie d'un alien)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.763021
+anchor_top = 0.111111
+anchor_right = 0.929167
+anchor_bottom = 0.464815
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hologramme de l'alien actuel qui tourne, avec anim d'idle"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.726563
+anchor_top = 0.171296
+anchor_right = 0.748958
+anchor_bottom = 0.406481
+text = "Prev"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.938542
+anchor_top = 0.169444
+anchor_right = 0.960938
+anchor_bottom = 0.40463
+text = "Nxt"
+metadata/_edit_use_anchors_ = true
