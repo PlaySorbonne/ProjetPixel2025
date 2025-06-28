@@ -50,7 +50,7 @@ mesh = SubResource("CylinderMesh_4l422")
 transform = Transform3D(-0.880643, 0, 0.473781, 0, 1, 0, -0.473781, 0, -0.880643, -1.24191, -0.228299, -0.444328)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Environment"]
-transform = Transform3D(1, 0, 0, 0, 0.999843, -0.0177142, 0, 0.0177142, 0.999843, -108.252, 167.837, -144.546)
+transform = Transform3D(2, 0, 0, 0, 1.99969, -0.0354284, 0, 0.0354284, 1.99969, -108.252, 242.777, -144.546)
 mesh = SubResource("SphereMesh_mp0u6")
 surface_material_override/0 = SubResource("StandardMaterial3D_mp0u6")
 
