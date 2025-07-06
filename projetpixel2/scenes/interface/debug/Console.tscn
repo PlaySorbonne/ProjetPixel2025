@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvhewnwb52nqw"]
+[gd_scene load_steps=5 format=3 uid="uid://bvhewnwb52nqw"]
 
-[ext_resource type="Script" uid="uid://gi0jeontcqs4" path="res://scripts/console.gd" id="1_7sswt"]
+[ext_resource type="Script" uid="uid://gi0jeontcqs4" path="res://scripts/commands/console.gd" id="1_7sswt"]
 [ext_resource type="Script" uid="uid://bpwr387piesrd" path="res://scripts/commands_loger.gd" id="2_a1cq7"]
+
+[sub_resource type="Theme" id="Theme_mtof6"]
+RichTextLabel/font_sizes/normal_font_size = 32
+
+[sub_resource type="Theme" id="Theme_a1cq7"]
+LineEdit/font_sizes/font_size = 32
 
 [node name="Console" type="Control"]
 layout_mode = 3
@@ -22,16 +28,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 alignment = 1
 
 [node name="Logs" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_mtof6")
 bbcode_enabled = true
-vertical_alignment = 1
+vertical_alignment = 2
 script = ExtResource("2_a1cq7")
 
 [node name="Prompt" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
+theme = SubResource("Theme_a1cq7")
+
+[node name="TabCompletionLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
