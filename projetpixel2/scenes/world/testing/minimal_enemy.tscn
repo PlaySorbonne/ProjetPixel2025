@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cacer4ahe4xrs"]
+
+[ext_resource type="Script" uid="uid://d13pr56n5sbve" path="res://scenes/world/testing/minimal_enemy.gd" id="1_8mgob"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8mgob"]
+
+[node name="MinimalEnemy" type="Node3D"]
+script = ExtResource("1_8mgob")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CylinderShape3D_8mgob")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
