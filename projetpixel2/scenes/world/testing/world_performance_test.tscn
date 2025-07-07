@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cipkud1dh3vju" path="res://scenes/world/world.tscn" id="1_r7xy6"]
 [ext_resource type="Script" uid="uid://bcruriw4s35vd" path="res://scenes/world/testing/world_performance_test.gd" id="2_361kn"]
-[ext_resource type="PackedScene" uid="uid://cacer4ahe4xrs" path="res://scenes/world/testing/minimal_enemy.tscn" id="3_r6whc"]
+[ext_resource type="PackedScene" uid="uid://cu2esoscgpq5v" path="res://scenes/world/testing/minimal_enemy_animated.tscn" id="3_r6whc"]
 
 [node name="WorldPerformanceTest" instance=ExtResource("1_r7xy6")]
 script = ExtResource("2_361kn")
