@@ -10,6 +10,7 @@ const MENU_TRANSITION_TIME := 0.3
 
 func _ready() -> void:
 	GV.persistent_menu = self
+	RunData.reset_run_data()
 
 func transition_to_scene() -> void:
 	pass
