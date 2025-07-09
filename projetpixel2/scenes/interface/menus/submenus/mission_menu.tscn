@@ -54,7 +54,27 @@ anchor_left = 0.0807292
 anchor_top = 0.106481
 anchor_right = 0.189583
 anchor_bottom = 0.15463
-text = "Map selection"
+text = "Map Name"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01875
+anchor_top = 0.0907407
+anchor_right = 0.0645833
+anchor_bottom = 0.157407
+text = "Previous"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.202083
+anchor_top = 0.0888889
+anchor_right = 0.247917
+anchor_bottom = 0.160185
+text = "Next"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="."]
@@ -81,9 +101,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.935938
-anchor_top = 0.715741
+anchor_top = 0.705556
 anchor_right = 0.982813
-anchor_bottom = 0.796296
+anchor_bottom = 0.786111
 text = "Edit
 Spaceship"
 metadata/_edit_use_anchors_ = true
@@ -116,9 +136,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Biome Image"
+text = "Biome Image
+
+Proposition: vue panoramique du niveau, à travers une caméra qui se balade dans l'environnement avec un rendu pixellisé un peu rétro (pour immersion à travers la technologie un peu vieille du vaisseau)"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ColorRect8" type="ColorRect" parent="."]
 layout_mode = 1
@@ -126,7 +149,7 @@ anchors_preset = -1
 anchor_left = 0.558333
 anchor_top = 0.168519
 anchor_right = 0.779167
-anchor_bottom = 0.375926
+anchor_bottom = 0.691667
 color = Color(0, 0, 0, 0.666667)
 metadata/_edit_use_anchors_ = true
 
@@ -245,42 +268,21 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.146907
-anchor_top = 0.262136
+anchor_top = 0.271845
 anchor_right = -0.0231959
-anchor_bottom = 0.76699
+anchor_bottom = 0.776699
 offset_right = -24.0
 offset_bottom = -26.0
 scale = Vector2(2, 2)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0328125
-anchor_top = 0.484259
-anchor_right = 0.242708
-anchor_bottom = 0.543519
-color = Color(0, 0, 0, 0.666667)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="ColorRect2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Biome Name"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0328125
-anchor_top = 0.569444
+anchor_top = 0.475926
 anchor_right = 0.242708
-anchor_bottom = 0.75463
+anchor_bottom = 0.661111
 color = Color(0, 0, 0, 0.666667)
 metadata/_edit_use_anchors_ = true
 
@@ -299,9 +301,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0317708
-anchor_top = 0.771296
+anchor_top = 0.675926
 anchor_right = 0.241667
-anchor_bottom = 0.849074
+anchor_bottom = 0.705555
 color = Color(0, 0, 0, 0.666667)
 metadata/_edit_use_anchors_ = true
 
@@ -312,8 +314,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Biome Difficulty
-Mob families (appear once identified)"
+text = "Biome Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect9" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0322917
+anchor_top = 0.712037
+anchor_right = 0.242188
+anchor_bottom = 0.742593
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect9"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mob families (appear once identified)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
