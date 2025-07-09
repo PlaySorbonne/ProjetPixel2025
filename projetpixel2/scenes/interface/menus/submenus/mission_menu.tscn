@@ -12,16 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4u1yp")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0557292
-anchor_top = 0.0490741
-anchor_right = 0.205729
-anchor_bottom = 0.087037
-text = "MISSION MENU"
-metadata/_edit_use_anchors_ = true
-
 [node name="ButtonPlay" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -34,6 +24,7 @@ text = "Start"
 metadata/_edit_use_anchors_ = true
 
 [node name="FadeTransition" type="ColorRect" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,5 +46,275 @@ offset_right = 0.0
 offset_bottom = 0.0
 next_screen = 2
 camera_marker = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0807292
+anchor_top = 0.106481
+anchor_right = 0.189583
+anchor_bottom = 0.15463
+text = "Map selection"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.352083
+anchor_top = 0.100926
+anchor_right = 0.492708
+anchor_bottom = 0.149074
+text = "Prime Directives (story missions)"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.597396
+anchor_top = 0.0990741
+anchor_right = 0.70625
+anchor_bottom = 0.147222
+text = "Auxiliary Ops"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.935938
+anchor_top = 0.715741
+anchor_right = 0.982813
+anchor_bottom = 0.796296
+text = "Edit
+Spaceship"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.817187
+anchor_top = 0.496296
+anchor_right = 0.927083
+anchor_bottom = 0.755556
+text = "Select/Edit
+Deck"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0328125
+anchor_top = 0.167593
+anchor_right = 0.242708
+anchor_bottom = 0.460185
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Image"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.558333
+anchor_top = 0.168519
+anchor_right = 0.779167
+anchor_bottom = 0.375926
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ici, définir si on veut mettre des quetes annexes ui sont épuisables (genre quêtes annexes de RPG avec une ptite récompense d'histoire), des quêtes annexes infinies (cf XCOM) ou des challenges toujours identiques à chaque mission (cf HALO)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31875
+anchor_top = 0.167593
+anchor_right = 0.520833
+anchor_bottom = 0.262963
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 6.10352e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mission title        [faction]
+              Mission description
+              Mission rewards"
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.146907
+anchor_top = 0.262136
+anchor_right = -0.0231959
+anchor_bottom = 0.76699
+offset_right = -24.0
+offset_bottom = -26.0
+scale = Vector2(2, 2)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31875
+anchor_top = 0.283333
+anchor_right = 0.520833
+anchor_bottom = 0.378704
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = 6.10352e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mission title        [faction]
+              Mission description
+              Mission rewards"
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.146907
+anchor_top = 0.262136
+anchor_right = -0.0231959
+anchor_bottom = 0.76699
+offset_right = -24.0
+offset_bottom = -26.0
+scale = Vector2(2, 2)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.31875
+anchor_top = 0.402778
+anchor_right = 0.520833
+anchor_bottom = 0.498148
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = 6.10352e-05
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mission title        [faction]
+              Mission description
+              Mission rewards"
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="ColorRect7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.146907
+anchor_top = 0.262136
+anchor_right = -0.0231959
+anchor_bottom = 0.76699
+offset_right = -24.0
+offset_bottom = -26.0
+scale = Vector2(2, 2)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0328125
+anchor_top = 0.484259
+anchor_right = 0.242708
+anchor_bottom = 0.543519
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0328125
+anchor_top = 0.569444
+anchor_right = 0.242708
+anchor_bottom = 0.75463
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Description"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0317708
+anchor_top = 0.771296
+anchor_right = 0.241667
+anchor_bottom = 0.849074
+color = Color(0, 0, 0, 0.666667)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Difficulty
+Mob families (appear once identified)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
