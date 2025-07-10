@@ -37,33 +37,6 @@ offset_bottom = -0.0400391
 color = Color(0, 0, 0, 0.392157)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.765104
-anchor_top = 0.480556
-anchor_right = 0.928333
-anchor_bottom = 0.712074
-offset_right = 0.599976
-offset_bottom = -0.0400391
-color = Color(0, 0, 0, 0.392157)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.76875
-anchor_top = 0.502778
-anchor_right = 0.927604
-anchor_bottom = 0.598148
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nom, description, stats de l'alien sur débloqués"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Label3" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -123,3 +96,24 @@ anchor_right = 0.960938
 anchor_bottom = 0.40463
 text = "Nxt"
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.748958
+anchor_top = 0.487963
+anchor_right = 0.940625
+anchor_bottom = 0.522222
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Biome Difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1

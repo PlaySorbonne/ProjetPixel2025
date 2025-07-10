@@ -126,7 +126,7 @@ anchor_left = 0.0328125
 anchor_top = 0.167593
 anchor_right = 0.242708
 anchor_bottom = 0.460185
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect"]
@@ -150,7 +150,7 @@ anchor_left = 0.558333
 anchor_top = 0.168519
 anchor_right = 0.779167
 anchor_bottom = 0.691667
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect8"]
@@ -172,7 +172,7 @@ anchor_left = 0.31875
 anchor_top = 0.167593
 anchor_right = 0.520833
 anchor_bottom = 0.262963
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect5"]
@@ -209,7 +209,7 @@ anchor_left = 0.31875
 anchor_top = 0.283333
 anchor_right = 0.520833
 anchor_bottom = 0.378704
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect6"]
@@ -246,7 +246,7 @@ anchor_left = 0.31875
 anchor_top = 0.402778
 anchor_right = 0.520833
 anchor_bottom = 0.498148
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect7"]
@@ -283,7 +283,7 @@ anchor_left = 0.0328125
 anchor_top = 0.475926
 anchor_right = 0.242708
 anchor_bottom = 0.661111
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect3"]
@@ -304,7 +304,7 @@ anchor_left = 0.0317708
 anchor_top = 0.675926
 anchor_right = 0.241667
 anchor_bottom = 0.705555
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect4"]
@@ -325,7 +325,7 @@ anchor_left = 0.0322917
 anchor_top = 0.712037
 anchor_right = 0.242188
 anchor_bottom = 0.742593
-color = Color(0, 0, 0, 0.666667)
+color = Color(0, 0, 0, 0.823529)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ColorRect9"]
