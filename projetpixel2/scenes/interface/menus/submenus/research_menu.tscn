@@ -67,10 +67,10 @@ metadata/_edit_use_anchors_ = true
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.763021
-anchor_top = 0.111111
-anchor_right = 0.929167
-anchor_bottom = 0.464815
+anchor_left = 0.730729
+anchor_top = 0.037963
+anchor_right = 0.957812
+anchor_bottom = 0.477778
 color = Color(0, 0, 0, 0.392157)
 metadata/_edit_use_anchors_ = true
 
@@ -101,7 +101,7 @@ handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
-size = Vector2i(319, 382)
+size = Vector2i(436, 475)
 render_target_update_mode = 4
 script = ExtResource("3_6dan6")
 
@@ -142,30 +142,36 @@ sides = 10
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.726563
-anchor_top = 0.171296
-anchor_right = 0.748958
-anchor_bottom = 0.406481
-text = "Prev"
+anchor_left = 0.713542
+anchor_top = 0.150926
+anchor_right = 0.726042
+anchor_bottom = 0.386111
+text = "P
+r
+e
+v"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.938542
-anchor_top = 0.169444
-anchor_right = 0.960938
-anchor_bottom = 0.40463
-text = "Nxt"
+anchor_left = 0.961458
+anchor_top = 0.153704
+anchor_right = 0.973437
+anchor_bottom = 0.388889
+text = "N
+e
+x
+t"
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect4" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.748958
+anchor_left = 0.730208
 anchor_top = 0.487963
-anchor_right = 0.940625
-anchor_bottom = 0.522222
+anchor_right = 0.900521
+anchor_bottom = 0.525926
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
 
@@ -176,7 +182,98 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Biome Difficulty"
+text = "    Enemy name"
+vertical_alignment = 1
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73125
+anchor_top = 0.537963
+anchor_right = 0.975521
+anchor_bottom = 0.734259
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy description
+
+OU
+
+icones de matériaux si non recherché"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.731771
+anchor_top = 0.742593
+anchor_right = 0.976042
+anchor_bottom = 0.918519
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy Stats + Abilities
+
+OU
+
+rien si non recherché"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect8" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.732292
+anchor_top = 0.927778
+anchor_right = 0.977604
+anchor_bottom = 0.975926
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nb tués, stats, etc"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.911979
+anchor_top = 0.480556
+anchor_right = 0.946354
+anchor_bottom = 0.534259
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Family"
 horizontal_alignment = 1
 vertical_alignment = 1
 
