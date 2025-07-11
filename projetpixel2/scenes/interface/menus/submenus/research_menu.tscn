@@ -37,22 +37,20 @@ camera_marker = 2
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0369792
-anchor_top = 0.0694444
-anchor_right = 0.696042
-anchor_bottom = 0.871333
+anchor_left = 0.0213542
+anchor_top = 0.0657407
+anchor_right = 0.430937
+anchor_bottom = 0.86763
 offset_right = 0.599976
 offset_bottom = -0.0400391
 color = Color(0, 0, 0, 0.392157)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="ColorRect2"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0916667
-anchor_top = 0.189815
-anchor_right = 0.634375
-anchor_bottom = 0.639815
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "inventaire du loot alien
@@ -62,7 +60,273 @@ lancer l'analyse d'un alien (confirmer l'association d'items à l'anatomie d'un 
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Category Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button2" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button3" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button4" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button5" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button6" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button7" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button23" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button24" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button25" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button26" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button8" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button9" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button10" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button11" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button12" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button13" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button14" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button15" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button16" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button17" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button18" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button19" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button20" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button21" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button22" type="Button" parent="ColorRect2/HFlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item"
+
+[node name="Button" type="Button" parent="ColorRect2"]
+layout_mode = 0
+anchor_left = 0.214739
+anchor_top = 0.00115479
+anchor_right = 0.249047
+anchor_bottom = 0.0369516
+text = "<"
 metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="ColorRect2"]
+layout_mode = 0
+anchor_left = 0.753494
+anchor_top = 0.00115479
+anchor_right = 0.787802
+anchor_bottom = 0.0369516
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451562
+anchor_top = 0.0657407
+anchor_right = 0.697604
+anchor_bottom = 0.86763
+offset_right = 0.599976
+offset_bottom = -0.0400391
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "inventaire du loot alien
+UI pour associer différents items à l'anatomie des monstres
+démarrer de nouvelles missions de recherche
+lancer l'analyse d'un alien (confirmer l'association d'items à l'anatomie d'un alien)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "Telluriques"
+
+[node name="Button2" type="Button" parent="ColorRect3/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.752643
+anchor_top = -0.129032
+anchor_right = 0.790698
+anchor_bottom = 1.12903
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="ColorRect3/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.209302
+anchor_top = -0.0645161
+anchor_right = 0.247357
+anchor_bottom = 1.19355
+text = "<"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label2" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label3" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label4" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         Grokayou"
+
+[node name="Label5" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label6" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label7" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label8" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         Ptitkayou"
+
+[node name="Label9" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
+
+[node name="Label10" type="Label" parent="ColorRect3/VBoxContainer"]
+layout_mode = 2
+text = "         ????????????????????"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -252,7 +516,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Nb tués, stats, etc"
+text = "Nb tués, stats, etc OU *Bouton Rechercher*"
 horizontal_alignment = 1
 vertical_alignment = 1
 
