@@ -18,6 +18,12 @@ func default_damage_expression() -> Expression:
 	var err = expr.parse(expr_str)
 	return expr
 
+func set_damage_expression(new_expression : String) -> void:
+	var expr : Expression = Expression.new()
+	var expr_str := "new_expression"
+	var err = expr.parse(expr_str)
+	damage_expresion = expr
+
 func get_damage() -> int:
 	return damage_expresion.execute([], self)
 
