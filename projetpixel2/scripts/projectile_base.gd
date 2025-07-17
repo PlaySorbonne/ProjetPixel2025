@@ -33,12 +33,12 @@ func damage_body(body : BaseEnemy) -> void:
 		tower.projectile_critical_hit.emit(self, body)
 		critical_hits_number += 1
 		killed = body.damageable.damage_critical(
-			projectile.damage, 
+			projectile.get_damage(), 
 			projectile.damage_type, 
 			projectile.critical_hit_intensity)
 	else:
 		killed = body.damageable.damage(
-			projectile.damage, 
+			projectile.get_damage(), 
 			projectile.damage_type)
 	if killed:
 		tower.enemy_killed.emit(self, body)

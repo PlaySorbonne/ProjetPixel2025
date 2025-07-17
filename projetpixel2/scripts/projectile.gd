@@ -18,6 +18,9 @@ func default_damage_expression() -> Expression:
 	var err = expr.parse(expr_str)
 	return expr
 
+func get_damage() -> int:
+	return damage_expresion.execute([], self)
+
 func split_projectile(multiplier : float) -> Projectile:
 	var new_projectile := Projectile.new()
 	# same variables
