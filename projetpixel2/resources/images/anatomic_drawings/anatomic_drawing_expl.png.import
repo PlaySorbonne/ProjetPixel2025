@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcm0vhe2qy028"
-valid=false
+uid="uid://cleephyr0gtxl"
+path="res://.godot/imported/anatomic_drawing_expl.png-800a799bfde324989332652ebb939262.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://resources/images/anatomic_drawings/anatomic_drawing_example.png"
+source_file="res://resources/images/anatomic_drawings/anatomic_drawing_expl.png"
+dest_files=["res://.godot/imported/anatomic_drawing_expl.png-800a799bfde324989332652ebb939262.ctex"]
 
 [params]
 
