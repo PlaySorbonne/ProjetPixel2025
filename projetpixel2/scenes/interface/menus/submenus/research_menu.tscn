@@ -482,6 +482,7 @@ text = "    Enemy name"
 vertical_alignment = 1
 
 [node name="EnemyDescription" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.615104
@@ -505,7 +506,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ColorRectResearchSlots" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.615104
@@ -565,6 +565,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="EnemyStats" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.614062
@@ -617,7 +618,6 @@ Takes less damage with each hit."
 vertical_alignment = 1
 
 [node name="ResearchButton" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.676042
