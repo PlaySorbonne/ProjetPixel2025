@@ -2,11 +2,14 @@
 
 [node name="ButtonWip" type="Button"]
 self_modulate = Color(0, 0, 0, 1)
+z_index = 5
 anchors_preset = -1
 anchor_left = 0.227604
 anchor_top = 0.907407
-anchor_right = 0.338542
-anchor_bottom = 0.946296
+anchor_right = 0.366
+anchor_bottom = 0.956
+offset_right = -52.7194
+offset_bottom = -10.4803
 scale = Vector2(1.25, 1.25)
 text = "/!\\ Toggle UI"
 flat = true
@@ -24,6 +27,7 @@ offset_right = 4.99902
 offset_bottom = 3.99994
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -34,4 +38,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 0.623529, 0, 1)
+metadata/_edit_use_anchors_ = true

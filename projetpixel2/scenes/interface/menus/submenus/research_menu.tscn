@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpge3hc31t1w0"]
+[gd_scene load_steps=10 format=3 uid="uid://bpge3hc31t1w0"]
 
 [ext_resource type="Script" uid="uid://cotfaqkyfvygn" path="res://scripts/research_menu.gd" id="1_mp75t"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_i5pn3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp0bqofy16pki" path="res://resources/3d_models/enemy_placeholders/figurine-large.fbx" id="3_he0to"]
 [ext_resource type="Material" uid="uid://r2h4oahbhimc" path="res://resources/materials/3d_hologram_material.tres" id="4_6uhi6"]
 [ext_resource type="PackedScene" uid="uid://bsy5victrmv58" path="res://scenes/world/testing/button_wip.tscn" id="6_blj84"]
+[ext_resource type="Texture2D" uid="uid://cleephyr0gtxl" path="res://resources/images/anatomic_drawings/anatomic_drawing_expl.png" id="6_qf541"]
 [ext_resource type="PackedScene" uid="uid://dlu0m5wj0coxt" path="res://scenes/world/testing/label_wip.tscn" id="7_7lmkt"]
 
 [sub_resource type="Environment" id="Environment_6uhi6"]
@@ -405,6 +406,35 @@ radius = 1.0
 height = 0.05
 sides = 10
 
+[node name="ButtonToggleEnemyView" type="Button" parent="ColorRect"]
+z_index = 3
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "TOGGLE
+DRAWING"
+
+[node name="AnatomicDrawing" type="TextureRect" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_qf541")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -451,7 +481,7 @@ grow_vertical = 2
 text = "    Enemy name"
 vertical_alignment = 1
 
-[node name="ColorRect5" type="ColorRect" parent="."]
+[node name="EnemyDescription" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.615104
@@ -461,7 +491,7 @@ anchor_bottom = 0.734259
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect5"]
+[node name="Label" type="Label" parent="EnemyDescription"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -474,17 +504,77 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ColorRect7" type="ColorRect" parent="."]
+[node name="ColorRectResearchSlots" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.615104
+anchor_top = 0.537963
+anchor_right = 0.975521
+anchor_bottom = 0.893519
+color = Color(0, 0, 0, 0.85098)
+metadata/_edit_use_anchors_ = true
+
+[node name="FlowContainer" type="FlowContainer" parent="ColorRectResearchSlots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button22" type="Button" parent="ColorRectResearchSlots/FlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item
+slot"
+
+[node name="Button23" type="Button" parent="ColorRectResearchSlots/FlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item
+slot"
+
+[node name="Button24" type="Button" parent="ColorRectResearchSlots/FlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item
+slot"
+
+[node name="Button25" type="Button" parent="ColorRectResearchSlots/FlowContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "item
+slot"
+
+[node name="Label" type="Label" parent="ColorRectResearchSlots"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -126.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Basic description + hints to match correct alien parts
+
+to discover alien, player must drag & drop correct items in item slots, then press START RESEARCH. Results will be given at the end of the following game. If research is successfull (parts are correctly associated), the alien is revealed."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="EnemyStats" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.614062
 anchor_top = 0.742593
 anchor_right = 0.976042
-anchor_bottom = 0.918519
+anchor_bottom = 0.983333
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect7"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EnemyStats"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -492,11 +582,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Separator1" type="Control" parent="ColorRect7/HBoxContainer"]
+[node name="Separator1" type="Control" parent="EnemyStats/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ColorRect7/HBoxContainer"]
+[node name="Label" type="Label" parent="EnemyStats/HBoxContainer"]
 layout_mode = 2
 text = "Threat rating: 
 Hitpoints:
@@ -504,14 +594,16 @@ Speed:
 Defense:
 Resistances:
 Attack:
-Attack Speed:"
+Attack Speed:
+
+Abilities:"
 vertical_alignment = 1
 
-[node name="Separator2" type="Control" parent="ColorRect7/HBoxContainer"]
+[node name="Separator2" type="Control" parent="EnemyStats/HBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="ColorRect7/HBoxContainer"]
+[node name="Label2" type="Label" parent="EnemyStats/HBoxContainer"]
 layout_mode = 2
 text = "1.0
 240
@@ -519,10 +611,13 @@ text = "1.0
 1.6
 Fire: 40%, Energy: -20%
 40
-1.5"
+1.5
+
+Takes less damage with each hit."
 vertical_alignment = 1
 
-[node name="ColorRect8" type="ColorRect" parent="."]
+[node name="ResearchButton" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.676042
@@ -532,13 +627,11 @@ anchor_bottom = 0.975926
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect8"]
+[node name="Label" type="Label" parent="ResearchButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "START RESEARCH"
@@ -568,15 +661,28 @@ vertical_alignment = 1
 
 [node name="ButtonWip" parent="." instance=ExtResource("6_blj84")]
 layout_mode = 1
-anchor_left = 0.154167
+anchor_left = 0.134896
 anchor_top = 0.915741
-anchor_right = 0.273812
+anchor_right = 0.270687
 anchor_bottom = 0.952074
 offset_right = -45.72
 offset_bottom = -8.24011
-text = "/!\\ Toggle UI /!\\"
+text = "/!\\ Press to toggle UI /!\\"
 
 [node name="LabelWip" parent="ButtonWip" instance=ExtResource("7_7lmkt")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.28
+anchor_top = -1.29032
+anchor_right = 2.41488
+anchor_bottom = 1.77419
+offset_left = 1.52588e-05
+offset_top = 0.0
+offset_right = 3.05176e-05
+offset_bottom = 0.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ColorRect/ButtonToggleEnemyView" to="." method="_on_button_toggle_enemy_view_pressed"]
+[connection signal="pressed" from="ButtonWip" to="." method="_on_button_wip_pressed"]
 
 [editable path="ColorRect/SubViewportContainer/SubViewport/Node3D/enemy"]
