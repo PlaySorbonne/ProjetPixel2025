@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dlu0m5wj0coxt"]
+
+[node name="Label" type="Label"]
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 199.0
+offset_top = -24.0
+offset_right = 488.0
+offset_bottom = 54.0
+text = "Toggle between \"enemy research complete\" and \"enemy research in progress"
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.623529, 0, 1)

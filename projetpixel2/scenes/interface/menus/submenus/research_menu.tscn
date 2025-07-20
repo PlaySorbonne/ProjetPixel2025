@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpge3hc31t1w0"]
+[gd_scene load_steps=9 format=3 uid="uid://bpge3hc31t1w0"]
 
 [ext_resource type="Script" uid="uid://cotfaqkyfvygn" path="res://scripts/research_menu.gd" id="1_mp75t"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_i5pn3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dp0bqofy16pki" path="res://resources/3d_models/enemy_placeholders/figurine-large.fbx" id="3_he0to"]
 [ext_resource type="Material" uid="uid://r2h4oahbhimc" path="res://resources/materials/3d_hologram_material.tres" id="4_6uhi6"]
 [ext_resource type="PackedScene" uid="uid://bsy5victrmv58" path="res://scenes/world/testing/button_wip.tscn" id="6_blj84"]
+[ext_resource type="PackedScene" uid="uid://dlu0m5wj0coxt" path="res://scenes/world/testing/label_wip.tscn" id="7_7lmkt"]
 
 [sub_resource type="Environment" id="Environment_6uhi6"]
 background_mode = 2
@@ -567,12 +568,15 @@ vertical_alignment = 1
 
 [node name="ButtonWip" parent="." instance=ExtResource("6_blj84")]
 layout_mode = 1
-anchor_left = 0.141667
-anchor_top = 0.930556
-anchor_right = 0.221094
-anchor_bottom = 0.966435
-offset_right = -30.5
-offset_bottom = -7.75
+anchor_left = 0.154167
+anchor_top = 0.915741
+anchor_right = 0.273812
+anchor_bottom = 0.952074
+offset_right = -45.72
+offset_bottom = -8.24011
 text = "/!\\ Toggle UI /!\\"
+
+[node name="LabelWip" parent="ButtonWip" instance=ExtResource("7_7lmkt")]
+layout_mode = 0
 
 [editable path="ColorRect/SubViewportContainer/SubViewport/Node3D/enemy"]
