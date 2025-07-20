@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bsy5victrmv58"]
+
+[node name="ButtonWip" type="Button"]
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.227604
+anchor_top = 0.907407
+anchor_right = 0.338542
+anchor_bottom = 0.946296
+scale = Vector2(1.25, 1.25)
+text = "/!\\ Toggle UI"
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 4.99902
+offset_bottom = 3.99994
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.623529, 0, 1)

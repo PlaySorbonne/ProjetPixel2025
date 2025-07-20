@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpge3hc31t1w0"]
+[gd_scene load_steps=8 format=3 uid="uid://bpge3hc31t1w0"]
 
 [ext_resource type="Script" uid="uid://cotfaqkyfvygn" path="res://scripts/research_menu.gd" id="1_mp75t"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_i5pn3"]
 [ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="3_6dan6"]
 [ext_resource type="PackedScene" uid="uid://dp0bqofy16pki" path="res://resources/3d_models/enemy_placeholders/figurine-large.fbx" id="3_he0to"]
 [ext_resource type="Material" uid="uid://r2h4oahbhimc" path="res://resources/materials/3d_hologram_material.tres" id="4_6uhi6"]
+[ext_resource type="PackedScene" uid="uid://bsy5victrmv58" path="res://scenes/world/testing/button_wip.tscn" id="6_blj84"]
 
 [sub_resource type="Environment" id="Environment_6uhi6"]
 background_mode = 2
@@ -39,7 +40,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0213542
 anchor_top = 0.0657407
-anchor_right = 0.430937
+anchor_right = 0.401771
 anchor_bottom = 0.86763
 offset_right = 0.599976
 offset_bottom = -0.0400391
@@ -232,9 +233,9 @@ metadata/_edit_use_anchors_ = true
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.451562
+anchor_left = 0.413021
 anchor_top = 0.0657407
-anchor_right = 0.697604
+anchor_right = 0.591875
 anchor_bottom = 0.86763
 offset_right = 0.599976
 offset_bottom = -0.0400391
@@ -331,8 +332,8 @@ text = "         ????????????????????"
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.730729
-anchor_top = 0.037963
+anchor_left = 0.622917
+anchor_top = 0.0314815
 anchor_right = 0.957812
 anchor_bottom = 0.477778
 color = Color(0, 0, 0, 0.392157)
@@ -365,7 +366,7 @@ handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
-size = Vector2i(436, 475)
+size = Vector2i(643, 482)
 render_target_update_mode = 4
 script = ExtResource("3_6dan6")
 
@@ -406,9 +407,9 @@ sides = 10
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.713542
+anchor_left = 0.605209
 anchor_top = 0.150926
-anchor_right = 0.726042
+anchor_right = 0.617709
 anchor_bottom = 0.386111
 text = "P
 r
@@ -432,7 +433,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ColorRect4" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.730208
+anchor_left = 0.615104
 anchor_top = 0.487963
 anchor_right = 0.900521
 anchor_bottom = 0.525926
@@ -452,7 +453,7 @@ vertical_alignment = 1
 [node name="ColorRect5" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.73125
+anchor_left = 0.615104
 anchor_top = 0.537963
 anchor_right = 0.975521
 anchor_bottom = 0.734259
@@ -466,45 +467,66 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Enemy description
-
-OU
-
-icones de matériaux si non recherché"
+text = "Enemy description:
+Placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder placeholder... Placeholder placeholder placeholder. Placeholder placeholder placeholder."
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="ColorRect7" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.731771
+anchor_left = 0.614062
 anchor_top = 0.742593
 anchor_right = 0.976042
 anchor_bottom = 0.918519
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect7"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect7"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Enemy Stats + Abilities
 
-OU
+[node name="Separator1" type="Control" parent="ColorRect7/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
 
-rien si non recherché"
-horizontal_alignment = 1
+[node name="Label" type="Label" parent="ColorRect7/HBoxContainer"]
+layout_mode = 2
+text = "Threat rating: 
+Hitpoints:
+Speed:
+Defense:
+Resistances:
+Attack:
+Attack Speed:"
+vertical_alignment = 1
+
+[node name="Separator2" type="Control" parent="ColorRect7/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ColorRect7/HBoxContainer"]
+layout_mode = 2
+text = "1.0
+240
+20.0
+1.6
+Fire: 40%, Energy: -20%
+40
+1.5"
 vertical_alignment = 1
 
 [node name="ColorRect8" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.732292
+anchor_left = 0.676042
 anchor_top = 0.927778
-anchor_right = 0.977604
+anchor_right = 0.921354
 anchor_bottom = 0.975926
 color = Color(0, 0, 0, 0.85098)
 metadata/_edit_use_anchors_ = true
@@ -514,9 +536,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 6.0
+offset_right = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Nb tués, stats, etc OU *Bouton Rechercher*"
+text = "START RESEARCH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -540,5 +564,15 @@ grow_vertical = 2
 text = "Family"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ButtonWip" parent="." instance=ExtResource("6_blj84")]
+layout_mode = 1
+anchor_left = 0.141667
+anchor_top = 0.930556
+anchor_right = 0.221094
+anchor_bottom = 0.966435
+offset_right = -30.5
+offset_bottom = -7.75
+text = "/!\\ Toggle UI /!\\"
 
 [editable path="ColorRect/SubViewportContainer/SubViewport/Node3D/enemy"]
