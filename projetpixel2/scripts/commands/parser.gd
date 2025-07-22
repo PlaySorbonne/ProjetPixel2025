@@ -7,6 +7,7 @@ static func get_command_name(text: String) -> String:
 		return ""
 	return command_elements[0]
 
+# Séparer la commande de ses arguments / checker les erreurs
 static func pre_parse(text: String) -> Dictionary[String, Variant]:
 	var result: Dictionary[String, Variant] = {
 		"command": "",
@@ -22,6 +23,7 @@ static func pre_parse(text: String) -> Dictionary[String, Variant]:
 		result["arguments"] = command_elements.slice(1)
 	return result
 
+# Parser la commande
 static func parse(text: String, logger: CommandsLogger) -> Command:
 	var pre_parsed := Parser.pre_parse(text)
 	var command_name: String = pre_parsed["command"]
