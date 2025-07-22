@@ -31,4 +31,7 @@ static func parse(text: String, logger: CommandsLogger) -> Command:
 	match command_name:
 		"ping":
 			return PingCommand.new(logger)
+		"give":
+			# TODO: use card parser
+			pass
 	return Command.new(true)
