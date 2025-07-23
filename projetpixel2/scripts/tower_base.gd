@@ -26,6 +26,7 @@ signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 @export var fire_rate := 1.0
 @export var projectile_template : Projectile = Projectile.new()
 @export var max_number_of_cards := 5
+@export var fire_range := 10.0
 
 var can_shoot := true
 
