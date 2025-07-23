@@ -1,4 +1,5 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
+Range Up, Extend the range of the tower.,,Common,,,tower.fire_range += 2,Military,
 Speed Up,Improves the fire rate of the tower.,,Common,,,tower.fire_rate *= 1.5,Military,
 Pierce,The projectiles can pierce enemies.,,Rare,,,tower.projectile_template.pierce += 1,Military,
 Max combo,Adds the current combo to tower damage.,,Common,,,tower.projectile_template.damage += RunData.current_combo,Traders,
