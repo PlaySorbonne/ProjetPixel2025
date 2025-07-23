@@ -60,6 +60,8 @@ func split(number_of_children : int, total_angle : float, children_multiplier :=
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		damage_body(body)
-		if not projectile.pierce:
+		if projectile.pierce <= 0:
 			await get_tree().process_frame
 			queue_free()
+		else:
+			projectile.pierce -= 1
