@@ -10,15 +10,17 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_041tc"]
+resource_local_to_scene = true
 radius = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vohdg"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_mowsw")
 shader_parameter/size = 0.4
-shader_parameter/width = 0.02
+shader_parameter/width = 0.005
 shader_parameter/inner_color = Color(0, 0, 0, 0)
-shader_parameter/outer_color = Color(0.74, 0, 0, 1)
+shader_parameter/outer_color = Color(0.5, 0, 0, 0.384314)
 
 [sub_resource type="QuadMesh" id="QuadMesh_j5p61"]
 size = Vector2(50, 50)

@@ -26,7 +26,18 @@ signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 @export var fire_rate := 1.0
 @export var projectile_template : Projectile = Projectile.new()
 @export var max_number_of_cards := 5
-@export var fire_range := 10.0
+@export var fire_range := 10.0:
+	set(value):
+		fire_range = value
+		var new_shader_size := value / 10.0 * 0.4  # value / CollisionShape3D.radius * MeshInstance3D.material.size
+		if is_visible_in_tree():
+			var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+			var initial_shader_size : float = $Area3D/MeshInstance3D.material_override.get_shader_parameter("size")
+			t.tween_method(_update_fire_range_shader, initial_shader_size, new_shader_size, 0.1)
+		else:
+			$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_shader_size)
+		$Area3D/CollisionShape3D.shape.radius = value
+		
 
 var can_shoot := true
 
@@ -41,6 +52,9 @@ func _ready() -> void:
 		$TimerShoot.start()
 	else:
 		set_hologram()
+
+func _update_fire_range_shader(new_size : float) -> void:
+	$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_size)
 
 func can_add_card() -> bool:
 	return cards.size() < max_number_of_cards
