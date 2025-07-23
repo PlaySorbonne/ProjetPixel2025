@@ -102,7 +102,7 @@ func get_spaceship_closest_enemy() -> BaseEnemy:
 	for i : int in range(1, nb_focused_enemies):
 		var enemy : BaseEnemy = get_focused_enemies()[i]
 		if not is_instance_valid(enemy):
-			print("PROBLEME")
+			print_debug("PROBLEME")
 			return null
 		var dist := GV.space_ship.global_position.distance_squared_to(enemy.global_position)
 		if dist < min_dist:
