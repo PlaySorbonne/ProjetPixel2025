@@ -2,6 +2,8 @@ extends StaticBody3D
 class_name TowerBase
 
 
+enum Modes {Firing, Mining}
+
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 
@@ -19,6 +21,8 @@ signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 @export var is_hologram := false
 @export var cards : Array[CardData] = []
 @export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
+var current_mode := Modes.Firing
+var can_switch_mode := true
 
 @export_group("Tower stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -37,7 +41,8 @@ signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 		else:
 			$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_shader_size)
 		$Area3D/CollisionShape3D.shape.radius = value
-		
+@export var switch_mode_duration := 1.5
+@export var switch_mode_delay := 5.0
 
 var can_shoot := true
 
@@ -55,6 +60,14 @@ func _ready() -> void:
 
 func _update_fire_range_shader(new_size : float) -> void:
 	$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_size)
+
+func switch_mode() -> void:
+	if not can_switch_mode:
+		return
+	if current_mode == Modes.Firing:
+		current_mode = Modes.Mining
+	else:
+		current_mode = Modes.Firing
 
 func can_add_card() -> bool:
 	return cards.size() < max_number_of_cards
@@ -98,8 +111,10 @@ func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
 func _process(delta: float) -> void:
-	pass
-	#print("focused_enemies -> " + str(len(focused_enemies)))
+	
+	if current_mode == Modes.Mining:
+		#TODO
+		pass
 
 func get_focused_enemies() -> Array[Node3D]:
 	return area3d.get_overlapping_bodies()
@@ -179,11 +194,13 @@ func shoot_bonus_with_delay(delay : float) -> void:
 	shoot(enemy_choice.call(), true)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body is BaseEnemy and can_shoot:
+	if body is BaseEnemy and can_shoot and current_mode == Modes.Firing:
 		shoot(body)
 
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
+	if current_mode != Modes.Firing:
+		return
 	if len(get_focused_enemies()) > 0:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
