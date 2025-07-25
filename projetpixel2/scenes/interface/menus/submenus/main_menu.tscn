@@ -151,5 +151,14 @@ alpha crafting plus)"
 label_settings = SubResource("LabelSettings_331ia")
 metadata/_edit_use_anchors_ = true
 
+[node name="ButtonDebugWorld" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 762.0
+offset_right = 1887.0
+offset_bottom = 822.0
+text = "play debug world"
+
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]
+[connection signal="pressed" from="ButtonDebugWorld" to="." method="_on_button_debug_world_pressed"]

@@ -16,10 +16,12 @@ var number_of_choosable_cards := 3
 @onready var tower_spawner : TowerSpawner = $TowerSpawner
 @onready var mouse_3d_interaction : Mouse3dInteraction = $Mouse3dInteraction
 @onready var combo_label : Label = $ComboCounter/Label
+@onready var console : Console = $Console
 
 
 func _ready() -> void:
 	GV.hud = self
+	console.visible = GV.debug_mode
 	RunData.connect("enemy_killed", new_kill)
 	RunData.connect("experience_gained", update_experience)
 	RunData.connect("level_gained", gain_level)

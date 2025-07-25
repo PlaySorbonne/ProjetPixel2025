@@ -1,13 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvhewnwb52nqw"]
+[gd_scene load_steps=10 format=3 uid="uid://bvhewnwb52nqw"]
 
 [ext_resource type="Script" uid="uid://gi0jeontcqs4" path="res://scripts/commands/console.gd" id="1_7sswt"]
 [ext_resource type="Script" uid="uid://bpwr387piesrd" path="res://scripts/commands_loger.gd" id="2_a1cq7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2jsb"]
+bg_color = Color(0.262932, 0.262932, 0.262932, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvbs1"]
+bg_color = Color(0.099986, 0.099986, 0.099986, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq2aj"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 0.501961)
+
 [sub_resource type="Theme" id="Theme_mtof6"]
 RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/styles/background = SubResource("StyleBoxFlat_y2jsb")
+RichTextLabel/styles/fill = SubResource("StyleBoxFlat_fvbs1")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_yq2aj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xetsk"]
+bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0apb"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.741176)
 
 [sub_resource type="Theme" id="Theme_a1cq7"]
 LineEdit/font_sizes/font_size = 32
+LineEdit/styles/focus = SubResource("StyleBoxFlat_xetsk")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_t0apb")
 
 [node name="Console" type="Control"]
 layout_mode = 3

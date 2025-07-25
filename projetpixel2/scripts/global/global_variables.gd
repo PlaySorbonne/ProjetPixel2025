@@ -15,6 +15,8 @@ var is_dragging_object := false
 var persistent_menu : PersistentMenu = null
 var persistent_menu_world : PersistentMenuWorld = null
 
+# game parameters
+var debug_mode : bool = false
 
 func reset_gameplay_variables() -> void:
 	world = null
