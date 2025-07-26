@@ -36,6 +36,13 @@ func update_card_description(new_text := "") -> void:
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
 
+func add_card_to_hand(card_data: CardData) -> void:
+	var new_card : CardObject = CARD_OBJ_RES.instantiate()
+	new_card.card = card_data
+	$CardsContainer.add_child(new_card)
+	await get_tree().process_frame
+	new_card.can_be_dropped_on_objects = true
+
 func gain_level() -> void:
 	update_level()
 	if RunData.current_level > 1:

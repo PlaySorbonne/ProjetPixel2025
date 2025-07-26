@@ -10,5 +10,8 @@ func _init(logger: CommandsLogger, card: CardData) -> void:
 	self.card = card
 
 func execute():
-	# TODO: add card to hand
-	pass
+	if GV.hud == null:
+		logger.print("Erreur : vous n'êtes pas dans une partie.", logger.log_types.ERROR)
+		return
+	GV.hud.add_card_to_hand(card)
+	logger.print("Carte " + card.name + " ajoutée à la main.")

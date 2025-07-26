@@ -43,5 +43,7 @@ static func parse(text: String, logger: CommandsLogger) -> Command:
 			if len(command_arguments) > 1 or len(command_arguments) == 0:
 				return Command.new(true) # TODO: add an error message argument to the Give command to get the right error message
 			var card := parse_card_argument(command_arguments[0])
+			if card == null:
+				return Command.new(true)
 			return GiveCommand.new(logger, card)
 	return Command.new(true) # true here is "error = true" (godot really need an error handling system.........)
