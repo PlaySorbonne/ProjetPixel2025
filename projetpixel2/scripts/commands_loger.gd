@@ -18,4 +18,4 @@ func print(text: String, type=log_types.INFO) -> void:
 		log_types.ERROR:
 			to_append = "[color=red]" + text + "[/color]"
 	self.text += to_append
-		
+	scroll_to_line(get_line_count())

@@ -3,9 +3,10 @@ class_name GiveCommand
 
 var logger: CommandsLogger
 var card: CardData
+static var usage := "give <card>"
 
 func _init(logger: CommandsLogger, card: CardData) -> void:
-	super(false)
+	super(false, "")
 	self.logger = logger
 	self.card = card
 
@@ -15,3 +16,4 @@ func execute():
 		return
 	GV.hud.add_card_to_hand(card)
 	logger.print("Carte " + card.name + " ajoutée à la main.")
+	

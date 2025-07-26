@@ -26,8 +26,9 @@ func _input(event: InputEvent) -> void:
 				return
 			var command = Parser.parse(command_text, logger)
 			if command.error:
-				commands_history.append(command_text)
-				logger.print("Erreur : cette commande n'existe pas.", logger.log_types.ERROR)
+				if command_text != "":
+					commands_history.append(command_text)
+				logger.print(command.error_message, logger.log_types.ERROR)
 				restore_focus()
 				return
 			command.execute()
