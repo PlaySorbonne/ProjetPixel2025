@@ -1,5 +1,5 @@
 extends Command
-class_name GiveCommand
+class_name GiveCardCommand
 
 var logger: CommandsLogger
 var card: CardData

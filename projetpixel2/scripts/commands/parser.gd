@@ -39,12 +39,12 @@ static func parse(text: String, logger: CommandsLogger) -> Command:
 	match command_name:
 		"ping":
 			return PingCommand.new(logger)
-		"give":
+		"give-card":
 			if len(command_arguments) > 1 or len(command_arguments) == 0:
 				logger.error()
-				return Command.new(true, "Usage : " + GiveCommand.usage)
+				return Command.new(true, "Usage : " + GiveCardCommand.usage)
 			var card := parse_card_argument(command_arguments[0])
 			if card == null:
-				return Command.new(true, "Usage : " + GiveCommand.usage)
-			return GiveCommand.new(logger, card)
+				return Command.new(true, "Usage : " + GiveCardCommand.usage)
+			return GiveCardCommand.new(logger, card)
 	return Command.new(true, "Erreur: cette command n'existe pas.") # true here is "error = true" (godot really need an error handling system.........)

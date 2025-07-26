@@ -42,5 +42,6 @@ func _input(event: InputEvent) -> void:
 				else:
 					history_index += 1
 		if Input.is_key_pressed(KEY_TAB):
+			# TODO: tab completion
 			pass
 			
