@@ -1,6 +1,12 @@
 extends Node
 class_name Parser
 
+static var commands_infos: Dictionary[String, Dictionary] = {
+	"help": HelpCommand.infos,
+	"ping": PingCommand.infos,
+	"give-card": GiveCardCommand.infos,
+}
+
 static func get_command_name(text: String) -> String:
 	var command_elements = text.split(" ")
 	if len(command_elements) < 1: 
@@ -37,14 +43,16 @@ static func parse(text: String, logger: CommandsLogger) -> Command:
 	var command_name: String = pre_parsed["command"]
 	var command_arguments : Array = pre_parsed["arguments"]
 	match command_name:
+		"help":
+			return HelpCommand.new(logger)
 		"ping":
 			return PingCommand.new(logger)
 		"give-card":
 			if len(command_arguments) > 1 or len(command_arguments) == 0:
 				logger.error()
-				return Command.new(true, "Usage : " + GiveCardCommand.usage)
+				return Command.new(true, "Usage : " + GiveCardCommand.infos["usage"])
 			var card := parse_card_argument(command_arguments[0])
 			if card == null:
-				return Command.new(true, "Usage : " + GiveCardCommand.usage)
+				return Command.new(true, "Usage : " + GiveCardCommand.infos["usage"])
 			return GiveCardCommand.new(logger, card)
 	return Command.new(true, "Erreur: cette command n'existe pas.") # true here is "error = true" (godot really need an error handling system.........)
