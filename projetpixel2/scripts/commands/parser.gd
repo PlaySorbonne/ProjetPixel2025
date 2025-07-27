@@ -5,6 +5,7 @@ static var commands_infos: Dictionary[String, Dictionary] = {
 	"help": HelpCommand.infos,
 	"ping": PingCommand.infos,
 	"give-card": GiveCardCommand.infos,
+	"give-tower": GiveTowerCommand.infos,
 }
 
 static func get_command_name(text: String) -> String:
@@ -37,6 +38,12 @@ static func parse_card_argument(text: String) -> CardData:
 			return CardData.cards_data[card_name]
 	return null
 
+static func parse_positive_int_argument(text: String) -> int:
+	var value = text.to_int()
+	if value < 1:
+		return -1
+	return value
+
 # Parse command
 static func parse(text: String, logger: CommandsLogger) -> Command:
 	var pre_parsed := Parser.pre_parse(text)
@@ -55,4 +62,13 @@ static func parse(text: String, logger: CommandsLogger) -> Command:
 			if card == null:
 				return Command.new(true, "Usage : " + GiveCardCommand.infos["usage"])
 			return GiveCardCommand.new(logger, card)
+		"give-tower":
+			if len(command_arguments) > 1:
+				return Command.new(true, "Usage : " + GiveTowerCommand.infos["usage"])
+			if len(command_arguments) == 0:
+				return GiveTowerCommand.new(logger, 1)
+			var n = Parser.parse_positive_int_argument(command_arguments[0])
+			if n == -1:
+				return Command.new(true, "Erreur : l'argument n'est pas un entier positif valide")
+			return GiveTowerCommand.new(logger, n)
 	return Command.new(true, "Erreur: cette command n'existe pas.") # true here is "error = true" (godot really need an error handling system.........)

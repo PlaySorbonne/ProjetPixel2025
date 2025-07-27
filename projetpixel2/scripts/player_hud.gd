@@ -35,6 +35,9 @@ func update_card_description(new_text := "") -> void:
 
 func update_experience() -> void:
 	$ExperienceBar.value = RunData.current_experience
+	
+func update_available_towers() -> void:
+	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
 
 func add_card_to_hand(card_data: CardData) -> void:
 	var new_card : CardObject = CARD_OBJ_RES.instantiate()
