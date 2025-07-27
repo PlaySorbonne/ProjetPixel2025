@@ -25,8 +25,8 @@ var enemy_id := 0
 @onready var clickable : ClickableObject = $ClickableObject
 
 @onready var target : Node3D = GV.space_ship
-@onready var mesh : Node3D = $"figurine-cube"
-@onready var mesh_animations : AnimationPlayer = $"figurine-cube/AnimationPlayer"
+@onready var mesh : Node3D = $mesh
+@onready var mesh_animations : AnimationPlayer = $mesh/AnimationPlayer
 @onready var attack_timer : Timer = $TimerAttacking
 
 

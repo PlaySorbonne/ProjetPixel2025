@@ -16,6 +16,7 @@ signal object_unhovered
 
 func hover() -> void:
 	emit_signal("object_hovered")
+	print("SELECTED NODES = " + str(selected_nodes)) 
 	for mesh_node : MeshInstance3D in selected_nodes:
 		mesh_node.material_overlay = OUTLINE_SHADER
 
@@ -35,11 +36,21 @@ func deselect() -> void:
 		#print("OBJECT UNSELECTED")
 
 func init_selected_node3d() -> Array[MeshInstance3D]:
+	# check if custom nodes are valid
+	for subnode : MeshInstance3D in custom_nodes:
+		if not is_instance_valid(subnode):
+			print_debug("INVALID MESH IN OBJECT [" + str(get_parent()) + "]")
+			custom_nodes.clear()
+			break
 	if custom_nodes.is_empty():
-		var _mesh_nodes : Array[MeshInstance3D] = []
-		for object_node : Node in get_parent().get_children(true):
-			if object_node is MeshInstance3D:
-				_mesh_nodes.append(object_node)
-		return _mesh_nodes
+		return get_all_submeshes(get_parent())
 	else:
 		return custom_nodes
+
+func get_all_submeshes(node : Node) -> Array[MeshInstance3D]:
+	var submeshes : Array[MeshInstance3D]
+	for child_node : Node in node.get_children(true):
+		submeshes.append_array(get_all_submeshes(child_node))
+		if child_node is MeshInstance3D:
+			submeshes.append(child_node)
+	return submeshes
