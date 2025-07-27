@@ -42,28 +42,28 @@ collision_layer = 3
 script = ExtResource("1_ey0w8")
 enemy_data = SubResource("Resource_sfjnn")
 
-[node name="figurine-cube" parent="." instance=ExtResource("1_spcn4")]
+[node name="mesh" parent="." instance=ExtResource("1_spcn4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="figurine-cube" parent="figurine-cube" index="0"]
+[node name="figurine-cube" parent="mesh" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
+[node name="leg-left" parent="mesh/figurine-cube/root" index="0"]
 material_override = ExtResource("3_j3mfv")
 
-[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
+[node name="leg-right" parent="mesh/figurine-cube/root" index="1"]
 material_override = ExtResource("3_j3mfv")
 
-[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
+[node name="torso" parent="mesh/figurine-cube/root" index="2"]
 material_override = ExtResource("3_j3mfv")
 
-[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
+[node name="arm-left" parent="mesh/figurine-cube/root/torso" index="0"]
 material_override = ExtResource("3_j3mfv")
 
-[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
+[node name="arm-right" parent="mesh/figurine-cube/root/torso" index="1"]
 material_override = ExtResource("3_j3mfv")
 
-[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
+[node name="head" parent="mesh/figurine-cube/root/torso" index="2"]
 material_override = ExtResource("3_j3mfv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -82,7 +82,7 @@ shape = SubResource("BoxShape3D_sxqs1")
 [node name="TimerAttacking" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("4_stxmo")]
-custom_nodes = [NodePath("../figurine-cube/figurine-cube/root/leg-left"), NodePath("../figurine-cube/figurine-cube/root/leg-right"), NodePath("../figurine-cube/figurine-cube/root/torso"), NodePath("../figurine-cube/figurine-cube/root/torso/arm-left"), NodePath("../figurine-cube/figurine-cube/root/torso/arm-right"), NodePath("../figurine-cube/figurine-cube/root/torso/head")]
+custom_nodes = [NodePath("../mesh/figurine-cube/root/leg-left"), NodePath("../mesh/figurine-cube/root/leg-right"), NodePath("../mesh/figurine-cube/root/torso"), NodePath("../mesh/figurine-cube/root/torso/arm-left"), NodePath("../mesh/figurine-cube/root/torso/arm-right"), NodePath("../mesh/figurine-cube/root/torso/head")]
 
 [connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
 [connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
@@ -90,4 +90,4 @@ custom_nodes = [NodePath("../figurine-cube/figurine-cube/root/leg-left"), NodePa
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
 [connection signal="timeout" from="TimerAttacking" to="." method="_on_timer_attacking_timeout"]
 
-[editable path="figurine-cube"]
+[editable path="mesh"]
