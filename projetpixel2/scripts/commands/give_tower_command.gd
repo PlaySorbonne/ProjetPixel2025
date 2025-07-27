@@ -4,8 +4,8 @@ class_name GiveTowerCommand
 var logger: CommandsLogger
 var n: int = 1
 static var infos: Dictionary[String, String] = {
-	"usage": "give-tower <n>",
-	"description": "Ajoute n tours à votre inventaire."
+	"usage": "give-tower [n]",
+	"description": "Ajoute n tours à votre inventaire (ou une si n non spécifié)."
 }
 
 func _init(logger: CommandsLogger, n: int) -> void:
