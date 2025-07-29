@@ -32,18 +32,30 @@ func add_to_history(command: String) -> void:
 	commands_history.append(command)
 	history_index = len(commands_history) - 1
 
+func get_token_index(splitted: Array[String], string_index: int) -> int:
+	var s := 0
+	var i := 0
+	for word in splitted:
+		s += len(word)
+		if (s > string_index):
+			return i
+		i += 1
+	return i
+
 func _input(event: InputEvent) -> void:
+	
 	if prompt.has_focus():
+		var command_text = prompt.text
+		prompt.text = ""
+		var pre_parsing = Parser.pre_parse(command_text)
+		var command_name: String = pre_parsing["command"]
+		
 		if Input.is_key_pressed(KEY_ENTER):
-			var command_text = prompt.text
-			prompt.text = ""
-			var pre_parsing = Parser.pre_parse(command_text)
-			var command_name: String = pre_parsing["command"]
 			if pre_parsing.error:
 				restore_focus()
 				return
+				
 			var parsing_result = Parser.parse(command_text, registry)
-			
 			if parsing_result.get("error") != null:
 				if command_text != "":
 					add_to_history(command_text)
@@ -65,6 +77,10 @@ func _input(event: InputEvent) -> void:
 				else:
 					history_index -= 1
 		if Input.is_key_pressed(KEY_TAB):
-			# TODO: tab completion
+			var commands := registry.commands.keys()
+			var cursor_pos = prompt.caret_position
+			var token_index = get_token_index([command_name] + pre_parsing["arguments"], cursor_pos)
+			if token_index == 0:
+				pass # TODO
 			pass
 			
