@@ -29,5 +29,6 @@ func _apply_color() -> void:
 	for xp_level : ExperienceLevel in experience_thresholds:
 		if experience_points > xp_level.xp_amount :
 			var xp_mat : StandardMaterial3D = $CSGSphere3D.material
+			xp_mat.emission = xp_level.xp_color
 			return
 	print_debug("wtf, negative xp => " + str(experience_points) + "?")
