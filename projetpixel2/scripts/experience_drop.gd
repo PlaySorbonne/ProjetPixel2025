@@ -19,11 +19,28 @@ static var experience_thresholds : Array[ExperienceLevel] = [
 ]
 
 
+signal xp_drop_collected(xp_amount)
+
+
+@export var hitpoints := 100
 @export var experience_points := 100:
 	set(value):
 		experience_points = value
 		_apply_color()
 
+func damage_xp(damage_amount : int) -> void:
+	if hitpoints <= 0:
+		return
+	hitpoints -= damage_amount
+	if hitpoints <= 0:
+		xp_drop_collected.emit(experience_points)
+		destroy_experience_object()
+
+func destroy_experience_object() -> void:
+	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(self, "scale", Vector3.ZERO, 0.2)
+	await t.finished
+	queue_free()
 
 func _apply_color() -> void:
 	for xp_level : ExperienceLevel in experience_thresholds:
