@@ -18,7 +18,7 @@ static var experience_thresholds : Array[ExperienceLevel] = [
 	ExperienceLevel.new(0, Color.RED),
 ]
 
-static func spawn_xp(pos : Vector2, xp : int) -> void:
+static func spawn_xp(pos : Vector3, xp : int) -> void:
 	const EXPERIENCE_DROP_RES := preload("res://scenes/world/enemies/experience_drop.tscn")
 	var experience_drop := EXPERIENCE_DROP_RES.instantiate()
 	GV.world.add_child(experience_drop)
