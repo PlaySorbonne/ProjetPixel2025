@@ -27,6 +27,10 @@ signal xp_drop_collected(xp_amount)
 	set(value):
 		experience_points = value
 		_apply_color()
+var xp_level_index : int = 0:
+	set(value):
+		xp_level_index = value
+		_check_neighbor_xp_drops()
 
 func damage_xp(damage_amount : int) -> void:
 	if hitpoints <= 0:
@@ -42,10 +46,35 @@ func destroy_experience_object() -> void:
 	await t.finished
 	queue_free()
 
+func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
+	hitpoints = (hitpoints + neighbor_xp.hitpoints) / 2
+	experience_points = (experience_points + neighbor_xp.experience_points) / 2
+	position = (position + neighbor_xp.position) / 2
+	neighbor_xp.queue_free()
+
+func _check_neighbor_xp_drops() -> void:
+	for area : Area3D in get_overlapping_areas():
+		if not (area is ExperienceDrop):
+			continue
+		var neighbor_xp : ExperienceDrop = area
+		if xp_level_index == neighbor_xp.xp_level_index:
+			merge_xp_drops(neighbor_xp)
+			return
+
 func _apply_color() -> void:
-	for xp_level : ExperienceLevel in experience_thresholds:
+	var xp_level : ExperienceLevel
+	for i : int in range(len(experience_thresholds)):
+		xp_level = experience_thresholds[i]
 		if experience_points > xp_level.xp_amount :
 			var xp_mat : StandardMaterial3D = $CSGSphere3D.material
 			xp_mat.emission = xp_level.xp_color
+			xp_level_index = i
 			return
 	print_debug("wtf, negative xp => " + str(experience_points) + "?")
+
+func _on_area_entered(area: Area3D) -> void:
+	if not (area is ExperienceDrop):
+		return
+	var neighbor_xp : ExperienceDrop = area
+	if xp_level_index == neighbor_xp.xp_level_index:
+		merge_xp_drops(area)

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dyivm457wlh06" path="res://scripts/experience_drop.gd" id="1_12bmr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qo8eh"]
+radius = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo8eh"]
 emission_enabled = true
@@ -11,7 +12,7 @@ emission_energy_multiplier = 25.0
 
 [node name="ExperienceDrop" type="Area3D"]
 collision_layer = 16
-collision_mask = 0
+collision_mask = 16
 script = ExtResource("1_12bmr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -19,3 +20,5 @@ shape = SubResource("SphereShape3D_qo8eh")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 material = SubResource("StandardMaterial3D_qo8eh")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
