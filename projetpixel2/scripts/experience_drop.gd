@@ -18,6 +18,14 @@ static var experience_thresholds : Array[ExperienceLevel] = [
 	ExperienceLevel.new(0, Color.RED),
 ]
 
+static func spawn_xp(pos : Vector2, xp : int) -> void:
+	const EXPERIENCE_DROP_RES := preload("res://scenes/world/enemies/experience_drop.tscn")
+	var experience_drop := EXPERIENCE_DROP_RES.instantiate()
+	GV.world.add_child(experience_drop)
+	experience_drop.position = pos
+	experience_drop.experience_points = xp
+	experience_drop.create_experience_object()
+
 
 signal xp_drop_collected(xp_amount)
 
@@ -32,6 +40,7 @@ var xp_level_index : int = 0:
 		xp_level_index = value
 		_check_neighbor_xp_drops()
 
+
 func damage_xp(damage_amount : int) -> void:
 	if hitpoints <= 0:
 		return
@@ -39,6 +48,10 @@ func damage_xp(damage_amount : int) -> void:
 	if hitpoints <= 0:
 		xp_drop_collected.emit(experience_points)
 		destroy_experience_object()
+
+func create_experience_object() -> void:
+	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property(self, "scale", Vector3.ONE, 0.2)
 
 func destroy_experience_object() -> void:
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
