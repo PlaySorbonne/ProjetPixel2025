@@ -6,6 +6,7 @@
 radius = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo8eh"]
+resource_local_to_scene = true
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 25.0
@@ -19,6 +20,7 @@ script = ExtResource("1_12bmr")
 shape = SubResource("SphereShape3D_qo8eh")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.25
 material = SubResource("StandardMaterial3D_qo8eh")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

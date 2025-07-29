@@ -18,13 +18,15 @@ static var experience_thresholds : Array[ExperienceLevel] = [
 	ExperienceLevel.new(0, Color.RED),
 ]
 
-static func spawn_xp(pos : Vector3, xp : int) -> void:
+static func spawn_xp(pos : Vector3, xp : int, fast_spawn := false, hp := 100) -> void:
 	const EXPERIENCE_DROP_RES := preload("res://scenes/world/enemies/experience_drop.tscn")
 	var experience_drop := EXPERIENCE_DROP_RES.instantiate()
 	GV.world.add_child(experience_drop)
 	experience_drop.position = pos
 	experience_drop.experience_points = xp
-	experience_drop.create_experience_object()
+	experience_drop.hitpoints = hp
+	if not fast_spawn:
+		experience_drop.create_experience_object()
 
 
 signal xp_drop_collected(xp_amount)
@@ -53,21 +55,31 @@ func damage_xp(damage_amount : int) -> void:
 func create_experience_object() -> void:
 	scale = Vector3.ZERO
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(self, "scale", Vector3.ONE, 0.8)
+	t.tween_property(self, "scale", Vector3.ONE, 0.15)
 
 func destroy_experience_object() -> void:
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(self, "scale", Vector3.ZERO, 0.2)
+	t.tween_property(self, "scale", Vector3.ZERO, 0.15)
 	await t.finished
 	queue_free()
 
 func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
 	# remove the neighbor and move self to mid point
 	neighbor_xp.marked_for_deletion = true
-	hitpoints = (hitpoints + neighbor_xp.hitpoints) / 2
-	experience_points = (experience_points + neighbor_xp.experience_points) * 2
-	position = (position + neighbor_xp.position) / 2
+	marked_for_deletion = true
+	var new_pos := (position + neighbor_xp.position) / 2
+	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(self, "position", new_pos, 0.4)
+	t.tween_property(neighbor_xp, "position", new_pos, 0.4)
+	await t.finished
+	spawn_xp(
+		new_pos,
+		(experience_points + neighbor_xp.experience_points) * 2,
+		true,
+		(hitpoints + neighbor_xp.hitpoints) / 2
+	)
 	neighbor_xp.queue_free()
+	queue_free()
 
 func _check_neighbor_xp_drops() -> void:
 	for area : Area3D in get_overlapping_areas():
