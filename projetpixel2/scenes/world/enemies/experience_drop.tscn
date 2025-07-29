@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://guwcc5ngr5vp"]
+[gd_scene load_steps=4 format=3 uid="uid://guwcc5ngr5vp"]
+
+[ext_resource type="Script" uid="uid://dyivm457wlh06" path="res://scripts/experience_drop.gd" id="1_12bmr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qo8eh"]
 
@@ -8,6 +10,9 @@ emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 25.0
 
 [node name="ExperienceDrop" type="Area3D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_12bmr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qo8eh")
