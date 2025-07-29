@@ -2,18 +2,20 @@ extends Command
 class_name GiveTowerCommand
 
 var logger: CommandsLogger
-var n: int = 1
-static var infos: Dictionary[String, String] = {
-	"usage": "give-tower [n]",
-	"description": "Ajoute n tours à votre inventaire (ou une si n non spécifié)."
-}
 
-func _init(logger: CommandsLogger, n: int) -> void:
-	super(false, "")
+func _init(logger: CommandsLogger) -> void:
+	super("give-tower", [PositiveIntArgumentType.new()])
 	self.logger = logger
-	self.n = n
+	self.infos = {
+		"usage": "give-tower <n>",
+		"description": "Ajoute n tours à votre inventaire"
+	}
 
-func execute():
+func execute(arguments: Array):
+	var n = arguments[0]
+	if n <= 0:
+		logger.print("Erreur : le nombre doit être un entier positif.", logger.log_types.ERROR)
+		return
 	if GV.hud == null:
 		logger.print("Erreur : vous n'êtes pas dans une partie.", logger.log_types.ERROR)
 		return

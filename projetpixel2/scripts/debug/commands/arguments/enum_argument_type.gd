@@ -7,10 +7,13 @@ func _init(enum_options: Array[String]):
 	self.options = enum_options
 	
 func parse(value: String) -> String:
+	var result := ""
 	for option in self.options:
-		if value.to_lower() == option:
-			return value.to_lower()
-	return ""
+		var lower_name = option.to_lower().replacen(" ", "_")
+		if lower_name == value.to_lower():
+			result = option
+			break
+	return result
 	
 func get_completions() -> Array[String]:
 	return options

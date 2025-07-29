@@ -4,10 +4,24 @@ class_name Console
 @onready var prompt: LineEdit = $VBoxContainer/Prompt
 @onready var logger: CommandsLogger = $VBoxContainer/Logs
 
+var registry: CommandsRegistry = CommandsRegistry.new()
 var pre_parsing: Dictionary[String, Variant]
 var commands_history: Array[String] = []
 var history_index = len(commands_history)
 var is_tab_selecting = false
+
+func _ready():
+	# Simple commands can be added directly
+	registry.register_command("ping", Command.new("ping", 
+	  [],
+	  func(): logger.print("pong"), 
+	  {"usage": "ping", "description": "Affiche \"pong\""}))
+	
+	# Complex commands can have their own classes
+	registry.register_command("help", HelpCommand.new(logger, registry))
+	registry.register_command("give-tower", GiveTowerCommand.new(logger))
+	await get_tree().create_timer(1).timeout # hack (wait for cards to load before registering give-card)
+	registry.register_command("give-card", GiveCardCommand.new(logger))
 
 func restore_focus():
 	await get_tree().process_frame
@@ -28,14 +42,19 @@ func _input(event: InputEvent) -> void:
 			if pre_parsing.error:
 				restore_focus()
 				return
-			var command = Parser.parse(command_text, logger)
-			if command.error:
+			var parsing_result = Parser.parse(command_text, registry)
+			
+			if parsing_result.get("error") != null:
 				if command_text != "":
 					add_to_history(command_text)
-				logger.print(command.error_message, logger.log_types.ERROR)
+				logger.print("Erreur : " + parsing_result["error"], logger.log_types.ERROR)
 				restore_focus()
 				return
-			command.execute()
+			
+			var command: Command = parsing_result["command"]
+			var arguments: Array = parsing_result["arguments"]
+			
+			command.execute(arguments)
 			add_to_history(command_text)
 			restore_focus()
 		if Input.is_key_pressed(KEY_UP):
