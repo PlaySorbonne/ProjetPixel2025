@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://guwcc5ngr5vp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qo8eh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo8eh"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 25.0
+
+[node name="ExperienceDrop" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qo8eh")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_qo8eh")
