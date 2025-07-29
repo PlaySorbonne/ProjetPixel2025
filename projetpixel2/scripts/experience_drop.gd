@@ -39,6 +39,7 @@ var xp_level_index : int = 0:
 	set(value):
 		xp_level_index = value
 		_check_neighbor_xp_drops()
+var marked_for_deletion := false
 
 
 func damage_xp(damage_amount : int) -> void:
@@ -61,18 +62,19 @@ func destroy_experience_object() -> void:
 	queue_free()
 
 func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
+	# remove the neighbor and move self to mid point
+	neighbor_xp.marked_for_deletion = true
 	hitpoints = (hitpoints + neighbor_xp.hitpoints) / 2
-	experience_points = (experience_points + neighbor_xp.experience_points) / 2
+	experience_points = (experience_points + neighbor_xp.experience_points) * 2
 	position = (position + neighbor_xp.position) / 2
 	neighbor_xp.queue_free()
 
 func _check_neighbor_xp_drops() -> void:
 	for area : Area3D in get_overlapping_areas():
-		if not (area is ExperienceDrop):
+		if marked_for_deletion or not(area is ExperienceDrop) or area.marked_for_deletion:
 			continue
-		var neighbor_xp : ExperienceDrop = area
-		if xp_level_index == neighbor_xp.xp_level_index:
-			merge_xp_drops(neighbor_xp)
+		if xp_level_index == area.xp_level_index:
+			merge_xp_drops(area)
 			return
 
 func _apply_color() -> void:
@@ -87,8 +89,7 @@ func _apply_color() -> void:
 	print_debug("wtf, negative xp => " + str(experience_points) + "?")
 
 func _on_area_entered(area: Area3D) -> void:
-	if not (area is ExperienceDrop):
+	if marked_for_deletion or not(area is ExperienceDrop) or area.marked_for_deletion:
 		return
-	var neighbor_xp : ExperienceDrop = area
-	if xp_level_index == neighbor_xp.xp_level_index:
+	if xp_level_index == area.xp_level_index:
 		merge_xp_drops(area)
