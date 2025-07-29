@@ -19,7 +19,10 @@ static var experience_thresholds : Array[ExperienceLevel] = [
 ]
 
 
-@export var experience_points := 100
+@export var experience_points := 100:
+	set(value):
+		experience_points = value
+		_apply_color()
 
 
 func _apply_color() -> void:
