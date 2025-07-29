@@ -50,8 +50,9 @@ func damage_xp(damage_amount : int) -> void:
 		destroy_experience_object()
 
 func create_experience_object() -> void:
+	scale = Vector3.ZERO
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(self, "scale", Vector3.ONE, 0.2)
+	t.tween_property(self, "scale", Vector3.ONE, 0.8)
 
 func destroy_experience_object() -> void:
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
