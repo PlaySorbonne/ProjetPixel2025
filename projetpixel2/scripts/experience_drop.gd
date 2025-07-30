@@ -32,7 +32,7 @@ static func spawn_xp(pos : Vector3, xp : int, fast_spawn := false, hp := 100) ->
 		experience_drop.create_experience_object()
 
 
-signal xp_drop_collected(xp_amount)
+signal xp_drop_collected(xp_amount : int)
 
 
 @export var hitpoints := 100

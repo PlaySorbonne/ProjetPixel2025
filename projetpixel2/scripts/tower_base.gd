@@ -15,6 +15,7 @@ signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
 signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
+signal start_mining
 
 @export var tower_name := "TowerBase"
 @export_multiline var tower_description := "Most standardized galactic exploration tower drone model. Capable of shooting balistic projectiles and collecting minerals from the ground."
@@ -43,13 +44,14 @@ var can_switch_mode := true
 		$Area3D/CollisionShape3D.shape.radius = value
 @export var switch_mode_duration := 1.5
 @export var switch_mode_delay := 5.0
-
+var is_mining_orb := false
 var can_shoot := true
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
 @onready var projectile_spawn_pos := $blasterM/ProjectileSpawnPos
 @onready var area3d := $Area3D
+@onready var areaXp := $AreaXP
 
 func _ready() -> void:
 	GV.towers.append(self)
@@ -66,8 +68,27 @@ func switch_mode() -> void:
 		return
 	if current_mode == Modes.Firing:
 		current_mode = Modes.Mining
+		check_for_orbs()
 	else:
 		current_mode = Modes.Firing
+		stop_mining_orb()
+
+func check_for_orbs() -> void:
+	for area : Area3D in $AreaXP.get_overlapping_areas():
+		if area is ExperienceDrop:
+			start_mining_orb(area)
+			return
+
+func start_mining_orb(experience_drop : ExperienceDrop) -> void:
+	is_mining_orb = true
+	var mining_laser := TowerMiningLaser.spawn_tower_mining_laser(global_position, experience_drop)
+	experience_drop.xp_drop_collected.connect(xp_orb_collected)
+
+func stop_mining_orb() -> void:
+	is_mining_orb = false
+
+func xp_orb_collected(xp_amount : int) -> void:
+	pass
 
 func can_add_card() -> bool:
 	return cards.size() < max_number_of_cards
@@ -111,10 +132,12 @@ func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
 func _process(delta: float) -> void:
-	
-	if current_mode == Modes.Mining:
-		#TODO
-		pass
+	return
+	match current_mode:
+		Modes.Firing:
+			pass
+		Modes.Mining:
+			pass
 
 func get_focused_enemies() -> Array[Node3D]:
 	return area3d.get_overlapping_bodies()

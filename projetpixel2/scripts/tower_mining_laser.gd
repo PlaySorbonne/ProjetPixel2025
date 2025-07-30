@@ -2,15 +2,21 @@ extends Node3D
 class_name TowerMiningLaser
 
 
+const MINING_LASER_RES := preload("res://scenes/spaceship/towers/projectiles/tower_mining_laser.tscn")
+
+
+static func spawn_tower_mining_laser(pos : Vector3, xp_orb : ExperienceDrop) -> TowerMiningLaser:
+	var mining_laser := MINING_LASER_RES.instantiate()
+	GV.world.add_child(mining_laser)
+	mining_laser.position = pos
+	mining_laser._init_mine_object(xp_orb)
+	return mining_laser
+
+
 var focused_xp_object : ExperienceDrop
 
 
-func _process(_delta: float) -> void:
-	if is_instance_valid(focused_xp_object):
-		if focused_xp_object.marked_for_deletion:
-			_update_object_pos()
-
-func mine_object(xp_object : ExperienceDrop) -> void:
+func _init_mine_object(xp_object : ExperienceDrop) -> void:
 	focused_xp_object = xp_object
 	var laser_dist : float = global_position.distance_to(xp_object.global_position)
 	$LaserParent.look_at(xp_object.global_position)
