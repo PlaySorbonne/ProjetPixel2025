@@ -55,7 +55,7 @@ mesh = SubResource("QuadMesh_j5p61")
 
 [node name="AreaXP" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaXP"]
 shape = SubResource("SphereShape3D_041tc")

@@ -29,3 +29,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="." index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.237581
+anchor_top = -0.0215827
+anchor_right = -0.00647948
+anchor_bottom = 0.179856
+text = "Switch
+Mode"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

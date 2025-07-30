@@ -22,3 +22,6 @@ func add_card_infos(new_card : CardData) -> void:
 	var card_infos := CARD_INFOS.instantiate()
 	card_infos.card = new_card
 	cards_container.add_child(card_infos)
+
+func _on_button_pressed() -> void:
+	tower.switch_mode()

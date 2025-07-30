@@ -1,14 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6fnnjv7h40p0"]
+[gd_scene load_steps=8 format=3 uid="uid://c6fnnjv7h40p0"]
 
 [ext_resource type="Script" uid="uid://3m7jmhfp6q7v" path="res://scripts/tower_mining_laser.gd" id="1_i8ae4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7mx63"]
-top_radius = 0.1
-bottom_radius = 0.1
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8ae4"]
 transparency = 1
 albedo_color = Color(0.516666, 0, 1, 0.196078)
+
+[sub_resource type="Curve" id="Curve_i8ae4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.184855, 1), 0.0, 0.0, 0, 0, Vector2(0.757238, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5harh"]
+curve = SubResource("Curve_i8ae4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i8ae4"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -45.0
+angle_max = 45.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = -1.60933e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -5.0
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -5.0
+tangential_accel_max = -2.23517e-06
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_5harh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_i8ae4"]
 
 [node name="TowerMiningLaser" type="Node3D"]
 script = ExtResource("1_i8ae4")
@@ -16,7 +42,14 @@ script = ExtResource("1_i8ae4")
 [node name="LaserParent" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LaserParent"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1, 0, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, -0.5)
 mesh = SubResource("CylinderMesh_7mx63")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i8ae4")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+amount = 12
+sub_emitter = NodePath(".")
+process_material = SubResource("ParticleProcessMaterial_i8ae4")
+draw_pass_1 = SubResource("BoxMesh_i8ae4")
