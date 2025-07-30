@@ -50,9 +50,11 @@ var is_being_harvested := false
 
 func start_mining() -> void:
 	is_being_harvested = true
+	marked_for_deletion = true
 
 func stop_mining() -> void:
 	is_being_harvested = false
+	marked_for_deletion = false
 
 func damage_xp(damage_amount : int) -> void:
 	if hitpoints <= 0:
@@ -116,7 +118,6 @@ func is_merge_maxed() -> bool:
 
 func check_can_merge(neighbour_xp : ExperienceDrop) -> bool:
 	return not(marked_for_deletion or neighbour_xp.marked_for_deletion
-				or is_being_harvested or neighbour_xp.is_being_harvested
 				) and xp_level_index == neighbour_xp.xp_level_index
 
 func _apply_color() -> void:
