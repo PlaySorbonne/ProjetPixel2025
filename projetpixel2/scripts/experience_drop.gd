@@ -10,6 +10,8 @@ class ExperienceLevel:
 		self.xp_amount = xp_amount
 		self.xp_color = xp_color
 
+const NB_ORBS_MERGE := 3
+
 static var experience_thresholds : Array[ExperienceLevel] = [
 	ExperienceLevel.new(3200, Color.WHITE),
 	ExperienceLevel.new(1600, Color.AQUA),
@@ -64,35 +66,45 @@ func destroy_experience_object() -> void:
 	await t.finished
 	queue_free()
 
-func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
+func merge_xp_drops(neighbors_xp : Array[ExperienceDrop]) -> void:
 	# remove the neighbor and move self to mid point
-	neighbor_xp.marked_for_deletion = true
-	marked_for_deletion = true
-	var new_pos := (position + neighbor_xp.position) / 2
+	var new_xp := 0
+	var new_hp := 0
+	var new_pos := Vector3.ZERO
+	for neighbor : ExperienceDrop in neighbors_xp:
+		new_pos += neighbor.position
+		new_xp += neighbor.experience_points
+		new_hp += neighbor.hitpoints
+		neighbor.marked_for_deletion = true
+	new_pos /= len(neighbors_xp)
+	new_xp *= 1.1
+	new_hp *= 1.3
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	t.tween_property(self, "position", new_pos, 0.4)
-	t.tween_property(neighbor_xp, "position", new_pos, 0.4)
+	for neighbor : ExperienceDrop in neighbors_xp:
+		t.tween_property(neighbor, "position", new_pos, 0.4)
 	await t.finished
-	print("spawn orb -> xp=" + str(int((experience_points + neighbor_xp.experience_points) * 1.1)) + " ; hp=" + str(int((hitpoints + neighbor_xp.hitpoints) * 1.3)))
+	print("spawn orb -> xp=" + str(new_xp) + " ; hp=" + str(new_hp))
 	spawn_xp(
 		new_pos,
-		int((experience_points + neighbor_xp.experience_points) * 1.1),
+		new_xp,
 		true,
-		int((hitpoints + neighbor_xp.hitpoints) * 1.3)
+		new_hp
 	)
-	neighbor_xp.queue_free()
-	queue_free()
+	for neighbor : ExperienceDrop in neighbors_xp:
+		neighbor.queue_free()
 
 func _check_neighbor_xp_drops() -> void:
 	if is_merge_maxed():
 		return
+	var neighbors_xp : Array[ExperienceDrop] = [self]
 	for area : Area3D in get_overlapping_areas():
 		if check_can_merge(area):
-			merge_xp_drops(area)
-			return
+			neighbors_xp.append(area)
+			if len(neighbors_xp) == NB_ORBS_MERGE:
+				merge_xp_drops(neighbors_xp)
+				return
 
 func is_merge_maxed() -> bool:
-	print("current merge = " + str(xp_level_index))
 	return xp_level_index == 0
 
 func check_can_merge(neighbour_xp : ExperienceDrop) -> bool:
@@ -112,5 +124,4 @@ func _apply_color() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	if is_merge_maxed():
 		return
-	if check_can_merge(area):
-		merge_xp_drops(area)
+	_check_neighbor_xp_drops()
