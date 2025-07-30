@@ -73,12 +73,12 @@ func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
 	t.tween_property(self, "position", new_pos, 0.4)
 	t.tween_property(neighbor_xp, "position", new_pos, 0.4)
 	await t.finished
-	print("spawn xp -> " + str(experience_points + neighbor_xp.experience_points))
+	print("spawn orb -> xp=" + str(int((experience_points + neighbor_xp.experience_points) * 1.1)) + " ; hp=" + str(int((hitpoints + neighbor_xp.hitpoints) * 1.3)))
 	spawn_xp(
 		new_pos,
-		(experience_points + neighbor_xp.experience_points) * 2,
+		int((experience_points + neighbor_xp.experience_points) * 1.1),
 		true,
-		(hitpoints + neighbor_xp.hitpoints) / 2
+		int((hitpoints + neighbor_xp.hitpoints) * 1.3)
 	)
 	neighbor_xp.queue_free()
 	queue_free()
