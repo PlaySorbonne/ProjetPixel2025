@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6fnnjv7h40p0"]
+[gd_scene load_steps=4 format=3 uid="uid://c6fnnjv7h40p0"]
 
 [ext_resource type="Script" uid="uid://3m7jmhfp6q7v" path="res://scripts/tower_mining_laser.gd" id="1_i8ae4"]
 
@@ -6,9 +6,17 @@
 top_radius = 0.1
 bottom_radius = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8ae4"]
+transparency = 1
+albedo_color = Color(0.516666, 0, 1, 0.196078)
+
 [node name="TowerMiningLaser" type="Node3D"]
 script = ExtResource("1_i8ae4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="LaserParent" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LaserParent"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("CylinderMesh_7mx63")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_i8ae4")
