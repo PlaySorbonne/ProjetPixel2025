@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6fnnjv7h40p0"]
+
+[ext_resource type="Script" uid="uid://3m7jmhfp6q7v" path="res://scripts/tower_mining_laser.gd" id="1_i8ae4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7mx63"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[node name="TowerMiningLaser" type="Node3D"]
+script = ExtResource("1_i8ae4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("CylinderMesh_7mx63")
