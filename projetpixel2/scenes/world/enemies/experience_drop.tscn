@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dyivm457wlh06" path="res://scripts/experience_drop.gd" id="1_12bmr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qo8eh"]
-radius = 5.0
+radius = 2.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo8eh"]
 resource_local_to_scene = true

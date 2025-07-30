@@ -11,11 +11,12 @@ class ExperienceLevel:
 		self.xp_color = xp_color
 
 static var experience_thresholds : Array[ExperienceLevel] = [
-	ExperienceLevel.new(1600, Color.WHITE),
-	ExperienceLevel.new(800, Color.AQUA),
-	ExperienceLevel.new(400, Color.BLUE),
-	ExperienceLevel.new(200, Color.PURPLE),
-	ExperienceLevel.new(0, Color.RED),
+	ExperienceLevel.new(3200, Color.WHITE),
+	ExperienceLevel.new(1600, Color.AQUA),
+	ExperienceLevel.new(800, Color.BLUE),
+	ExperienceLevel.new(400, Color.PURPLE),
+	ExperienceLevel.new(200, Color.RED),
+	ExperienceLevel.new(0, Color.BLACK),
 ]
 
 static func spawn_xp(pos : Vector3, xp : int, fast_spawn := false, hp := 100) -> void:
@@ -72,6 +73,7 @@ func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
 	t.tween_property(self, "position", new_pos, 0.4)
 	t.tween_property(neighbor_xp, "position", new_pos, 0.4)
 	await t.finished
+	print("spawn xp -> " + str(experience_points + neighbor_xp.experience_points))
 	spawn_xp(
 		new_pos,
 		(experience_points + neighbor_xp.experience_points) * 2,
@@ -82,18 +84,25 @@ func merge_xp_drops(neighbor_xp : ExperienceDrop) -> void:
 	queue_free()
 
 func _check_neighbor_xp_drops() -> void:
+	if is_merge_maxed():
+		return
 	for area : Area3D in get_overlapping_areas():
-		if marked_for_deletion or not(area is ExperienceDrop) or area.marked_for_deletion:
-			continue
-		if xp_level_index == area.xp_level_index:
+		if check_can_merge(area):
 			merge_xp_drops(area)
 			return
+
+func is_merge_maxed() -> bool:
+	print("current merge = " + str(xp_level_index))
+	return xp_level_index == 0
+
+func check_can_merge(neighbour_xp : ExperienceDrop) -> bool:
+	return not(marked_for_deletion or neighbour_xp.marked_for_deletion) and xp_level_index == neighbour_xp.xp_level_index
 
 func _apply_color() -> void:
 	var xp_level : ExperienceLevel
 	for i : int in range(len(experience_thresholds)):
 		xp_level = experience_thresholds[i]
-		if experience_points > xp_level.xp_amount :
+		if experience_points >= xp_level.xp_amount :
 			var xp_mat : StandardMaterial3D = $CSGSphere3D.material
 			xp_mat.emission = xp_level.xp_color
 			xp_level_index = i
@@ -101,7 +110,7 @@ func _apply_color() -> void:
 	print_debug("wtf, negative xp => " + str(experience_points) + "?")
 
 func _on_area_entered(area: Area3D) -> void:
-	if marked_for_deletion or not(area is ExperienceDrop) or area.marked_for_deletion:
+	if is_merge_maxed():
 		return
-	if xp_level_index == area.xp_level_index:
+	if check_can_merge(area):
 		merge_xp_drops(area)
