@@ -6,6 +6,7 @@ enum Modes {Firing, Mining, Transition}
 
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
+const MAX_IDLE_TIME := 0.5
 
 signal tower_card_added(card: CardData)
 signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
@@ -24,6 +25,11 @@ signal start_mining
 @export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
 var current_mode := Modes.Firing
 var can_switch_mode := true
+var idle_timer := 0.5
+var is_mining_orb := false
+var current_mined_orb : ExperienceDrop
+var can_shoot := true
+var mining_laser : TowerMiningLaser
 
 @export_group("Tower stats")
 @export var projectile_res : PackedScene = PROJECTILE_RES
@@ -45,10 +51,6 @@ var can_switch_mode := true
 @export var switch_mode_duration := 1.5
 @export var switch_mode_delay := 5.0
 @export var damage_to_xp := 90
-var is_mining_orb := false
-var current_mined_orb : ExperienceDrop
-var can_shoot := true
-var mining_laser : TowerMiningLaser
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -113,6 +115,7 @@ func _on_timer_switch_modes_timeout() -> void:
 	can_switch_mode = true
 
 func check_for_orbs() -> void:
+	print("CHECKING FOR ORBS, FOUND " + str(len($AreaXP.get_overlapping_areas())))
 	for area : Area3D in $AreaXP.get_overlapping_areas():
 		if area is ExperienceDrop and not area.marked_for_deletion:
 			start_mining_orb(area)
@@ -138,6 +141,7 @@ func stop_mining_orb() -> void:
 
 func xp_orb_collected(xp_amount : int) -> void:
 	stop_mining_orb()
+	check_for_orbs()
 
 func _on_timer_mine_xp_timeout() -> void:
 	if is_instance_valid(current_mined_orb):
@@ -189,12 +193,17 @@ func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
 
 func _process(delta: float) -> void:
-	return
+	idle_timer -= delta
+	if idle_timer > 0:
+		return
+	idle_timer = MAX_IDLE_TIME
 	match current_mode:
 		Modes.Firing:
-			pass
+			if can_shoot:
+				try_shoot_enemy()
 		Modes.Mining:
-			pass
+			if not is_mining_orb:
+				check_for_orbs()
 
 func get_focused_enemies() -> Array[Node3D]:
 	return area3d.get_overlapping_bodies()
@@ -279,8 +288,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_timer_shoot_timeout() -> void:
 	can_shoot = true
-	if current_mode != Modes.Firing:
-		return
+	if current_mode == Modes.Firing:
+		try_shoot_enemy()
+
+func try_shoot_enemy() -> void:
 	if len(get_focused_enemies()) > 0:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
