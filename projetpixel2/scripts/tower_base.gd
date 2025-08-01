@@ -2,14 +2,14 @@ extends StaticBody3D
 class_name TowerBase
 
 
-enum Modes {Firing, Mining}
+enum Modes {Firing, Mining, Transition}
 
 const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 
 signal tower_card_added(card: CardData)
 signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_switched_mode(projectile : ProjectileBase, enemy : BaseEnemy)
+signal tower_switched_mode()
 signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
 signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
@@ -69,14 +69,42 @@ func _update_fire_range_shader(new_size : float) -> void:
 func switch_mode() -> void:
 	if not can_switch_mode:
 		return
+	match current_mode:
+		Modes.Firing:
+			switch_to_mining()
+		Modes.Mining:
+			switch_to_firing()
+
+func switch_to_mining() -> void:
+	if current_mode == Modes.Mining:
+		return
+	_trigger_switch_mode_anim(Modes.Mining)
+	check_for_orbs()
+
+func switch_to_firing() -> void:
 	if current_mode == Modes.Firing:
-		current_mode = Modes.Mining
-		check_for_orbs()
-		print("TOWER -> start mining")
-	else:
-		current_mode = Modes.Firing
-		stop_mining_orb()
-		print("TOWER -> start firing")
+		return
+	_trigger_switch_mode_anim(Modes.Firing)
+	stop_mining_orb()
+
+func _trigger_switch_mode_anim(new_mode : Modes) -> void:
+	current_mode = Modes.Transition
+	can_switch_mode = false
+	$TimerSwitchModes.start(switch_mode_delay)
+	var final_mining_mesh_pos : Vector3
+	match new_mode:
+		Modes.Mining:
+			final_mining_mesh_pos = Vector3(0.0, 0.0, 0.0)
+		Modes.Firing:
+			final_mining_mesh_pos = Vector3(0.0, -0.5, 0.0)
+	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($MiningMesh, "position", final_mining_mesh_pos, switch_mode_duration)
+	await t.finished
+	current_mode = new_mode
+	tower_switched_mode.emit()
+
+func _on_timer_switch_modes_timeout() -> void:
+	can_switch_mode = true
 
 func check_for_orbs() -> void:
 	for area : Area3D in $AreaXP.get_overlapping_areas():
