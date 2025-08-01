@@ -44,8 +44,11 @@ var can_switch_mode := true
 		$Area3D/CollisionShape3D.shape.radius = value
 @export var switch_mode_duration := 1.5
 @export var switch_mode_delay := 5.0
+@export var damage_to_xp := 90
 var is_mining_orb := false
+var current_mined_orb : ExperienceDrop
 var can_shoot := true
+var mining_laser : TowerMiningLaser
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -77,21 +80,38 @@ func switch_mode() -> void:
 
 func check_for_orbs() -> void:
 	for area : Area3D in $AreaXP.get_overlapping_areas():
-		if area is ExperienceDrop:
+		if area is ExperienceDrop and not area.marked_for_deletion:
 			start_mining_orb(area)
 			return
 
 func start_mining_orb(experience_drop : ExperienceDrop) -> void:
 	is_mining_orb = true
-	var mining_laser := TowerMiningLaser.spawn_tower_mining_laser(global_position, experience_drop)
+	mining_laser = TowerMiningLaser.spawn_tower_mining_laser(global_position, experience_drop)
+	current_mined_orb = experience_drop
+	experience_drop.start_mining()
 	experience_drop.xp_drop_collected.connect(xp_orb_collected)
+	$TimerMineXp.start()
 	print("start mining orb " + str(experience_drop))
 
 func stop_mining_orb() -> void:
 	is_mining_orb = false
+	if is_instance_valid(current_mined_orb):
+		current_mined_orb.stop_mining()
+	current_mined_orb = null
+	if is_instance_valid(mining_laser):
+		mining_laser.destroy_laser()
+	mining_laser = null
 
 func xp_orb_collected(xp_amount : int) -> void:
-	pass
+	stop_mining_orb()
+
+func _on_timer_mine_xp_timeout() -> void:
+	if is_instance_valid(current_mined_orb):
+		var xp_destroyed := current_mined_orb.damage_xp(damage_to_xp)
+		if xp_destroyed:
+			stop_mining_orb()
+		else:
+			$TimerMineXp.start()
 
 func can_add_card() -> bool:
 	return cards.size() < max_number_of_cards

@@ -35,7 +35,10 @@ static func spawn_xp(pos : Vector3, xp : int, fast_spawn := false, hp := 100) ->
 signal xp_drop_collected(xp_amount : int)
 
 
-@export var hitpoints := 100
+@export var hitpoints := 100:
+	set(value):
+		hitpoints = value
+		$MeshInstance3D.scale = Vector3.ONE * sqrt(hitpoints / 100)
 @export var experience_points := 100:
 	set(value):
 		experience_points = value
@@ -53,16 +56,25 @@ func start_mining() -> void:
 	marked_for_deletion = true
 
 func stop_mining() -> void:
-	is_being_harvested = false
-	marked_for_deletion = false
+	if is_being_harvested:
+		is_being_harvested = false
+		marked_for_deletion = false
 
-func damage_xp(damage_amount : int) -> void:
+func damage_xp(damage_amount : int) -> bool:
 	if hitpoints <= 0:
-		return
+		return true
 	hitpoints -= damage_amount
 	if hitpoints <= 0:
+		# give xp reward
 		xp_drop_collected.emit(experience_points)
+		is_being_harvested = false
+		print("XP ORB COLLECTED")
+		RunData.gain_experience(experience_points)
+		# destroy object
 		destroy_experience_object()
+		return true
+	else:
+		return false
 
 func create_experience_object() -> void:
 	scale = Vector3.ZERO
@@ -125,7 +137,7 @@ func _apply_color() -> void:
 	for i : int in range(len(experience_thresholds)):
 		xp_level = experience_thresholds[i]
 		if experience_points >= xp_level.xp_amount :
-			var xp_mat : StandardMaterial3D = $CSGSphere3D.material
+			var xp_mat : StandardMaterial3D = $MeshInstance3D.get_surface_override_material(0)
 			xp_mat.emission = xp_level.xp_color
 			xp_level_index = i
 			return

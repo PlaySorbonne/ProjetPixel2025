@@ -16,6 +16,9 @@ static func spawn_tower_mining_laser(pos : Vector3, xp_orb : ExperienceDrop) -> 
 var focused_xp_object : ExperienceDrop
 
 
+func destroy_laser() -> void:
+	queue_free()
+
 func _init_mine_object(xp_object : ExperienceDrop) -> void:
 	focused_xp_object = xp_object
 	var laser_dist : float = global_position.distance_to(xp_object.global_position)

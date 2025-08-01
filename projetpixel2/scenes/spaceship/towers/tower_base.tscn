@@ -63,6 +63,8 @@ shape = SubResource("SphereShape3D_041tc")
 [node name="TimerShoot" type="Timer" parent="."]
 one_shot = true
 
+[node name="TimerMineXp" type="Timer" parent="."]
+
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
 custom_nodes = [NodePath("../blasterM/blasterM")]
 
@@ -72,6 +74,7 @@ can_be_dragged = false
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
+[connection signal="timeout" from="TimerMineXp" to="." method="_on_timer_mine_xp_timeout"]
 [connection signal="object_hovered" from="ClickableObject" to="." method="_on_clickable_object_object_hovered"]
 [connection signal="object_selected" from="ClickableObject" to="." method="_on_clickable_object_object_selected"]
 [connection signal="object_unhovered" from="ClickableObject" to="." method="_on_clickable_object_object_unhovered"]
