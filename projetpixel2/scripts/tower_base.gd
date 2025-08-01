@@ -79,7 +79,6 @@ func switch_to_mining() -> void:
 	if current_mode == Modes.Mining:
 		return
 	_trigger_switch_mode_anim(Modes.Mining)
-	check_for_orbs()
 
 func switch_to_firing() -> void:
 	if current_mode == Modes.Firing:
@@ -88,6 +87,7 @@ func switch_to_firing() -> void:
 	stop_mining_orb()
 
 func _trigger_switch_mode_anim(new_mode : Modes) -> void:
+	# enter transition state
 	current_mode = Modes.Transition
 	can_switch_mode = false
 	$TimerSwitchModes.start(switch_mode_delay)
@@ -102,6 +102,12 @@ func _trigger_switch_mode_anim(new_mode : Modes) -> void:
 	await t.finished
 	current_mode = new_mode
 	tower_switched_mode.emit()
+	# check if there is anything to do in new mode now that transition is complete
+	match current_mode:
+		Modes.Mining:
+			check_for_orbs()
+		Modes.Firing:
+			pass
 
 func _on_timer_switch_modes_timeout() -> void:
 	can_switch_mode = true
