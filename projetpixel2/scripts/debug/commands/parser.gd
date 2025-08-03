@@ -83,3 +83,6 @@ static func parse(text: String, registry: CommandsRegistry) -> Dictionary:
 				#return Command.new(true, "Erreur : l'argument n'est pas un entier positif valide")
 			#return GiveTowerCommand.new(logger, n)
 	#return Command.new(true, "Erreur: cette command n'existe pas.") # true here is "error = true" (godot really need an error handling system.........)
+
+static func filter_completions(word: String, values: Array) -> Array:
+	return values.filter(func(str: String): return str.to_lower().begins_with(word.to_lower()))

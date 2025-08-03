@@ -4,11 +4,18 @@ class_name Console
 @onready var prompt: LineEdit = $VBoxContainer/Prompt
 @onready var logger: CommandsLogger = $VBoxContainer/Logs
 
+# commands vars
 var registry: CommandsRegistry = CommandsRegistry.new()
 var pre_parsing: Dictionary[String, Variant]
 var commands_history: Array[String] = []
 var history_index = len(commands_history)
+
+# tab completion vars
 var is_tab_selecting = false
+var tab_selection_index: Dictionary[int, int] = {}
+var current_completions: Array = []
+var current_token: String = ""
+var current_token_index: int = 0
 
 func _ready():
 	# Simple commands can be added directly
@@ -32,7 +39,7 @@ func add_to_history(command: String) -> void:
 	commands_history.append(command)
 	history_index = len(commands_history) - 1
 
-func get_token_index(splitted: Array[String], string_index: int) -> int:
+func get_token_index(splitted: Array, string_index: int) -> int:
 	var s := 0
 	var i := 0
 	for word in splitted:
@@ -40,17 +47,27 @@ func get_token_index(splitted: Array[String], string_index: int) -> int:
 		if (s > string_index):
 			return i
 		i += 1
-	return i
+	return i - 1
+	
+func recreate_command(splitted: Array, word: String, index: int) -> void:
+	splitted[index] = word
+	var new_cursor_index = 0
+	for i in range(index + 1):
+		new_cursor_index += len(splitted[i])
+	prompt.text = " ".join(splitted)
+	prompt.caret_column = new_cursor_index if index == 0 else new_cursor_index + 1
 
 func _input(event: InputEvent) -> void:
-	
-	if prompt.has_focus():
+	if prompt.has_focus():	
+		if (event is InputEventKey) and (event as InputEventKey).physical_keycode != KEY_TAB:
+			is_tab_selecting = false
 		var command_text = prompt.text
-		prompt.text = ""
 		var pre_parsing = Parser.pre_parse(command_text)
 		var command_name: String = pre_parsing["command"]
+		var tokens: Array = [command_name] + Array(pre_parsing["arguments"])
 		
 		if Input.is_key_pressed(KEY_ENTER):
+			prompt.text = ""
 			if pre_parsing.error:
 				restore_focus()
 				return
@@ -77,10 +94,29 @@ func _input(event: InputEvent) -> void:
 				else:
 					history_index -= 1
 		if Input.is_key_pressed(KEY_TAB):
-			var commands := registry.commands.keys()
-			var cursor_pos = prompt.caret_position
-			var token_index = get_token_index([command_name] + pre_parsing["arguments"], cursor_pos)
-			if token_index == 0:
-				pass # TODO
-			pass
+			if !is_tab_selecting:
+				var cursor_pos = prompt.caret_column
+				current_token_index = get_token_index(tokens, cursor_pos)
+				current_token = tokens[current_token_index]
+				tab_selection_index[current_token_index] = 0
+				is_tab_selecting = true
+			if current_token_index == 0:
+				var commands := registry.commands.keys()
+				current_completions = Parser.filter_completions(current_token, commands)
+			else:
+				var command := registry.get_command(command_name)
+				if command == null:
+					return
+				if current_token_index - 1 >= command.arguments.size():
+					return
+				var arg_type = command.arguments[current_token_index - 1]
+				current_completions = Parser.filter_completions(current_token, arg_type.get_completions())
+			if current_completions.size() == 0:
+				return
+			var new_current_token: String = current_completions[tab_selection_index[current_token_index]]
+			print(current_token_index)
+			recreate_command(tokens, new_current_token, current_token_index)
+			tab_selection_index[current_token_index] += 1
+			if tab_selection_index[current_token_index] >= current_completions.size():
+				tab_selection_index[current_token_index] = 0
 			

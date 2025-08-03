@@ -15,5 +15,8 @@ func parse(value: String) -> String:
 			break
 	return result
 	
-func get_completions() -> Array[String]:
-	return options
+func get_completions() -> Array:
+	return options.map(normalize_name)
+
+func normalize_name(opt: String):
+	return opt.to_lower().replacen(" ", "_")
