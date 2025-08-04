@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dseax6ejo3837"]
+
+[ext_resource type="Script" uid="uid://ce4pm3ayi1r6v" path="res://scripts/boost_fire_rate.gd" id="1_y57av"]
+
+[node name="BoostFireRate" type="Timer"]
+script = ExtResource("1_y57av")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]
