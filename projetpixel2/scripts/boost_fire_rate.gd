@@ -5,6 +5,7 @@ class_name BoostFireRate
 static func add_boost_fire_rate(tower: TowerBase) -> BoostFireRate:
 	if tower.is_in_group("machinegun"):
 		var boost : BoostFireRate = tower.get_node("BoostFireRate")
+		boost.is_new_boost = false
 		boost.needed_shots /= 1.5
 		return boost
 	const BOOST_RES := preload("res://scenes/spaceship/towers/components/boost_fire_rate.tscn")
@@ -21,6 +22,7 @@ static func add_boost_fire_rate(tower: TowerBase) -> BoostFireRate:
 @onready var tower : TowerBase = get_parent()
 var in_boost := false
 var current_shots := 0
+var is_new_boost := true
 
 
 func _ready() -> void:
