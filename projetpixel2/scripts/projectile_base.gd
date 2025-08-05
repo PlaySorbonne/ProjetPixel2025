@@ -43,6 +43,10 @@ func damage_body(body : BaseEnemy) -> void:
 		tower.enemy_killed.emit(self, body)
 
 func split(total_angle : float, number_of_children := 3, children_multiplier := 0.9) -> void:
+	# TODO: choose if the projectile has to be centered and eache other projectiles are 
+	# around it (good for still focusing one ennemy) or if the basis for the angle between each projectile
+	# is the first projectile, so the one at the left most side of the total angle (which means the target ennemy
+	# will not get a projectile directly going in its direction if the number of projectile is even)
 	var angle_increment := total_angle / float(number_of_children)
 	var rot := Basis(Vector3.UP, -(total_angle / 2))
 	var initial_direction = rot * direction

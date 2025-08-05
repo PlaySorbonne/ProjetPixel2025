@@ -10,4 +10,4 @@ Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_hit,,"var burning := Statu
 burning.tick_time = 0.1
 burning.inflict_status(enemy)",Traders,
 Root,Projectiles can root enemies on hit.,,Uncommon,enemy_hit,RunData.roll_probability(0.2),StatusRooted.new().inflict_status(enemy),Scientists,
-Split,Split projectiles,,Rare,tower_fired,,projectile.split(1.74),Scientists,
+Split,"Augmente le nombre de projectiles (test de la fonction)",,Rare,tower_fired,,"projectile.split(1.74, 3)",Scientists,
