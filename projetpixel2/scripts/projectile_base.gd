@@ -6,7 +6,7 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 static var critical_hits_number := 0
 static var hits_number := 0
 
-var tower : TowerBase
+var tower : Node
 var projectile : Projectile
 var size := 1.0:
 	set(value):
@@ -44,17 +44,18 @@ func damage_body(body : BaseEnemy) -> void:
 		tower.enemy_killed.emit(self, body)
 
 func split(number_of_children : int, total_angle : float, children_multiplier := 0.9) -> void:
-	var angle_increment := total_angle / float(number_of_children)
-	var rotation = Basis(Vector3.UP, -(total_angle / 2))
-	var initial_direction = rotation.xform(direction)
-	rotation = Basis(Vector3.UP, angle_increment)
-	for i : int in range(number_of_children):
-		var new_projectile : ProjectileBase = PROJECTILE_RES.instantiate()
-		new_projectile.projectile = projectile.split_projectile(children_multiplier)
-		GV.world.add_child(new_projectile)
-		new_projectile.global_position = global_position
-		initial_direction = rotation.xform(initial_direction)
-		new_projectile.direction = initial_direction
+	pass
+	#var angle_increment := total_angle / float(number_of_children)
+	#var rot := Basis(Vector3.UP, -(total_angle / 2))
+	#var initial_direction = rot.xform(direction)
+	#rot = Basis(Vector3.UP, angle_increment)
+	#for i : int in range(number_of_children):
+		#var new_projectile : ProjectileBase = PROJECTILE_RES.instantiate()
+		#new_projectile.projectile = projectile.split_projectile(children_multiplier)
+		#GV.world.add_child(new_projectile)
+		#new_projectile.global_position = global_position
+		#initial_direction = rot.xform(initial_direction)
+		#new_projectile.direction = initial_direction
 
 func bounce() -> void:
 	pass
