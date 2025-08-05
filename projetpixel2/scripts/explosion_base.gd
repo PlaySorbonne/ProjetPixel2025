@@ -8,7 +8,6 @@ class_name ExplosionBase
 func apply_effect(enemy : BaseEnemy) -> void:
 	pass
 
-
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		apply_effect(body)

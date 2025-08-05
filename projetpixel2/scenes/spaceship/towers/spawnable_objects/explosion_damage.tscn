@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqmi4eg8ss6hh"]
+
+[ext_resource type="PackedScene" uid="uid://cmaonqfe7bwv2" path="res://scenes/spaceship/towers/spawnable_objects/explosion_base.tscn" id="1_l12fx"]
+[ext_resource type="Script" uid="uid://baj23hs7kcids" path="res://scripts/explosion_damage.gd" id="2_50jm5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_50jm5"]
+resource_local_to_scene = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wrybd"]
+resource_local_to_scene = true
+height = 0.1
+
+[node name="ExplosionDamage" instance=ExtResource("1_l12fx")]
+script = ExtResource("2_50jm5")
+damage_amount = 100
+damage_type = 0
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("SphereShape3D_50jm5")
+
+[node name="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("CylinderMesh_wrybd")
