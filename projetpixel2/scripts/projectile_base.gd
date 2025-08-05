@@ -12,8 +12,7 @@ var size := 1.0:
 	set(value):
 		size = value
 		scale = Vector3.ONE * size
-
-var direction : Vector3 
+var direction : Vector3
 var base_speed := 20.0
 
 func _ready() -> void:
@@ -58,7 +57,11 @@ func split(number_of_children : int, total_angle : float, children_multiplier :=
 		#new_projectile.direction = initial_direction
 
 func bounce() -> void:
-	pass
+	direction = Vector3(
+		randf_range(-1.0, 1.0),
+		0.0,
+		randf_range(-1.0, 1.0)
+	)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
