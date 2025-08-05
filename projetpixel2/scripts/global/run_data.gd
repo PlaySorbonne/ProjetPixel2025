@@ -39,6 +39,9 @@ func gain_experience(amount : int) -> void:
 func get_level_experience_threshold() -> int:
 	return experience_needed_equation.execute([], self)
 
+func get_experience_percentage() -> float:
+	return float(current_experience) / float(level_experience_threshold)
+
 # combo
 var current_combo := 0:
 	set(value):
