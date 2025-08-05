@@ -55,13 +55,26 @@ func split(number_of_children : int, total_angle : float, children_multiplier :=
 		new_projectile.global_position = global_position
 		initial_direction = rotation.xform(initial_direction)
 		new_projectile.direction = initial_direction
-		
+
+func bounce() -> void:
+	pass
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is BaseEnemy:
 		damage_body(body)
-		if projectile.pierce <= 0:
+		# pierce + bounce: split
+		if projectile.pierce > 0 and projectile.bounce > 0:
+			projectile.pierce -= 1
+			projectile.bounce -= 1
+			split(2, 45.0, 0.9)
+		# pierce
+		elif projectile.pierce > 0:
+			projectile.pierce -= 1
+		# bounce
+		elif projectile.bounce > 0:
+			projectile.bounce -= 1
+			bounce()
+		# destroy projectile
+		else:
 			await get_tree().process_frame
 			queue_free()
-		else:
-			projectile.pierce -= 1
