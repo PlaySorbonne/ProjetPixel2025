@@ -1,7 +1,8 @@
 extends Resource
 class_name CardBase
 
-const BURNING_AURA := preload("res://scenes/spaceship/towers/spawnable_objects/burning_aura.tscn")
+const AURA_BURNING := preload("res://scenes/spaceship/towers/spawnable_objects/aura_burning.tscn")
+const EXPLOSION_DAMAGE := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_damage.tscn")
 
 
 # active variables
@@ -11,12 +12,16 @@ var enemy : BaseEnemy
 
 # GAME DESIGNER FUNCTIONS
 func spawn_burning_aura(aura_position : Vector3) -> BurningAura:
-	return spawn_object(BURNING_AURA.instantiate(), aura_position)
+	return spawn_object(AURA_BURNING.instantiate(), aura_position)
 
-func spawn_burning_aura_on_obj(parent_object : Node3D, 
-									offset := Vector3.ZERO) -> BurningAura:
-	return spawn_object_on_object(BURNING_AURA.instantiate(), parent_object, offset)
+func spawn_burning_aura_on_obj(parent_object : Node3D, offset := Vector3.ZERO) -> BurningAura:
+	return spawn_object_on_object(AURA_BURNING.instantiate(), parent_object, offset)
 
+func spawn_damage_explosion(explosion_position : Vector3) -> ExplosionDamage:
+	return spawn_object(EXPLOSION_DAMAGE.instantiate(), explosion_position)
+
+func spawn_damage_explosion_on_obj(parent_object : Node3D, offset := Vector3.ZERO) -> ExplosionDamage:
+	return spawn_object_on_object(EXPLOSION_DAMAGE.instantiate(), parent_object, offset)
 
 
 
