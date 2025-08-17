@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgs2c6qrymxs6"]
+
+[ext_resource type="Script" uid="uid://cn2yk103qvfig" path="res://scripts/boost_auto_switch_mode.gd" id="1_pkr4x"]
+
+[node name="BoostAutoSwitchMode" type="Timer"]
+script = ExtResource("1_pkr4x")
