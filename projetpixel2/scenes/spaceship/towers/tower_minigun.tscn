@@ -1,9 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://clgosdw7k57g6"]
+[gd_scene load_steps=5 format=3 uid="uid://clgosdw7k57g6"]
 
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="1_8d2or"]
+[ext_resource type="Shader" path="res://resources/shaders/3d_ring.gdshader" id="2_idlik"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fx27m"]
+resource_local_to_scene = true
+radius = 7.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e308e"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_idlik")
+shader_parameter/size = 0.3
+shader_parameter/width = 0.005
+shader_parameter/inner_color = Color(0, 0, 0, 0)
+shader_parameter/outer_color = Color(0.5, 0, 0, 0.384314)
 
 [node name="TowerMinigun" instance=ExtResource("1_8d2or")]
 tower_name = "Minigun"
 fire_rate = 5.0
 
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("SphereShape3D_fx27m")
+
+[node name="MeshInstance3D" parent="Area3D" index="1"]
+material_override = SubResource("ShaderMaterial_e308e")
+
+[node name="CollisionShape3D" parent="AreaXP" index="0"]
+shape = SubResource("SphereShape3D_fx27m")
+
 [editable path="blasterM"]
+[editable path="MiningMesh"]

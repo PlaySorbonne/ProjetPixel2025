@@ -10,13 +10,14 @@ const MAX_IDLE_TIME := 0.5
 
 signal tower_card_added(card: CardData)
 signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_switched_mode()
+signal tower_switched_mode
 signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
 signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
 signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
 signal start_mining
+signal tower_can_switch_mode
 
 @export var tower_name := "TowerBase"
 @export_multiline var tower_description := "Most standardized galactic exploration tower drone model. Capable of shooting balistic projectiles and collecting minerals from the ground."
@@ -113,6 +114,7 @@ func _trigger_switch_mode_anim(new_mode : Modes) -> void:
 
 func _on_timer_switch_modes_timeout() -> void:
 	can_switch_mode = true
+	tower_can_switch_mode.emit()
 
 func check_for_orbs() -> void:
 	print("CHECKING FOR ORBS, FOUND " + str(len($AreaXP.get_overlapping_areas())))
