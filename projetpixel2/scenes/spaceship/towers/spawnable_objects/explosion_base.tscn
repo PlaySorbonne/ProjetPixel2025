@@ -20,4 +20,9 @@ shape = SubResource("SphereShape3D_76ars")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_76ars")
 
+[node name="TimerLifetime" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerLifetime" to="." method="_on_timer_lifetime_timeout"]
