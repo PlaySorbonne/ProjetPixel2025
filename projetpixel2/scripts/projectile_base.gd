@@ -1,11 +1,11 @@
 extends Node3D
 class_name ProjectileBase
 
-const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 
 static var critical_hits_number := 0
 static var hits_number := 0
 
+var projectile_res := load("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 var tower : Node
 var projectile : Projectile
 var size := 1.0:
@@ -16,7 +16,7 @@ var direction : Vector3
 var base_speed := 20.0
 
 func _ready() -> void:
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -49,7 +49,7 @@ func split(total_angle : float, number_of_children := 3, children_multiplier := 
 	self.direction = initial_direction
 	rot = Basis(Vector3.UP, angle_increment)
 	for i : int in range(number_of_children - 1):
-		var new_projectile : ProjectileBase = PROJECTILE_RES.instantiate()
+		var new_projectile : ProjectileBase = projectile_res.instantiate()
 		new_projectile.projectile = projectile.split_projectile(children_multiplier)
 		new_projectile.tower = self.tower
 		GV.world.add_child(new_projectile)

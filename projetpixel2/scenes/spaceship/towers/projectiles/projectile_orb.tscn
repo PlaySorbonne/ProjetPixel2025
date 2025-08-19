@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmb7x5a2fbjbd"]
+
+[ext_resource type="PackedScene" uid="uid://c1ml42212cb43" path="res://scenes/spaceship/towers/projectiles/projectile_base.tscn" id="1_7claw"]
+[ext_resource type="Script" uid="uid://c2wqtgak5s3s2" path="res://scripts/projectile_orb.gd" id="2_8kur5"]
+
+[node name="ProjectileOrb" instance=ExtResource("1_7claw")]
+script = ExtResource("2_8kur5")
