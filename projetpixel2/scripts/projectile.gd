@@ -2,7 +2,8 @@ extends Resource
 class_name Projectile
 
 
-var damage_expresion := default_damage_expression()
+var damage_expression : Callable = default_damage_expression
+var damage_script : RefCounted
 @export var speed : float = 1.0
 @export var damage : int = 50
 @export var size := 1.0
@@ -13,20 +14,19 @@ var damage_expresion := default_damage_expression()
 @export var critical_hit_intensity := 10.0
 
 
-func default_damage_expression() -> Expression:
-	var expr : Expression = Expression.new()
-	var expr_str := "damage"
-	var err = expr.parse(expr_str)
-	return expr
+func default_damage_expression() -> int:
+	return damage
 
 func set_damage_expression(new_expression : String) -> void:
-	var expr : Expression = Expression.new()
-	var expr_str := "new_expression"
-	var err = expr.parse(expr_str)
-	damage_expresion = expr
+	var subscript = GDScript.new()
+	subscript.source_code = "extends Resource\n\nfunc eval() -> int:\n\treturn " + new_expression
+	subscript.reload()
+	damage_script = RefCounted.new()
+	damage_script.set_script(subscript)
+	damage_expression
 
 func get_damage() -> int:
-	return damage_expresion.execute([], self)
+	return damage_expression.call()
 
 func split_projectile(multiplier : float) -> Projectile:
 	var new_projectile := Projectile.new()
@@ -36,7 +36,7 @@ func split_projectile(multiplier : float) -> Projectile:
 	new_projectile.damage_type = damage_type
 	new_projectile.critical_hit_chance = critical_hit_chance
 	new_projectile.critical_hit_intensity = critical_hit_intensity
-	new_projectile.damage_expresion = damage_expresion
+	new_projectile.damage_expression = damage_expression
 	# changed variables
 	new_projectile.damage = damage * multiplier
 	new_projectile.size = size * multiplier

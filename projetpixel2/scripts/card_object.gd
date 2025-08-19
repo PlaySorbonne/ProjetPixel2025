@@ -68,10 +68,10 @@ func _input(event: InputEvent) -> void:
 			debug_text += ("   press")
 	else:
 		debug_text += ("   event is not InputEventMouseButton")
-	print(debug_text)
+	#print(debug_text)
 
 func _on_drag_and_drop_2d_dragged() -> void:
-	print("_on_drag_and_drop_2d_dragged")
+	#print("_on_drag_and_drop_2d_dragged")
 	deck_position = position
 	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
 	is_dragged = true
@@ -80,13 +80,12 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	GV.hud.update_card_description(card.description)
 
 func _on_drag_and_drop_2d_dropped() -> void:
-	print("_on_drag_and_drop_2d_dropped")
+	#print("_on_drag_and_drop_2d_dropped")
 	is_dragged = false
 	GV.is_dragging_object = false
 	GV.hud.clear_card_description()
 	$TextureRect.modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
-		print("HYAAAAAAAAAAAAAAH")
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return
 	# interaction2D
@@ -94,7 +93,7 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	#print("control object = " + str(control_object))
 	if control_object != null:
 		if control_object.has_method("drop_card"):
-			print("card dropped on " + str(control_object))
+			#print("card dropped on " + str(control_object))
 			control_object.drop_card(card)
 		destroy_card_object()
 		return
