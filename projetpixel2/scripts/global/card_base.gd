@@ -4,6 +4,7 @@ class_name CardBase
 const AURA_BURNING := preload("res://scenes/spaceship/towers/spawnable_objects/aura_burning.tscn")
 const EXPLOSION_DAMAGE := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_damage.tscn")
 const EXPLOSION_ROOT := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_root.tscn")
+const TOTEM_SHOOT := preload("res://scenes/spaceship/towers/spawnable_objects/totem_shoot.tscn")
 
 
 # active variables
@@ -24,6 +25,12 @@ func spawn_damage_explosion(explosion_position : Vector3) -> ExplosionDamage:
 func spawn_damage_explosion_on_obj(parent_object : Node3D, offset := Vector3.ZERO) -> ExplosionDamage:
 	return spawn_object_on_object(EXPLOSION_DAMAGE.instantiate(), parent_object, offset)
 
+
+func get_component(object : Node, component : Resource) -> Node:
+	for c : Node in object.get_children():
+		if is_instance_of(c, component):
+			return c
+	return null
 
 
 func spawn_object(object : Node3D, location : Vector3) -> Node3D:
