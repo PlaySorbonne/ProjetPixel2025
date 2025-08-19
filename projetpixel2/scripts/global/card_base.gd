@@ -3,6 +3,7 @@ class_name CardBase
 
 const AURA_BURNING := preload("res://scenes/spaceship/towers/spawnable_objects/aura_burning.tscn")
 const EXPLOSION_DAMAGE := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_damage.tscn")
+const EXPLOSION_ROOT := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_root.tscn")
 
 
 # active variables

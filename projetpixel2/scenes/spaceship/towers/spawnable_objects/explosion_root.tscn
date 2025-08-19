@@ -13,7 +13,6 @@ height = 0.1
 [node name="ExplosionDamage" instance=ExtResource("1_snabv")]
 script = ExtResource("2_snabv")
 root_time = 1.0
-damage_type = 0
 
 [node name="CollisionShape3D" parent="." index="0"]
 shape = SubResource("SphereShape3D_50jm5")
