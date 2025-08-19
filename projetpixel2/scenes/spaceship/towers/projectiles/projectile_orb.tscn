@@ -5,3 +5,8 @@
 
 [node name="ProjectileOrb" instance=ExtResource("1_7claw")]
 script = ExtResource("2_8kur5")
+
+[node name="TimerShoot" type="Timer" parent="." index="2"]
+autostart = true
+
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
