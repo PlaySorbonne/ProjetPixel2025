@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv567gipvsb5w"]
+
+[ext_resource type="Script" uid="uid://5chrxqk84may" path="res://scripts/totem_base.gd" id="1_0crp6"]
+
+[node name="TotemBase" type="Node3D"]
+script = ExtResource("1_0crp6")
