@@ -5,3 +5,8 @@
 
 [node name="TotemShoot" instance=ExtResource("1_44fd3")]
 script = ExtResource("2_6tnp5")
+
+[node name="TimerShoot" type="Timer" parent="." index="1"]
+one_shot = true
+
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]

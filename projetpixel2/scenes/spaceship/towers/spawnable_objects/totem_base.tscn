@@ -4,3 +4,8 @@
 
 [node name="TotemBase" type="Node3D"]
 script = ExtResource("1_0crp6")
+
+[node name="TimeAfterTrigger" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TimeAfterTrigger" to="." method="_on_time_after_trigger_timeout"]
