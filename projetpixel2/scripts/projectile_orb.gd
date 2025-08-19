@@ -2,6 +2,10 @@ extends ProjectileBase
 class_name ProjectileOrb
 
 
+var fire_rate := 1.0:
+	set(value):
+		fire_rate = value
+		shoot_delay = 1.0/fire_rate
 var shoot_delay := 1.0:
 	set(value):
 		shoot_delay = value

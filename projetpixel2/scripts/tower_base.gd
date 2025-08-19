@@ -24,7 +24,6 @@ signal tower_can_switch_mode
 @export var is_hologram := false
 @export var cards : Array[CardData] = []
 @export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
-@export var shooting_orbs := false
 var current_mode := Modes.Firing
 var can_switch_mode := true
 var idle_timer := 0.5
@@ -53,6 +52,8 @@ var mining_laser : TowerMiningLaser
 @export var switch_mode_duration := 1.5
 @export var switch_mode_delay := 5.0
 @export var damage_to_xp := 90
+@export var shooting_orbs := false
+@export var orbs_fire_rate := 1.0
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -263,6 +264,7 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	if shooting_orbs:
 		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
 		projectile_obj = PROJECTILE_ORB.instantiate()
+		projectile_obj.fire_rate = orbs_fire_rate
 	else:
 		projectile_obj = projectile_res.instantiate()
 	projectile_obj.projectile = projectile_template.duplicate()
