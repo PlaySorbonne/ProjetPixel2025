@@ -20,13 +20,4 @@ func _on_timer_shoot_timeout() -> void:
 	shoot()
 
 func shoot() -> void:
-	var projectile_obj : ProjectileBase = tower.projectile_res.instantiate()
-	projectile_obj.projectile = tower.projectile_template.duplicate()
-	projectile_obj.tower = tower
-	GV.world.add_child(projectile_obj)
-	projectile_obj.position = global_position
-	projectile_obj.direction = Vector3(
-		randf_range(-1.0, 1.0),
-		0.0,
-		randf_range(-1.0, 1.0)
-	)
+	tower.spawn_projectile(global_position, shoot_angle, true)

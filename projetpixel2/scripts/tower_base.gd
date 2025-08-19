@@ -249,6 +249,22 @@ func get_closest_enemy() -> BaseEnemy:
 			min_dist = dist
 	return closest_enemy
 
+func spawn_projectile(projectile_position : Vector3, projectile_direction : Vector3,
+											force_projectile := false) -> ProjectileBase:
+	var projectile_obj : ProjectileBase 
+	if shooting_orbs and not force_projectile:
+		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
+		projectile_obj = PROJECTILE_ORB.instantiate()
+		projectile_obj.fire_rate = orbs_fire_rate
+	else:
+		projectile_obj = projectile_res.instantiate()
+	projectile_obj.projectile = projectile_template.duplicate()
+	projectile_obj.tower = self
+	GV.world.add_child(projectile_obj)
+	projectile_obj.position = projectile_position
+	projectile_obj.direction = projectile_direction
+	return projectile_obj
+
 func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	if not is_instance_valid(enemy):
 		print_debug("Invalid enemy targeted")
@@ -260,22 +276,15 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 		position.y,
 		enemy.position.z
 	))
-	var projectile_obj : ProjectileBase 
-	if shooting_orbs:
-		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
-		projectile_obj = PROJECTILE_ORB.instantiate()
-		projectile_obj.fire_rate = orbs_fire_rate
-	else:
-		projectile_obj = projectile_res.instantiate()
-	projectile_obj.projectile = projectile_template.duplicate()
-	projectile_obj.tower = self
-	GV.world.add_child(projectile_obj)
-	projectile_obj.position = Vector3(
+	var projectile_pos := Vector3(
 		projectile_spawn_pos.global_position.x,
 		enemy.position.y,
 		projectile_spawn_pos.global_position.z
 	)
-	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
+	var projectile_obj := spawn_projectile(
+		projectile_pos,
+		projectile_pos.direction_to(enemy.position)
+	)
 	if not is_bonus:
 		tower_fired.emit(projectile_obj, null)
 		$TimerShoot.start(1.0 / fire_rate)
