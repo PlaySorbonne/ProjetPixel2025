@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://0dgoaj7ytnv4" path="res://resources/3d_models/towers_placeholder/meshes/tower_1.res" id="3_47ana"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
-[ext_resource type="Shader" uid="uid://dqej4ajdlyerw" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
+[ext_resource type="Shader" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
 [ext_resource type="PackedScene" uid="uid://cpnwdp0ai1y6w" path="res://resources/3d_models/towers_placeholder/mining_device/machine_generator.fbx" id="7_vohdg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]

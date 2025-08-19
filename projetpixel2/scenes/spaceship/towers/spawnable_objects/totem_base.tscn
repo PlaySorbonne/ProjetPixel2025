@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv567gipvsb5w"]
+[gd_scene load_steps=3 format=3 uid="uid://dv567gipvsb5w"]
 
 [ext_resource type="Script" uid="uid://5chrxqk84may" path="res://scripts/totem_base.gd" id="1_0crp6"]
 
-[node name="TotemBase" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_0crp6"]
+size = Vector3(0.25, 2, 0.25)
+
+[node name="TotemBase" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.813871, 0)
+mesh = SubResource("BoxMesh_0crp6")
 script = ExtResource("1_0crp6")
 
 [node name="TimeAfterTrigger" type="Timer" parent="."]
