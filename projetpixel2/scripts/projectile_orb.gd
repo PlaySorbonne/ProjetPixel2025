@@ -12,14 +12,11 @@ func _on_body_entered(body: Node3D) -> void:
 	return
 
 func _on_timer_shoot_timeout() -> void:
-	
+	shoot_angle = shoot_angle.rotated(Vector3(0.0, 1.0, 0.0), 0.1)
 	shoot()
 
-func increase_shoot_angle() -> void:
-	shoot_angle = shoot_angle.rotated(Vector3(0.0, 1.0, 0.0), 0.1)
-
 func shoot() -> void:
-	var projectile_obj : ProjectileBase = projectile_res.instantiate()
+	var projectile_obj : ProjectileBase = tower.projectile_res.instantiate()
 	projectile_obj.projectile = tower.projectile_template.duplicate()
 	projectile_obj.tower = tower
 	GV.world.add_child(projectile_obj)

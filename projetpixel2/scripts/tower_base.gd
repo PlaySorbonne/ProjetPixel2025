@@ -24,6 +24,7 @@ signal tower_can_switch_mode
 @export var is_hologram := false
 @export var cards : Array[CardData] = []
 @export var enemy_choice := get_spaceship_closest_enemy # method used to select the targeted enemy
+@export var shooting_orbs := false
 var current_mode := Modes.Firing
 var can_switch_mode := true
 var idle_timer := 0.5
@@ -258,7 +259,12 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 		position.y,
 		enemy.position.z
 	))
-	var projectile_obj := projectile_res.instantiate()
+	var projectile_obj : ProjectileBase 
+	if shooting_orbs:
+		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
+		projectile_obj = PROJECTILE_ORB.instantiate()
+	else:
+		projectile_obj = projectile_res.instantiate()
 	projectile_obj.projectile = projectile_template.duplicate()
 	projectile_obj.tower = self
 	GV.world.add_child(projectile_obj)
