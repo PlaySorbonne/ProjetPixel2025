@@ -3,7 +3,6 @@ class_name Projectile
 
 
 var damage_expression : Callable = default_damage_expression
-var damage_script : RefCounted
 @export var speed : float = 1.0
 @export var damage : int = 50
 @export var size := 1.0
@@ -16,14 +15,6 @@ var damage_script : RefCounted
 
 func default_damage_expression() -> int:
 	return damage
-
-func set_damage_expression(new_expression : String) -> void:
-	var subscript = GDScript.new()
-	subscript.source_code = "extends Resource\n\nfunc eval() -> int:\n\treturn " + new_expression
-	subscript.reload()
-	damage_script = RefCounted.new()
-	damage_script.set_script(subscript)
-	damage_expression
 
 func get_damage() -> int:
 	return damage_expression.call()
