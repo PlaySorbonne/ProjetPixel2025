@@ -11,7 +11,12 @@ Root,Projectiles can root enemies on hit.,,Uncommon,enemy_hit,RunData.roll_proba
 Link,Apply link effect to hit enemies,,Legendary,enemy_hit,,StatusLinked.new().inflict_status(enemy),Revolution,
 Projectiles X,"Doubles the number of projectiles, but lowers their power.",,Secret,,,"tower.number_of_projectiles *= 2
 tower.projectile_template.damage *= 0.9",Military,TO TEST
-Cccccccombo,Add the current_combo (updating) to the damage of the tower.,,Secret,,,"tower.projectile_template.set_damage_expression(""damage + RunData.current_combo"")",Military,TO TEST
+Cccccccombo,Add the current_combo (updating) to the damage of the tower.,,Secret,,,"#FULL_CODE#
+func new_damage_expression() -> int:
+        return tower.projectile_template.damage + RunData.current_combo
+
+func run_effect():
+        tower.projectile_template.damage_expression = new_damage_expression",Military,TO TEST
 Range Up,Improves the range of fire of the tower.,,Secret,,,tower.fire_range += 5.0,Military,TO TEST
 Pierce,The projectiles can pierce enemies.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.damage *= 0.7",Military,TO TEST
