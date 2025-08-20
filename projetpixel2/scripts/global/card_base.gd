@@ -8,9 +8,9 @@ const TOTEM_SHOOT := preload("res://scenes/spaceship/towers/spawnable_objects/to
 
 
 # active variables
-var tower : TowerBase
-var projectile : ProjectileBase
-var enemy : BaseEnemy
+var tower : TowerBase # tower the card was added to
+var projectile : ProjectileBase # projectile that trigger the card (can be null if card was not triggered by a projectile)
+var enemy : BaseEnemy # enemy that triggered the card (can be null if card was not triggered by an enemy)
 
 # GAME DESIGNER FUNCTIONS
 func spawn_burning_aura(aura_position : Vector3) -> BurningAura:
