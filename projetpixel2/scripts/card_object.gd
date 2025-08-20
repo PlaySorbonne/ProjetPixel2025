@@ -57,7 +57,7 @@ func _input(event: InputEvent) -> void:
 	var debug_text := "INPUT DETECTED"
 	if not is_dragged:
 		debug_text += ("   not dragged -> return")
-		print(debug_text)
+		#print(debug_text)
 		return
 	if event is InputEventMouseButton:
 		if event.is_released():
