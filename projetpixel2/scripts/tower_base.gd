@@ -8,16 +8,15 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 const MAX_IDLE_TIME := 0.5
 
-signal tower_card_added(card: CardData)
-signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_switched_mode
-signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
-signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
-signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal start_mining
-signal tower_can_switch_mode
+signal tower_card_added(card: CardData) # called when a card is added to the tower
+signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower shoots projectile at enemy
+signal tower_switched_mode # called when tower switches mode (to mining or to firing)
+signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower collects an exp orb
+signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower gains a level (new card slot)
+signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy) # called when a projectile shot by this tower hits an enemy
+signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy) # called when this tower kills an enemy
+signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy) # called when a projectile shot by this tower triggers a critical hit on an enemy
+signal tower_can_switch_mode # called when the tower can switch mode again (after stuck delay)
 
 @export var tower_name := "TowerBase"
 @export_multiline var tower_description := "Most standardized galactic exploration tower drone model. Capable of shooting balistic projectiles and collecting minerals from the ground."
@@ -33,12 +32,16 @@ var can_shoot := true
 var mining_laser : TowerMiningLaser
 
 @export_group("Tower stats")
-@export var projectile_res : PackedScene = PROJECTILE_RES
-@export var number_of_projectiles := 1
-@export var fire_rate := 1.0
-@export var projectile_template : Projectile = Projectile.new()
-@export var max_number_of_cards := 5
-@export var fire_range := 10.0:
+@export var projectile_res : PackedScene = PROJECTILE_RES # type of projectile (bullet, laser, bomb, etc)
+@export var projectile_template : Projectile = Projectile.new() # stats of the projectile
+@export var number_of_projectiles := 1 # number of projectile shot when tower fires
+@export var fire_rate := 1.0 # number of shots per second
+@export var max_number_of_cards := 5 # max number of cards (increased at each level up)
+@export var switch_mode_duration := 1.5 # duration of the animation when switching mode
+@export var switch_mode_delay := 5.0 # delay after animation before tower can switch modes again
+@export var damage_to_xp := 90 # damage done to exp orbs per shot when mining
+@export var orbs_fire_rate := 1.0 # shots per second when mining orbs
+@export var fire_range := 10.0: # range of the tower
 	set(value):
 		fire_range = value
 		var new_shader_size := value / 10.0 * 0.4  # value / CollisionShape3D.radius * MeshInstance3D.material.size
@@ -49,11 +52,7 @@ var mining_laser : TowerMiningLaser
 		else:
 			$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_shader_size)
 		$Area3D/CollisionShape3D.shape.radius = value
-@export var switch_mode_duration := 1.5
-@export var switch_mode_delay := 5.0
-@export var damage_to_xp := 90
-@export var shooting_orbs := false
-@export var orbs_fire_rate := 1.0
+@export var shooting_orbs := false 
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -209,7 +208,7 @@ func _process(delta: float) -> void:
 			if not is_mining_orb:
 				check_for_orbs()
 
-func get_focused_enemies() -> Array[Node3D]:
+func get_focused_enemies() -> Array[BaseEnemy]:
 	return area3d.get_overlapping_bodies()
 
 func get_spaceship_closest_enemy() -> BaseEnemy:
