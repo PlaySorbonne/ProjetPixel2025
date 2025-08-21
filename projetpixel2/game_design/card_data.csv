@@ -35,7 +35,7 @@ if machinegun == null:
 else:
         machinegun.needed_shots /= 1.25
         machinegun.boost_duration *= 1.25
-        machinegun.fire_rate_mulitplier *= 1.15
+        machinegun.fire_rate_multiplier *= 1.15
 ### boost variable that can be tweaked by the game designers:
 #machinegun.needed_shots = 20
 #machinegun.boost_duration = 1.0
