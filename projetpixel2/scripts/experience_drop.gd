@@ -13,11 +13,11 @@ class ExperienceLevel:
 const NB_ORBS_MERGE := 3
 
 static var experience_thresholds : Array[ExperienceLevel] = [
-	ExperienceLevel.new(3200, Color.WHITE),
-	ExperienceLevel.new(1600, Color.AQUA),
-	ExperienceLevel.new(800, Color.BLUE),
-	ExperienceLevel.new(400, Color.PURPLE),
-	ExperienceLevel.new(200, Color.RED),
+	ExperienceLevel.new(400, Color.WHITE),
+	ExperienceLevel.new(200, Color.AQUA),
+	ExperienceLevel.new(100, Color.BLUE),
+	ExperienceLevel.new(50, Color.PURPLE),
+	ExperienceLevel.new(25, Color.RED),
 	ExperienceLevel.new(0, Color.BLACK),
 ]
 
@@ -38,7 +38,7 @@ signal xp_drop_collected(xp_amount : int)
 @export var hitpoints := 100:
 	set(value):
 		hitpoints = value
-		$MeshInstance3D.scale = Vector3.ONE * sqrt(hitpoints / 100)
+		$MeshInstance3D.scale = Vector3.ONE * log(hitpoints / 100)
 @export var experience_points := 100:
 	set(value):
 		experience_points = value
@@ -46,6 +46,7 @@ signal xp_drop_collected(xp_amount : int)
 var xp_level_index : int = 0:
 	set(value):
 		xp_level_index = value
+		print("spawn orb -> xp=" + str(experience_points) + " ; hp=" + str(hitpoints) + " ; level = " + str(xp_level_index))
 		_check_neighbor_xp_drops()
 var marked_for_deletion := false
 var is_being_harvested := false
@@ -104,7 +105,6 @@ func merge_xp_drops(neighbors_xp : Array[ExperienceDrop]) -> void:
 	for neighbor : ExperienceDrop in neighbors_xp:
 		t.tween_property(neighbor, "position", new_pos, 0.4)
 	await t.finished
-	print("spawn orb -> xp=" + str(new_xp) + " ; hp=" + str(new_hp))
 	spawn_xp(
 		new_pos,
 		new_xp,
