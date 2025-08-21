@@ -18,4 +18,12 @@ shape = SubResource("SphereShape3D_2ys8s")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_2ys8s")
 
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[node name="TimerLifetime" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="timeout" from="TimerLifetime" to="." method="_on_timer_lifetime_timeout"]

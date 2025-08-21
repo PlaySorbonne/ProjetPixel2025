@@ -15,10 +15,7 @@ var size := 1.0:
 var direction : Vector3
 var base_speed := 20.0
 var body_to_ignore : Node3D = null
-
-func _ready() -> void:
-	await get_tree().create_timer(4.0).timeout
-	queue_free()
+var projectile_lifetime_expanded := false
 
 func _physics_process(delta: float) -> void:
 	position += direction * base_speed * projectile.speed * delta
@@ -86,3 +83,12 @@ func _on_body_entered(body: Node3D) -> void:
 		else:
 			await get_tree().process_frame
 			queue_free()
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	if projectile_lifetime_expanded:
+		queue_free()
+
+func _on_timer_lifetime_timeout() -> void:
+	projectile_lifetime_expanded = true
+	if not $VisibleOnScreenNotifier3D.is_on_screen():
+		queue_free()

@@ -37,8 +37,8 @@ if machinegun.is_new_boost:
 #machinegun.fire_rate_multiplier = 1.5",Military,TO TEST
 Splash,Add splash damage to the tower's projectiles.,,Secret,enemy_hit,,"var explosion := spawn_damage_explosion(enemy.position)
 explosion.damage_amount = tower.projectile_template.damage * 0.5
-explosion.radius = 0.5",Military,TO TEST
-Adaptation,Reduce the delay of tower switching mode,,Secret,,,"tower.switch_mode_duration /= 3.0
+explosion.radius = 1.0",Military,"OK but if we want to stack differently than adding more explosions we need to change the code to check if a card is already there, and if so improve the card instead of adding one"
+Adaptation,Reduce the delay of tower switching mode,,Secret,,,"tower.switch_mode_duration /= 2.0
 tower.switch_mode_delay /= 3.0",Military,TO TEST
 Nova de givre,"When tower switches mode, it creates an explosion which roots enemies. When it switches to mining, it also locks in mining mode for 20 seconds, after which it automatically switches back to firing.",,Secret,tower_switched_mode,,"#FULL_CODE#
 func _ready() -> void:
@@ -51,11 +51,11 @@ func run_effect():
         root_explosion.radius = 3.0
         root_explosion.time = 0.25",Military,TO TEST
 Orb,"Tower now fires orbs, which shoot the tower's previous projectile. Fire rate decreses by 50%.",,Secret,,,"if tower.shooting_orbs:
-        tower.orbs_fire_rate *= 2.0
+        tower.orbs_fire_rate *= 1.5
 else:
         tower.shooting_orbs = true
         tower.fire_rate /= 2.0
-        tower.orbs_fire_rate = 1.0",Military,TO TEST
+        tower.orbs_fire_rate = 3.0",Military,TO TEST
 Totem,"When an enemy is killed, 10%chance that a totem is spawned on its corpse, and will shoot 3 tower projectiles.",,Secret,enemy_killed,RunData.roll_probability(0.1),"var totem := spawn_object(TOTEM_SHOOT.instantiate(), enemy.global_position)
 totem.tower = tower
 totem.number_of_projectiles = 3

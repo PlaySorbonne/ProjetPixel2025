@@ -21,6 +21,7 @@ var debug_mode : bool = false
 func reset_gameplay_variables() -> void:
 	world = null
 	space_ship = null
+	BaseEnemy.living_enemies.clear()
 	towers = []
 	spawners = []
 	wave_manager = null

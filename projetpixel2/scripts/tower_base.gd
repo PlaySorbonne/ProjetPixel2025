@@ -40,7 +40,7 @@ var mining_laser : TowerMiningLaser
 @export var switch_mode_duration := 1.5 # duration of the animation when switching mode
 @export var switch_mode_delay := 5.0 # delay after animation before tower can switch modes again
 @export var damage_to_xp := 90 # damage done to exp orbs per shot when mining
-@export var orbs_fire_rate := 1.0 # shots per second when mining orbs
+@export var orbs_fire_rate := 3.0 # shots per second when mining orbs
 @export var fire_range := 10.0: # range of the tower
 	set(value):
 		fire_range = value

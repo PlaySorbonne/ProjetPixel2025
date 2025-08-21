@@ -7,6 +7,7 @@ signal enemy_killed
 signal enemy_hit
 signal status_inflicted(status_type : StatusBase.StatusEffects)
 
+static var living_enemies : Array[BaseEnemy] = []
 static var number_of_enemies := 0
 static var enemy_types : Array[String] = ["Puncher"]
 
@@ -33,6 +34,7 @@ var enemy_id := 0
 func _ready() -> void:
 	damageable.health = enemy_data.hitpoints
 	set_enemy_id()
+	living_enemies.append(self)
 	#print("enemy " + str(enemy_id) + " spawned!")
 
 func get_health() -> int:
@@ -73,6 +75,7 @@ func death() -> void:
 		return
 	current_state = States.Dead
 	emit_signal("enemy_killed")
+	living_enemies.erase(self)
 	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
 	RunData.new_kill(enemy_data.enemy_type, enemy_data.is_alpha)
