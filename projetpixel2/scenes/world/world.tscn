@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=16 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
-[ext_resource type="PackedScene" uid="uid://bvhewnwb52nqw" path="res://scenes/interface/debug/console.tscn" id="9_gb53w"]
+[ext_resource type="PackedScene" uid="uid://bvhewnwb52nqw" path="res://scenes/interface/debug/Console.tscn" id="9_gb53w"]
 [ext_resource type="PackedScene" uid="uid://b8jfaq1p25y4p" path="res://scenes/gameplay_systems/wave_manager.tscn" id="10_gb53w"]
+[ext_resource type="AudioStream" uid="uid://c01c0em44qfoj" path="res://resources/music/Bastion.mp3" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://chhjuwxnir6c8" path="res://scenes/interface/gameplay_hud/player_hud.tscn" id="12_dlabj"]
 
 [sub_resource type="Resource" id="Resource_gb53w"]
@@ -95,5 +96,10 @@ environment = SubResource("Environment_bq33v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41647, 1.08648, 0)
 light_color = Color(0.524277, 0.755889, 1, 1)
 omni_attenuation = 0.25
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_5qq27")
+autoplay = true
+parameters/looping = true
 
 [editable path="PlayerHud"]
