@@ -74,8 +74,8 @@ func death() -> void:
 	if current_state == States.Dead:
 		return
 	current_state = States.Dead
-	emit_signal("enemy_killed")
 	living_enemies.erase(self)
+	emit_signal("enemy_killed")
 	$CollisionShape3D.queue_free()
 	mesh_animations.play("die")
 	RunData.new_kill(enemy_data.enemy_type, enemy_data.is_alpha)

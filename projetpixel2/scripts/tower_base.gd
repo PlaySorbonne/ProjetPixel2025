@@ -232,6 +232,29 @@ func get_spaceship_closest_enemy() -> BaseEnemy:
 			min_dist = dist
 	return closest_enemy
 
+func get_random_shoot_direction(ignore_enemies := false) -> Vector3:
+	# a little unreadable but optimized for speed
+	# check enemies and select a random one
+	# if no living enemies, shoot in a random direction
+	var projectile_dir : Vector3
+	if not ignore_enemies:
+		var enemy : Node3D = BaseEnemy.living_enemies.pick_random()
+		if enemy == null:
+			projectile_dir = get_random_direction()
+		else:
+			projectile_dir = position.direction_to(enemy.position)
+			projectile_dir.y = 0.0
+	else:
+		projectile_dir = get_random_direction()
+	return projectile_dir
+
+func get_random_direction() -> Vector3:
+	return Vector3(
+			randf_range(-1.0, 1.0),
+			0.0,
+			randf_range(-1.0, 1.0)
+		)
+
 func get_closest_enemy() -> BaseEnemy:
 	var nb_focused_enemies := len(get_focused_enemies())
 	if nb_focused_enemies == 0:
@@ -249,9 +272,9 @@ func get_closest_enemy() -> BaseEnemy:
 	return closest_enemy
 
 func spawn_projectile(projectile_position : Vector3, projectile_direction : Vector3,
-											force_projectile := false) -> ProjectileBase:
+										force_non_orb := false) -> ProjectileBase:
 	var projectile_obj : ProjectileBase 
-	if shooting_orbs and not force_projectile:
+	if shooting_orbs and not force_non_orb:
 		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
 		projectile_obj = PROJECTILE_ORB.instantiate()
 		projectile_obj.fire_rate = orbs_fire_rate

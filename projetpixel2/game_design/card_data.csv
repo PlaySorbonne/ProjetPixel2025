@@ -31,7 +31,7 @@ func run_effect():
 Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun = get_component(tower, BoostFireRate)
 if machinegun == null:
         machinegun = BOOST_FIRE_RATE.instantiate()
-        machinegun.needed_shots= 20
+        machinegun.needed_shots= 30
         machinegun.boost_duration = 3.0
         machinegun.fire_rate_multiplier = 2.5
         tower.add_child(machinegun)
@@ -64,15 +64,15 @@ Totem,"When an enemy is killed, 10%chance that a totem is spawned on its corpse,
 totem.tower = tower
 totem.number_of_projectiles = 3
 totem.trigger_effect()",Military,TO TEST
-Symbiotic bullets,"50% chance that any projectile hitting an enemy is stored inside the enemy. When the enemy dies, all stocked projectile are shot back.",,Secret,enemy_hit,RunData.roll_probability(0.5),"var totem : TotemShoot = get_component(enemy, TotemShoot)
+Symbiotic bullets,"50% chance that any projectile hitting an enemy is stored inside the enemy. When the enemy dies, all stocked projectile are shot back.",,Secret,enemy_hit,,"var totem : TotemShoot = get_component(enemy, TotemShoot)
 if totem == null:
-        totem = spawn_object(TOTEM_SHOOT.instantiate(), enemy.global_position)
+        totem = spawn_object_on_object(TOTEM_SHOOT.instantiate(), enemy)
         totem.tower = tower
         totem.number_of_projectiles = 1
         totem.is_instant = true
         enemy.enemy_killed.connect(totem.trigger_effect)
 else:
-        totem.number_of_projectiles += 1",Military,TO TEST
+        totem.number_of_projectiles += 1",Military,OK
 Split 1,Bullets split 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.bounce += 1
 tower.projectile_template.damage *= 0.7",Military,OK (careful: split angle is in radians)

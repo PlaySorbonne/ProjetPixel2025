@@ -23,14 +23,8 @@ func _on_timer_shoot_timeout() -> void:
 
 func shoot() -> void:
 	#var enemy : Node3D = tower.enemy_choice.call()
-	var enemy : Node3D = BaseEnemy.living_enemies.pick_random()
-	var projectile_dir : Vector3
-	if enemy == null:
-		projectile_dir = Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0))
-	else:
-		projectile_dir = position.direction_to(enemy.position)
 	tower.spawn_projectile(
 		global_position, 
-		projectile_dir, 
+		tower.get_random_shoot_direction(), 
 		true
 	)

@@ -29,9 +29,5 @@ func stack_totem() -> void:
 func shoot() -> void:
 	tower.spawn_projectile(
 		global_position,
-		Vector3(
-			randf_range(-1.0, 1.0),
-			0.0,
-			randf_range(-1.0, 1.0)
-		)
+		tower.get_random_shoot_direction()
 	)

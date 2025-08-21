@@ -9,7 +9,7 @@ script = ExtResource("2_8kur5")
 [node name="TimerShoot" type="Timer" parent="." index="2"]
 autostart = true
 
-[node name="TimerLifetime" parent="." index="3"]
+[node name="TimerLifetime" parent="." index="4"]
 wait_time = 2.0
 
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
