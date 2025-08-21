@@ -208,7 +208,7 @@ func _process(delta: float) -> void:
 			if not is_mining_orb:
 				check_for_orbs()
 
-func get_focused_enemies() -> Array[BaseEnemy]:
+func get_focused_enemies() -> Array[Node3D]:
 	return area3d.get_overlapping_bodies()
 
 func get_spaceship_closest_enemy() -> BaseEnemy:
@@ -257,7 +257,7 @@ func spawn_projectile(projectile_position : Vector3, projectile_direction : Vect
 		projectile_obj.fire_rate = orbs_fire_rate
 	else:
 		projectile_obj = projectile_res.instantiate()
-	projectile_obj.projectile = projectile_template
+	projectile_obj.projectile = projectile_template.duplicate(true)
 	projectile_obj.tower = self
 	GV.world.add_child(projectile_obj)
 	projectile_obj.position = projectile_position

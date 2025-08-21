@@ -20,14 +20,7 @@ func get_damage() -> int:
 	return damage_expression.call()
 
 func split_projectile(multiplier : float) -> Projectile:
-	var new_projectile := Projectile.new()
-	# same variables
-	new_projectile.speed = speed
-	new_projectile.pierce = pierce
-	new_projectile.damage_type = damage_type
-	new_projectile.critical_hit_chance = critical_hit_chance
-	new_projectile.critical_hit_intensity = critical_hit_intensity
-	new_projectile.damage_expression = damage_expression
+	var new_projectile := self.duplicate(true)
 	# changed variables
 	new_projectile.damage = damage * multiplier
 	new_projectile.size = size * multiplier

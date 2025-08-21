@@ -14,6 +14,7 @@ var size := 1.0:
 		scale = Vector3.ONE * size
 var direction : Vector3
 var base_speed := 20.0
+var body_to_ignore : Node3D = null
 
 func _ready() -> void:
 	await get_tree().create_timer(4.0).timeout
@@ -42,7 +43,8 @@ func damage_body(body : BaseEnemy) -> void:
 	if killed:
 		tower.enemy_killed.emit(self, body)
 
-func split(total_angle : float, number_of_children := 3, children_multiplier := 0.9) -> void:
+func split(total_angle : float, number_of_children := 3, children_multiplier := 0.9,
+										ignored_body : Node3D = null) -> void:
 	var angle_increment := total_angle / float(number_of_children)
 	var rot := Basis(Vector3.UP, -(total_angle / 2))
 	var initial_direction = rot * direction
@@ -50,6 +52,7 @@ func split(total_angle : float, number_of_children := 3, children_multiplier := 
 	rot = Basis(Vector3.UP, angle_increment)
 	for i : int in range(number_of_children - 1):
 		var new_projectile : ProjectileBase = projectile_res.instantiate()
+		new_projectile.body_to_ignore = ignored_body
 		new_projectile.projectile = projectile.split_projectile(children_multiplier)
 		new_projectile.tower = self.tower
 		GV.world.add_child(new_projectile)
@@ -65,13 +68,13 @@ func bounce() -> void:
 	)
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is BaseEnemy:
+	if body is BaseEnemy and body != body_to_ignore:
 		damage_body(body)
 		# pierce + bounce: split
 		if projectile.pierce > 0 and projectile.bounce > 0:
 			projectile.pierce -= 1
 			projectile.bounce -= 1
-			split(2, 45.0, 0.9)
+			split(0.785, 2, 0.9, body)   # 0.785 rad = 45°
 		# pierce
 		elif projectile.pierce > 0:
 			projectile.pierce -= 1
