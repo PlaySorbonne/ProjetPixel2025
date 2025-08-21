@@ -28,9 +28,14 @@ func new_damage_expression() -> int:
 
 func run_effect():
         tower.projectile_template.damage_expression = new_damage_expression",Military,OK
-Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun := BoostFireRate.add_boost_fire_rate(tower)
-if machinegun.is_new_boost:
-        return
+Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun = get_component(tower, BoostFireRate)
+if machinegun == null:
+        machinegun = BOOST_FIRE_RATE.instantiate()
+        tower.add_child(machinegun)
+else:
+        machinegun.needed_shots /= 1.25
+        machinegun.boost_duration *= 1.25
+        machinegun.fire_rate_mulitplier *= 1.15
 ### boost variable that can be tweaked by the game designers:
 #machinegun.needed_shots = 20
 #machinegun.boost_duration = 1.0
@@ -54,8 +59,8 @@ Orb,"Tower now fires orbs, which shoot the tower's previous projectile. Fire rat
         tower.orbs_fire_rate *= 1.5
 else:
         tower.shooting_orbs = true
-        tower.fire_rate /= 2.0
-        tower.orbs_fire_rate = 3.0",Military,TO TEST
+        tower.orbs_fire_rate = tower.fire_rate * 3.0
+        tower.fire_rate /= 2.0",Military,OK
 Totem,"When an enemy is killed, 10%chance that a totem is spawned on its corpse, and will shoot 3 tower projectiles.",,Secret,enemy_killed,RunData.roll_probability(0.1),"var totem := spawn_object(TOTEM_SHOOT.instantiate(), enemy.global_position)
 totem.tower = tower
 totem.number_of_projectiles = 3

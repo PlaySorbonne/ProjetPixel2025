@@ -1,11 +1,14 @@
 extends Resource
 class_name CardBase
 
+# Auras, Explosions and Totems
 const AURA_BURNING := preload("res://scenes/spaceship/towers/spawnable_objects/aura_burning.tscn")
 const EXPLOSION_DAMAGE := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_damage.tscn")
 const EXPLOSION_ROOT := preload("res://scenes/spaceship/towers/spawnable_objects/explosion_root.tscn")
 const TOTEM_SHOOT := preload("res://scenes/spaceship/towers/spawnable_objects/totem_shoot.tscn")
 
+# Tower Boosts
+const BOOST_FIRE_RATE := preload("res://scenes/spaceship/towers/components/boost_fire_rate.tscn")
 
 # active variables
 var tower : TowerBase # tower the card was added to

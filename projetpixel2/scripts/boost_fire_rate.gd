@@ -2,19 +2,6 @@ extends Timer
 class_name BoostFireRate
 
 
-static func add_boost_fire_rate(tower: TowerBase) -> BoostFireRate:
-	if tower.is_in_group("machinegun"):
-		var boost : BoostFireRate = tower.get_node("BoostFireRate")
-		boost.is_new_boost = false
-		boost.needed_shots /= 1.5
-		return boost
-	const BOOST_RES := preload("res://scenes/spaceship/towers/components/boost_fire_rate.tscn")
-	tower.add_to_group("machinegun")
-	var boost := BOOST_RES.instantiate()
-	tower.add_child(boost)
-	return boost
-
-
 @export var fire_rate_multiplier := 1.5
 @export var boost_duration := 1.0
 @export var needed_shots := 20
