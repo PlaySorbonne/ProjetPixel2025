@@ -31,15 +31,14 @@ func run_effect():
 Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun = get_component(tower, BoostFireRate)
 if machinegun == null:
         machinegun = BOOST_FIRE_RATE.instantiate()
+        machinegun.needed_shots= 20
+        machinegun.boost_duration = 3.0
+        machinegun.fire_rate_multiplier = 2.5
         tower.add_child(machinegun)
 else:
         machinegun.needed_shots /= 1.25
         machinegun.boost_duration *= 1.25
-        machinegun.fire_rate_multiplier *= 1.15
-### boost variable that can be tweaked by the game designers:
-#machinegun.needed_shots = 20
-#machinegun.boost_duration = 1.0
-#machinegun.fire_rate_multiplier = 1.5",Military,TO TEST
+        machinegun.fire_rate_multiplier *= 1.15",Military,OK
 Splash,Add splash damage to the tower's projectiles.,,Secret,enemy_hit,,"var explosion := spawn_damage_explosion(enemy.position)
 explosion.damage_amount = tower.projectile_template.damage * 0.5
 explosion.radius = 1.0",Military,"OK but if we want to stack differently than adding more explosions we need to change the code to check if a card is already there, and if so improve the card instead of adding one"
