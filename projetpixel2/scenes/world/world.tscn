@@ -72,7 +72,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
 
 [node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39019, 0.523706, 0.600005)
-tower_name = null
 projectile_template = SubResource("Resource_gb53w")
 
 [node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]

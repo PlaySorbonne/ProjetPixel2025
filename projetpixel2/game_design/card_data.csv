@@ -21,13 +21,13 @@ Range Up,Improves the range of fire of the tower.,,Secret,,,tower.fire_range += 
 Pierce,Projectile pierce 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.damage *= 0.7",Military,OK
 Bounce,Projectiles bounce 1 more time upon impact.,,Secret,,,"tower.projectile_template.bounce+= 1
-tower.projectile_template.damage *= 0.7",Military,TO TEST
+tower.projectile_template.damage *= 0.7",Military,OK
 Experienced shot,The projectile makes more damage the more the experience bar is full.,,Secret,,,"#FULL_CODE#
 func new_damage_expression() -> int:
-        return tower.projectile_template.damage * (1 + RunData.get_experience_percentage())
+        return int( tower.projectile_template.damage * (1 + RunData.get_experience_percentage()) )
 
 func run_effect():
-        tower.projectile_template.damage_expression = new_damage_expression",Military,TO TEST
+        tower.projectile_template.damage_expression = new_damage_expression",Military,OK
 Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun := BoostFireRate.add_boost_fire_rate(tower)
 if machinegun.is_new_boost:
         return
@@ -71,4 +71,4 @@ else:
         totem.number_of_projectiles += 1",Military,TO TEST
 Split 1,Bullets split 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.bounce += 1
-tower.projectile_template.damage *= 0.7",Military,TO TEST
+tower.projectile_template.damage *= 0.7",Military,OK (careful: split angle is in radians)

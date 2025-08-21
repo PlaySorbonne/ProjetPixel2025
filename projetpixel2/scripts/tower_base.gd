@@ -257,7 +257,8 @@ func spawn_projectile(projectile_position : Vector3, projectile_direction : Vect
 		projectile_obj.fire_rate = orbs_fire_rate
 	else:
 		projectile_obj = projectile_res.instantiate()
-	projectile_obj.projectile = projectile_template.duplicate(true)
+	projectile_obj.projectile = projectile_template.duplicate()
+	projectile_obj.projectile.damage_expression = projectile_template.damage_expression
 	projectile_obj.tower = self
 	GV.world.add_child(projectile_obj)
 	projectile_obj.position = projectile_position
