@@ -46,7 +46,7 @@ signal xp_drop_collected(xp_amount : int)
 var xp_level_index : int = 0:
 	set(value):
 		xp_level_index = value
-		print("spawn orb -> xp=" + str(experience_points) + " ; hp=" + str(hitpoints) + " ; level = " + str(xp_level_index))
+		#print("spawn orb -> xp=" + str(experience_points) + " ; hp=" + str(hitpoints) + " ; level = " + str(xp_level_index))
 		_check_neighbor_xp_drops()
 var marked_for_deletion := false
 var is_being_harvested := false
