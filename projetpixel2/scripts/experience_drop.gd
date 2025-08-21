@@ -69,7 +69,7 @@ func damage_xp(damage_amount : int) -> bool:
 		# give xp reward
 		xp_drop_collected.emit(experience_points)
 		is_being_harvested = false
-		print("XP ORB COLLECTED")
+		#print("XP ORB COLLECTED")
 		RunData.gain_experience(experience_points)
 		# destroy object
 		destroy_experience_object()
