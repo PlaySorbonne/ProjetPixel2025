@@ -2,15 +2,15 @@ extends Resource
 class_name Projectile
 
 
-var damage_expression : Callable = default_damage_expression
-@export var speed : float = 1.0
-@export var damage : int = 50
-@export var size := 1.0
-@export var pierce := 0
-@export var bounce := 0
-@export var damage_type := DamageableObject.DamagingTypes.Neutral
-@export var critical_hit_chance := 0.01
-@export var critical_hit_intensity := 10.0
+var damage_expression : Callable = default_damage_expression # expression used to compute the damage done by the projectile.
+@export var speed : float = 1.0 # speed multiplier of the projectile
+@export var damage : int = 50 # base damage of the projectile
+@export var size := 1.0 # size multiplier of the projectile
+@export var pierce := 0 # number of times the projectile can pierce an enemy
+@export var bounce := 0 # number of times the projectile can bounce on an enemy
+@export var damage_type := DamageableObject.DamagingTypes.Neutral # type of the projectile
+@export var critical_hit_chance := 0.01 # chance of a critical hit
+@export var critical_hit_intensity := 10.0 # critical hit damage multiplier
 
 
 func default_damage_expression() -> int:
