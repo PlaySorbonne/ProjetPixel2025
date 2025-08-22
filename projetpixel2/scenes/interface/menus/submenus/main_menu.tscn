@@ -91,9 +91,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.866667
-anchor_top = 0.847222
+anchor_top = 0.854629
 anchor_right = 0.983334
-anchor_bottom = 0.901852
+anchor_bottom = 0.909259
 text = "Bug Report [TODO]"
 metadata/_edit_use_anchors_ = true
 
@@ -127,16 +127,6 @@ anchor_bottom = 0.825927
 text = "Credits [TODO]"
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonDebugCards" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.840625
-anchor_top = 0.782407
-anchor_right = 0.982813
-anchor_bottom = 0.821296
-text = "DEBUG: Cards [TODO]"
-metadata/_edit_use_anchors_ = true
-
 [node name="LabelTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -153,12 +143,25 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDebugWorld" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1663.0
-offset_top = 762.0
-offset_right = 1887.0
-offset_bottom = 822.0
-text = "play debug world"
+anchor_left = 0.866146
+anchor_top = 0.673148
+anchor_right = 0.982813
+anchor_bottom = 0.728704
+text = "PLAY DEBUG WORLD"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonDebugCards" parent="." instance=ExtResource("2_xbdrf")]
+layout_mode = 1
+anchor_left = 0.866667
+anchor_top = 0.746296
+anchor_right = 0.982292
+anchor_bottom = 0.794444
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+text = "DISPLAY CARDS"
+next_screen = 6
 
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="ButtonDebugCards" to="." method="_on_button_debug_cards_pressed"]
 [connection signal="pressed" from="ButtonDebugWorld" to="." method="_on_button_debug_world_pressed"]
