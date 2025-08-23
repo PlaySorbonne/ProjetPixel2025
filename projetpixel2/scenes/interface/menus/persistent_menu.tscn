@@ -1,14 +1,24 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=27 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="3_acse1"]
 [ext_resource type="Script" uid="uid://cbcpwebvxl47t" path="res://scripts/persistent_menu_world.gd" id="3_mp0u6"]
 [ext_resource type="PackedScene" uid="uid://23nuneutqndv" path="res://resources/3d_models/environment_tileset/Rock/Rochet_1.fbx" id="5_ovxys"]
+[ext_resource type="PackedScene" uid="uid://bt6t2f54tl5qb" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_01.fbx" id="5_qtjd4"]
+[ext_resource type="PackedScene" uid="uid://di8q7xjdnagie" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_02.fbx" id="6_eo7sq"]
 [ext_resource type="PackedScene" uid="uid://ce4t15jrdjq1w" path="res://resources/3d_models/environment_tileset/Rock/Rochet_2.fbx" id="6_iogwr"]
 [ext_resource type="PackedScene" uid="uid://c7wao32pijllb" path="res://resources/3d_models/environment_tileset/Rock/Rochet_3.fbx" id="7_lqpld"]
+[ext_resource type="PackedScene" uid="uid://bib8h7h077nxb" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_03.fbx" id="7_o8hql"]
 [ext_resource type="PackedScene" uid="uid://du6pg0ciwax14" path="res://resources/3d_models/environment_tileset/Rock/Rochet_4.fbx" id="8_qtjd4"]
 [ext_resource type="PackedScene" uid="uid://bdgvjmnsm4ssf" path="res://resources/3d_models/environment_tileset/Rock/Rochet_5.fbx" id="9_eo7sq"]
+[ext_resource type="PackedScene" uid="uid://ciu23jbs2orlb" path="res://resources/3d_models/environment_tileset/Skeletons/Squelette_1.fbx" id="13_35mug"]
+[ext_resource type="PackedScene" uid="uid://bwntla5wdp1g3" path="res://resources/3d_models/environment_tileset/Skeletons/Squelette_2.fbx" id="14_trtlq"]
+[ext_resource type="PackedScene" uid="uid://0871rjrhenc4" path="res://resources/3d_models/environment_tileset/Skeletons/Squelette_3.fbx" id="15_slgcj"]
+[ext_resource type="PackedScene" uid="uid://drqibnxlu8o37" path="res://resources/3d_models/environment_tileset/Rock/Sol_Final.fbx" id="16_rfl6w"]
+[ext_resource type="PackedScene" uid="uid://ckig5y1p23g32" path="res://resources/3d_models/environment_tileset/Vegetation/Arbre_mort.fbx" id="17_rfl6w"]
+[ext_resource type="PackedScene" uid="uid://cn56r5yyr74ih" path="res://resources/3d_models/environment_tileset/Vegetation/Coreaux.fbx" id="18_xevbn"]
+[ext_resource type="PackedScene" uid="uid://b7mvh3wggo25l" path="res://resources/3d_models/environment_tileset/Vegetation/Plante.fbx" id="19_kgcmm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acse1"]
 albedo_color = Color(0.92, 0.46, 0, 1)
@@ -59,6 +69,15 @@ transform = Transform3D(2, 0, 0, 0, 1.99969, -0.0354284, 0, 0.0354284, 1.99969, 
 mesh = SubResource("SphereMesh_mp0u6")
 surface_material_override/0 = SubResource("StandardMaterial3D_mp0u6")
 
+[node name="Gros_Rochet_01" parent="World/Environment" instance=ExtResource("5_qtjd4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8224, 0, 4.89856)
+
+[node name="Gros_Rochet_02" parent="World/Environment" instance=ExtResource("6_eo7sq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6207, 0, -0.189877)
+
+[node name="Gros_Rochet_03" parent="World/Environment" instance=ExtResource("7_o8hql")]
+transform = Transform3D(0.200189, 0, -0.979757, 0, 1, 0, 0.979757, 0, 0.200189, -21.4274, 1.89888, -20.3136)
+
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(0.995539, -0.0573971, -0.0748852, 0.0106809, 0.857139, -0.514975, 0.0937451, 0.511878, 0.853928, 3.87476, 7.68911, 8.60393)
 environment = SubResource("Environment_s88ef")
@@ -100,9 +119,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76141, 9.53674e-07, -16.435
 
 [node name="Rochet_3" parent="." instance=ExtResource("7_lqpld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0432, 0, -6.53362)
+visible = false
 
 [node name="Rochet_4" parent="." instance=ExtResource("8_qtjd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7815, 0, 6.03521)
 
 [node name="Rochet_5" parent="." instance=ExtResource("9_eo7sq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8814, 0, 15.6236)
+transform = Transform3D(0.999999, -0.000574583, 0.00118307, 0.000576607, 0.999998, -0.00169634, -0.00118209, 0.00169703, 0.999998, -8.8814, 0, 15.6236)
+
+[node name="Squelette_1" parent="." instance=ExtResource("13_35mug")]
+transform = Transform3D(69.4643, 0, 0, 0, 69.4643, 0, 0, 0, 69.4643, 0.928643, 0, 13.8309)
+
+[node name="Squelette_2" parent="." instance=ExtResource("14_trtlq")]
+transform = Transform3D(101.168, 0, 0, 0, 101.168, 0, 0, 0, 101.168, 9.80842, 0, 11.5822)
+
+[node name="Squelette_3" parent="." instance=ExtResource("15_slgcj")]
+transform = Transform3D(95.982, 0, 0, 0, 95.982, 0, 0, 0, 95.982, -11.648, -0.674793, -21.9862)
+
+[node name="Sol_Final" parent="." instance=ExtResource("16_rfl6w")]
+transform = Transform3D(-0.0539568, 0, -0.998543, 0, 1, 0, 0.998543, 0, -0.0539568, -5.68088, -0.0953751, -5.78692)
+
+[node name="Arbre_mort" parent="." instance=ExtResource("17_rfl6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9209, -1.01926, 8.73569)
+
+[node name="Coreaux" parent="." instance=ExtResource("18_xevbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3787, 0, 9.00554)
+
+[node name="Coreaux2" parent="." instance=ExtResource("18_xevbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11822, 9.53674e-07, -27.5221)
+
+[node name="Coreaux3" parent="." instance=ExtResource("18_xevbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.84505, 0, 23.3803)
+
+[node name="Plante" parent="." instance=ExtResource("19_kgcmm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9753, 9.53674e-07, 14.5183)
+
+[node name="Plante2" parent="." instance=ExtResource("19_kgcmm")]
+transform = Transform3D(2.4749, 0, 0, 0, 2.4749, 0, 0, 0, 2.4749, -4.07285, 0, -16.3443)
+
+[node name="Sol_Final2" parent="." instance=ExtResource("16_rfl6w")]
+transform = Transform3D(-0.00694631, 0, -0.999976, 0, 1, 0, 0.999976, 0, -0.00694631, -7.59697, -0.204174, 43.859)
