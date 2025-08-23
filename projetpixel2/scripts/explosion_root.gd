@@ -3,7 +3,6 @@ class_name ExplosionRoot
 
 
 @export var root_time := 1.0
-@export var damage_type := DamageableObject.DamagingTypes.Neutral
 
 
 func apply_effect(enemy : BaseEnemy) -> void:

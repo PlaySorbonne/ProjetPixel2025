@@ -1,18 +1,5 @@
-extends Timer
+extends MeshInstance3D
 class_name BoostFireRate
-
-
-static func add_boost_fire_rate(tower: TowerBase) -> BoostFireRate:
-	if tower.is_in_group("machinegun"):
-		var boost : BoostFireRate = tower.get_node("BoostFireRate")
-		boost.is_new_boost = false
-		boost.needed_shots /= 1.5
-		return boost
-	const BOOST_RES := preload("res://scenes/spaceship/towers/components/boost_fire_rate.tscn")
-	tower.add_to_group("machinegun")
-	var boost := BOOST_RES.instantiate()
-	tower.add_child(boost)
-	return boost
 
 
 @export var fire_rate_multiplier := 1.5
@@ -36,14 +23,16 @@ func trigger_boost() -> void:
 	if not in_boost:
 		in_boost = true
 		tower.fire_rate *= fire_rate_multiplier
+		visible = true
 	current_shots = 0
-	start(boost_duration)
-
-func _on_timeout() -> void:
-	in_boost = false
-	tower.fire_rate /= fire_rate_multiplier
+	$Timer.start(boost_duration)
 
 func on_tower_killed_enemy(_projectile : ProjectileBase, _enemy : BaseEnemy) -> void:
 	current_shots += 1
 	if current_shots >= needed_shots:
 		trigger_boost()
+
+func _on_timer_timeout() -> void:
+	in_boost = false
+	visible = false
+	tower.fire_rate /= fire_rate_multiplier

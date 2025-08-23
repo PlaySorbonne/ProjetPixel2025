@@ -8,16 +8,15 @@ const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/proje
 const HOLOGRAM_RES := preload("res://resources/materials/3d_hologram_material.tres")
 const MAX_IDLE_TIME := 0.5
 
-signal tower_card_added(card: CardData)
-signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_switched_mode
-signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy)
-signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy)
-signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy)
-signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy)
-signal start_mining
-signal tower_can_switch_mode
+signal tower_card_added(card: CardData) # called when a card is added to the tower
+signal tower_fired(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower shoots projectile at enemy
+signal tower_switched_mode # called when tower switches mode (to mining or to firing)
+signal tower_collected_xp(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower collects an exp orb
+signal tower_upgraded(projectile : ProjectileBase, enemy : BaseEnemy) # called when the tower gains a level (new card slot)
+signal enemy_hit(projectile : ProjectileBase, enemy : BaseEnemy) # called when a projectile shot by this tower hits an enemy
+signal enemy_killed(projectile : ProjectileBase, enemy : BaseEnemy) # called when this tower kills an enemy
+signal projectile_critical_hit(projectile : ProjectileBase, enemy : BaseEnemy) # called when a projectile shot by this tower triggers a critical hit on an enemy
+signal tower_can_switch_mode # called when the tower can switch mode again (after stuck delay)
 
 @export var tower_name := "TowerBase"
 @export_multiline var tower_description := "Most standardized galactic exploration tower drone model. Capable of shooting balistic projectiles and collecting minerals from the ground."
@@ -33,12 +32,16 @@ var can_shoot := true
 var mining_laser : TowerMiningLaser
 
 @export_group("Tower stats")
-@export var projectile_res : PackedScene = PROJECTILE_RES
-@export var number_of_projectiles := 1
-@export var fire_rate := 1.0
-@export var projectile_template : Projectile = Projectile.new()
-@export var max_number_of_cards := 5
-@export var fire_range := 10.0:
+@export var projectile_res : PackedScene = PROJECTILE_RES # type of projectile (bullet, laser, bomb, etc)
+@export var projectile_template : Projectile = Projectile.new() # stats of the projectile
+@export var number_of_projectiles := 1 # number of projectile shot when tower fires
+@export var fire_rate := 1.0 # number of shots per second
+@export var max_number_of_cards := 5 # max number of cards (increased at each level up)
+@export var switch_mode_duration := 1.5 # duration of the animation when switching mode
+@export var switch_mode_delay := 5.0 # delay after animation before tower can switch modes again
+@export var damage_to_xp := 90 # damage done to exp orbs per shot when mining
+@export var orbs_fire_rate := 3.0 # shots per second when mining orbs
+@export var fire_range := 10.0: # range of the tower
 	set(value):
 		fire_range = value
 		var new_shader_size := value / 10.0 * 0.4  # value / CollisionShape3D.radius * MeshInstance3D.material.size
@@ -49,9 +52,7 @@ var mining_laser : TowerMiningLaser
 		else:
 			$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_shader_size)
 		$Area3D/CollisionShape3D.shape.radius = value
-@export var switch_mode_duration := 1.5
-@export var switch_mode_delay := 5.0
-@export var damage_to_xp := 90
+@export var shooting_orbs := false 
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
@@ -231,6 +232,29 @@ func get_spaceship_closest_enemy() -> BaseEnemy:
 			min_dist = dist
 	return closest_enemy
 
+func get_random_shoot_direction(ignore_enemies := false) -> Vector3:
+	# a little unreadable but optimized for speed
+	# check enemies and select a random one
+	# if no living enemies, shoot in a random direction
+	var projectile_dir : Vector3
+	if not ignore_enemies:
+		var enemy : Node3D = BaseEnemy.living_enemies.pick_random()
+		if enemy == null:
+			projectile_dir = get_random_direction()
+		else:
+			projectile_dir = position.direction_to(enemy.position)
+			projectile_dir.y = 0.0
+	else:
+		projectile_dir = get_random_direction()
+	return projectile_dir
+
+func get_random_direction() -> Vector3:
+	return Vector3(
+			randf_range(-1.0, 1.0),
+			0.0,
+			randf_range(-1.0, 1.0)
+		)
+
 func get_closest_enemy() -> BaseEnemy:
 	var nb_focused_enemies := len(get_focused_enemies())
 	if nb_focused_enemies == 0:
@@ -247,6 +271,23 @@ func get_closest_enemy() -> BaseEnemy:
 			min_dist = dist
 	return closest_enemy
 
+func spawn_projectile(projectile_position : Vector3, projectile_direction : Vector3,
+										force_non_orb := false) -> ProjectileBase:
+	var projectile_obj : ProjectileBase 
+	if shooting_orbs and not force_non_orb:
+		const PROJECTILE_ORB := preload("res://scenes/spaceship/towers/projectiles/projectile_orb.tscn")
+		projectile_obj = PROJECTILE_ORB.instantiate()
+		projectile_obj.fire_rate = orbs_fire_rate
+	else:
+		projectile_obj = projectile_res.instantiate()
+	projectile_obj.projectile = projectile_template.duplicate()
+	projectile_obj.projectile.damage_expression = projectile_template.damage_expression
+	projectile_obj.tower = self
+	GV.world.add_child(projectile_obj)
+	projectile_obj.position = projectile_position
+	projectile_obj.direction = projectile_direction
+	return projectile_obj
+
 func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 	if not is_instance_valid(enemy):
 		print_debug("Invalid enemy targeted")
@@ -258,16 +299,15 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 		position.y,
 		enemy.position.z
 	))
-	var projectile_obj := projectile_res.instantiate()
-	projectile_obj.projectile = projectile_template.duplicate()
-	projectile_obj.tower = self
-	GV.world.add_child(projectile_obj)
-	projectile_obj.position = Vector3(
+	var projectile_pos := Vector3(
 		projectile_spawn_pos.global_position.x,
 		enemy.position.y,
 		projectile_spawn_pos.global_position.z
 	)
-	projectile_obj.direction = projectile_obj.position.direction_to(enemy.position)
+	var projectile_obj := spawn_projectile(
+		projectile_pos,
+		projectile_pos.direction_to(enemy.position)
+	)
 	if not is_bonus:
 		tower_fired.emit(projectile_obj, null)
 		$TimerShoot.start(1.0 / fire_rate)

@@ -1,11 +1,11 @@
 extends Node3D
 class_name ProjectileBase
 
-const PROJECTILE_RES := preload("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 
 static var critical_hits_number := 0
 static var hits_number := 0
 
+var projectile_res := load("res://scenes/spaceship/towers/projectiles/projectile_base.tscn")
 var tower : Node
 var projectile : Projectile
 var size := 1.0:
@@ -14,10 +14,8 @@ var size := 1.0:
 		scale = Vector3.ONE * size
 var direction : Vector3
 var base_speed := 20.0
-
-func _ready() -> void:
-	await get_tree().create_timer(3.0).timeout
-	queue_free()
+var body_to_ignore : Node3D = null
+var projectile_lifetime_expanded := false
 
 func _physics_process(delta: float) -> void:
 	position += direction * base_speed * projectile.speed * delta
@@ -42,14 +40,16 @@ func damage_body(body : BaseEnemy) -> void:
 	if killed:
 		tower.enemy_killed.emit(self, body)
 
-func split(total_angle : float, number_of_children := 3, children_multiplier := 0.9) -> void:
+func split(total_angle : float, number_of_children := 3, children_multiplier := 0.9,
+										ignored_body : Node3D = null) -> void:
 	var angle_increment := total_angle / float(number_of_children)
 	var rot := Basis(Vector3.UP, -(total_angle / 2))
 	var initial_direction = rot * direction
 	self.direction = initial_direction
 	rot = Basis(Vector3.UP, angle_increment)
 	for i : int in range(number_of_children - 1):
-		var new_projectile : ProjectileBase = PROJECTILE_RES.instantiate()
+		var new_projectile : ProjectileBase = projectile_res.instantiate()
+		new_projectile.body_to_ignore = ignored_body
 		new_projectile.projectile = projectile.split_projectile(children_multiplier)
 		new_projectile.tower = self.tower
 		GV.world.add_child(new_projectile)
@@ -65,13 +65,13 @@ func bounce() -> void:
 	)
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is BaseEnemy:
+	if body is BaseEnemy and body != body_to_ignore:
 		damage_body(body)
 		# pierce + bounce: split
 		if projectile.pierce > 0 and projectile.bounce > 0:
 			projectile.pierce -= 1
 			projectile.bounce -= 1
-			split(2, 45.0, 0.9)
+			split(0.785, 2, 0.9, body)   # 0.785 rad = 45°
 		# pierce
 		elif projectile.pierce > 0:
 			projectile.pierce -= 1
@@ -83,3 +83,12 @@ func _on_body_entered(body: Node3D) -> void:
 		else:
 			await get_tree().process_frame
 			queue_free()
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	if projectile_lifetime_expanded:
+		queue_free()
+
+func _on_timer_lifetime_timeout() -> void:
+	projectile_lifetime_expanded = true
+	if not $VisibleOnScreenNotifier3D.is_on_screen():
+		queue_free()

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl8eok2amlo6l"]
+
+[ext_resource type="PackedScene" uid="uid://dv567gipvsb5w" path="res://scenes/spaceship/towers/spawnable_objects/totem_base.tscn" id="1_44fd3"]
+[ext_resource type="Script" uid="uid://droyf36w76u2q" path="res://scripts/totem_shoot.gd" id="2_6tnp5"]
+
+[node name="TotemShoot" instance=ExtResource("1_44fd3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("2_6tnp5")
+
+[node name="TimerShoot" type="Timer" parent="." index="1"]
+one_shot = true
+
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]

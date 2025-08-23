@@ -16,7 +16,7 @@ signal object_unhovered
 
 func hover() -> void:
 	emit_signal("object_hovered")
-	print("SELECTED NODES = " + str(selected_nodes)) 
+	#print("SELECTED NODES = " + str(selected_nodes)) 
 	for mesh_node : MeshInstance3D in selected_nodes:
 		mesh_node.material_overlay = OUTLINE_SHADER
 

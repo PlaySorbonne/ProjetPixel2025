@@ -3,7 +3,7 @@ class_name Submenu
 
 
 enum MenuScreens {TitleScreen, CollectionScreen, PlayScreen, MissionScreen, 
-					ResearchScreen, CraftScreen}
+					ResearchScreen, CraftScreen, CardTestScreen}
 
 static var SCREENS : Dictionary[MenuScreens, PackedScene] = {
 	MenuScreens.TitleScreen : load("res://scenes/interface/menus/submenus/main_menu.tscn"),
@@ -12,6 +12,7 @@ static var SCREENS : Dictionary[MenuScreens, PackedScene] = {
 	MenuScreens.MissionScreen : load("res://scenes/interface/menus/submenus/mission_menu.tscn"),
 	MenuScreens.ResearchScreen : load("res://scenes/interface/menus/submenus/research_menu.tscn"),
 	MenuScreens.CraftScreen : load("res://scenes/interface/menus/submenus/craft_menu.tscn"),
+	MenuScreens.CardTestScreen : load("res://scenes/interface/menus/submenus/cards_test_menu.tscn")
 }
 
 var persistent_menu : PersistentMenu = null

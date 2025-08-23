@@ -19,13 +19,17 @@ static func add_boost_auto_switch(tower: TowerBase, switch_time := 20.0) -> Boos
 
 
 @export var auto_switch_duration := 20.0
+@export var auto_switch_from_mining := true
+@export var auto_switch_from_firing := true
 var boost_tower : TowerBase 
 #@export var nova_type : Res
 
 func connect_to_tower(tower : TowerBase) -> void:
 	boost_tower = tower
-	tower.tower_can_switch_mode.connect(tower_switch_mode_to_fire)
+	tower.tower_can_switch_mode.connect(aut_switch_mode)
 
-func tower_switch_mode_to_fire() -> void:
-	if boost_tower.current_mode == TowerBase.Modes.Mining:
+func aut_switch_mode() -> void:
+	if boost_tower.current_mode == TowerBase.Modes.Mining and auto_switch_from_mining:
 		boost_tower.switch_to_firing()
+	elif boost_tower.current_mode == TowerBase.Modes.Firing and auto_switch_from_firing:
+		boost_tower.switch_to_mining()

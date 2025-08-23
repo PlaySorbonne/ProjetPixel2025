@@ -64,6 +64,8 @@ func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
 		return false
 
 func parse_from_csv(csv_line : PackedStringArray) -> void:
+	for i : int in range(len(csv_line)):
+		csv_line[i] = csv_line[i].replace("        ", "	")
 	name = csv_line[0]
 	description = csv_line[1]
 	value = int(csv_line[2])
