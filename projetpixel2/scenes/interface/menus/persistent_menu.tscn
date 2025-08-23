@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=29 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
 [ext_resource type="PackedScene" uid="uid://becole35yh5wp" path="res://resources/3d_models/space_ship/fbx/Transporter.fbx" id="3_acse1"]
 [ext_resource type="Script" uid="uid://cbcpwebvxl47t" path="res://scripts/persistent_menu_world.gd" id="3_mp0u6"]
+[ext_resource type="Texture2D" uid="uid://ce60v3wjlq2qe" path="res://resources/3d_models/environment_tileset/Rochet_3_rouge1_BaseColor.png" id="4_xevbn"]
 [ext_resource type="PackedScene" uid="uid://23nuneutqndv" path="res://resources/3d_models/environment_tileset/Rock/Rochet_1.fbx" id="5_ovxys"]
 [ext_resource type="PackedScene" uid="uid://bt6t2f54tl5qb" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_01.fbx" id="5_qtjd4"]
 [ext_resource type="PackedScene" uid="uid://di8q7xjdnagie" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_02.fbx" id="6_eo7sq"]
@@ -20,8 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://cn56r5yyr74ih" path="res://resources/3d_models/environment_tileset/Vegetation/Coreaux.fbx" id="18_xevbn"]
 [ext_resource type="PackedScene" uid="uid://b7mvh3wggo25l" path="res://resources/3d_models/environment_tileset/Vegetation/Plante.fbx" id="19_kgcmm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_acse1"]
-albedo_color = Color(0.92, 0.46, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgcmm"]
+albedo_texture = ExtResource("4_xevbn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eyqy"]
+albedo_color = Color(1, 0.514, 0.46, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4l422"]
 top_radius = 20.0
@@ -57,8 +61,9 @@ script = ExtResource("3_mp0u6")
 [node name="Environment" type="Node3D" parent="World"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.614892, 0)
-material_override = SubResource("StandardMaterial3D_acse1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280945, -0.0511951, -2.79852)
+material_override = SubResource("StandardMaterial3D_kgcmm")
+material_overlay = SubResource("StandardMaterial3D_6eyqy")
 mesh = SubResource("CylinderMesh_4l422")
 
 [node name="Transporter" parent="World/Environment" instance=ExtResource("3_acse1")]
@@ -69,7 +74,7 @@ transform = Transform3D(2, 0, 0, 0, 1.99969, -0.0354284, 0, 0.0354284, 1.99969, 
 mesh = SubResource("SphereMesh_mp0u6")
 surface_material_override/0 = SubResource("StandardMaterial3D_mp0u6")
 
-[node name="Gros_Rochet_01" parent="World/Environment" instance=ExtResource("5_qtjd4")]
+[node name="mesh" parent="World/Environment" instance=ExtResource("5_qtjd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8224, 0, 4.89856)
 
 [node name="Gros_Rochet_02" parent="World/Environment" instance=ExtResource("6_eo7sq")]
