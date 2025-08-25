@@ -19,4 +19,4 @@ class_name WaveData
 ## if true, can be added to any other wave
 @export var is_wild_mob := false
 ## if >0, will always be selected and treat that wave as a boss wave (and ignores min_wave and max_wave)
-@export_range(-1.0, 99.0, 1.0) var boss_wave_number : int = -1
+@export_range(-1.0, 99.0, 1.0) var is_boss_wave : int = -1

@@ -2,6 +2,9 @@
 extends Node3D
 class_name EnemySpawner
 
+
+@export var waves_data : Array[WaveData] = []
+
 var wave_manager : WaveManager = null
 
 func _ready() -> void:
