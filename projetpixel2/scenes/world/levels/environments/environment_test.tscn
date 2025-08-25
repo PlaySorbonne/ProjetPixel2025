@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b5gr3yymlr5t3"]
 
-[ext_resource type="PackedScene" uid="uid://b76pi81h5i3ie" path="res://scenes/world/levels/level_environment.tscn" id="1_53nk1"]
+[ext_resource type="PackedScene" uid="uid://b76pi81h5i3ie" path="res://scenes/world/levels/tiles/level_environment.tscn" id="1_53nk1"]
 [ext_resource type="PackedScene" uid="uid://bt6t2f54tl5qb" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_01.fbx" id="2_8y47h"]
 [ext_resource type="PackedScene" uid="uid://di8q7xjdnagie" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_02.fbx" id="3_1knmw"]
 [ext_resource type="PackedScene" uid="uid://c63274i5bq4v1" path="res://resources/3d_models/environment_tileset/Rock/Petit_rochet_5.fbx" id="4_1bmt2"]
@@ -39,3 +39,8 @@ transform = Transform3D(32.5795, 0, 0, 0, 32.5795, 0, 0, 0, 32.5795, 2.28337, 0.
 
 [node name="Roche_Haut_2" parent="." index="8" instance=ExtResource("8_nnu85")]
 transform = Transform3D(0.692014, 0, 0, 0, 0.692014, 0, 0, 0, 0.692014, -7.89491, 0.250266, 3.94361)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41647, 1.08648, 0)
+light_color = Color(0.524277, 0.755889, 1, 1)
+omni_attenuation = 0.25

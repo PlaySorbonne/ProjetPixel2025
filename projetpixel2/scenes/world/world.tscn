@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=15 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_1yooq"]
 [ext_resource type="PackedScene" uid="uid://b5gr3yymlr5t3" path="res://scenes/world/levels/environments/environment_test.tscn" id="7_bq33v"]
-[ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="8_1yooq"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bvhewnwb52nqw" path="res://scenes/interface/debug/Console.tscn" id="9_gb53w"]
@@ -58,18 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 
 [node name="Spaceship" parent="." instance=ExtResource("8_j2gmx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
-
-[node name="EnemySpawner2" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
-
-[node name="EnemySpawner3" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
-
-[node name="EnemySpawner4" parent="." instance=ExtResource("8_1yooq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
-
 [node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32037, 0.538725, 0.574564)
 projectile_template = SubResource("Resource_gb53w")
@@ -90,11 +77,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bq33v")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41647, 1.08648, 0)
-light_color = Color(0.524277, 0.755889, 1, 1)
-omni_attenuation = 0.25
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_5qq27")

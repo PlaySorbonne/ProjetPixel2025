@@ -14,4 +14,4 @@ func _on_button_quit_pressed() -> void:
 
 func _on_button_debug_world_pressed() -> void:
 	GV.debug_mode = true
-	get_tree().change_scene_to_file("res://scenes/world/world.tscn")
+	get_tree().change_scene_to_file("res://scenes/world/levels/level_default.tscn")

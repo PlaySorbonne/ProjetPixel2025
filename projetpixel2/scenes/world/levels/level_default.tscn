@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cevrwf0fm5klw"]
+
+[ext_resource type="PackedScene" uid="uid://cipkud1dh3vju" path="res://scenes/world/world.tscn" id="1_ndaoq"]
+[ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="2_roffi"]
+
+[node name="LevelDefault" instance=ExtResource("1_ndaoq")]
+
+[node name="EnemySpawner" parent="." index="9" instance=ExtResource("2_roffi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
+
+[node name="EnemySpawner2" parent="." index="10" instance=ExtResource("2_roffi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
+
+[node name="EnemySpawner3" parent="." index="11" instance=ExtResource("2_roffi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
+
+[node name="EnemySpawner4" parent="." index="12" instance=ExtResource("2_roffi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
+
+[editable path="PlayerHud"]
