@@ -2,7 +2,6 @@ extends Submenu
 class_name MainMenu
 
 
-
 func _on_button_tutorial_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/world/world_tuto.tscn")
 
@@ -14,4 +13,4 @@ func _on_button_quit_pressed() -> void:
 
 func _on_button_debug_world_pressed() -> void:
 	GV.debug_mode = true
-	get_tree().change_scene_to_file("res://scenes/world/levels/level_default.tscn")
+	get_tree().change_scene_to_file(GV.WORLD_FILE)

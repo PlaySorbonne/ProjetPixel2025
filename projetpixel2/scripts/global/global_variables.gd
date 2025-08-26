@@ -1,6 +1,10 @@
 extends Node
 
 
+
+const WORLD_FILE := "res://scenes/world/levels/level_default.tscn"
+
+
 # game objects
 var world : World = null
 var space_ship : Spaceship = null
