@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene load_steps=14 format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_1yooq"]
-[ext_resource type="PackedScene" uid="uid://b5gr3yymlr5t3" path="res://scenes/world/levels/environments/environment_test.tscn" id="7_bq33v"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bvhewnwb52nqw" path="res://scenes/interface/debug/Console.tscn" id="9_gb53w"]
@@ -71,9 +70,6 @@ offset_left = 1219.0
 offset_top = 308.0
 offset_right = -3.0
 offset_bottom = -362.0
-
-[node name="EnvironmentTest" parent="." instance=ExtResource("7_bq33v")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bq33v")
