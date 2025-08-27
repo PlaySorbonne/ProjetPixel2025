@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1grkkvg1tj7"]
+
+[ext_resource type="PackedScene" uid="uid://cipkud1dh3vju" path="res://scenes/world/world.tscn" id="1_vl2tv"]
+[ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="2_vtxto"]
+[ext_resource type="PackedScene" uid="uid://dcvl45o61f7lj" path="res://scenes/world/levels/environments/environment_test1.tscn" id="3_vl2tv"]
+
+[node name="LevelDefault" instance=ExtResource("1_vl2tv")]
+
+[node name="PlayerCamera" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.54024, 0.841511, 0, -0.841511, 0.54024, -0.973763, 10.488, 9.96257)
+
+[node name="Spaceship" parent="." index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.00063, 0, 6.28482)
+
+[node name="TowerBase" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13543, 1.76064, 0.386932)
+
+[node name="EnemySpawner" parent="." index="8" instance=ExtResource("2_vtxto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.81437, 0.399163, -10.438)
+
+[node name="EnemySpawner2" parent="." index="9" instance=ExtResource("2_vtxto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9079, 0.357662, 9.45026)
+
+[node name="EnemySpawner3" parent="." index="10" instance=ExtResource("2_vtxto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9558, 0.357662, -9.7008)
+
+[node name="EnvironmentTest" parent="." index="11" instance=ExtResource("3_vl2tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81429, 0.0185261, 0.589106)
+
+[editable path="PlayerHud"]
