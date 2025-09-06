@@ -150,6 +150,16 @@ anchor_bottom = 0.728704
 text = "PLAY DEBUG WORLD"
 metadata/_edit_use_anchors_ = true
 
+[node name="ButtonFestivalDemo" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.866146
+anchor_top = 0.6
+anchor_right = 0.982813
+anchor_bottom = 0.655556
+text = "PLAY FESTIVAL DEMO"
+metadata/_edit_use_anchors_ = true
+
 [node name="ButtonDebugCards" parent="." instance=ExtResource("2_xbdrf")]
 layout_mode = 1
 anchor_left = 0.866667
@@ -165,3 +175,4 @@ next_screen = 6
 
 [connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="pressed" from="ButtonDebugWorld" to="." method="_on_button_debug_world_pressed"]
+[connection signal="pressed" from="ButtonFestivalDemo" to="." method="_on_button_festival_demo_pressed"]
