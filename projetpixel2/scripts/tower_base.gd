@@ -360,3 +360,6 @@ func _on_clickable_object_object_hovered() -> void:
 func _on_clickable_object_object_unhovered() -> void:
 	pass
 #	print("goodbye")
+
+func _on_clickable_object_object_right_clicked() -> void:
+	switch_mode()

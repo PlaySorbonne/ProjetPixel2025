@@ -100,6 +100,7 @@ one_shot = true
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
 [connection signal="timeout" from="TimerMineXp" to="." method="_on_timer_mine_xp_timeout"]
 [connection signal="object_hovered" from="ClickableObject" to="." method="_on_clickable_object_object_hovered"]
+[connection signal="object_right_clicked" from="ClickableObject" to="." method="_on_clickable_object_object_right_clicked"]
 [connection signal="object_selected" from="ClickableObject" to="." method="_on_clickable_object_object_selected"]
 [connection signal="object_unhovered" from="ClickableObject" to="." method="_on_clickable_object_object_unhovered"]
 [connection signal="object_unselected" from="ClickableObject" to="." method="_on_clickable_object_object_unselected"]

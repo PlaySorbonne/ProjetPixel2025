@@ -37,6 +37,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			deselect_current_object()
 			#print("No object selected!")
+	# TODO: to avoid duplicating code : use an event for both right click and left click
+	elif event.is_action_pressed("right_click") and not GV.is_dragging_object:
+		if get_node_or_null(hovered_object_path) != null:
+			deselect_current_object()
+			right_click_object(hovered_object)
+			#print("Select object " + str(selected_object))
+		else:
+			deselect_current_object()
+			#print("No object selected!")
 
 func hover_object(obj : Node3D) -> void:
 	hovered_object = obj
@@ -63,6 +72,12 @@ func click_object(obj : Node3D) -> void:
 	selected_object_path = obj.get_path()
 	var obj_clickable : ClickableObject = selected_object.clickable
 	obj_clickable.select()
+	
+func right_click_object(obj: Node3D) -> void:
+	selected_object = obj
+	selected_object_path = obj.get_path()
+	var obj_clickable : ClickableObject = selected_object.clickable
+	obj_clickable.right_click()
 
 func get_mouse_raycast() -> Dictionary:
 	var space := get_world_3d().direct_space_state

@@ -5,6 +5,7 @@ class_name ClickableObject
 const OUTLINE_SHADER : Material = preload("res://resources/materials/3d_outline_material.tres")
 
 signal object_selected
+signal object_right_clicked
 signal object_unselected
 signal object_hovered
 signal object_unhovered
@@ -29,6 +30,10 @@ func select() -> void:
 	if not GV.is_dragging_object:
 		emit_signal("object_selected")
 		#print("OBJECT SELECTED")
+
+func right_click() -> void:
+	if not GV.is_dragging_object:
+		emit_signal("object_right_clicked")
 
 func deselect() -> void:
 	if not GV.is_dragging_object:
