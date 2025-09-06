@@ -12,9 +12,11 @@ radius = 0.25
 height = 0.5
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1tvt0"]
-frequency = 0.02
+seed = 190
+frequency = 0.0783
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dkkf5"]
+in_3d_space = true
 noise = SubResource("FastNoiseLite_1tvt0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4yd8v"]
@@ -22,11 +24,11 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_chnow")
 shader_parameter/Color = Color(0.529412, 1, 0.545098, 1)
-shader_parameter/glow_color = Color(0, 0.580392, 0, 1)
-shader_parameter/dist = 1.0
+shader_parameter/glow_color = Color(0.709005, 1, 0.708494, 1)
+shader_parameter/dist = 2.955
 shader_parameter/speed = 0.2
-shader_parameter/glow_intensity = 3.0
-shader_parameter/glow_amount = 3.0
+shader_parameter/glow_intensity = 6.0
+shader_parameter/glow_amount = 2.955
 shader_parameter/posMult = 0.05
 shader_parameter/noise = SubResource("NoiseTexture2D_dkkf5")
 
