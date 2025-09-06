@@ -21,12 +21,12 @@ func _ready() -> void:
 			$CSGCylinder3D.radius = spawner_radius
 
 func spawn_enemy(enemy : BaseEnemy) -> void:
-	GV.world.add_child(enemy)
 	enemy.position = self.position + Vector3(
 		randf_range(-spawner_radius*1.0, spawner_radius*1.0),
 		0.0,
 		randf_range(-spawner_radius*1.0, spawner_radius*1.0)
 	)
+	GV.world.add_child(enemy)
 
 func spawn_wave(enemies : Array) -> void:
 	for enemy : BaseEnemy in enemies:
