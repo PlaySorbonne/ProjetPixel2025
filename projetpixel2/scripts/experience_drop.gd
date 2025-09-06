@@ -15,12 +15,12 @@ const MAX_HP := 100
 const NB_ORBS_MERGE := 3
 
 static var experience_thresholds : Array[ExperienceLevel] = [
-	ExperienceLevel.new(400, Color.WHITE),
+	ExperienceLevel.new(400, Color.BLACK),
 	ExperienceLevel.new(200, Color.AQUA),
 	ExperienceLevel.new(100, Color.BLUE),
 	ExperienceLevel.new(50, Color.PURPLE),
 	ExperienceLevel.new(25, Color.RED),
-	ExperienceLevel.new(0, Color.BLACK),
+	ExperienceLevel.new(0, Color.WHITE),
 ]
 
 static func spawn_xp(pos : Vector3, xp : int, fast_spawn := false) -> void:
@@ -131,8 +131,9 @@ func _apply_color() -> void:
 	for i : int in range(len(experience_thresholds)):
 		xp_level = experience_thresholds[i]
 		if experience_points >= xp_level.xp_amount :
-			var xp_mat : StandardMaterial3D = $MeshInstance3D.get_surface_override_material(0)
-			xp_mat.emission = xp_level.xp_color
+			var xp_mat : ShaderMaterial = $MeshInstance3D.get_surface_override_material(0)
+			xp_mat.set_shader_parameter("Color", xp_level.xp_color)
+			xp_mat.set_shader_parameter("glow_color", xp_level.xp_color.lightened(0.5))
 			xp_level_index = i
 			return
 	print_debug("wtf, negative xp => " + str(experience_points) + "?")
