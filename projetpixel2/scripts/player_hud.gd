@@ -17,7 +17,8 @@ var number_of_choosable_cards := 3
 @onready var mouse_3d_interaction : Mouse3dInteraction = $Mouse3dInteraction
 @onready var combo_label : Label = $ComboCounter/Label
 @onready var console : Console = $Console
-
+var health_bar_tween : Tween
+var shields_bar_tween : Tween
 
 func _ready() -> void:
 	GV.hud = self
@@ -26,6 +27,29 @@ func _ready() -> void:
 	RunData.connect("experience_gained", update_experience)
 	RunData.connect("level_gained", gain_level)
 	update_level()
+	await get_tree().process_frame
+	var ship_health : DamageableObject = GV.space_ship.get_node("ShipHealth")
+	ship_health.update_health.connect(_update_ship_health)
+	$ShipHealth/HealthProgressBar.max_value = ship_health.max_health
+	$ShipHealth/HealthProgressBar.value = ship_health.health
+	var shields_health : DamageableObject = GV.space_ship.get_node("ShieldHealth")
+	shields_health.update_health.connect(_update_ship_shields)
+	$ShipHealth/ShieldProgressBar.max_value = shields_health.max_health
+	$ShipHealth/ShieldProgressBar.value = shields_health.health
+
+func _update_ship_health(new_health : int) -> void:
+	if health_bar_tween:
+		health_bar_tween.kill()
+	health_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	health_bar_tween.tween_property($ShipHealth/HealthProgressBar, 
+					"value", new_health, 0.4)
+
+func _update_ship_shields(new_shields : int) -> void:
+	if shields_bar_tween:
+		shields_bar_tween.kill()
+	shields_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	shields_bar_tween.tween_property($ShipHealth/ShieldProgressBar, 
+					"value", new_shields, 0.4)
 
 func clear_card_description() -> void:
 	$LabelCardDescription.text = ""
