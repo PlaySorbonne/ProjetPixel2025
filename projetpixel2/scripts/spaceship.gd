@@ -67,7 +67,7 @@ func restore_shields() -> void:
 	damageable = $ShieldHealth
 	damageable.health = damageable.max_health * loss_shields_regeneration_amount
 	can_regenerate = true
-	$TimerShieldRegeneration.wait_time = 0.5
+	$TimerShieldRegeneration.start(0.5)
 
 func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
