@@ -145,4 +145,4 @@ func _on_button_spawn_tower_pressed() -> void:
 	if available_towers == 0:
 		$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
 	else:
-		$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
+		$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
