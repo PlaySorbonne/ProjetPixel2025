@@ -21,6 +21,8 @@ var number_of_choosable_cards := 3
 @onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
+var experience_bar_tween : Tween
+
 
 func _ready() -> void:
 	GV.hud = self
@@ -65,8 +67,12 @@ func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
 func update_experience() -> void:
-	$ExperienceBar.value = RunData.current_experience
-	
+	if experience_bar_tween:
+		experience_bar_tween.kill()
+	experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+	experience_bar_tween.tween_property($ExperienceBar, "value", 
+			RunData.current_experience, 0.25)
+
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
 
