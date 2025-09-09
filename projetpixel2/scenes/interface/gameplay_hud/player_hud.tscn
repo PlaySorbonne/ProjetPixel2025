@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=17 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Script" uid="uid://dpuq4bmkyshfb" path="res://scripts/experience_bar.gd" id="2_e0ndd"]
 [ext_resource type="PackedScene" uid="uid://jl3gv6r2c8ku" path="res://scenes/gameplay_systems/mouse_detection_2d.tscn" id="2_pfuso"]
 [ext_resource type="Script" uid="uid://yegcm3d0hvem" path="res://scripts/combo_counter.gd" id="4_htfe5"]
+[ext_resource type="Texture2D" uid="uid://lp27fa3tfgit" path="res://resources/images/ui_assets/menu_elements/info_square_container.png" id="4_tv5ih"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
 [ext_resource type="PackedScene" uid="uid://g214vu1y26k1" path="res://scenes/gameplay_systems/mouse_2d_interaction.tscn" id="5_pfuso"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
+[ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
+[ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
+[ext_resource type="Texture2D" uid="uid://cc0vwus6oti4s" path="res://resources/images/ui_assets/menu_elements/ui_health_bar.png" id="12_3ed1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
 font_size = 40
@@ -77,10 +81,28 @@ anchor_top = 0.847222
 anchor_right = 0.9875
 anchor_bottom = 0.903704
 offset_top = -6.10352e-05
-text = "Tower (2)"
+text = "Towers
+(2)"
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" instance=ExtResource("2_pfuso")]
+
+[node name="TextureRect" type="TextureRect" parent="hud_control/ButtonSpawnTower"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -7.0
+offset_right = 8.99939
+offset_bottom = 6.99939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_tv5ih")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TowerSpawner" parent="." instance=ExtResource("6_pfuso")]
 
@@ -225,6 +247,39 @@ grow_horizontal = 0
 text = "card description."
 label_settings = SubResource("LabelSettings_e0ndd")
 horizontal_alignment = 2
+
+[node name="ShipHealth" type="TextureRect" parent="."]
+self_modulate = Color(0.309596, 0.924448, 1, 1)
+anchors_preset = -1
+anchor_right = 0.273438
+anchor_bottom = 0.15
+offset_right = 3.05176e-05
+texture = ExtResource("10_ovn5c")
+expand_mode = 1
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="ShieldProgressBar" type="TextureProgressBar" parent="ShipHealth"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 53.0
+offset_right = 360.0
+offset_bottom = 82.0
+value = 70.0
+texture_progress = ExtResource("11_d078g")
+tint_progress = Color(1.6942e-05, 0.616327, 0.992928, 1)
+
+[node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 94.0
+offset_right = 515.0
+offset_bottom = 122.0
+value = 95.0
+nine_patch_stretch = true
+stretch_margin_right = 70
+texture_progress = ExtResource("12_3ed1r")
+tint_progress = Color(0.767024, 4.90934e-06, 4.81307e-07, 1)
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
