@@ -250,7 +250,7 @@ label_settings = SubResource("LabelSettings_e0ndd")
 horizontal_alignment = 2
 
 [node name="ShipHealth" type="TextureRect" parent="."]
-self_modulate = Color(0.309596, 0.924448, 1, 1)
+self_modulate = Color(0, 0.625408, 0.686082, 1)
 anchors_preset = -1
 anchor_right = 0.273438
 anchor_bottom = 0.15
@@ -269,7 +269,7 @@ anchor_bottom = 0.530864
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("11_d078g")
-tint_progress = Color(1.6942e-05, 0.616327, 0.992928, 1)
+tint_progress = Color(0, 0.468743, 0.762554, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
@@ -281,7 +281,7 @@ anchor_bottom = 0.753086
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("12_3ed1r")
-tint_progress = Color(0.767024, 4.90934e-06, 4.81307e-07, 1)
+tint_progress = Color(0.705939, 5.46284e-06, 3.85046e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]

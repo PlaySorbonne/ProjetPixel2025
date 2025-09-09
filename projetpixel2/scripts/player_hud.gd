@@ -17,6 +17,8 @@ var number_of_choosable_cards := 3
 @onready var mouse_3d_interaction : Mouse3dInteraction = $Mouse3dInteraction
 @onready var combo_label : Label = $ComboCounter/Label
 @onready var console : Console = $Console
+@onready var shields_bar_color : Color = $ShipHealth/ShieldProgressBar.tint_progress
+@onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
 
@@ -39,11 +41,11 @@ func _ready() -> void:
 
 func _update_ship_health(new_health : int) -> void:
 	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,
-		$ShipHealth/HealthProgressBar, Color(0.767, 0.0, 0.0))
+		$ShipHealth/HealthProgressBar, health_bar_color)
 
 func _update_ship_shields(new_shields : int) -> void:
 	shields_bar_tween = tween_progress_bar(shields_bar_tween, new_shields,
-		$ShipHealth/ShieldProgressBar, Color(0.0, 0.616, 0.993))
+		$ShipHealth/ShieldProgressBar, shields_bar_color)
 
 func tween_progress_bar(t : Tween, new_val : float, 
 					object : TextureProgressBar, tint : Color) -> Tween:
