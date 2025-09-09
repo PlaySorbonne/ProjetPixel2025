@@ -63,6 +63,7 @@ custom_nodes = [NodePath("../Aergo_ship/Сargo_ship")]
 [node name="TimerShieldRegeneration" type="Timer" parent="."]
 autostart = true
 
+[connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
 [connection signal="hit" from="ShipHealth" to="." method="_on_ship_health_hit"]
 [connection signal="death" from="ShieldHealth" to="." method="_on_shield_health_death"]

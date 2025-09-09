@@ -4,8 +4,14 @@ class_name Spaceship
 
 signal hit
 
-@export var shields_regeneration := 1
-@export var shields_regeneration_delay := 2.0
+## amount the shields will regen per 0.5 second
+@export var shields_regeneration := 2
+## delay before regen when shields are hit
+@export var shields_regeneration_delay := 3.0
+## delay before regen when shields are lost
+@export var loss_shields_regeneration_delay := 9.0
+## initial regen amount when shields are lost (between 0.0 and 1.0)
+@export_range(0.0, 1.0, 0.01) var loss_shields_regeneration_amount := 0.15
 var has_shields := true
 var alive := true
 
@@ -47,14 +53,18 @@ func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : Da
 	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
 	hit.emit()
-	can_regenerate = false
-	$TimerShieldRegeneration.start(shields_regeneration_delay)
 
 func _on_shield_health_death() -> void:
 	$CollisionShip.disabled = true
 	$ShieldShader.visible = false
 	has_shields = false
 	damageable = $ShipHealth
+
+func restore_shields() -> void:
+	$CollisionShip.disabled = false
+	has_shields = true
+	damageable = $ShieldHealth
+	damageable.health = damageable.max_health * loss_shields_regeneration_amount
 
 func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
@@ -74,6 +84,9 @@ func _on_ship_health_death() -> void:
 
 func _on_timer_shield_regeneration_timeout() -> void:
 	if can_regenerate:
+		if not has_shields:
+			has_shields = true
+			damageable = $ShieldHealth
 		if $ShieldHealth.health < $ShieldHealth.max_health:
 			$ShieldHealth.health = min(
 				$ShieldHealth.max_health, 
@@ -82,3 +95,7 @@ func _on_timer_shield_regeneration_timeout() -> void:
 	else:
 		can_regenerate = true
 		$TimerShieldRegeneration.wait_time = 0.5
+
+func _on_hit() -> void:
+	can_regenerate = false
+	$TimerShieldRegeneration.start(shields_regeneration_delay)
