@@ -22,6 +22,7 @@ var number_of_choosable_cards := 3
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
 var experience_bar_tween : Tween
+var current_displayed_level := RunData.current_level
 
 
 func _ready() -> void:
@@ -66,12 +67,21 @@ func clear_card_description() -> void:
 func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
-func update_experience() -> void:
+func update_experience(force_loop := false) -> void:
+	if not force_loop and current_displayed_level != RunData.current_level:
+		return
 	if experience_bar_tween:
 		experience_bar_tween.kill()
+	if force_loop:
+		experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+		experience_bar_tween.tween_property($ExperienceBar, "value", 
+								$ExperienceBar.max_value, 0.1)
+		await experience_bar_tween.finished
+		current_displayed_level = RunData.current_level
+		$ExperienceBar.value = 0.0
 	experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	experience_bar_tween.tween_property($ExperienceBar, "value", 
-			RunData.current_experience, 0.25)
+			RunData.current_experience, 0.1)
 
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
@@ -110,6 +120,7 @@ func on_card_level_clicked(chosen_card : CardObject) -> void:
 
 func update_level() -> void:
 	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
+	update_experience(true)
 	$ExperienceBar.max_value = RunData.level_experience_threshold
 
 func new_kill() -> void:

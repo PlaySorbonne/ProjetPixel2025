@@ -1,4 +1,4 @@
-extends ProgressBar
+extends TextureProgressBar
 class_name ExperienceBar
 
 

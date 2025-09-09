@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
-font_size = 40
+font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxin7"]
 font_size = 40
@@ -35,10 +35,13 @@ script = ExtResource("1_ldeku")
 self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
 z_index = 6
 anchors_preset = -1
-anchor_top = 1.0
+anchor_top = 0.998
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -136.0
+anchor_bottom = 0.998
+offset_left = 339.0
+offset_top = -87.84
+offset_right = -339.0
+offset_bottom = 0.160034
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_8wi31")
@@ -51,12 +54,13 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -52.0
-offset_right = -31.0
-offset_bottom = -14.0
+offset_left = 358.0
+offset_top = -38.0
+offset_right = -359.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("2_tntee")
 tint_progress = Color(0, 0.238543, 0.597335, 1)
@@ -65,9 +69,9 @@ script = ExtResource("2_e0ndd")
 [node name="Label" type="Label" parent="ExperienceBar"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -1.88889
+anchor_top = -1.60317
 anchor_right = 1.0
-anchor_bottom = -0.361111
+anchor_bottom = -0.0753968
 grow_horizontal = 2
 grow_vertical = 2
 text = "Level 1"
