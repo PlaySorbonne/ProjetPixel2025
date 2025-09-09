@@ -42,14 +42,14 @@ func _update_ship_health(new_health : int) -> void:
 		health_bar_tween.kill()
 	health_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	health_bar_tween.tween_property($ShipHealth/HealthProgressBar, 
-					"value", new_health, 0.4)
+					"value", new_health, 0.2)
 
 func _update_ship_shields(new_shields : int) -> void:
 	if shields_bar_tween:
 		shields_bar_tween.kill()
 	shields_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	shields_bar_tween.tween_property($ShipHealth/ShieldProgressBar, 
-					"value", new_shields, 0.4)
+					"value", new_shields, 0.2)
 
 func clear_card_description() -> void:
 	$LabelCardDescription.text = ""
