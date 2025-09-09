@@ -38,18 +38,23 @@ func _ready() -> void:
 	$ShipHealth/ShieldProgressBar.value = shields_health.health
 
 func _update_ship_health(new_health : int) -> void:
-	if health_bar_tween:
-		health_bar_tween.kill()
-	health_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	health_bar_tween.tween_property($ShipHealth/HealthProgressBar, 
-					"value", new_health, 0.2)
+	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,
+		$ShipHealth/HealthProgressBar, Color(0.767, 0.0, 0.0))
 
 func _update_ship_shields(new_shields : int) -> void:
-	if shields_bar_tween:
-		shields_bar_tween.kill()
-	shields_bar_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	shields_bar_tween.tween_property($ShipHealth/ShieldProgressBar, 
-					"value", new_shields, 0.2)
+	shields_bar_tween = tween_progress_bar(shields_bar_tween, new_shields,
+		$ShipHealth/ShieldProgressBar, Color(0.0, 0.616, 0.993))
+
+func tween_progress_bar(t : Tween, new_val : float, 
+					object : TextureProgressBar, tint : Color) -> Tween:
+	if t:
+		t.kill()
+	t = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	t.tween_property(object, "value", new_val, 0.2)
+	if new_val < object.value:
+		t.tween_property(object, "tint_progress", Color.RED, 0.1)
+		t.tween_property(object, "tint_progress", tint, 0.1).set_delay(0.1)
+	return t
 
 func clear_card_description() -> void:
 	$LabelCardDescription.text = ""
