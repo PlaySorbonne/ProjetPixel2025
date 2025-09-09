@@ -4,13 +4,14 @@ class_name Spaceship
 
 signal hit
 
-var max_shields := 250
-var max_health := 400
+@export var shields_regeneration := 1
+@export var shields_regeneration_delay := 2.0
 var has_shields := true
 var alive := true
 
 var _update_shield_shaders_color := false
 var _shield_shader_color : Color
+var can_regenerate := true
 
 # components
 @onready var damageable : DamageableObject = $ShieldHealth
@@ -46,10 +47,13 @@ func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : Da
 	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	shield_damage_animation()
 	hit.emit()
+	can_regenerate = false
+	$TimerShieldRegeneration.start(shields_regeneration_delay)
 
 func _on_shield_health_death() -> void:
 	$CollisionShip.disabled = true
 	$ShieldShader.visible = false
+	has_shields = false
 	damageable = $ShipHealth
 
 func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
@@ -67,3 +71,14 @@ func death() -> void:
 
 func _on_ship_health_death() -> void:
 	death()
+
+func _on_timer_shield_regeneration_timeout() -> void:
+	if can_regenerate:
+		if $ShieldHealth.health < $ShieldHealth.max_health:
+			$ShieldHealth.health = min(
+				$ShieldHealth.max_health, 
+				$ShieldHealth.health + shields_regeneration
+			)
+	else:
+		can_regenerate = true
+		$TimerShieldRegeneration.wait_time = 0.5

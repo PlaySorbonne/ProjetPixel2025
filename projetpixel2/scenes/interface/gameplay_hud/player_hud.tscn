@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
-[ext_resource type="Texture2D" uid="uid://cc0vwus6oti4s" path="res://resources/images/ui_assets/menu_elements/ui_health_bar.png" id="12_3ed1r"]
+[ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
 font_size = 40
@@ -261,25 +261,27 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShieldProgressBar" type="TextureProgressBar" parent="ShipHealth"]
 layout_mode = 0
-offset_left = 162.0
-offset_top = 53.0
-offset_right = 360.0
-offset_bottom = 82.0
-value = 70.0
+anchor_left = 0.302857
+anchor_top = 0.320988
+anchor_right = 0.731429
+anchor_bottom = 0.530864
+value = 100.0
+nine_patch_stretch = true
 texture_progress = ExtResource("11_d078g")
 tint_progress = Color(1.6942e-05, 0.616327, 0.992928, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
 layout_mode = 0
-offset_left = 158.0
-offset_top = 94.0
-offset_right = 515.0
-offset_bottom = 122.0
-value = 95.0
+anchor_left = 0.302857
+anchor_top = 0.580247
+anchor_right = 0.958095
+anchor_bottom = 0.753086
+value = 100.0
 nine_patch_stretch = true
-stretch_margin_right = 70
 texture_progress = ExtResource("12_3ed1r")
 tint_progress = Color(0.767024, 4.90934e-06, 4.81307e-07, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]

@@ -4,6 +4,7 @@ class_name DamageableObject
 
 signal hit(damage_amount : int, new_health : int, damage_type : DamagingTypes)
 signal death
+signal update_health(new_health : int)
 
 enum DamageableTypes {Neutral, Energy, Structure}
 enum DamagingTypes {Neutral, TrueDamage, Energy, Fire}
@@ -34,7 +35,10 @@ static var damage_table : Dictionary = {
 }
 
 @export var max_health : int = 100
-@export var health : int = max_health
+@export var health : int = max_health:
+	set(value):
+		health = value
+		update_health.emit(health)
 @export var type := DamageableTypes.Neutral
 @export var defense := 1.0
 @export var damage_threshold := 0

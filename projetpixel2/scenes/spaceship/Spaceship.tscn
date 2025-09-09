@@ -47,20 +47,26 @@ shape = SubResource("BoxShape3D_aer3i")
 script = ExtResource("4_h40o1")
 max_health = 400
 health = 400
+type = 2
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
 [node name="ShieldHealth" type="Node" parent="."]
 script = ExtResource("4_h40o1")
 max_health = 250
 health = 250
+type = 1
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
 custom_nodes = [NodePath("../Aergo_ship/Сargo_ship")]
 
+[node name="TimerShieldRegeneration" type="Timer" parent="."]
+autostart = true
+
 [connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
 [connection signal="hit" from="ShipHealth" to="." method="_on_ship_health_hit"]
 [connection signal="death" from="ShieldHealth" to="." method="_on_shield_health_death"]
 [connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]
+[connection signal="timeout" from="TimerShieldRegeneration" to="." method="_on_timer_shield_regeneration_timeout"]
 
 [editable path="Aergo_ship"]
