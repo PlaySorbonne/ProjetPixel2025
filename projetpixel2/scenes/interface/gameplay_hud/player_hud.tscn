@@ -81,6 +81,7 @@ anchor_top = 0.847222
 anchor_right = 0.9875
 anchor_bottom = 0.903704
 offset_top = -6.10352e-05
+focus_mode = 0
 text = "Towers
 (2)"
 flat = true
