@@ -1,33 +1,17 @@
 name,description,value,rarity,trigger_signal,trigger_condition,effect,family,commentaires
-Speed Up,Improves the fire rate of the tower.,,Common,,,tower.fire_rate *= 1.5,Military,OK
-Max combo,Adds the current combo to tower damage.,,Common,,,tower.projectile_template.damage += RunData.current_combo,Traders,"OK mais ajoute le combo à un instant t, voir carte cccccombo pour carte qui s'update"
-Lucky trigger,"When firing, the tower sometimes fire an additonal projectile. Scales with number of projectiles.",,Common,tower_fired,RunData.roll_probability(0.15),tower.shoot_bonus_with_delay(0.25),Scientists,TO TEST
+Speed Up,Improves the fire rate of the tower.,,Common,,,tower.fire_rate *= 1.25,Military,OK
 Projectiles Up,Increase the number of projectiles fired by the tower.,,Common,,,tower.number_of_projectiles += 1,Military,OK
 Firestorm,Creates a fiery aura on killed enemies.,,Rare,enemy_killed,RunData.roll_probability(0.075),spawn_burning_aura(enemy.position),Revolution,OK
 Burn,Projectiles burn enemies on hit.,,Uncommon,enemy_hit,,"var burning := StatusBurning.new()
 burning.tick_time = 0.1
 burning.inflict_status(enemy)",Traders,OK
 Root,Projectiles can root enemies on hit.,,Uncommon,enemy_hit,RunData.roll_probability(0.2),StatusRooted.new().inflict_status(enemy),Scientists,OK
-Link,Apply link effect to hit enemies,,Legendary,enemy_hit,,StatusLinked.new().inflict_status(enemy),Revolution,BUG
 Projectiles X,"Doubles the number of projectiles, but lowers their power.",,Secret,,,"tower.number_of_projectiles *= 2
 tower.projectile_template.damage *= 0.9",Military,NEEDS REWORK
-Cccccccombo,Add the current_combo (updating) to the damage of the tower.,,Secret,,,"#FULL_CODE#
-func new_damage_expression() -> int:
-        return tower.projectile_template.damage + RunData.current_combo
-
-func run_effect():
-        tower.projectile_template.damage_expression = new_damage_expression",Military,OK
-Range Up,Improves the range of fire of the tower.,,Secret,,,tower.fire_range += 5.0,Military,TO TEST
 Pierce,Projectile pierce 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.damage *= 0.7",Military,OK
 Bounce,Projectiles bounce 1 more time upon impact.,,Secret,,,"tower.projectile_template.bounce+= 1
 tower.projectile_template.damage *= 0.7",Military,OK
-Experienced shot,The projectile makes more damage the more the experience bar is full.,,Secret,,,"#FULL_CODE#
-func new_damage_expression() -> int:
-        return int( tower.projectile_template.damage * (1 + RunData.get_experience_percentage()) )
-
-func run_effect():
-        tower.projectile_template.damage_expression = new_damage_expression",Military,OK
 Machinegun,The tower' fire rate goes up for 1 second every 20 shots.,,Secret,,,"var machinegun = get_component(tower, BoostFireRate)
 if machinegun == null:
         machinegun = BOOST_FIRE_RATE.instantiate()
@@ -39,21 +23,6 @@ else:
         machinegun.needed_shots /= 1.25
         machinegun.boost_duration *= 1.25
         machinegun.fire_rate_multiplier *= 1.15",Military,OK
-Splash,Add splash damage to the tower's projectiles.,,Secret,enemy_hit,,"var explosion := spawn_damage_explosion(enemy.position)
-explosion.damage_amount = tower.projectile_template.damage * 0.5
-explosion.radius = 1.0",Military,"OK but if we want to stack differently than adding more explosions we need to change the code to check if a card is already there, and if so improve the card instead of adding one"
-Adaptation,Reduce the delay of tower switching mode,,Secret,,,"tower.switch_mode_duration /= 2.0
-tower.switch_mode_delay /= 3.0",Military,TO TEST
-Nova de givre,"When tower switches mode, it creates an explosion which roots enemies. When it switches to mining, it also locks in mining mode for 20 seconds, after which it automatically switches back to firing.",,Secret,tower_switched_mode,,"#FULL_CODE#
-func _ready() -> void:
-        var auto_switch := BoostAutoSwitchMode.add_boost_auto_switch(tower, 20.0)
-        auto_switch.auto_switch_from_firing= false
-
-func run_effect():
-        var root_explosion := spawn_object(EXPLOSION_ROOT.instantiate(), tower.global_position)
-        root_explosion.root_time = 2.0
-        root_explosion.radius = 3.0
-        root_explosion.time = 0.25",Military,TO TEST
 Orb,"Tower now fires orbs, which shoot the tower's previous projectile. Fire rate decreses by 50%.",,Secret,,,"if tower.shooting_orbs:
         tower.orbs_fire_rate *= 1.5
 else:
@@ -73,6 +42,6 @@ if totem == null:
         enemy.enemy_killed.connect(totem.trigger_effect)
 else:
         totem.number_of_projectiles += 1",Military,OK
-Split 1,Bullets split 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
+Split,Bullets split 1 more time upon impact.,,Secret,,,"tower.projectile_template.pierce += 1
 tower.projectile_template.bounce += 1
 tower.projectile_template.damage *= 0.7",Military,OK (careful: split angle is in radians)
