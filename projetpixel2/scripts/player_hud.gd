@@ -42,6 +42,12 @@ func _ready() -> void:
 	$ShipHealth/ShieldProgressBar.max_value = shields_health.max_health
 	$ShipHealth/ShieldProgressBar.value = shields_health.health
 
+func _process(delta: float) -> void:
+	print("exp = " + str($ExperienceBar.value) + " / " + str($ExperienceBar.max_value))
+	print("exp pos = " + str($ExperienceBar.position))
+	print("exp size = " + str($ExperienceBar.size))
+	$ExperienceBar.size
+
 func _update_ship_health(new_health : int) -> void:
 	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,
 		$ShipHealth/HealthProgressBar, health_bar_color)
@@ -68,17 +74,21 @@ func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
 func update_experience(force_loop := false) -> void:
+	print("update_experience")
 	if not force_loop and current_displayed_level != RunData.current_level:
+		print("\tcancel")
 		return
 	if experience_bar_tween:
 		experience_bar_tween.kill()
 	if force_loop:
+		print("\tforce loop")
 		experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 		experience_bar_tween.tween_property($ExperienceBar, "value", 
 								$ExperienceBar.max_value, 0.1)
 		await experience_bar_tween.finished
 		current_displayed_level = RunData.current_level
 		$ExperienceBar.value = 0.0
+	print("\tnormal update")
 	experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	experience_bar_tween.tween_property($ExperienceBar, "value", 
 			RunData.current_experience, 0.1)
@@ -122,6 +132,7 @@ func update_level() -> void:
 	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
 	update_experience(true)
 	$ExperienceBar.max_value = RunData.level_experience_threshold
+	print("new experience bar max value = " + str($ExperienceBar.max_value))
 
 func new_kill() -> void:
 	$ComboCounter/ComboTimer.start(RunData.combo_max_time)

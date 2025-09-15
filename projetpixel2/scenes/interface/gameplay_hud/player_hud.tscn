@@ -35,13 +35,10 @@ script = ExtResource("1_ldeku")
 self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
 z_index = 6
 anchors_preset = -1
-anchor_top = 0.917
-anchor_right = 1.0
-anchor_bottom = 0.998
-offset_left = 339.0
-offset_top = -0.359924
-offset_right = -339.0
-offset_bottom = 0.160034
+anchor_left = 0.176563
+anchor_top = 0.916667
+anchor_right = 0.823438
+anchor_bottom = 0.998148
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_8wi31")
@@ -50,35 +47,35 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="."]
 z_index = 10
+custom_minimum_size = Vector2(1201, 27)
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 358.0
-offset_top = 1042.0
-offset_right = -359.0
-offset_bottom = -10.0
+anchor_left = 0.186979
+anchor_top = 0.964815
+anchor_right = 0.8125
+anchor_bottom = 0.989815
 grow_horizontal = 2
 grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.1
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("2_tntee")
 tint_progress = Color(0, 0.238543, 0.597335, 1)
 script = ExtResource("2_e0ndd")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ExperienceBar"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = -1.60317
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -30.1111
+offset_top = -40.0
+offset_bottom = -4.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "Level 1"
 label_settings = SubResource("LabelSettings_htfe5")
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="MouseDetection2d" parent="ExperienceBar" instance=ExtResource("2_pfuso")]
 
