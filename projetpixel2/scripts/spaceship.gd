@@ -62,10 +62,13 @@ func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : Da
 
 func _on_shield_health_death() -> void:
 	$CollisionShip.disabled = true
-	$ShieldShader.visible = false
 	has_shields = false
 	damageable = $ShipHealth
 	$TimerShieldRegeneration.start(loss_shields_regeneration_delay)
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ShieldShader, "scale", Vector3.ZERO, 0.3)
+	await t.finished
+	$ShieldShader.visible = false
 
 func restore_shields() -> void:
 	$CollisionShip.disabled = false
@@ -74,6 +77,10 @@ func restore_shields() -> void:
 	damageable.health = damageable.max_health * loss_shields_regeneration_amount
 	can_regenerate = true
 	$TimerShieldRegeneration.start(0.5)
+	$ShieldShader.visible = true
+	shield_damage_animation()
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	t.tween_property($ShieldShader, "scale", Vector3.ONE, 0.3)
 
 func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
