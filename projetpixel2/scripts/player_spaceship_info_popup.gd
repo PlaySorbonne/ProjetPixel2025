@@ -11,6 +11,6 @@ func _ready() -> void:
 
 func update_ship_health_infos() -> void:
 	$LabelHealth.text = "Health:\n     " + str(GV.space_ship.get_health()
-											) + "/" + str(GV.space_ship.max_health)
+											) + "/" + str(GV.space_ship.get_max_health())
 	$LabelShields.text = "Shields:\n     " + str(GV.space_ship.get_shields()
-											) + "/" + str(GV.space_ship.max_shields)
+											) + "/" + str(GV.space_ship.get_max_shields())

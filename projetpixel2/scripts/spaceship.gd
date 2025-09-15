@@ -34,8 +34,14 @@ func _process(_delta: float) -> void:
 func get_health() -> int:
 	return $ShipHealth.health
 
+func get_max_health() -> int:
+	return $ShipHealth.max_health
+
 func get_shields() -> int:
 	return $ShieldHealth.health
+
+func get_max_shields() -> int:
+	return $ShieldHealth.max_health
 
 func shield_damage_animation() -> void:
 	_update_shield_shaders_color = true
