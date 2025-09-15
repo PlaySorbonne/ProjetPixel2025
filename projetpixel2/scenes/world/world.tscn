@@ -64,6 +64,14 @@ projectile_template = SubResource("Resource_gb53w")
 
 [node name="PlayerHud" parent="." instance=ExtResource("12_dlabj")]
 
+[node name="ExperienceBar" parent="PlayerHud" index="1"]
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
 [node name="Console" parent="PlayerHud" instance=ExtResource("9_gb53w")]
 visible = false
 offset_left = 1219.0

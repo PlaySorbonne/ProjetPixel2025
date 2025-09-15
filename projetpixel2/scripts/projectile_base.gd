@@ -90,5 +90,4 @@ func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 
 func _on_timer_lifetime_timeout() -> void:
 	projectile_lifetime_expanded = true
-	if not $VisibleOnScreenNotifier3D.is_on_screen():
-		queue_free()
+	queue_free()
