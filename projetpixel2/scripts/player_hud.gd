@@ -41,12 +41,9 @@ func _ready() -> void:
 	shields_health.update_health.connect(_update_ship_shields)
 	$ShipHealth/ShieldProgressBar.max_value = shields_health.max_health
 	$ShipHealth/ShieldProgressBar.value = shields_health.health
-
-func _process(delta: float) -> void:
-	print("exp = " + str($ExperienceBar.value) + " / " + str($ExperienceBar.max_value))
-	print("exp pos = " + str($ExperienceBar.position))
-	print("exp size = " + str($ExperienceBar.size))
-	$ExperienceBar.size
+	$ExperienceBar.size = $ExperienceBar.custom_minimum_size
+	$ExperienceBar.position = $ExperienceBarBackgroundTexture.position + Vector2(
+							20.0, 52.0)
 
 func _update_ship_health(new_health : int) -> void:
 	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,

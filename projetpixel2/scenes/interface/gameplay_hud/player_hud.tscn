@@ -58,7 +58,6 @@ grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 step = 0.1
-value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("2_tntee")
 tint_progress = Color(0, 0.238543, 0.597335, 1)
