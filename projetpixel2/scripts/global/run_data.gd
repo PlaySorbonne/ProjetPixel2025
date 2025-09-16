@@ -30,7 +30,7 @@ var current_experience := 0:
 			current_level += 1
 		else:
 			current_experience = value
-		emit_signal("experience_gained")
+		experience_gained.emit()
 
 func gain_experience(amount : int) -> void:
 	#print("GAIN " + str(amount) + " * " + str(experience_multiplier))
