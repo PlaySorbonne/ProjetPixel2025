@@ -2,6 +2,8 @@ extends CanvasLayer
 class_name PlayerHud
 
 
+signal level_updated
+
 const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
 const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
 const TOWERS_OFFSET := Vector2(-10, 0)
@@ -28,9 +30,10 @@ var current_displayed_level := RunData.current_level
 func _ready() -> void:
 	GV.hud = self
 	console.visible = GV.debug_mode
-	RunData.connect("enemy_killed", new_kill)
-	RunData.connect("experience_gained", update_experience)
-	RunData.connect("level_gained", gain_level)
+	RunData.enemy_killed.connect(new_kill)
+	RunData.experience_gained.connect(update_experience)
+	RunData.level_gained.connect(update_level)
+	level_updated.connect(gain_level)
 	update_level()
 	await get_tree().process_frame
 	var ship_health : DamageableObject = GV.space_ship.get_node("ShipHealth")
@@ -71,21 +74,21 @@ func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
 func update_experience(force_loop := false) -> void:
-	print("update_experience")
 	if not force_loop and current_displayed_level != RunData.current_level:
-		print("\tcancel")
 		return
 	if experience_bar_tween:
 		experience_bar_tween.kill()
 	if force_loop:
-		print("\tforce loop")
 		experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 		experience_bar_tween.tween_property($ExperienceBar, "value", 
 								$ExperienceBar.max_value, 0.1)
 		await experience_bar_tween.finished
+		$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
 		current_displayed_level = RunData.current_level
+		level_updated.emit()
+		await get_tree().create_timer(0.05).timeout
+		$ExperienceBar.max_value = RunData.level_experience_threshold
 		$ExperienceBar.value = 0.0
-	print("\tnormal update")
 	experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	experience_bar_tween.tween_property($ExperienceBar, "value", 
 			RunData.current_experience, 0.1)
@@ -101,7 +104,6 @@ func add_card_to_hand(card_data: CardData) -> void:
 	new_card.can_be_dropped_on_objects = true
 
 func gain_level() -> void:
-	update_level()
 	if RunData.current_level > 1:
 		Engine.time_scale = 0.0
 		new_level_cards = []
@@ -126,10 +128,7 @@ func on_card_level_clicked(chosen_card : CardObject) -> void:
 	chosen_card.can_be_dropped_on_objects = true
 
 func update_level() -> void:
-	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
 	update_experience(true)
-	$ExperienceBar.max_value = RunData.level_experience_threshold
-	print("new experience bar max value = " + str($ExperienceBar.max_value))
 
 func new_kill() -> void:
 	$ComboCounter/ComboTimer.start(RunData.combo_max_time)

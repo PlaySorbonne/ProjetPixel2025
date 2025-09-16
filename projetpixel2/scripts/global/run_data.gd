@@ -20,7 +20,6 @@ var current_level := 1:
 	set(value):
 		current_level = value
 		level_experience_threshold = get_level_experience_threshold()
-		level_gained.emit()
 var level_experience_threshold : int = get_level_experience_threshold()
 var experience_multiplier := 3.0
 var current_experience := 0:
@@ -28,6 +27,7 @@ var current_experience := 0:
 		if value >= level_experience_threshold:
 			current_experience = value - level_experience_threshold
 			current_level += 1
+			level_gained.emit()
 		else:
 			current_experience = value
 		experience_gained.emit()
@@ -65,7 +65,7 @@ func default_levelling_expression() -> Expression:
 	return expr
 
 func new_kill(enemy_type : String, is_alpha : bool) -> void:
-	emit_signal("enemy_killed")
+	enemy_killed.emit()
 	total_kills += 1
 	if enemy_kills.has(enemy_type):
 		enemy_kills[enemy_type] += 1
