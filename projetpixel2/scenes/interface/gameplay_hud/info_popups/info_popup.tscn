@@ -7,6 +7,7 @@
 process_mode = 3
 offset_right = 246.0
 offset_bottom = 149.0
+mouse_default_cursor_shape = 2
 color = Color(0.194349, 0.194349, 0.194349, 1)
 script = ExtResource("1_tkdbl")
 
@@ -21,6 +22,7 @@ offset_top = -11.0
 offset_right = 7.0
 offset_bottom = 20.0
 grow_horizontal = 0
+mouse_default_cursor_shape = 2
 text = "X"
 
 [node name="LabelTitle" type="Label" parent="."]

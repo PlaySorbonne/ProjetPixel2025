@@ -35,7 +35,12 @@ static func add_popup(obj : Node) -> void:
 
 
 var object : Node
+var is_mouse_over_popup := false
 
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		close_popup()
 
 func _on_close_button_pressed() -> void:
 	close_popup()

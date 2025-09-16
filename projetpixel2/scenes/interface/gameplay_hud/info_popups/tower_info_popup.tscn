@@ -10,9 +10,11 @@ script = ExtResource("2_a3dv5")
 
 [node name="LabelTitle" parent="." index="1"]
 anchor_bottom = 0.097
+offset_left = 136.0
 offset_bottom = 0.0339985
 
 [node name="LabelDescription" parent="." index="2"]
+anchor_left = 0.285097
 anchor_top = 0.107914
 anchor_bottom = 0.413669
 
@@ -24,19 +26,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Button" type="Button" parent="." index="5"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.237581
-anchor_top = -0.0215827
-anchor_right = -0.00647948
-anchor_bottom = 0.179856
+anchor_left = 0.0302376
+anchor_top = 0.0467626
+anchor_right = 0.261339
+anchor_bottom = 0.248201
 text = "Switch
 Mode"
 metadata/_edit_use_anchors_ = true
