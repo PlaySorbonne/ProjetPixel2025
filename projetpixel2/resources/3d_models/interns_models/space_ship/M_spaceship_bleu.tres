@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b7yem67hgclgs"]
+
+[ext_resource type="Texture2D" uid="uid://b7e0wl8f3npm1" path="res://resources/3d_models/interns_models/space_ship/Texture_Blender/Gris_BaseColor.1001.png" id="1_wdeum"]
+[ext_resource type="Texture2D" uid="uid://db4sovhbfqjhy" path="res://resources/3d_models/interns_models/space_ship/Texture_Blender/Gris_Metallic.1001.png" id="2_5vu86"]
+[ext_resource type="Texture2D" uid="uid://bfltky1lo6i3g" path="res://resources/3d_models/interns_models/space_ship/Texture_Blender/Gris_Normal.1001.png" id="3_kj3b5"]
+[ext_resource type="Texture2D" uid="uid://cfqkp1ddwfxj7" path="res://resources/3d_models/interns_models/space_ship/Texture_Blender/Gris_Roughness.1001.png" id="4_kbr0c"]
+
+[resource]
+albedo_texture = ExtResource("1_wdeum")
+metallic = 1.0
+metallic_texture = ExtResource("2_5vu86")
+roughness_texture = ExtResource("4_kbr0c")
+normal_enabled = true
+normal_texture = ExtResource("3_kj3b5")
