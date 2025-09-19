@@ -29,29 +29,15 @@ var deck_position : Vector2
 
 
 func _on_button_down() -> void:
-	print('button down')
 	card_clicked.emit()
 	$DragAndDrop2D.press()
 
 func release_card() -> void:
-	print("release_card")
 	await get_tree().process_frame
 	$DragAndDrop2D.was_just_pressed = false
 	$DragAndDrop2D.release()
 	is_dragged = true
 	$DragAndDrop2D.drop()
-
-func _process(_delta: float) -> void:
-	return
-	print("drag_and_drop.is_pressed = " + str(
-$DragAndDrop2D.is_pressed) + " ; drag_and_drop.was_just_pressed = " + str(
-$DragAndDrop2D.was_just_pressed) + " ; mouse = " + str(mouse_filter))
-
-"""
-"can_be_dropped_on_objects = "+ str(can_be_dropped_on_objects
-) + " ; is_dragged = " + str(is_dragged) + " ; drag_and_drop.is_dragged = " + str(
-$DragAndDrop2D.is_dragged) + 
-"""
 
 func _input(event: InputEvent) -> void:
 	var debug_text := "INPUT DETECTED"

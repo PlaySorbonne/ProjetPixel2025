@@ -25,15 +25,13 @@ var is_pressed := false:
 			var timer : SceneTreeTimer = get_tree().create_timer(CLICK_MAX_TIME, true, false, true)
 			timer.timeout.connect(reset_just_pressed)
 		else:
-			if is_dragged and (not was_just_pressed):
+			if is_dragged:  # and (not was_just_pressed):
 				drop()
 
 func press() -> void:
-	print("PRESS")
 	is_pressed = true
 
 func release() -> void:
-	print("RELEASE")
 	is_pressed = false
 
 func reset_just_pressed() -> void:
