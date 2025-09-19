@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene load_steps=13 format=3 uid="uid://cgrlyuyns6mos"]
 
-[ext_resource type="PackedScene" uid="uid://baa3bj1y0ah5y" path="res://resources/3d_models/blasters/blasterM.fbx" id="1_1xctq"]
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="2_j5p61"]
-[ext_resource type="ArrayMesh" uid="uid://0dgoaj7ytnv4" path="res://resources/3d_models/towers_placeholder/meshes/tower_1.res" id="3_47ana"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
-[ext_resource type="Shader" uid="uid://dqej4ajdlyerw" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
+[ext_resource type="Shader" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
 [ext_resource type="PackedScene" uid="uid://cpnwdp0ai1y6w" path="res://resources/3d_models/towers_placeholder/mining_device/machine_generator.fbx" id="7_vohdg"]
+[ext_resource type="PackedScene" uid="uid://yn1lodar0fyd" path="res://resources/3d_models/interns_models/towers/FBX/TourelleStandardV1.fbx" id="11_0qdbl"]
 
 [sub_resource type="Resource" id="Resource_715kj"]
 script = ExtResource("2_j5p61")
@@ -43,16 +42,6 @@ size = Vector2(50, 50)
 script = ExtResource("1_041tc")
 projectile_template = SubResource("Resource_715kj")
 
-[node name="blasterM" parent="." instance=ExtResource("1_1xctq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.200082)
-
-[node name="blasterM" parent="blasterM" index="0"]
-transform = Transform3D(-20, 1.74846e-06, 7.64274e-14, 0, -8.74228e-07, 20, 1.74846e-06, 20, 8.74228e-07, 0, 0, 0.202008)
-mesh = ExtResource("3_47ana")
-
-[node name="ProjectileSpawnPos" type="Node3D" parent="blasterM"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.525934)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ih0ua")
 
@@ -81,7 +70,7 @@ one_shot = true
 [node name="TimerMineXp" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
-custom_nodes = [NodePath("../blasterM/blasterM")]
+custom_nodes = [NodePath("")]
 
 [node name="DragAndDrop" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
 dragged_object = NodePath("..")
@@ -96,6 +85,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 [node name="TimerSwitchModes" type="Timer" parent="."]
 one_shot = true
 
+[node name="TourelleStandardV1" parent="." instance=ExtResource("11_0qdbl")]
+transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, 0, -0.318886, -0.0451133)
+
+[node name="Tourelle" parent="TourelleStandardV1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Defense_base_turret" parent="TourelleStandardV1/Tourelle" index="0"]
+transform = Transform3D(3.92225, 0, 0, 0, 0.328308, 0, 0, 0, 3.92225, 0, 0.00107929, 0)
+
+[node name="Turret_pivot1" parent="TourelleStandardV1/Tourelle" index="1"]
+transform = Transform3D(1.2416, 0, 0.0326742, 0, 0.138304, 0, -0.0326742, 0, 1.2416, 0, 0.0259851, 0)
+
+[node name="Tuyeau1" parent="TourelleStandardV1/Tourelle" index="2"]
+transform = Transform3D(0.0246631, 0, -0.207617, 0, 0.209076, 0, 0.207617, 0, 0.0246631, 0, 0.0132909, 0)
+
+[node name="Turret_head" parent="TourelleStandardV1/Tourelle" index="3"]
+transform = Transform3D(0.999429, 0, 0.0337833, 0, 1, 0, -0.0337833, 0, 0.999429, 0, 0, 0.0111129)
+
+[node name="Defensive_canon_DT_1" parent="TourelleStandardV1/Tourelle/Turret_head" index="0"]
+transform = Transform3D(0.0157878, 0.665936, 0, -0.269841, 0.0389626, 0, -1.16415e-10, -3.72529e-09, 0.270302, 0.0120392, 0.0347584, -0.0127702)
+
+[node name="Defense_turret" parent="TourelleStandardV1/Tourelle/Turret_head" index="1"]
+transform = Transform3D(2.97347, 0, 0, 0, 0.248891, 0, 0, 0, 2.97347, -0.00336866, 0.0267529, -0.0123369)
+
+[node name="Cupola" parent="TourelleStandardV1/Tourelle/Turret_head" index="2"]
+transform = Transform3D(0.466654, 0, 0, 0, 0.258183, 0, 0, 0, 0.466654, -0.00853839, 0.0455776, -0.00648772)
+
+[node name="Capteur1" parent="TourelleStandardV1/Tourelle/Turret_head" index="3"]
+transform = Transform3D(0.139857, 0, 0.105823, 0, 0.175381, 0, -0.105823, 0, 0.139857, 0.00233631, 0.0467828, -0.0203199)
+
+[node name="Tuyeau2" parent="TourelleStandardV1/Tourelle" index="4"]
+transform = Transform3D(0.0246631, 0, -0.207617, 0, 0.209076, 0, 0.207617, 0, 0.0246631, 0.00142782, 0.0132909, 0.026848)
+
+[node name="ProjectileSpawnPos" type="Node3D" parent="TourelleStandardV1/Tourelle" index="5"]
+transform = Transform3D(-3.64262e-09, 0, -0.0833333, 0, 0.0833333, 0, 0.0833333, 0, -3.64262e-09, 0.0567419, 0.0265738, 2.48027e-09)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
 [connection signal="timeout" from="TimerMineXp" to="." method="_on_timer_mine_xp_timeout"]
@@ -107,5 +132,5 @@ one_shot = true
 [connection signal="dropped" from="DragAndDrop" to="." method="_on_drag_and_drop_dropped"]
 [connection signal="timeout" from="TimerSwitchModes" to="." method="_on_timer_switch_modes_timeout"]
 
-[editable path="blasterM"]
 [editable path="MiningMesh"]
+[editable path="TourelleStandardV1"]

@@ -56,9 +56,10 @@ var mining_laser : TowerMiningLaser
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
-@onready var projectile_spawn_pos := $blasterM/ProjectileSpawnPos
+@onready var projectile_spawn_pos := $TourelleStandardV1/Tourelle/ProjectileSpawnPos
 @onready var area3d := $Area3D
 @onready var areaXp := $AreaXP
+@onready var tower_mesh := $TourelleStandardV1/Tourelle/Defense_base_turret
 
 func _ready() -> void:
 	GV.towers.append(self)
@@ -179,7 +180,7 @@ func add_card(card_obj: CardObject) -> void:
 	TowerCard3DIndicator.add_card_indicator(self)
 
 func set_hologram(autodrag := true) -> void:
-	$blasterM/blasterM.material_override = HOLOGRAM_RES
+	tower_mesh.material_override = HOLOGRAM_RES
 	$DragAndDrop.can_be_dragged = true
 	$Area3D/CollisionShape3D.disabled = true
 	if autodrag:
@@ -188,7 +189,7 @@ func set_hologram(autodrag := true) -> void:
 
 func spawn_from_hologram() -> void:
 	is_hologram = false
-	$blasterM/blasterM.material_override = null
+	tower_mesh.material_override = null
 	$DragAndDrop.can_be_dragged = false
 	$Area3D/CollisionShape3D.disabled = false
 
