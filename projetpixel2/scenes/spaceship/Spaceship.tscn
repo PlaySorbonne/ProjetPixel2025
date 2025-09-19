@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cnn16qnpvw2gh"]
 
 [ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
-[ext_resource type="PackedScene" uid="uid://c7njrvkjd6ca4" path="res://resources/3d_models/space_ship/fbx/æargo_ship.fbx" id="2_5e64j"]
 [ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
 [ext_resource type="Script" uid="uid://f0gd0vfal03l" path="res://scripts/damagable_object.gd" id="4_h40o1"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="5_6nyhl"]
+[ext_resource type="PackedScene" uid="uid://da3opch1ppvgt" path="res://resources/3d_models/interns_models/space_ship/Vaisseaux_Import.fbx" id="6_5e64j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h40o1"]
 render_priority = 0
@@ -27,9 +27,6 @@ size = Vector3(2.21545, 1, 1.38779)
 
 [node name="Spaceship" type="StaticBody3D"]
 script = ExtResource("1_wr5m4")
-
-[node name="Aergo_ship" parent="." instance=ExtResource("2_5e64j")]
-transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0.530507, 0, 0)
 
 [node name="ShieldShader" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
@@ -58,10 +55,13 @@ type = 1
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
-custom_nodes = [NodePath("../Aergo_ship/Сargo_ship")]
+custom_nodes = [NodePath("../Vaisseaux_Import/Aeration_000"), NodePath("../Vaisseaux_Import/Aeration_001"), NodePath("../Vaisseaux_Import/BézierCurve_001"), NodePath("../Vaisseaux_Import/Cube_043"), NodePath("../Vaisseaux_Import/Cube_044"), NodePath("../Vaisseaux_Import/Cube_046"), NodePath("../Vaisseaux_Import/Cube_047"), NodePath("../Vaisseaux_Import/Cube_048"), NodePath("../Vaisseaux_Import/Cube_049"), NodePath("../Vaisseaux_Import/Cube_050"), NodePath("../Vaisseaux_Import/Cube_051"), NodePath("../Vaisseaux_Import/Cube_052"), NodePath("../Vaisseaux_Import/Cube_053"), NodePath("../Vaisseaux_Import/Cube_055"), NodePath("../Vaisseaux_Import/Cube_056"), NodePath("../Vaisseaux_Import/Cube_057"), NodePath("../Vaisseaux_Import/Cube_059"), NodePath("../Vaisseaux_Import/Cube_060"), NodePath("../Vaisseaux_Import/Cube_061"), NodePath("../Vaisseaux_Import/Cylinder_018"), NodePath("../Vaisseaux_Import/Cylinder_019"), NodePath("../Vaisseaux_Import/Cylinder_021"), NodePath("../Vaisseaux_Import/Cylinder_022"), NodePath("../Vaisseaux_Import/Cylinder_023"), NodePath("../Vaisseaux_Import/Cylinder_025"), NodePath("../Vaisseaux_Import/Cylinder_026"), NodePath("../Vaisseaux_Import/Cylinder_027"), NodePath("../Vaisseaux_Import/Cylinder_028"), NodePath("../Vaisseaux_Import/Cylinder_030"), NodePath("../Vaisseaux_Import/Griffes_001"), NodePath("../Vaisseaux_Import/Plane_007"), NodePath("../Vaisseaux_Import/Sphere_013"), NodePath("../Vaisseaux_Import/Tete_001"), NodePath("../Vaisseaux_Import/Tourelle_000"), NodePath("../Vaisseaux_Import/Tourelle_001")]
 
 [node name="TimerShieldRegeneration" type="Timer" parent="."]
 autostart = true
+
+[node name="Vaisseaux_Import" parent="." instance=ExtResource("6_5e64j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.421121, 0.462365, 0.37116)
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
@@ -70,4 +70,4 @@ autostart = true
 [connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]
 [connection signal="timeout" from="TimerShieldRegeneration" to="." method="_on_timer_shield_regeneration_timeout"]
 
-[editable path="Aergo_ship"]
+[editable path="Vaisseaux_Import"]

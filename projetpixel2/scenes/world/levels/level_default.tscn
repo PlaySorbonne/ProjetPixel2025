@@ -14,10 +14,8 @@ point_count = 5
 
 [node name="LevelDefault" instance=ExtResource("1_ndaoq")]
 
-[node name="ExperienceBar" parent="PlayerHud" index="1"]
-anchor_left = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="ShipHealth" parent="PlayerHud" index="11"]
+anchors_preset = 0
 
 [node name="EnemySpawner" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
