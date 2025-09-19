@@ -273,20 +273,22 @@ horizontal_alignment = 2
 [node name="ShipHealth" type="TextureRect" parent="."]
 self_modulate = Color(0, 0.625408, 0.686082, 1)
 anchors_preset = -1
-anchor_right = 0.273438
-anchor_bottom = 0.15
-offset_right = 3.05176e-05
+offset_right = 525.001
+offset_bottom = 162.0
 texture = ExtResource("10_ovn5c")
 expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="ShieldProgressBar" type="TextureProgressBar" parent="ShipHealth"]
-layout_mode = 0
-anchor_left = 0.302857
-anchor_top = 0.320988
-anchor_right = 0.731429
-anchor_bottom = 0.530864
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.011
+anchor_right = 0.011
+offset_left = 153.225
+offset_top = 52.0001
+offset_right = 378.226
+offset_bottom = 86.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("11_d078g")
@@ -294,11 +296,14 @@ tint_progress = Color(0, 0.468743, 0.762554, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
-layout_mode = 0
-anchor_left = 0.302857
-anchor_top = 0.580247
-anchor_right = 0.958095
-anchor_bottom = 0.753086
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_right = 0.014
+offset_left = 151.65
+offset_top = 94.0
+offset_right = 495.651
+offset_bottom = 122.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("12_3ed1r")
