@@ -153,7 +153,6 @@ one_shot = true
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
-visible = false
 z_index = 100
 layout_mode = 3
 anchors_preset = 15
@@ -187,6 +186,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonRestart" type="Button" parent="PauseMenu"]
+z_index = 101
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.357292
@@ -249,6 +249,7 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="."]
+z_index = -1
 anchors_preset = -1
 anchor_left = 0.294271
 anchor_top = 0.430556
@@ -272,7 +273,6 @@ horizontal_alignment = 2
 
 [node name="ShipHealth" type="TextureRect" parent="."]
 self_modulate = Color(0, 0.625408, 0.686082, 1)
-anchors_preset = -1
 offset_right = 525.001
 offset_bottom = 162.0
 texture = ExtResource("10_ovn5c")
