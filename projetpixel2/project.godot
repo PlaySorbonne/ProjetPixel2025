@@ -20,11 +20,13 @@ config/icon="res://icon.svg"
 GV="*res://scripts/global/global_variables.gd"
 TowersData="*res://scripts/global/towers_data.gd"
 RunData="*res://scripts/global/run_data.gd"
+SaveData="*res://scripts/global/save_data.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
