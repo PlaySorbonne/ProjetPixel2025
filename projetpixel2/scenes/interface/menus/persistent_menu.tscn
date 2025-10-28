@@ -388,7 +388,7 @@ script = ExtResource("3_mp0u6")
 [node name="Environment" type="Node3D" parent="World"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280945, -0.0511951, -2.79852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280945, -0.544512, -2.79852)
 material_override = SubResource("StandardMaterial3D_kgcmm")
 material_overlay = SubResource("StandardMaterial3D_6eyqy")
 mesh = SubResource("CylinderMesh_4l422")
