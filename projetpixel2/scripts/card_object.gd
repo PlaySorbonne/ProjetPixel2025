@@ -11,20 +11,24 @@ const FAMILY_COLORS := {
 	CardData.CardFamilies.Revolution : Color.WHITE,
 }
 
+const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
+
+
+static func create_card_object(card_data : CardData) -> CardObject:
+	var new_card : CardObject = CARD_OBJ_RES.instantiate()
+	new_card.card = card_data
+	return new_card
+
+
 var card : CardData:
 	set(value):
 		card = value
 		$Label.text = card.name
 		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
-		$TextureRect/Description.text = card.description
 var is_dragged := false
 var can_be_dropped_on_objects := false:
 	set(value):
 		can_be_dropped_on_objects = value
-		if can_be_dropped_on_objects:
-			$TextureRect/Description.visible = false
-		else:
-			$TextureRect/Description.visible = true
 var deck_position : Vector2
 
 
@@ -63,13 +67,11 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	is_dragged = true
 	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	GV.hud.update_card_description(card.description)
 
 func _on_drag_and_drop_2d_dropped() -> void:
 	#print("_on_drag_and_drop_2d_dropped")
 	is_dragged = false
 	GV.is_dragging_object = false
-	GV.hud.clear_card_description()
 	$TextureRect.modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
 		mouse_filter = Control.MOUSE_FILTER_PASS
@@ -109,3 +111,9 @@ func return_to_hand() -> void:
 
 func destroy_card_object() -> void:
 	queue_free()
+
+func _on_mouse_entered() -> void:
+	CardDescription.add_card_description(self)
+
+func _on_mouse_exited() -> void:
+	pass # Replace with function body.
