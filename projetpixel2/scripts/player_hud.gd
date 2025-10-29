@@ -11,6 +11,7 @@ const TOWERS_OFFSET := Vector2(-10, 0)
 var in_combo := false
 var available_towers := 2
 var new_level_cards : Array[CardObject] = []
+var cards_hand : Array[CardObject] = []
 var number_of_choosable_cards := 3
 
 # components
@@ -99,7 +100,12 @@ func update_available_towers() -> void:
 func add_card_to_hand(card_data: CardData) -> void:
 	var new_card : CardObject = CARD_OBJ_RES.instantiate()
 	new_card.card = card_data
+	_add_playeable_card(new_card)
+
+func _add_playeable_card(new_card : CardObject) -> void:
+	cards_hand.append(new_card)
 	$CardsContainer.add_child(new_card)
+	reorder_hand()
 	await get_tree().process_frame
 	new_card.can_be_dropped_on_objects = true
 
@@ -109,10 +115,51 @@ func gain_level() -> void:
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
+			new_card.scale = Vector2(0.7, 0.7)
 			$NewCardsContainer.add_child(new_card)
 			new_card.card_clicked.connect(on_card_level_clicked.bind(new_card))
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card()
+
+func reorder_hand() -> void:
+	if cards_hand.is_empty():
+		return
+	const MAX_SPACING := 50.0
+	
+	print("REORDER HAND:")
+	var container_size: Vector2 = $CardsContainer.size
+	var card_count := cards_hand.size()
+	
+	# How much horizontal space each card gets (they overlap slightly)
+	var total_width := container_size.x
+	var spacing : float = total_width / max(card_count, 1)
+	
+	# Fan curve parameters
+	var max_angle := 15.0 # total fan spread in degrees
+	var radius := 600.0   # controls how "curved" the arc is
+	var center_x : float = container_size.x / 2.0
+	var base_y : float = container_size.y * 0.9
+	
+	for i in range(card_count):
+		var card : CardObject = cards_hand[i]
+		var t : float = float(i) / max(card_count - 1, 1) # 0..1
+		var x : float = t * total_width
+		
+		# Compute arc offset (higher in middle)
+		var offset_from_center := (x - center_x) / center_x
+		var y_offset := -pow(offset_from_center, 2) * radius * 0.1
+		
+		# Card position & rotation in deck
+		card.deck_position = Vector2(x - card.size.x / 2.0, base_y + y_offset)
+		var rotation_angle : float = lerp(-max_angle / 2.0, max_angle / 2.0, t)
+		card.deck_rotation = rotation_angle
+		print("\tcard in deck = (" + str(card.deck_position) + " ; " + str(card.deck_rotation) + ")")
+		
+		# Ensure cards are drawn in order (last one on top)
+		card.z_index = i
+	for card : CardObject in cards_hand:
+		card.return_to_hand()
+
 
 func on_card_level_clicked(chosen_card : CardObject) -> void:
 	Engine.time_scale = 1.0
@@ -122,10 +169,8 @@ func on_card_level_clicked(chosen_card : CardObject) -> void:
 			card.destroy_card_object()
 	chosen_card.release_card()
 	chosen_card.get_parent().remove_child(chosen_card)
-	$CardsContainer.add_child(chosen_card)
+	_add_playeable_card(chosen_card)
 	new_level_cards = []
-	await get_tree().process_frame
-	chosen_card.can_be_dropped_on_objects = true
 
 func update_level() -> void:
 	update_experience(true)

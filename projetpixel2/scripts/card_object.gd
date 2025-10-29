@@ -30,6 +30,7 @@ var can_be_dropped_on_objects := false:
 	set(value):
 		can_be_dropped_on_objects = value
 var deck_position : Vector2
+var deck_rotation : float
 
 
 func _on_button_down() -> void:
@@ -105,8 +106,9 @@ func _on_drag_and_drop_2d_dropped() -> void:
 func return_to_hand() -> void:
 	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
 				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
-				).set_ease(Tween.EASE_OUT)
+				).set_ease(Tween.EASE_OUT).set_parallel(true)
 	tween.tween_property(self, "position", deck_position, 0.175)
+	tween.tween_property(self, "rotation", deck_rotation, 0.175)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:

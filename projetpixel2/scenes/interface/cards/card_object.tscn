@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlpjb"]
-font_size = 12
+font_size = 18
 font_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 0.180392)
 shadow_offset = Vector2(1.5, 1.5)
@@ -47,13 +47,15 @@ anchor_left = -0.048
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.56
-offset_top = -27.0
+offset_left = 27.12
+offset_top = -51.0
+offset_right = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Card_name"
 label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
+autowrap_mode = 2
 clip_text = true
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
