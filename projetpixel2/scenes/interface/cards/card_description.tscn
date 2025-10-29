@@ -12,7 +12,7 @@ font_size = 17
 font_size = 20
 
 [node name="CardDescription" type="Control"]
-z_index = 3
+z_index = 20
 custom_minimum_size = Vector2(340, 200)
 layout_mode = 3
 anchor_right = 0.176042

@@ -10,7 +10,7 @@ const FAMILY_COLORS := {
 	CardData.CardFamilies.Traders : Color.YELLOW,
 	CardData.CardFamilies.Revolution : Color.WHITE,
 }
-
+const ANIM_TIME := 0.175
 const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
 
 
@@ -64,7 +64,11 @@ func _input(event: InputEvent) -> void:
 func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
 	deck_position = position
-	$TextureRect.modulate = Color(1.0, 1.0, 1.0, 0.5)
+	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
+				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
+				).set_ease(Tween.EASE_OUT).set_parallel(true)
+	tween.tween_property($TextureRect, "modulate", Color(1.0, 1.0, 1.0, 0.5), ANIM_TIME)
+	tween.tween_property(self, "rotation", 0.0, ANIM_TIME)
 	is_dragged = true
 	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -107,8 +111,9 @@ func return_to_hand() -> void:
 	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
 				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
 				).set_ease(Tween.EASE_OUT).set_parallel(true)
-	tween.tween_property(self, "position", deck_position, 0.175)
-	tween.tween_property(self, "rotation", deck_rotation, 0.175)
+	tween.tween_property(self, "position", deck_position, ANIM_TIME)
+	tween.tween_property(self, "rotation", deck_rotation, ANIM_TIME)
+	tween.tween_property($TextureRect, "modulate", Color.WHITE, ANIM_TIME)
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:

@@ -124,41 +124,40 @@ func gain_level() -> void:
 func reorder_hand() -> void:
 	if cards_hand.is_empty():
 		return
-	const MAX_SPACING := 50.0
+	const MAX_X_SPACING := 200.0
+	const MAX_Y_SPACING := 50.0
+	const MAX_ROTATION_SPACING := PI / 6
 	
-	print("REORDER HAND:")
-	var container_size: Vector2 = $CardsContainer.size
-	var card_count := cards_hand.size()
+	var container_size : Vector2 = $CardsContainer.size
+	var card_count : int = cards_hand.size()
 	
 	# How much horizontal space each card gets (they overlap slightly)
-	var total_width := container_size.x
-	var spacing : float = total_width / max(card_count, 1)
+	var spacing_x : float = min(container_size.x / max(card_count, 1), MAX_X_SPACING)
+	var spacing_rot : float = MAX_ROTATION_SPACING / max(card_count - 1, 1)
 	
-	# Fan curve parameters
-	var max_angle := 15.0 # total fan spread in degrees
-	var radius := 600.0   # controls how "curved" the arc is
 	var center_x : float = container_size.x / 2.0
-	var base_y : float = container_size.y * 0.9
+	var base_y : float = 0.0
 	
 	for i in range(card_count):
 		var card : CardObject = cards_hand[i]
-		var t : float = float(i) / max(card_count - 1, 1) # 0..1
-		var x : float = t * total_width
 		
-		# Compute arc offset (higher in middle)
-		var offset_from_center := (x - center_x) / center_x
-		var y_offset := -pow(offset_from_center, 2) * radius * 0.1
+		# Spread cards evenly across the width, centered
+		var t : float = float(i) / max(card_count - 1, 1)
+		var x : float = t * (spacing_x * (card_count - 1))
+		var offset_x : float = x - (spacing_x * (card_count - 1) / 2.0)
 		
-		# Card position & rotation in deck
-		card.deck_position = Vector2(x - card.size.x / 2.0, base_y + y_offset)
-		var rotation_angle : float = lerp(-max_angle / 2.0, max_angle / 2.0, t)
-		card.deck_rotation = rotation_angle
-		print("\tcard in deck = (" + str(card.deck_position) + " ; " + str(card.deck_rotation) + ")")
+		# Arc height for fan curve (parabolic)
+		var offset_norm : float = offset_x / (spacing_x * (card_count - 1) / 2.0)
+		var y_offset : float = -pow(offset_norm, 2) * MAX_Y_SPACING
 		
-		# Ensure cards are drawn in order (last one on top)
+		# Assign computed position & rotation
+		card.deck_position = Vector2(center_x + offset_x - card.size.x / 2.0, base_y - y_offset)
+		card.deck_rotation = lerp(-MAX_ROTATION_SPACING / 2.0, MAX_ROTATION_SPACING / 2.0, t)
 		card.z_index = i
+	
 	for card : CardObject in cards_hand:
 		card.return_to_hand()
+
 
 
 func on_card_level_clicked(chosen_card : CardObject) -> void:
