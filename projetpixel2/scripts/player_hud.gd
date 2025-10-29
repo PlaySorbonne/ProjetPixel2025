@@ -115,7 +115,6 @@ func gain_level() -> void:
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
-			new_card.scale = Vector2(0.7, 0.7)
 			$NewCardsContainer.add_child(new_card)
 			new_card.card_clicked.connect(on_card_level_clicked.bind(new_card))
 			new_level_cards.append(new_card)
@@ -140,8 +139,8 @@ func reorder_hand() -> void:
 		cards_hand[0].return_to_hand()
 		return
 	
-	const MAX_X_SPACING := 200.0
-	const MAX_Y_SPACING := 50.0
+	const MAX_X_SPACING := 150.0
+	const MAX_Y_SPACING := 40.0
 	const MAX_ROTATION_SPACING := PI / 6
 	
 	var spacing_x : float = min(container_size.x / max(card_count, 1), MAX_X_SPACING)

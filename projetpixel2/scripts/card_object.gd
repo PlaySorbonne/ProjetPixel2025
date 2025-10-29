@@ -61,7 +61,8 @@ func _input(event: InputEvent) -> void:
 
 func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
-	deck_position = position
+	if deck_position == Vector2.ZERO:
+		deck_position = position
 	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
 				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
 				).set_ease(Tween.EASE_OUT).set_parallel(true)
