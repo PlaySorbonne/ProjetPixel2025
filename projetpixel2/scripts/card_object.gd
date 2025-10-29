@@ -26,9 +26,7 @@ var card : CardData:
 		$Label.text = card.name
 		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
 var is_dragged := false
-var can_be_dropped_on_objects := false:
-	set(value):
-		can_be_dropped_on_objects = value
+var can_be_dropped_on_objects := false
 var deck_position : Vector2
 var deck_rotation : float
 
@@ -74,12 +72,12 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _on_drag_and_drop_2d_dropped() -> void:
-	#print("_on_drag_and_drop_2d_dropped")
 	is_dragged = false
 	GV.is_dragging_object = false
 	$TextureRect.modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
 		mouse_filter = Control.MOUSE_FILTER_PASS
+		return_to_hand()
 		return
 	# interaction2D
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()

@@ -100,9 +100,9 @@ func update_available_towers() -> void:
 func add_card_to_hand(card_data: CardData) -> void:
 	var new_card : CardObject = CARD_OBJ_RES.instantiate()
 	new_card.card = card_data
-	_add_playeable_card(new_card)
+	_add_playable_card(new_card)
 
-func _add_playeable_card(new_card : CardObject) -> void:
+func _add_playable_card(new_card : CardObject) -> void:
 	cards_hand.append(new_card)
 	$CardsContainer.add_child(new_card)
 	reorder_hand()
@@ -177,7 +177,7 @@ func on_card_level_clicked(chosen_card : CardObject) -> void:
 			card.destroy_card_object()
 	chosen_card.release_card()
 	chosen_card.get_parent().remove_child(chosen_card)
-	_add_playeable_card(chosen_card)
+	_add_playable_card(chosen_card)
 	new_level_cards = []
 
 func update_level() -> void:
