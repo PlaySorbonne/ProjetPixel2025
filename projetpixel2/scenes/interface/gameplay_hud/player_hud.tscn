@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=18 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -23,9 +23,6 @@ font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_pfuso"]
 font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_e0ndd"]
-font_size = 24
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
@@ -258,18 +255,6 @@ anchor_bottom = 0.525926
 size_flags_horizontal = 3
 alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="LabelCardDescription" type="Label" parent="."]
-anchors_preset = -1
-anchor_left = 0.603
-anchor_right = 1.0
-anchor_bottom = 0.256
-offset_left = 0.239868
-offset_bottom = -0.480011
-grow_horizontal = 0
-text = "card description."
-label_settings = SubResource("LabelSettings_e0ndd")
-horizontal_alignment = 2
 
 [node name="ShipHealth" type="TextureRect" parent="."]
 self_modulate = Color(0, 0.625408, 0.686082, 1)
