@@ -54,16 +54,26 @@ placeholder_text = "Enter deck name..."
 max_length = 24
 metadata/_edit_use_anchors_ = true
 
-[node name="CardContainer" type="HFlowContainer" parent="DeckCraft"]
+[node name="CardsScrollContainer" type="ScrollContainer" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.332292
-anchor_top = 0.108333
-anchor_right = 0.980208
-anchor_bottom = 0.968518
+anchor_left = 0.317708
+anchor_top = 0.124074
+anchor_right = 0.976042
+anchor_bottom = 0.957407
+horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="DeckCraft"]
+[node name="CardContainer" type="HFlowContainer" parent="DeckCraft/CardsScrollContainer"]
+clip_contents = true
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacer" type="Control" parent="DeckCraft/CardsScrollContainer/CardContainer"]
+custom_minimum_size = Vector2(1000, 20)
+layout_mode = 2
+
+[node name="DecksContainer" type="ScrollContainer" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0177083
@@ -72,19 +82,19 @@ anchor_right = 0.270312
 anchor_bottom = 0.887963
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeckCraft/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckCraft/DecksContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="DeckCraft/ScrollContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 75)
 layout_mode = 2
 text = "gbfvredfgbfvrbgfvd"
 
-[node name="DeckButton" type="Control" parent="DeckCraft/ScrollContainer/VBoxContainer"]
+[node name="DeckButton" type="Control" parent="DeckCraft/DecksContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="DeckCraft/ScrollContainer/VBoxContainer/DeckButton"]
+[node name="ColorRect" type="ColorRect" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Button" type="Button" parent="DeckCraft/ScrollContainer/VBoxContainer/DeckButton"]
+[node name="Button" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.015
@@ -107,7 +117,7 @@ alignment = 0
 clip_text = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonRemoveDeck" type="Button" parent="DeckCraft/ScrollContainer/VBoxContainer/DeckButton"]
+[node name="ButtonRemoveDeck" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.875
@@ -117,6 +127,18 @@ grow_horizontal = 0
 grow_vertical = 2
 text = "X"
 metadata/_edit_use_anchors_ = true
+
+[node name="OptionButton" type="OptionButton" parent="DeckCraft/DecksContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+selected = 0
+item_count = 3
+popup/item_0/text = "My Deck 02"
+popup/item_0/id = 0
+popup/item_1/text = "My Deck 03"
+popup/item_1/id = 1
+popup/item_2/text = "Custom Speed Deck"
+popup/item_2/id = 2
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_5xxu5")]
 z_index = 4
