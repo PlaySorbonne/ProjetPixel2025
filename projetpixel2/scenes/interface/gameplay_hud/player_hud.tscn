@@ -243,6 +243,7 @@ anchor_right = 0.932813
 anchor_bottom = 0.955556
 offset_top = -15.0
 offset_bottom = -15.0
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="."]
