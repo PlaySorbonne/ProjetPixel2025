@@ -30,7 +30,7 @@ script = ExtResource("1_ldeku")
 
 [node name="ExperienceBarBackgroundTexture" type="TextureRect" parent="."]
 self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
-z_index = 6
+z_index = 20
 anchors_preset = -1
 anchor_left = 0.176563
 anchor_top = 0.916667
@@ -43,7 +43,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="."]
-z_index = 10
+z_index = 21
 custom_minimum_size = Vector2(1201, 27)
 anchors_preset = -1
 anchor_left = 0.186979

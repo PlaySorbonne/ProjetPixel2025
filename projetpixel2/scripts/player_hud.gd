@@ -122,36 +122,41 @@ func gain_level() -> void:
 			new_card.card = CardData.get_random_card()
 
 func reorder_hand() -> void:
-	if cards_hand.is_empty():
+	var card_count : int = cards_hand.size()
+	if card_count == 0:
 		return
+	
+	var container_size : Vector2 = $CardsContainer.size
+	var base_x : float = container_size.x / 2.0 - (cards_hand[0
+					].size.x * cards_hand[0].scale.x / 2.0) - 30.0
+	var base_y : float = -30.0
+	if card_count == 1:
+		cards_hand[0].deck_position = Vector2(base_x, base_y)
+		cards_hand[0].deck_rotation = 0.0
+		cards_hand[0].return_to_hand()
+		return
+	
 	const MAX_X_SPACING := 200.0
 	const MAX_Y_SPACING := 50.0
 	const MAX_ROTATION_SPACING := PI / 6
 	
-	var container_size : Vector2 = $CardsContainer.size
-	var card_count : int = cards_hand.size()
-	
-	# How much horizontal space each card gets (they overlap slightly)
 	var spacing_x : float = min(container_size.x / max(card_count, 1), MAX_X_SPACING)
 	var spacing_rot : float = MAX_ROTATION_SPACING / max(card_count - 1, 1)
-	
-	var center_x : float = container_size.x / 2.0
-	var base_y : float = 0.0
 	
 	for i in range(card_count):
 		var card : CardObject = cards_hand[i]
 		
-		# Spread cards evenly across the width, centered
 		var t : float = float(i) / max(card_count - 1, 1)
 		var x : float = t * (spacing_x * (card_count - 1))
 		var offset_x : float = x - (spacing_x * (card_count - 1) / 2.0)
 		
-		# Arc height for fan curve (parabolic)
 		var offset_norm : float = offset_x / (spacing_x * (card_count - 1) / 2.0)
 		var y_offset : float = -pow(offset_norm, 2) * MAX_Y_SPACING
 		
-		# Assign computed position & rotation
-		card.deck_position = Vector2(center_x + offset_x - card.size.x / 2.0, base_y - y_offset)
+		card.deck_position = Vector2(
+			base_x + offset_x,
+			base_y - y_offset
+		)
 		card.deck_rotation = lerp(-MAX_ROTATION_SPACING / 2.0, MAX_ROTATION_SPACING / 2.0, t)
 		card.z_index = i
 	
