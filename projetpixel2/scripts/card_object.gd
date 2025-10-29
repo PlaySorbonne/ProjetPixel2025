@@ -104,7 +104,6 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		elif spatial_object is Spaceship:
 			#TODO
 			print_debug("TODO: handle card dropped on spaceship")
-	
 	return_to_hand()
 
 func return_to_hand() -> void:
@@ -118,6 +117,8 @@ func return_to_hand() -> void:
 
 func destroy_card_object() -> void:
 	queue_free()
+	if is_instance_valid(GV.hud):
+		GV.hud.remove_card_from_hand(self)
 
 func _on_mouse_entered() -> void:
 	CardDescription.add_card_description(self)

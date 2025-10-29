@@ -121,6 +121,10 @@ func gain_level() -> void:
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card()
 
+func remove_card_from_hand(card_object : CardObject) -> void:
+	cards_hand.erase(card_object)
+	reorder_hand()
+
 func reorder_hand() -> void:
 	var card_count : int = cards_hand.size()
 	if card_count == 0:
