@@ -15,8 +15,17 @@ static func add_card_description(n_card_object : CardObject) -> CardDescription:
 var card_object : CardObject = null
 
 
+func _set_description_position() -> Vector2:
+	var viewport_width : float = get_viewport().get_visible_rect().size.x
+	var card_pos_x : float = card_object.global_position.x + card_object.size.x
+	var distance_from_right = viewport_width - card_pos_x
+	if distance_from_right < 400:
+		return Vector2(-self.size.x, 0.0)
+	else:
+		return Vector2(card_object.size.x, 0.0)
+
 func _ready() -> void:
-	position = Vector2(card_object.size.x, 0.0)
+	position = _set_description_position()
 	visible = true
 	card_object.mouse_exited.connect(destroy_description)
 	await get_tree().process_frame
