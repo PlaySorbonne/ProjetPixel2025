@@ -3,6 +3,7 @@ class_name DragAndDrop
 
 signal dragged
 signal dropped
+signal clicked
 
 const CLICK_MAX_TIME := 0.2
 
@@ -25,7 +26,9 @@ var is_pressed := false:
 			var timer : SceneTreeTimer = get_tree().create_timer(CLICK_MAX_TIME, true, false, true)
 			timer.timeout.connect(reset_just_pressed)
 		else:
-			if is_dragged:  # and (not was_just_pressed):
+			if was_just_pressed:
+				clicked.emit()
+			if is_dragged:
 				drop()
 
 func press() -> void:
@@ -39,8 +42,8 @@ func reset_just_pressed() -> void:
 
 func drag() -> void:
 	is_dragged = true
-	emit_signal("dragged")
+	dragged.emit()
 
 func drop() -> void:
 	is_dragged = false
-	emit_signal("dropped")
+	dropped.emit()

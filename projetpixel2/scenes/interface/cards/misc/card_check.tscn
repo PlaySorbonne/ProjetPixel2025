@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://ycs83khsyf8n"]
+
+[ext_resource type="Script" uid="uid://begy2o3gddgfw" path="res://scripts/card_check.gd" id="1_v085x"]
+[ext_resource type="Texture2D" uid="uid://5301hc1np5b7" path="res://resources/images/ui_assets/icons/flip_empty.png" id="2_g22wu"]
+
+[node name="CardCheck" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_v085x")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_left = 147.0
+offset_top = -27.0
+offset_right = 222.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("2_g22wu")
+expand_mode = 3
