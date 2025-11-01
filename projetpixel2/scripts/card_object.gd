@@ -29,7 +29,23 @@ var is_dragged := false
 var can_be_dropped_on_objects := false
 var deck_position : Vector2
 var deck_rotation : float
+var card_tweens : Dictionary[String, Tween] = {}
 
+
+func _ready() -> void:
+	await get_tree().process_frame
+	if deck_position == Vector2.ZERO:
+		deck_position = position
+		deck_rotation = rotation
+
+func tween_properties(properties : Dictionary[String, Variant]) -> void:
+	for k : String in properties.keys():
+		if card_tweens.has(k) and card_tweens[k]:
+			card_tweens[k].kill()
+		card_tweens[k] = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
+				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
+				).set_ease(Tween.EASE_OUT).set_parallel(true)
+		card_tweens[k].tween_property(self, k, properties[k], ANIM_TIME)
 
 func _on_button_down() -> void:
 	card_clicked.emit()
@@ -63,11 +79,11 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
 	if deck_position == Vector2.ZERO:
 		deck_position = position
-	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
-				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
-				).set_ease(Tween.EASE_OUT).set_parallel(true)
-	tween.tween_property($TextureRect, "modulate", Color(1.0, 1.0, 1.0, 0.5), ANIM_TIME)
-	tween.tween_property(self, "rotation", 0.0, ANIM_TIME)
+	tween_properties({
+		"position" : deck_position,
+		"rotation" : 0.0,
+		"modulate" : Color(1.0, 1.0, 1.0, 0.5),
+	})
 	is_dragged = true
 	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -75,7 +91,7 @@ func _on_drag_and_drop_2d_dragged() -> void:
 func _on_drag_and_drop_2d_dropped() -> void:
 	is_dragged = false
 	GV.is_dragging_object = false
-	$TextureRect.modulate = Color.WHITE
+	modulate = Color.WHITE
 	if not can_be_dropped_on_objects:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
@@ -106,12 +122,11 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	return_to_hand()
 
 func return_to_hand() -> void:
-	var tween := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC
-				).set_ignore_time_scale(true).set_pause_mode(Tween.TWEEN_PAUSE_PROCESS
-				).set_ease(Tween.EASE_OUT).set_parallel(true)
-	tween.tween_property(self, "position", deck_position, ANIM_TIME)
-	tween.tween_property(self, "rotation", deck_rotation, ANIM_TIME)
-	tween.tween_property($TextureRect, "modulate", Color.WHITE, ANIM_TIME)
+	tween_properties({
+		"position" : deck_position,
+		"rotation" : deck_rotation,
+		"modulate" : Color.WHITE,
+	})
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:
@@ -121,6 +136,14 @@ func destroy_card_object() -> void:
 
 func _on_mouse_entered() -> void:
 	CardDescription.add_card_description(self)
+	tween_properties({
+		"position" : Vector2(0.0, -20.0) + deck_position,
+		"rotation" : 0.0
+	})
 
 func _on_mouse_exited() -> void:
-	pass # Replace with function body.
+	if not is_dragged:
+		tween_properties({
+			"position" : deck_position,
+			"rotation" : deck_rotation,
+		})

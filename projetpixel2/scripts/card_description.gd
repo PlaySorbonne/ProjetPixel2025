@@ -26,7 +26,7 @@ func _set_description_position() -> Vector2:
 
 func _ready() -> void:
 	position = _set_description_position()
-	rotation = -card_object.rotation
+	#rotation = -card_object.rotation
 	visible = true
 	card_object.mouse_exited.connect(destroy_description)
 	await get_tree().process_frame

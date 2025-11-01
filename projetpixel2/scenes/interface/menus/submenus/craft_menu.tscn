@@ -58,7 +58,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.317708
-anchor_top = 0.124074
+anchor_top = 0.108333
 anchor_right = 0.976042
 anchor_bottom = 0.957407
 horizontal_scroll_mode = 0
@@ -70,7 +70,7 @@ layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Spacer" type="Control" parent="DeckCraft/CardsScrollContainer/CardContainer"]
-custom_minimum_size = Vector2(1000, 20)
+custom_minimum_size = Vector2(1000, 45)
 layout_mode = 2
 
 [node name="DecksContainer" type="ScrollContainer" parent="DeckCraft"]
