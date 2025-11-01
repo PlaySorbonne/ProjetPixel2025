@@ -13,12 +13,12 @@ font_size = 20
 
 [node name="CardDescription" type="Control"]
 z_index = 20
-custom_minimum_size = Vector2(340, 200)
+custom_minimum_size = Vector2(340, 165)
 layout_mode = 3
 anchor_right = 0.176042
-anchor_bottom = 0.193519
+anchor_bottom = 0.153
 offset_right = 2.0
-offset_bottom = -9.0
+offset_bottom = -0.240005
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ddsqd")

@@ -11,12 +11,12 @@ shadow_color = Color(0, 0, 0, 0.180392)
 shadow_offset = Vector2(1.5, 1.5)
 
 [node name="CardObject" type="Button"]
-custom_minimum_size = Vector2(152, 164.8)
+custom_minimum_size = Vector2(157, 165)
 anchors_preset = -1
-anchor_right = 0.0792083
-anchor_bottom = 0.153037
-offset_right = -0.0800171
-offset_bottom = -0.280014
+anchor_right = 0.082
+anchor_bottom = 0.153
+offset_right = -0.440002
+offset_bottom = -0.240005
 pivot_offset = Vector2(97, 102.5)
 focus_mode = 0
 mouse_filter = 1
