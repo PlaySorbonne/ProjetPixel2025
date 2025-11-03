@@ -9,6 +9,7 @@ const MENU_TRANSITION_TIME := 0.3
 
 
 func _ready() -> void:
+	SaveData.load_data()
 	if len(CardData.cards_data.values()) == 0:
 		CardData.load_cards_data()
 	GV.persistent_menu = self
