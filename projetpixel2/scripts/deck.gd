@@ -4,10 +4,10 @@ class_name Deck
 
 @export var name := "My deck"
 @export var color : Color = Color.RED
-@export var cards : Array[int] = []
+@export var cards : Array[String] = []
 
 
-func _init(nname : String, ncolor : Color, ncards : Array[int]) -> void:
+func _init(nname : String, ncolor : Color, ncards : Array[String]) -> void:
 	name = nname
 	color = ncolor
 	cards = ncards
@@ -20,5 +20,6 @@ func deck_to_string() -> String:
 
 func get_cards() -> Array[CardData]:
 	var cards_data : Array[CardData] = []
-	CardData.cards_data
+	for card_name : String in cards:
+		cards_data.append(CardData.cards_data[card_name])
 	return cards_data

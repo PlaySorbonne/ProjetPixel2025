@@ -43,7 +43,7 @@ func update_cards() -> void:
 	selected_cards.clear()
 	var currently_selected_cards : Array[CardData] = []
 	if current_deck != null:
-		currently_selected_cards = current_deck.cards
+		currently_selected_cards = current_deck.get_cards()
 	for card_obj : CardObject in displayed_cards:
 		if card_obj.card in currently_selected_cards:
 			display_cards_checkmarks[card_obj].force_select(true)
@@ -56,7 +56,7 @@ func add_cards() -> void:
 	spacer.custom_minimum_size.x = cards_container.custom_minimum_size.x
 	var currently_selected_cards : Array[CardData] = []
 	if current_deck != null:
-		currently_selected_cards = current_deck.cards
+		currently_selected_cards = current_deck.get_cards()
 	for card : CardData in CardData.cards_data.values():
 		var card_obj := CardObject.create_card_object(card)
 		cards_container.add_child(card_obj)
@@ -80,10 +80,10 @@ func card_selection_changed(new_selection : bool, card : CardObject) -> void:
 	else:
 		selected_cards.erase(card)
 
-func get_selected_cards() -> Array[CardData]:
-	var current_cards : Array[CardData] = []
+func get_selected_cards() -> Array[String]:
+	var current_cards : Array[String] = []
 	for card_obj : CardObject in selected_cards:
-		current_cards.append(card_obj.card)
+		current_cards.append(card_obj.card.name)
 	return current_cards
 
 func get_deck_index() -> int:

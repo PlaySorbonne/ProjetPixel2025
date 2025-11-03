@@ -18,7 +18,6 @@ static var current_deck : Array[CardData] = []
 @export var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
 @export var trigger_condition : Callable  # a boolean function to make sure the effect triggers
 @export var effect : Callable # the method to call when the effect triggers
-@export var id : int
 var card_code : RefCounted
 
 static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
@@ -38,12 +37,10 @@ static func load_cards_data() -> void:
 	cards_data = {}
 	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
 	card_file.get_csv_line() # remove the top line (column titles)
-	var current_id := 0
 	while not card_file.eof_reached():
 		var new_card := CardData.new()
-		new_card.parse_from_csv(card_file.get_csv_line(), current_id)
+		new_card.parse_from_csv(card_file.get_csv_line())
 		cards_data[new_card.name] = new_card
-		current_id += 1
 	card_file.close()
 	for card : CardData in cards_data.values():
 		current_deck.append(card)
@@ -63,13 +60,12 @@ func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
 	else:
 		return false
 
-func parse_from_csv(csv_line : PackedStringArray, card_id : int) -> void:
+func parse_from_csv(csv_line : PackedStringArray) -> void:
 	for i : int in range(len(csv_line)):
 		csv_line[i] = csv_line[i].replace("        ", "	")
 	name = csv_line[0]
 	description = csv_line[1]
 	value = int(csv_line[2])
-	id = card_id
 	
 	@warning_ignore("int_as_enum_without_cast")
 	rarity = CardRarities.get(csv_line[3])
