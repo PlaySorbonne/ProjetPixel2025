@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqe4le36mjs3l"]
+[gd_scene load_steps=7 format=3 uid="uid://dqe4le36mjs3l"]
 
 [ext_resource type="Script" uid="uid://bsjkmmp3u882i" path="res://scripts/craft_menu.gd" id="1_e7qj5"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_5xxu5"]
+[ext_resource type="Script" uid="uid://ctposygip00ay" path="res://scripts/deck_craft.gd" id="2_6cwcy"]
+[ext_resource type="PackedScene" uid="uid://kmm4mbdn4e45" path="res://scenes/interface/menus/objects/deck_button.tscn" id="3_enewh"]
+
+[sub_resource type="Gradient" id="Gradient_enewh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6cwcy"]
+gradient = SubResource("Gradient_enewh")
+width = 1
 
 [node name="CraftMenu" type="Control"]
 layout_mode = 3
@@ -20,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_6cwcy")
 
 [node name="ColorRect2" type="ColorRect" parent="DeckCraft"]
 layout_mode = 1
@@ -43,7 +53,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.325
 anchor_top = 0.0305556
-anchor_right = 0.718229
+anchor_right = 0.705208
 anchor_bottom = 0.0888889
 theme_override_font_sizes/font_size = 32
 text = "My Deck"
@@ -70,72 +80,59 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(1000, 45)
 layout_mode = 2
 
-[node name="DecksContainer" type="ScrollContainer" parent="DeckCraft"]
+[node name="ButtonSave" type="Button" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0177083
-anchor_top = 0.0287037
-anchor_right = 0.270312
-anchor_bottom = 0.887963
+anchor_left = 0.0239583
+anchor_top = 0.785185
+anchor_right = 0.101042
+anchor_bottom = 0.885185
+text = "Save deck"
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DeckCraft/DecksContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 75)
-layout_mode = 2
-text = "gbfvredfgbfvrbgfvd"
-
-[node name="DeckButton" type="Control" parent="DeckCraft/DecksContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Button" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
+[node name="ButtonErase" type="Button" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.015
-anchor_top = 0.12
-anchor_right = 0.765
-anchor_bottom = 0.86
-grow_horizontal = 2
-grow_vertical = 2
-text = "My Deck 01"
-alignment = 0
-clip_text = true
+anchor_left = 0.130729
+anchor_top = 0.785185
+anchor_right = 0.207813
+anchor_bottom = 0.885185
+text = "Erase deck"
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonRemoveDeck" type="Button" parent="DeckCraft/DecksContainer/VBoxContainer/DeckButton"]
+[node name="ScrollContainer" type="ScrollContainer" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.875
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-text = "X"
+anchor_left = 0.0161458
+anchor_top = 0.0259259
+anchor_right = 0.279687
+anchor_bottom = 0.755556
 metadata/_edit_use_anchors_ = true
 
-[node name="OptionButton" type="OptionButton" parent="DeckCraft/DecksContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckCraft/ScrollContainer"]
+custom_minimum_size = Vector2(506, 788)
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
-selected = 0
-item_count = 3
-popup/item_0/text = "My Deck 02"
-popup/item_0/id = 0
-popup/item_1/text = "My Deck 03"
-popup/item_1/id = 1
-popup/item_2/text = "Custom Speed Deck"
-popup/item_2/id = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="DeckButton" parent="DeckCraft/ScrollContainer/VBoxContainer" instance=ExtResource("3_enewh")]
+layout_mode = 2
+
+[node name="ButtonAddDeck" type="Button" parent="DeckCraft/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ColorPicker" type="Button" parent="DeckCraft"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.741146
+anchor_top = 0.0166667
+anchor_right = 0.792188
+anchor_bottom = 0.109259
+icon = SubResource("GradientTexture1D_6cwcy")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_5xxu5")]
 z_index = 4

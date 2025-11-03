@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://kmm4mbdn4e45"]
+
+[ext_resource type="Script" uid="uid://bdspgkjxyg2r8" path="res://scripts/deck_button.gd" id="1_2fvq3"]
+
+[sub_resource type="Gradient" id="Gradient_5xxu5"]
+offsets = PackedFloat32Array(0, 0.86645)
+colors = PackedColorArray(0, 0, 0, 1, 2.64719e-07, 0.254935, 0.319351, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_enewh"]
+gradient = SubResource("Gradient_5xxu5")
+
+[node name="DeckButton" type="TextureButton"]
+custom_minimum_size = Vector2(0, 50)
+texture_normal = SubResource("GradientTexture1D_enewh")
+stretch_mode = 0
+script = ExtResource("1_2fvq3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "My_Deck"
+vertical_alignment = 1
+clip_text = true
