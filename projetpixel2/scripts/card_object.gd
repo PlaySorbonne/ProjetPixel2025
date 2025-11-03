@@ -38,6 +38,11 @@ func _ready() -> void:
 		deck_position = position
 		deck_rotation = rotation
 
+func cancel_tween_properties(properties : Array[String]) -> void:
+	for k : String in properties:
+		if card_tweens.has(k) and card_tweens[k]:
+			card_tweens[k].kill()
+
 func tween_properties(properties : Dictionary[String, Variant]) -> void:
 	for k : String in properties.keys():
 		if card_tweens.has(k) and card_tweens[k]:
@@ -79,12 +84,12 @@ func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
 	if deck_position == Vector2.ZERO:
 		deck_position = position
+	is_dragged = true
+	cancel_tween_properties(["position"])
 	tween_properties({
-		"position" : deck_position,
 		"rotation" : 0.0,
 		"modulate" : Color(1.0, 1.0, 1.0, 0.5),
 	})
-	is_dragged = true
 	GV.is_dragging_object = true
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
