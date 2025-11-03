@@ -10,15 +10,16 @@ enum CardFamilies {Military, Scientists, Traders, Revolution}
 static var cards_data : Dictionary[String, CardData] = {}
 static var current_deck : Array[CardData] = []
 
-var name := "blank_card"
-var description := "blank description"
-var value := 1
-var rarity : CardRarities = CardRarities.Common
-var family : CardFamilies = CardFamilies.Military
-var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
-var trigger_condition : Callable  # a boolean function to make sure the effect triggers
-var effect : Callable # the method to call when the effect triggers
+@export var name := "blank_card"
+@export var description := "blank description"
+@export var value := 1
+@export var rarity : CardRarities = CardRarities.Common
+@export var family : CardFamilies = CardFamilies.Military
+@export var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
+@export var trigger_condition : Callable  # a boolean function to make sure the effect triggers
+@export var effect : Callable # the method to call when the effect triggers
 var card_code : RefCounted
+@export var card_id : String
 
 static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
 	match card_rarity:
