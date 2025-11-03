@@ -96,8 +96,9 @@ func _on_color_button_pressed() -> void:
 	$ColorButton.modulate = DECK_COLORS.pick_random()
 
 func _on_button_add_deck_pressed() -> void:
-	current_deck = Deck.new("My Deck", DECK_COLORS.pick_random(), [])
-	add_deck_button(current_deck)
+	var new_deck : Deck = Deck.new("My Deck", DECK_COLORS.pick_random(), [])
+	add_deck_button(new_deck)
+	select_deck(new_deck)
 
 func select_deck(deck : Deck) -> void:
 	if current_deck != null and current_deck != deck:

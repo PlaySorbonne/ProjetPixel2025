@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://kmm4mbdn4e45"]
 
 [ext_resource type="Script" uid="uid://bdspgkjxyg2r8" path="res://scripts/deck_button.gd" id="1_2fvq3"]
-[ext_resource type="Texture2D" uid="uid://li002byrnpci" path="res://resources/images/ui_assets/icons/flip_full.png" id="2_bgebo"]
+[ext_resource type="Texture2D" uid="uid://5301hc1np5b7" path="res://resources/images/ui_assets/icons/flip_empty.png" id="2_bgebo"]
 
 [sub_resource type="Gradient" id="Gradient_5xxu5"]
 offsets = PackedFloat32Array(0, 0.86645)
@@ -29,7 +29,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="TextureSelect" type="TextureRect" parent="."]
-visible = false
+modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = 6
