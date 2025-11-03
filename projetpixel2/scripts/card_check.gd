@@ -24,6 +24,10 @@ func _ready() -> void:
 	await get_tree().process_frame
 	card_object.get_node("DragAndDrop2D").clicked.connect(toggle_select)
 
+func force_select(new_select : bool) -> void:
+	if new_select != is_selected:
+		toggle_select()
+
 func toggle_select() -> void:
 	if is_selected:
 		is_selected = false

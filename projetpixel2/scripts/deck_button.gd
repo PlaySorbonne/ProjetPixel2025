@@ -24,5 +24,11 @@ func _ready() -> void:
 	# set button text
 	$Label.text = deck.name
 
+func select_button() -> void:
+	$TextureSelect.visible = true
+
+func deselect_button() -> void:
+	$TextureSelect.visible = false
+
 func destroy_button() -> void:
 	queue_free()

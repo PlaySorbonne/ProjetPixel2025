@@ -9,6 +9,7 @@ const DECK_COLORS : Array[Color] = [Color.RED, Color.AQUAMARINE, Color.BLUE,
 var deck_buttons : Dictionary[Deck, DeckButton] = {}
 var current_deck : Deck
 var displayed_cards : Array[CardObject] = []
+var display_cards_checkmarks : Dictionary[CardObject, CardCheck] = {}
 var selected_cards : Array[CardObject] = []
 var cards_count := 0:
 	set(value):
@@ -20,8 +21,10 @@ var cards_count := 0:
 
 
 func _ready() -> void:
+	if not SaveData.player_decks.is_empty():
+		select_deck(SaveData.player_decks[0])
+		add_cards()
 	add_decks()
-	add_cards()
 
 func add_decks() -> void:
 	for deck_button : DeckButton in deck_buttons.values():
@@ -29,9 +32,26 @@ func add_decks() -> void:
 			deck_button.queue_free()
 	deck_buttons.clear()
 	for d : Deck in SaveData.player_decks:
-		var deck_button := DeckButton.create_deck_button(d)
-		decks_container.add_child(deck_button, false, Node.INTERNAL_MODE_FRONT)
-		deck_buttons[d] = deck_button
+		add_deck_button(d)
+
+func add_deck_button(deck : Deck) -> void:
+	var deck_button := DeckButton.create_deck_button(deck)
+	decks_container.add_child(deck_button, false, Node.INTERNAL_MODE_FRONT)
+	deck_buttons[deck] = deck_button
+	deck_button.pressed.connect(select_deck.bind(deck))
+
+func update_cards() -> void:
+	selected_cards.clear()
+	var currently_selected_cards : Array[CardData] = []
+	if current_deck != null:
+		currently_selected_cards = current_deck.cards
+	for card_obj : CardObject in displayed_cards:
+		var card_check := CardCheck.add_card_check(card_obj)
+		if card_obj.card in currently_selected_cards:
+			display_cards_checkmarks[card_obj].force_select(true)
+			selected_cards.append(card_obj)
+		else:
+			display_cards_checkmarks[card_obj].force_select(false)
 
 func add_cards() -> void:
 	cards_container.custom_minimum_size = $CardsScrollContainer.size
@@ -45,8 +65,9 @@ func add_cards() -> void:
 		var card_check := CardCheck.add_card_check(card_obj)
 		displayed_cards.append(card_obj)
 		if card in currently_selected_cards:
-			card_check.toggle_select()
+			card_check.force_select(true)
 		card_check.selection_changed.connect(card_selection_changed.bind(card_obj))
+		display_cards_checkmarks[card_obj] = card_check
 
 func remove_cards_display() -> void:
 	for card_obj : CardObject in displayed_cards:
@@ -77,7 +98,17 @@ func _on_color_button_pressed() -> void:
 	$ColorButton.modulate = DECK_COLORS.pick_random()
 
 func _on_button_add_deck_pressed() -> void:
-	pass # Replace with function body.
+	current_deck = Deck.new("My Deck", DECK_COLORS.pick_random(), [])
+	add_deck_button(current_deck)
+
+func select_deck(deck : Deck) -> void:
+	if current_deck != null and current_deck != deck:
+		deck_buttons[current_deck].deselect_button()
+	deck_buttons[deck].select_button()
+	current_deck = deck
+	$ColorButton.modulate = deck.color
+	$DeckName.text = deck.name
+	update_cards()
 
 func _on_button_save_pressed() -> void:
 	var deck_index := get_deck_index()

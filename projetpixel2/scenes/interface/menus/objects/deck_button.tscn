@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://kmm4mbdn4e45"]
+[gd_scene load_steps=5 format=3 uid="uid://kmm4mbdn4e45"]
 
 [ext_resource type="Script" uid="uid://bdspgkjxyg2r8" path="res://scripts/deck_button.gd" id="1_2fvq3"]
+[ext_resource type="Texture2D" uid="uid://li002byrnpci" path="res://resources/images/ui_assets/icons/flip_full.png" id="2_bgebo"]
 
 [sub_resource type="Gradient" id="Gradient_5xxu5"]
 offsets = PackedFloat32Array(0, 0.86645)
@@ -26,3 +27,17 @@ theme_override_font_sizes/font_size = 28
 text = "My_Deck"
 vertical_alignment = 1
 clip_text = true
+
+[node name="TextureSelect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 259.0
+offset_right = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bgebo")
+expand_mode = 3
