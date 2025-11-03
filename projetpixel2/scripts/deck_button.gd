@@ -33,10 +33,10 @@ func update_deck_color() -> void:
 	$TextureSelect.modulate = deck.color
 
 func select_button() -> void:
-	$TextureSelect.visible = true
+	$TextureSelect.texture = preload("res://resources/images/ui_assets/icons/flip_full.png")
 
 func deselect_button() -> void:
-	$TextureSelect.visible = false
+	$TextureSelect.visible = preload("res://resources/images/ui_assets/icons/flip_empty.png")
 
 func destroy_button() -> void:
 	queue_free()
