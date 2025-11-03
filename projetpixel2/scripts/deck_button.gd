@@ -23,3 +23,6 @@ func _ready() -> void:
 	texture_hover = button_gradient
 	# set button text
 	$Label.text = deck.name
+
+func destroy_button() -> void:
+	queue_free()

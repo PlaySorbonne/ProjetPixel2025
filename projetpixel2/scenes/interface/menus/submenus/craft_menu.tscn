@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqe4le36mjs3l"]
+[gd_scene load_steps=6 format=3 uid="uid://dqe4le36mjs3l"]
 
 [ext_resource type="Script" uid="uid://bsjkmmp3u882i" path="res://scripts/craft_menu.gd" id="1_e7qj5"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_5xxu5"]
 [ext_resource type="Script" uid="uid://ctposygip00ay" path="res://scripts/deck_craft.gd" id="2_6cwcy"]
-[ext_resource type="PackedScene" uid="uid://kmm4mbdn4e45" path="res://scenes/interface/menus/objects/deck_button.tscn" id="3_enewh"]
 
 [sub_resource type="Gradient" id="Gradient_enewh"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -48,7 +47,7 @@ anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.426)
 metadata/_edit_use_anchors_ = true
 
-[node name="TextEdit" type="LineEdit" parent="DeckCraft"]
+[node name="DeckName" type="LineEdit" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.325
@@ -114,24 +113,34 @@ custom_minimum_size = Vector2(506, 788)
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="DeckButton" parent="DeckCraft/ScrollContainer/VBoxContainer" instance=ExtResource("3_enewh")]
-layout_mode = 2
-
 [node name="ButtonAddDeck" type="Button" parent="DeckCraft/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "+"
 
-[node name="ColorPicker" type="Button" parent="DeckCraft"]
+[node name="ColorButton" type="Button" parent="DeckCraft"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.741146
+anchor_left = 0.802083
 anchor_top = 0.0166667
-anchor_right = 0.792188
+anchor_right = 0.853125
 anchor_bottom = 0.109259
 icon = SubResource("GradientTexture1D_6cwcy")
 flat = true
 expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCardsCount" type="Label" parent="DeckCraft"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.730208
+anchor_top = 0.037037
+anchor_right = 0.766667
+anchor_bottom = 0.0851852
+offset_bottom = -5.0
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_5xxu5")]
@@ -147,3 +156,8 @@ offset_right = 0.0
 offset_bottom = 0.0
 next_screen = 2
 camera_marker = 2
+
+[connection signal="pressed" from="DeckCraft/ButtonSave" to="DeckCraft" method="_on_button_save_pressed"]
+[connection signal="pressed" from="DeckCraft/ButtonErase" to="DeckCraft" method="_on_button_erase_pressed"]
+[connection signal="pressed" from="DeckCraft/ScrollContainer/VBoxContainer/ButtonAddDeck" to="DeckCraft" method="_on_button_add_deck_pressed"]
+[connection signal="pressed" from="DeckCraft/ColorButton" to="DeckCraft" method="_on_color_button_pressed"]

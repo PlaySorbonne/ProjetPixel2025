@@ -9,10 +9,11 @@ const FLIP_EMPTY := preload("res://resources/images/ui_assets/icons/flip_empty.p
 const CARD_CHECK_RES := preload("res://scenes/interface/cards/misc/card_check.tscn")
 
 
-static func add_card_check(parent_card : CardObject) -> void:
+static func add_card_check(parent_card : CardObject) -> CardCheck:
 	var card_check := CARD_CHECK_RES.instantiate()
 	parent_card.add_child(card_check)
 	card_check.card_object = parent_card
+	return card_check
 
 
 var is_selected := false
