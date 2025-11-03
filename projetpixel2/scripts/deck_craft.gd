@@ -45,7 +45,6 @@ func update_cards() -> void:
 	if current_deck != null:
 		currently_selected_cards = current_deck.cards
 	for card_obj : CardObject in displayed_cards:
-		var card_check := CardCheck.add_card_check(card_obj)
 		if card_obj.card in currently_selected_cards:
 			display_cards_checkmarks[card_obj].force_select(true)
 			selected_cards.append(card_obj)
