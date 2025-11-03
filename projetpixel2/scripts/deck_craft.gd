@@ -119,10 +119,12 @@ func _on_button_save_pressed() -> void:
 	current_deck.color = $ColorButton.modulate
 	current_deck.name = $DeckName.text
 	current_deck.cards = get_selected_cards()
-	SaveData.player_decks
+	SaveData.player_decks[deck_index] = current_deck
 	SaveData.save_game()
 	for deck : Deck in SaveData.player_decks:
 		print(deck.deck_to_string())
+	deck_buttons[current_deck].update_deck_color()
+	deck_buttons[current_deck].update_deck_name()
 
 func _on_button_erase_pressed() -> void:
 	deck_buttons[current_deck].destroy_button()
