@@ -2,6 +2,8 @@ extends Node
 
 
 const SAVE_FILE_NAME := "user://tower_survivor.savefile"
+# properties saved directly (no parser)
+const DIRECT_SAVED_PROPERTIES := ["current_language", "selected_deck"] 
 
 
 ## Settings
@@ -10,39 +12,68 @@ var current_language := "english"
 ## Decks & Cards
 var player_decks : Array[Deck] = []
 var selected_deck := 0
-var unlocked_cards : Array[CardData] = []
+var unlocked_cards : Dictionary[String, int] = {}
 
 
-func save_game():
-	var save_game := FileAccess.open(SAVE_FILE_NAME, FileAccess.WRITE)
-	var save_dict : Dictionary = {}
-	var at_saved_data := false
-	for property_dict : Dictionary in self.get_property_list():
-		var property_name : String = property_dict["name"]
-		if not at_saved_data:
-			if property_name == "save_data.gd":
-				at_saved_data = true
-			continue
-		print("property name = " + property_name)
-		save_dict[property_name] = self.get(property_name)
-	
-	var json_string := JSON.stringify(save_dict)
-	save_game.store_line(json_string)
+func save_game() -> void:
+	var data : Dictionary[String, Variant]= {
+		"settings": {
+			"current_language": current_language
+		},
+		"decks": [],
+		"selected_deck": selected_deck
+	}
 
-func load_data():
-	print_debug("Loading data...")
+	# Serialize decks
+	for deck : Deck in player_decks:
+		data["decks"].append({
+			"name": deck.name,
+			"color": {
+				"r": deck.color.r,
+				"g": deck.color.g,
+				"b": deck.color.b,
+				"a": deck.color.a
+			},
+			"cards": deck.cards.duplicate()
+		})
+
+	var save_file := FileAccess.open(SAVE_FILE_NAME, FileAccess.WRITE)
+	save_file.store_string(JSON.stringify(data, "\t"))
+	#print("SAVE GAME:\n" + JSON.stringify(data, "\t"))
+	save_file.close()
+
+func load_game() -> void:
 	if not FileAccess.file_exists(SAVE_FILE_NAME):
-		print_debug("SAVE FILE NOT FOUND")
+		push_warning("No save file found at %s" % SAVE_FILE_NAME)
 		return
 	
-	var save_game := FileAccess.open(SAVE_FILE_NAME, FileAccess.READ)
-	while save_game.get_position() < save_game.get_length():
-		var json_string := save_game.get_line()
-		var json := JSON.new()
-		var parse_result := json.parse(json_string)
-		var save_data : Dictionary = json.get_data()
-		print("Load save_data:")
-		for k : String in save_data.keys():
-			if self.get(k) != null:
-				self.set(k, save_data[k])
-				print("\t" + k + " : " + str(save_data[k]))
+	var save_file = FileAccess.open(SAVE_FILE_NAME, FileAccess.READ)
+	var content = save_file.get_as_text()
+	save_file.close()
+	
+	var data : Dictionary = JSON.parse_string(content)
+	if typeof(data) != TYPE_DICTIONARY:
+		push_error("Invalid save format!")
+		return
+	
+	current_language = data["settings"]["current_language"]
+	player_decks = []
+	selected_deck = data["selected_deck"]
+	#print("LOAD GAME:")
+	#print("current_language = " + str(current_language))
+	#print("selected_deck = " + str(selected_deck))
+	#print("player_decks = ")
+	
+	# Deserialize decks
+	for d : Dictionary in data["decks"]:
+		var deck_cards : Array[String] = []
+		for card_name : String in d["cards"]:
+			deck_cards.append(card_name)
+		var deck_color : Dictionary = d["color"]
+		var deck := Deck.new(
+			d["name"],
+			Color(deck_color["r"], deck_color["g"], deck_color["b"], deck_color["a"]),
+			deck_cards
+		)
+		player_decks.append(deck)
+		#print("\t" + deck.deck_to_string())
