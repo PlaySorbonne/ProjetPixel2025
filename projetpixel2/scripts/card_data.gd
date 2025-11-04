@@ -33,6 +33,11 @@ static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
 		_:
 			return 4.0
 
+static func load_deck() -> void:
+	SaveData.player_decks[SaveData.selected_deck].cards
+	SaveData.unlocked_cards
+	current_deck
+
 static func load_cards_data() -> void:
 	cards_data = {}
 	var card_file := FileAccess.open(CARDS_FILE_PATH, FileAccess.READ)
@@ -45,10 +50,10 @@ static func load_cards_data() -> void:
 	for card : CardData in cards_data.values():
 		current_deck.append(card)
 
-static func draw_first_deck_dard() -> CardData:
-	return current_deck.pop_front()
-
 static func get_random_card() -> CardData:
+	return cards_data.values().pick_random()
+
+static func get_random_card_from_deck() -> CardData:
 	return current_deck.pick_random()
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:

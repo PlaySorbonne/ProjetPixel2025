@@ -14,9 +14,6 @@ point_count = 5
 
 [node name="LevelDefault" instance=ExtResource("1_ndaoq")]
 
-[node name="ShipHealth" parent="PlayerHud" index="11"]
-anchors_preset = 0
-
 [node name="EnemySpawner" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
 path = NodePath("../Path3D")

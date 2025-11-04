@@ -6,5 +6,5 @@ func _ready() -> void:
 	RunData.reset_run_data()
 	GV.world = self
 	# parse cards data from game design csv file
-	CardData.load_cards_data()
+	CardData.load_deck()
 	#TODO: do the same with enemy data csv
