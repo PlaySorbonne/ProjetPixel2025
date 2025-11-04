@@ -22,8 +22,8 @@ var cards_count := 0:
 
 func _ready() -> void:
 	add_decks()
-	if not SaveData.player_decks.is_empty():
-		select_deck(SaveData.player_decks[0])
+	if len(SaveData.player_decks) > SaveData.selected_deck:
+		select_deck(SaveData.player_decks[SaveData.selected_deck])
 
 func add_decks() -> void:
 	for deck_button : DeckButton in deck_buttons.values():
@@ -121,16 +121,18 @@ func _on_button_save_pressed() -> void:
 	current_deck.name = $DeckName.text
 	current_deck.cards = get_selected_cards()
 	SaveData.player_decks[deck_index] = current_deck
+	SaveData.selected_deck = deck_index
 	SaveData.save_game()
-	for deck : Deck in SaveData.player_decks:
-		print(deck.deck_to_string())
 	deck_buttons[current_deck].update_deck_color()
 	deck_buttons[current_deck].update_deck_name()
 
 func _on_button_erase_pressed() -> void:
 	deck_buttons[current_deck].destroy_button()
 	deck_buttons.erase(current_deck)
-	assert(SaveData.player_decks.find(current_deck), "Current deck not found!")
+	var removed_deck_index := SaveData.player_decks.find(current_deck)
+	assert(removed_deck_index >= 0, "Current deck not found!")
+	if SaveData.selected_deck >= removed_deck_index and SaveData.selected_deck != 0:
+		SaveData.selected_deck -= 1
 	SaveData.player_decks.erase(current_deck)
 	current_deck = null
 	remove_cards_display()
