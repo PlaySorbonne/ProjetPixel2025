@@ -21,6 +21,7 @@ offset_right = 2.0
 offset_bottom = -0.240005
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(170, 82.5)
 script = ExtResource("1_ddsqd")
 metadata/_edit_use_anchors_ = true
 
@@ -31,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14, 0.14, 0.14, 0.92)
+color = Color(0.14, 0.14, 0.14, 0.96)
 
 [node name="LabelTitle" type="Label" parent="."]
 layout_mode = 1
