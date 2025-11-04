@@ -34,9 +34,9 @@ static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
 			return 4.0
 
 static func load_deck() -> void:
-	SaveData.player_decks[SaveData.selected_deck].cards
-	SaveData.unlocked_cards
-	current_deck
+	current_deck.clear()
+	for card_name : String in SaveData.player_decks[SaveData.selected_deck].cards:
+		current_deck.append(cards_data[card_name])
 
 static func load_cards_data() -> void:
 	cards_data = {}
