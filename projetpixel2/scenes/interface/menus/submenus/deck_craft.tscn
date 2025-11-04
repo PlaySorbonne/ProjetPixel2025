@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3 uid="uid://v35244r68876"]
+
+[ext_resource type="Script" uid="uid://ctposygip00ay" path="res://scripts/deck_craft.gd" id="1_q0mwt"]
+
+[sub_resource type="Gradient" id="Gradient_enewh"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6cwcy"]
+gradient = SubResource("Gradient_enewh")
+width = 1
+
+[node name="DeckCraft" type="Control"]
+z_index = -2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q0mwt")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.177)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.293229
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.426)
+metadata/_edit_use_anchors_ = true
+
+[node name="DeckName" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.0305556
+anchor_right = 0.705208
+anchor_bottom = 0.0888889
+theme_override_font_sizes/font_size = 32
+text = "My Deck"
+placeholder_text = "Enter deck name..."
+max_length = 24
+metadata/_edit_use_anchors_ = true
+
+[node name="CardsScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317708
+anchor_top = 0.108333
+anchor_right = 0.976042
+anchor_bottom = 0.957407
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="CardContainer" type="HFlowContainer" parent="CardsScrollContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacer" type="Control" parent="CardsScrollContainer/CardContainer"]
+custom_minimum_size = Vector2(1000, 45)
+layout_mode = 2
+
+[node name="ButtonSave" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0239583
+anchor_top = 0.785185
+anchor_right = 0.101042
+anchor_bottom = 0.885185
+text = "Save deck"
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonErase" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.130729
+anchor_top = 0.785185
+anchor_right = 0.207813
+anchor_bottom = 0.885185
+text = "Erase deck"
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0161458
+anchor_top = 0.0259259
+anchor_right = 0.279687
+anchor_bottom = 0.755556
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(506, 788)
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonAddDeck" type="Button" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ColorButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.802083
+anchor_top = 0.0166667
+anchor_right = 0.853125
+anchor_bottom = 0.109259
+icon = SubResource("GradientTexture1D_6cwcy")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCardsCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.730208
+anchor_top = 0.037037
+anchor_right = 0.766667
+anchor_bottom = 0.0851852
+offset_bottom = -5.0
+theme_override_font_sizes/font_size = 34
+text = "0"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="ButtonErase" to="." method="_on_button_erase_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ButtonAddDeck" to="." method="_on_button_add_deck_pressed"]
+[connection signal="pressed" from="ColorButton" to="." method="_on_color_button_pressed"]

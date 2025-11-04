@@ -108,7 +108,7 @@ text = "Edit
 Spaceship"
 metadata/_edit_use_anchors_ = true
 
-[node name="Button4" type="Button" parent="."]
+[node name="ButtonDeck" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.817187
@@ -118,6 +118,21 @@ anchor_bottom = 0.755556
 text = "Select/Edit
 Deck"
 metadata/_edit_use_anchors_ = true
+
+[node name="LabelDeck" type="Label" parent="ButtonDeck"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0008
+offset_right = -0.000366211
+offset_bottom = -0.000793457
+grow_horizontal = 2
+grow_vertical = 0
+text = "DECK 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -340,3 +355,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ButtonDeck" to="." method="_on_button_deck_pressed"]
