@@ -6,6 +6,8 @@ func _ready() -> void:
 	update_deck_button()
 
 func update_deck_button() -> void:
+	if SaveData.selected_deck < 0 or SaveData.selected_deck >= len(SaveData.player_decks):
+		return
 	var current_deck := SaveData.player_decks[SaveData.selected_deck]
 	$ButtonDeck/LabelDeck.text = current_deck.name
 	$ButtonDeck.icon = Deck.DECK_TEXTURES[current_deck.texture_index]
