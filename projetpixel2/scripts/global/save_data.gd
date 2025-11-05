@@ -28,12 +28,7 @@ func save_game() -> void:
 	for deck : Deck in player_decks:
 		data["decks"].append({
 			"name": deck.name,
-			"color": {
-				"r": deck.color.r,
-				"g": deck.color.g,
-				"b": deck.color.b,
-				"a": deck.color.a
-			},
+			"texture_index" : deck.texture_index,
 			"cards": deck.cards.duplicate()
 		})
 
@@ -69,10 +64,9 @@ func load_game() -> void:
 		var deck_cards : Array[String] = []
 		for card_name : String in d["cards"]:
 			deck_cards.append(card_name)
-		var deck_color : Dictionary = d["color"]
 		var deck := Deck.new(
 			d["name"],
-			Color(deck_color["r"], deck_color["g"], deck_color["b"], deck_color["a"]),
+			d["texture_index"],
 			deck_cards
 		)
 		player_decks.append(deck)

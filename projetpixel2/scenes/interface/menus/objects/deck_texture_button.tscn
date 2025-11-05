@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpqm4kg8pi206"]
+
+[ext_resource type="Texture2D" uid="uid://blcfdx7helfft" path="res://resources/images/cards/deck_back_black.png" id="1_64vq6"]
+[ext_resource type="Script" uid="uid://bfjn3nrjq7bo5" path="res://scripts/deck_texture_button.gd" id="2_o4ih6"]
+
+[node name="DeckTextureButton" type="Button"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+custom_minimum_size = Vector2(104, 104)
+pivot_offset = Vector2(52, 52)
+focus_mode = 0
+icon = ExtResource("1_64vq6")
+flat = true
+expand_icon = true
+script = ExtResource("2_o4ih6")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

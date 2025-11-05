@@ -26,7 +26,7 @@ func update_deck_color() -> void:
 	var button_gradient := GradientTexture1D.new()
 	button_gradient.gradient = Gradient.new()
 	button_gradient.gradient.add_point(0.0, Color.BLACK)
-	button_gradient.gradient.add_point(0.85, deck.color)
+	button_gradient.gradient.add_point(0.85, Deck.DECK_COLORS[deck.texture_index])
 	texture_pressed = button_gradient
 	texture_normal = button_gradient
 	texture_hover = button_gradient
