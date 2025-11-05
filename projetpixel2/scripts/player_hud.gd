@@ -109,14 +109,14 @@ func _add_playable_card(new_card : CardObject) -> void:
 	await get_tree().process_frame
 	new_card.can_be_dropped_on_objects = true
 
-func gain_level() -> void:
-	if RunData.current_level > 1:
+func gain_level(force_level_up := false) -> void:
+	if RunData.current_level > 1 or force_level_up:
 		Engine.time_scale = 0.0
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
 			$NewCardsContainer.add_child(new_card)
-			new_card.card_clicked.connect(on_card_level_clicked.bind(new_card))
+			new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card_from_deck()
 
@@ -168,9 +168,9 @@ func reorder_hand() -> void:
 
 
 
-func on_card_level_clicked(chosen_card : CardObject) -> void:
+func _on_card_level_clicked(chosen_card : CardObject) -> void:
 	Engine.time_scale = 1.0
-	chosen_card.card_clicked.disconnect(on_card_level_clicked)
+	chosen_card.card_clicked.disconnect(_on_card_level_clicked)
 	for card : CardObject in new_level_cards:
 		if card != chosen_card:
 			card.destroy_card_object()

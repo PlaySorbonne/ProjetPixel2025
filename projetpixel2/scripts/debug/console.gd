@@ -29,6 +29,7 @@ func _ready():
 	registry.register_command("give-tower", GiveTowerCommand.new(logger))
 	await get_tree().create_timer(1).timeout # hack (wait for cards to load before registering give-card)
 	registry.register_command("give-card", GiveCardCommand.new(logger))
+	registry.register_command("gain-level", GainLevelCommand.new(logger))
 
 func restore_focus():
 	await get_tree().process_frame
