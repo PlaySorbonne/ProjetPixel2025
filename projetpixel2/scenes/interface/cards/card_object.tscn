@@ -47,15 +47,14 @@ anchor_left = -0.048
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 27.296
+offset_left = 19.536
 offset_top = -42.0
-offset_right = -23.0
+offset_right = -15.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Card_name"
+text = "card_name"
 label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
-autowrap_mode = 2
 clip_text = true
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
