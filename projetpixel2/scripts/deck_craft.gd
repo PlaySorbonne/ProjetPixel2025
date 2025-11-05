@@ -104,10 +104,13 @@ func get_deck_index() -> int:
 func _on_color_button_pressed() -> void:
 	if current_texture_index == -1:
 		return
-	$DeckTexturesContainer.visible = true
-	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	t.tween_property($DeckTexturesContainer, "modulate", Color.WHITE, 0.12)
-	t.tween_property($DeckTexturesContainer, "scale", Vector2.ONE, 0.12)
+	if $DeckTexturesContainer.visible:
+		hide_deck_textures_container()
+	else:
+		$DeckTexturesContainer.visible = true
+		var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+		t.tween_property($DeckTexturesContainer, "modulate", Color.WHITE, 0.12)
+		t.tween_property($DeckTexturesContainer, "scale", Vector2.ONE, 0.12)
 
 func _on_button_texture_pressed(button : DeckTextureButton) -> void:
 	current_texture_index = button.texture_index

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://v35244r68876"]
+[gd_scene load_steps=14 format=3 uid="uid://v35244r68876"]
 
 [ext_resource type="Script" uid="uid://ctposygip00ay" path="res://scripts/deck_craft.gd" id="1_q0mwt"]
 [ext_resource type="PackedScene" uid="uid://dpqm4kg8pi206" path="res://scenes/interface/menus/objects/deck_texture_button.tscn" id="2_8snmj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bq4woci3sw7pr" path="res://resources/images/cards/deck_back_white.png" id="10_jwxj5"]
 [ext_resource type="Texture2D" uid="uid://bw768fdk3n7r" path="res://resources/images/cards/deck_back_yellow.png" id="11_hj0w7"]
 [ext_resource type="Texture2D" uid="uid://j7sp2x6cdr0j" path="res://resources/images/cards/deck_back_checkered.png" id="11_ti57g"]
+[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="13_6f87y"]
 
 [node name="DeckCraft" type="Control"]
 z_index = -2
@@ -185,6 +186,14 @@ icon = ExtResource("2_bd2t3")
 flat = true
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="XYZHoverAnimator" type="Node" parent="ColorButton"]
+script = ExtResource("13_6f87y")
+properties = Dictionary[String, Variant]({
+"scale": Vector2(1.05, 1.05)
+})
+treat_as_offset = Array[String]([])
+metadata/_custom_type_script = "uid://bkxuojfewrgp8"
 
 [node name="LabelCardsCount" type="Label" parent="."]
 layout_mode = 1
