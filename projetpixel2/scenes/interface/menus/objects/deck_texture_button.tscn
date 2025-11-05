@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpqm4kg8pi206"]
+[gd_scene load_steps=4 format=3 uid="uid://dpqm4kg8pi206"]
 
 [ext_resource type="Texture2D" uid="uid://blcfdx7helfft" path="res://resources/images/cards/deck_back_black.png" id="1_64vq6"]
 [ext_resource type="Script" uid="uid://bfjn3nrjq7bo5" path="res://scripts/deck_texture_button.gd" id="2_o4ih6"]
+[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="3_o4ih6"]
 
 [node name="DeckTextureButton" type="Button"]
 modulate = Color(0.8, 0.8, 0.8, 1)
@@ -14,5 +15,11 @@ expand_icon = true
 script = ExtResource("2_o4ih6")
 metadata/_edit_use_anchors_ = true
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="XYZHoverAnimator" type="Node" parent="."]
+script = ExtResource("3_o4ih6")
+properties = Dictionary[String, Variant]({
+"modulate": Color(1, 1, 1, 1),
+"scale": Vector2(1.15, 1.15)
+})
+treat_as_offset = Array[String]([])
+metadata/_custom_type_script = "uid://bkxuojfewrgp8"

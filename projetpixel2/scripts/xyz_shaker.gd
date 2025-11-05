@@ -1,5 +1,5 @@
 extends Node
-class_name Shaker
+class_name XYZShaker
 
 const TRANS = Tween.TRANS_SINE
 const EASE = Tween.EASE_IN_OUT

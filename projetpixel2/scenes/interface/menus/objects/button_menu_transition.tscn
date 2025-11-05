@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1up105omtpki"]
+[gd_scene load_steps=3 format=3 uid="uid://d1up105omtpki"]
 
 [ext_resource type="Script" uid="uid://cgyo6fkiwss7k" path="res://scripts/button_menu_transition.gd" id="1_r5rgp"]
+[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="2_rflmp"]
 
 [node name="ButtonMenuTransition" type="Button"]
 anchors_preset = -1
@@ -15,5 +16,13 @@ offset_bottom = -987.0
 text = "Back"
 script = ExtResource("1_r5rgp")
 metadata/_edit_use_anchors_ = true
+
+[node name="XYZHoverAnimator" type="Node" parent="."]
+script = ExtResource("2_rflmp")
+properties = Dictionary[String, Variant]({
+"scale": Vector2(1.05, 1.05)
+})
+treat_as_offset = Array[String]([])
+metadata/_custom_type_script = "uid://bkxuojfewrgp8"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

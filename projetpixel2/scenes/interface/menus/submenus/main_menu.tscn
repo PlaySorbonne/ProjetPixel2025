@@ -151,6 +151,7 @@ text = "PLAY DEBUG WORLD"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonFestivalDemo" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.866146
