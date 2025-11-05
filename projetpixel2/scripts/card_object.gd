@@ -20,11 +20,7 @@ static func create_card_object(card_data : CardData) -> CardObject:
 	return new_card
 
 
-var card : CardData:
-	set(value):
-		card = value
-		$Label.text = card.name
-		$TextureRect.self_modulate = FAMILY_COLORS[card.family]
+var card : CardData
 var is_dragged := false
 var can_be_dropped_on_objects := false
 var deck_position : Vector2
@@ -34,6 +30,8 @@ var card_tweens : Dictionary[String, Tween] = {}
 
 func _ready() -> void:
 	await get_tree().process_frame
+	$Label.text = card.name
+	$TextureRect.self_modulate = FAMILY_COLORS[card.family]
 	if deck_position == Vector2.ZERO:
 		deck_position = position
 		deck_rotation = rotation

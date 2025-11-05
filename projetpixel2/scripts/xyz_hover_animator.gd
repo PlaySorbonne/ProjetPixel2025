@@ -41,7 +41,8 @@ func _on_mouse_exited() -> void:
 func tween_to(new_values : Dictionary[String, Variant]) -> void:
 	if tween:
 		tween.kill()
-	tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(
+				).set_ignore_time_scale(true)
 	for property_name : String in new_values.keys():
 		tween.tween_property(
 			parent_node,

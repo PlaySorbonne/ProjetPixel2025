@@ -115,10 +115,10 @@ func gain_level(force_level_up := false) -> void:
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
-			$NewCardsContainer.add_child(new_card)
 			new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card_from_deck()
+			$NewCardsContainer.add_child(new_card)
 
 func remove_card_from_hand(card_object : CardObject) -> void:
 	cards_hand.erase(card_object)
