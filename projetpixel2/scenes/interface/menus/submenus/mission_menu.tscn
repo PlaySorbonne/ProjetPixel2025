@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc4nb4a10ke3l"]
+[gd_scene load_steps=5 format=3 uid="uid://cc4nb4a10ke3l"]
 
 [ext_resource type="Script" uid="uid://bn8cfwbxx6nfu" path="res://scripts/mission_menu.gd" id="1_4u1yp"]
 [ext_resource type="PackedScene" uid="uid://d1up105omtpki" path="res://scenes/interface/menus/objects/button_menu_transition.tscn" id="2_laif5"]
+[ext_resource type="Texture2D" uid="uid://blcfdx7helfft" path="res://resources/images/cards/deck_back_black.png" id="3_icna2"]
+[ext_resource type="PackedScene" uid="uid://v35244r68876" path="res://scenes/interface/menus/submenus/deck_craft.tscn" id="4_agda4"]
 
 [node name="MissionMenu" type="Control"]
 layout_mode = 3
@@ -112,11 +114,13 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.817187
-anchor_top = 0.496296
+anchor_top = 0.530556
 anchor_right = 0.927083
 anchor_bottom = 0.755556
-text = "Select/Edit
-Deck"
+icon = ExtResource("3_icna2")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelDeck" type="Label" parent="ButtonDeck"]
@@ -354,5 +358,31 @@ text = "Mob families (appear once identified)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DeckCraft" parent="." instance=ExtResource("4_agda4")]
+visible = false
+z_index = 60
+layout_mode = 1
+
+[node name="ColorRect3" type="ColorRect" parent="DeckCraft"]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="ButtonDeckCraftBack" type="Button" parent="DeckCraft"]
+layout_mode = 0
+anchor_left = 0.0234375
+anchor_top = 0.914815
+anchor_right = 0.1
+anchor_bottom = 0.972222
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="ButtonDeck" to="." method="_on_button_deck_pressed"]
+[connection signal="pressed" from="DeckCraft/ButtonDeckCraftBack" to="." method="_on_button_deck_craft_back_pressed"]
