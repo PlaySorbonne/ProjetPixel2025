@@ -14,7 +14,7 @@ func parse(value: String) -> String:
 			result = option
 			break
 	return result
-	
+
 func get_completions() -> Array:
 	return options.map(normalize_name)
 
