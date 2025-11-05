@@ -136,6 +136,7 @@ func select_deck(deck : Deck) -> void:
 	deck_buttons[deck].select_button()
 	current_deck = deck
 	current_texture_index = deck.texture_index
+	SaveData.selected_deck = SaveData.player_decks.find(current_deck)
 	$ColorButton.icon = Deck.DECK_TEXTURES[current_texture_index]
 	$DeckName.text = deck.name
 	if displayed_cards.is_empty():
@@ -152,7 +153,6 @@ func _on_button_save_pressed() -> void:
 	current_deck.name = $DeckName.text
 	current_deck.cards = get_selected_cards()
 	SaveData.player_decks[deck_index] = current_deck
-	SaveData.selected_deck = deck_index
 	SaveData.save_game()
 	deck_buttons[current_deck].update_deck_color()
 	deck_buttons[current_deck].update_deck_name()
