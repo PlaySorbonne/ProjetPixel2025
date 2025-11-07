@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bbowpw6p3lr4w"
+path="res://.godot/imported/wall.obj-b33618453cdc1dea5bb714480bf1dda8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall.obj-b33618453cdc1dea5bb714480bf1dda8.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-station-kit/OBJ format/wall.obj"
+dest_files=["res://.godot/imported/wall.obj-b33618453cdc1dea5bb714480bf1dda8.mesh", "res://.godot/imported/wall.obj-b33618453cdc1dea5bb714480bf1dda8.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

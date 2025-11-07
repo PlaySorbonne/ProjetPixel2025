@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7nj56yuq2ftq"
+path="res://.godot/imported/corridor_cross.obj-e8d47f64c0ccf4d8cf23873011c993b5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/corridor_cross.obj-e8d47f64c0ccf4d8cf23873011c993b5.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-kit/corridor_cross.obj"
+dest_files=["res://.godot/imported/corridor_cross.obj-e8d47f64c0ccf4d8cf23873011c993b5.mesh", "res://.godot/imported/corridor_cross.obj-e8d47f64c0ccf4d8cf23873011c993b5.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

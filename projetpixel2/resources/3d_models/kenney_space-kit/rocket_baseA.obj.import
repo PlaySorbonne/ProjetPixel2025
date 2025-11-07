@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dslaps48wn1sk"
+path="res://.godot/imported/rocket_baseA.obj-63d7a1db6bb37340f523c193194211ee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rocket_baseA.obj-63d7a1db6bb37340f523c193194211ee.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-kit/rocket_baseA.obj"
+dest_files=["res://.godot/imported/rocket_baseA.obj-63d7a1db6bb37340f523c193194211ee.mesh", "res://.godot/imported/rocket_baseA.obj-63d7a1db6bb37340f523c193194211ee.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

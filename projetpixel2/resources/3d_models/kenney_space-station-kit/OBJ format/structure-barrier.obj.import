@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cg8ikcjtpgux4"
+path="res://.godot/imported/structure-barrier.obj-57824bdc4061f8ba38dddc3c5e87e41c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-barrier.obj-57824bdc4061f8ba38dddc3c5e87e41c.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-station-kit/OBJ format/structure-barrier.obj"
+dest_files=["res://.godot/imported/structure-barrier.obj-57824bdc4061f8ba38dddc3c5e87e41c.mesh", "res://.godot/imported/structure-barrier.obj-57824bdc4061f8ba38dddc3c5e87e41c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

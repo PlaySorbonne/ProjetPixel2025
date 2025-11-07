@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0xn7j4gee5ip"
+path="res://.godot/imported/wall-pillar-banner.obj-68ef7a529cf69898527407d04c81881e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-pillar-banner.obj-68ef7a529cf69898527407d04c81881e.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-station-kit/OBJ format/wall-pillar-banner.obj"
+dest_files=["res://.godot/imported/wall-pillar-banner.obj-68ef7a529cf69898527407d04c81881e.mesh", "res://.godot/imported/wall-pillar-banner.obj-68ef7a529cf69898527407d04c81881e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

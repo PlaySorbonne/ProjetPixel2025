@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3arnj8yubfm6"
+path="res://.godot/imported/terrain_side.obj-646aa4296a0c593803140e10740646b7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/terrain_side.obj-646aa4296a0c593803140e10740646b7.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-kit/terrain_side.obj"
+dest_files=["res://.godot/imported/terrain_side.obj-646aa4296a0c593803140e10740646b7.mesh", "res://.godot/imported/terrain_side.obj-646aa4296a0c593803140e10740646b7.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b474yd4rrgjg8"
+path="res://.godot/imported/wall-corner-banner.obj-729b9fc84c356a46a96ce96606564eba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-corner-banner.obj-729b9fc84c356a46a96ce96606564eba.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-station-kit/OBJ format/wall-corner-banner.obj"
+dest_files=["res://.godot/imported/wall-corner-banner.obj-729b9fc84c356a46a96ce96606564eba.mesh", "res://.godot/imported/wall-corner-banner.obj-729b9fc84c356a46a96ce96606564eba.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cw1ee5f76sl1t"
+path="res://.godot/imported/wall-door-wide-banner.obj-074b8fcf9c4b154a211b1beca1733e18.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-door-wide-banner.obj-074b8fcf9c4b154a211b1beca1733e18.mesh"]
+
+source_file="res://resources/3d_models/kenney_space-station-kit/OBJ format/wall-door-wide-banner.obj"
+dest_files=["res://.godot/imported/wall-door-wide-banner.obj-074b8fcf9c4b154a211b1beca1733e18.mesh", "res://.godot/imported/wall-door-wide-banner.obj-074b8fcf9c4b154a211b1beca1733e18.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
