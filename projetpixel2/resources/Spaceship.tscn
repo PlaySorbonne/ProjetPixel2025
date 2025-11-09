@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://brvjk2y5n16g"]
+
+[ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
+[ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
+[ext_resource type="Script" uid="uid://f0gd0vfal03l" path="res://scripts/damagable_object.gd" id="4_h40o1"]
+[ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="5_6nyhl"]
+[ext_resource type="PackedScene" uid="uid://da3opch1ppvgt" path="res://resources/3d_models/interns_models/space_ship/Vaisseaux_Import.fbx" id="6_5e64j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h40o1"]
+render_priority = 0
+shader = ExtResource("3_aer3i")
+shader_parameter/color1 = Color(0, 1, 1, 0.024)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/threshold = 0.0
+shader_parameter/fresnel_sharpness = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wr5m4"]
+material = SubResource("ShaderMaterial_h40o1")
+radius = 2.25
+height = 4.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aer3i"]
+radius = 2.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
+size = Vector3(2.21545, 1, 1.38779)
+
+[node name="Spaceship" type="StaticBody3D"]
+script = ExtResource("1_wr5m4")
+
+[node name="ShieldShader" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+mesh = SubResource("SphereMesh_wr5m4")
+
+[node name="CollisionShield" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+shape = SubResource("SphereShape3D_aer3i")
+
+[node name="CollisionShip" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2222, 0, 0.0502777)
+shape = SubResource("BoxShape3D_aer3i")
+
+[node name="ShipHealth" type="Node" parent="."]
+script = ExtResource("4_h40o1")
+max_health = 400
+health = 400
+type = 2
+metadata/_custom_type_script = "uid://f0gd0vfal03l"
+
+[node name="ShieldHealth" type="Node" parent="."]
+script = ExtResource("4_h40o1")
+max_health = 250
+health = 250
+type = 1
+metadata/_custom_type_script = "uid://f0gd0vfal03l"
+
+[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
+custom_nodes = [NodePath("../Vaisseaux_Import/Aeration_000"), NodePath("../Vaisseaux_Import/Aeration_001"), NodePath("../Vaisseaux_Import/BézierCurve_001"), NodePath("../Vaisseaux_Import/Cube_043"), NodePath("../Vaisseaux_Import/Cube_044"), NodePath("../Vaisseaux_Import/Cube_046"), NodePath("../Vaisseaux_Import/Cube_047"), NodePath("../Vaisseaux_Import/Cube_048"), NodePath("../Vaisseaux_Import/Cube_049"), NodePath("../Vaisseaux_Import/Cube_050"), NodePath("../Vaisseaux_Import/Cube_051"), NodePath("../Vaisseaux_Import/Cube_052"), NodePath("../Vaisseaux_Import/Cube_053"), NodePath("../Vaisseaux_Import/Cube_055"), NodePath("../Vaisseaux_Import/Cube_056"), NodePath("../Vaisseaux_Import/Cube_057"), NodePath("../Vaisseaux_Import/Cube_059"), NodePath("../Vaisseaux_Import/Cube_060"), NodePath("../Vaisseaux_Import/Cube_061"), NodePath("../Vaisseaux_Import/Cylinder_018"), NodePath("../Vaisseaux_Import/Cylinder_019"), NodePath("../Vaisseaux_Import/Cylinder_021"), NodePath("../Vaisseaux_Import/Cylinder_022"), NodePath("../Vaisseaux_Import/Cylinder_023"), NodePath("../Vaisseaux_Import/Cylinder_025"), NodePath("../Vaisseaux_Import/Cylinder_026"), NodePath("../Vaisseaux_Import/Cylinder_027"), NodePath("../Vaisseaux_Import/Cylinder_028"), NodePath("../Vaisseaux_Import/Cylinder_030"), NodePath("../Vaisseaux_Import/Griffes_001"), NodePath("../Vaisseaux_Import/Plane_007"), NodePath("../Vaisseaux_Import/Sphere_013"), NodePath("../Vaisseaux_Import/Tete_001"), NodePath("../Vaisseaux_Import/Tourelle_000"), NodePath("../Vaisseaux_Import/Tourelle_001")]
+
+[node name="TimerShieldRegeneration" type="Timer" parent="."]
+autostart = true
+
+[node name="Vaisseaux_Import" parent="." instance=ExtResource("6_5e64j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.421121, 0.462365, 0.37116)
+
+[node name="Tourelle_000" parent="Vaisseaux_Import" index="33"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.426155, 0.246384, 0.601606)
+
+[node name="Tourelle_001" parent="Vaisseaux_Import" index="34"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.426155, 0.246384, 0.140295)
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="death" from="ShipHealth" to="." method="_on_ship_health_death"]
+[connection signal="hit" from="ShipHealth" to="." method="_on_ship_health_hit"]
+[connection signal="death" from="ShieldHealth" to="." method="_on_shield_health_death"]
+[connection signal="hit" from="ShieldHealth" to="." method="_on_shield_health_hit"]
+[connection signal="timeout" from="TimerShieldRegeneration" to="." method="_on_timer_shield_regeneration_timeout"]
+
+[editable path="Vaisseaux_Import"]

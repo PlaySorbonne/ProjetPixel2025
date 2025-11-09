@@ -97,9 +97,11 @@ func update_experience(force_loop := false) -> void:
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
 
-func add_card_to_hand(card_data: CardData) -> void:
+func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
 	var new_card : CardObject = CARD_OBJ_RES.instantiate()
 	new_card.card = card_data
+	if forced_position != Vector2.ZERO:
+		new_card.global_position = forced_position
 	_add_playable_card(new_card)
 
 func _add_playable_card(new_card : CardObject) -> void:
@@ -174,10 +176,16 @@ func _on_card_level_clicked(chosen_card : CardObject) -> void:
 	for card : CardObject in new_level_cards:
 		if card != chosen_card:
 			card.destroy_card_object()
-	chosen_card.release_card()
+	#add_card_to_hand(chosen_card.card, chosen_card.global_position)
+	#await get_tree().process_frame
+	#chosen_card.queue_free()
+	
+	
 	chosen_card.get_parent().remove_child(chosen_card)
 	_add_playable_card(chosen_card)
 	new_level_cards = []
+	await get_tree().create_timer(0.5).timeout
+	chosen_card.release_card()
 
 func update_level() -> void:
 	update_experience(true)

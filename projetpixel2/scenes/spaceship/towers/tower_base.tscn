@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="2_j5p61"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="3_ih0ua"]
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
-[ext_resource type="Shader" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
+[ext_resource type="Shader" uid="uid://dqej4ajdlyerw" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
 [ext_resource type="PackedScene" uid="uid://cpnwdp0ai1y6w" path="res://resources/3d_models/towers_placeholder/mining_device/machine_generator.fbx" id="7_vohdg"]
 [ext_resource type="PackedScene" uid="uid://yn1lodar0fyd" path="res://resources/3d_models/interns_models/towers/FBX/TourelleStandardV1.fbx" id="11_0qdbl"]
 
@@ -70,7 +70,7 @@ one_shot = true
 [node name="TimerMineXp" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
-custom_nodes = [NodePath("")]
+custom_nodes = [null]
 
 [node name="DragAndDrop" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
 dragged_object = NodePath("..")

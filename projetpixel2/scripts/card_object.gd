@@ -61,6 +61,9 @@ func release_card() -> void:
 	is_dragged = true
 	$DragAndDrop2D.drop()
 
+func press_card() -> void:
+	$DragAndDrop2D.press()
+
 func _input(event: InputEvent) -> void:
 	var debug_text := "INPUT DETECTED"
 	if not is_dragged:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://doji36oev5mki"]
+[gd_scene load_steps=6 format=3 uid="uid://doji36oev5mki"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_8im5f"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_2lx4o"]
@@ -27,33 +27,33 @@ min_wave = 10
 max_wave = 50
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwjc1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lx4o"]
 resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx1j5"]
 
 [node name="FireproofRunner" instance=ExtResource("1_8im5f")]
 enemy_data = SubResource("Resource_3bgd8")
 
-[node name="figurine-cube" parent="." index="0"]
-transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)
+[node name="leg-left" parent="mesh/figurine-cube/root" index="0"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
 
-[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
+[node name="leg-right" parent="mesh/figurine-cube/root" index="1"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
 
-[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
+[node name="torso" parent="mesh/figurine-cube/root" index="2"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
+surface_material_override/0 = SubResource("StandardMaterial3D_bx1j5")
 
-[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
+[node name="arm-left" parent="mesh/figurine-cube/root/torso" index="0"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
 
-[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
+[node name="arm-right" parent="mesh/figurine-cube/root/torso" index="1"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
 
-[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
-
-[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
-material_override = SubResource("StandardMaterial3D_bwjc1")
+[node name="head" parent="mesh/figurine-cube/root/torso" index="2"]
+material_override = SubResource("StandardMaterial3D_2lx4o")
 
 [node name="DamageableObject" parent="." index="2"]
 element_resistances = Dictionary[int, float]({
@@ -63,4 +63,4 @@ element_resistances = Dictionary[int, float]({
 3: 1.0
 })
 
-[editable path="figurine-cube"]
+[editable path="mesh"]
