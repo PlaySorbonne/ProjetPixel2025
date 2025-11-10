@@ -26,6 +26,7 @@ func spawn_enemy(enemy : BaseEnemy) -> void:
 		0.0,
 		randf_range(-spawner_radius*1.0, spawner_radius*1.0)
 	)
+	enemy.followed_path = self.path
 	GV.world.add_child(enemy)
 
 func spawn_wave(enemies : Array) -> void:

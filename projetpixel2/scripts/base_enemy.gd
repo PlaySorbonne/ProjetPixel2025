@@ -13,6 +13,9 @@ static var enemy_types : Array[String] = ["Puncher"]
 
 @export var enemy_data : EnemyData
 
+var followed_path: Path3D
+var target_point_index := 0
+var target_position : Vector3
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
@@ -25,7 +28,7 @@ var enemy_id := 0
 @onready var damageable : DamageableObject = $DamageableObject
 @onready var clickable : ClickableObject = $ClickableObject
 
-@onready var target : Node3D = GV.space_ship
+#@onready var target : Node3D = GV.space_ship
 @onready var mesh : Node3D = $mesh
 @onready var mesh_animations : AnimationPlayer = $mesh/AnimationPlayer
 @onready var attack_timer : Timer = $TimerAttacking
@@ -49,9 +52,12 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		if can_move:
+			if position.distance_to(target_position) < 2 && target_point_index < followed_path.curve.point_count:
+				target_point_index += 1
+			target_position = followed_path.curve.get_point_position(target_point_index)
 			mesh_animations.play("sprint")
-			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
-			mesh.look_at(target.position)
+			velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
+			mesh.look_at(target_position)
 			move_and_slide() 
 	if len(overlapping_enemies) > 0:
 		attack()

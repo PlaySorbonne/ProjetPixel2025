@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://blcfdx7helfft" path="res://resources/images/cards/deck_back_black.png" id="3_icna2"]
 [ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="3_ief0a"]
 [ext_resource type="PackedScene" uid="uid://v35244r68876" path="res://scenes/interface/menus/submenus/deck_craft.tscn" id="4_agda4"]
-[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="4_kyyp3"]
-[ext_resource type="Shader" uid="uid://dgfm4cmrdqf3q" path="res://resources/shaders/3d_point_cloud_hologram.gdshader" id="5_xmtx8"]
+[ext_resource type="Script" path="res://scripts/xyz_hover_animator.gd" id="4_kyyp3"]
+[ext_resource type="Shader" path="res://resources/shaders/3d_point_cloud_hologram.gdshader" id="5_xmtx8"]
 [ext_resource type="PackedScene" uid="uid://c7njrvkjd6ca4" path="res://resources/3d_models/space_ship/fbx/æargo_ship.fbx" id="6_hpkco"]
-[ext_resource type="Shader" uid="uid://c5t53iqsqhlo2" path="res://resources/shaders/3d_semi_hologram.gdshader" id="6_ief0a"]
+[ext_resource type="Shader" path="res://resources/shaders/3d_semi_hologram.gdshader" id="6_ief0a"]
 
 [sub_resource type="Environment" id="Environment_ief0a"]
 background_mode = 2
