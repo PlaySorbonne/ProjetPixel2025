@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b76pi81h5i3ie" path="res://scenes/world/levels/tiles/level_environment.tscn" id="1_uogaa"]
 
 [node name="LevelEnvironment" instance=ExtResource("1_uogaa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="GridMap" parent="." index="0"]
 collision_layer = 0
