@@ -184,8 +184,8 @@ func _on_card_level_clicked(chosen_card : CardObject) -> void:
 	chosen_card.get_parent().remove_child(chosen_card)
 	_add_playable_card(chosen_card)
 	new_level_cards = []
-	await get_tree().create_timer(0.5).timeout
-	chosen_card.release_card()
+	#await get_tree().create_timer(0.1).timeout
+	#chosen_card.release_card()
 
 func update_level() -> void:
 	update_experience(true)
