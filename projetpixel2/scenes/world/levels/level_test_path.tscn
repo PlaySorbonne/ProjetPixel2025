@@ -40,15 +40,15 @@ path = NodePath("../Path1")
 
 [node name="EnemySpawner2" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_rc33g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
-path = NodePath("../Path1")
+path = NodePath("../Path2")
 
 [node name="EnemySpawner3" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_rc33g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
-path = NodePath("../Path1")
+path = NodePath("../Path3")
 
 [node name="EnemySpawner4" parent="." index="11" node_paths=PackedStringArray("path") instance=ExtResource("2_rc33g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
-path = NodePath("../Path1")
+path = NodePath("../Path4")
 
 [node name="EnvironmentTest" parent="." index="12" instance=ExtResource("3_t56t6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
