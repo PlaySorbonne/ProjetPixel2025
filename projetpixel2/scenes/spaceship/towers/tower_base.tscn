@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene load_steps=16 format=3 uid="uid://cgrlyuyns6mos"]
 
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="2_j5p61"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bt4juamc0hdea" path="res://scenes/objects_components/drag_and_drop_3d.tscn" id="4_07vfn"]
 [ext_resource type="Shader" uid="uid://dqej4ajdlyerw" path="res://resources/shaders/3d_ring.gdshader" id="4_mowsw"]
 [ext_resource type="PackedScene" uid="uid://cpnwdp0ai1y6w" path="res://resources/3d_models/towers_placeholder/mining_device/machine_generator.fbx" id="7_vohdg"]
+[ext_resource type="ArrayMesh" uid="uid://b28fjkjpck12b" path="res://resources/3d_models/kenney_space-kit/turret_single.obj" id="8_j5p61"]
 [ext_resource type="PackedScene" uid="uid://yn1lodar0fyd" path="res://resources/3d_models/interns_models/towers/FBX/TourelleStandardV1.fbx" id="11_0qdbl"]
 
 [sub_resource type="Resource" id="Resource_715kj"]
@@ -37,6 +38,18 @@ shader_parameter/outer_color = Color(0.5, 0, 0, 0.384314)
 
 [sub_resource type="QuadMesh" id="QuadMesh_j5p61"]
 size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_715kj"]
+albedo_color = Color(0.60933, 0.60933, 0.60933, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1qtbe"]
+material = SubResource("StandardMaterial3D_715kj")
+top_radius = 0.06
+bottom_radius = 0.06
+height = 0.2
+radial_segments = 7
+rings = 2
+cap_top = false
 
 [node name="TowerBase" type="StaticBody3D" groups=["tower"]]
 script = ExtResource("1_041tc")
@@ -70,7 +83,7 @@ one_shot = true
 [node name="TimerMineXp" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
-custom_nodes = [null]
+custom_nodes = [NodePath("../TurretMesh/TurretSingle"), NodePath("../TurretMesh/TurretSingle/MeshInstance3D")]
 
 [node name="DragAndDrop" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
 dragged_object = NodePath("..")
@@ -78,6 +91,7 @@ can_be_dragged = false
 
 [node name="MiningMesh" parent="." instance=ExtResource("7_vohdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="machine_generator" parent="MiningMesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -87,6 +101,7 @@ one_shot = true
 
 [node name="TourelleStandardV1" parent="." instance=ExtResource("11_0qdbl")]
 transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, 0, -0.318886, -0.0451133)
+visible = false
 
 [node name="Tourelle" parent="TourelleStandardV1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -120,6 +135,17 @@ transform = Transform3D(0.0246631, 0, -0.207617, 0, 0.209076, 0, 0.207617, 0, 0.
 
 [node name="ProjectileSpawnPos" type="Node3D" parent="TourelleStandardV1/Tourelle" index="5"]
 transform = Transform3D(-3.64262e-09, 0, -0.0833333, 0, 0.0833333, 0, 0.0833333, 0, -3.64262e-09, 0.0567419, 0.0265738, 2.48027e-09)
+
+[node name="TurretMesh" type="Node3D" parent="."]
+
+[node name="TurretSingle" type="MeshInstance3D" parent="TurretMesh"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.427317, 0)
+mesh = ExtResource("8_j5p61")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TurretMesh/TurretSingle"]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, -0.00370365, 0.520157, 0.425278)
+mesh = SubResource("CylinderMesh_1qtbe")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
