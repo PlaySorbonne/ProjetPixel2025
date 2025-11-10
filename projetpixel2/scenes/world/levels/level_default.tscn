@@ -15,6 +15,9 @@ point_count = 5
 
 [node name="LevelDefault" instance=ExtResource("1_ndaoq")]
 
+[node name="PlayerCamera" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, -2.25751, 11.3075, 5.1906)
+
 [node name="Spaceship" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
 
