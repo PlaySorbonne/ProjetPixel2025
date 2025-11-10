@@ -2,7 +2,7 @@ extends Camera3D
 class_name PlayerCamera
 
 
-const SPEED := 15.0
+const SPEED := 8.0
 
 var current_speed := 0.0
 
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("move_right"):
 		direction += Vector3.RIGHT
 	if direction != Vector3.ZERO:
-		current_speed = lerp(current_speed, SPEED, 0.01 * delta)
-		position += (direction * SPEED * delta)
+		current_speed = lerp(current_speed, SPEED, 0.00001 * delta)
+		position += (direction.normalized() * SPEED * delta)
 	else:
 		current_speed = 0.0

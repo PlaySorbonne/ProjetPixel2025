@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=135 format=4 uid="uid://b1oxx53hqulrv"]
 
-[ext_resource type="Texture2D" uid="uid://df0ppr0rs6fca" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/Textures/colormap.png" id="1_0xy62"]
+[ext_resource type="Texture2D" uid="uid://c10vbkvruqij0" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/Textures/colormap.png" id="1_0xy62"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnw0k"]
 resource_name = "rock"
