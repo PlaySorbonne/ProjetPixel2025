@@ -52,9 +52,11 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		if can_move:
-			if position.distance_to(target_position) < 2 && target_point_index < followed_path.curve.point_count:
-				target_point_index += 1
 			target_position = followed_path.curve.get_point_position(target_point_index)
+			
+			if position.distance_to(target_position) < 0.2 && target_point_index < followed_path.curve.point_count - 1:
+				print("distance is %f : increasing index from %d" % [position.distance_to(target_position), target_point_index])
+				target_point_index += 1
 			mesh_animations.play("sprint")
 			velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
 			mesh.look_at(target_position)
