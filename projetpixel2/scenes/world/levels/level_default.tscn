@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cevrwf0fm5klw"]
+[gd_scene load_steps=6 format=3 uid="uid://cevrwf0fm5klw"]
 
 [ext_resource type="PackedScene" uid="uid://cipkud1dh3vju" path="res://scenes/world/world.tscn" id="1_ndaoq"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="2_roffi"]
 [ext_resource type="PackedScene" uid="uid://b5gr3yymlr5t3" path="res://scenes/world/levels/environments/environment_test.tscn" id="3_roffi"]
+[ext_resource type="PackedScene" uid="uid://cgarh2yr3h1ff" path="res://scenes/world/levels/environments/environment_test2.tscn" id="4_1ijjf"]
 
 [sub_resource type="Curve3D" id="Curve3D_roffi"]
 bake_interval = 5.0
@@ -13,6 +14,9 @@ _data = {
 point_count = 5
 
 [node name="LevelDefault" instance=ExtResource("1_ndaoq")]
+
+[node name="Spaceship" parent="." index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
 
 [node name="EnemySpawner" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
@@ -35,5 +39,8 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
 
 [node name="Path3D" type="Path3D" parent="." index="13"]
 curve = SubResource("Curve3D_roffi")
+
+[node name="LevelEnvironment" parent="." index="14" instance=ExtResource("4_1ijjf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
 
 [editable path="PlayerHud"]
