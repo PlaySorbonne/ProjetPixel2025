@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=82 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c7wao32pijllb" path="res://resources/3d_models/environment_tileset/Rock/Rochet_3.fbx" id="7_lqpld"]
 [ext_resource type="PackedScene" uid="uid://bib8h7h077nxb" path="res://resources/3d_models/environment_tileset/Rock/Gros_Rochet_03.fbx" id="7_o8hql"]
 [ext_resource type="PackedScene" uid="uid://du6pg0ciwax14" path="res://resources/3d_models/environment_tileset/Rock/Rochet_4.fbx" id="8_qtjd4"]
+[ext_resource type="ArrayMesh" uid="uid://buvi6364r0k1i" path="res://resources/3d_models/kenney_space-kit/craft_speederD.obj" id="9_ddp1c"]
 [ext_resource type="PackedScene" uid="uid://bdgvjmnsm4ssf" path="res://resources/3d_models/environment_tileset/Rock/Rochet_5.fbx" id="9_eo7sq"]
 [ext_resource type="PackedScene" uid="uid://ciu23jbs2orlb" path="res://resources/3d_models/environment_tileset/Skeletons/Squelette_1.fbx" id="13_35mug"]
 [ext_resource type="PackedScene" uid="uid://bwntla5wdp1g3" path="res://resources/3d_models/environment_tileset/Skeletons/Squelette_2.fbx" id="14_trtlq"]
@@ -395,6 +396,7 @@ mesh = SubResource("CylinderMesh_4l422")
 
 [node name="Transporter" parent="World/Environment" instance=ExtResource("3_acse1")]
 transform = Transform3D(-0.880643, 0, 0.473781, 0, 1, 0, -0.473781, 0, -0.880643, -1.24191, -0.228299, -0.444328)
+visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Environment"]
 transform = Transform3D(2, 0, 0, 0, 1.99969, -0.0354284, 0, 0.0354284, 1.99969, -108.252, 242.777, -144.546)
@@ -442,6 +444,10 @@ transform = Transform3D(0.99911, 0.0158331, -0.0391059, 8.90004e-09, 0.926909, 0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.301192, 4.0694, 8.22984)
 light_energy = 2.0
+
+[node name="CraftSpeederD" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1.63522, 0, 3.17348, 0, 3.57, 0, -3.17348, 0, 1.63522, -1.32491, 0.256929, -0.642863)
+mesh = ExtResource("9_ddp1c")
 
 [node name="Rochet_1" parent="." instance=ExtResource("5_ovxys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.70082, 0, 12.9561)
