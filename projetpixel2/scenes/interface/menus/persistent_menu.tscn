@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7lcb6thi2mf3"]
+[gd_scene load_steps=24 format=3 uid="uid://b7lcb6thi2mf3"]
 
 [ext_resource type="Script" uid="uid://crjc2bgt7b4y6" path="res://scripts/persistent_menu.gd" id="1_4l422"]
 [ext_resource type="PackedScene" uid="uid://ckama6l5hm14f" path="res://scenes/interface/menus/submenus/main_menu.tscn" id="1_6apcv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://ckig5y1p23g32" path="res://resources/3d_models/environment_tileset/Vegetation/Arbre_mort.fbx" id="17_rfl6w"]
 [ext_resource type="PackedScene" uid="uid://cn56r5yyr74ih" path="res://resources/3d_models/environment_tileset/Vegetation/Coreaux.fbx" id="18_xevbn"]
 [ext_resource type="PackedScene" uid="uid://b7mvh3wggo25l" path="res://resources/3d_models/environment_tileset/Vegetation/Plante.fbx" id="19_kgcmm"]
+[ext_resource type="PackedScene" uid="uid://3br28g4r5qmw" path="res://resources/world_environment.tscn" id="22_6eyqy"]
 [ext_resource type="PackedScene" uid="uid://cgarh2yr3h1ff" path="res://scenes/world/levels/environments/environment_test2.tscn" id="26_qr31r"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_mp0u6"]
@@ -27,18 +28,6 @@ height = 40.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mp0u6"]
 albedo_color = Color(0, 0.841753, 0.951815, 1)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mp0u6"]
-sky_top_color = Color(0.805895, 0.7031, 0.89, 1)
-sky_horizon_color = Color(0.7258, 0.6232, 0.76, 1)
-sky_cover_modulate = Color(0.63104, 0.4608, 0.64, 1)
-
-[sub_resource type="Sky" id="Sky_lbr2l"]
-sky_material = SubResource("ProceduralSkyMaterial_mp0u6")
-
-[sub_resource type="Environment" id="Environment_s88ef"]
-background_mode = 2
-sky = SubResource("Sky_lbr2l")
 
 [node name="PersistentMenu" type="Node"]
 script = ExtResource("1_4l422")
@@ -58,6 +47,7 @@ visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="World/Environment"]
 transform = Transform3D(2, 0, 0, 0, 1.99969, -0.0354284, 0, 0.0354284, 1.99969, -108.252, 242.777, -144.546)
+visible = false
 mesh = SubResource("SphereMesh_mp0u6")
 surface_material_override/0 = SubResource("StandardMaterial3D_mp0u6")
 
@@ -72,7 +62,6 @@ transform = Transform3D(0.200189, 0, -0.979757, 0, 1, 0, 0.979757, 0, 0.200189, 
 
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(0.995539, -0.0573971, -0.0748852, 0.0106809, 0.857139, -0.514975, 0.0937451, 0.511878, 0.853928, 3.87476, 7.68911, 8.60393)
-environment = SubResource("Environment_s88ef")
 current = true
 
 [node name="MarkerCamTitle" type="Marker3D" parent="World"]
@@ -155,3 +144,5 @@ transform = Transform3D(-0.00694631, 0, -0.999976, 0, 1, 0, 0.999976, 0, -0.0069
 
 [node name="LevelEnvironment" parent="." instance=ExtResource("26_qr31r")]
 transform = Transform3D(1.95814, 0, -0.407044, 0, 7, 0, 0.407044, 0, 1.95814, 1.17223, -1.75931, 2.72057)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("22_6eyqy")]

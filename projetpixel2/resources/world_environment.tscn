@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://3br28g4r5qmw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mp0u6"]
+sky_top_color = Color(0.67358, 0.77197, 0.790945, 1)
+sky_horizon_color = Color(0.915558, 0.510873, 0.733555, 1)
+sky_cover_modulate = Color(0.63104, 0.4608, 0.64, 1)
+sun_angle_max = 118.35
+sun_curve = 0.219613
+
+[sub_resource type="Sky" id="Sky_lbr2l"]
+sky_material = SubResource("ProceduralSkyMaterial_mp0u6")
+
+[sub_resource type="Environment" id="Environment_s88ef"]
+background_mode = 2
+sky = SubResource("Sky_lbr2l")
+tonemap_mode = 2
+tonemap_exposure = 0.7
+tonemap_white = 2.0
+ssao_enabled = true
+ssao_radius = 3.0
+ssao_intensity = 5.0
+ssao_power = 1.91185
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.2
+glow_strength = 1.2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.462745, 0, 0.52549, 1)
+fog_light_energy = 3.0
+fog_density = 1.0
+fog_sky_affect = 0.0
+fog_depth_begin = 5.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_albedo = Color(0, 0, 0.65098, 1)
+volumetric_fog_emission = Color(0.12549, 0, 0.109804, 1)
+volumetric_fog_ambient_inject = 0.5
+adjustment_enabled = true
+adjustment_brightness = 0.8
+adjustment_contrast = 1.3
+adjustment_saturation = 1.6
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_kgcmm"]
+exposure_multiplier = 0.4
+auto_exposure_enabled = true
+auto_exposure_scale = 0.6
+dof_blur_far_enabled = true
+dof_blur_far_distance = 15.0
+auto_exposure_min_sensitivity = 100.0
+auto_exposure_max_sensitivity = 400.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_s88ef")
+camera_attributes = SubResource("CameraAttributesPractical_kgcmm")
