@@ -1,0 +1,100 @@
+[gd_scene load_steps=25 format=3 uid="uid://c48a7of3bxkbo"]
+
+[ext_resource type="ArrayMesh" uid="uid://d33gv3r0m47t0" path="res://resources/3d_models/kenney_space-kit/terrain.obj" id="1_2hk46"]
+[ext_resource type="ArrayMesh" uid="uid://cky7nnyg1vxgm" path="res://resources/3d_models/kenney_space-kit/terrain_ramp.obj" id="2_53sd5"]
+[ext_resource type="ArrayMesh" uid="uid://gukoxpeqre6m" path="res://resources/3d_models/kenney_space-kit/terrain_rampLarge.obj" id="3_b61t3"]
+[ext_resource type="ArrayMesh" uid="uid://cduy7o0wva3t6" path="res://resources/3d_models/kenney_space-kit/terrain_rampLarge_detailed.obj" id="4_iaqsl"]
+[ext_resource type="ArrayMesh" uid="uid://c7cs1gg5h5ndt" path="res://resources/3d_models/kenney_space-kit/terrain_roadCorner.obj" id="5_6fi6u"]
+[ext_resource type="ArrayMesh" uid="uid://biqxalv1vp6h4" path="res://resources/3d_models/kenney_space-kit/terrain_roadCross.obj" id="6_flhli"]
+[ext_resource type="ArrayMesh" uid="uid://u62s4ywgwoh5" path="res://resources/3d_models/kenney_space-kit/terrain_roadEnd.obj" id="7_hhhct"]
+[ext_resource type="ArrayMesh" uid="uid://bqdrq3djf6uwg" path="res://resources/3d_models/kenney_space-kit/terrain_roadSplit.obj" id="8_knug3"]
+[ext_resource type="ArrayMesh" uid="uid://cn5smxqq26eir" path="res://resources/3d_models/kenney_space-kit/terrain_roadStraight.obj" id="9_eml6b"]
+[ext_resource type="ArrayMesh" uid="uid://3arnj8yubfm6" path="res://resources/3d_models/kenney_space-kit/terrain_side.obj" id="10_ycv5p"]
+[ext_resource type="ArrayMesh" uid="uid://dil7y6rb7n3qf" path="res://resources/3d_models/kenney_space-kit/terrain_sideCliff.obj" id="11_yqips"]
+[ext_resource type="ArrayMesh" uid="uid://t3jc0iaa8u37" path="res://resources/3d_models/kenney_space-kit/terrain_sideCorner.obj" id="12_vejmt"]
+[ext_resource type="ArrayMesh" uid="uid://48go0rb5j7dd" path="res://resources/3d_models/kenney_space-kit/terrain_sideCornerInner.obj" id="13_xhh33"]
+[ext_resource type="ArrayMesh" uid="uid://bn7yhau0t1rej" path="res://resources/3d_models/kenney_space-kit/terrain_sideEnd.obj" id="14_734f2"]
+[ext_resource type="ArrayMesh" uid="uid://d2ndkhg5oot47" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/balcony-floor-center.obj" id="15_tq77r"]
+[ext_resource type="ArrayMesh" uid="uid://f73het1wvhxw" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/balcony-floor-corner.obj" id="16_bbewx"]
+[ext_resource type="ArrayMesh" uid="uid://bagpiyd3025sb" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/balcony-floor.obj" id="17_q4020"]
+[ext_resource type="ArrayMesh" uid="uid://ctw382mk7edij" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-corner.obj" id="18_vlq3u"]
+[ext_resource type="ArrayMesh" uid="uid://dpxiphsrfnuv1" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-detail.obj" id="19_2inu5"]
+[ext_resource type="ArrayMesh" uid="uid://c1okkth87phtx" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-panel-corner.obj" id="20_dkf2v"]
+[ext_resource type="ArrayMesh" uid="uid://cllac0y6y3chr" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-panel-end.obj" id="21_wg7vb"]
+[ext_resource type="ArrayMesh" uid="uid://q6l3sjgbk544" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-panel-straight.obj" id="22_b23tt"]
+[ext_resource type="ArrayMesh" uid="uid://dnvhrbyuas6y0" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor-panel.obj" id="23_phvjf"]
+[ext_resource type="ArrayMesh" uid="uid://lp6k3s18j0h8" path="res://resources/3d_models/kenney_space-station-kit/OBJ format/floor.obj" id="24_dp0mf"]
+
+[node name="KenneySpaceTerrainLibrary" type="Node3D"]
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_2hk46")
+
+[node name="TerrainRamp" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_53sd5")
+
+[node name="TerrainRampLarge" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_b61t3")
+
+[node name="TerrainRampLargeDetailed" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_iaqsl")
+
+[node name="TerrainRoadCorner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_6fi6u")
+
+[node name="TerrainRoadCross" type="MeshInstance3D" parent="."]
+mesh = ExtResource("6_flhli")
+
+[node name="TerrainRoadEnd" type="MeshInstance3D" parent="."]
+mesh = ExtResource("7_hhhct")
+
+[node name="TerrainRoadSplit" type="MeshInstance3D" parent="."]
+mesh = ExtResource("8_knug3")
+
+[node name="TerrainRoadStraight" type="MeshInstance3D" parent="."]
+mesh = ExtResource("9_eml6b")
+
+[node name="TerrainSide" type="MeshInstance3D" parent="."]
+mesh = ExtResource("10_ycv5p")
+
+[node name="TerrainSideCliff" type="MeshInstance3D" parent="."]
+mesh = ExtResource("11_yqips")
+
+[node name="TerrainSideCorner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("12_vejmt")
+
+[node name="TerrainSideCornerInner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("13_xhh33")
+
+[node name="TerrainSideEnd" type="MeshInstance3D" parent="."]
+mesh = ExtResource("14_734f2")
+
+[node name="Balcony-floor-center" type="MeshInstance3D" parent="."]
+mesh = ExtResource("15_tq77r")
+
+[node name="Balcony-floor-corner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("16_bbewx")
+
+[node name="Balcony-floor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("17_q4020")
+
+[node name="Floor-corner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("18_vlq3u")
+
+[node name="Floor-detail" type="MeshInstance3D" parent="."]
+mesh = ExtResource("19_2inu5")
+
+[node name="Floor-panel-corner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("20_dkf2v")
+
+[node name="Floor-panel-end" type="MeshInstance3D" parent="."]
+mesh = ExtResource("21_wg7vb")
+
+[node name="Floor-panel-straight" type="MeshInstance3D" parent="."]
+mesh = ExtResource("22_b23tt")
+
+[node name="Floor-panel" type="MeshInstance3D" parent="."]
+mesh = ExtResource("23_phvjf")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("24_dp0mf")

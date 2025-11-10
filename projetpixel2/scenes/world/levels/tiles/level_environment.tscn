@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b76pi81h5i3ie"]
+[gd_scene load_steps=5 format=3 uid="uid://b76pi81h5i3ie"]
 
 [ext_resource type="Script" uid="uid://chu7w5sruvdw8" path="res://scripts/level_environment.gd" id="1_u24qs"]
 [ext_resource type="MeshLibrary" uid="uid://ciwlva4meubp6" path="res://resources/3d_models/environment_tileset/env_mesh_library.tres" id="2_cbtst"]
+[ext_resource type="MeshLibrary" uid="uid://b1oxx53hqulrv" path="res://resources/3d_models/mesh_terrain_library.tres" id="3_cbtst"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_scgg2"]
 size = Vector3(26.834, 1, 32.4365)
@@ -13,9 +14,16 @@ script = ExtResource("1_u24qs")
 
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 mesh_library = ExtResource("2_cbtst")
 cell_size = Vector3(0.75, 1, 0.75)
 metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="GridMapKenneySpace" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh_library = ExtResource("3_cbtst")
+cell_size = Vector3(1, 0.5, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73438, 0, -2.65195)
