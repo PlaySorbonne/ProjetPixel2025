@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwkuod6mv6u0j"]
+
+[ext_resource type="Script" uid="uid://ckv271tyr2dcm" path="res://scripts/select_card_button.gd" id="1_l412o"]
+
+[node name="SelectCardButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_filter = 1
+flat = true
+script = ExtResource("1_l412o")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

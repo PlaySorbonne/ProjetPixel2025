@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt0sfajn3i7tr"]
+[gd_scene load_steps=6 format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
 [ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="2_xkj05"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
+[ext_resource type="PackedScene" uid="uid://dwkuod6mv6u0j" path="res://scenes/interface/cards/misc/select_card_button.tscn" id="4_xtsg7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlpjb"]
 font_size = 18
@@ -56,6 +57,9 @@ text = "card_name"
 label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
 clip_text = true
+
+[node name="SelectCardButton" parent="." instance=ExtResource("4_xtsg7")]
+layout_mode = 1
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

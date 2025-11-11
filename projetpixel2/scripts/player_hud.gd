@@ -117,7 +117,9 @@ func gain_level(force_level_up := false) -> void:
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
-			new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
+			var select_button := SelectCardButton.add_select_button_to_card(new_card)
+			#new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
+			select_button.card_selected.connect(_on_card_level_clicked.bind(new_card, select_button))
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card_from_deck()
 			$NewCardsContainer.add_child(new_card)
@@ -170,9 +172,10 @@ func reorder_hand() -> void:
 
 
 
-func _on_card_level_clicked(chosen_card : CardObject) -> void:
+func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
+	card_button.queue_free()
 	Engine.time_scale = 1.0
-	chosen_card.card_clicked.disconnect(_on_card_level_clicked)
+	#chosen_card.card_clicked.disconnect(_on_card_level_clicked)
 	for card : CardObject in new_level_cards:
 		if card != chosen_card:
 			card.destroy_card_object()
