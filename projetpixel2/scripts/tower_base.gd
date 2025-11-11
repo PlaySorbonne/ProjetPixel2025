@@ -363,4 +363,5 @@ func _on_clickable_object_object_unhovered() -> void:
 #	print("goodbye")
 
 func _on_clickable_object_object_right_clicked() -> void:
-	switch_mode()
+	return
+#	switch_mode()

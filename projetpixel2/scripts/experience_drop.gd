@@ -48,7 +48,18 @@ var xp_level_index : int = 0:
 		_check_neighbor_xp_drops()
 var marked_for_deletion := false
 var is_being_harvested := false
+var is_mouse_over := false
 
+
+func _process(delta: float) -> void:
+	if is_mouse_over and Input.is_action_pressed("click") and not marked_for_deletion:
+		marked_for_deletion = true
+		xp_drop_collected.emit(experience_points)
+		is_being_harvested = false
+		RunData.gain_experience(experience_points)
+		set_process(false)
+		await get_tree().create_timer(0.2).timeout
+		destroy_experience_object()
 
 func start_mining() -> void:
 	is_being_harvested = true
@@ -106,7 +117,8 @@ func merge_xp_drops(neighbors_xp : Array[ExperienceDrop]) -> void:
 		true
 	)
 	for neighbor : ExperienceDrop in neighbors_xp:
-		neighbor.queue_free()
+		if is_instance_valid(neighbor):
+			neighbor.queue_free()
 
 func _check_neighbor_xp_drops() -> void:
 	if is_merge_maxed():
@@ -142,3 +154,9 @@ func _on_area_entered(area: Area3D) -> void:
 	if is_merge_maxed():
 		return
 	_check_neighbor_xp_drops()
+
+func _on_mouse_entered() -> void:
+	is_mouse_over = true
+
+func _on_mouse_exited() -> void:
+	is_mouse_over = false

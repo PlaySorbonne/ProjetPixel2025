@@ -45,3 +45,5 @@ mesh = SubResource("SphereMesh_12bmr")
 surface_material_override/0 = SubResource("ShaderMaterial_4yd8v")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
