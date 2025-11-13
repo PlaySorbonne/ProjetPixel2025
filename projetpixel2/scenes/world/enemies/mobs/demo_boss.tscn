@@ -28,33 +28,31 @@ min_wave = 15
 max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0vb1"]
 resource_local_to_scene = true
+albedo_color = Color(0, 0, 1, 1)
 
 [node name="DemoBoss" instance=ExtResource("1_vopqk")]
 script = ExtResource("2_15374")
 enemy_data = SubResource("Resource_pwftm")
 
-[node name="figurine-cube" parent="." index="0"]
-transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0, 0, 0)
+[node name="leg-left" parent="mesh/figurine-cube/root" index="0"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
-[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="leg-right" parent="mesh/figurine-cube/root" index="1"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
-[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="torso" parent="mesh/figurine-cube/root" index="2"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
-[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="arm-left" parent="mesh/figurine-cube/root/torso" index="0"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
-[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="arm-right" parent="mesh/figurine-cube/root/torso" index="1"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
-[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="head" parent="mesh/figurine-cube/root/torso" index="2"]
+material_override = SubResource("StandardMaterial3D_b0vb1")
 
 [node name="DamageArea" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000998616, 0.521029, 0.016819)
@@ -76,4 +74,4 @@ one_shot = true
 [connection signal="timeout" from="TimerMinion" to="." method="_on_timer_minion_timeout"]
 [connection signal="timeout" from="TimerDefense" to="." method="_on_timer_defense_timeout"]
 
-[editable path="figurine-cube"]
+[editable path="mesh"]

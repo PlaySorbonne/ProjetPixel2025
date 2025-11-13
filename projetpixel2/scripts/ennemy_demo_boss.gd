@@ -28,7 +28,7 @@ func _on_timer_minion_timeout() -> void:
 	minion.global_position = global_position
 
 func _on_damageable_object_hit(damage_amount: int, new_health: int, damage_type: DamageableObject.DamagingTypes) -> void:
-	$Label3D.text = str(enemy_data.health) + " / " + str(enemy_data.health)
+	$Label3D.text = str($DamageableObject.health) + " / " + str($DamageableObject.max_health)
 
 func _on_timer_defense_timeout() -> void:
 	$DamageableObject.defense = 1.0
