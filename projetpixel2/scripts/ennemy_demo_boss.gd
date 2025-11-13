@@ -8,13 +8,16 @@ var lives := 4
 
 func death() -> void:
 	lives -= 1
+	var new_health : int
 	if lives == 0:
 		super.death()
 		return
 	elif lives == 1:
-		enemy_data.health = 4000
-	$DamageableObject.max_health = enemy_data.health
-	$DamageableObject.health = enemy_data.health
+		new_health = 4000
+	else:
+		new_health = 2000
+	$DamageableObject.max_health = new_health
+	$DamageableObject.health = new_health
 	var rooted := StatusRooted.new()
 	rooted.inflict_status(self)
 	$DamageableObject.defense = 100.0
