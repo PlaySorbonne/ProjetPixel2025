@@ -25,11 +25,11 @@ render_priority = 0
 shader = ExtResource("2_chnow")
 shader_parameter/Color = Color(0.529412, 1, 0.545098, 1)
 shader_parameter/glow_color = Color(0.709005, 1, 0.708494, 1)
-shader_parameter/dist = 2.955
-shader_parameter/speed = 0.2
-shader_parameter/glow_intensity = 6.0
-shader_parameter/glow_amount = 2.955
-shader_parameter/posMult = 0.05
+shader_parameter/dist = 2.0
+shader_parameter/speed = 0.01
+shader_parameter/glow_intensity = 0.05
+shader_parameter/glow_amount = 2.0
+shader_parameter/posMult = 0.5
 shader_parameter/noise = SubResource("NoiseTexture2D_dkkf5")
 
 [node name="ExperienceDrop" type="Area3D"]
@@ -41,6 +41,7 @@ script = ExtResource("1_12bmr")
 shape = SubResource("SphereShape3D_qo8eh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 mesh = SubResource("SphereMesh_12bmr")
 surface_material_override/0 = SubResource("ShaderMaterial_4yd8v")
 
