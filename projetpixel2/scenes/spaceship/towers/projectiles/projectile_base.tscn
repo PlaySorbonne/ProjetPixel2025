@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1ml42212cb43"]
+[gd_scene load_steps=5 format=3 uid="uid://c1ml42212cb43"]
 
 [ext_resource type="Script" uid="uid://bm3qah2twsbxf" path="res://scripts/projectile_base.gd" id="1_2ys8s"]
 
@@ -6,8 +6,11 @@
 radius = 0.25
 
 [sub_resource type="SphereMesh" id="SphereMesh_2ys8s"]
-radius = 0.25
-height = 0.5
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ys8s"]
+albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
 
 [node name="ProjectileBase" type="Area3D"]
 script = ExtResource("1_2ys8s")
@@ -16,7 +19,9 @@ script = ExtResource("1_2ys8s")
 shape = SubResource("SphereShape3D_2ys8s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_2ys8s")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ys8s")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
