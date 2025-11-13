@@ -13,6 +13,8 @@ class ExperienceLevel:
 
 const MAX_HP := 100
 const NB_ORBS_MERGE := 3
+const INITIAL_SCALE := Vector3(0.75, 0.75, 0.75)
+const HOVERED_SCALE := Vector3.ONE
 
 static var experience_thresholds : Array[ExperienceLevel] = [
 	ExperienceLevel.new(400, Color.BLACK),
@@ -49,17 +51,27 @@ var xp_level_index : int = 0:
 var marked_for_deletion := false
 var is_being_harvested := false
 var is_mouse_over := false
+var is_mouse_pressed := false
+var scale_tween : Tween
 
 
 func _process(delta: float) -> void:
-	if is_mouse_over and Input.is_action_pressed("click") and not marked_for_deletion:
+	if is_mouse_over and Input.is_action_pressed("click"
+			) and not marked_for_deletion and not GV.is_dragging_object:
 		marked_for_deletion = true
 		xp_drop_collected.emit(experience_points)
 		is_being_harvested = false
-		#RunData.gain_experience(experience_points)
 		set_process(false)
 		await get_tree().create_timer(0.2).timeout
 		destroy_experience_object()
+
+func tween_scale_to(new_val : Vector3) -> void:
+	if marked_for_deletion:
+		return
+	if scale_tween:
+		scale_tween.kill()
+	scale_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	scale_tween.tween_property($MeshInstance3D, "scale", new_val, 0.15)
 
 func start_mining() -> void:
 	is_being_harvested = true
@@ -158,7 +170,13 @@ func _on_area_entered(area: Area3D) -> void:
 	_check_neighbor_xp_drops()
 
 func _on_mouse_entered() -> void:
+	if marked_for_deletion:
+		return
 	is_mouse_over = true
+	tween_scale_to(HOVERED_SCALE)
 
 func _on_mouse_exited() -> void:
+	if marked_for_deletion:
+		return
 	is_mouse_over = false
+	tween_scale_to(INITIAL_SCALE)

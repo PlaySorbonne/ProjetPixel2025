@@ -58,7 +58,7 @@ func release_card() -> void:
 	await get_tree().process_frame
 	$DragAndDrop2D.was_just_pressed = false
 	$DragAndDrop2D.release()
-	is_dragged = true
+	is_dragged = false
 	$DragAndDrop2D.drop()
 
 func press_card() -> void:
