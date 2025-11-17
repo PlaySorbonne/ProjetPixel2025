@@ -92,7 +92,7 @@ func update_experience() -> void:
 		experience_bar_tween.finished.connect(_loop_exp_tween)
 		final_val = RunData.level_experience_threshold
 	experience_bar_tween.tween_property($ExperienceBar, "value", 
-							$ExperienceBar.max_value, 0.1)
+							final_val, 0.1)
 
 func _loop_exp_tween() -> void:
 	RunData.gain_level()
