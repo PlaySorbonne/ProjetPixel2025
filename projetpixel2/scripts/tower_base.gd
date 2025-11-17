@@ -314,7 +314,8 @@ func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
 		$TimerShoot.start(1.0 / fire_rate)
 		for _i : int in range(number_of_projectiles-1):
 			await get_tree().create_timer(1.0 / (fire_rate * 10.0)).timeout
-			shoot_bonus(enemy)
+			if is_instance_valid(enemy):
+				shoot_bonus(enemy)
 
 func shoot_bonus(enemy : BaseEnemy = null) -> void:
 	if enemy == null:
