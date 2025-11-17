@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e7qj5")
+submenu_pos = Vector2(-1, 0)
 
 [node name="DeckCraft" parent="." instance=ExtResource("2_enewh")]
 layout_mode = 1

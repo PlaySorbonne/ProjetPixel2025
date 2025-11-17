@@ -23,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mp75t")
+submenu_pos = Vector2(0, -1)
 
 [node name="ButtonBack" parent="." instance=ExtResource("2_i5pn3")]
 layout_mode = 1
