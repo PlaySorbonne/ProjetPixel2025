@@ -14,17 +14,18 @@ const POSSIBLE_OFFSETS : Array[Vector3] = [
 	Vector3(1, 0, 1),
 ]
 const ANIM_TIME := 1.0
-const EXP_POPUP_SPAWN_RADIUS := 1.0
 
 
-static func display_experience(amount : int) -> void:
+static func display_experience(amount : int, spawn_pos : Vector3) -> void:
 	var popup := POPUP_RES.instantiate()
 	popup.text = str(amount)
 	popup.modulate = Color.BLUE
 	popup.font_size = 74
-	popup.global_position = GV.space_ship.global_position + Vector3(
-		randf_range(-EXP_POPUP_SPAWN_RADIUS, EXP_POPUP_SPAWN_RADIUS),
-		 1.75, randf_range(-EXP_POPUP_SPAWN_RADIUS, EXP_POPUP_SPAWN_RADIUS))
+	popup.global_position = spawn_pos + Vector3(0.0, 0.0, 0.0)
+	#const EXP_POPUP_SPAWN_RADIUS := 1.0
+	#popup.global_position = GV.space_ship.global_position + Vector3(
+		#randf_range(-EXP_POPUP_SPAWN_RADIUS, EXP_POPUP_SPAWN_RADIUS),
+		 #1.75, randf_range(-EXP_POPUP_SPAWN_RADIUS, EXP_POPUP_SPAWN_RADIUS))
 	popup.pick_random_direction = false
 	popup.direction = Vector3.UP
 	GV.world.add_child(popup)
