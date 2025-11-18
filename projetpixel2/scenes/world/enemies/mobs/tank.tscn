@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8h1y4dev0chi"]
+[gd_scene load_steps=7 format=3 uid="uid://b8h1y4dev0chi"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_6o34r"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_tb3p3"]
+[ext_resource type="PackedScene" uid="uid://d30d8elajmyou" path="res://resources/3d_models/enemies/Triceratops.fbx" id="3_daq3g"]
 
 [sub_resource type="Resource" id="Resource_daq3g"]
 resource_local_to_scene = true
@@ -27,32 +28,108 @@ min_wave = 2
 max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
-resource_local_to_scene = true
-albedo_color = Color(0.360949, 0.360949, 0.360949, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_daq3g"]
+size = Vector3(1, 1.63879, 2.62158)
 
-[node name="Tank" instance=ExtResource("1_6o34r")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndodq"]
+size = Vector3(1.47461, 1, 2.01611)
+
+[node name="Tank" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_6o34r")]
 enemy_data = SubResource("Resource_daq3g")
+mesh = NodePath("Triceratops")
+mesh_animations = NodePath("Triceratops/AnimationPlayer")
+run_anim = "Armature|Triceratops_Run"
+attack_anim = "Armature|Triceratops_Attack"
+death_anim = "Armature|Triceratops_Death"
 
-[node name="figurine-cube" parent="." index="0"]
-transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 0, 0, 0)
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765477, 0.143311)
+shape = SubResource("BoxShape3D_daq3g")
 
-[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00195313, 0, -0.508057)
+shape = SubResource("BoxShape3D_ndodq")
 
-[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="Triceratops" parent="." index="5" instance=ExtResource("3_daq3g")]
 
-[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="Armature" parent="Triceratops" index="0"]
+transform = Transform3D(-200, 1.74846e-05, 2.08432e-12, 0, -2.38419e-05, 200, 1.74846e-05, 200, 2.38419e-05, 0, 0, 0)
 
-[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="Skeleton3D" parent="Triceratops/Armature" index="0"]
+bones/1/position = Vector3(6.16324e-05, 0.00860948, -0.000107554)
+bones/1/rotation = Quaternion(0.0110151, -2.14939e-27, 2.44584e-18, 0.999939)
+bones/2/position = Vector3(-0.000555192, -0.00283378, -0.00307864)
+bones/2/rotation = Quaternion(0.149119, -0.14912, 0.691204, 0.691204)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(8.46545e-17, 0.00188671, -4.3869e-10)
+bones/3/rotation = Quaternion(0.740717, -0.671712, -0.0105432, 0.00547007)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(2.44693e-10, 0.00324549, -2.6447e-10)
+bones/4/rotation = Quaternion(0.00239033, 0.00315357, 0.0499553, 0.998744)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.000431927, -0.00305315, -0.002777)
+bones/6/rotation = Quaternion(0.702663, 0.702663, -0.0791502, 0.07915)
+bones/7/position = Vector3(-6.03684e-17, 0.00188671, 4.3869e-10)
+bones/7/rotation = Quaternion(-0.00323306, -0.0120692, 0.740839, 0.671566)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-9.00857e-12, 0.00324549, -2.70988e-10)
+bones/8/rotation = Quaternion(0.432526, -0.0155278, -0.0479708, 0.900211)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(0.000948382, -0.00295346, -0.00179169)
+bones/10/rotation = Quaternion(-0.728507, 4.89978e-07, -5.21069e-07, 0.685039)
+bones/11/position = Vector3(2.97743e-13, 0.00117813, 2.01853e-10)
+bones/11/rotation = Quaternion(-0.0883162, -7.12461e-07, -6.3168e-08, 0.996092)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-5.93102e-13, 0.0022399, 1.40617e-10)
+bones/12/rotation = Quaternion(-0.193491, 1.16692e-07, -2.1754e-08, 0.981102)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(9.99758e-14, 0.0019256, 1.94503e-10)
+bones/13/rotation = Quaternion(-0.00979981, -1.21308e-07, 6.33819e-09, 0.999952)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(2.54863e-13, 0.00134781, -6.92728e-10)
+bones/14/rotation = Quaternion(0.20477, 1.21241e-07, -5.90615e-09, 0.97881)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(1.43616e-13, 0.00228557, 2.90193e-10)
+bones/15/rotation = Quaternion(0.266849, -8.79075e-12, 7.59483e-08, 0.963738)
+bones/17/position = Vector3(-6.45654e-05, -0.00253262, -0.00128213)
+bones/17/rotation = Quaternion(3.89144e-07, 0.718787, 0.695231, 5.61645e-07)
+bones/18/position = Vector3(3.01912e-16, 0.00138311, 2.24789e-10)
+bones/18/rotation = Quaternion(-0.273177, 0.00417454, -0.0506528, 0.96062)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-1.61136e-11, 0.00180189, -4.83113e-11)
+bones/19/rotation = Quaternion(0.197076, -0.0191753, 0.0489033, 0.97898)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(3.30018e-05, 0.0025736, 0.00026745)
+bones/20/rotation = Quaternion(0.086283, -0.00291104, -0.0224194, 0.996014)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-6.01853e-12, 0.00187203, 5.30759e-10)
+bones/21/rotation = Quaternion(-0.162306, -0.255625, 0.0419853, 0.952129)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/position = Vector3(-0.000442563, -0.00402063, 0.00270115)
+bones/23/rotation = Quaternion(0.101209, -0.101205, 0.699829, 0.699825)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(2.63678e-17, 0.00145617, -1.33514e-10)
+bones/24/rotation = Quaternion(0.758753, -0.648705, 0.0436133, -0.0396741)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(2.1212e-10, 0.00281611, -3.00402e-10)
+bones/25/rotation = Quaternion(-0.259718, 0.0231776, 0.119222, 0.958017)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(0.000319298, -0.00413902, 0.00302483)
+bones/27/rotation = Quaternion(0.701241, 0.701237, 0.0909063, -0.0909106)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(5.20417e-17, 0.00145617, -1.71661e-10)
+bones/28/rotation = Quaternion(0.0142295, -0.000156648, 0.767034, 0.641448)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(-6.97575e-11, 0.00281611, 2.36503e-11)
+bones/29/rotation = Quaternion(-0.403863, -0.0092755, -0.130061, 0.905479)
+bones/29/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.707107, -1.14381e-06, -1.44682e-06, 0.707107)
+bones/31/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(0.707107, -1.63249e-06, -1.63249e-06, 0.707107)
+bones/33/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(0.707106, -1.63249e-06, -3.20269e-06, 0.707108)
+bones/35/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(0.792567, -2.02481e-06, -3.45588e-06, 0.609784)
+bones/37/scale = Vector3(1, 1, 1)
 
-[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[editable path="figurine-cube"]
+[editable path="Triceratops"]

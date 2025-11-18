@@ -7,7 +7,7 @@ enum EnemyTypes {Basic, Runner, Tank, Rock}
 const MAX_ENEMY_TYPES_PER_WAVE := 2
 const NEXT_BUTTON_RES := preload("res://scenes/interface/gameplay_hud/next_wave_button.tscn")
 const ENEMY_RES : Dictionary[EnemyTypes, PackedScene] = {
-	EnemyTypes.Basic : preload("res://scenes/world/enemies/base_enemy.tscn"),
+	EnemyTypes.Basic : preload("res://scenes/world/enemies/mobs/standard_walker.tscn"),
 	EnemyTypes.Runner : preload("res://scenes/world/enemies/mobs/runner.tscn"),
 	EnemyTypes.Tank : preload("res://scenes/world/enemies/mobs/tank.tscn"),
 	EnemyTypes.Rock : preload("res://scenes/world/enemies/mobs/rock.tscn"),

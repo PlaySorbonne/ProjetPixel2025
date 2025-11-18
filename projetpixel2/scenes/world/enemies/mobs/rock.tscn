@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_xle50"]
 [ext_resource type="Script" uid="uid://bgecywqc8mw18" path="res://scripts/enemy_rock.gd" id="2_qgeih"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="3_b78ks"]
+[ext_resource type="PackedScene" uid="uid://geal6y33o55o" path="res://resources/3d_models/enemies/Slime.fbx" id="4_68oic"]
 
 [sub_resource type="Resource" id="Resource_68oic"]
 resource_local_to_scene = true
@@ -28,36 +29,47 @@ min_wave = 2
 max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6o34r"]
-resource_local_to_scene = true
-albedo_color = Color(0.853003, 0.000190381, 0.000104925, 1)
-
-[node name="Rock" instance=ExtResource("1_xle50")]
+[node name="Rock" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_xle50")]
 script = ExtResource("2_qgeih")
 max_minions = 15
 enemy_data = SubResource("Resource_68oic")
+mesh = NodePath("Slime")
+mesh_animations = NodePath("Slime/AnimationPlayer")
+run_anim = "Armature|Slime_Walk"
+attack_anim = "Armature|Slime_Attack"
+death_anim = "Armature|Slime_Death"
 
-[node name="figurine-cube" parent="." index="0"]
-transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0, 0, 0)
+[node name="Slime" parent="." index="5" instance=ExtResource("4_68oic")]
 
-[node name="leg-left" parent="figurine-cube/figurine-cube/root" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="Armature" parent="Slime" index="0"]
+transform = Transform3D(1.31134e-05, -100, -1.19209e-05, 0, -1.19209e-05, 100, -100, -1.31134e-05, -1.56324e-12, 0, 0, 0)
 
-[node name="leg-right" parent="figurine-cube/figurine-cube/root" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="torso" parent="figurine-cube/figurine-cube/root" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="arm-left" parent="figurine-cube/figurine-cube/root/torso" index="0"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="arm-right" parent="figurine-cube/figurine-cube/root/torso" index="1"]
-material_override = SubResource("StandardMaterial3D_6o34r")
-
-[node name="head" parent="figurine-cube/figurine-cube/root/torso" index="2"]
-material_override = SubResource("StandardMaterial3D_6o34r")
+[node name="Skeleton3D" parent="Slime/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0627444, 0.00212884, -0.213248, 0.974979)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.100834, -0.698956, 0.0125015, 0.70791)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(0.00145589, 0.000592245, -0.000553799)
+bones/4/rotation = Quaternion(0.095131, 0.700678, 0.095131, 0.700678)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-0.00145589, 0.000592245, -0.0005538)
+bones/6/rotation = Quaternion(0.095131, 0.700678, 0.095131, 0.700678)
+bones/8/rotation = Quaternion(-0.190384, 0, 0, 0.98171)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0, 0.000547212, 5.86914e-11)
+bones/9/rotation = Quaternion(-0.265415, -4.91796e-11, -1.78648e-10, 0.964134)
+bones/10/position = Vector3(-1.62279e-13, 0.000437899, -2.57368e-10)
+bones/10/rotation = Quaternion(0.136699, 3.05489e-11, 1.4573e-10, 0.990613)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-2.66317e-05, 0.000497629, 0.00207375)
+bones/12/rotation = Quaternion(0.190384, -9.76722e-08, -3.33882e-09, 0.98171)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(7.45157e-14, 0.000547212, 2.57971e-11)
+bones/13/rotation = Quaternion(0.265415, -4.71922e-08, -3.99652e-08, 0.964134)
+bones/14/position = Vector3(1.01772e-12, 0.000437899, 2.57368e-10)
+bones/14/rotation = Quaternion(-0.136699, 7.15703e-08, 1.65524e-08, 0.990613)
+bones/14/scale = Vector3(1, 1, 1)
 
 [connection signal="status_inflicted" from="." to="." method="_on_status_inflicted"]
 
-[editable path="figurine-cube"]
+[editable path="Slime"]

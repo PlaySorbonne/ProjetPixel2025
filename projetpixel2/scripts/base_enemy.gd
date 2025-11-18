@@ -12,6 +12,11 @@ static var number_of_enemies := 0
 static var enemy_types : Array[String] = ["Puncher"]
 
 @export var enemy_data : EnemyData
+@export var mesh : Node3D
+@export var mesh_animations : AnimationPlayer
+@export var run_anim := "Armature|Rat_Run"
+@export var attack_anim := "Armature|Rat_Attack"
+@export var death_anim := "Armature|Rat_Death"
 
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
@@ -26,8 +31,6 @@ var enemy_id := 0
 @onready var clickable : ClickableObject = $ClickableObject
 
 @onready var target : Node3D = GV.space_ship
-@onready var mesh : Node3D = $mesh
-@onready var mesh_animations : AnimationPlayer = $mesh/AnimationPlayer
 @onready var attack_timer : Timer = $TimerAttacking
 
 
@@ -49,7 +52,8 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		if can_move:
-			mesh_animations.play("sprint")
+			print_debug(str(self) + " - " + str(enemy_data.enemy_type) + ": run_anim = " + run_anim)
+			mesh_animations.play(run_anim)
 			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
 			mesh.look_at(target.position)
 			move_and_slide() 
@@ -63,7 +67,7 @@ func attack() -> void:
 	for enemy : Node3D in overlapping_enemies:
 		var enemy_dmg : DamageableObject = enemy.damageable
 		enemy_dmg.damage(enemy_data.damage, enemy_data.attack_type)
-	mesh_animations.play("attack-melee-right")
+	mesh_animations.play(attack_anim)
 	attack_timer.start(1.0/enemy_data.attack_speed)
 
 func _on_timer_attacking_timeout() -> void:
@@ -77,7 +81,7 @@ func death() -> void:
 	living_enemies.erase(self)
 	emit_signal("enemy_killed")
 	$CollisionShape3D.queue_free()
-	mesh_animations.play("die")
+	mesh_animations.play(death_anim)
 	RunData.new_kill(enemy_data.enemy_type, enemy_data.is_alpha)
 	# RunData.gain_experience(enemy_data.experience_points)
 	ExperienceDrop.spawn_xp(position, enemy_data.experience_points)

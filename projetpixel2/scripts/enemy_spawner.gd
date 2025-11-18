@@ -12,7 +12,7 @@ var wave_manager : WaveManager = null
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		GV.spawners.append(self)
-		$CSGCylinder3D.visible = false
+		#$CSGCylinder3D.visible = false
 
 @export var spawner_radius := 1.0:
 	set(new_val):
