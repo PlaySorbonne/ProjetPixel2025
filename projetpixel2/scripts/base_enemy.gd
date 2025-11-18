@@ -86,8 +86,11 @@ func death() -> void:
 	# RunData.gain_experience(enemy_data.experience_points)
 	ExperienceDrop.spawn_xp(position, enemy_data.experience_points)
 	await(mesh_animations.animation_finished)
-	await(get_tree().create_timer(3.0).timeout)
-	queue_free()
+	var buried_pos := position + Vector3(0.25, -3.0, 0.25)
+	var t := create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(self, "position", buried_pos, 5.0)
+	t.tween_property(self, "scale", scale/1.6, 5.0)
+	t.finished.connect(queue_free)
 
 func _on_damageable_object_death() -> void:
 	death()
