@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://busmakjbtb6mn"
-path="res://.godot/imported/Spider.fbx-c3f023d549925bd685813bd3fe027009.scn"
+uid="uid://geal6y33o55o"
+path="res://.godot/imported/Slime.fbx-8c7528a3582ddf073984675baeffb45d.scn"
 
 [deps]
 
-source_file="res://resources/3d_models/enemies/Spider.fbx"
-dest_files=["res://.godot/imported/Spider.fbx-c3f023d549925bd685813bd3fe027009.scn"]
+source_file="res://resources/3d_models/enemies/Slime.fbx"
+dest_files=["res://.godot/imported/Slime.fbx-8c7528a3582ddf073984675baeffb45d.scn"]
 
 [params]
 
