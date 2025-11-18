@@ -1,7 +1,7 @@
 extends BaseEnemy
 class_name EnemyDemoBoss
 
-const MINION := preload("res://scenes/world/enemies/base_enemy.tscn")
+const MINION := preload("res://scenes/world/enemies/mobs/standard_walker.tscn")
 
 var lives := 4
 
