@@ -26,11 +26,16 @@ var can_be_dropped_on_objects := false
 var deck_position : Vector2
 var deck_rotation : float
 var card_tweens : Dictionary[String, Tween] = {}
+var sacrificing_card := false
+var tween_dissolve : Tween
+var mouse_over_card := false
+
+@onready var card_texture_size : Vector2 = $TextureRect.texture.get_size()
 
 
 func _ready() -> void:
 	await get_tree().process_frame
-	$Label.text = card.name
+	$TextureRect/Label.text = card.name
 	$TextureRect.self_modulate = FAMILY_COLORS[card.family]
 	if deck_position == Vector2.ZERO:
 		deck_position = position
@@ -64,22 +69,57 @@ func release_card() -> void:
 func press_card() -> void:
 	$DragAndDrop2D.press()
 
-func _input(event: InputEvent) -> void:
-	var debug_text := "INPUT DETECTED"
-	if not is_dragged:
-		debug_text += ("   not dragged -> return")
-		#print(debug_text)
-		return
-	if event is InputEventMouseButton:
-		if event.is_released():
-			$DragAndDrop2D.release()
-			debug_text += ("   release")
-		else:
-			$DragAndDrop2D.press()
-			debug_text += ("   press")
-	else:
-		debug_text += ("   event is not InputEventMouseButton")
-	#print(debug_text)
+func _unhandled_input(event: InputEvent) -> void:
+	if is_dragged:
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+				$DragAndDrop2D.press()
+			elif event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+				$DragAndDrop2D.release()
+	elif mouse_over_card:
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+				print("right click card")
+				var world_pos = get_global_mouse_position()
+				
+				var uv := get_uv_from_click(get_local_mouse_position())
+				print("\t uv = " + str(uv))
+				if sacrificing_card:
+					sacrificing_card = false
+					play_card_dissolve(uv, 0.0)
+				else:
+					sacrificing_card = true
+					play_card_dissolve(uv, 1.5)
+
+
+#func _input(event):
+	#if event is InputEventMouseButton and event.pressed:
+		#var world_pos = get_global_mouse_position()
+		#var local_pos = to_local(world_pos)
+		#if get_rect().has_point(local_pos):
+			#var uv = get_uv_from_click(local_pos)
+			#burnCard(uv)
+
+func get_uv_from_click(local_click_pos: Vector2) -> Vector2:
+	var top_left_pos = local_click_pos + (card_texture_size) / 2
+	var uv = top_left_pos / (card_texture_size)
+	return uv
+
+func play_card_dissolve(from_uv : Vector2, end : float) -> void:
+	const MAX_DISSOLVE_DURATION := 0.3
+	$TextureRect.material.set_shader_parameter("position", from_uv)
+	var start : float = $TextureRect.material.get_shader_parameter("radius")
+	var time : float = abs(end - start) * MAX_DISSOLVE_DURATION
+	print("\tdissolve (from_uv="+str(from_uv)+" ; start="+str(start)+" ; end="+str(end)+")")
+	if tween_dissolve:
+		tween_dissolve.kill()
+	tween_dissolve = create_tween().set_ease(Tween.EASE_IN)
+	tween_dissolve.tween_method(_update_radius, start, end, time)
+
+func _update_radius(value: float) -> void:
+	$TextureRect.material.set_shader_parameter("radius", value)
+
+
 
 func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
@@ -141,6 +181,7 @@ func destroy_card_object() -> void:
 		GV.hud.remove_card_from_hand(self)
 
 func _on_mouse_entered() -> void:
+	mouse_over_card = true
 	CardDescription.add_card_description(self)
 	tween_properties({
 		"position" : Vector2(0.0, -20.0) + deck_position,
@@ -148,6 +189,7 @@ func _on_mouse_entered() -> void:
 	})
 
 func _on_mouse_exited() -> void:
+	mouse_over_card = false
 	if not is_dragged:
 		tween_properties({
 			"position" : deck_position,

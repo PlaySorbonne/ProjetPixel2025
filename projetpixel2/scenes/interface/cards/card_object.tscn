@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bt0sfajn3i7tr"]
+[gd_scene load_steps=7 format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
+[ext_resource type="Material" uid="uid://cc43x54kaecfd" path="res://resources/materials/card_dissolve_mat.tres" id="2_nggt0"]
 [ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="2_xkj05"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
 [ext_resource type="PackedScene" uid="uid://dwkuod6mv6u0j" path="res://scenes/interface/cards/misc/select_card_button.tscn" id="4_xtsg7"]
@@ -26,6 +27,8 @@ script = ExtResource("1_xkj05")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+material = ExtResource("2_nggt0")
 custom_minimum_size = Vector2(95, 103)
 layout_mode = 1
 anchors_preset = 15
@@ -38,10 +41,8 @@ texture = ExtResource("2_xkj05")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]
-dragged_object = NodePath("..")
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="TextureRect"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.048
@@ -57,6 +58,23 @@ text = "card_name"
 label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
 clip_text = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(1, 0, 1, 1)
+custom_minimum_size = Vector2(95, 103)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_xkj05")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]
+dragged_object = NodePath("..")
 
 [node name="SelectCardButton" parent="." instance=ExtResource("4_xtsg7")]
 layout_mode = 1
