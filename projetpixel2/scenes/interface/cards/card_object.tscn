@@ -26,7 +26,7 @@ flat = true
 script = ExtResource("1_xkj05")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="CardTexture" type="TextureRect" parent="."]
 z_index = 1
 material = ExtResource("2_nggt0")
 custom_minimum_size = Vector2(95, 103)
@@ -41,7 +41,7 @@ texture = ExtResource("2_xkj05")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="CardTexture"]
 use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
@@ -59,7 +59,7 @@ label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
 clip_text = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="CoreTexture" type="TextureRect" parent="."]
 modulate = Color(1, 0, 1, 1)
 custom_minimum_size = Vector2(95, 103)
 layout_mode = 1

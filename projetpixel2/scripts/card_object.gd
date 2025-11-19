@@ -30,13 +30,15 @@ var sacrificing_card := false
 var tween_dissolve : Tween
 var mouse_over_card := false
 
-@onready var card_texture_size : Vector2 = $TextureRect.texture.get_size()
+@onready var card_texture : TextureRect = $CardTexture
+@onready var core_texture : TextureRect = $CoreTexture
+@onready var card_texture_size : Vector2 = card_texture.texture.get_size()
 
 
 func _ready() -> void:
 	await get_tree().process_frame
-	$TextureRect/Label.text = card.name
-	$TextureRect.self_modulate = FAMILY_COLORS[card.family]
+	$CardTexture/Label.text = card.name
+	card_texture.self_modulate = FAMILY_COLORS[card.family]
 	if deck_position == Vector2.ZERO:
 		deck_position = position
 		deck_rotation = rotation
@@ -79,11 +81,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif mouse_over_card:
 		if event is InputEventMouseButton:
 			if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
-				print("right click card")
 				var world_pos = get_global_mouse_position()
 				
-				var uv := get_uv_from_click(get_local_mouse_position())
-				print("\t uv = " + str(uv))
+				var uv := card_texture.get_local_mouse_position() / card_texture.size
 				if sacrificing_card:
 					sacrificing_card = false
 					play_card_dissolve(uv, 0.0)
@@ -91,24 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 					sacrificing_card = true
 					play_card_dissolve(uv, 1.5)
 
-
-#func _input(event):
-	#if event is InputEventMouseButton and event.pressed:
-		#var world_pos = get_global_mouse_position()
-		#var local_pos = to_local(world_pos)
-		#if get_rect().has_point(local_pos):
-			#var uv = get_uv_from_click(local_pos)
-			#burnCard(uv)
-
-func get_uv_from_click(local_click_pos: Vector2) -> Vector2:
-	var top_left_pos = local_click_pos + (card_texture_size) / 2
-	var uv = top_left_pos / (card_texture_size)
-	return uv
-
 func play_card_dissolve(from_uv : Vector2, end : float) -> void:
 	const MAX_DISSOLVE_DURATION := 0.3
-	$TextureRect.material.set_shader_parameter("position", from_uv)
-	var start : float = $TextureRect.material.get_shader_parameter("radius")
+	card_texture.material.set_shader_parameter("position", from_uv)
+	var start : float = card_texture.material.get_shader_parameter("radius")
 	var time : float = abs(end - start) * MAX_DISSOLVE_DURATION
 	print("\tdissolve (from_uv="+str(from_uv)+" ; start="+str(start)+" ; end="+str(end)+")")
 	if tween_dissolve:
@@ -117,7 +103,7 @@ func play_card_dissolve(from_uv : Vector2, end : float) -> void:
 	tween_dissolve.tween_method(_update_radius, start, end, time)
 
 func _update_radius(value: float) -> void:
-	$TextureRect.material.set_shader_parameter("radius", value)
+	card_texture.material.set_shader_parameter("radius", value)
 
 
 
