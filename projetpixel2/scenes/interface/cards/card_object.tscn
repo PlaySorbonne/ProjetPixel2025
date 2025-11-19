@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt0sfajn3i7tr"]
+[gd_scene load_steps=11 format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
 [ext_resource type="Material" uid="uid://cc43x54kaecfd" path="res://resources/materials/card_dissolve_mat.tres" id="2_nggt0"]
-[ext_resource type="Texture2D" uid="uid://hq6jt60uv07o" path="res://resources/images/floppy_disk.png" id="2_xkj05"]
+[ext_resource type="Texture2D" uid="uid://d17ykoyupvrrm" path="res://resources/images/floppy_outside.png" id="3_kdff6"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
+[ext_resource type="Texture2D" uid="uid://u18sfsknvdt0" path="res://resources/images/floppy_disk_core.png" id="4_8ogd3"]
+[ext_resource type="Shader" uid="uid://dha1k74newq3b" path="res://resources/shaders/card_core.gdshader" id="4_ofve4"]
 [ext_resource type="PackedScene" uid="uid://dwkuod6mv6u0j" path="res://scenes/interface/cards/misc/select_card_button.tscn" id="4_xtsg7"]
+[ext_resource type="Material" uid="uid://dy315vhqy3hya" path="res://resources/materials/flaring_star_alien.tres" id="6_ofve4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pyru"]
+shader = ExtResource("4_ofve4")
+shader_parameter/speed = 0.7
+shader_parameter/zoom = 1.75
+shader_parameter/gradient_pixelation = 0.2
+shader_parameter/color_mid_threshold = 0.3
+shader_parameter/color_low = Color(0.0117647, 0.411765, 0.509804, 1)
+shader_parameter/color_mid = Color(0.609331, 0.135149, 0.370986, 1)
+shader_parameter/color_high = Color(1, 0.783013, 0.901774, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlpjb"]
 font_size = 18
@@ -26,8 +39,35 @@ flat = true
 script = ExtResource("1_xkj05")
 metadata/_edit_use_anchors_ = true
 
+[node name="CoreTextureNoise" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3pyru")
+custom_minimum_size = Vector2(95, 103)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_8ogd3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CoreTexture" type="TextureRect" parent="."]
+material = ExtResource("6_ofve4")
+custom_minimum_size = Vector2(95, 103)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_8ogd3")
+expand_mode = 1
+stretch_mode = 4
+
 [node name="CardTexture" type="TextureRect" parent="."]
-z_index = 1
 material = ExtResource("2_nggt0")
 custom_minimum_size = Vector2(95, 103)
 layout_mode = 1
@@ -37,7 +77,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_xkj05")
+texture = ExtResource("3_kdff6")
 expand_mode = 1
 stretch_mode = 4
 
@@ -59,20 +99,6 @@ label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
 clip_text = true
 
-[node name="CoreTexture" type="TextureRect" parent="."]
-modulate = Color(1, 0, 1, 1)
-custom_minimum_size = Vector2(95, 103)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("2_xkj05")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]
 dragged_object = NodePath("..")
 
@@ -82,6 +108,5 @@ layout_mode = 1
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="dragged" from="DragAndDrop2D" to="." method="_on_drag_and_drop_2d_dragged"]
 [connection signal="dropped" from="DragAndDrop2D" to="." method="_on_drag_and_drop_2d_dropped"]
