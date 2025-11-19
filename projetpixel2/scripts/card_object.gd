@@ -34,7 +34,16 @@ static func check_turned_card(new_card : CardObject) -> void:
 
 
 var card : CardData
-var is_dragged := false
+var is_dragged := false:
+	set(value):
+		if value:
+			if not sacrificing_card:
+				core_texture.visible = false
+				background_texture.visible = false
+		else:
+			core_texture.visible = true
+			background_texture.visible = true
+		is_dragged = value
 var can_be_dropped_on_objects := false
 var deck_position : Vector2
 var deck_rotation : float
@@ -46,6 +55,7 @@ var previous_dissolve_uv : Vector2
 
 @onready var card_texture : TextureRect = $CardTexture
 @onready var core_texture : TextureRect = $CoreTexture
+@onready var background_texture : TextureRect = $CoreTextureBackground
 @onready var card_texture_size : Vector2 = card_texture.texture.get_size()
 
 
@@ -73,7 +83,6 @@ func tween_properties(properties : Dictionary[String, Variant]) -> void:
 		card_tweens[k].tween_property(self, k, properties[k], ANIM_TIME)
 
 func _on_button_down() -> void:
-	print("card button down")
 	card_clicked.emit()
 	$DragAndDrop2D.press()
 
@@ -104,7 +113,6 @@ func _input(event: InputEvent) -> void:
 				)
 
 func turn_card(new_turned : bool, uv : Vector2) -> void:
-	print("turn card")
 	if sacrificing_card == new_turned:
 		return
 	previous_dissolve_uv = uv
