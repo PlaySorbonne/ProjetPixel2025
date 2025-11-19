@@ -52,7 +52,6 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		if can_move:
-			print_debug(str(self) + " - " + str(enemy_data.enemy_type) + ": run_anim = " + run_anim)
 			mesh_animations.play(run_anim)
 			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
 			mesh.look_at(target.position)
