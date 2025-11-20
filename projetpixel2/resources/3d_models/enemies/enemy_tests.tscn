@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwescf36gxgfs"]
+[gd_scene load_steps=18 format=3 uid="uid://dwescf36gxgfs"]
 
 [ext_resource type="PackedScene" uid="uid://b1upvja2mb3ba" path="res://resources/3d_models/enemies/Apatosaurus.fbx" id="1_xp8wk"]
 [ext_resource type="PackedScene" uid="uid://dt2chb2xdrich" path="res://resources/3d_models/enemies/Bat.fbx" id="2_0882l"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://geal6y33o55o" path="res://resources/3d_models/enemies/Slime.fbx" id="8_vw8ui"]
 [ext_resource type="PackedScene" uid="uid://dh1faqo8pcf26" path="res://resources/3d_models/enemies/Snake_angry.fbx" id="9_ewe0t"]
 [ext_resource type="PackedScene" uid="uid://busmakjbtb6mn" path="res://resources/3d_models/enemies/Spider.fbx" id="10_qhmjm"]
+[ext_resource type="PackedScene" uid="uid://b26qeprfeny6x" path="res://resources/3d_models/enemies/Stegosaurus.fbx" id="11_qhmjm"]
+[ext_resource type="PackedScene" uid="uid://b5dp33lof740e" path="res://resources/3d_models/enemies/Trex.fbx" id="12_uc4dm"]
+[ext_resource type="PackedScene" uid="uid://d30d8elajmyou" path="res://resources/3d_models/enemies/Triceratops.fbx" id="13_w2phk"]
+[ext_resource type="PackedScene" uid="uid://by1xdfl74emxb" path="res://resources/3d_models/enemies/Velociraptor.fbx" id="14_nmumm"]
+[ext_resource type="PackedScene" uid="uid://bmo0hnegqbb8i" path="res://resources/3d_models/enemies/Wasp.fbx" id="15_ssnuj"]
+[ext_resource type="PackedScene" uid="uid://dgta1ng6y6d6r" path="res://resources/3d_models/enemies/Whale.fbx" id="16_i18sm"]
 
 [sub_resource type="Environment" id="Environment_xtjkx"]
 background_mode = 1
@@ -67,6 +73,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1097, 0, 14.1981)
 
 [node name="Spider" parent="." instance=ExtResource("10_qhmjm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3589, 0, 13.8923)
+
+[node name="Stegosaurus" parent="." instance=ExtResource("11_qhmjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9792, 0, 7.64895)
+
+[node name="Trex" parent="." instance=ExtResource("12_uc4dm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1181, 0, 18.1201)
+
+[node name="Triceratops" parent="." instance=ExtResource("13_w2phk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0884, 0, 25.4692)
+
+[node name="Velociraptor" parent="." instance=ExtResource("14_nmumm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7979, 0, 30.3171)
+
+[node name="Wasp" parent="." instance=ExtResource("15_ssnuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9167, 0, 33.2646)
+
+[node name="Whale" parent="." instance=ExtResource("16_i18sm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4549, 0, 39.984)
 
 [editable path="Apatosaurus"]
 [editable path="Bat"]
