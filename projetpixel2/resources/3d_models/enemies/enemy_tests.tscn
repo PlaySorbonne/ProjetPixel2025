@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwescf36gxgfs"]
+
+[ext_resource type="PackedScene" uid="uid://b1upvja2mb3ba" path="res://resources/3d_models/enemies/Apatosaurus.fbx" id="1_xp8wk"]
+[ext_resource type="PackedScene" uid="uid://dt2chb2xdrich" path="res://resources/3d_models/enemies/Bat.fbx" id="2_0882l"]
+[ext_resource type="PackedScene" uid="uid://idktounju1jh" path="res://resources/3d_models/enemies/Dragon.fbx" id="3_cp0v8"]
+[ext_resource type="PackedScene" uid="uid://bsviap6i82wqw" path="res://resources/3d_models/enemies/Manta ray.fbx" id="4_dn0pf"]
+[ext_resource type="PackedScene" uid="uid://c45up6bmbjrb4" path="res://resources/3d_models/enemies/Parasaurolophus.fbx" id="5_21fbq"]
+[ext_resource type="PackedScene" uid="uid://km1g1vm5rmbl" path="res://resources/3d_models/enemies/Rat.fbx" id="6_paaq6"]
+[ext_resource type="PackedScene" uid="uid://dg7rb4n84d757" path="res://resources/3d_models/enemies/Shark.fbx" id="7_65ovf"]
+[ext_resource type="PackedScene" uid="uid://geal6y33o55o" path="res://resources/3d_models/enemies/Slime.fbx" id="8_vw8ui"]
+[ext_resource type="PackedScene" uid="uid://dh1faqo8pcf26" path="res://resources/3d_models/enemies/Snake_angry.fbx" id="9_ewe0t"]
+[ext_resource type="PackedScene" uid="uid://busmakjbtb6mn" path="res://resources/3d_models/enemies/Spider.fbx" id="10_qhmjm"]
+
+[sub_resource type="Environment" id="Environment_xtjkx"]
+background_mode = 1
+
+[node name="EnemyTests" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xtjkx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0486928, -0.998814, 0, 0.998814, 0.0486928, 0, 0, 3.49807)
+sky_mode = 1
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.925596, -0.117859, 0.359695, 0.343725, 0.136227, 0.929137, -0.158508, 0.983642, -0.0855802, 0, 3.86667, 0)
+sky_mode = 1
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.00906876, 0.0852219, 0.996321, 0.987316, 0.1587, -0.00458789, -0.158508, 0.983642, -0.0855801, 0, 0.295844, 0)
+sky_mode = 1
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.120025, -0.0668372, -0.990518, -0.980035, -0.167276, -0.107468, -0.158508, 0.983642, -0.0855801, 0, 0.295844, 0)
+sky_mode = 1
+
+[node name="Apatosaurus" parent="." instance=ExtResource("1_xp8wk")]
+transform = Transform3D(0.500233, 0, 0.699514, 0, 1, 0, -0.48966, 0, 0.714619, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Apatosaurus/Armature" index="0"]
+transform = Transform3D(0.753242, 0.657743, 7.84091e-08, -0.657743, 0.753242, -2.94159e-08, -7.84091e-08, -2.94159e-08, 1, 0, 0, 0)
+
+[node name="Bat" parent="." instance=ExtResource("2_0882l")]
+transform = Transform3D(0.354454, 0, 0.935073, 0, 1, 0, -0.935073, 0, 0.354454, -0.885916, 0, 6.64725)
+
+[node name="Dragon" parent="." instance=ExtResource("3_cp0v8")]
+transform = Transform3D(0.547067, 0, 0.837089, 0, 1, 0, -0.837089, 0, 0.547067, -0.535943, 0, 5.09723)
+
+[node name="Manta ray" parent="." instance=ExtResource("4_dn0pf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159341, -9.98203, -11.0848)
+
+[node name="Parasaurolophus" parent="." instance=ExtResource("5_21fbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41896, 0, -0.27907)
+
+[node name="Rat" parent="." instance=ExtResource("6_paaq6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40729, 0, 2.2372)
+
+[node name="Shark" parent="." instance=ExtResource("7_65ovf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2758, 0, 14.5518)
+
+[node name="Slime" parent="." instance=ExtResource("8_vw8ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7341, 0, 14.6706)
+
+[node name="Snake_angry" parent="." instance=ExtResource("9_ewe0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1097, 0, 14.1981)
+
+[node name="Spider" parent="." instance=ExtResource("10_qhmjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3589, 0, 13.8923)
+
+[editable path="Apatosaurus"]
+[editable path="Bat"]
