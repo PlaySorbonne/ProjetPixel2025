@@ -60,7 +60,6 @@ bones/9/position = Vector3(0, 0.000547212, 5.86914e-11)
 bones/9/rotation = Quaternion(-0.265415, -4.91796e-11, -1.78648e-10, 0.964134)
 bones/10/position = Vector3(-1.62279e-13, 0.000437899, -2.57368e-10)
 bones/10/rotation = Quaternion(0.136699, 3.05489e-11, 1.4573e-10, 0.990613)
-bones/10/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(-2.66317e-05, 0.000497629, 0.00207375)
 bones/12/rotation = Quaternion(0.190384, -9.76722e-08, -3.33882e-09, 0.98171)
 bones/12/scale = Vector3(1, 1, 1)
@@ -68,7 +67,6 @@ bones/13/position = Vector3(7.45157e-14, 0.000547212, 2.57971e-11)
 bones/13/rotation = Quaternion(0.265415, -4.71922e-08, -3.99652e-08, 0.964134)
 bones/14/position = Vector3(1.01772e-12, 0.000437899, 2.57368e-10)
 bones/14/rotation = Quaternion(-0.136699, 7.15703e-08, 1.65524e-08, 0.990613)
-bones/14/scale = Vector3(1, 1, 1)
 
 [connection signal="status_inflicted" from="." to="." method="_on_status_inflicted"]
 

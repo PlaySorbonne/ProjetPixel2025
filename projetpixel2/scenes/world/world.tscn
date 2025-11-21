@@ -49,6 +49,33 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="NextWaveButton" parent="PlayerHud/WavesContainer" index="0"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton2" parent="PlayerHud/WavesContainer" index="1"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton3" parent="PlayerHud/WavesContainer" index="2"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton4" parent="PlayerHud/WavesContainer" index="3"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton5" parent="PlayerHud/WavesContainer" index="4"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton8" parent="PlayerHud/WavesContainer" index="5"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton9" parent="PlayerHud/WavesContainer" index="6"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton10" parent="PlayerHud/WavesContainer" index="7"]
+custom_minimum_size = Vector2(200, 50)
+
+[node name="NextWaveButton11" parent="PlayerHud/WavesContainer" index="8"]
+custom_minimum_size = Vector2(200, 50)
+
 [node name="Console" parent="PlayerHud" instance=ExtResource("9_gb53w")]
 visible = false
 offset_left = 1219.0

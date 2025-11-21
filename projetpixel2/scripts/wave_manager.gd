@@ -76,17 +76,17 @@ func generate_new_wave() -> void:
 func _process(delta: float) -> void:
 	pass
 	print_debug("$CanvasLayer/VBoxContainer/Label.text = str(int($Timer.time_left))")
-	#$CanvasLayer/VBoxContainer/Label.text = str(int($Timer.time_left))
+	$CanvasLayer/VBoxContainer/Label.text = str(int($Timer.time_left))
 
 func add_wave_button(w : EnemyWave) -> NextWaveButton:
 	var button : NextWaveButton = NEXT_BUTTON_RES.instantiate()
-	#button.set_wave(w)
-	#print_debug("vbox_container.add_child(button)")
-	#vbox_container.add_child(button)
-	#wave_buttons.append(button)
-	#button.connect("next_wave_triggered", spawn_next_wave)
-	#vbox_container.move_child(button, 0)
-	#max_wave += 1
+	button.set_wave(w)
+	print_debug("vbox_container.add_child(button)")
+	vbox_container.add_child(button)
+	wave_buttons.append(button)
+	button.connect("next_wave_triggered", spawn_next_wave)
+	vbox_container.move_child(button, 0)
+	max_wave += 1
 	return button
 
 func initialize_spawners() -> void:

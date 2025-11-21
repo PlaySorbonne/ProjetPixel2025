@@ -13,7 +13,16 @@ func set_next_wave(is_next := true) -> void:
 
 func set_wave(w : WaveManager.EnemyWave) -> void:
 	wave = w
-	text = "Wave "+str(wave.wave_number)+" ("+str(wave.wave_number_of_enemies)+")"
+	$LabelWaveNum.text = str(wave.wave_number)
+	$TextureCircle/LabelWaveNum2.text = $LabelWaveNum.text
+	$VBoxContainer/LabelThreat.text = "Threat level: " + str(wave.wave_difficulty)
+	$VBoxContainer/LabelNumberOfEnemies.text = str(wave.wave_number_of_enemies) + " hostiles"
+	var enemy_names : String = ""
+	for enemy : BaseEnemy in wave.wave_enemies:
+		if enemy_names != "":
+			enemy_names += ", "
+		enemy_names += enemy.enemy_data.enemy_type
+	$LabelEnemies.text = enemy_names
 
 func remove_button() -> void:
 	is_triggered = true
@@ -24,6 +33,7 @@ func trigger_wave() -> void:
 		return
 	is_triggered = true
 	emit_signal("next_wave_triggered")
+	$AnimationPlayer.play("set_current_wave")
 
 func _on_pressed() -> void:
 	trigger_wave()
