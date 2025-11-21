@@ -1,4 +1,4 @@
-extends Control
+extends Button
 class_name NextWaveButton
 
 signal next_wave_triggered
@@ -9,11 +9,11 @@ var is_triggered := false
 
 func set_next_wave(is_next := true) -> void:
 	is_next_wave = is_next
-	$Button.disabled = not is_next
+	disabled = not is_next
 
 func set_wave(w : WaveManager.EnemyWave) -> void:
 	wave = w
-	$Button.text = "Wave "+str(wave.wave_number)+" ("+str(wave.wave_number_of_enemies)+")"
+	text = "Wave "+str(wave.wave_number)+" ("+str(wave.wave_number_of_enemies)+")"
 
 func remove_button() -> void:
 	is_triggered = true
@@ -25,5 +25,5 @@ func trigger_wave() -> void:
 	is_triggered = true
 	emit_signal("next_wave_triggered")
 
-func _on_button_pressed() -> void:
+func _on_pressed() -> void:
 	trigger_wave()

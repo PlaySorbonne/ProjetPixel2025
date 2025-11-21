@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=19 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
+[ext_resource type="PackedScene" uid="uid://cc6p0gf5xhlgi" path="res://scenes/interface/gameplay_hud/next_wave_button.tscn" id="15_lh5iu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
 font_size = 26
@@ -26,6 +27,7 @@ font_size = 42
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
+layer = 2
 script = ExtResource("1_ldeku")
 
 [node name="ExperienceBarBackgroundTexture" type="TextureRect" parent="."]
@@ -134,14 +136,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ComboCounter"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.442309
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 1.44231
 grow_horizontal = 2
 grow_vertical = 2
 text = "Combo: 0"
 label_settings = SubResource("LabelSettings_jxin7")
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ComboTimer" type="Timer" parent="ComboCounter"]
 one_shot = true
@@ -296,9 +300,50 @@ texture_progress = ExtResource("12_3ed1r")
 tint_progress = Color(0.705939, 5.46284e-06, 3.85046e-07, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="WavesContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+anchors_preset = -1
+anchor_top = 0.157407
+anchor_right = 0.0213542
+anchor_bottom = 0.857407
+grow_vertical = 2
+mouse_filter = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NextWaveButton" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton2" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton3" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton4" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton5" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton8" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton9" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton10" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+layout_mode = 2
+
+[node name="NextWaveButton11" parent="WavesContainer" instance=ExtResource("15_lh5iu")]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
+
+[editable path="WavesContainer/NextWaveButton11"]
