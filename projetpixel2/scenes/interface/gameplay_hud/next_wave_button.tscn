@@ -98,9 +98,9 @@ tracks/6/keys = {
 "values": [0.0, 0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_ggpgp"]
-resource_name = "RESET"
-length = 0.01
+[sub_resource type="Animation" id="Animation_nlnyi"]
+resource_name = "remove_button"
+length = 0.9
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -109,10 +109,10 @@ tracks/0/path = NodePath(".:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.450625),
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(0.450625, 0.450625, 0.450625),
 "update": 0,
-"values": [Vector2(200, 50)]
+"values": [Vector2(200, 120), Vector2(200, 120), Vector2(200, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -121,10 +121,10 @@ tracks/1/path = NodePath(".:custom_minimum_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.450625),
+"times": PackedFloat32Array(0, 0.1, 0.9),
+"transitions": PackedFloat32Array(0.450625, 0.450625, 0.450625),
 "update": 0,
-"values": [Vector2(200, 50)]
+"values": [Vector2(200, 120), Vector2(200, 120), Vector2(200, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -136,7 +136,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.450625),
 "update": 0,
-"values": [Vector2(100, 0)]
+"values": [Vector2(150, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -148,7 +148,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.450625),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -158,7 +158,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.450625),
+"transitions": PackedFloat32Array(0.378929),
 "update": 0,
 "values": [Vector2(100, 120)]
 }
@@ -172,7 +172,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.450625),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -184,12 +184,36 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("TextureCircle:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.378929, 0.378929),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggpgp"]
 _data = {
-&"RESET": SubResource("Animation_ggpgp"),
+&"remove_button": SubResource("Animation_nlnyi"),
 &"set_current_wave": SubResource("Animation_xyic8")
 }
 
@@ -203,9 +227,9 @@ custom_minimum_size = Vector2(200, 50)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.00510978
+offset_top = -1.52588e-05
 offset_right = -1720.0
-offset_bottom = -1022.65
+offset_bottom = -1021.76
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(100, 0)
@@ -272,7 +296,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_bottom = 62.6435
+offset_bottom = 61.7554
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(30, 60)
@@ -283,13 +307,14 @@ stretch_mode = 5
 [node name="LabelWaveNum2" type="Label" parent="TextureCircle"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(25, 25)
-text = "     14"
+text = "14"
 label_settings = SubResource("LabelSettings_xyic8")
 horizontal_alignment = 1
 vertical_alignment = 1

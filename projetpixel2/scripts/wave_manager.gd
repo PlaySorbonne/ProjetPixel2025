@@ -150,7 +150,6 @@ func spawn_next_wave() -> void:
 		var spawner : EnemySpawner = GV.spawners[i]
 		spawner.spawn_wave(distributed_enemies[i])
 	current_wave_id += 1
-	#$CanvasLayer/VBoxContainer/LabelWave.text = "Current wave:\nWave " + str(current_wave_id)
 	if current_wave_id < max_wave:
 		wave_buttons[current_wave_id].set_next_wave()
 		$Timer.start(waves[current_wave_id].wave_duration)

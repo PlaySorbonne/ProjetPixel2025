@@ -21,33 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 
 [node name="Spaceship" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
 
-[node name="NextWaveButton" parent="PlayerHud/WavesContainer" index="0"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton2" parent="PlayerHud/WavesContainer" index="1"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton3" parent="PlayerHud/WavesContainer" index="2"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton4" parent="PlayerHud/WavesContainer" index="3"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton5" parent="PlayerHud/WavesContainer" index="4"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton8" parent="PlayerHud/WavesContainer" index="5"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton9" parent="PlayerHud/WavesContainer" index="6"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton10" parent="PlayerHud/WavesContainer" index="7"]
-custom_minimum_size = Vector2(200, 50)
-
-[node name="NextWaveButton11" parent="PlayerHud/WavesContainer" index="8"]
-custom_minimum_size = Vector2(200, 50)
-
 [node name="EnemySpawner" parent="." index="7" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
 path = NodePath("../Path3D")

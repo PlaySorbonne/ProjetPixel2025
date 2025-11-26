@@ -10,6 +10,7 @@ var is_triggered := false
 func set_next_wave(is_next := true) -> void:
 	is_next_wave = is_next
 	disabled = not is_next
+	$AnimationPlayer.play("set_current_wave")
 
 func set_wave(w : WaveManager.EnemyWave) -> void:
 	wave = w
@@ -26,6 +27,8 @@ func set_wave(w : WaveManager.EnemyWave) -> void:
 
 func remove_button() -> void:
 	is_triggered = true
+	$AnimationPlayer.play("remove_button")
+	await $AnimationPlayer.animation_finished
 	queue_free()
 
 func trigger_wave() -> void:
@@ -33,7 +36,6 @@ func trigger_wave() -> void:
 		return
 	is_triggered = true
 	emit_signal("next_wave_triggered")
-	$AnimationPlayer.play("set_current_wave")
 
 func _on_pressed() -> void:
 	trigger_wave()
