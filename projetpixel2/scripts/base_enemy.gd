@@ -12,10 +12,12 @@ static var number_of_enemies := 0
 static var enemy_types : Array[String] = ["Puncher"]
 
 @export var enemy_data : EnemyData
+@export var mesh : Node3D
+@export var mesh_animations : AnimationPlayer
+@export var run_anim := "Armature|Rat_Run"
+@export var attack_anim := "Armature|Rat_Attack"
+@export var death_anim := "Armature|Rat_Death"
 
-var followed_path: Path3D
-var target_point_index := 0
-var target_position : Vector3
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
@@ -28,9 +30,7 @@ var enemy_id := 0
 @onready var damageable : DamageableObject = $DamageableObject
 @onready var clickable : ClickableObject = $ClickableObject
 
-#@onready var target : Node3D = GV.space_ship
-@onready var mesh : Node3D = $mesh
-@onready var mesh_animations : AnimationPlayer = $mesh/AnimationPlayer
+@onready var target : Node3D = GV.space_ship
 @onready var attack_timer : Timer = $TimerAttacking
 
 
@@ -52,14 +52,9 @@ func _physics_process(_delta: float) -> void:
 		return
 	if current_state == States.Moving:
 		if can_move:
-			target_position = followed_path.curve.get_point_position(target_point_index)
-			
-			if position.distance_to(target_position) < 0.2 && target_point_index < followed_path.curve.point_count - 1:
-				print("distance is %f : increasing index from %d" % [position.distance_to(target_position), target_point_index])
-				target_point_index += 1
-			mesh_animations.play("sprint")
-			velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
-			mesh.look_at(target_position)
+			mesh_animations.play(run_anim)
+			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
+			mesh.look_at(target.position)
 			move_and_slide() 
 	if len(overlapping_enemies) > 0:
 		attack()
@@ -71,7 +66,7 @@ func attack() -> void:
 	for enemy : Node3D in overlapping_enemies:
 		var enemy_dmg : DamageableObject = enemy.damageable
 		enemy_dmg.damage(enemy_data.damage, enemy_data.attack_type)
-	mesh_animations.play("attack-melee-right")
+	mesh_animations.play(attack_anim)
 	attack_timer.start(1.0/enemy_data.attack_speed)
 
 func _on_timer_attacking_timeout() -> void:
@@ -85,13 +80,16 @@ func death() -> void:
 	living_enemies.erase(self)
 	emit_signal("enemy_killed")
 	$CollisionShape3D.queue_free()
-	mesh_animations.play("die")
+	mesh_animations.play(death_anim)
 	RunData.new_kill(enemy_data.enemy_type, enemy_data.is_alpha)
 	# RunData.gain_experience(enemy_data.experience_points)
 	ExperienceDrop.spawn_xp(position, enemy_data.experience_points)
 	await(mesh_animations.animation_finished)
-	await(get_tree().create_timer(3.0).timeout)
-	queue_free()
+	var buried_pos := position + Vector3(0.25, -3.0, 0.25)
+	var t := create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(self, "position", buried_pos, 5.0)
+	t.tween_property(self, "scale", scale/1.6, 5.0)
+	t.finished.connect(queue_free)
 
 func _on_damageable_object_death() -> void:
 	death()

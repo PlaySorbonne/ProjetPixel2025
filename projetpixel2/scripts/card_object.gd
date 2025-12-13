@@ -10,28 +10,60 @@ const FAMILY_COLORS := {
 	CardData.CardFamilies.Traders : Color.YELLOW,
 	CardData.CardFamilies.Revolution : Color.WHITE,
 }
+const FAMILY_CORE_SHADERS := {
+	CardData.CardFamilies.Military : preload("res://resources/materials/flaring_star_military.tres"),
+	CardData.CardFamilies.Scientists : preload("res://resources/materials/flaring_star_scientists.tres"),
+	CardData.CardFamilies.Traders : preload("res://resources/materials/flaring_star_traders.tres"),
+	CardData.CardFamilies.Revolution : preload("res://resources/materials/flaring_star_alien.tres"),
+}
 const ANIM_TIME := 0.175
 const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
 
+static var currently_turned_card : CardObject = null
 
 static func create_card_object(card_data : CardData) -> CardObject:
 	var new_card : CardObject = CARD_OBJ_RES.instantiate()
 	new_card.card = card_data
 	return new_card
 
+static func check_turned_card(new_card : CardObject) -> void:
+	if is_instance_valid(currently_turned_card) and new_card != currently_turned_card:
+		currently_turned_card.turn_card(false,
+						currently_turned_card.previous_dissolve_uv)
+	currently_turned_card = new_card
+
 
 var card : CardData
-var is_dragged := false
+var is_dragged := false:
+	set(value):
+		if value:
+			if not sacrificing_card:
+				core_texture.visible = false
+				background_texture.visible = false
+		else:
+			core_texture.visible = true
+			background_texture.visible = true
+		is_dragged = value
 var can_be_dropped_on_objects := false
 var deck_position : Vector2
 var deck_rotation : float
 var card_tweens : Dictionary[String, Tween] = {}
+var sacrificing_card := false
+var tween_dissolve : Tween
+var mouse_over_card := false
+var previous_dissolve_uv : Vector2
+
+@onready var card_texture : TextureRect = $CardTexture
+@onready var core_texture : TextureRect = $CoreTexture
+@onready var background_texture : TextureRect = $CoreTextureBackground
+@onready var card_texture_size : Vector2 = card_texture.texture.get_size()
 
 
 func _ready() -> void:
 	await get_tree().process_frame
-	$Label.text = card.name
-	$TextureRect.self_modulate = FAMILY_COLORS[card.family]
+	$CardTexture/Label.text = card.name
+	#card_texture.self_modulate = FAMILY_COLORS[card.family]
+	core_texture.material = FAMILY_CORE_SHADERS[card.family]
 	if deck_position == Vector2.ZERO:
 		deck_position = position
 		deck_rotation = rotation
@@ -58,28 +90,50 @@ func release_card() -> void:
 	await get_tree().process_frame
 	$DragAndDrop2D.was_just_pressed = false
 	$DragAndDrop2D.release()
-	is_dragged = true
+	is_dragged = false
 	$DragAndDrop2D.drop()
 
-func press_card() -> void:
-	$DragAndDrop2D.press()
+#func press_card() -> void:
+	#$DragAndDrop2D.press()
 
 func _input(event: InputEvent) -> void:
-	var debug_text := "INPUT DETECTED"
-	if not is_dragged:
-		debug_text += ("   not dragged -> return")
-		#print(debug_text)
+	if is_dragged:
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+				$DragAndDrop2D.press()
+			elif event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+				$DragAndDrop2D.release()
+	elif mouse_over_card:
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+				check_turned_card(self)
+				turn_card(
+					not sacrificing_card,  # flip current card side
+					card_texture.get_local_mouse_position() / card_texture.size # uv
+				)
+
+func turn_card(new_turned : bool, uv : Vector2) -> void:
+	if sacrificing_card == new_turned:
 		return
-	if event is InputEventMouseButton:
-		if event.is_released():
-			$DragAndDrop2D.release()
-			debug_text += ("   release")
-		else:
-			$DragAndDrop2D.press()
-			debug_text += ("   press")
+	previous_dissolve_uv = uv
+	if sacrificing_card:
+		play_card_dissolve(uv, 0.0)
 	else:
-		debug_text += ("   event is not InputEventMouseButton")
-	#print(debug_text)
+		play_card_dissolve(uv, 1.5)
+	sacrificing_card = new_turned
+
+func play_card_dissolve(from_uv : Vector2, end : float) -> void:
+	const MAX_DISSOLVE_DURATION := 0.3
+	card_texture.material.set_shader_parameter("position", from_uv)
+	var start : float = card_texture.material.get_shader_parameter("radius")
+	var time : float = abs(end - start) * MAX_DISSOLVE_DURATION
+	if tween_dissolve:
+		tween_dissolve.kill()
+	tween_dissolve = create_tween().set_ease(Tween.EASE_IN)
+	tween_dissolve.tween_method(_update_radius, start, end, time)
+
+func _update_radius(value: float) -> void:
+	card_texture.material.set_shader_parameter("radius", value)
 
 func _on_drag_and_drop_2d_dragged() -> void:
 	#print("_on_drag_and_drop_2d_dragged")
@@ -102,6 +156,23 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
 		return
+	
+	if sacrificing_card:
+		sacrifice_card()
+	else:
+		drop_card_on_tower()
+
+func drop_card_on_tower() -> void:
+	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
+	if spatial_object != null:
+		# match bahavior on spatial object
+		if spatial_object is TowerBase:
+			var hovered_tower : TowerBase = spatial_object
+			hovered_tower.add_card(self)
+			return
+	return_to_hand()
+
+func sacrifice_card() -> void:
 	# interaction2D
 	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
 	#print("control object = " + str(control_object))
@@ -117,8 +188,8 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	if spatial_object != null:
 		# match bahavior on spatial object
 		if spatial_object is TowerBase:
-			var hovered_tower : TowerBase = spatial_object
-			hovered_tower.add_card(self)
+			# ignore towers in sacrifice mode
+			pass
 		elif spatial_object is BaseEnemy:
 			#TODO
 			print_debug("TODO: handle card dropped on enemy")
@@ -141,6 +212,7 @@ func destroy_card_object() -> void:
 		GV.hud.remove_card_from_hand(self)
 
 func _on_mouse_entered() -> void:
+	mouse_over_card = true
 	CardDescription.add_card_description(self)
 	tween_properties({
 		"position" : Vector2(0.0, -20.0) + deck_position,
@@ -148,6 +220,7 @@ func _on_mouse_entered() -> void:
 	})
 
 func _on_mouse_exited() -> void:
+	mouse_over_card = false
 	if not is_dragged:
 		tween_properties({
 			"position" : deck_position,

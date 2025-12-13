@@ -21,29 +21,29 @@ transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 
 [node name="Spaceship" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
 
-[node name="EnemySpawner" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
+[node name="EnemySpawner" parent="." index="7" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
 path = NodePath("../Path3D")
 
-[node name="EnemySpawner2" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
+[node name="EnemySpawner2" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
 path = NodePath("../Path3D")
 
-[node name="EnemySpawner3" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
+[node name="EnemySpawner3" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
 path = NodePath("../Path3D")
 
-[node name="EnemySpawner4" parent="." index="11" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
+[node name="EnemySpawner4" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
 path = NodePath("../Path3D")
 
-[node name="EnvironmentTest" parent="." index="12" instance=ExtResource("3_roffi")]
+[node name="EnvironmentTest" parent="." index="11" instance=ExtResource("3_roffi")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
 
-[node name="Path3D" type="Path3D" parent="." index="13"]
+[node name="Path3D" type="Path3D" parent="." index="12"]
 curve = SubResource("Curve3D_roffi")
 
-[node name="LevelEnvironment" parent="." index="14" instance=ExtResource("4_1ijjf")]
+[node name="LevelEnvironment" parent="." index="13" instance=ExtResource("4_1ijjf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
 
 [editable path="PlayerHud"]

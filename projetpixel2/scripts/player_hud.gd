@@ -15,6 +15,8 @@ var cards_hand : Array[CardObject] = []
 var number_of_choosable_cards := 3
 
 # components
+@onready var waves_container : VBoxContainer = $WavesContainer
+@onready var waves_timer_label : Label = $WavesTimerLabel
 @onready var mouse_cursor_hint : MouseCursorHint = $MouseCursorHint
 @onready var tower_spawner : TowerSpawner = $TowerSpawner
 @onready var mouse_3d_interaction : Mouse3dInteraction = $Mouse3dInteraction
@@ -25,7 +27,8 @@ var number_of_choosable_cards := 3
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
 var experience_bar_tween : Tween
-var current_displayed_level := RunData.current_level
+var displayed_level := RunData.current_level
+var displayed_total_experience := RunData.total_experience
 
 
 func _ready() -> void:
@@ -74,25 +77,33 @@ func clear_card_description() -> void:
 func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
-func update_experience(force_loop := false) -> void:
-	if not force_loop and current_displayed_level != RunData.current_level:
+func update_experience() -> void:
+	var final_val := RunData.total_experience - RunData.previous_experience_threshold
+	if final_val == $ExperienceBar.value:
 		return
+	# initialize tween
+	var tween_ease : Tween.EaseType
 	if experience_bar_tween:
 		experience_bar_tween.kill()
-	if force_loop:
-		experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-		experience_bar_tween.tween_property($ExperienceBar, "value", 
-								$ExperienceBar.max_value, 0.1)
-		await experience_bar_tween.finished
-		$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
-		current_displayed_level = RunData.current_level
-		level_updated.emit()
-		await get_tree().create_timer(0.05).timeout
-		$ExperienceBar.max_value = RunData.level_experience_threshold
-		$ExperienceBar.value = 0.0
-	experience_bar_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+		tween_ease = Tween.EASE_OUT
+	else:
+		tween_ease = Tween.EASE_IN_OUT
+	experience_bar_tween = create_tween().set_ease(tween_ease)
+	# tween exp bar
+	if final_val >= RunData.level_experience_threshold:
+		experience_bar_tween.finished.connect(_loop_exp_tween)
+		final_val = RunData.level_experience_threshold
 	experience_bar_tween.tween_property($ExperienceBar, "value", 
-			RunData.current_experience, 0.1)
+							final_val, 0.1)
+
+func _loop_exp_tween() -> void:
+	RunData.gain_level()
+	$ExperienceBar/Label.text = "Level " + str(RunData.current_level)
+	level_updated.emit()
+	await get_tree().create_timer(0.05).timeout
+	$ExperienceBar.value = 0.0
+	$ExperienceBar.max_value = RunData.level_experience_threshold
+	update_experience()
 
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
@@ -117,7 +128,9 @@ func gain_level(force_level_up := false) -> void:
 		new_level_cards = []
 		for i : int in range(number_of_choosable_cards):
 			var new_card : CardObject = CARD_OBJ_RES.instantiate()
-			new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
+			var select_button := SelectCardButton.add_select_button_to_card(new_card)
+			#new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
+			select_button.card_selected.connect(_on_card_level_clicked.bind(new_card, select_button))
 			new_level_cards.append(new_card)
 			new_card.card = CardData.get_random_card_from_deck()
 			$NewCardsContainer.add_child(new_card)
@@ -170,9 +183,10 @@ func reorder_hand() -> void:
 
 
 
-func _on_card_level_clicked(chosen_card : CardObject) -> void:
+func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
+	card_button.queue_free()
 	Engine.time_scale = 1.0
-	chosen_card.card_clicked.disconnect(_on_card_level_clicked)
+	#chosen_card.card_clicked.disconnect(_on_card_level_clicked)
 	for card : CardObject in new_level_cards:
 		if card != chosen_card:
 			card.destroy_card_object()
@@ -184,11 +198,11 @@ func _on_card_level_clicked(chosen_card : CardObject) -> void:
 	chosen_card.get_parent().remove_child(chosen_card)
 	_add_playable_card(chosen_card)
 	new_level_cards = []
-	await get_tree().create_timer(0.5).timeout
-	chosen_card.release_card()
+	#await get_tree().create_timer(0.1).timeout
+	#chosen_card.release_card()
 
 func update_level() -> void:
-	update_experience(true)
+	update_experience()
 
 func new_kill() -> void:
 	$ComboCounter/ComboTimer.start(RunData.combo_max_time)

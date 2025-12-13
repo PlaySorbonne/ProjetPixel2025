@@ -10,8 +10,3 @@ text = "999"
 font_size = 52
 outline_size = 24
 script = ExtResource("1_2761c")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

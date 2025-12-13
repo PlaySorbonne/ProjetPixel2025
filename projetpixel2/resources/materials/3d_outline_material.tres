@@ -3,11 +3,10 @@
 [ext_resource type="Shader" uid="uid://ge36bhbud2jp" path="res://resources/shaders/3d_outline.gdshader" id="1_688x8"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_688x8")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 5.0
-shader_parameter/fade_start = 10.0
-shader_parameter/fade_end = 30.0
-shader_parameter/oscillation_scale = 0.025
-shader_parameter/oscillation_speed = 8.0
+shader_parameter/step_count = 3
+shader_parameter/thickness = 6.5
+shader_parameter/edge_color = Color(0, 0, 0.294118, 1)
+shader_parameter/depth_sensitivity = 0.002
+shader_parameter/compensate_distance = true

@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6wednpvk2t26"]
+[gd_scene load_steps=8 format=3 uid="uid://c6wednpvk2t26"]
 
 [ext_resource type="Script" uid="uid://dofslp0qe6cd8" path="res://scripts/base_enemy.gd" id="1_ey0w8"]
-[ext_resource type="PackedScene" uid="uid://uwyqbgjwouvi" path="res://resources/3d_models/enemy_placeholders/figurine-cube.fbx" id="1_spcn4"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_v2fdl"]
-[ext_resource type="Material" uid="uid://dnfscyqu0co3x" path="res://resources/materials/default_enemy_material.tres" id="3_j3mfv"]
 [ext_resource type="PackedScene" uid="uid://bce7w4rpj507w" path="res://scenes/objects_components/damagable.tscn" id="3_sxqs1"]
 [ext_resource type="PackedScene" uid="uid://ddkcxyfqwhwou" path="res://scenes/objects_components/clickable.tscn" id="4_stxmo"]
 
@@ -42,30 +40,6 @@ collision_layer = 3
 script = ExtResource("1_ey0w8")
 enemy_data = SubResource("Resource_sfjnn")
 
-[node name="mesh" parent="." instance=ExtResource("1_spcn4")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="figurine-cube" parent="mesh" index="0"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="leg-left" parent="mesh/figurine-cube/root" index="0"]
-material_override = ExtResource("3_j3mfv")
-
-[node name="leg-right" parent="mesh/figurine-cube/root" index="1"]
-material_override = ExtResource("3_j3mfv")
-
-[node name="torso" parent="mesh/figurine-cube/root" index="2"]
-material_override = ExtResource("3_j3mfv")
-
-[node name="arm-left" parent="mesh/figurine-cube/root/torso" index="0"]
-material_override = ExtResource("3_j3mfv")
-
-[node name="arm-right" parent="mesh/figurine-cube/root/torso" index="1"]
-material_override = ExtResource("3_j3mfv")
-
-[node name="head" parent="mesh/figurine-cube/root/torso" index="2"]
-material_override = ExtResource("3_j3mfv")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44608, 0)
 shape = SubResource("CapsuleShape3D_ey0w8")
@@ -82,12 +56,10 @@ shape = SubResource("BoxShape3D_sxqs1")
 [node name="TimerAttacking" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("4_stxmo")]
-custom_nodes = [NodePath("../mesh/figurine-cube/root/leg-left"), NodePath("../mesh/figurine-cube/root/leg-right"), NodePath("../mesh/figurine-cube/root/torso"), NodePath("../mesh/figurine-cube/root/torso/arm-left"), NodePath("../mesh/figurine-cube/root/torso/arm-right"), NodePath("../mesh/figurine-cube/root/torso/head")]
+custom_nodes = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
 
 [connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
 [connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="DamageArea" to="." method="_on_damage_area_body_exited"]
 [connection signal="timeout" from="TimerAttacking" to="." method="_on_timer_attacking_timeout"]
-
-[editable path="mesh"]

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cc43x54kaecfd"]
+
+[ext_resource type="Shader" uid="uid://bkxxqbste5b4s" path="res://resources/shaders/dissolve_from_point.gdshader" id="1_g37w5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nggt0"]
+resource_local_to_scene = true
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_g37w5")
+shader_parameter/position = Vector2(0.5, 0.4)
+shader_parameter/radius = 0.0
+shader_parameter/borderWidth = 0.04
+shader_parameter/burnMult = 0.22
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_nggt0")
+shader_parameter/burnColor = Color(0, 0, 0, 1)

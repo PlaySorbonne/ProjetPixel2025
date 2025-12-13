@@ -7,7 +7,7 @@ enum EnemyTypes {Basic, Runner, Tank, Rock}
 const MAX_ENEMY_TYPES_PER_WAVE := 2
 const NEXT_BUTTON_RES := preload("res://scenes/interface/gameplay_hud/next_wave_button.tscn")
 const ENEMY_RES : Dictionary[EnemyTypes, PackedScene] = {
-	EnemyTypes.Basic : preload("res://scenes/world/enemies/base_enemy.tscn"),
+	EnemyTypes.Basic : preload("res://scenes/world/enemies/mobs/standard_walker.tscn"),
 	EnemyTypes.Runner : preload("res://scenes/world/enemies/mobs/runner.tscn"),
 	EnemyTypes.Tank : preload("res://scenes/world/enemies/mobs/tank.tscn"),
 	EnemyTypes.Rock : preload("res://scenes/world/enemies/mobs/rock.tscn"),
@@ -41,7 +41,6 @@ var wave_enemies : Array = []
 var is_last_wave_spawned := false
 
 # components
-@onready var vbox_container := $CanvasLayer/VBoxContainer
 
 
 func _ready() -> void:
@@ -74,15 +73,15 @@ func generate_new_wave() -> void:
 	var button := add_wave_button(new_wave)
 
 func _process(delta: float) -> void:
-	$CanvasLayer/VBoxContainer/Label.text = str(int($Timer.time_left))
+	GV.hud.waves_timer_label.text = str(int($Timer.time_left))
 
 func add_wave_button(w : EnemyWave) -> NextWaveButton:
 	var button : NextWaveButton = NEXT_BUTTON_RES.instantiate()
 	button.set_wave(w)
-	vbox_container.add_child(button)
+	GV.hud.waves_container.add_child(button)
 	wave_buttons.append(button)
 	button.connect("next_wave_triggered", spawn_next_wave)
-	vbox_container.move_child(button, 0)
+	GV.hud.waves_container.move_child(button, 0)
 	max_wave += 1
 	return button
 
@@ -151,7 +150,6 @@ func spawn_next_wave() -> void:
 		var spawner : EnemySpawner = GV.spawners[i]
 		spawner.spawn_wave(distributed_enemies[i])
 	current_wave_id += 1
-	$CanvasLayer/VBoxContainer/LabelWave.text = "Current wave:\nWave " + str(current_wave_id)
 	if current_wave_id < max_wave:
 		wave_buttons[current_wave_id].set_next_wave()
 		$Timer.start(waves[current_wave_id].wave_duration)

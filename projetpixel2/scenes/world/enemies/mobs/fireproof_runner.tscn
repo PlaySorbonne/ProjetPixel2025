@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://doji36oev5mki"]
+[gd_scene load_steps=7 format=3 uid="uid://doji36oev5mki"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_8im5f"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_2lx4o"]
+[ext_resource type="PackedScene" uid="uid://by1xdfl74emxb" path="res://resources/3d_models/enemies/Velociraptor.fbx" id="3_3bgd8"]
 
 [sub_resource type="Resource" id="Resource_3bgd8"]
 resource_local_to_scene = true
@@ -27,35 +28,25 @@ min_wave = 10
 max_wave = 50
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lx4o"]
-resource_local_to_scene = true
-albedo_color = Color(0, 0, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3bgd8"]
+size = Vector3(0.542725, 1, 1.46191)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx1j5"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xeo3"]
+size = Vector3(0.880005, 1, 1.67041)
 
-[node name="FireproofRunner" instance=ExtResource("1_8im5f")]
+[node name="FireproofRunner" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_8im5f")]
 enemy_data = SubResource("Resource_3bgd8")
+mesh = NodePath("Velociraptor")
+mesh_animations = NodePath("Velociraptor/AnimationPlayer")
+run_anim = "Armature|Velociraptor_Run"
+attack_anim = "Armature|Velociraptor_Attack"
+death_anim = "Armature|Velociraptor_Death"
 
-[node name="leg-left" parent="mesh/figurine-cube/root" index="0"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159912, 0.44608, -0.230957)
+shape = SubResource("BoxShape3D_3bgd8")
 
-[node name="leg-right" parent="mesh/figurine-cube/root" index="1"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
-
-[node name="torso" parent="mesh/figurine-cube/root" index="2"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
-surface_material_override/0 = SubResource("StandardMaterial3D_bx1j5")
-
-[node name="arm-left" parent="mesh/figurine-cube/root/torso" index="0"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
-
-[node name="arm-right" parent="mesh/figurine-cube/root/torso" index="1"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
-
-[node name="head" parent="mesh/figurine-cube/root/torso" index="2"]
-material_override = SubResource("StandardMaterial3D_2lx4o")
-
-[node name="DamageableObject" parent="." index="2"]
+[node name="DamageableObject" parent="." index="1"]
 element_resistances = Dictionary[int, float]({
 0: 0.0,
 1: 0.0,
@@ -63,4 +54,92 @@ element_resistances = Dictionary[int, float]({
 3: 1.0
 })
 
-[editable path="mesh"]
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0220337, 0, -0.335205)
+shape = SubResource("BoxShape3D_6xeo3")
+
+[node name="Velociraptor" parent="." index="5" instance=ExtResource("3_3bgd8")]
+
+[node name="Armature" parent="Velociraptor" index="0"]
+transform = Transform3D(-100, -8.74228e-06, -1.04216e-12, 0, -1.19209e-05, 100, -8.74228e-06, 100, 1.19209e-05, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Velociraptor/Armature" index="0"]
+bones/1/position = Vector3(6.16324e-05, 0.00850204, 0.00208573)
+bones/1/rotation = Quaternion(0.0110151, -2.14939e-27, 2.44584e-18, 0.999939)
+bones/2/position = Vector3(-0.000407969, -0.00260736, 0.00213702)
+bones/2/rotation = Quaternion(0.102483, -0.102479, 0.699643, 0.699639)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(6.10351e-10, 0.000954637, 4.76837e-10)
+bones/3/rotation = Quaternion(-0.675429, 0.713939, 0.120562, -0.139828)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(6.41759e-11, 0.00119271, 4.38916e-10)
+bones/4/rotation = Quaternion(-0.374992, -0.0292096, -0.110073, 0.920006)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-7.6758e-11, 0.00159747, -1.60593e-10)
+bones/5/rotation = Quaternion(0.647559, 0.0560881, 0.065578, 0.757114)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-0.000522883, -0.00283378, -0.00214679)
+bones/7/rotation = Quaternion(0.0682152, -0.0682155, 0.703809, 0.703809)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(6.10352e-10, 0.0017632, 1.90736e-11)
+bones/8/rotation = Quaternion(0.726792, -0.672404, 0.0913085, -0.106344)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(1.76825e-10, 0.00404142, 3.48089e-12)
+bones/9/rotation = Quaternion(-0.337515, 0.00231111, 0.0406507, 0.940439)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(0.000284704, -0.00260736, 0.00213702)
+bones/11/rotation = Quaternion(0.701104, 0.7011, 0.0919522, -0.0919564)
+bones/12/position = Vector3(6.10623e-17, 0.000954637, -4.76837e-10)
+bones/12/rotation = Quaternion(-0.097989, -0.16354, 0.67907, 0.708884)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(1.56732e-10, 0.00119271, 6.69146e-10)
+bones/13/rotation = Quaternion(-0.389741, 0.060592, 0.122389, 0.910742)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(1.35156e-10, 0.00159748, 6.78157e-10)
+bones/14/rotation = Quaternion(0.647559, -0.0560902, -0.0655789, 0.757113)
+bones/14/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0.000399618, -0.00285259, -0.00214895)
+bones/16/rotation = Quaternion(0.7035, 0.703501, 0.071322, -0.0713218)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(0, 0.0017632, -5.31259e-17)
+bones/17/rotation = Quaternion(0.098474, 0.0997287, 0.725854, 0.673419)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(-1.65513e-10, 0.00404141, -2.99508e-10)
+bones/18/rotation = Quaternion(-0.343933, 0.0071918, -0.0372789, 0.938227)
+bones/18/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(0.000948382, -0.00290955, -0.00191248)
+bones/20/rotation = Quaternion(-0.645241, 5.46441e-07, -4.61512e-07, 0.763979)
+bones/21/position = Vector3(2.98345e-13, 0.0017687, -2.42724e-10)
+bones/21/rotation = Quaternion(-0.0938452, -0.00324465, 0.00858076, 0.995545)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(-5.93884e-13, 0.00266979, 4.81883e-10)
+bones/22/rotation = Quaternion(-0.0269112, -0.000908825, -0.000545011, 0.999637)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/position = Vector3(5.99301e-13, 0.00378751, -6.58442e-10)
+bones/23/rotation = Quaternion(0.124795, -0.000813053, -0.00049979, 0.992182)
+bones/24/position = Vector3(8.45081e-14, 0.00322322, 1.89052e-10)
+bones/24/rotation = Quaternion(0.110942, -0.00172492, -0.000883335, 0.993825)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(-3.92972e-13, 0.00294928, -8.20989e-10)
+bones/25/rotation = Quaternion(0.0604085, -0.00219453, -0.00133967, 0.99817)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(1.39817e-07, 0.735314, 0.677727, 3.09957e-07)
+bones/28/position = Vector3(-2.98282e-13, 0.00138311, -4.04103e-10)
+bones/28/rotation = Quaternion(0.179355, -0.000426403, -0.0245048, 0.983479)
+bones/29/position = Vector3(-2.60252e-12, 0.00332201, 1.18452e-09)
+bones/29/rotation = Quaternion(0.198974, 0.036338, 0.0444044, 0.978324)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/position = Vector3(6.66156e-08, 0.00143732, -1.13051e-06)
+bones/30/rotation = Quaternion(-0.294033, -0.0248749, -0.0378305, 0.954722)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/position = Vector3(1.61815e-10, 0.00154684, 1.50003e-09)
+bones/31/rotation = Quaternion(-0.191014, -0.237033, 0.0258141, 0.952188)
+bones/31/scale = Vector3(1, 1, 1)
+bones/33/position = Vector3(-0.00193171, 0.000172341, -0.00165351)
+bones/33/rotation = Quaternion(0.707107, -6.38043e-07, -9.41061e-07, 0.707107)
+bones/33/scale = Vector3(1, 1, 1)
+bones/35/position = Vector3(0.00193171, 0.000172341, -0.00167944)
+bones/35/rotation = Quaternion(0.707107, -9.49986e-07, -1.30347e-06, 0.707107)
+bones/35/scale = Vector3(1, 1, 1)
+
+[editable path="Velociraptor"]

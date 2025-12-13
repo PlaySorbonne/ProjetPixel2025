@@ -1,0 +1,143 @@
+[gd_scene load_steps=7 format=3 uid="uid://i4cgjsd8jjxc"]
+
+[ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_wg5dx"]
+[ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_jpmnc"]
+[ext_resource type="PackedScene" uid="uid://b1upvja2mb3ba" path="res://resources/3d_models/enemies/Apatosaurus.fbx" id="3_wg5dx"]
+
+[sub_resource type="Resource" id="Resource_daq3g"]
+resource_local_to_scene = true
+script = ExtResource("2_jpmnc")
+enemy_type = "Standard Walker"
+description = "Le bro de base"
+mob_type = 0
+is_alpha = false
+difficulty = 1.0
+hitpoints = 100
+speed = 1.0
+defense = 1.0
+defense_type = 0
+resistances = Dictionary[int, float]({})
+damage_threshold = 0
+damage = 10
+attack_speed = 0.5
+attack_type = 0
+experience_points = 8
+resource_drop = 1
+spawn_probability = 0.5
+min_wave = -1
+max_wave = -1
+metadata/_custom_type_script = "uid://rkat5tqppyk8"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wg5dx"]
+size = Vector3(0.750732, 1, 2.58536)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpmnc"]
+size = Vector3(1, 1, 2.15668)
+
+[node name="StandardWalker" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_wg5dx")]
+enemy_data = SubResource("Resource_daq3g")
+mesh = NodePath("Apatosaurus")
+mesh_animations = NodePath("Apatosaurus/AnimationPlayer")
+run_anim = "Armature|Apatosaurus_Run"
+attack_anim = "Armature|Apatosaurus_Attack"
+death_anim = "Armature|Stegosaurus_Death"
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0174561, 0.44608, -0.047348)
+shape = SubResource("BoxShape3D_wg5dx")
+
+[node name="CollisionShape3D" parent="DamageArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.578339)
+shape = SubResource("BoxShape3D_jpmnc")
+
+[node name="Apatosaurus" parent="." index="5" instance=ExtResource("3_wg5dx")]
+
+[node name="Armature" parent="Apatosaurus" index="0"]
+transform = Transform3D(-225, 1.09278e-05, 6.6874e-13, 0, -5.46392e-06, 175, 1.96701e-05, 125, 7.64949e-06, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Apatosaurus/Armature" index="0"]
+bones/1/position = Vector3(0.000375612, 0.00783771, -0.000202221)
+bones/1/rotation = Quaternion(0.0124477, 4.03625e-08, 4.07118e-08, 0.999923)
+bones/2/position = Vector3(-0.000429037, -0.00337802, -0.00127212)
+bones/2/rotation = Quaternion(-0.186651, 0.186651, 0.682027, 0.682028)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(4.06901e-10, 0.00140446, -1.33514e-10)
+bones/3/rotation = Quaternion(0.721526, -0.688057, -0.0525666, 0.0566999)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(3.11878e-10, 0.00215545, -1.72003e-11)
+bones/4/rotation = Quaternion(0.0523047, -0.00183401, 0.0561926, 0.997047)
+bones/4/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.000305772, -0.00393985, -0.00127212)
+bones/6/rotation = Quaternion(0.621541, 0.621541, -0.337175, 0.337175)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-3.95517e-17, 0.00140446, 1.33515e-10)
+bones/7/rotation = Quaternion(-0.0498901, -0.0598621, 0.770518, 0.632637)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(2.86871e-11, 0.00215545, -1.41297e-10)
+bones/8/rotation = Quaternion(0.470952, -0.0135749, -0.0562762, 0.880257)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-6.45654e-05, -0.0032562, -0.00166552)
+bones/10/rotation = Quaternion(-0.751586, 4.71808e-07, -5.37577e-07, 0.659635)
+bones/11/position = Vector3(3.98216e-13, 0.00117813, -6.07426e-10)
+bones/11/rotation = Quaternion(-0.346893, -0.000927007, 0.00912638, 0.93786)
+bones/12/position = Vector3(-1.8434e-13, 0.00299479, -4.89122e-10)
+bones/12/rotation = Quaternion(0.361535, -0.00234971, -0.00414545, 0.932346)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-6.19472e-13, 0.00355995, 5.22253e-10)
+bones/13/rotation = Quaternion(0.126868, 0.00246714, -0.000662444, 0.991916)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(8.16057e-13, 0.00391603, -3.17176e-11)
+bones/14/rotation = Quaternion(0.121861, -3.24153e-05, -1.94551e-05, 0.992547)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-3.28841e-13, 0.00336364, -9.41007e-11)
+bones/15/rotation = Quaternion(0.0920392, -7.36382e-05, -2.63653e-05, 0.995755)
+bones/15/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-6.45654e-05, -0.00276084, -0.00138096)
+bones/17/rotation = Quaternion(6.36415e-07, 0.60265, 0.798006, 5.20564e-07)
+bones/18/position = Vector3(-1.61434e-15, 0.00143118, -1.02076e-09)
+bones/18/rotation = Quaternion(0.04789, 0.00844831, -0.0355239, 0.998185)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-6.33005e-12, 0.00258128, 8.1659e-10)
+bones/19/rotation = Quaternion(-0.121465, -0.0219089, 0.035319, 0.991725)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(0.000209024, 0.00609294, 0.00333568)
+bones/20/rotation = Quaternion(0.360614, -0.00082807, -0.0217623, 0.932461)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-1.96777e-11, 0.00373326, -1.36758e-09)
+bones/21/rotation = Quaternion(-0.175148, -0.257522, 0.0454012, 0.949181)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/position = Vector3(-0.000230568, -0.00511269, 0.00349172)
+bones/23/rotation = Quaternion(0.108334, -0.108331, 0.698761, 0.698757)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(-4.06901e-10, 0.000645761, -3.36965e-10)
+bones/24/rotation = Quaternion(0.623255, -0.603817, 0.352449, -0.350339)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(1.13721e-10, 0.0021218, -4.7963e-10)
+bones/25/rotation = Quaternion(-0.293899, 0.0318295, 0.117436, 0.948061)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/position = Vector3(0.000107303, -0.00511269, 0.00349171)
+bones/27/rotation = Quaternion(0.700457, 0.700453, 0.0967578, -0.0967625)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(-4.30211e-17, 0.000645761, 3.36965e-10)
+bones/28/rotation = Quaternion(0.23508, 0.245437, 0.712156, 0.614274)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(-6.20227e-11, 0.0021218, -3.76282e-10)
+bones/29/rotation = Quaternion(-0.219965, -0.0111422, -0.0184097, 0.97527)
+bones/29/scale = Vector3(1, 1, 1)
+bones/31/position = Vector3(-0.00153869, 0.000366599, 0.00132604)
+bones/31/rotation = Quaternion(0.717705, -1.0939e-06, -1.47934e-06, 0.696347)
+bones/31/scale = Vector3(1, 1, 1)
+bones/33/position = Vector3(0.00153869, 0.000172341, 0.000469709)
+bones/33/rotation = Quaternion(0.707107, -1.63249e-06, -1.63249e-06, 0.707107)
+bones/33/scale = Vector3(1, 1, 1)
+bones/35/position = Vector3(-0.00077518, 0.000991403, 0.000323043)
+bones/35/rotation = Quaternion(0.790027, -9.05709e-07, -1.60203e-06, 0.613072)
+bones/35/scale = Vector3(1, 1, 1)
+bones/37/position = Vector3(0.000706054, 0.000262965, 0.000744361)
+bones/37/rotation = Quaternion(0.809476, -1.18234e-06, -1.95741e-06, 0.587153)
+bones/37/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Apatosaurus" index="1"]
+speed_scale = 2.0
+
+[editable path="Apatosaurus"]

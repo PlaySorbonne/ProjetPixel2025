@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b7p867w0ucu3g"]
+
+[ext_resource type="Shader" uid="uid://dso8mi2jgnino" path="res://resources/shaders/flaring_star.gdshader" id="1_m1ajo"]
+
+[resource]
+shader = ExtResource("1_m1ajo")
+shader_parameter/core_color = Color(0.835, 1, 0.82, 1)
+shader_parameter/glow_color = Color(0.182, 0.84, 0, 1)
+shader_parameter/core_radius = 0.17
+shader_parameter/glow_radius = 0.3
+shader_parameter/flare_speed = 5.0
+shader_parameter/flare_strength = 0.1
+shader_parameter/star_center = Vector2(0.5, 0.5)

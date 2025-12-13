@@ -1,20 +1,23 @@
 extends BaseEnemy
 class_name EnemyDemoBoss
 
-const MINION := preload("res://scenes/world/enemies/base_enemy.tscn")
+const MINION := preload("res://scenes/world/enemies/mobs/standard_walker.tscn")
 
 var lives := 4
 
 
 func death() -> void:
 	lives -= 1
+	var new_health : int
 	if lives == 0:
 		super.death()
 		return
 	elif lives == 1:
-		enemy_data.health = 4000
-	$DamageableObject.max_health = enemy_data.health
-	$DamageableObject.health = enemy_data.health
+		new_health = 4000
+	else:
+		new_health = 2000
+	$DamageableObject.max_health = new_health
+	$DamageableObject.health = new_health
 	var rooted := StatusRooted.new()
 	rooted.inflict_status(self)
 	$DamageableObject.defense = 100.0
@@ -28,7 +31,7 @@ func _on_timer_minion_timeout() -> void:
 	minion.global_position = global_position
 
 func _on_damageable_object_hit(damage_amount: int, new_health: int, damage_type: DamageableObject.DamagingTypes) -> void:
-	$Label3D.text = str(enemy_data.health) + " / " + str(enemy_data.health)
+	$Label3D.text = str($DamageableObject.health) + " / " + str($DamageableObject.max_health)
 
 func _on_timer_defense_timeout() -> void:
 	$DamageableObject.defense = 1.0
