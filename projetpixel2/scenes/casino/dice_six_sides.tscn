@@ -8,6 +8,7 @@
 bounce = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4rrad"]
+size = Vector3(0.25, 0.25, 0.25)
 
 [node name="DiceSixSides" type="RigidBody3D"]
 collision_layer = 64
@@ -18,7 +19,7 @@ angular_damp = 0.1
 script = ExtResource("1_pp7mk")
 
 [node name="DiceMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, -0.500591, 0)
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, -0.124153, 0)
 mesh = ExtResource("1_0qjfr")
 surface_material_override/0 = ExtResource("2_pp7mk")
 

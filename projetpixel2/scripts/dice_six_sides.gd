@@ -4,11 +4,23 @@ class_name Dice
 
 signal dice_rolled(value : float)
 
+const DICE_RES := preload("res://scenes/casino/dice_six_sides.tscn")
+
+
+static func roll_dice(parent : Node3D, dice_location : Vector3) -> Dice:
+	var dice := DICE_RES.instantiate()
+	dice.ready.connect(dice.roll)
+	dice.position = dice_location
+	parent.add_child(dice)
+	return dice
+
+
 @export var roll_force := 6.0
 @export var roll_torque := 10.0
 
 
 func _physics_process(_delta : float):
+	return
 	if is_still() and sleeping == false:
 		sleeping = true
 		var value := get_dice_value()
@@ -28,7 +40,7 @@ func roll() -> void:
 	# Random upward + sideways force
 	var force := Vector3(
 		randf_range(-1, 1),
-		1,
+		-1,
 		randf_range(-1, 1)
 	).normalized() * roll_force
 	

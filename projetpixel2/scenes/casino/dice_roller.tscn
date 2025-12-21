@@ -19,6 +19,8 @@ script = ExtResource("1_fd5uc")
 transform = Transform3D(1, 0, 0, 0, 0.607112, 0.794616, 0, -0.794616, 0.607112, 0, 1.77961, 1.33901)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 64
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0, 0)
@@ -42,3 +44,25 @@ shape = SubResource("BoxShape3D_fd5uc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_1mnjm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.949283)
+mesh = SubResource("BoxMesh_1mnjm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.998235)
+mesh = SubResource("BoxMesh_1mnjm")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91068e-15, 0.943775, -1.19209e-07, 0.0159226)
+mesh = SubResource("BoxMesh_1mnjm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -0.999999, -1, -4.37114e-08, 1.91068e-15, -0.980677, -1.19209e-07, 0.0159226)
+mesh = SubResource("BoxMesh_1mnjm")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.529, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
