@@ -81,6 +81,7 @@ right_click={
 3d_physics/layer_4="projectiles"
 3d_physics/layer_5="experience"
 3d_physics/layer_6="mouse"
+3d_physics/layer_7="dice"
 
 [rendering]
 
