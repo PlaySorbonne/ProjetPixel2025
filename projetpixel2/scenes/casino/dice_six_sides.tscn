@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://buwpsfamdje6i" path="res://resources/3d_models/casino/dice/materials/dice_white_material.tres" id="2_pp7mk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pp7mk"]
-bounce = 0.1
+bounce = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4rrad"]
 size = Vector3(0.25, 0.25, 0.25)
@@ -25,3 +25,10 @@ surface_material_override/0 = ExtResource("2_pp7mk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4rrad")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
