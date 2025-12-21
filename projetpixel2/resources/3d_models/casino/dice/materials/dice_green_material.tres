@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=8 format=3 uid="uid://dvqb1w3r4a34v"]
+
+[ext_resource type="Texture2D" uid="uid://ekwm8v0go31o" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Green_Dice_BaseColor.png" id="1_4tetu"]
+[ext_resource type="Texture2D" uid="uid://ccw0s7ps4li2e" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Colored_Dive_AO.png" id="2_57wke"]
+[ext_resource type="Texture2D" uid="uid://ovnl4lsx4d37" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Green_Dice_Emissive.png" id="3_57wke"]
+[ext_resource type="Texture2D" uid="uid://csxjwbbtf3fqx" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Colored_Dice_Height.png" id="4_ahyif"]
+[ext_resource type="Texture2D" uid="uid://d4f35ujbdcmlv" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Colored_Dice_Metallic.png" id="5_ecna4"]
+[ext_resource type="Texture2D" uid="uid://bcwyiy1s6voho" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Medieval_Dice_Original_Textures/Medieval_Dice_Original_normal .png" id="6_gjf17"]
+[ext_resource type="Texture2D" uid="uid://xfjy78iw34ct" path="res://resources/3d_models/casino/dice/Multi-Colored_Dice_Textures4K/Colored_Dice_Roughness.png" id="7_6wm5m"]
+
+[resource]
+albedo_texture = ExtResource("1_4tetu")
+metallic = 1.0
+metallic_texture = ExtResource("5_ecna4")
+roughness_texture = ExtResource("7_6wm5m")
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = ExtResource("3_57wke")
+normal_enabled = true
+normal_texture = ExtResource("6_gjf17")
+ao_enabled = true
+ao_texture = ExtResource("2_57wke")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_ahyif")
