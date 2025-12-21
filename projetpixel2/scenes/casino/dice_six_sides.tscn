@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp3gyx0ba57hw"]
+[gd_scene load_steps=6 format=3 uid="uid://dp3gyx0ba57hw"]
 
 [ext_resource type="ArrayMesh" uid="uid://d15cf6posyj7h" path="res://resources/3d_models/casino/dice/dice.obj" id="1_0qjfr"]
 [ext_resource type="Script" uid="uid://3qgdo0d0ibj7" path="res://scripts/dice_six_sides.gd" id="1_pp7mk"]
 [ext_resource type="Material" uid="uid://buwpsfamdje6i" path="res://resources/3d_models/casino/dice/materials/dice_white_material.tres" id="2_pp7mk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pp7mk"]
+bounce = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4rrad"]
 
 [node name="DiceSixSides" type="RigidBody3D"]
 collision_layer = 64
 collision_mask = 64
+physics_material_override = SubResource("PhysicsMaterial_pp7mk")
+linear_damp = 0.1
+angular_damp = 0.1
 script = ExtResource("1_pp7mk")
 
 [node name="DiceMesh" type="MeshInstance3D" parent="."]
