@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp3gyx0ba57hw"]
+
+[ext_resource type="ArrayMesh" uid="uid://d15cf6posyj7h" path="res://resources/3d_models/casino/dice/dice.obj" id="1_0qjfr"]
+[ext_resource type="Material" uid="uid://buwpsfamdje6i" path="res://resources/3d_models/casino/dice/materials/dice_white_material.tres" id="2_pp7mk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rrad"]
+
+[node name="DiceSixSides" type="RigidBody3D"]
+
+[node name="DiceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, -0.500591, 0)
+mesh = ExtResource("1_0qjfr")
+surface_material_override/0 = ExtResource("2_pp7mk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4rrad")
