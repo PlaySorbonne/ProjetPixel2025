@@ -2,13 +2,16 @@ extends RigidBody3D
 class_name Dice
 
 
-signal dice_rolled(value : float)
+signal dice_rolled(value : int)
+signal dice_cocked
+signal dice_result(value : int)
 
 const DICE_RES := preload("res://scenes/casino/dice_six_sides.tscn")
 
 
 static func roll_dice(parent : Node3D, dice_location : Vector3) -> Dice:
 	var dice := DICE_RES.instantiate()
+	dice.roll_position = dice_location
 	dice.ready.connect(dice.roll)
 	dice.position = dice_location
 	parent.add_child(dice)
@@ -17,6 +20,8 @@ static func roll_dice(parent : Node3D, dice_location : Vector3) -> Dice:
 
 @export var roll_force := 6.0
 @export var roll_torque := 10.0
+
+var roll_position : Vector3
 
 
 func _ready() -> void:
@@ -29,20 +34,27 @@ func _physics_process(_delta : float):
 	if is_still() and sleeping == false:
 		sleeping = true
 		var value := get_dice_value()
-		print("Dice rolled:", value)
 		dice_rolled.emit(value)
+		if value == -1:
+			roll()
+			dice_cocked.emit()
+			return
+		dice_result.emit(value)
 		freeze = true
-		scale = Vector3(0.75, 0.75, 0.75)
+		scale = Vector3(0.95, 0.95, 0.95)
 
 func roll() -> void:
+	# Reset motion
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	
+	# Reset transform
+	position = roll_position
 	rotation = Vector3(
 		randf() * TAU,
 		randf() * TAU,
 		randf() * TAU
 	)
-	# Reset motion
-	linear_velocity = Vector3.ZERO
-	angular_velocity = Vector3.ZERO
 	
 	# Random upward + sideways force
 	var force := Vector3(
@@ -73,6 +85,7 @@ func get_dice_value() -> int:
 		3: Vector3.UP,
 		4: Vector3.DOWN
 	}
+	const COCKED_LIMIT := 0.7
 	
 	var best_dot := -1.0
 	var best_face := 1
@@ -84,5 +97,7 @@ func get_dice_value() -> int:
 			print("       new best dot!")
 			best_dot = dot
 			best_face = face
-	
-	return best_face
+	if abs(best_dot) > COCKED_LIMIT:
+		return best_face
+	else:
+		return -1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5vrn3qeyghx8"]
+[gd_scene load_steps=6 format=3 uid="uid://b5vrn3qeyghx8"]
 
 [ext_resource type="Script" uid="uid://ljgkyegaon11" path="res://scripts/dice_roller.gd" id="1_fd5uc"]
 
@@ -11,8 +11,10 @@ size = Vector3(2, 1, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_1mnjm"]
 size = Vector3(2, 0.1, 2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_fd5uc"]
+font_size = 24
+
 [node name="DiceRoller" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_fd5uc")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -50,3 +52,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.529, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 202.0
+offset_bottom = 84.0
+text = "0000"
+label_settings = SubResource("LabelSettings_fd5uc")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_bottom = 84.0
+grow_horizontal = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_fd5uc")
+horizontal_alignment = 2
