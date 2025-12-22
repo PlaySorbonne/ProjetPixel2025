@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545192, 0)
 transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 0, 9.75384, 8.86547)
 
 [node name="DiceRoller" parent="PlayerCamera" instance=ExtResource("3_gb53w")]
-transform = Transform3D(-4.37114e-08, 0, -1, -0.841897, 0.539638, 2.11236e-08, 0.539638, 0.841897, -1.35398e-08, 0, 0.145503, -1.67846)
+transform = Transform3D(-4.37114e-08, 0, -1, -0.841897, 0.539638, 2.11236e-08, 0.539638, 0.841897, -1.35398e-08, 0, -0.250889, -2.16082)
 
 [node name="Spaceship" parent="." instance=ExtResource("8_j2gmx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)

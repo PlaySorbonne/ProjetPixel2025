@@ -12,15 +12,22 @@ var nb_dice_rolled : int
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		roll_dice(90)
+		roll_dice(24)
 
 func roll_dice(number_of_dice : int) -> void:
 	cleanup_dice()
 	nb_dice_thrown = number_of_dice
 	nb_dice_rolled = 0
 	for _i : int in range(number_of_dice):
-		var dice := Dice.roll_dice(self, $Marker3D.position)
+		var dice := Dice.roll_dice(self, random_dice_spawn_position())
 		connect_dice(dice)
+
+func random_dice_spawn_position() -> Vector3:
+	return $Marker3D.position + Vector3(
+		randf_range(-$Marker3D.gizmo_extents, $Marker3D.gizmo_extents),
+		0.0,
+		randf_range(-$Marker3D.gizmo_extents, $Marker3D.gizmo_extents)
+	)
 
 func cleanup_dice() -> void:
 	for d : Dice in rolled_dice:

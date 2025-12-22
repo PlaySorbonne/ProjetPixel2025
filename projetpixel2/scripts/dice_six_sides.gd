@@ -55,7 +55,7 @@ func _physics_process(delta : float):
 	if sleeping or cocked:
 		return
 	if snapping_dice_to_face:
-		if is_still(0.1) and is_dice_on_face(forced_face):
+		if is_still(0.05) and is_dice_on_face(forced_face):
 			stop_dice()
 		else:
 			snap_towards_face(delta)
@@ -67,7 +67,7 @@ func _physics_process(delta : float):
 
 func force_dice_value(value : int) -> void:
 	if value == -1:
-		still_limit = 0.1
+		still_limit = 0.05
 	else:
 		still_limit = 40.0
 	forced_face = value
@@ -87,7 +87,9 @@ func _on_dice_cocked() -> void:
 		return
 	cocked = true
 	freeze = true
-	get_tree().create_timer(0.35).timeout.connect(self.reroll_dice)
+	var tween := create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", roll_position, 0.4).set_delay(0.8)
+	tween.finished.connect(self.reroll_dice)
 
 func reroll_dice() -> void:
 	var new_dice := roll_dice(get_parent(), roll_position)
