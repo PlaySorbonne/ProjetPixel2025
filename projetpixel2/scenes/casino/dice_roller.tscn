@@ -3,16 +3,16 @@
 [ext_resource type="Script" uid="uid://ljgkyegaon11" path="res://scripts/dice_roller.gd" id="1_fd5uc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4q1k"]
-size = Vector3(2, 0.1, 3)
+size = Vector3(2, 0.1, 4.50391)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1mnjm"]
-size = Vector3(2, 1, 0.1)
+size = Vector3(2, 1.9043, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fd5uc"]
-size = Vector3(3.13843, 1, 0.1)
+size = Vector3(4.445, 2, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1mnjm"]
-size = Vector3(2, 0.1, 3)
+size = Vector3(2, 0.1, 4.5)
 
 [node name="DiceRoller" type="Node3D"]
 script = ExtResource("1_fd5uc")
@@ -26,19 +26,19 @@ transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0, 0)
 shape = SubResource("BoxShape3D_j4q1k")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.447215, -1.5091)
+transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.899362, -2.22055)
 shape = SubResource("BoxShape3D_1mnjm")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.447215, 1.47257)
+transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.899, 2.181)
 shape = SubResource("BoxShape3D_1mnjm")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, 0.954513, 0.447215, -0.0241922)
+transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, 0.954513, 0.866281, -0.0241922)
 shape = SubResource("BoxShape3D_fd5uc")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, -0.932441, 0.447215, -0.0241922)
+transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, -0.932, 0.866, -0.024)
 shape = SubResource("BoxShape3D_fd5uc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -47,6 +47,7 @@ mesh = SubResource("BoxMesh_1mnjm")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.529, 0)
+gizmo_extents = 0.5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
