@@ -92,6 +92,7 @@ func reset_run_data() -> void:
 	level_experience_threshold = experience_needed_equation.execute([], self)
 	current_experience = 0
 	experience_multiplier = 1.0
+	total_experience = 0
 	# combo
 	current_combo = 0
 	max_run_combo = 0
