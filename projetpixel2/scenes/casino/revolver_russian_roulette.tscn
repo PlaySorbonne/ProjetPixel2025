@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvlbqvv2c0ve"]
+
+[ext_resource type="ArrayMesh" uid="uid://dc5ag05q5lvut" path="res://resources/3d_models/casino/revolver/revolver_empty.obj" id="1_osnvl"]
+[ext_resource type="Material" uid="uid://cw0cid3ile8u2" path="res://resources/3d_models/casino/revolver/revolver_material.tres" id="2_274sd"]
+[ext_resource type="Script" uid="uid://vtb2y1wlybyi" path="res://scripts/revolver_russian_roulette.gd" id="3_274sd"]
+[ext_resource type="ArrayMesh" uid="uid://covgejpqplu2w" path="res://resources/3d_models/casino/revolver/revolver_hammer_centered.obj" id="3_lx8tg"]
+[ext_resource type="ArrayMesh" uid="uid://7xln8ij3ka7r" path="res://resources/3d_models/casino/revolver/revolver_cylinder_centered.obj" id="4_rpowk"]
+[ext_resource type="ArrayMesh" uid="uid://co7py5at0i6wb" path="res://resources/3d_models/casino/revolver/revolver_trigger_centered.obj" id="5_ty6pb"]
+
+[sub_resource type="Animation" id="Animation_274sd"]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_lx8tg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpowk"]
+_data = {
+&"RESET": SubResource("Animation_lx8tg"),
+&"spin": SubResource("Animation_274sd")
+}
+
+[node name="RevolverRussianRoulette" type="Node3D"]
+script = ExtResource("3_274sd")
+
+[node name="RevolverEmpty" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_osnvl")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="RevolverHammer" type="MeshInstance3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59355, 0, 12.7614)
+mesh = ExtResource("3_lx8tg")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="RevolverCylinder" type="MeshInstance3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 0.288915, 0.957355, 0, -0.957355, 0.288915, 3.6638, 0, 13.5083)
+mesh = ExtResource("4_rpowk")
+skeleton = NodePath("../..")
+
+[node name="RevolverTrigger" type="MeshInstance3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36329, 0, 9.72047)
+mesh = ExtResource("5_ty6pb")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RevolverEmpty"]
+libraries = {
+&"": SubResource("AnimationLibrary_rpowk")
+}
