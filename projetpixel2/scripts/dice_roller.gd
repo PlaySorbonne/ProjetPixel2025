@@ -8,11 +8,15 @@ var total_dice_result : int
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		var dice := Dice.roll_dice(self, $Marker3D.position)
-		dice.dice_result.connect(_on_dice_rolled)
-		dice.dice_cocked.connect(_on_dice_cocked)
+		connect_dice(dice)
 
-func _on_dice_cocked() -> void:
-	$CanvasLayer/Label.text += "\ncocked"
+func connect_dice(dice : Dice) -> void:
+	dice.dice_result.connect(_on_dice_rolled)
+	dice.dice_cocked.connect(_on_dice_cocked)
+
+func _on_dice_cocked(new_dice : Dice) -> void:
+	$CanvasLayer/Label.text += "\ncocked -> spawn new dice"
+	connect_dice(new_dice)
 
 func _on_dice_rolled(result : int) -> void:
 	total_dice_result += result

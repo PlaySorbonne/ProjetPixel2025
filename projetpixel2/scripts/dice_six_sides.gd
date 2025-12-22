@@ -3,7 +3,7 @@ class_name Dice
 
 
 signal dice_rolled(value : int)
-signal dice_cocked
+signal dice_cocked(new_dice : Dice)
 signal dice_result(value : int)
 
 const DICE_RES := preload("res://scenes/casino/dice_six_sides.tscn")
@@ -38,11 +38,6 @@ var cocked := false
 
 
 func _ready() -> void:
-	if randi()%4 == 0:
-		force_dice_value(6)
-		print("force fice vfixc vfd")
-	else:
-		print("dont touch dice probabilities")
 	set_physics_process(false)
 
 func _on_timer_timeout() -> void:
@@ -74,7 +69,6 @@ func stop_dice() -> void:
 	var value := get_dice_value()
 	dice_rolled.emit(value)
 	if value == -1:
-		dice_cocked.emit()
 		_on_dice_cocked()
 		return
 	dice_result.emit(value)
@@ -85,11 +79,14 @@ func _on_dice_cocked() -> void:
 	if cocked:
 		return
 	cocked = true
-	linear_velocity = Vector3.ZERO
-	angular_velocity = Vector3.ZERO
-	await get_tree().create_timer(1.0).timeout
-	cocked = false
-	roll()
+	freeze = true
+	get_tree().create_timer(0.35).timeout.connect(self.reroll_dice)
+
+func reroll_dice() -> void:
+	var new_dice := roll_dice(get_parent(), roll_position)
+	new_dice.forced_face = forced_face
+	dice_cocked.emit(new_dice)
+	queue_free()
 
 func roll() -> void:
 	# Reset transform
