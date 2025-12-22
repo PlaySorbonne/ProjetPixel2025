@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bobh6qjwu5okn"
+path="res://.godot/imported/uploads_files_3653033_revolver.obj-dbfabb4dcb85a5c946cb3ea90c45dd9c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_3653033_revolver.obj-dbfabb4dcb85a5c946cb3ea90c45dd9c.mesh"]
+
+source_file="res://resources/3d_models/casino/revolver/uploads_files_3653033_revolver.obj"
+dest_files=["res://.godot/imported/uploads_files_3653033_revolver.obj-dbfabb4dcb85a5c946cb3ea90c45dd9c.mesh", "res://.godot/imported/uploads_files_3653033_revolver.obj-dbfabb4dcb85a5c946cb3ea90c45dd9c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
