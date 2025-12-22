@@ -34,24 +34,28 @@ var roll_position : Vector3
 var forced_face := -1
 var still_limit := 0.1
 var snapping_dice_to_face := false
+var cocked := false
 
 
 func _ready() -> void:
-	if randi()%4 == 0 or true:
+	if randi()%4 == 0:
 		force_dice_value(6)
+		print("force fice vfixc vfd")
+	else:
+		print("dont touch dice probabilities")
 	set_physics_process(false)
 
 func _on_timer_timeout() -> void:
 	set_physics_process(true)
 
 func _physics_process(delta : float):
-	if sleeping:
+	if sleeping or cocked:
 		return
 	if snapping_dice_to_face:
 		if is_still(0.1) and is_dice_on_face(forced_face):
 			stop_dice()
 		else:
-			steer_towards_face(delta)
+			snap_towards_face(delta)
 	elif is_still(still_limit):
 		if forced_face == -1 or is_dice_on_face(forced_face):
 			stop_dice()
@@ -70,18 +74,24 @@ func stop_dice() -> void:
 	var value := get_dice_value()
 	dice_rolled.emit(value)
 	if value == -1:
-		roll()
 		dice_cocked.emit()
+		_on_dice_cocked()
 		return
 	dice_result.emit(value)
 	freeze = true
 	scale = Vector3(0.95, 0.95, 0.95)
 
-func roll() -> void:
-	# Reset motion
+func _on_dice_cocked() -> void:
+	if cocked:
+		return
+	cocked = true
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	
+	await get_tree().create_timer(1.0).timeout
+	cocked = false
+	roll()
+
+func roll() -> void:
 	# Reset transform
 	position = roll_position
 	rotation = Vector3(
@@ -128,24 +138,45 @@ func get_dice_value() -> int:
 	else:
 		return -1
 
-func steer_towards_face(delta: float) -> void:
-	var max_angular_speed := 8.0
-	var steer_impulse := 0.025
+#func steer_towards_face(_delta: float) -> void:
+	#var max_angular_speed := 8.0
+	#var steer_impulse := 0.02
+	#var face_dir_world := (global_transform.basis * FACES[forced_face]).normalized()
+	#var target_dir := Vector3.UP
+	#var axis := face_dir_world.cross(target_dir)
+	#var sin_angle := axis.length()
+	#var cos_angle : float = clamp(face_dir_world.dot(target_dir), -1.0, 1.0)
+	#var angle := atan2(sin_angle, cos_angle)
+	#
+	#if angle < 0.01 and angular_velocity.length() < 0.2:
+		#sleeping = true
+		#return
+	#if sin_angle < 0.0001:
+		#return
+	#
+	#axis /= sin_angle
+	#apply_torque_impulse(axis * angle * steer_impulse)
+	#
+	#if angular_velocity.length() > max_angular_speed:
+		#angular_velocity = angular_velocity.normalized() * max_angular_speed
+
+
+func snap_towards_face(delta: float) -> void:
 	var face_dir_world := (global_transform.basis * FACES[forced_face]).normalized()
 	var target_dir := Vector3.UP
-	var axis := face_dir_world.cross(target_dir)
-	var sin_angle := axis.length()
-	var cos_angle : float = clamp(face_dir_world.dot(target_dir), -1.0, 1.0)
-	var angle := atan2(sin_angle, cos_angle)
+	var dot : float = clamp(face_dir_world.dot(target_dir), -1.0, 1.0)
+	var angle := acos(dot)
 	
-	if angle < 0.01 and angular_velocity.length() < 0.2:
+	if angle < 0.005:
 		sleeping = true
 		return
-	if sin_angle < 0.0001:
-		return
-	
-	axis /= sin_angle
-	apply_torque_impulse(axis * angle * steer_impulse)
-	
-	if angular_velocity.length() > max_angular_speed:
-		angular_velocity = angular_velocity.normalized() * max_angular_speed
+	var axis := face_dir_world.cross(target_dir)
+	if axis.length_squared() < 0.0001:
+		axis = face_dir_world.cross(Vector3.RIGHT)
+		if axis.length_squared() < 0.0001:
+			axis = face_dir_world.cross(Vector3.FORWARD)
+	axis = axis.normalized()
+	var step := angle * 12.0 * delta
+	step = min(step, angle)
+	var rot := Basis(axis, step)
+	global_transform.basis = (rot * global_transform.basis).orthonormalized()
