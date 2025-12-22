@@ -10,9 +10,9 @@ var nb_dice_thrown : int
 var nb_dice_rolled : int
 
 
-#func _input(event):
-	#if event.is_action_pressed("ui_accept"):
-		#roll_dice(90)
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		roll_dice(90)
 
 func roll_dice(number_of_dice : int) -> void:
 	cleanup_dice()
@@ -35,7 +35,8 @@ func connect_dice(dice : Dice) -> void:
 	rolled_dice.append(dice)
 
 func add_debug_line(new_line : String) -> void:
-	$CanvasLayer/Label.text += new_line + "\n"
+	#$CanvasLayer/Label.text += new_line + "\n"
+	pass
 
 func _on_dice_cocked(new_dice : Dice) -> void:
 	add_debug_line("cocked -> spawn new dice")
@@ -46,4 +47,4 @@ func _on_dice_rolled(result : int, dice : Dice) -> void:
 	nb_dice_rolled += 1
 	if nb_dice_rolled == nb_dice_thrown:
 		dice_result.emit(total_dice_result)
-		$CanvasLayer/Label.text += "total_dice_result = " + str(total_dice_result) + "\n"
+		#$CanvasLayer/Label.text += "total_dice_result = " + str(total_dice_result) + "\n"
