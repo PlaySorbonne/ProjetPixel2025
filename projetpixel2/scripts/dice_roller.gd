@@ -2,22 +2,37 @@ extends Node3D
 class_name DiceRoller
 
 
+signal dice_result(result : int)
+
 var total_dice_result : int
+var rolled_dice : Array[Dice] = []
+var nb_dice_thrown : int
+var nb_dice_rolled : int
 
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
+#func _input(event):
+	#if event.is_action_pressed("ui_accept"):
+		#roll_dice(90)
+
+func roll_dice(number_of_dice : int) -> void:
+	cleanup_dice()
+	nb_dice_thrown = number_of_dice
+	nb_dice_rolled = 0
+	for _i : int in range(number_of_dice):
 		var dice := Dice.roll_dice(self, $Marker3D.position)
 		connect_dice(dice)
-		if randi()%4 == 0:
-			dice.force_dice_value(6)
-			print("force fice vfixc vfd")
-		else:
-			print("dont touch dice probabilities")
+
+func cleanup_dice() -> void:
+	for d : Dice in rolled_dice:
+		if is_instance_valid(d):
+			d.queue_free()
+	rolled_dice.clear()
+	total_dice_result = 0
 
 func connect_dice(dice : Dice) -> void:
 	dice.dice_result.connect(_on_dice_rolled.bind(dice))
 	dice.dice_cocked.connect(_on_dice_cocked)
+	rolled_dice.append(dice)
 
 func add_debug_line(new_line : String) -> void:
 	$CanvasLayer/Label.text += new_line + "\n"
@@ -27,9 +42,8 @@ func _on_dice_cocked(new_dice : Dice) -> void:
 	connect_dice(new_dice)
 
 func _on_dice_rolled(result : int, dice : Dice) -> void:
-	if dice.forced_face == -1:
-		add_debug_line("dice roll = " + str(result))
-	else:
-		add_debug_line("forced dice result = " + str(result))
 	total_dice_result += result
-	$CanvasLayer/Label2.text = str(total_dice_result)
+	nb_dice_rolled += 1
+	if nb_dice_rolled == nb_dice_thrown:
+		dice_result.emit(total_dice_result)
+		$CanvasLayer/Label.text += "total_dice_result = " + str(total_dice_result) + "\n"
