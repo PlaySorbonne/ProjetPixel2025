@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5vrn3qeyghx8"]
+[gd_scene load_steps=7 format=3 uid="uid://b5vrn3qeyghx8"]
 
 [ext_resource type="Script" uid="uid://ljgkyegaon11" path="res://scripts/dice_roller.gd" id="1_fd5uc"]
 
@@ -13,6 +13,9 @@ size = Vector3(2, 0.1, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_fd5uc"]
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_1mnjm"]
+font_size = 32
 
 [node name="DiceRoller" type="Node3D"]
 script = ExtResource("1_fd5uc")
@@ -58,7 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 202.0
 offset_bottom = 84.0
-text = "0000"
 label_settings = SubResource("LabelSettings_fd5uc")
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
@@ -69,5 +71,5 @@ offset_left = -202.0
 offset_bottom = 84.0
 grow_horizontal = 0
 text = "0000"
-label_settings = SubResource("LabelSettings_fd5uc")
+label_settings = SubResource("LabelSettings_1mnjm")
 horizontal_alignment = 2
