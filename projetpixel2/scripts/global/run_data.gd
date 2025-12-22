@@ -11,9 +11,12 @@ var better_luck := false
 func roll_probability(base_probability : float) -> bool:
 	if better_luck:
 		return true
-	var final_probability = clamp(base_probability * probability_multiplier, 0.0, 1.0)
+	var final_probability = get_skewed_probability(base_probability)
 	var rd : float = randf() 
 	return rd < final_probability
+
+func get_skewed_probability(base_probability : float) -> float:
+	return clamp(base_probability * probability_multiplier, 0.0, 1.0)
 
 # experience points
 var experience_needed_equation : Expression = default_levelling_expression()

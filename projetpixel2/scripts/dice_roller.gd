@@ -4,15 +4,17 @@ class_name DiceRoller
 
 signal dice_result(result : int)
 
+const BASE_SUCCESS_PROBA := 0.166667 # 1.0/6.0
+
 var total_dice_result : int
 var rolled_dice : Array[Dice] = []
 var nb_dice_thrown : int
 var nb_dice_rolled : int
 
 
-#func _input(event):
-	#if event.is_action_pressed("ui_accept"):
-		#roll_dice(24)
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		roll_dice(24)
 
 func roll_dice(number_of_dice : int) -> void:
 	cleanup_dice()
@@ -21,6 +23,11 @@ func roll_dice(number_of_dice : int) -> void:
 	for _i : int in range(number_of_dice):
 		var dice := Dice.roll_dice(self, random_dice_spawn_position())
 		connect_dice(dice)
+		# account for luck manipulation
+		var success := RunData.better_luck or randf() < \
+				(RunData.get_skewed_probability(BASE_SUCCESS_PROBA) - BASE_SUCCESS_PROBA)
+		if success:
+			dice.force_dice_value(6)
 
 func random_dice_spawn_position() -> Vector3:
 	return $Marker3D.position + Vector3(
