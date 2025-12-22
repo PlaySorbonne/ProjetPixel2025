@@ -2,7 +2,6 @@ extends RigidBody3D
 class_name Dice
 
 
-signal dice_rolled(value : int)
 signal dice_cocked(new_dice : Dice)
 signal dice_result(value : int)
 
@@ -35,13 +34,22 @@ var forced_face := -1
 var still_limit := 0.1
 var snapping_dice_to_face := false
 var cocked := false
+var dice_initialized := false
 
 
 func _ready() -> void:
 	set_physics_process(false)
+	$Timer.start(0.25)
 
 func _on_timer_timeout() -> void:
-	set_physics_process(true)
+	# timeout: if dice is still going, we stop it
+	if dice_initialized and not sleeping:
+		stop_dice()
+	# start dice physics process
+	else:
+		dice_initialized = true
+		set_physics_process(true)
+		$Timer.start(5.0)
 
 func _physics_process(delta : float):
 	if sleeping or cocked:
@@ -67,7 +75,6 @@ func force_dice_value(value : int) -> void:
 func stop_dice() -> void:
 	sleeping = true
 	var value := get_dice_value()
-	dice_rolled.emit(value)
 	if value == -1:
 		_on_dice_cocked()
 		return
