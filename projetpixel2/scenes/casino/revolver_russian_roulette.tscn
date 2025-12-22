@@ -432,3 +432,5 @@ surface_material_override/0 = ExtResource("2_274sd")
 libraries = {
 &"": SubResource("AnimationLibrary_rpowk")
 }
+
+[connection signal="animation_finished" from="RevolverEmpty/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
