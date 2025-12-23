@@ -8,7 +8,7 @@ const BASE_PROBABILITY := 0.833333 # 5.0/6.0
 
 @onready var animation_player : AnimationPlayer = $RevolverEmpty/AnimationPlayer
 
-
+#
 #func _input(event):
 	#if event.is_action_pressed("ui_accept"):
 		#shoot_revolver()

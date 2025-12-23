@@ -12,9 +12,9 @@ var nb_dice_thrown : int
 var nb_dice_rolled : int
 
 
-#func _input(event):
-	#if event.is_action_pressed("ui_accept"):
-		#roll_dice(24)
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		roll_dice(24)
 
 func roll_dice(number_of_dice : int) -> void:
 	cleanup_dice()
