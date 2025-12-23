@@ -405,6 +405,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("18_rwqbi")
 expand_mode = 1
 stretch_mode = 1
@@ -418,7 +419,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("19_gd21h")
 
-[node name="DragAndDrop2D" parent="CasinoWindow" instance=ExtResource("21_0or73")]
+[node name="DragAndDrop2D" parent="CasinoWindow" node_paths=PackedStringArray("dragged_object") instance=ExtResource("21_0or73")]
+dragged_object = NodePath("..")
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
