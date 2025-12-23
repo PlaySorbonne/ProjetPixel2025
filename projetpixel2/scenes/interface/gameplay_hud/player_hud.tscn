@@ -374,7 +374,7 @@ script = ExtResource("16_616a6")
 [node name="RevolverWorld" type="Node3D" parent="RevolverFrame/SubViewportContainer/SubViewport"]
 
 [node name="Camera3D" type="Camera3D" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.2, -1.726)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.885, -1.726)
 environment = SubResource("Environment_xga4y")
 current = true
 
