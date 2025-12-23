@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bh83ijscu86po"
+path="res://.godot/imported/EuropeanRoulette_low.obj-6b77f7c5f7a0d94016088bb81defe47e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/EuropeanRoulette_low.obj-6b77f7c5f7a0d94016088bb81defe47e.mesh"]
+
+source_file="res://resources/3d_models/casino/roulette/EuropeanRoulette_low.obj"
+dest_files=["res://.godot/imported/EuropeanRoulette_low.obj-6b77f7c5f7a0d94016088bb81defe47e.mesh", "res://.godot/imported/EuropeanRoulette_low.obj-6b77f7c5f7a0d94016088bb81defe47e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
