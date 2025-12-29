@@ -1,9 +1,9 @@
 extends ArgumentType
 class_name EnumArgumentType
 
-var options: Array[String]
+var options: Array
 
-func _init(enum_options: Array[String]):
+func _init(enum_options: Array):
 	self.options = enum_options
 	
 func parse(value: String) -> String:

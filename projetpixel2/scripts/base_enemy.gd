@@ -18,6 +18,9 @@ static var enemy_types : Array[String] = ["Puncher"]
 @export var attack_anim := "Armature|Rat_Attack"
 @export var death_anim := "Armature|Rat_Death"
 
+var followed_path: Path3D
+var target_point_index := 0
+var target_position : Vector3
 var status_effects : Array[StatusObjectBase] = []
 var overlapping_enemies : Array[Node3D] = []
 var can_attack := true
@@ -47,17 +50,36 @@ func set_enemy_id() -> void:
 	enemy_id = number_of_enemies
 	number_of_enemies += 1
 
+func follow_path() -> void:
+	# get target point
+	target_position = followed_path.curve.get_point_position(target_point_index)
+	
+	# get next point index if target point is reached
+	if position.distance_to(target_position) < 0.5 && target_point_index < followed_path.curve.point_count:
+		target_point_index += 1
+	
+	# if last point is reached, attack the spaceship
+	if target_point_index == followed_path.curve.point_count - 1 && position.distance_to(target_position) < 0.5:
+		target_position = GV.space_ship.position
+		current_state = States.Attacking
+		
+	# move to target
+	mesh_animations.play("sprint")
+	velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
+	mesh.look_at(target_position)
+	
+	print("Heading to point " + str(target_point_index))
+	move_and_slide() 
+
 func _physics_process(_delta: float) -> void:
 	if current_state == States.Dead:
 		return
 	if current_state == States.Moving:
 		if can_move:
 			mesh_animations.play(run_anim)
-			velocity = position.direction_to(target.position) * enemy_data.speed * 1.5
-			mesh.look_at(target.position)
-			move_and_slide() 
-	if len(overlapping_enemies) > 0:
-		attack()
+			follow_path()
+	#if len(overlapping_enemies) > 0:
+	#	attack()
 
 func attack() -> void:
 	if not can_attack or current_state == States.Attacking or current_state == States.Dead:

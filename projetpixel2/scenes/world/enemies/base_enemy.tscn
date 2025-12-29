@@ -37,6 +37,7 @@ height = 1.0
 
 [node name="BaseEnemy" type="CharacterBody3D"]
 collision_layer = 3
+collision_mask = 0
 script = ExtResource("1_ey0w8")
 enemy_data = SubResource("Resource_sfjnn")
 
@@ -49,6 +50,8 @@ max_health = 101
 health = 50
 
 [node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 shape = SubResource("BoxShape3D_sxqs1")
@@ -56,7 +59,7 @@ shape = SubResource("BoxShape3D_sxqs1")
 [node name="TimerAttacking" type="Timer" parent="."]
 
 [node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("4_stxmo")]
-custom_nodes = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+custom_nodes = [null, null, null, null, null, null]
 
 [connection signal="death" from="DamageableObject" to="." method="_on_damageable_object_death"]
 [connection signal="hit" from="DamageableObject" to="." method="_on_damageable_object_hit"]
