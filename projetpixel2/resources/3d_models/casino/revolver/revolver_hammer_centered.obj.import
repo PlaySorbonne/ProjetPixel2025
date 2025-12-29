@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://covgejpqplu2w"
+path="res://.godot/imported/revolver_hammer_centered.obj-1273a73eeaf94b66404b65eff0d268b2.mesh"
+
+[deps]
+
+files=["res://.godot/imported/revolver_hammer_centered.obj-1273a73eeaf94b66404b65eff0d268b2.mesh"]
+
+source_file="res://resources/3d_models/casino/revolver/revolver_hammer_centered.obj"
+dest_files=["res://.godot/imported/revolver_hammer_centered.obj-1273a73eeaf94b66404b65eff0d268b2.mesh", "res://.godot/imported/revolver_hammer_centered.obj-1273a73eeaf94b66404b65eff0d268b2.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

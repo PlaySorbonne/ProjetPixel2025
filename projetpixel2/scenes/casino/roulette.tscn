@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b22v0b8qeqhk1"]
+
+[ext_resource type="PackedScene" uid="uid://f04861oq0wdj" path="res://resources/3d_models/casino/roulette/deluxe_roulette.fbx" id="2_v8lqq"]
+[ext_resource type="ArrayMesh" uid="uid://0fvwjkeeb1o5" path="res://resources/3d_models/casino/roulette/roulette_wheel.obj" id="3_v8lqq"]
+
+[node name="Roulette" type="Node3D"]
+
+[node name="deluxe_roulette" parent="." instance=ExtResource("2_v8lqq")]
+
+[node name="Cloner_3" parent="deluxe_roulette" index="12"]
+visible = false
+
+[node name="RouletteWheel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0.0330956, 0)
+mesh = ExtResource("3_v8lqq")
+
+[editable path="deluxe_roulette"]

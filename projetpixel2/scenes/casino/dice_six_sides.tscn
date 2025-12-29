@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp3gyx0ba57hw"]
+
+[ext_resource type="ArrayMesh" uid="uid://d15cf6posyj7h" path="res://resources/3d_models/casino/dice/dice.obj" id="1_0qjfr"]
+[ext_resource type="Script" uid="uid://3qgdo0d0ibj7" path="res://scripts/dice_six_sides.gd" id="1_pp7mk"]
+[ext_resource type="Material" uid="uid://f2hv3e366oum" path="res://resources/3d_models/casino/dice/materials/dice_red_material.tres" id="3_pp7mk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pp7mk"]
+resource_local_to_scene = true
+bounce = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rrad"]
+size = Vector3(0.125, 0.125, 0.125)
+
+[node name="DiceSixSides" type="RigidBody3D"]
+collision_layer = 64
+collision_mask = 64
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_pp7mk")
+linear_damp = 0.1
+angular_damp = 0.1
+script = ExtResource("1_pp7mk")
+
+[node name="DiceMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, 0.035, 0, 0, 0, 0.035, 0, -0.062, 0)
+mesh = ExtResource("1_0qjfr")
+surface_material_override/0 = ExtResource("3_pp7mk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4rrad")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

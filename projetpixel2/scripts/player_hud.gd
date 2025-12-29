@@ -24,6 +24,7 @@ var number_of_choosable_cards := 3
 @onready var console : Console = $Console
 @onready var shields_bar_color : Color = $ShipHealth/ShieldProgressBar.tint_progress
 @onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
+@onready var revolver : RevolverRussianRoulette = $RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld/RevolverRussianRoulette
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
 var experience_bar_tween : Tween
@@ -244,3 +245,6 @@ func _on_button_spawn_tower_pressed() -> void:
 		$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
 	else:
 		$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
+
+func _on_revolver_frame_pressed() -> void:
+	revolver.shoot_revolver()

@@ -1,0 +1,435 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvlbqvv2c0ve"]
+
+[ext_resource type="ArrayMesh" uid="uid://dc5ag05q5lvut" path="res://resources/3d_models/casino/revolver/revolver_empty.obj" id="1_osnvl"]
+[ext_resource type="Material" uid="uid://cw0cid3ile8u2" path="res://resources/3d_models/casino/revolver/revolver_material.tres" id="2_274sd"]
+[ext_resource type="Script" uid="uid://vtb2y1wlybyi" path="res://scripts/revolver_russian_roulette.gd" id="3_274sd"]
+[ext_resource type="ArrayMesh" uid="uid://covgejpqplu2w" path="res://resources/3d_models/casino/revolver/revolver_hammer_centered.obj" id="3_lx8tg"]
+[ext_resource type="ArrayMesh" uid="uid://7xln8ij3ka7r" path="res://resources/3d_models/casino/revolver/revolver_cylinder_centered.obj" id="4_rpowk"]
+[ext_resource type="ArrayMesh" uid="uid://co7py5at0i6wb" path="res://resources/3d_models/casino/revolver/revolver_trigger_centered.obj" id="5_ty6pb"]
+
+[sub_resource type="Animation" id="Animation_lx8tg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CylinderAnchor/RevolverCylinder:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CylinderAnchor:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RevolverHammer:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RevolverTrigger:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rpowk"]
+resource_name = "shoot"
+length = 1.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CylinderAnchor/RevolverCylinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1.93187, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CylinderAnchor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.307786),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevolverHammer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.5),
+"transitions": PackedFloat32Array(1.93187, 1.93187, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0.959931, 0), Vector3(0, 0.959931, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RevolverTrigger:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.7, 1.9),
+"transitions": PackedFloat32Array(1.93187, 0.406126, 1.93187, 1.93187, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -0.349066, 0), Vector3(0, -0.349066, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.9),
+"transitions": PackedFloat32Array(0.34151, 1.93187, 0.517632),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.15708, 0, -1.5708), Vector3(-0.15708, 0, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_hrhe5"]
+resource_name = "shoot_blank"
+length = 1.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CylinderAnchor/RevolverCylinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CylinderAnchor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.307786),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevolverHammer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RevolverTrigger:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.3),
+"transitions": PackedFloat32Array(0.517632, 1.93187, 0.392292, 0.34151),
+"update": 0,
+"values": [Vector3(-0.15708, 0, -1.5708), Vector3(-0.314159, 0, -1.5708), Vector3(-0.314159, 0, -1.5708), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ty6pb"]
+resource_name = "shoot_kill"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877, 0.329877),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 0, -1), Vector3(0, 1, 1), Vector3(-1, 1, 0), Vector3(0, 1, -1), Vector3(-1, 0, 1), Vector3(0, 0, 0), Vector3(1, 0, -1), Vector3(0, 1, 1), Vector3(-1, 1, 0), Vector3(0, 1, -1), Vector3(-1, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CylinderAnchor/RevolverCylinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CylinderAnchor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.307786),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevolverHammer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RevolverTrigger:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1.8025, 1.93187),
+"update": 0,
+"values": [Vector3(-0.15708, 0, -1.5708), Vector3(0.349066, 0, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_274sd"]
+resource_name = "spin"
+length = 2.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CylinderAnchor/RevolverCylinder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.8),
+"transitions": PackedFloat32Array(1.93187, 1.93187, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-50.2655, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CylinderAnchor:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.6, 1.9),
+"transitions": PackedFloat32Array(0.307786, 1.93187, 0.329877, 0.307786),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.0472, 0, 0), Vector3(-1.0472, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RevolverHammer:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.7),
+"transitions": PackedFloat32Array(1.93187, 0.535887, 1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0.959931, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RevolverTrigger:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.93187),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpowk"]
+_data = {
+&"RESET": SubResource("Animation_lx8tg"),
+&"shoot": SubResource("Animation_rpowk"),
+&"shoot_blank": SubResource("Animation_hrhe5"),
+&"shoot_kill": SubResource("Animation_ty6pb"),
+&"spin": SubResource("Animation_274sd")
+}
+
+[node name="RevolverRussianRoulette" type="Node3D"]
+script = ExtResource("3_274sd")
+
+[node name="RevolverEmpty" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_osnvl")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="RevolverHammer" type="MeshInstance3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59355, 0, 12.7614)
+mesh = ExtResource("3_lx8tg")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="CylinderAnchor" type="Node3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.8, 11.25)
+
+[node name="RevolverCylinder" type="MeshInstance3D" parent="RevolverEmpty/CylinderAnchor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.163804, -0.8, 2.25833)
+mesh = ExtResource("4_rpowk")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="RevolverTrigger" type="MeshInstance3D" parent="RevolverEmpty"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.36329, 7.10543e-15, 9.72048)
+mesh = ExtResource("5_ty6pb")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_274sd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RevolverEmpty"]
+libraries = {
+&"": SubResource("AnimationLibrary_rpowk")
+}
+
+[connection signal="animation_finished" from="RevolverEmpty/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

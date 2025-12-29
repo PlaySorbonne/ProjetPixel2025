@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cevrwf0fm5klw"]
+[gd_scene load_steps=6 format=3 uid="uid://cevrwf0fm5klw"]
 
 [ext_resource type="PackedScene" uid="uid://cipkud1dh3vju" path="res://scenes/world/world.tscn" id="1_ndaoq"]
 [ext_resource type="PackedScene" uid="uid://bvw0pvn6fr0tc" path="res://scenes/world/enemies/enemy_spawner.tscn" id="2_roffi"]
@@ -8,33 +8,10 @@
 [sub_resource type="Curve3D" id="Curve3D_roffi"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.64664, 0, -7.09719, 0, 0, 0, 0, 0, 0, 2.9838, 0, -5.18581, 0, 0, 0, 0, 0, 0, 1.23944, 0, -3.45805, 0, 0, 0, 0, 0, 0, -2.05153, 0, -2.12709, 0, 0, 0, 0, 0, 0, -4.394, 0, 0.521),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10.725, 0, 2.758, 0, 0, 0, 0, 0, 0, 7.92, 0, 1.938, 0, 0, 0, 0, 0, 0, 5.487, 0, 0.755, 0, 0, 0, 0, 0, 0, -0.827, 0, 1.023, 0, 0, 0, 0, 0, 0, -4.394, 0, 0.521),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-
-[sub_resource type="Curve3D" id="Curve3D_1ijjf"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3.563, 0, 1.151, 0, 0, 0, 0, 0, 0, -7.247, 0, 1.689, 0, 0, 0, 0, 0, 0, -10.735, 0, 2.275, 0, 0, 0, 0, 0, 0, -15.61, 0, 3.598),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
-
-[sub_resource type="Curve3D" id="Curve3D_e6wfw"]
-bake_interval = 5.0
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.259, 0, 2.742, 0, 0, 0, 0, 0, 0, 6.43816, 0.0427175, 2.24037, 0, 0, 0, 0, 0, 0, 3.336, 0, 1.252, 0, 0, 0, 0, 0, 0, -0.153, 0, 0.602, 0, 0, 0, 0, 0, 0, -2.909, 0, 0.451, 0, 0, 0, 0, 0, 0, -4.38779, 0, 0.993093),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_64k1o"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.15176, 0.668642, 5.03956, 0, 0, 0, 0, 0, 0, 3.226, 0.273535, 3.6079, 0, 0, 0, 0, 0, 0, 1.55163, -0.12162, 2.52392, 0, 0, 0, 0, 0, 0, -0.907, 0, 1.213, 0, 0, 0, 0, 0, 0, -3.134, 0, 0.97, 0, 0, 0, 0, 0, 0, -4.571, 0, 0.641),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
 
 [node name="LevelDefault" instance=ExtResource("1_ndaoq")]
 
@@ -44,39 +21,32 @@ transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 
 [node name="Spaceship" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
 
-[node name="EnemySpawner1" parent="." index="7" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
-path = NodePath("../Path1")
+[node name="SubViewport" parent="PlayerHud/RevolverFrame/SubViewportContainer" index="0"]
+size = Vector2i(1920, 277)
+
+[node name="EnemySpawner" parent="." index="7" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
+path = NodePath("../Path3D")
 
 [node name="EnemySpawner2" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
-path = NodePath("../Path2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
+path = NodePath("../Path3D")
 
 [node name="EnemySpawner3" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
-path = NodePath("../Path3")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
+path = NodePath("../Path3D")
 
 [node name="EnemySpawner4" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
-path = NodePath("../Path4")
+path = NodePath("../Path3D")
 
 [node name="EnvironmentTest" parent="." index="11" instance=ExtResource("3_roffi")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)
 
-[node name="Path1" type="Path3D" parent="." index="12"]
+[node name="Path3D" type="Path3D" parent="." index="12"]
 curve = SubResource("Curve3D_roffi")
 
-[node name="Path2" type="Path3D" parent="." index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5737, 0, -2.94548)
-curve = SubResource("Curve3D_1ijjf")
-
-[node name="Path3" type="Path3D" parent="." index="14"]
-curve = SubResource("Curve3D_e6wfw")
-
-[node name="Path4" type="Path3D" parent="." index="15"]
-curve = SubResource("Curve3D_64k1o")
-
-[node name="LevelEnvironment" parent="." index="16" instance=ExtResource("4_1ijjf")]
+[node name="LevelEnvironment" parent="." index="13" instance=ExtResource("4_1ijjf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1, 0)
 
 [editable path="PlayerHud"]

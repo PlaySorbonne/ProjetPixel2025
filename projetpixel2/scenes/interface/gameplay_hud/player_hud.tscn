@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=27 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -14,6 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
+[ext_resource type="Texture2D" uid="uid://dbnumbgveb2ey" path="res://resources/images/casino/wooden_frame_revolver.png" id="15_lh5iu"]
+[ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="16_616a6"]
+[ext_resource type="Script" uid="uid://b3r8bg4qj7cug" path="res://scripts/casino_window.gd" id="18_gd21h"]
+[ext_resource type="Texture2D" uid="uid://vsaypert6454" path="res://resources/images/casino/rug_seamless_texture.png" id="18_rwqbi"]
+[ext_resource type="Texture2D" uid="uid://cib4i1tbut06g" path="res://resources/images/casino/wooden_frame_placeholder.png" id="19_gd21h"]
+[ext_resource type="PackedScene" uid="uid://cvlbqvv2c0ve" path="res://scenes/casino/revolver_russian_roulette.tscn" id="19_rwqbi"]
+[ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="21_0or73"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
 font_size = 26
@@ -26,6 +33,12 @@ font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_8wi31"]
 font_size = 32
+
+[sub_resource type="Environment" id="Environment_xga4y"]
+background_mode = 2
+background_color = Color(0.57, 0, 0.1615, 0)
+ambient_light_source = 3
+ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
@@ -323,9 +336,96 @@ label_settings = SubResource("LabelSettings_8wi31")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="RevolverFrame" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.391146
+anchor_top = -0.0648148
+anchor_right = 0.608854
+anchor_bottom = 0.192593
+offset_top = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+icon = ExtResource("15_lh5iu")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="RevolverFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="RevolverFrame/SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+anisotropic_filtering_level = 0
+gui_disable_input = true
+gui_embed_subwindows = true
+size = Vector2i(418, 237)
+render_target_update_mode = 4
+script = ExtResource("16_616a6")
+
+[node name="RevolverWorld" type="Node3D" parent="RevolverFrame/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.885, -1.726)
+environment = SubResource("Environment_xga4y")
+current = true
+
+[node name="RevolverRussianRoulette" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld" instance=ExtResource("19_rwqbi")]
+transform = Transform3D(0.075, 0, 0, 0, -3.27835e-09, 0.075, 0, -0.075, -3.27835e-09, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld"]
+transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0)
+directional_shadow_mode = 0
+
+[node name="CasinoWindow" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.26875
+anchor_top = 0.351852
+anchor_right = 0.566667
+anchor_bottom = 0.657407
+script = ExtResource("18_gd21h")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="CasinoWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_rwqbi")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Frame" type="NinePatchRect" parent="CasinoWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_gd21h")
+
+[node name="DragAndDrop2D" parent="CasinoWindow" node_paths=PackedStringArray("dragged_object") instance=ExtResource("21_0or73")]
+dragged_object = NodePath("..")
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="RevolverFrame" to="." method="_on_revolver_frame_pressed"]
