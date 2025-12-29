@@ -57,15 +57,15 @@ path = NodePath("../Path1")
 
 [node name="EnemySpawner2" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2394, 0.357661, -2.89146)
-path = NodePath("../Path1")
+path = NodePath("../Path2")
 
 [node name="EnemySpawner3" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6858, 0.357662, 2.71975)
-path = NodePath("../Path1")
+path = NodePath("../Path3")
 
 [node name="EnemySpawner4" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.38809, 0.357662, 5.97247)
-path = NodePath("../Path1")
+path = NodePath("../Path4")
 
 [node name="EnvironmentTest" parent="." index="11" instance=ExtResource("3_roffi")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.918675, 0)

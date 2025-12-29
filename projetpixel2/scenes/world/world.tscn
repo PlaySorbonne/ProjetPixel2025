@@ -54,7 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="SubViewport" parent="PlayerHud/RevolverFrame/SubViewportContainer" index="0"]
-size = Vector2i(1920, 277)
+size = Vector2i(417, 237)
 
 [node name="Console" parent="PlayerHud" instance=ExtResource("9_gb53w")]
 visible = false
