@@ -52,16 +52,17 @@ func set_enemy_id() -> void:
 
 func follow_path() -> void:
 	# get target point
-	target_position = followed_path.curve.get_point_position(target_point_index)
+	if target_point_index < followed_path.curve.point_count:
+		target_position = followed_path.curve.get_point_position(target_point_index)
 	
 	# get next point index if target point is reached
 	if position.distance_to(target_position) < 0.5 && target_point_index < followed_path.curve.point_count:
 		target_point_index += 1
 	
 	# if last point is reached, attack the spaceship
-	if target_point_index == followed_path.curve.point_count - 1 && position.distance_to(target_position) < 0.5:
+	if target_point_index == followed_path.curve.point_count && position.distance_to(target_position) < 0.5:
 		target_position = GV.space_ship.position
-		current_state = States.Attacking
+		# current_state = States.Attacking
 		
 	# move to target
 	mesh_animations.play("sprint")
@@ -78,8 +79,8 @@ func _physics_process(_delta: float) -> void:
 		if can_move:
 			mesh_animations.play(run_anim)
 			follow_path()
-	#if len(overlapping_enemies) > 0:
-	#	attack()
+	if len(overlapping_enemies) > 0:
+		attack()
 
 func attack() -> void:
 	if not can_attack or current_state == States.Attacking or current_state == States.Dead:
@@ -117,6 +118,7 @@ func _on_damageable_object_death() -> void:
 	death()
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
+	print("entered spaceship")
 	if "damageable" in body and body is Spaceship:
 		overlapping_enemies.append(body)
 

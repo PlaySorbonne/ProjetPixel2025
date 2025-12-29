@@ -28,6 +28,7 @@ transform = Transform3D(0.98431, 0.0909677, -0.151192, 0.0618198, 0.624761, 0.77
 
 [node name="Spaceship" parent="." instance=ExtResource("3_wmjqn")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)
+collision_mask = 0
 
 [node name="WaveManager" parent="." instance=ExtResource("4_s56ko")]
 

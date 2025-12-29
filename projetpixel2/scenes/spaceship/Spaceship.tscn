@@ -27,6 +27,7 @@ radius = 2.25
 size = Vector3(2.21545, 1, 1.38779)
 
 [node name="Spaceship" type="StaticBody3D"]
+collision_mask = 3
 script = ExtResource("1_wr5m4")
 
 [node name="ShieldShader" type="MeshInstance3D" parent="."]
