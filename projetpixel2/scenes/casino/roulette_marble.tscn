@@ -21,8 +21,8 @@ ao_texture = ExtResource("2_dqu6e")
 
 [sub_resource type="SphereMesh" id="SphereMesh_a4qon"]
 material = SubResource("StandardMaterial3D_a4qon")
-radius = 0.15
-height = 0.3
+radius = 0.075
+height = 0.15
 radial_segments = 16
 rings = 16
 

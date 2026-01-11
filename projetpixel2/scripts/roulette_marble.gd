@@ -12,14 +12,14 @@ const SLOTS := [
 ]
 const BALL_ROLLING_TIME := 4.25
 
-@export var radius := 2.375
-@export var height := 0.2
+@onready var radius := randf_range(2.2, 2.45)
+@onready var angle_variation := randf_range(-0.075, 0.075)
+@onready var height := 0.2
 
 var angle := 0.0
 var center := Vector3.ZERO
 var running := false
 var slot := 0
-var previous_tween : Tween
 
 
 static func launch_marble(roulette : RouletteWheel, slot : int) -> RouletteMarble:
@@ -29,9 +29,6 @@ static func launch_marble(roulette : RouletteWheel, slot : int) -> RouletteMarbl
 	return marble
 
 func launch_to_slot(slot_index: int)-> void:
-	if is_instance_valid(previous_tween):
-		previous_tween.kill()
-	
 	slot = slot_index
 	var start_angle := randf() * TAU
 	angle = start_angle
@@ -39,10 +36,9 @@ func launch_to_slot(slot_index: int)-> void:
 	var roll_time := randf_range(0.0, 1.5) + BALL_ROLLING_TIME
 	
 	var t := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(self, "angle", target_angle, roll_time)
+	t.tween_property(self, "angle", target_angle + angle_variation, roll_time)
 	t.finished.connect(stop_motion)
 	
-	previous_tween= t
 	running = true
 
 func set_position_from_angle(marble_angle : float) -> void:
