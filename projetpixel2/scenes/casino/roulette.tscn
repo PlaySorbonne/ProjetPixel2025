@@ -7,8 +7,8 @@
 
 [node name="deluxe_roulette" parent="." instance=ExtResource("2_v8lqq")]
 
-[node name="Cloner_3" parent="deluxe_roulette" index="12"]
-visible = false
+[node name="Handle" parent="deluxe_roulette" index="2"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0.75216, 0)
 
 [node name="RouletteWheel" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.27, 0, 0, 0, 0.27, 0, 0, 0, 0.27, 0, 0.0330956, 0)
