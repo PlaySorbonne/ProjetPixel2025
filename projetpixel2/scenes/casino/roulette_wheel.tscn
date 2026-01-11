@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://ingrs2uro5vb"]
+
+[ext_resource type="Texture2D" uid="uid://dsf0v132ar258" path="res://resources/3d_models/casino/roulette/png/roulette_wood_bg.png" id="1_a4qon"]
+[ext_resource type="Texture2D" uid="uid://drv0cse3ls2cc" path="res://resources/3d_models/casino/roulette/png/roulette_handle.png" id="2_q67g3"]
+[ext_resource type="Texture2D" uid="uid://cv08r05sfqy1t" path="res://resources/3d_models/casino/roulette/png/roulette_cover.png" id="3_nkytk"]
+[ext_resource type="Texture2D" uid="uid://cci18sfk0fn8w" path="res://resources/3d_models/casino/roulette/png/roulette_wheel.png" id="4_ufrxd"]
+[ext_resource type="Texture2D" uid="uid://bp7tf5018qrbw" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_BaseColor.png" id="5_ufrxd"]
+[ext_resource type="Texture2D" uid="uid://dikpl7b5n05kp" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_AmbientOcclusion.png" id="6_2wmoq"]
+[ext_resource type="Texture2D" uid="uid://c8q1ofibkdb0" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Normal.png" id="6_nkytk"]
+[ext_resource type="Texture2D" uid="uid://b77f17f5cru6t" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Metallic.png" id="6_s2w16"]
+[ext_resource type="Texture2D" uid="uid://3xmft73arilp" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Roughness.png" id="9_t2d3q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4qon"]
+albedo_texture = ExtResource("5_ufrxd")
+metallic = 0.7
+metallic_texture = ExtResource("6_s2w16")
+roughness = 0.7
+roughness_texture = ExtResource("9_t2d3q")
+normal_enabled = true
+normal_scale = 0.7
+normal_texture = ExtResource("6_nkytk")
+ao_enabled = true
+ao_texture = ExtResource("6_2wmoq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_a4qon"]
+material = SubResource("StandardMaterial3D_a4qon")
+radius = 0.15
+height = 0.3
+radial_segments = 16
+rings = 16
+
+[node name="RouletteWheel" type="Node3D"]
+
+[node name="Plank" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("1_a4qon")
+
+[node name="Handle" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.751465, 0)
+texture = ExtResource("2_q67g3")
+
+[node name="Cover" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.146074, 0)
+texture = ExtResource("3_nkytk")
+
+[node name="Wheel" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0395999, 0)
+texture = ExtResource("4_ufrxd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.74398, 0)
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.37603, 0.0891552, -0.236971)
+mesh = SubResource("SphereMesh_a4qon")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63182, 0)
+light_energy = 4.0
+omni_range = 25.0
