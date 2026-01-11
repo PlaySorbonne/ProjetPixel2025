@@ -15,7 +15,7 @@ var spin_tween : Tween
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
-		number_of_marbles = randi_range(4, 8)
+		number_of_marbles = randi_range(4, 8) + 4
 		$CanvasLayer/Label.text = "Spin roulette " + str(number_of_marbles) + " times"
 		spin_roulette()
 
