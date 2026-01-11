@@ -278,7 +278,6 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ShipHealth" type="TextureRect" parent="."]
-self_modulate = Color(0, 0.625408, 0.686082, 1)
 offset_right = 525.001
 offset_bottom = 162.0
 texture = ExtResource("10_ovn5c")
@@ -298,7 +297,6 @@ offset_bottom = 86.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("11_d078g")
-tint_progress = Color(0, 0.468743, 0.762554, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
@@ -313,7 +311,6 @@ offset_bottom = 122.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("12_3ed1r")
-tint_progress = Color(0.705939, 5.46284e-06, 3.85046e-07, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="WavesContainer" type="VBoxContainer" parent="."]
