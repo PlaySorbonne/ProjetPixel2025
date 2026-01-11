@@ -13,6 +13,8 @@ height = 0.2
 albedo_color = Color(0.154876, 0.154876, 0.154876, 1)
 
 [node name="ProjectileBase" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_2ys8s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

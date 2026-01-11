@@ -46,6 +46,7 @@ layer = 2
 script = ExtResource("1_ldeku")
 
 [node name="ExperienceBarBackgroundTexture" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
 z_index = 20
 anchors_preset = -1
@@ -60,6 +61,7 @@ expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="."]
+visible = false
 z_index = 21
 custom_minimum_size = Vector2(1201, 27)
 anchors_preset = -1
@@ -336,14 +338,95 @@ label_settings = SubResource("LabelSettings_8wi31")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_left = 0.851
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.92
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_left = -0.000520833
+anchor_top = 0.00277778
+anchor_right = 0.176042
+anchor_bottom = 1.00278
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_top = 0.947222
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.122222
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_left = 0.839583
+anchor_top = 0.244444
+anchor_right = 0.978646
+anchor_bottom = 0.407407
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_left = 0.839583
+anchor_top = 0.430556
+anchor_right = 0.978646
+anchor_bottom = 0.593518
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+z_index = -16
+anchors_preset = -1
+anchor_left = 0.838021
+anchor_top = 0.619444
+anchor_right = 0.977083
+anchor_bottom = 0.782407
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="RevolverFrame" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.391146
-anchor_top = -0.0648148
-anchor_right = 0.608854
-anchor_bottom = 0.192593
-offset_top = 6.0
-offset_bottom = 6.0
+anchor_left = 0.830729
+anchor_top = 0.0277778
+anchor_right = 0.988021
+anchor_bottom = 0.226852
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -371,7 +454,7 @@ handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
-size = Vector2i(418, 237)
+size = Vector2i(302, 174)
 render_target_update_mode = 4
 script = ExtResource("16_616a6")
 
@@ -390,6 +473,7 @@ transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926
 directional_shadow_mode = 0
 
 [node name="CasinoWindow" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchor_left = 0.26875
 anchor_top = 0.351852

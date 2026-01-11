@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5vrn3qeyghx8"]
+[gd_scene load_steps=7 format=3 uid="uid://b5vrn3qeyghx8"]
 
 [ext_resource type="Script" uid="uid://ljgkyegaon11" path="res://scripts/dice_roller.gd" id="1_fd5uc"]
+[ext_resource type="Texture2D" uid="uid://v8ffp4hc2iwi" path="res://resources/3d_models/casino/roulette/deluxe_roulette_0.png" id="2_1mnjm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j4q1k"]
 size = Vector3(2, 0.1, 4.50391)
@@ -51,3 +52,7 @@ gizmo_extents = 0.5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-4.3992e-09, -0.128053, 4.37114e-08, 0, -5.59739e-09, -1, 0.100642, -5.59739e-09, -1.64203e-15, 0, 0.0438287, 0)
+texture = ExtResource("2_1mnjm")

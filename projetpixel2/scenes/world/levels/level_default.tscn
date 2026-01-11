@@ -48,9 +48,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.180
 [node name="TowerBase" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0241563, 0.538725, -0.56027)
 
-[node name="SubViewport" parent="PlayerHud/RevolverFrame/SubViewportContainer" index="0"]
-size = Vector2i(417, 237)
-
 [node name="EnemySpawner1" parent="." index="7" node_paths=PackedStringArray("path") instance=ExtResource("2_roffi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07355, 0.357662, -7.12677)
 path = NodePath("../Path1")
