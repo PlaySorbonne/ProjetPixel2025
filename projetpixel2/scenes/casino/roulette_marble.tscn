@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://b36cihj86r3ca"]
+
+[ext_resource type="Texture2D" uid="uid://bp7tf5018qrbw" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_BaseColor.png" id="1_y2nuw"]
+[ext_resource type="Texture2D" uid="uid://dikpl7b5n05kp" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_AmbientOcclusion.png" id="2_dqu6e"]
+[ext_resource type="Texture2D" uid="uid://b77f17f5cru6t" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Metallic.png" id="3_mqxj7"]
+[ext_resource type="Texture2D" uid="uid://c8q1ofibkdb0" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Normal.png" id="4_yttnq"]
+[ext_resource type="Texture2D" uid="uid://3xmft73arilp" path="res://resources/materials/textures/MetalGoldPaint/Poliigon_MetalGoldPaint_7253_Roughness.png" id="5_2e860"]
+[ext_resource type="Script" uid="uid://bkevnlwqmu7ke" path="res://scripts/roulette_marble.gd" id="6_c163x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4qon"]
+albedo_texture = ExtResource("1_y2nuw")
+metallic = 0.7
+metallic_texture = ExtResource("3_mqxj7")
+roughness = 0.7
+roughness_texture = ExtResource("5_2e860")
+normal_enabled = true
+normal_scale = 0.7
+normal_texture = ExtResource("4_yttnq")
+ao_enabled = true
+ao_texture = ExtResource("2_dqu6e")
+
+[sub_resource type="SphereMesh" id="SphereMesh_a4qon"]
+material = SubResource("StandardMaterial3D_a4qon")
+radius = 0.15
+height = 0.3
+radial_segments = 16
+rings = 16
+
+[node name="RouletteMarble" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_a4qon")
+skeleton = NodePath("../..")
+script = ExtResource("6_c163x")
