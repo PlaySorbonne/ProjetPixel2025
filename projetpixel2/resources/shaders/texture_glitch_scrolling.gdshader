@@ -120,6 +120,8 @@ void fragment() {
 		flash_color,
 		rand(TIME * 4.0) * color_flash_strength * glitch
 	);
+	
+	vec2 p = FRAGCOORD.xy - SCREEN_UV.xy / SCREEN_PIXEL_SIZE;
 
 	COLOR = vec4(color, base.a);
 }
