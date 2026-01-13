@@ -4,13 +4,13 @@ shader_type canvas_item;
 
 uniform float scroll_speed : hint_range(0, 2) = 0.08;
 uniform float angle_degrees : hint_range(0, 360) = 45.0;
-uniform float repeat_x : hint_range(0.1, 20) = 1.0;
-uniform float repeat_y : hint_range(0.1, 20) = 1.0;
+uniform float repeat_x : hint_range(0.1, 20) = 1.2;
+uniform float repeat_y : hint_range(0.1, 20) = 1.2;
 uniform sampler2D texture_to_scroll;
 
 /* ================= GLITCH SETTINGS ================= */
 
-uniform float glitch_chance : hint_range(0.0, 1.0) = 0.2;
+uniform float glitch_chance : hint_range(0.0, 1.0) = 0.02;
 uniform float glitch_speed = 7.0;
 uniform float slice_density = 14.0;
 uniform float slice_strength = 0.38;
@@ -20,7 +20,7 @@ uniform float noise_strength = 0.2;
 uniform float color_flash_strength = 0.4;
 uniform float scanline_strength = 0.18;
 uniform float local_warp_strength = 0.14;
-uniform float flip_chance : hint_range(0.0,1.0) = 0.15;
+uniform float flip_chance : hint_range(0.0,1.0) = 0.05;
 
 /* ================= RANDOM ================= */
 
