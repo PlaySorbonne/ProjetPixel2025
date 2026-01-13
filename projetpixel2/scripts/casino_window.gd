@@ -10,10 +10,10 @@ var size_tween : Tween
 @onready var default_size := size
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("move_right"):
-		visible = false
-		open_window()
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("move_right"):
+		#visible = false
+		#open_window()
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -31,11 +31,13 @@ func _init_size_tween() -> void:
 func open_window() -> void:
 	_init_size_tween()
 	$CloseButton.modulate = Color.TRANSPARENT
-	pivot_offset = default_size / 2.0
 	size = Vector2(0.0, MIN_Y_SIZE)
+	pivot_offset = Vector2(default_size.x, MIN_Y_SIZE) / 2.0
+	scale = Vector2(1.0, 0.25)
 	# horizontal
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
 			SIZE_ANIM_TIME)
+	size_tween.tween_property(self, "scale", Vector2.ONE, SIZE_ANIM_TIME)
 	var next_window_pos := position - Vector2(default_size.x/2.0, 0.0)
 	size_tween.tween_property(self, "position", next_window_pos, SIZE_ANIM_TIME)
 	# vertical
@@ -48,7 +50,7 @@ func open_window() -> void:
 
 func close_window() -> void:
 	_init_size_tween()
-	pivot_offset = default_size / 2.0
+	pivot_offset = Vector2(0.0, MIN_Y_SIZE/2.0)
 	# vertical
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
 			SIZE_ANIM_TIME)
@@ -60,9 +62,12 @@ func close_window() -> void:
 	size_tween.tween_property(self, "position", next_window_pos +
 			Vector2(default_size.x/2.0, 0.0), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
 	size_tween.tween_property($CloseButton, "modulate", Color.TRANSPARENT, SIZE_ANIM_TIME)
-	size_tween.finished.connect(_finish_closing_window)
+	size_tween.tween_property(self, "scale", Vector2(1.0, 0.25), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
+	size_tween.finished.connect(_destroy_window)
 
-func _finish_closing_window() -> void:
+func _destroy_window() -> void:
+	#print("LEFT FOR DEBUG")
+	#return
 	queue_free()
 
 func _on_close_button_pressed() -> void:
