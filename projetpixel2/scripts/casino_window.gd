@@ -8,12 +8,32 @@ const MIN_Y_SIZE := 60.0
 var size_tween : Tween
 
 @onready var default_size := size
+@onready var background_material : ShaderMaterial = $Panel/Background.material
+
+const BACKGROUND_SHADER_PARAMS : Array[String] =  [
+	"scroll_speed", "angle_degrees", "repeat_x", "repeat_y", "glitch_chance",
+	"glitch_speed", "slice_density", "slice_strength", "shake_strength", 
+	"chroma_offset", "noise_strength", "color_flash_strength", "scanline_strength",
+	"local_warp_strength", "flip_chance"
+]
 
 
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("move_right"):
 		#visible = false
 		#open_window()
+
+func _ready() -> void:
+	randomize_panel_background_parameters()
+
+func randomize_panel_background_parameters() -> void:
+	for param_str : String in BACKGROUND_SHADER_PARAMS:
+		var param_value : float = background_material.get_shader_parameter(param_str)
+		var param_randomness := param_value / 8.0
+		background_material.set_shader_parameter(
+			param_str,
+			param_value + randf_range(-param_randomness, param_randomness)
+		)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
