@@ -52,7 +52,6 @@ resource_local_to_scene = true
 code = "shader_type canvas_item;
 
 
-uniform float seed;
 
 /* ================= SCROLL SETTINGS ================= */
 
@@ -79,11 +78,11 @@ uniform float flip_chance : hint_range(0.0,1.0) = 0.15;
 /* ================= RANDOM ================= */
 
 float rand(float x) { 
-	return fract(sin(x * 143758.5453 + seed) * 43758.5453); 
+	return fract(sin(x * 143758.5453) * 43758.5453); 
 }
 
 float rand2(vec2 p) { 
-	return fract(sin(dot(p, vec2(127.1,311.7)) + seed) * 43758.5453); 
+	return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); 
 }
 
 /* ================= FRAGMENT ================= */
@@ -184,7 +183,6 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gd21h"]
 resource_local_to_scene = true
 shader = SubResource("Shader_rwqbi")
-shader_parameter/seed = 0.0
 shader_parameter/scroll_speed = 0.4
 shader_parameter/angle_degrees = 45.0
 shader_parameter/repeat_x = 1.0
