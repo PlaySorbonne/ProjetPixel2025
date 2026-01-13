@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://chp3bd6blfvcj"]
+
+[ext_resource type="Script" uid="uid://b3r8bg4qj7cug" path="res://scripts/casino_window.gd" id="1_sq5xb"]
+[ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="2_esysp"]
+[ext_resource type="Texture2D" uid="uid://dlnudc4cjsofl" path="res://resources/images/ui_assets/menu_elements/nine_patch_out_tower_defense_frame.png" id="3_r73y7"]
+[ext_resource type="Material" uid="uid://dgun07cew08nn" path="res://resources/materials/ui/seamless_rug_glitch.tres" id="4_06hwv"]
+[ext_resource type="Texture2D" uid="uid://bpft5kl5l1fnv" path="res://resources/images/casino/rug_seamless_texture_contrast.png" id="5_ips8e"]
+[ext_resource type="Texture2D" uid="uid://bgtc0wlpim6h7" path="res://resources/images/ui_assets/menu_elements/close_cross.png" id="6_lg184"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3kbv4"]
+texture = ExtResource("3_r73y7")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[node name="CasinoWindow" type="Control"]
+z_index = 20
+layout_mode = 3
+anchor_right = 0.226562
+anchor_bottom = 0.210185
+pivot_offset = Vector2(217.5, 127)
+script = ExtResource("1_sq5xb")
+metadata/_edit_use_anchors_ = true
+
+[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_esysp")]
+dragged_object = NodePath("..")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_3kbv4")
+
+[node name="Background" type="TextureRect" parent="Panel"]
+z_index = -16
+material = ExtResource("4_06hwv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_ips8e")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.9457
+offset_top = 8.71368
+offset_right = -15.9457
+offset_bottom = 43.7137
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("6_lg184")
+flat = true
+expand_icon = true
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
