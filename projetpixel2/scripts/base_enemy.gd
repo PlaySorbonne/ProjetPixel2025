@@ -69,7 +69,7 @@ func follow_path() -> void:
 	velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
 	mesh.look_at(target_position)
 	
-	print("Heading to point " + str(target_point_index))
+	#print("Heading to point " + str(target_point_index))
 	move_and_slide() 
 
 func _physics_process(_delta: float) -> void:

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1mo7umiqaxgi"]
+
+[ext_resource type="Texture2D" uid="uid://dwj5dd1g57oy" path="res://resources/images/casino/ui_waves/backgammon_chip.png" id="1_gnguy"]
+
+[node name="WaveEnemyChip" type="TextureRect"]
+custom_minimum_size = Vector2(50, 0)
+texture = ExtResource("1_gnguy")
+expand_mode = 1
+stretch_mode = 5
