@@ -50,6 +50,7 @@ func open_window() -> void:
 
 func close_window() -> void:
 	_init_size_tween()
+	$DragAndDrop2D.can_be_dragged = false
 	pivot_offset = Vector2(0.0, MIN_Y_SIZE/2.0)
 	# vertical
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
