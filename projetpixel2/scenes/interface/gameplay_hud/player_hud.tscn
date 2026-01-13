@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=34 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="21_0or73"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="22_6usvi"]
 [ext_resource type="Texture2D" uid="uid://dlnudc4cjsofl" path="res://resources/images/ui_assets/menu_elements/nine_patch_out_tower_defense_frame.png" id="23_6usvi"]
+[ext_resource type="Texture2D" uid="uid://bgtc0wlpim6h7" path="res://resources/images/ui_assets/menu_elements/close_cross.png" id="24_wcmwq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wcmwq"]
 load_path = "res://.godot/imported/nine_patch_tower_defense_frame.png-31c2de1cf2885b33a24efb7a2ccb8c01.ctex"
@@ -554,10 +555,15 @@ directional_shadow_mode = 0
 [node name="CasinoWindow" type="Control" parent="."]
 z_index = 20
 layout_mode = 3
-anchor_left = 0.30519
-anchor_top = 0.156601
-anchor_right = 0.609357
-anchor_bottom = 0.492712
+anchor_left = 0.242865
+anchor_top = 0.256111
+anchor_right = 0.469427
+anchor_bottom = 0.49037
+offset_left = 128.7
+offset_top = 114.4
+offset_right = 128.7
+offset_bottom = 114.4
+pivot_offset = Vector2(217.5, 127)
 script = ExtResource("18_gd21h")
 metadata/_edit_use_anchors_ = true
 
@@ -592,6 +598,21 @@ texture = ExtResource("15_0or73")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="CloseButton" type="Button" parent="CasinoWindow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.9457
+offset_top = 8.71368
+offset_right = -15.9457
+offset_bottom = 43.7137
+grow_horizontal = 0
+focus_mode = 0
+icon = ExtResource("24_wcmwq")
+flat = true
+expand_icon = true
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
@@ -600,3 +621,4 @@ stretch_mode = 1
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="RevolverFrame" to="." method="_on_revolver_frame_pressed"]
 [connection signal="gui_input" from="CasinoWindow" to="CasinoWindow" method="_on_gui_input"]
+[connection signal="pressed" from="CasinoWindow/CloseButton" to="CasinoWindow" method="_on_close_button_pressed"]
