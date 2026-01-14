@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=29 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
 [ext_resource type="Script" uid="uid://dmv3vlkapdyqq" path="res://scripts/button_casino_minigame.gd" id="15_rwqbi"]
-[ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="16_616a6"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="17_xga4y"]
 [ext_resource type="Texture2D" uid="uid://dqgaghvafkgrf" path="res://resources/images/casino/rug_red_seamless_warning.png" id="18_616a6"]
@@ -666,7 +665,6 @@ gui_disable_input = true
 gui_embed_subwindows = true
 size = Vector2i(196, 96)
 render_target_update_mode = 4
-script = ExtResource("16_616a6")
 
 [node name="RevolverWorld" type="Node3D" parent="RevolverFrame/SubViewportContainer/SubViewport"]
 
