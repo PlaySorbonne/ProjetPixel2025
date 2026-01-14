@@ -55,4 +55,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.3992e-09, -0.128053, 4.37114e-08, 0, -5.59739e-09, -1, 0.100642, -5.59739e-09, -1.64203e-15, 0, 0.0438287, 0)
+visible = false
 texture = ExtResource("2_1mnjm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.995471, -0.095064, 0, 0.095064, 0.995471, 1, 4.35134e-08, -4.15538e-09, -0.164252, 1.65682, 0)
