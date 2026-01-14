@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwct6yt0wfqph"]
+[gd_scene load_steps=9 format=3 uid="uid://dwct6yt0wfqph"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_8ncrh"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="2_4hxtm"]
 [ext_resource type="Script" uid="uid://fiv8qj8nwq7q" path="res://scripts/dice_roll_window.gd" id="2_qgsof"]
 [ext_resource type="PackedScene" uid="uid://b5vrn3qeyghx8" path="res://scenes/casino/dice_roller.tscn" id="5_b4rlw"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/toxigenesis bd.otf" id="5_cx0bv"]
 
 [sub_resource type="Shader" id="Shader_qgsof"]
 resource_local_to_scene = true
@@ -156,6 +157,9 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
+[sub_resource type="LabelSettings" id="LabelSettings_b4rlw"]
+font = ExtResource("5_cx0bv")
+
 [node name="DiceRollWindow" instance=ExtResource("1_8ncrh")]
 anchor_right = 0.320313
 anchor_bottom = 0.307407
@@ -197,6 +201,7 @@ anchor_top = 0.185022
 anchor_right = 0.960922
 anchor_bottom = 0.920706
 text = "RESULTS:"
+label_settings = SubResource("LabelSettings_b4rlw")
 clip_text = true
 metadata/_edit_use_anchors_ = true
 
