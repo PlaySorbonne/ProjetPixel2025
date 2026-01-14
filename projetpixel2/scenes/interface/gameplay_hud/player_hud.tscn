@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=30 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
+[ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="15_gd21h"]
 [ext_resource type="Script" uid="uid://dmv3vlkapdyqq" path="res://scripts/button_casino_minigame.gd" id="15_rwqbi"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="17_xga4y"]
@@ -521,17 +522,20 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.396078)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect5" type="ColorRect" parent="."]
-modulate = Color(0.43134, 0.43134, 0.43134, 1)
+[node name="ColorRect5" type="TextureRect" parent="."]
+modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 239.0
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("15_gd21h")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="ColorRect6" type="ColorRect" parent="."]
-modulate = Color(0.43134, 0.43134, 0.43134, 1)
+[node name="ColorRect6" type="TextureRect" parent="."]
+modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
 anchors_preset = 12
 anchor_top = 1.0
@@ -541,8 +545,12 @@ offset_top = -25.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+texture = ExtResource("15_gd21h")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="CasinoBackground" type="ColorRect" parent="."]
+[node name="CasinoBackground" type="TextureRect" parent="."]
+modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
 anchors_preset = -1
 anchor_right = 1.0
@@ -550,9 +558,12 @@ anchor_bottom = 0.122222
 offset_bottom = -43.9998
 grow_horizontal = 2
 mouse_filter = 2
-color = Color(0.423651, 0.423651, 0.423651, 1)
+texture = ExtResource("15_gd21h")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="CasinoBackground2" type="ColorRect" parent="."]
+[node name="CasinoBackground2" type="TextureRect" parent="."]
+modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
 anchors_preset = -1
 anchor_left = 0.866667
@@ -561,10 +572,12 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.423651, 0.423651, 0.423651, 1)
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("15_gd21h")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="CasinoBackground3" type="ColorRect" parent="."]
+[node name="CasinoBackground3" type="TextureRect" parent="."]
+modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
 anchors_preset = -1
 anchor_left = 0.703987
@@ -574,8 +587,9 @@ anchor_bottom = 0.192189
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.423651, 0.423651, 0.423651, 1)
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("15_gd21h")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="ButtonDice" type="Button" parent="."]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
