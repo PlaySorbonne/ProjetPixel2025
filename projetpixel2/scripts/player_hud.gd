@@ -34,9 +34,11 @@ var displayed_total_experience := RunData.total_experience
 
 
 
-#func _input(event: InputEvent) -> void:
-	#if Input.is_action_just_pressed("ui_accept"):
-		#WarningPopupWindow.spawn_warning_popup("HULL BREACH")
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		MessagePopupWindow.spawn_message_popup("SHIP SHIELDS\nRESTORED")
+	if Input.is_action_just_pressed("ui_cancel"):
+		WarningPopupWindow.spawn_warning_popup("HULL BREACH")
 
 
 func _ready() -> void:
