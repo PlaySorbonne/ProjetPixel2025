@@ -15,6 +15,7 @@ var cards_hand : Array[CardObject] = []
 var number_of_choosable_cards := 3
 
 # components
+@onready var game_panel : Panel = $GamePanel
 @onready var waves_container : VBoxContainer = $WavesContainer
 @onready var waves_timer_label : Label = $WavesTimerLabel
 @onready var mouse_cursor_hint : MouseCursorHint = $MouseCursorHint
