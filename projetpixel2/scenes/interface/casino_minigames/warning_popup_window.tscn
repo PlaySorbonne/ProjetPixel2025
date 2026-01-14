@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cya1wuo7bqky7"]
+[gd_scene load_steps=8 format=3 uid="uid://cya1wuo7bqky7"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_cjsqt"]
 [ext_resource type="Script" uid="uid://bv56mnbv10kl2" path="res://scripts/damage_popup_window.gd" id="2_06kx2"]
 [ext_resource type="Texture2D" uid="uid://dqgaghvafkgrf" path="res://resources/images/casino/rug_red_seamless_warning.png" id="3_n7cb2"]
+[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/good timing bd.otf" id="4_06kx2"]
 
 [sub_resource type="Shader" id="Shader_dbr32"]
 resource_local_to_scene = true
@@ -155,6 +156,14 @@ shader_parameter/scanline_strength = 0.3
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.07
 
+[sub_resource type="LabelSettings" id="LabelSettings_n7cb2"]
+font = ExtResource("4_06kx2")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.156863)
+shadow_offset = Vector2(2, 2)
+
 [node name="WarningPopupWindow" instance=ExtResource("1_cjsqt")]
 anchor_right = 0.135937
 anchor_bottom = 0.15463
@@ -163,3 +172,30 @@ script = ExtResource("2_06kx2")
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_kyvrb")
 texture = ExtResource("3_n7cb2")
+
+[node name="ColorRect" type="ColorRect" parent="Contents" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045977
+anchor_top = 0.359281
+anchor_right = 0.931035
+anchor_bottom = 0.634731
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.592157, 0.00784314, 0.0901961, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Contents/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WARNING"
+label_settings = SubResource("LabelSettings_n7cb2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="window_opened" from="." to="." method="_on_window_opened"]

@@ -20,6 +20,11 @@ const BACKGROUND_SHADER_PARAMS : Array[String] =  [
 	"local_warp_strength", "flip_chance"
 ]
 
+static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
+	popup.visible = false
+	GV.hud.add_child(popup)
+	return popup
+
 func random_popup_position() -> Vector2:
 	var pos_rect :=  GV.hud.game_panel.size - size
 	const POSITION_MAX_OFFSET := 15.0
