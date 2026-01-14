@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cya1wuo7bqky7"]
+[gd_scene load_steps=9 format=3 uid="uid://cya1wuo7bqky7"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_cjsqt"]
 [ext_resource type="Script" uid="uid://bv56mnbv10kl2" path="res://scripts/damage_popup_window.gd" id="2_06kx2"]
@@ -158,10 +158,18 @@ shader_parameter/flip_chance = 0.07
 
 [sub_resource type="LabelSettings" id="LabelSettings_n7cb2"]
 font = ExtResource("4_06kx2")
-font_size = 20
+font_size = 18
 font_color = Color(0, 0, 0, 1)
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 0.156863)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_06kx2"]
+font = ExtResource("4_06kx2")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
 [node name="WarningPopupWindow" instance=ExtResource("1_cjsqt")]
@@ -176,26 +184,103 @@ texture = ExtResource("3_n7cb2")
 [node name="ColorRect" type="ColorRect" parent="Contents" index="1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.045977
-anchor_top = 0.359281
-anchor_right = 0.931035
-anchor_bottom = 0.634731
+anchor_left = 0.0574713
+anchor_top = 0.461078
+anchor_right = 0.915709
+anchor_bottom = 0.784431
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(115.5, 27)
 mouse_filter = 2
 color = Color(0.592157, 0.00784314, 0.0901961, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Contents/ColorRect" index="0"]
+[node name="LabelMessage" type="Label" parent="Contents/ColorRect" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "WARNING"
+text = "SHIP BREACH"
 label_settings = SubResource("LabelSettings_n7cb2")
 horizontal_alignment = 1
 vertical_alignment = 1
+clip_text = true
+
+[node name="ColorRect3" type="ColorRect" parent="Contents" index="2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.291188
+anchor_top = 0.191617
+anchor_right = 0.681992
+anchor_bottom = 0.377246
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(81, 10.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Contents" index="3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0153257
+anchor_top = 0.251497
+anchor_right = 0.957854
+anchor_bottom = 0.317365
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(81, 10.5)
+mouse_filter = 2
+color = Color(0.592157, 0.00784314, 0.0901961, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Contents/ColorRect2" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(123, 8.5)
+text = "WARNING"
+label_settings = SubResource("LabelSettings_06kx2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="Contents/ColorRect2" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.291188
+anchor_top = -0.308383
+anchor_right = 0.307448
+anchor_bottom = 1.4059
+offset_left = 0.367821
+offset_top = -2.68263
+offset_right = 0.367821
+offset_bottom = -2.68263
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(81, 10.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="Contents/ColorRect2" index="2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.691057
+anchor_top = -0.428571
+anchor_right = 0.707317
+anchor_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(81, 10.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="window_opened" from="." to="." method="_on_window_opened"]
