@@ -239,7 +239,7 @@ vertical_alignment = 1
 [node name="ColorRect4" type="ColorRect" parent="Contents/ColorRectWarning" index="1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.291188
+anchor_left = 0.254602
 anchor_top = -0.308383
 anchor_right = 0.307448
 anchor_bottom = 1.4059
@@ -259,7 +259,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.691057
 anchor_top = -0.428571
-anchor_right = 0.707317
+anchor_right = 0.743902
 anchor_bottom = 1.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -272,9 +272,9 @@ metadata/_edit_use_anchors_ = true
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.292683
+anchor_left = 0.256098
 anchor_top = -0.714286
-anchor_right = 0.707317
+anchor_right = 0.743902
 anchor_bottom = 1.71429
 grow_horizontal = 2
 grow_vertical = 2
@@ -283,4 +283,9 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 4.0
+autostart = true
+
 [connection signal="window_opened" from="." to="." method="_on_window_opened"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

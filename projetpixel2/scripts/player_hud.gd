@@ -33,6 +33,12 @@ var displayed_level := RunData.current_level
 var displayed_total_experience := RunData.total_experience
 
 
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		WarningPopupWindow.spawn_warning_popup("HULL BREACH")
+
+
 func _ready() -> void:
 	GV.hud = self
 	console.visible = GV.debug_mode

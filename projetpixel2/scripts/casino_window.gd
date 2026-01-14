@@ -14,7 +14,7 @@ var size_tween : Tween
 @onready var background_material : ShaderMaterial = $Panel/Background.material
 
 const BACKGROUND_SHADER_PARAMS : Array[String] =  [
-	"scroll_speed", "angle_degrees", "repeat_x", "repeat_y", "glitch_chance",
+	"scroll_speed", "repeat_x", "repeat_y", "glitch_chance",
 	"glitch_speed", "slice_density", "slice_strength", "shake_strength", 
 	"chroma_offset", "noise_strength", "color_flash_strength", "scanline_strength",
 	"local_warp_strength", "flip_chance"
@@ -26,7 +26,7 @@ static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
 	return popup
 
 func random_popup_position() -> Vector2:
-	var pos_rect :=  GV.hud.game_panel.size - size
+	var pos_rect := GV.hud.game_panel.size * 0.9
 	const POSITION_MAX_OFFSET := 15.0
 	# GV.hud.game_panel.position is popup min_pos (top left)
 	return GV.hud.game_panel.position + Vector2(
