@@ -9,6 +9,7 @@ const SIZE_ANIM_TIME := 0.175
 const MIN_Y_SIZE := 60.0
 
 var size_tween : Tween
+var closed := false
 
 @onready var default_size := size
 @onready var background_material : ShaderMaterial = $Panel/Background.material
@@ -25,6 +26,10 @@ static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
 	GV.hud.add_child(popup)
 	return popup
 
+
+func _ready() -> void:
+	randomize_panel_background_parameters()
+
 func random_popup_position() -> Vector2:
 	var pos_rect := GV.hud.game_panel.size * 0.9
 	const POSITION_MAX_OFFSET := 15.0
@@ -33,15 +38,6 @@ func random_popup_position() -> Vector2:
 		pos_rect.x * randf() + randf_range(-POSITION_MAX_OFFSET, POSITION_MAX_OFFSET),
 		pos_rect.y * randf() + randf_range(-POSITION_MAX_OFFSET, POSITION_MAX_OFFSET)
 	)
-
-
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("move_right"):
-		#visible = false
-		#open_window()
-
-func _ready() -> void:
-	randomize_panel_background_parameters()
 
 func randomize_panel_background_parameters() -> void:
 	for param_str : String in BACKGROUND_SHADER_PARAMS:
@@ -82,15 +78,20 @@ func open_window() -> void:
 			).set_delay(SIZE_ANIM_TIME)
 	size_tween.tween_property(self, "position", next_window_pos -
 			Vector2(0.0, default_size.y/2.0), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
-	size_tween.tween_property($Contents, "modulate", Color.WHITE, SIZE_ANIM_TIME)
+	size_tween.tween_property($Contents, "modulate", Color.WHITE, SIZE_ANIM_TIME
+			).set_delay(SIZE_ANIM_TIME)
 	visible = true
 	size_tween.finished.connect(emit_signal.bind("window_opened"))
 
 func close_window() -> void:
+	if closed:
+		return
+	closed = true
 	_init_size_tween()
 	$DragAndDrop2D.can_be_dragged = false
 	pivot_offset = Vector2(0.0, MIN_Y_SIZE/2.0)
 	# vertical
+	size_tween.tween_property($Contents, "modulate", Color.TRANSPARENT, SIZE_ANIM_TIME/2.0)
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
 			SIZE_ANIM_TIME)
 	var next_window_pos := position + Vector2(0.0, default_size.y/2.0)
@@ -100,7 +101,6 @@ func close_window() -> void:
 			).set_delay(SIZE_ANIM_TIME)
 	size_tween.tween_property(self, "position", next_window_pos +
 			Vector2(default_size.x/2.0, 0.0), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
-	size_tween.tween_property($Contents, "modulate", Color.TRANSPARENT, SIZE_ANIM_TIME)
 	size_tween.tween_property(self, "scale", Vector2(1.0, 0.25), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
 	size_tween.finished.connect(_destroy_window)
 

@@ -6,6 +6,7 @@ class_name DiceRollWindow
 
 
 func _on_window_opened() -> void:
+	await get_tree().create_timer(0.25).timeout
 	dice_roller.roll_dice(6)
 
 func _on_dice_roller_die_rolled(result: int) -> void:
