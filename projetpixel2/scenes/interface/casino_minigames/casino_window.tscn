@@ -19,7 +19,6 @@ z_index = 20
 layout_mode = 3
 anchor_right = 0.226562
 anchor_bottom = 0.210185
-pivot_offset = Vector2(217.5, 127)
 script = ExtResource("1_sq5xb")
 metadata/_edit_use_anchors_ = true
 
@@ -37,7 +36,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3kbv4")
 
 [node name="Background" type="TextureRect" parent="Panel"]
-z_index = -16
+show_behind_parent = true
 material = ExtResource("4_06hwv")
 layout_mode = 1
 anchors_preset = 15
@@ -54,7 +53,16 @@ texture = ExtResource("5_ips8e")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="Contents" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CloseButton" type="Button" parent="Contents"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -70,4 +78,4 @@ flat = true
 expand_icon = true
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="Contents/CloseButton" to="." method="_on_close_button_pressed"]

@@ -2,7 +2,8 @@ extends Node3D
 class_name DiceRoller
 
 
-signal dice_result(result : int)
+signal die_rolled(result : int)
+signal all_dice_rolled(result : int)
 
 const BASE_SUCCESS_PROBA := 0.166667 # 1.0/6.0
 
@@ -12,9 +13,9 @@ var nb_dice_thrown : int
 var nb_dice_rolled : int
 
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		roll_dice(24)
+#func _input(event):
+	#if event.is_action_pressed("ui_accept"):
+		#roll_dice(24)
 
 func roll_dice(number_of_dice : int) -> void:
 	cleanup_dice()
@@ -59,6 +60,7 @@ func _on_dice_cocked(new_dice : Dice) -> void:
 func _on_dice_rolled(result : int, dice : Dice) -> void:
 	total_dice_result += result
 	nb_dice_rolled += 1
+	die_rolled.emit(result)
 	if nb_dice_rolled == nb_dice_thrown:
-		dice_result.emit(total_dice_result)
+		all_dice_rolled.emit(total_dice_result)
 		#$CanvasLayer/Label.text += "total_dice_result = " + str(total_dice_result) + "\n"
