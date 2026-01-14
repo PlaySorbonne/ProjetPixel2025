@@ -1,0 +1,2 @@
+extends CasinoWindow
+class_name WarningPopupWindow

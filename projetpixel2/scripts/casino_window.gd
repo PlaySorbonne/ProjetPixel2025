@@ -20,6 +20,15 @@ const BACKGROUND_SHADER_PARAMS : Array[String] =  [
 	"local_warp_strength", "flip_chance"
 ]
 
+func random_popup_position() -> Vector2:
+	var pos_rect :=  GV.hud.game_panel.size - size
+	const POSITION_MAX_OFFSET := 15.0
+	# GV.hud.game_panel.position is popup min_pos (top left)
+	return GV.hud.game_panel.position + Vector2(
+		pos_rect.x * randf() + randf_range(-POSITION_MAX_OFFSET, POSITION_MAX_OFFSET),
+		pos_rect.y * randf() + randf_range(-POSITION_MAX_OFFSET, POSITION_MAX_OFFSET)
+	)
+
 
 #func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("move_right"):
