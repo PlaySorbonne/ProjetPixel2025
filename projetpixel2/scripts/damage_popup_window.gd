@@ -15,8 +15,13 @@ var message : String = "Hull breach"
 
 func _ready() -> void:
 	super._ready()
+	$Contents/ColorRectWarning.scale.x = 0.0
 	$Contents/ColorRect/LabelMessage.text = message
+	$Contents/ColorRect/LabelMessage.visible_ratio = 0.0
 	random_popup_position()
 
 func _on_window_opened() -> void:
-	pass # Replace with function body.
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property($Contents/ColorRectWarning, "scale", Vector2.ONE, 0.3)
+	t.tween_property($Contents/ColorRect/LabelMessage, "visible_ratio", 1.0, 0.4).set_delay(0.2)
+	t.finished.connect(close_window)
