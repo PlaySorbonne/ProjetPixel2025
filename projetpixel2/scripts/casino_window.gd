@@ -10,6 +10,7 @@ const MIN_Y_SIZE := 60.0
 
 var size_tween : Tween
 var closed := false
+var close_button_tween : Tween
 
 @onready var default_size := size
 @onready var background_material : ShaderMaterial = $Panel/Background.material
@@ -112,3 +113,21 @@ func _destroy_window() -> void:
 
 func _on_close_button_pressed() -> void:
 	close_window()
+
+func _setup_close_button_tween() -> void:
+	if close_button_tween:
+		close_button_tween.kill()
+	close_button_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+
+func _on_close_button_mouse_entered() -> void:
+	if closed:
+		return
+	_setup_close_button_tween()
+	close_button_tween.tween_property($Contents/CloseButton, "scale", 
+											Vector2(1.2, 1.2), 0.15)
+
+func _on_close_button_mouse_exited() -> void:
+	if closed:
+		return
+	_setup_close_button_tween()
+	close_button_tween.tween_property($Contents/CloseButton, "scale", Vector2.ONE, 0.15)
