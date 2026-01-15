@@ -106,8 +106,6 @@ func close_window() -> void:
 	size_tween.finished.connect(_destroy_window)
 
 func _destroy_window() -> void:
-	#print("LEFT FOR DEBUG")
-	#return
 	window_closed.emit()
 	queue_free()
 
