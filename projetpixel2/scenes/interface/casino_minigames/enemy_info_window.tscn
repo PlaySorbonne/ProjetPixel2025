@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6epmn0qi4a2"]
+[gd_scene load_steps=14 format=3 uid="uid://cy6epmn0qi4a2"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_1dpwf"]
 [ext_resource type="Script" uid="uid://c3sugpopuf2r0" path="res://scripts/enemy_info_window.gd" id="2_360u1"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_tf7qd"]
+[ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="4_gj0yi"]
+[ext_resource type="PackedScene" uid="uid://dp0bqofy16pki" path="res://resources/3d_models/enemy_placeholders/figurine-large.fbx" id="5_xvsxs"]
+[ext_resource type="Material" uid="uid://r2h4oahbhimc" path="res://resources/materials/3d_hologram_material.tres" id="6_4c7j5"]
+[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/good timing bd.otf" id="7_4c7j5"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/toxigenesis bd.otf" id="8_kndqu"]
 
 [sub_resource type="Shader" id="Shader_gj0yi"]
 resource_local_to_scene = true
@@ -155,8 +160,154 @@ shader_parameter/scanline_strength = 0.25
 shader_parameter/local_warp_strength = 0.2
 shader_parameter/flip_chance = 0.05
 
+[sub_resource type="Environment" id="Environment_kndqu"]
+background_mode = 2
+background_color = Color(0.57, 0, 0.1615, 0)
+ambient_light_source = 3
+ambient_light_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d010d"]
+font = ExtResource("7_4c7j5")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_lv6ga"]
+font = ExtResource("8_kndqu")
+font_size = 14
+
 [node name="EnemyInfoWindow" instance=ExtResource("1_1dpwf")]
+anchor_right = 0.281771
+anchor_bottom = 0.25463
 script = ExtResource("2_360u1")
 
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_xvsxs")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.423
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -0.0045929
+offset_bottom = 0.000198364
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+anisotropic_filtering_level = 0
+gui_disable_input = true
+gui_embed_subwindows = true
+size = Vector2i(221, 275)
+render_target_update_mode = 4
+script = ExtResource("4_gj0yi")
+
+[node name="Node3D" type="Node3D" parent="Contents/SubViewportContainer/SubViewport" index="0"]
+
+[node name="enemy" parent="Contents/SubViewportContainer/SubViewport/Node3D" index="0" instance=ExtResource("5_xvsxs")]
+
+[node name="leg-left" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root" index="0"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="leg-right" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root" index="1"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="torso" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root" index="2"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="arm-left" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root/torso" index="0"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="arm-right" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root/torso" index="1"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="head" parent="Contents/SubViewportContainer/SubViewport/Node3D/enemy/figurine-large/root/torso" index="2"]
+surface_material_override/0 = ExtResource("6_4c7j5")
+
+[node name="Camera3D" type="Camera3D" parent="Contents/SubViewportContainer/SubViewport/Node3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.953122, 0.302586, 0, -0.302586, 0.953122, 0, 0.881371, 1.85209)
+environment = SubResource("Environment_kndqu")
+current = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Contents/SubViewportContainer/SubViewport/Node3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0266893, 0)
+calculate_tangents = false
+radius = 1.0
+height = 0.05
+sides = 10
+
+[node name="LabelEnemyName" type="Label" parent="Contents" index="2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.397412
+anchor_top = 0.0363636
+anchor_right = 0.90573
+anchor_bottom = 0.141818
+text = "Base Enemy"
+label_settings = SubResource("LabelSettings_d010d")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelEnemyDescription" type="Label" parent="Contents" index="3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439926
+anchor_top = 0.16
+anchor_right = 0.968577
+anchor_bottom = 0.498182
+text = "Base Enemy description description description description description description description descripti"
+label_settings = SubResource("LabelSettings_lv6ga")
+autowrap_mode = 2
+clip_text = true
+
+[node name="LabelEnemyPower" type="Label" parent="Contents" index="4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.439926
+anchor_top = 0.850909
+anchor_right = 0.968577
+anchor_bottom = 0.938182
+text = "Can teleport anywhere when hit."
+label_settings = SubResource("LabelSettings_lv6ga")
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents" index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.441774
+anchor_top = 0.483636
+anchor_right = 0.970425
+anchor_bottom = 0.778182
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="LabelHealth" type="Label" parent="Contents/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "HP - 1000/1000
+Atk - 10
+Def - 1.5
+Spd - 70"
+label_settings = SubResource("LabelSettings_lv6ga")
+metadata/_edit_use_anchors_ = true
+
+[node name="Spacer" type="Control" parent="Contents/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Contents/HBoxContainer" index="2"]
+layout_mode = 2
+
+[node name="LabelEnemyDescription" type="Label" parent="Contents/HBoxContainer/VBoxContainer2" index="0"]
+layout_mode = 2
+text = "Weak - Curse
+Res - Fire, Ice
+Energy"
+label_settings = SubResource("LabelSettings_lv6ga")
+metadata/_edit_use_anchors_ = true
+
+[editable path="Contents/SubViewportContainer/SubViewport/Node3D/enemy"]
