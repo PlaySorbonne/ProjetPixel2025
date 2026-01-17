@@ -59,6 +59,8 @@ func _on_player_game_over() -> void:
 		var popup := WarningPopupWindow.spawn_warning_popup("Hull breach", -1.0)
 		warning_popups.append(popup)
 		popup.force_popup_position(pos)
+		popup.can_close_window = false
+		popup.can_drag_window = false
 		if randi()%2 == 0:
 			await get_tree().create_timer(randf_range(0.01, 0.09)).timeout
 	await get_tree().create_timer(0.2).timeout
