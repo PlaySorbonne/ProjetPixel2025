@@ -54,11 +54,18 @@ func _on_player_game_over() -> void:
 						y + randf_range(-30.0, 30.0) + POPUP_HALF_SIZE.y
 						))
 	popup_positions.shuffle()
+	var warning_popups : Array[WarningPopupWindow] = []
 	for pos : Vector2 in popup_positions:
 		var popup := WarningPopupWindow.spawn_warning_popup("Hull breach", -1.0)
+		warning_popups.append(popup)
 		popup.force_popup_position(pos)
 		if randi()%2 == 0:
 			await get_tree().create_timer(randf_range(0.01, 0.09)).timeout
+	await get_tree().create_timer(0.2).timeout
+	GameOverWindow.spawn_game_over_window()
+	await get_tree().create_timer(2.0).timeout
+	for popup : WarningPopupWindow in warning_popups:
+		popup.queue_free()
 
 func _ready() -> void:
 	GV.hud = self

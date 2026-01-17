@@ -11,6 +11,8 @@ const MIN_Y_SIZE := 60.0
 var size_tween : Tween
 var closed := false
 var close_button_tween : Tween
+var can_drag_window := true
+var can_close_window := true
 
 @onready var default_size := size
 @onready var background_material : ShaderMaterial = $Panel/Background.material
@@ -50,7 +52,7 @@ func randomize_panel_background_parameters() -> void:
 		)
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and can_drag_window:
 		if event.is_pressed():
 			$DragAndDrop2D.press()
 		else:
@@ -85,7 +87,7 @@ func open_window() -> void:
 	size_tween.finished.connect(emit_signal.bind("window_opened"))
 
 func close_window() -> void:
-	if closed:
+	if closed or not can_close_window:
 		return
 	closed = true
 	_init_size_tween()
