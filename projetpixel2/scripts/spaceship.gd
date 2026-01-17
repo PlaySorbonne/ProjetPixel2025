@@ -3,6 +3,7 @@ class_name Spaceship
 
 
 signal hit
+signal killed
 
 ## amount the shields will regen per 0.5 second
 @export var shields_regeneration := 2
@@ -92,8 +93,7 @@ func death() -> void:
 	alive = false
 	visible = false
 	stop_all_towers()
-	var game_ober := preload("res://scenes/interface/menus/game_over_screen.tscn").instantiate()
-	GV.hud.add_child(game_ober)
+	killed.emit()
 
 func _on_ship_health_death() -> void:
 	death()

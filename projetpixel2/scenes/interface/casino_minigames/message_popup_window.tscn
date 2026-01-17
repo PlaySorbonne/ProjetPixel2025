@@ -178,6 +178,7 @@ anchor_bottom = 0.15463
 script = ExtResource("2_fly66")
 lifetime = 4.0
 message = "Informational Message"
+forced_position = false
 
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_kyvrb")

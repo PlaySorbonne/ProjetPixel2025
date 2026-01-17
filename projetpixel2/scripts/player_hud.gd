@@ -39,7 +39,26 @@ func _input(event: InputEvent) -> void:
 		MessagePopupWindow.spawn_message_popup("SHIP SHIELDS\nRESTORED")
 	if Input.is_action_just_pressed("debug_m"):
 		WarningPopupWindow.spawn_warning_popup("HULL BREACH")
+	if Input.is_action_just_pressed("debug_p"):
+		_on_player_game_over()
 
+func _on_player_game_over() -> void:
+	const POPUP_SIZE := Vector2(261, 167) # size of the warning popup
+	const POPUP_HALF_SIZE := POPUP_SIZE/2.0
+	var popup_positions : Array[Vector2]
+	var viewport_size : Vector2 = get_viewport().get_visible_rect().size
+	for x : float in range(0.0, viewport_size.x, POPUP_SIZE.x*0.7):
+		for y : float in range(0.0, viewport_size.y, POPUP_SIZE.y*0.7):
+			popup_positions.append(Vector2(
+						x + randf_range(-30.0, 30.0) + POPUP_HALF_SIZE.x, 
+						y + randf_range(-30.0, 30.0) + POPUP_HALF_SIZE.y
+						))
+	popup_positions.shuffle()
+	for pos : Vector2 in popup_positions:
+		var popup := WarningPopupWindow.spawn_warning_popup("Hull breach", -1.0)
+		popup.force_popup_position(pos)
+		if randi()%2 == 0:
+			await get_tree().create_timer(randf_range(0.01, 0.09)).timeout
 
 func _ready() -> void:
 	GV.hud = self
@@ -61,6 +80,8 @@ func _ready() -> void:
 	$ExperienceBar.size = $ExperienceBar.custom_minimum_size
 	$ExperienceBar.position = $ExperienceBarBackgroundTexture.position + Vector2(
 							20.0, 52.0)
+	await get_tree().process_frame
+	GV.space_ship.killed.connect(_on_player_game_over)
 
 func _update_ship_health(new_health : int) -> void:
 	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,

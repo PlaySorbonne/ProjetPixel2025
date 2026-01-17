@@ -14,8 +14,6 @@ static func spawn_message_popup(message_txt : String, popup_lifetime := 4.0) -> 
 func _ready() -> void:
 	super._ready()
 	init_text_popup($Contents/ColorRect/LabelMessage, $Contents/ColorRectMessage)
-	position = random_popup_position()
-	open_window()
 
 func _on_window_opened() -> void:
 	animate_text_popup()
