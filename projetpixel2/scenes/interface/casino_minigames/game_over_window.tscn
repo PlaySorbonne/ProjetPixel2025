@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjbto8ostw162"]
+[gd_scene load_steps=11 format=3 uid="uid://cjbto8ostw162"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_253de"]
 [ext_resource type="Script" uid="uid://dckgq8vd5khcv" path="res://scripts/game_over_window.gd" id="2_j0oe4"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_ait10"]
 [ext_resource type="FontFile" uid="uid://bow4cpnaeoi8k" path="res://resources/fonts/title1_xirod.otf" id="4_j0oe4"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_ait10"]
-[ext_resource type="Texture2D" uid="uid://61nr6kdodg1g" path="res://resources/images/ui_assets/menu_elements/button_square_angles_cut.png" id="6_kkjw3"]
-[ext_resource type="Texture2D" uid="uid://dlnudc4cjsofl" path="res://resources/images/ui_assets/menu_elements/nine_patch_out_tower_defense_frame.png" id="7_3dbbc"]
+[ext_resource type="PackedScene" uid="uid://cvsdd7hpynwts" path="res://scenes/interface/menus/objects/button_sci_fi.tscn" id="6_12pqm"]
 
 [sub_resource type="Shader" id="Shader_12pqm"]
 resource_local_to_scene = true
@@ -169,13 +168,6 @@ outline_color = Color(0.592157, 0.00784314, 0.0901961, 1)
 font = ExtResource("5_ait10")
 font_size = 18
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3kbv4"]
-texture = ExtResource("7_3dbbc")
-texture_margin_left = 18.0
-texture_margin_top = 18.0
-texture_margin_right = 18.0
-texture_margin_bottom = 18.0
-
 [node name="GameOverWindow" instance=ExtResource("1_253de")]
 anchor_left = 0.317187
 anchor_top = 0.316667
@@ -205,45 +197,21 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 12.0
-offset_top = 96.0
+offset_top = 109.0
 offset_right = -21.0002
-offset_bottom = 186.0
+offset_bottom = 236.0
 grow_horizontal = 2
-text = "Game Over"
+text = "Ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed ship destroyed...."
 label_settings = SubResource("LabelSettings_12pqm")
+autowrap_mode = 2
 
-[node name="Button" type="Button" parent="Contents" index="3"]
+[node name="ButtonQuit" parent="Contents" index="3" instance=ExtResource("6_12pqm")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.375275
-anchor_top = 0.772614
-anchor_right = 0.605716
-anchor_bottom = 0.927044
-focus_mode = 0
-icon = ExtResource("6_kkjw3")
-expand_icon = true
-metadata/_edit_use_anchors_ = true
+anchor_left = 0.370839
+anchor_top = 0.785318
+anchor_right = 0.60128
+anchor_bottom = 0.939748
+pivot_offset = Vector2(81.0001, 30.4999)
+button_text = "Continue"
 
-[node name="Panel" type="Panel" parent="Contents/Button" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_3kbv4")
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Contents/Button" index="1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -7.0
-offset_bottom = -6.99998
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button text"
-horizontal_alignment = 1
-vertical_alignment = 1
+[connection signal="pressed" from="Contents/ButtonQuit" to="." method="_on_button_quit_pressed"]
