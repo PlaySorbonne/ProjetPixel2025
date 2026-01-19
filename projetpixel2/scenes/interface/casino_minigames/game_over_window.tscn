@@ -184,6 +184,7 @@ anchor_bottom = 0.682407
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_j0oe4")
+can_close_window = false
 
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_kkjw3")
@@ -203,7 +204,9 @@ vertical_alignment = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = 12.0
 offset_top = 96.0
+offset_right = -21.0002
 offset_bottom = 186.0
 grow_horizontal = 2
 text = "Game Over"
@@ -216,6 +219,7 @@ anchor_left = 0.375275
 anchor_top = 0.772614
 anchor_right = 0.605716
 anchor_bottom = 0.927044
+focus_mode = 0
 icon = ExtResource("6_kkjw3")
 expand_icon = true
 metadata/_edit_use_anchors_ = true
