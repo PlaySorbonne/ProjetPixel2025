@@ -44,14 +44,14 @@ func _input(event: InputEvent) -> void:
 
 func _on_player_game_over() -> void:
 	const POPUP_SIZE := Vector2(261, 167) # size of the warning popup
-	const POPUP_HALF_SIZE := POPUP_SIZE/2.0
+	const POPUP_QUARTER_SIZE := POPUP_SIZE/4.0
 	var popup_positions : Array[Vector2]
 	var viewport_size : Vector2 = get_viewport().get_visible_rect().size
 	for x : float in range(0.0, viewport_size.x, POPUP_SIZE.x*0.7):
 		for y : float in range(0.0, viewport_size.y, POPUP_SIZE.y*0.7):
 			popup_positions.append(Vector2(
-						x + randf_range(-30.0, 30.0) + POPUP_HALF_SIZE.x, 
-						y + randf_range(-30.0, 30.0) + POPUP_HALF_SIZE.y
+						x + randf_range(-10.0, 10.0) + POPUP_QUARTER_SIZE.x, 
+						y + randf_range(-10.0, 10.0) + POPUP_QUARTER_SIZE.y
 						))
 	popup_positions.shuffle()
 	var warning_popups : Array[WarningPopupWindow] = []
@@ -63,11 +63,11 @@ func _on_player_game_over() -> void:
 		popup.can_drag_window = false
 		if randi()%2 == 0:
 			await get_tree().create_timer(randf_range(0.01, 0.09)).timeout
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(1.2).timeout
 	GameOverWindow.spawn_game_over_window()
-	await get_tree().create_timer(2.0).timeout
-	for popup : WarningPopupWindow in warning_popups:
-		popup.queue_free()
+	#await get_tree().create_timer(2.0).timeout
+	# TODO:
+	# erase everything under game over UI
 
 func _ready() -> void:
 	GV.hud = self
