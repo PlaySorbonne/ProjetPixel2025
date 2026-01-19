@@ -12,7 +12,6 @@ var size_tween : Tween
 var closed := false
 var close_button_tween : Tween
 
-
 @export var can_drag_window := true
 @export var can_close_window := true
 
