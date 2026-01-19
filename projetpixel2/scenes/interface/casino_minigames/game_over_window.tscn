@@ -140,8 +140,8 @@ resource_local_to_scene = true
 shader = SubResource("Shader_12pqm")
 shader_parameter/scroll_speed = 0.08
 shader_parameter/angle_degrees = 45.0
-shader_parameter/repeat_x = 0.9
-shader_parameter/repeat_y = 0.9
+shader_parameter/repeat_x = 1.1
+shader_parameter/repeat_y = 1.1
 shader_parameter/texture_to_scroll = ExtResource("3_ait10")
 shader_parameter/glitch_chance = 0.02
 shader_parameter/glitch_speed = 7.0
@@ -156,9 +156,10 @@ shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
 [node name="GameOverWindow" instance=ExtResource("1_253de")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.317187
+anchor_top = 0.316667
+anchor_right = 0.683333
+anchor_bottom = 0.682407
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_j0oe4")
