@@ -14,6 +14,10 @@ var close_button_tween : Tween
 
 @export var can_drag_window := true
 @export var can_close_window := true
+#@export var can_close_window := true:
+	#set(value):
+		#can_close_window = value
+		#$Contents/CloseButton.visible = value
 
 @onready var default_size := size
 @onready var background_material : ShaderMaterial = $Panel/Background.material
