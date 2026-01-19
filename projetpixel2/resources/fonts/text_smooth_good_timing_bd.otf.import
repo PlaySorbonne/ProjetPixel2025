@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bkxfmoq2htvql"
-path="res://.godot/imported/toxigenesis bd.otf-e7ecc2cf4d066637680184ffe438177c.fontdata"
+uid="uid://v0jxcl38ttwu"
+path="res://.godot/imported/text_smooth_good_timing_bd.otf-91400fcb87869a2ae8d1136df912ecf0.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/toxigenesis bd.otf"
-dest_files=["res://.godot/imported/toxigenesis bd.otf-e7ecc2cf4d066637680184ffe438177c.fontdata"]
+source_file="res://resources/fonts/text_smooth_good_timing_bd.otf"
+dest_files=["res://.godot/imported/text_smooth_good_timing_bd.otf-91400fcb87869a2ae8d1136df912ecf0.fontdata"]
 
 [params]
 

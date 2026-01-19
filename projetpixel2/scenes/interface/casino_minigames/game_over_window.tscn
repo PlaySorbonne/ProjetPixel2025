@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjbto8ostw162"]
+[gd_scene load_steps=10 format=3 uid="uid://cjbto8ostw162"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_253de"]
 [ext_resource type="Script" uid="uid://dckgq8vd5khcv" path="res://scripts/game_over_window.gd" id="2_j0oe4"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_ait10"]
+[ext_resource type="FontFile" uid="uid://bow4cpnaeoi8k" path="res://resources/fonts/title1_xirod.otf" id="4_j0oe4"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_ait10"]
 
 [sub_resource type="Shader" id="Shader_12pqm"]
 resource_local_to_scene = true
@@ -155,6 +157,16 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
+[sub_resource type="LabelSettings" id="LabelSettings_ait10"]
+font = ExtResource("4_j0oe4")
+font_size = 36
+outline_size = 24
+outline_color = Color(0.592157, 0.00784314, 0.0901961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_12pqm"]
+font = ExtResource("5_ait10")
+font_size = 18
+
 [node name="GameOverWindow" instance=ExtResource("1_253de")]
 anchor_left = 0.317187
 anchor_top = 0.316667
@@ -166,3 +178,26 @@ script = ExtResource("2_j0oe4")
 
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_kkjw3")
+
+[node name="Label" type="Label" parent="Contents" index="1"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ait10")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="Contents" index="2"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 96.0
+offset_bottom = 186.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_12pqm")
+horizontal_alignment = 1
+vertical_alignment = 2

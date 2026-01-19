@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_6lqtw"]
 [ext_resource type="Script" uid="uid://gs31u7ixogkd" path="res://scripts/info_popup_window.gd" id="2_fly66"]
-[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/good timing bd.otf" id="4_ftava"]
+[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/text_smooth_good_timing_bd.otf" id="4_ftava"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_rlwqh"]
 
 [sub_resource type="Shader" id="Shader_dbr32"]

@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://cs2ct0bb5fky5" path="res://scripts/research_hologram_env.gd" id="4_gj0yi"]
 [ext_resource type="PackedScene" uid="uid://dp0bqofy16pki" path="res://resources/3d_models/enemy_placeholders/figurine-large.fbx" id="5_xvsxs"]
 [ext_resource type="Material" uid="uid://r2h4oahbhimc" path="res://resources/materials/3d_hologram_material.tres" id="6_4c7j5"]
-[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/good timing bd.otf" id="7_4c7j5"]
-[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/toxigenesis bd.otf" id="8_kndqu"]
+[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/text_smooth_good_timing_bd.otf" id="7_4c7j5"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="8_kndqu"]
 
 [sub_resource type="Shader" id="Shader_gj0yi"]
 resource_local_to_scene = true

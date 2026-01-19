@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bow4cpnaeoi8k"
-path="res://.godot/imported/Xirod.otf-5b4a335ee3024bc484f16ff0eba02bbc.fontdata"
+path="res://.godot/imported/title1_xirod.otf-afcfbf8a7650bc42a88c8af74c3e7f3c.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Xirod.otf"
-dest_files=["res://.godot/imported/Xirod.otf-5b4a335ee3024bc484f16ff0eba02bbc.fontdata"]
+source_file="res://resources/fonts/title1_xirod.otf"
+dest_files=["res://.godot/imported/title1_xirod.otf-afcfbf8a7650bc42a88c8af74c3e7f3c.fontdata"]
 
 [params]
 

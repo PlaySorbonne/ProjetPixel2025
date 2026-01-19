@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="2_4hxtm"]
 [ext_resource type="Script" uid="uid://fiv8qj8nwq7q" path="res://scripts/dice_roll_window.gd" id="2_qgsof"]
 [ext_resource type="PackedScene" uid="uid://b5vrn3qeyghx8" path="res://scenes/casino/dice_roller.tscn" id="5_b4rlw"]
-[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/toxigenesis bd.otf" id="5_cx0bv"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_cx0bv"]
 
 [sub_resource type="Shader" id="Shader_qgsof"]
 resource_local_to_scene = true

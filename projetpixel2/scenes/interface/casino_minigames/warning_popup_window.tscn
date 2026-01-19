@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_cjsqt"]
 [ext_resource type="Script" uid="uid://bv56mnbv10kl2" path="res://scripts/damage_popup_window.gd" id="2_06kx2"]
 [ext_resource type="Texture2D" uid="uid://dqgaghvafkgrf" path="res://resources/images/casino/rug_red_seamless_warning.png" id="3_n7cb2"]
-[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/good timing bd.otf" id="4_06kx2"]
+[ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/text_smooth_good_timing_bd.otf" id="4_06kx2"]
 
 [sub_resource type="Shader" id="Shader_dbr32"]
 resource_local_to_scene = true
