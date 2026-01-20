@@ -118,7 +118,7 @@ func _on_damageable_object_death() -> void:
 	death()
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
-	print("entered spaceship")
+	#print("entered spaceship")
 	if "damageable" in body and body is Spaceship:
 		overlapping_enemies.append(body)
 
