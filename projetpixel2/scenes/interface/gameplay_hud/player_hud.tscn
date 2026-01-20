@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene load_steps=25 format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="15_gd21h"]
 [ext_resource type="Script" uid="uid://dmv3vlkapdyqq" path="res://scripts/button_casino_minigame.gd" id="15_rwqbi"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
-[ext_resource type="PackedScene" uid="uid://cvlbqvv2c0ve" path="res://scenes/casino/revolver_russian_roulette.tscn" id="19_rwqbi"]
+[ext_resource type="PackedScene" uid="uid://bnc37s2vpdjex" path="res://scenes/interface/casino_minigames/russian_roulette_window.tscn" id="18_616a6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wcmwq"]
 load_path = "res://.godot/imported/nine_patch_tower_defense_frame.png-31c2de1cf2885b33a24efb7a2ccb8c01.ctex"
@@ -40,12 +40,6 @@ font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_8wi31"]
 font_size = 32
-
-[sub_resource type="Environment" id="Environment_xga4y"]
-background_mode = 2
-background_color = Color(0.57, 0, 0.1615, 0)
-ambient_light_source = 3
-ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="PlayerHud" type="CanvasLayer"]
 process_mode = 3
@@ -463,6 +457,38 @@ grow_vertical = 2
 text = "30"
 horizontal_alignment = 1
 
+[node name="ButtonRussianRoulette" type="Button" parent="."]
+modulate = Color(0.43134, 0.43134, 0.43134, 1)
+anchors_preset = -1
+anchor_left = 0.883854
+anchor_top = 0.386821
+anchor_right = 0.984896
+anchor_bottom = 0.526636
+offset_left = -1.33105
+offset_top = -173.03
+offset_right = -1.33105
+offset_bottom = -173.03
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+text = "Button Russian
+Roulette"
+script = ExtResource("15_rwqbi")
+minigame_popup = ExtResource("18_616a6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="ButtonRussianRoulette"]
+
+[node name="Label" type="Label" parent="ButtonRussianRoulette"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "30"
+horizontal_alignment = 1
+
 [node name="ColorRect3" type="ColorRect" parent="."]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 z_index = -16
@@ -492,53 +518,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="RevolverFrame" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.884375
-anchor_top = 0.237963
-anchor_right = 0.986458
-anchor_bottom = 0.364815
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="RevolverFrame"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.0218978
-anchor_right = 1.0
-anchor_bottom = 0.678832
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="RevolverFrame/SubViewportContainer"]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-anisotropic_filtering_level = 0
-gui_disable_input = true
-gui_embed_subwindows = true
-size = Vector2i(196, 96)
-render_target_update_mode = 4
-
-[node name="RevolverWorld" type="Node3D" parent="RevolverFrame/SubViewportContainer/SubViewport"]
-
-[node name="Camera3D" type="Camera3D" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.885, -1.726)
-environment = SubResource("Environment_xga4y")
-current = true
-
-[node name="RevolverRussianRoulette" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld" instance=ExtResource("19_rwqbi")]
-transform = Transform3D(0.075, 0, 0, 0, -3.27835e-09, 0.075, 0, -0.075, -3.27835e-09, 0, 0, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="RevolverFrame/SubViewportContainer/SubViewport/RevolverWorld"]
-transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0)
-directional_shadow_mode = 0
-
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
@@ -546,4 +525,4 @@ directional_shadow_mode = 0
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
 [connection signal="pressed" from="ButtonDice" to="ButtonDice" method="_on_pressed"]
-[connection signal="pressed" from="RevolverFrame" to="." method="_on_revolver_frame_pressed"]
+[connection signal="pressed" from="ButtonRussianRoulette" to="ButtonRussianRoulette" method="_on_pressed"]

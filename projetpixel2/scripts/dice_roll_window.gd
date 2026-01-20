@@ -14,5 +14,6 @@ func _on_dice_roller_die_rolled(result: int) -> void:
 
 func _on_dice_roller_all_dice_rolled(result: int) -> void:
 	$Contents/Label.text += "\n  TOTAL = " + str(result)
+	MessagePopupWindow.spawn_message_popup("Dice rolled - results: " + str(result) + "!")
 	await get_tree().create_timer(1.5).timeout
 	close_window()

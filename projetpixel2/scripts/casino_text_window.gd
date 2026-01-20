@@ -2,7 +2,7 @@ extends CasinoWindow
 class_name CasinoTextWindow
 
 
-@export var lifetime : float = 4.0
+@export var lifetime : float = 3.0
 @export var message : String = "Generic Message"
 @export var forced_position := false
 

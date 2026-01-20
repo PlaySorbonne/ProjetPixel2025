@@ -164,6 +164,7 @@ font = ExtResource("5_cx0bv")
 anchor_right = 0.320313
 anchor_bottom = 0.307407
 script = ExtResource("2_qgsof")
+can_close_window = false
 
 [node name="Background" parent="Panel" index="0"]
 material = SubResource("ShaderMaterial_cx0bv")

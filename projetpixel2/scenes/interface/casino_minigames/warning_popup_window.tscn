@@ -176,7 +176,7 @@ shadow_offset = Vector2(2, 2)
 anchor_right = 0.135937
 anchor_bottom = 0.15463
 script = ExtResource("2_06kx2")
-lifetime = 4.0
+lifetime = 3.0
 message = "Warning Message"
 forced_position = false
 
