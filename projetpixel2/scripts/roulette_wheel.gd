@@ -16,7 +16,7 @@ var spin_tween : Tween
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		number_of_marbles = randi_range(4, 8) + 4
-		$CanvasLayer/Label.text = "Spin roulette " + str(number_of_marbles) + " times"
+		#$CanvasLayer/Label.text = "Spin roulette " + str(number_of_marbles) + " times"
 		spin_roulette()
 
 func spin_roulette() -> void:
@@ -36,7 +36,7 @@ func spin_roulette() -> void:
 	for _i in range(number_of_marbles):
 		var slot := randi_range(0, 36)
 		launch_marble(slot)
-		$CanvasLayer/Label.text += "\n   - launch marble to " + str(slot)
+		#$CanvasLayer/Label.text += "\n   - launch marble to " + str(slot)
 
 func launch_marble(slot : int) -> void:
 	marbles.append(RouletteMarble.launch_marble(self, slot))
