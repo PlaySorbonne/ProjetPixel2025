@@ -93,8 +93,8 @@ func open_window() -> void:
 	visible = true
 	size_tween.finished.connect(emit_signal.bind("window_opened"))
 
-func close_window() -> void:
-	if closed or not can_close_window:
+func close_window(force_close := false) -> void:
+	if closed or (not can_close_window and not force_close):
 		return
 	closed = true
 	_init_size_tween()

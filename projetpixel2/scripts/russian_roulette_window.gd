@@ -15,4 +15,4 @@ func _on_revolver_russian_roulette_revolver_shot(result: bool) -> void:
 	else:
 		await get_tree().create_timer(0.35).timeout
 		GV.space_ship.death()
-	get_tree().create_timer(3.0).timeout.connect(close_window)
+	get_tree().create_timer(3.0).timeout.connect(close_window.bind(true))

@@ -212,7 +212,7 @@ anchor_left = 0.370839
 anchor_top = 0.785318
 anchor_right = 0.60128
 anchor_bottom = 0.939748
-pivot_offset = Vector2(81.0001, 30.4999)
+pivot_offset = Vector2(81, 30.4999)
 button_text = "Continue"
 
 [connection signal="pressed" from="Contents/ButtonQuit" to="." method="_on_button_quit_pressed"]
