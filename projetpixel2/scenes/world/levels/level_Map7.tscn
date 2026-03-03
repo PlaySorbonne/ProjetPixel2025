@@ -101,10 +101,13 @@ transform = Transform3D(-0.820789, 0, -1.28655, 0, 1.86, 0, 3.58375, 0, -0.29465
 [node name="Gros_Rochet_02" parent="." index="21" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(-5.24537e-08, 0, 1, 0, 2, 0, -1.2, 0, -4.37114e-08, 31, 1, 16)
 
-[node name="Gros_Rochet_04" parent="." index="22" instance=ExtResource("5_rf2eb")]
+[node name="Gros_Rochet_06" parent="." index="22" instance=ExtResource("5_rf2eb")]
+transform = Transform3D(0.2525, 0, 0.866025, 0, 1.885, 0, -0.437343, 0, 0.5, 14, 1, -14)
+
+[node name="Gros_Rochet_04" parent="." index="23" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(-0.164933, 0, -0.990509, 0, 2, 0, 1.18861, 0, -0.137444, 27, 1, 29)
 
-[node name="Gros_Rochet_05" parent="." index="23" instance=ExtResource("5_rf2eb")]
+[node name="Gros_Rochet_05" parent="." index="24" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(1.1908, 0, 0.123601, 0, 2, 0, -0.148322, 0, 0.992332, 52, 1, -51)
 
 [editable path="PlayerHud"]
