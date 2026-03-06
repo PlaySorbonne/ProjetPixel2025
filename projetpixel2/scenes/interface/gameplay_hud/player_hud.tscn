@@ -386,7 +386,7 @@ color = Color(0, 0, 0, 0.396078)
 metadata/_edit_use_anchors_ = true
 
 [node name="CasinoBackground" type="Panel" parent="." unique_id=338876159]
-modulate = Color(0.54099, 0.54099, 0.54099, 1)
+modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
 anchors_preset = 15
 anchor_right = 1.0
@@ -399,7 +399,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rwqbi")
 
 [node name="CasinoBackground2" type="Panel" parent="." unique_id=5747742]
-modulate = Color(0.54099, 0.54099, 0.54099, 1)
+modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
 anchors_preset = 15
 anchor_right = 1.0
@@ -412,7 +412,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_0or73")
 
 [node name="CasinoBackground4" type="Panel" parent="." unique_id=1806777291]
-modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
+modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
 anchors_preset = 12
 anchor_top = 1.0
@@ -425,7 +425,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_03tek")
 
 [node name="CasinoBackground3" type="Panel" parent="." unique_id=350991333]
-modulate = Color(0.54099, 0.54099, 0.54099, 1)
+modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
 anchors_preset = 11
 anchor_left = 1.0
