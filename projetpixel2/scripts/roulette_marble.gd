@@ -24,10 +24,10 @@ var current_speed := 1.0
 var slot := 0
 
 
-static func launch_marble(roulette : RouletteWheel, slot : int) -> RouletteMarble:
+static func launch_marble(roulette : RouletteWheel, nslot : int) -> RouletteMarble:
 	var marble := MARBLE_RES.instantiate()
 	roulette.RouletteSpinny.add_child(marble)
-	marble.launch_to_slot(slot)
+	marble.launch_to_slot(nslot)
 	return marble
 
 func launch_to_slot(slot_index: int)-> void:
