@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://chhjuwxnir6c8"]
+[gd_scene format=3 uid="uid://chhjuwxnir6c8"]
 
 [ext_resource type="Script" uid="uid://dkfohj3a8maqo" path="res://scripts/player_hud.gd" id="1_ldeku"]
 [ext_resource type="Texture2D" uid="uid://b7pv01hjqwhgj" path="res://resources/images/ui_assets/menu_elements/experience_bar_container.png" id="2_8wi31"]
 [ext_resource type="Script" uid="uid://dpuq4bmkyshfb" path="res://scripts/experience_bar.gd" id="2_e0ndd"]
 [ext_resource type="PackedScene" uid="uid://jl3gv6r2c8ku" path="res://scenes/gameplay_systems/mouse_detection_2d.tscn" id="2_pfuso"]
+[ext_resource type="Texture2D" uid="uid://dlnudc4cjsofl" path="res://resources/images/ui_assets/menu_elements/nine_patch_out_tower_defense_frame.png" id="2_rwqbi"]
 [ext_resource type="Texture2D" uid="uid://cm65knr3ijyao" path="res://resources/images/ui_assets/menu_elements/experience_bar_progress.png" id="2_tntee"]
 [ext_resource type="Script" uid="uid://yegcm3d0hvem" path="res://scripts/combo_counter.gd" id="4_htfe5"]
 [ext_resource type="Texture2D" uid="uid://lp27fa3tfgit" path="res://resources/images/ui_assets/menu_elements/info_square_container.png" id="4_tv5ih"]
@@ -19,15 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://cd64tbsnnfau" path="res://scenes/interface/menus/objects/button_casino_minigame.tscn" id="18_616a6"]
 [ext_resource type="PackedScene" uid="uid://dpgx4b1ajw4qk" path="res://scenes/interface/casino_minigames/roulette_window.tscn" id="18_rwqbi"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wcmwq"]
-load_path = "res://.godot/imported/nine_patch_tower_defense_frame.png-31c2de1cf2885b33a24efb7a2ccb8c01.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6usvi"]
-texture = SubResource("CompressedTexture2D_wcmwq")
-texture_margin_left = 100.0
-texture_margin_top = 100.0
-texture_margin_right = 100.0
-texture_margin_bottom = 100.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
+texture = ExtResource("2_rwqbi")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_htfe5"]
 font_size = 26
@@ -41,22 +39,48 @@ font_size = 42
 [sub_resource type="LabelSettings" id="LabelSettings_8wi31"]
 font_size = 32
 
-[node name="PlayerHud" type="CanvasLayer"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqbi"]
+resource_local_to_scene = true
+texture = ExtResource("15_gd21h")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0or73"]
+resource_local_to_scene = true
+texture = ExtResource("15_gd21h")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_03tek"]
+resource_local_to_scene = true
+texture = ExtResource("15_gd21h")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 67.45, 650, 650)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6usvi"]
+resource_local_to_scene = true
+texture = ExtResource("15_gd21h")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(31, 0, 650, 650)
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
 layer = 2
 script = ExtResource("1_ldeku")
 
-[node name="GamePanel" type="Panel" parent="."]
+[node name="GamePanel" type="Panel" parent="." unique_id=1054457954]
 anchors_preset = -1
 anchor_left = 0.122917
 anchor_top = 0.0787037
 anchor_right = 0.86875
 anchor_bottom = 0.977778
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_6usvi")
+theme_override_styles/panel = SubResource("StyleBoxTexture_gd21h")
 metadata/_edit_use_anchors_ = true
 
-[node name="ExperienceBarBackgroundTexture" type="TextureRect" parent="."]
+[node name="ExperienceBarBackgroundTexture" type="TextureRect" parent="." unique_id=1839664841]
 visible = false
 self_modulate = Color(0.572988, 0.572988, 0.572988, 1)
 z_index = 20
@@ -71,7 +95,7 @@ texture = ExtResource("2_8wi31")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ExperienceBar" type="TextureProgressBar" parent="."]
+[node name="ExperienceBar" type="TextureProgressBar" parent="." unique_id=163028720]
 visible = false
 z_index = 21
 custom_minimum_size = Vector2(1201, 27)
@@ -91,7 +115,7 @@ tint_progress = Color(0, 0.238543, 0.597335, 1)
 script = ExtResource("2_e0ndd")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ExperienceBar"]
+[node name="Label" type="Label" parent="ExperienceBar" unique_id=984439516]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -103,12 +127,12 @@ label_settings = SubResource("LabelSettings_htfe5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MouseDetection2d" parent="ExperienceBar" instance=ExtResource("2_pfuso")]
+[node name="MouseDetection2d" parent="ExperienceBar" unique_id=1584150301 instance=ExtResource("2_pfuso")]
 
-[node name="TimerExperienceMult" type="Timer" parent="ExperienceBar"]
+[node name="TimerExperienceMult" type="Timer" parent="ExperienceBar" unique_id=1935171513]
 one_shot = true
 
-[node name="hud_control" type="Control" parent="."]
+[node name="hud_control" type="Control" parent="." unique_id=349167712]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonSpawnTower" type="Button" parent="hud_control"]
+[node name="ButtonSpawnTower" type="Button" parent="hud_control" unique_id=1513702987]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.805499
@@ -131,9 +155,9 @@ text = "Towers
 flat = true
 metadata/_edit_use_anchors_ = true
 
-[node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" instance=ExtResource("2_pfuso")]
+[node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" unique_id=895218124 instance=ExtResource("2_pfuso")]
 
-[node name="TextureRect" type="TextureRect" parent="hud_control/ButtonSpawnTower"]
+[node name="TextureRect" type="TextureRect" parent="hud_control/ButtonSpawnTower" unique_id=1883296464]
 self_modulate = Color(0.841292, 0.514521, 0.599254, 1)
 show_behind_parent = true
 layout_mode = 1
@@ -150,9 +174,9 @@ texture = ExtResource("4_tv5ih")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TowerSpawner" parent="." instance=ExtResource("6_pfuso")]
+[node name="TowerSpawner" parent="." unique_id=1284024973 instance=ExtResource("6_pfuso")]
 
-[node name="ComboCounter" type="Control" parent="."]
+[node name="ComboCounter" type="Control" parent="." unique_id=1205740724]
 layout_mode = 3
 anchor_top = 0.837963
 anchor_right = 0.175521
@@ -162,7 +186,7 @@ grow_vertical = 2
 script = ExtResource("4_htfe5")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ComboCounter"]
+[node name="Label" type="Label" parent="ComboCounter" unique_id=758010467]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.442309
@@ -175,12 +199,12 @@ label_settings = SubResource("LabelSettings_jxin7")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ComboTimer" type="Timer" parent="ComboCounter"]
+[node name="ComboTimer" type="Timer" parent="ComboCounter" unique_id=1436814007]
 one_shot = true
 
-[node name="MouseDetection2d" parent="ComboCounter" instance=ExtResource("2_pfuso")]
+[node name="MouseDetection2d" parent="ComboCounter" unique_id=1284647179 instance=ExtResource("2_pfuso")]
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="." unique_id=1660550773]
 process_mode = 3
 visible = false
 z_index = 100
@@ -192,7 +216,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_htfe5")
 
-[node name="ButtonContinue" type="Button" parent="PauseMenu"]
+[node name="ButtonContinue" type="Button" parent="PauseMenu" unique_id=1794378393]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.357292
@@ -203,7 +227,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PauseMenu/ButtonContinue"]
+[node name="Label" type="Label" parent="PauseMenu/ButtonContinue" unique_id=83757876]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,7 +239,7 @@ label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonRestart" type="Button" parent="PauseMenu"]
+[node name="ButtonRestart" type="Button" parent="PauseMenu" unique_id=774382181]
 z_index = 101
 layout_mode = 1
 anchors_preset = -1
@@ -227,7 +251,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PauseMenu/ButtonRestart"]
+[node name="Label" type="Label" parent="PauseMenu/ButtonRestart" unique_id=232022528]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,7 +263,7 @@ label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonQuit" type="Button" parent="PauseMenu"]
+[node name="ButtonQuit" type="Button" parent="PauseMenu" unique_id=684493976]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.357292
@@ -250,7 +274,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="PauseMenu/ButtonQuit"]
+[node name="Label" type="Label" parent="PauseMenu/ButtonQuit" unique_id=1959053990]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -262,11 +286,11 @@ label_settings = SubResource("LabelSettings_pfuso")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Mouse3dInteraction" parent="." instance=ExtResource("5_jxin7")]
+[node name="Mouse3dInteraction" parent="." unique_id=335094327 instance=ExtResource("5_jxin7")]
 
-[node name="Mouse2dInteraction" parent="." instance=ExtResource("5_pfuso")]
+[node name="Mouse2dInteraction" parent="." unique_id=473815370 instance=ExtResource("5_pfuso")]
 
-[node name="CardsContainer" type="Control" parent="."]
+[node name="CardsContainer" type="Control" parent="." unique_id=52772184]
 z_index = 2
 layout_mode = 3
 anchor_left = 0.104167
@@ -278,7 +302,7 @@ offset_bottom = 7.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="NewCardsContainer" type="HBoxContainer" parent="."]
+[node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=210749627]
 z_index = -1
 anchors_preset = -1
 anchor_left = 0.294271
@@ -289,7 +313,7 @@ size_flags_horizontal = 3
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ShipHealth" type="TextureRect" parent="."]
+[node name="ShipHealth" type="TextureRect" parent="." unique_id=1528570661]
 offset_right = 525.001
 offset_bottom = 162.0
 texture = ExtResource("10_ovn5c")
@@ -297,7 +321,7 @@ expand_mode = 1
 stretch_mode = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="ShieldProgressBar" type="TextureProgressBar" parent="ShipHealth"]
+[node name="ShieldProgressBar" type="TextureProgressBar" parent="ShipHealth" unique_id=1703611539]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.011
@@ -311,7 +335,7 @@ nine_patch_stretch = true
 texture_progress = ExtResource("11_d078g")
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth"]
+[node name="HealthProgressBar" type="TextureProgressBar" parent="ShipHealth" unique_id=342654153]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.014
@@ -325,7 +349,7 @@ nine_patch_stretch = true
 texture_progress = ExtResource("12_3ed1r")
 metadata/_edit_use_anchors_ = true
 
-[node name="WavesContainer" type="VBoxContainer" parent="."]
+[node name="WavesContainer" type="VBoxContainer" parent="." unique_id=68712449]
 anchors_preset = -1
 anchor_top = 0.157407
 anchor_right = 0.120833
@@ -335,7 +359,7 @@ mouse_filter = 2
 alignment = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="WavesTimerLabel" type="Label" parent="."]
+[node name="WavesTimerLabel" type="Label" parent="." unique_id=1059741156]
 anchors_preset = -1
 anchor_left = 0.00833333
 anchor_top = 0.815741
@@ -346,7 +370,7 @@ label_settings = SubResource("LabelSettings_8wi31")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect8" type="ColorRect" parent="."]
+[node name="ColorRect8" type="ColorRect" parent="." unique_id=1393423200]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 z_index = -16
 anchors_preset = -1
@@ -361,76 +385,59 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.396078)
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect5" type="TextureRect" parent="."]
+[node name="CasinoBackground" type="Panel" parent="." unique_id=338876159]
 modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
-anchors_preset = 9
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 239.0
+offset_right = -1681.4415
+offset_bottom = 0.5609131
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_gd21h")
-expand_mode = 1
-stretch_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_rwqbi")
 
-[node name="ColorRect6" type="TextureRect" parent="."]
+[node name="CasinoBackground2" type="Panel" parent="." unique_id=5747742]
 modulate = Color(0.54099, 0.54099, 0.54099, 1)
+z_index = -16
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.84265137
+offset_bottom = -989.3914
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_0or73")
+
+[node name="CasinoBackground4" type="Panel" parent="." unique_id=1806777291]
+modulate = Color(0.5411765, 0.5411765, 0.5411765, 1)
 z_index = -16
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -25.0
+offset_top = -36.664185
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("15_gd21h")
-expand_mode = 1
-stretch_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_03tek")
 
-[node name="CasinoBackground" type="TextureRect" parent="."]
+[node name="CasinoBackground3" type="Panel" parent="." unique_id=350991333]
 modulate = Color(0.54099, 0.54099, 0.54099, 1)
 z_index = -16
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.122222
-offset_bottom = -43.9998
-grow_horizontal = 2
-mouse_filter = 2
-texture = ExtResource("15_gd21h")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="CasinoBackground2" type="TextureRect" parent="."]
-modulate = Color(0.54099, 0.54099, 0.54099, 1)
-z_index = -16
-anchors_preset = -1
-anchor_left = 0.866667
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -264.25
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("15_gd21h")
-expand_mode = 1
-stretch_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxTexture_6usvi")
 
-[node name="CasinoBackground3" type="TextureRect" parent="."]
-modulate = Color(0.54099, 0.54099, 0.54099, 1)
-z_index = -16
-anchors_preset = -1
-anchor_left = 0.703987
-anchor_top = 0.077374
-anchor_right = 0.870654
-anchor_bottom = 0.192189
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("15_gd21h")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="ButtonRussianRoulette" parent="." instance=ExtResource("18_616a6")]
+[node name="ButtonRussianRoulette" parent="." unique_id=763556892 instance=ExtResource("18_616a6")]
 anchor_left = 0.884625
 anchor_top = 0.225282
 anchor_right = 0.985667
@@ -438,7 +445,7 @@ anchor_bottom = 0.365097
 text = "Button
 Russian Roulette"
 
-[node name="ButtonDice" parent="." instance=ExtResource("18_616a6")]
+[node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
 anchor_left = 0.883678
 anchor_top = 0.386898
 anchor_right = 0.98472
@@ -447,7 +454,7 @@ text = "Button
 Dice"
 minigame_popup = ExtResource("16_gd21h")
 
-[node name="ButtonDice2" parent="." instance=ExtResource("18_616a6")]
+[node name="ButtonDice2" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
 anchor_left = 0.883678
 anchor_top = 0.54178
 anchor_right = 0.98472
@@ -456,7 +463,7 @@ text = "Button
 Roulette Wheel"
 minigame_popup = ExtResource("18_rwqbi")
 
-[node name="ColorRect4" type="ColorRect" parent="."]
+[node name="ColorRect4" type="ColorRect" parent="." unique_id=269660513]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 z_index = -16
 anchors_preset = -1

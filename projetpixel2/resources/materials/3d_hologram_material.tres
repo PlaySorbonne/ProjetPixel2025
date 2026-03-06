@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://r2h4oahbhimc"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://r2h4oahbhimc"]
 
 [ext_resource type="Shader" uid="uid://dettsvbq3dxk8" path="res://resources/shaders/3d_hologram.gdshader" id="1_efvx5"]
 
@@ -7,8 +7,8 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k4his"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_efvx5"]
-color_ramp = SubResource("Gradient_efvx5")
 noise = SubResource("FastNoiseLite_k4his")
+color_ramp = SubResource("Gradient_efvx5")
 
 [resource]
 render_priority = 0

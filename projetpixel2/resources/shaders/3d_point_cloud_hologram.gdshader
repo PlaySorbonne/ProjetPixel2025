@@ -28,7 +28,7 @@ void fragment() {
     vec2 uv = FRAGCOORD.xy / VIEWPORT_SIZE;
     vec2 center = vec2(0.5);
     float dist = length(UV - center);
-    
+
     // Circular falloff to make round points
     float alpha = smoothstep(point_size, point_size * 0.5, dist);
     ALBEDO = point_color.rgb;
