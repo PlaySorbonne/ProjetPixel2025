@@ -11,7 +11,7 @@ func _on_window_opened() -> void:
 
 func _on_revolver_russian_roulette_revolver_shot(result: bool) -> void:
 	if result:
-		MessagePopupWindow.spawn_message_popup("Russian roulette won!")
+		MessagePopupWindow.spawn_message_popup("/RUSSIAN ROULLETTE/\nSurvived!")
 	else:
 		await get_tree().create_timer(0.35).timeout
 		GV.space_ship.death()

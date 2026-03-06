@@ -1,11 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnc37s2vpdjex"]
+[gd_scene format=3 uid="uid://bnc37s2vpdjex"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_at3fp"]
 [ext_resource type="Script" uid="uid://doak8o3tf5vfc" path="res://scripts/russian_roulette_window.gd" id="2_at3fp"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_3cref"]
 [ext_resource type="PackedScene" uid="uid://cvlbqvv2c0ve" path="res://scenes/casino/revolver_russian_roulette.tscn" id="5_at3fp"]
 
-[sub_resource type="Shader" id="Shader_qgsof"]
+[sub_resource type="Shader" id="Shader_uw1ml"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -136,9 +136,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx0bv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_at3fp"]
 resource_local_to_scene = true
-shader = SubResource("Shader_qgsof")
+shader = SubResource("Shader_uw1ml")
 shader_parameter/scroll_speed = 0.08
 shader_parameter/angle_degrees = 45.0
 shader_parameter/repeat_x = 1.2
@@ -162,16 +162,16 @@ background_color = Color(0.57, 0, 0.1615, 0)
 ambient_light_source = 3
 ambient_light_color = Color(0.4, 0.4, 0.4, 1)
 
-[node name="RussianRouletteWindow" instance=ExtResource("1_at3fp")]
+[node name="RussianRouletteWindow" unique_id=149481127 instance=ExtResource("1_at3fp")]
 anchor_right = 0.233333
 anchor_bottom = 0.317593
 script = ExtResource("2_at3fp")
 can_close_window = false
 
 [node name="Background" parent="Panel" index="0"]
-material = SubResource("ShaderMaterial_cx0bv")
+material = SubResource("ShaderMaterial_at3fp")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=520402578]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,27 +181,27 @@ grow_vertical = 2
 mouse_filter = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0" unique_id=1970783410]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
-size = Vector2i(448, 343)
+size = Vector2i(447, 343)
 render_target_update_mode = 4
 
-[node name="RevolverWorld" type="Node3D" parent="Contents/SubViewportContainer/SubViewport" index="0"]
+[node name="RevolverWorld" type="Node3D" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=332095747]
 
-[node name="Camera3D" type="Camera3D" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="0"]
+[node name="Camera3D" type="Camera3D" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="0" unique_id=426052325]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.885, -1.726)
 environment = SubResource("Environment_i6v1n")
 current = true
 
-[node name="RevolverRussianRoulette" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="1" instance=ExtResource("5_at3fp")]
+[node name="RevolverRussianRoulette" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="1" unique_id=1935614511 instance=ExtResource("5_at3fp")]
 transform = Transform3D(0.075, 0, 0, 0, -3.27835e-09, 0.075, 0, -0.075, -3.27835e-09, 0, 0, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="2"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Contents/SubViewportContainer/SubViewport/RevolverWorld" index="2" unique_id=1454973922]
 transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0)
 directional_shadow_mode = 0
 

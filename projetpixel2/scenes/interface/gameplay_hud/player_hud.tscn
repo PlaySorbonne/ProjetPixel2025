@@ -456,7 +456,7 @@ text = "Button
 Dice"
 minigame_popup = ExtResource("16_gd21h")
 
-[node name="ButtonDice2" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
+[node name="ButtonRouletteWheel" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
 anchor_left = 0.883678
 anchor_top = 0.54178
 anchor_right = 0.98472

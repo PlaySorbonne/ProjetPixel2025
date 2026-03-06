@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpgx4b1ajw4qk"]
+[gd_scene format=3 uid="uid://dpgx4b1ajw4qk"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_6hmnt"]
 [ext_resource type="Script" uid="uid://de1ahgyvok46i" path="res://scripts/roulette_window.gd" id="2_6hmnt"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ingrs2uro5vb" path="res://scenes/casino/roulette_wheel.tscn" id="4_6hmnt"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_l26f3"]
 
-[sub_resource type="Shader" id="Shader_qgsof"]
+[sub_resource type="Shader" id="Shader_6hmnt"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -137,9 +137,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx0bv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwlbt"]
 resource_local_to_scene = true
-shader = SubResource("Shader_qgsof")
+shader = SubResource("Shader_6hmnt")
 shader_parameter/scroll_speed = 0.08
 shader_parameter/angle_degrees = 45.0
 shader_parameter/repeat_x = 1.2
@@ -160,15 +160,15 @@ shader_parameter/flip_chance = 0.05
 [sub_resource type="LabelSettings" id="LabelSettings_b4rlw"]
 font = ExtResource("5_l26f3")
 
-[node name="RouletteWindow" instance=ExtResource("1_6hmnt")]
+[node name="RouletteWindow" unique_id=138083608 instance=ExtResource("1_6hmnt")]
 anchor_right = 0.244792
 anchor_bottom = 0.271296
 script = ExtResource("2_6hmnt")
 
 [node name="Background" parent="Panel" index="0"]
-material = SubResource("ShaderMaterial_cx0bv")
+material = SubResource("ShaderMaterial_nwlbt")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=56363130]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0234043
@@ -181,7 +181,7 @@ mouse_filter = 2
 stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0" unique_id=1400877461]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -191,9 +191,9 @@ gui_embed_subwindows = true
 size = Vector2i(285, 264)
 render_target_update_mode = 4
 
-[node name="RouletteWheel" parent="Contents/SubViewportContainer/SubViewport" index="0" instance=ExtResource("4_6hmnt")]
+[node name="RouletteWheel" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=1644038160 instance=ExtResource("4_6hmnt")]
 
-[node name="Label" type="Label" parent="Contents" index="2"]
+[node name="Label" type="Label" parent="Contents" index="2" unique_id=567100435]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.680851
@@ -206,3 +206,5 @@ clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [connection signal="window_opened" from="." to="." method="_on_window_opened"]
+[connection signal="marble_landed" from="Contents/SubViewportContainer/SubViewport/RouletteWheel" to="." method="_on_roulette_wheel_marble_landed"]
+[connection signal="wheel_result" from="Contents/SubViewportContainer/SubViewport/RouletteWheel" to="." method="_on_roulette_wheel_wheel_result"]

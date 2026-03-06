@@ -3,11 +3,12 @@ class_name DiceRoller
 
 
 signal die_rolled(result : int)
-signal all_dice_rolled(result : int)
+signal all_dice_rolled(result : int, nb_sixes : int)
 
 const BASE_SUCCESS_PROBA := 0.166667 # 1.0/6.0
 
 var total_dice_result : int
+var number_of_sixes : int
 var rolled_dice : Array[Dice] = []
 var nb_dice_thrown : int
 var nb_dice_rolled : int
@@ -43,6 +44,7 @@ func cleanup_dice() -> void:
 			d.queue_free()
 	rolled_dice.clear()
 	total_dice_result = 0
+	number_of_sixes = 0
 
 func connect_dice(dice : Dice) -> void:
 	dice.dice_result.connect(_on_dice_rolled.bind(dice))
@@ -59,8 +61,10 @@ func _on_dice_cocked(new_dice : Dice) -> void:
 
 func _on_dice_rolled(result : int, dice : Dice) -> void:
 	total_dice_result += result
+	if result == 6:
+		number_of_sixes += 1
 	nb_dice_rolled += 1
 	die_rolled.emit(result)
 	if nb_dice_rolled == nb_dice_thrown:
-		all_dice_rolled.emit(total_dice_result)
+		all_dice_rolled.emit(total_dice_result, number_of_sixes)
 		#$CanvasLayer/Label.text += "total_dice_result = " + str(total_dice_result) + "\n"

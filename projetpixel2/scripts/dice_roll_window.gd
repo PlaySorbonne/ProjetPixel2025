@@ -12,8 +12,8 @@ func _on_window_opened() -> void:
 func _on_dice_roller_die_rolled(result: int) -> void:
 	$Contents/Label.text += "\n    " + str(result)
 
-func _on_dice_roller_all_dice_rolled(result: int) -> void:
+func _on_dice_roller_all_dice_rolled(result: int, nb_sixes : int) -> void:
 	$Contents/Label.text += "\n  TOTAL = " + str(result)
-	MessagePopupWindow.spawn_message_popup("Dice rolled - results: " + str(result) + "!")
+	MessagePopupWindow.spawn_message_popup("/DICE ROLL/\nRolled %s sixes!" % str(nb_sixes))
 	await get_tree().create_timer(1.5).timeout
 	close_window(true)

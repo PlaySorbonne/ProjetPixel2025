@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwct6yt0wfqph"]
+[gd_scene format=3 uid="uid://dwct6yt0wfqph"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_8ncrh"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="2_4hxtm"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5vrn3qeyghx8" path="res://scenes/casino/dice_roller.tscn" id="5_b4rlw"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_cx0bv"]
 
-[sub_resource type="Shader" id="Shader_qgsof"]
+[sub_resource type="Shader" id="Shader_cx0bv"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -137,9 +137,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cx0bv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4rlw"]
 resource_local_to_scene = true
-shader = SubResource("Shader_qgsof")
+shader = SubResource("Shader_cx0bv")
 shader_parameter/scroll_speed = 0.08
 shader_parameter/angle_degrees = 45.0
 shader_parameter/repeat_x = 1.2
@@ -160,16 +160,16 @@ shader_parameter/flip_chance = 0.05
 [sub_resource type="LabelSettings" id="LabelSettings_b4rlw"]
 font = ExtResource("5_cx0bv")
 
-[node name="DiceRollWindow" instance=ExtResource("1_8ncrh")]
+[node name="DiceRollWindow" unique_id=1456401038 instance=ExtResource("1_8ncrh")]
 anchor_right = 0.320313
 anchor_bottom = 0.307407
 script = ExtResource("2_qgsof")
 can_close_window = false
 
 [node name="Background" parent="Panel" index="0"]
-material = SubResource("ShaderMaterial_cx0bv")
+material = SubResource("ShaderMaterial_b4rlw")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=1309089959]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298851
@@ -182,7 +182,7 @@ mouse_filter = 2
 stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Contents/SubViewportContainer" index="0" unique_id=449842031]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -192,9 +192,9 @@ gui_embed_subwindows = true
 size = Vector2i(436, 293)
 render_target_update_mode = 4
 
-[node name="DiceRoller" parent="Contents/SubViewportContainer/SubViewport" index="0" instance=ExtResource("5_b4rlw")]
+[node name="DiceRoller" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=327011497 instance=ExtResource("5_b4rlw")]
 
-[node name="Label" type="Label" parent="Contents" index="2"]
+[node name="Label" type="Label" parent="Contents" index="2" unique_id=749724029]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.747128

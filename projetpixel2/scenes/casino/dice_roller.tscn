@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5vrn3qeyghx8"]
+[gd_scene format=3 uid="uid://b5vrn3qeyghx8"]
 
 [ext_resource type="Script" uid="uid://ljgkyegaon11" path="res://scripts/dice_roller.gd" id="1_fd5uc"]
 [ext_resource type="Texture2D" uid="uid://v8ffp4hc2iwi" path="res://resources/3d_models/casino/roulette/deluxe_roulette_0.png" id="2_1mnjm"]
@@ -15,48 +15,48 @@ size = Vector3(4.445, 2, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_1mnjm"]
 size = Vector3(2, 0.1, 4.5)
 
-[node name="DiceRoller" type="Node3D"]
+[node name="DiceRoller" type="Node3D" unique_id=1658424085]
 script = ExtResource("1_fd5uc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1441036539]
 collision_layer = 64
 collision_mask = 64
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2022440161]
 transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0, 0)
 shape = SubResource("BoxShape3D_j4q1k")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1646321926]
 transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.899362, -2.22055)
 shape = SubResource("BoxShape3D_1mnjm")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=150880500]
 transform = Transform3D(1, 0, 0, 0, 0.999996, 0, 0, 0, 0.999996, 0, 0.899, 2.181)
 shape = SubResource("BoxShape3D_1mnjm")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=2060954191]
 transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, 0.954513, 0.866281, -0.0241922)
 shape = SubResource("BoxShape3D_fd5uc")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=694098865]
 transform = Transform3D(-4.37114e-08, 0, 0.999996, 0, 0.999996, 0, -1, 0, -4.37112e-08, -0.932, 0.866, -0.024)
 shape = SubResource("BoxShape3D_fd5uc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1133629523]
 visible = false
 mesh = SubResource("BoxMesh_1mnjm")
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="Marker3D" type="Marker3D" parent="." unique_id=55354345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.529, 0)
 gizmo_extents = 0.5
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1422089301]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.622896, 0)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1511391280]
 transform = Transform3D(-4.3992e-09, -0.128053, 4.37114e-08, 0, -5.59739e-09, -1, 0.100642, -5.59739e-09, -1.64203e-15, 0, 0.0438287, 0)
 visible = false
 texture = ExtResource("2_1mnjm")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=400595495]
 transform = Transform3D(-4.37114e-08, 0.995471, -0.095064, 0, 0.095064, 0.995471, 1, 4.35134e-08, -4.15538e-09, -0.164252, 1.65682, 0)
