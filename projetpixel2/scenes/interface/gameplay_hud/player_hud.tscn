@@ -72,10 +72,10 @@ shader_parameter/scanline_color = Color(0, 0, 0, 1)
 shader_parameter/flicker_color = Color(0, 0, 0, 1)
 shader_parameter/scanlines_count = 10.0
 shader_parameter/scanlines_intensity = 0.05
-shader_parameter/flicker_speed = 10.0
-shader_parameter/flicker_intensity = 0.0400000019
+shader_parameter/flicker_speed = 7.0
+shader_parameter/flicker_intensity = 0.025
 shader_parameter/color_offset = 1.5
-shader_parameter/blur = 0.15
+shader_parameter/blur = 0.3
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
