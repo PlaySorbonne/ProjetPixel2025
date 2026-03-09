@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://0e8d6vhpggeo"]
+
+[ext_resource type="Script" uid="uid://do84r7uxeb6si" path="res://scripts/poker_chip.gd" id="1_lpcdg"]
+[ext_resource type="ArrayMesh" uid="uid://c2uoaa340yjwn" path="res://resources/3d_models/casino/poker_chips/chip_1.obj" id="2_pdaxw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nbo4"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pettd"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxbj"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17ah"]
+resource_name = "white"
+albedo_color = Color(0.282, 0.16, 0.413, 1)
+metallic = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qbqyy"]
+height = 0.026171874
+radius = 0.125
+
+[node name="PokerChipsWorld" type="Node3D" unique_id=1765417802]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1449439736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52685356, 1.2443129)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=288559422]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1051179503]
+shape = SubResource("BoxShape3D_5nbo4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1550325898]
+mesh = SubResource("BoxMesh_pettd")
+
+[node name="PokerChip" type="RigidBody3D" parent="." unique_id=1982045997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8657384, 0)
+script = ExtResource("1_lpcdg")
+chip_value = 6
+
+[node name="Chip" type="MeshInstance3D" parent="PokerChip" unique_id=1590970910]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = ExtResource("2_pdaxw")
+surface_material_override/0 = SubResource("StandardMaterial3D_fyxbj")
+surface_material_override/1 = SubResource("StandardMaterial3D_x17ah")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PokerChip" unique_id=1718743679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00058597326, 0)
+shape = SubResource("CylinderShape3D_qbqyy")

@@ -504,6 +504,17 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
+anchors_preset = -1
+anchor_left = 0.8728933
+anchor_top = 0.01823385
+anchor_right = 0.99290013
+anchor_bottom = 0.21073462
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
+size = Vector2i(225, 200)
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
