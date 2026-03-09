@@ -87,7 +87,6 @@ func damage_xp(damage_amount : int) -> bool:
 	hitpoints -= damage_amount
 	if hitpoints <= 0:
 		# give xp reward
-		xp_drop_collected.emit(experience_points)
 		is_being_harvested = false
 		#print("XP ORB COLLECTED")
 		RunData.gain_experience(experience_points)
@@ -108,6 +107,7 @@ func destroy_experience_object() -> void:
 	t.tween_property(self, "global_position", GV.space_ship.global_position, 0.4)
 	await t.finished
 	RunData.gain_experience(experience_points)
+	xp_drop_collected.emit(experience_points)
 	queue_free()
 
 func merge_xp_drops(neighbors_xp : Array[ExperienceDrop]) -> void:

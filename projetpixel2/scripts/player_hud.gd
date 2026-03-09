@@ -71,9 +71,9 @@ func _ready() -> void:
 	GV.hud = self
 	console.visible = GV.debug_mode
 	RunData.enemy_killed.connect(new_kill)
-	RunData.experience_gained.connect(update_experience)
-	RunData.level_gained.connect(update_level)
-	level_updated.connect(gain_level)
+	#RunData.experience_gained.connect(update_experience)
+	#RunData.level_gained.connect(update_level)
+	#level_updated.connect(gain_level)
 	update_level()
 	await get_tree().process_frame
 	var ship_health : DamageableObject = GV.space_ship.get_node("ShipHealth")
