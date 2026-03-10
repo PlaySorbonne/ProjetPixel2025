@@ -30,6 +30,7 @@ const MAX_FREEZE_TIMER := 1.0
 
 static func spawn_poker_chip(parent : Node, ntransform : Transform3D, nval : CHIP_VALUES) -> PokerChip:
 	var poker_chip : PokerChip = POKER_CHIP_RES.instantiate()
+	poker_chip.ready.connect(poker_chip.add_random_offset)
 	poker_chip.chip_value = nval
 	poker_chip.transform = ntransform
 	parent.add_child(poker_chip)
@@ -48,3 +49,11 @@ func _update_chip_material() -> void:
 
 func _ready() -> void:
 	_update_chip_material()
+
+func add_random_offset() -> void:
+	position += Vector3(
+		randf_range(-1.0, 1.0),
+		0.0,
+		randf_range(-1.0, 1.0),
+	)
+	rotation += Vector3(0.0, randf_range(-0.5, 0.5), 0.0)

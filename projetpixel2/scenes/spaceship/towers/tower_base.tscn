@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgrlyuyns6mos"]
+[gd_scene format=3 uid="uid://cgrlyuyns6mos"]
 
 [ext_resource type="Script" uid="uid://bj0hyv7jalfft" path="res://scripts/tower_base.gd" id="1_041tc"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="2_j5p61"]
@@ -11,14 +11,6 @@
 
 [sub_resource type="Resource" id="Resource_715kj"]
 script = ExtResource("2_j5p61")
-speed = 1.0
-damage = 50
-size = 1.0
-pierce = 0
-bounce = 0
-damage_type = 0
-critical_hit_chance = 0.01
-critical_hit_intensity = 10.0
 metadata/_custom_type_script = "uid://75ev58yopohy"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]
@@ -51,55 +43,57 @@ radial_segments = 7
 rings = 2
 cap_top = false
 
-[node name="TowerBase" type="StaticBody3D" groups=["tower"]]
+[node name="TowerBase" type="StaticBody3D" unique_id=1738831486 groups=["tower"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_041tc")
 projectile_template = SubResource("Resource_715kj")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=371695199]
 shape = SubResource("SphereShape3D_ih0ua")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1018774566]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1623856883]
 shape = SubResource("SphereShape3D_041tc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=942424554]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_vohdg")
 mesh = SubResource("QuadMesh_j5p61")
 
-[node name="AreaXP" type="Area3D" parent="."]
+[node name="AreaXP" type="Area3D" parent="." unique_id=1426709697]
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaXP"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaXP" unique_id=948741334]
 shape = SubResource("SphereShape3D_041tc")
 
-[node name="TimerShoot" type="Timer" parent="."]
+[node name="TimerShoot" type="Timer" parent="." unique_id=361568047]
 one_shot = true
 
-[node name="TimerMineXp" type="Timer" parent="."]
+[node name="TimerMineXp" type="Timer" parent="." unique_id=335965496]
 
-[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
+[node name="ClickableObject" parent="." unique_id=1089764746 node_paths=PackedStringArray("custom_nodes") instance=ExtResource("3_ih0ua")]
 custom_nodes = [NodePath("../TurretMesh/TurretSingle"), NodePath("../TurretMesh/TurretSingle/MeshInstance3D")]
 
-[node name="DragAndDrop" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
+[node name="DragAndDrop" parent="." unique_id=574308420 node_paths=PackedStringArray("dragged_object") instance=ExtResource("4_07vfn")]
 dragged_object = NodePath("..")
 can_be_dragged = false
 
-[node name="MiningMesh" parent="." instance=ExtResource("7_vohdg")]
+[node name="MiningMesh" parent="." unique_id=1305544404 instance=ExtResource("7_vohdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 
 [node name="machine_generator" parent="MiningMesh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="TimerSwitchModes" type="Timer" parent="."]
+[node name="TimerSwitchModes" type="Timer" parent="." unique_id=591227509]
 one_shot = true
 
-[node name="TourelleStandardV1" parent="." instance=ExtResource("11_0qdbl")]
+[node name="TourelleStandardV1" parent="." unique_id=397681689 instance=ExtResource("11_0qdbl")]
 transform = Transform3D(-5.24537e-07, 0, 12, 0, 12, 0, -12, 0, -5.24537e-07, 0, -0.318886, -0.0451133)
 visible = false
 
@@ -133,17 +127,17 @@ transform = Transform3D(0.139857, 0, 0.105823, 0, 0.175381, 0, -0.105823, 0, 0.1
 [node name="Tuyeau2" parent="TourelleStandardV1/Tourelle" index="4"]
 transform = Transform3D(0.0246631, 0, -0.207617, 0, 0.209076, 0, 0.207617, 0, 0.0246631, 0.00142782, 0.0132909, 0.026848)
 
-[node name="ProjectileSpawnPos" type="Node3D" parent="TourelleStandardV1/Tourelle" index="5"]
+[node name="ProjectileSpawnPos" type="Node3D" parent="TourelleStandardV1/Tourelle" index="5" unique_id=42603666]
 transform = Transform3D(-3.64262e-09, 0, -0.0833333, 0, 0.0833333, 0, 0.0833333, 0, -3.64262e-09, 0.0567419, 0.0265738, 2.48027e-09)
 
-[node name="TurretMesh" type="Node3D" parent="."]
+[node name="TurretMesh" type="Node3D" parent="." unique_id=1873737690]
 
-[node name="TurretSingle" type="MeshInstance3D" parent="TurretMesh"]
+[node name="TurretSingle" type="MeshInstance3D" parent="TurretMesh" unique_id=604018319]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.427317, 0)
 mesh = ExtResource("8_j5p61")
 skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="TurretMesh/TurretSingle"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TurretMesh/TurretSingle" unique_id=28598482]
 transform = Transform3D(1, 8.74228e-08, 8.74228e-08, -8.74228e-08, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, -0.00370365, 0.520157, 0.425278)
 mesh = SubResource("CylinderMesh_1qtbe")
 
