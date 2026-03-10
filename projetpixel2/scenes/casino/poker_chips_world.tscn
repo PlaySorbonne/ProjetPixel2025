@@ -216,7 +216,8 @@ surface_material_override/1 = SubResource("StandardMaterial3D_oolg8")
 chip_value = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1101170856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76786494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4260186, 0.41133535)
+light_color = Color(0.7797167, 0.75603193, 0.7496491, 1)
 
 [node name="PokerChip1Marker" type="Marker3D" parent="." unique_id=1918892536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8772967, -0.0503307, -0.07377373)

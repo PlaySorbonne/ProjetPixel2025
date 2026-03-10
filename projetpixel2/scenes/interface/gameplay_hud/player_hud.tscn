@@ -491,13 +491,14 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
+z_index = -20
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 208.97986
-offset_top = 682.0188
+offset_top = 663.0188
 offset_right = -991.02014
-offset_bottom = 2.0187988
+offset_bottom = -16.981201
 grow_horizontal = 2
 grow_vertical = 2
 

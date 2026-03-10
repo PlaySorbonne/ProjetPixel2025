@@ -22,14 +22,40 @@ const POKER_CHIP_WIDTH := 0.032
 	PokerChip.ChipValues.Val_500 : $PokerChip500Marker.position,
 	PokerChip.ChipValues.Val_1000 : $PokerChip1000Marker.position,
 }
+@onready var init_chip_height : float = $PokerChip1Marker.position.y
+
 var poker_chip_tweens : Dictionary[PokerChip.ChipValues, Tween]
 
 
 func add_chip(chip_value : PokerChip.ChipValues) -> void:
+	if poker_chip_tweens[chip_value]:
+		poker_chip_tweens[chip_value].kill()
 	var new_chip := PokerChip.spawn_poker_chip(
-		self, poker_chip_positions[chip_value], chip_value
+		self, 
+		poker_chip_positions[chip_value] - Vector3(0.0, 0.3, 0.0),
+		chip_value
+	)
+	var t := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
+	for chip_index : int in poker_chip_objects[chip_value].size():
+		var current_pos : Vector3 = poker_chip_objects[chip_value][chip_index].position
+		t.tween_property(
+			poker_chip_objects[chip_value][chip_index],
+			"position",
+			Vector3(
+				current_pos.x, 
+				(1+chip_index)*POKER_CHIP_WIDTH + init_chip_height, 
+				current_pos.z
+				),
+			0.15
 		)
-	var t := create_tween()
+	t.tween_property(
+		new_chip, 
+		"position", 
+		poker_chip_positions[chip_value], 
+		0.15
+	)
+	poker_chip_tweens[chip_value] = t
+	poker_chip_objects[chip_value].insert(0, new_chip)
 
 func _ready() -> void:
 	for val : PokerChip.ChipValues in PokerChip.ChipValues.values():
