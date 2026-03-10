@@ -492,15 +492,17 @@ color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
 z_index = -20
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 208.97986
-offset_top = 663.0188
-offset_right = -991.02014
-offset_bottom = -16.981201
+offset_left = -360.0
+offset_top = -412.0
+offset_right = 360.0
+offset_bottom = -12.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
 own_world_3d = true
