@@ -1,7 +1,7 @@
 extends Node
 
 signal enemy_killed
-signal experience_gained
+signal experience_gained(exp_gained : float)
 signal level_gained
 
 
@@ -29,8 +29,9 @@ var previous_experience_threshold : int = 0
 var experience_multiplier := 3.0
 var current_experience := 0:
 	set(value):
+		var previous_val := current_experience
 		current_experience = value
-		experience_gained.emit()
+		experience_gained.emit(value-previous_val)
 var total_experience := 0
 
 func gain_experience(amount : int) -> void:

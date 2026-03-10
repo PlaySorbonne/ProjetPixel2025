@@ -25,6 +25,8 @@ var number_of_choosable_cards := 3
 @onready var console : Console = $Console
 @onready var shields_bar_color : Color = $ShipHealth/ShieldProgressBar.tint_progress
 @onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
+@onready var poker_chip_world := $SubViewportContainer/SubViewport/PokerChipsWorld
+
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
 var experience_bar_tween : Tween
@@ -71,6 +73,7 @@ func _ready() -> void:
 	GV.hud = self
 	console.visible = GV.debug_mode
 	RunData.enemy_killed.connect(new_kill)
+	RunData.experience_gained.connect(gain_poker_chips)
 	#RunData.experience_gained.connect(update_experience)
 	#RunData.level_gained.connect(update_level)
 	#level_updated.connect(gain_level)
@@ -114,6 +117,11 @@ func clear_card_description() -> void:
 
 func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
+
+
+func gain_poker_chips(exp_gained : float) -> void:
+	print("LINK EXP_GAINED TO CHIP VALUE")
+	poker_chip_world.add_random_chip()
 
 func update_experience() -> void:
 	var final_val := RunData.total_experience - RunData.previous_experience_threshold

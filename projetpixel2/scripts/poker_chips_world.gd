@@ -64,6 +64,9 @@ func _ready() -> void:
 		if obj.is_in_group("chips_to_delete"):
 			obj.queue_free()
 
+func add_random_chip() -> void:
+	add_chip(PokerChip.ChipValues.values().pick_random())
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_m"):
-		add_chip(PokerChip.ChipValues.values().pick_random())
+		add_random_chip()
