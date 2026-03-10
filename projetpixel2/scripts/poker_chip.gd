@@ -1,4 +1,5 @@
-extends RigidBody3D
+@tool
+extends MeshInstance3D
 class_name PokerChip
 
 
@@ -39,28 +40,11 @@ static func spawn_poker_chip(parent : Node, ntransform : Transform3D, nval : CHI
 		chip_value = value
 		_update_chip_material()
 
-var freeze_timer := MAX_FREEZE_TIMER
 
 func _update_chip_material() -> void:
-	if $Chip:
-		$Chip.get_surface_override_material(0).albedo_color = CHIP_COLOR_INSIDE[chip_value]
-		$Chip.get_surface_override_material(1).albedo_color = CHIP_COLOR_OUTSIDE[chip_value]
+	if get_surface_override_material(0):
+		get_surface_override_material(0).albedo_color = CHIP_COLOR_INSIDE[chip_value]
+		get_surface_override_material(1).albedo_color = CHIP_COLOR_OUTSIDE[chip_value]
 
 func _ready() -> void:
-	apply_torque_impulse(Vector3(
-		randf_range(-1.0, 1.0),
-		randf_range(-1.0, 1.0),
-		randf_range(-1.0, 1.0)
-	).normalized() * 1.0)
-	chip_value = chip_value
 	_update_chip_material()
-
-func _process(delta: float) -> void:
-	if angular_velocity.length_squared() <= 0.1 and \
-		linear_velocity.length_squared() <= 0.1:
-		freeze_timer -= delta
-		if freeze_timer <= 0.0:
-			freeze = true
-			set_process(false)
-	else:
-		freeze_timer = MAX_FREEZE_TIMER

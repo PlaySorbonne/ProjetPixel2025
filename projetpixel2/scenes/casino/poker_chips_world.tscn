@@ -3,28 +3,199 @@
 [ext_resource type="Script" uid="uid://cp22uee36fkjy" path="res://scripts/poker_chips_world.gd" id="1_pdaxw"]
 [ext_resource type="PackedScene" uid="uid://b5en8xb7ml5c1" path="res://scenes/casino/poker_chip.tscn" id="2_lpcdg"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5nbo4"]
-size = Vector3(2, 0.1, 2)
-
 [sub_resource type="BoxMesh" id="BoxMesh_pettd"]
-size = Vector3(2, 0.1, 2)
+size = Vector3(3, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpcdg"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdaxw"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nbo4"]
+resource_local_to_scene = true
+albedo_color = Color(0.008, 0.612, 0.31, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pettd"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mda0g"]
+resource_local_to_scene = true
+albedo_color = Color(0.008, 0.612, 0.31, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76bdu"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxbj"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17ah"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbqyy"]
+resource_local_to_scene = true
+albedo_color = Color(0.078, 0.078, 0.078, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgijg"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krcf1"]
+resource_local_to_scene = true
+albedo_color = Color(0.078, 0.078, 0.078, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73yqn"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5vgk"]
+resource_local_to_scene = true
+albedo_color = Color(0.988, 0.659, 0.153, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4g6i"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snknv"]
+resource_local_to_scene = true
+albedo_color = Color(0.988, 0.659, 0.153, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec1vp"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bdqt"]
+resource_local_to_scene = true
+albedo_color = Color(0.988, 0.659, 0.153, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jq3"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b1iov"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlhus"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlgyh"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qw40"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
 
 [node name="PokerChipsWorld" type="Node3D" unique_id=1765417802]
 script = ExtResource("1_pdaxw")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1449439736]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8618638, 1.5375395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.069572866, 0.5160642, 0.79964554)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=288559422]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1051179503]
-shape = SubResource("BoxShape3D_5nbo4")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1550325898]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1550325898]
+visible = false
 mesh = SubResource("BoxMesh_pettd")
+skeleton = NodePath("")
 
 [node name="PokerChip" parent="." unique_id=18390402 instance=ExtResource("2_lpcdg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.810766, 0)
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.8772967, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_lpcdg")
+surface_material_override/1 = SubResource("StandardMaterial3D_pdaxw")
+
+[node name="PokerChip2" parent="." unique_id=115207421 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.2642562, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_5nbo4")
+surface_material_override/1 = SubResource("StandardMaterial3D_pettd")
+chip_value = 2
+
+[node name="PokerChip10" parent="." unique_id=799546506 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.04953205, 0, 0.006824683, 0, 0.065, 0, -0.006824683, 0, 0.04953205, -0.2642562, -0.018386126, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_mda0g")
+surface_material_override/1 = SubResource("StandardMaterial3D_76bdu")
+chip_value = 2
+
+[node name="PokerChip4" parent="." unique_id=1120104536 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.054434836, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_fyxbj")
+surface_material_override/1 = SubResource("StandardMaterial3D_x17ah")
+chip_value = 3
+
+[node name="PokerChip5" parent="." unique_id=204186494 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.370016, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_qbqyy")
+surface_material_override/1 = SubResource("StandardMaterial3D_qgijg")
+chip_value = 4
+
+[node name="PokerChip11" parent="." unique_id=1500056352 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.0484609, 0, 0.012310202, 0, 0.065, 0, -0.012310202, 0, 0.0484609, 0.38220802, -0.019388981, -0.07238568)
+surface_material_override/0 = SubResource("StandardMaterial3D_krcf1")
+surface_material_override/1 = SubResource("StandardMaterial3D_73yqn")
+chip_value = 4
+
+[node name="PokerChip6" parent="." unique_id=2022124919 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.6966814, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_w5vgk")
+surface_material_override/1 = SubResource("StandardMaterial3D_a4g6i")
+chip_value = 5
+
+[node name="PokerChip8" parent="." unique_id=1319765232 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.6843481, -0.018304855, -0.06631456)
+surface_material_override/0 = SubResource("StandardMaterial3D_snknv")
+surface_material_override/1 = SubResource("StandardMaterial3D_ec1vp")
+chip_value = 5
+
+[node name="PokerChip9" parent="." unique_id=573632434 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.048668765, 0, 0.01146087, 0, 0.065, 0, -0.01146087, 0, 0.048668765, 0.6966814, 0.014214158, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_4bdqt")
+surface_material_override/1 = SubResource("StandardMaterial3D_18jq3")
+chip_value = 5
+
+[node name="PokerChip7" parent="." unique_id=106300253 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 1.0152106, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_b1iov")
+surface_material_override/1 = SubResource("StandardMaterial3D_hlhus")
+chip_value = 6
+
+[node name="PokerChip3" parent="." unique_id=27153194 instance=ExtResource("2_lpcdg")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.5491247, -0.0503307, -0.07377373)
+surface_material_override/0 = SubResource("StandardMaterial3D_jlgyh")
+surface_material_override/1 = SubResource("StandardMaterial3D_8qw40")
+chip_value = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1101170856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76786494, 0)

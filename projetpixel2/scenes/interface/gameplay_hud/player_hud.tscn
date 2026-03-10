@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cd64tbsnnfau" path="res://scenes/interface/menus/objects/button_casino_minigame.tscn" id="18_616a6"]
 [ext_resource type="PackedScene" uid="uid://dpgx4b1ajw4qk" path="res://scenes/interface/casino_minigames/roulette_window.tscn" id="18_rwqbi"]
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
+[ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -71,11 +72,11 @@ shader = ExtResource("20_gd21h")
 shader_parameter/scanline_color = Color(0, 0, 0, 1)
 shader_parameter/flicker_color = Color(0, 0, 0, 1)
 shader_parameter/scanlines_count = 10.0
-shader_parameter/scanlines_intensity = 0.05
-shader_parameter/flicker_speed = 7.0
-shader_parameter/flicker_intensity = 0.025
+shader_parameter/scanlines_intensity = 0.03
+shader_parameter/flicker_speed = 30.0
+shader_parameter/flicker_intensity = 0.010000000475
 shader_parameter/color_offset = 1.5
-shader_parameter/blur = 0.3
+shader_parameter/blur = 0.17
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
@@ -83,7 +84,7 @@ layer = 2
 script = ExtResource("1_ldeku")
 
 [node name="GamePanel" type="Panel" parent="." unique_id=1054457954]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 236.00064
@@ -158,10 +159,10 @@ mouse_filter = 2
 [node name="ButtonSpawnTower" type="Button" parent="hud_control" unique_id=1513702987]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.805499
-anchor_top = 0.888546
-anchor_right = 0.847166
-anchor_bottom = 0.945028
+anchor_left = 0.8093282
+anchor_top = 0.1022947
+anchor_right = 0.8509952
+anchor_bottom = 0.15877675
 offset_top = -6.10352e-05
 focus_mode = 0
 text = "Towers
@@ -384,25 +385,10 @@ label_settings = SubResource("LabelSettings_8wi31")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect8" type="ColorRect" parent="." unique_id=1393423200]
-modulate = Color(0.43134, 0.43134, 0.43134, 1)
-z_index = -16
-anchors_preset = -1
-anchor_left = 0.643127
-anchor_top = 0.872184
-anchor_right = 0.860835
-anchor_bottom = 0.965702
-offset_top = -6.10352e-05
-grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.396078)
-metadata/_edit_use_anchors_ = true
-
 [node name="CasinoBackground" type="Panel" parent="." unique_id=338876159]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1681.4415
@@ -416,7 +402,7 @@ metadata/_edit_use_anchors_ = true
 [node name="CasinoBackground2" type="Panel" parent="." unique_id=5747742]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.84265137
@@ -429,7 +415,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_0or73")
 [node name="CasinoBackground4" type="Panel" parent="." unique_id=1806777291]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 1043.3358
@@ -442,7 +428,7 @@ metadata/_edit_use_anchors_ = true
 [node name="CasinoBackground3" type="Panel" parent="." unique_id=350991333]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1655.75
@@ -506,14 +492,23 @@ color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
 anchors_preset = -1
-anchor_left = 0.8728933
-anchor_top = 0.01823385
-anchor_right = 0.99290013
-anchor_bottom = 0.21073462
-metadata/_edit_use_anchors_ = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1052.4802
+offset_top = 750.0
+offset_right = -267.51978
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
-size = Vector2i(225, 200)
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+anisotropic_filtering_level = 0
+size = Vector2i(600, 330)
+render_target_update_mode = 4
+
+[node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
