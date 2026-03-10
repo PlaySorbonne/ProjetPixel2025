@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b5en8xb7ml5c1"]
+
+[ext_resource type="Script" uid="uid://do84r7uxeb6si" path="res://scripts/poker_chip.gd" id="1_jb7fs"]
+[ext_resource type="ArrayMesh" uid="uid://c2uoaa340yjwn" path="res://resources/3d_models/casino/poker_chips/chip_1.obj" id="2_pk8p3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxbj"]
+resource_local_to_scene = true
+albedo_color = Color(0.008, 0.612, 0.31, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17ah"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qbqyy"]
+height = 0.05
+radius = 0.13330078
+
+[node name="PokerChip" type="RigidBody3D" unique_id=18390402]
+gravity_scale = 2.0
+inertia = Vector3(0.25, 0.25, 0.25)
+linear_damp = 0.5
+angular_damp = 0.4
+script = ExtResource("1_jb7fs")
+chip_value = 2
+
+[node name="Chip" type="MeshInstance3D" parent="." unique_id=115207421]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_pk8p3")
+surface_material_override/0 = SubResource("StandardMaterial3D_fyxbj")
+surface_material_override/1 = SubResource("StandardMaterial3D_x17ah")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=532793787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0039062873, 0)
+shape = SubResource("CylinderShape3D_qbqyy")
