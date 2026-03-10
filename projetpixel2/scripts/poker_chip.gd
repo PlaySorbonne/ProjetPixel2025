@@ -3,7 +3,7 @@ extends MeshInstance3D
 class_name PokerChip
 
 
-enum CHIP_VALUES{Val_1, Val_5, Val_25, Val_50, Val_100, Val_500, Val_1000}
+enum ChipValues{Val_1, Val_5, Val_25, Val_50, Val_100, Val_500, Val_1000}
 
 const POKER_CHIP_RES := preload("res://scenes/casino/poker_chip.tscn")
 
@@ -28,15 +28,15 @@ const CHIP_COLOR_INSIDE : Array[Color] = [
 
 const MAX_FREEZE_TIMER := 1.0
 
-static func spawn_poker_chip(parent : Node, ntransform : Transform3D, nval : CHIP_VALUES) -> PokerChip:
+static func spawn_poker_chip(parent : Node, pos : Vector3, nval : ChipValues) -> PokerChip:
 	var poker_chip : PokerChip = POKER_CHIP_RES.instantiate()
 	poker_chip.ready.connect(poker_chip.add_random_offset)
 	poker_chip.chip_value = nval
-	poker_chip.transform = ntransform
+	poker_chip.position = pos
 	parent.add_child(poker_chip)
 	return poker_chip
 
-@export var chip_value := CHIP_VALUES.Val_1:
+@export var chip_value := ChipValues.Val_1:
 	set(value):
 		chip_value = value
 		_update_chip_material()
@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func add_random_offset() -> void:
 	position += Vector3(
-		randf_range(-1.0, 1.0),
+		randf_range(-0.02, 0.02),
 		0.0,
-		randf_range(-1.0, 1.0),
+		randf_range(-0.02, 0.02),
 	)
-	rotation += Vector3(0.0, randf_range(-0.5, 0.5), 0.0)
+	rotation_degrees += Vector3(0.0, randf_range(-60.0, 60.0), 0.0)

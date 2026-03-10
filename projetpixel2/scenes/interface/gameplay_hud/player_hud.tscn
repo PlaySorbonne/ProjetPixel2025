@@ -491,21 +491,22 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1052.4802
-offset_top = 750.0
-offset_right = -267.51978
+offset_left = 208.97986
+offset_top = 682.0188
+offset_right = -991.02014
+offset_bottom = 2.0187988
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
-size = Vector2i(600, 330)
+size = Vector2i(720, 400)
 render_target_update_mode = 4
 
 [node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]

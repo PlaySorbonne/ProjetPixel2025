@@ -14,7 +14,7 @@ resource_name = "white"
 metallic = 0.5
 
 [node name="Chip" type="MeshInstance3D" unique_id=115207421]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0, 0, 0)
 cast_shadow = 0
 mesh = ExtResource("2_pk8p3")
 surface_material_override/0 = SubResource("StandardMaterial3D_fyxbj")
