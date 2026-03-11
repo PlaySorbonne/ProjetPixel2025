@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd64tbsnnfau"]
+[gd_scene format=3 uid="uid://cd64tbsnnfau"]
 
 [ext_resource type="Script" uid="uid://dmv3vlkapdyqq" path="res://scripts/button_casino_minigame.gd" id="1_fnt73"]
 [ext_resource type="PackedScene" uid="uid://bnc37s2vpdjex" path="res://scenes/interface/casino_minigames/russian_roulette_window.tscn" id="2_7ukg2"]
 
-[node name="ButtonRussianRoulette" type="Button"]
+[node name="ButtonRussianRoulette" type="Button" unique_id=1362970447]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 anchors_preset = -1
 anchor_right = 0.101042
@@ -17,9 +17,7 @@ script = ExtResource("1_fnt73")
 minigame_popup = ExtResource("2_7ukg2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="."]
-
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2003675254]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

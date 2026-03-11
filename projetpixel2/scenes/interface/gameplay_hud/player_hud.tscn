@@ -444,6 +444,9 @@ anchor_right = 0.985667
 anchor_bottom = 0.365097
 text = "Button
 Russian Roulette"
+game_delay = 30.0
+current_delay = 5.0
+manually_start_minigame = true
 
 [node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
 anchor_left = 0.883678
@@ -453,6 +456,8 @@ anchor_bottom = 0.526713
 text = "Button
 Dice"
 minigame_popup = ExtResource("16_gd21h")
+game_delay = 30.0
+current_delay = 15.0
 
 [node name="ButtonRouletteWheel" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
 anchor_left = 0.883678
@@ -462,6 +467,8 @@ anchor_bottom = 0.681595
 text = "Button
 Roulette Wheel"
 minigame_popup = ExtResource("18_rwqbi")
+game_delay = 30.0
+current_delay = 25.0
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=269660513]
 modulate = Color(0.43134, 0.43134, 0.43134, 1)

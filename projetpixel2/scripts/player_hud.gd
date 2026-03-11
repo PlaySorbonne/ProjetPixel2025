@@ -118,7 +118,6 @@ func clear_card_description() -> void:
 func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
-
 func gain_poker_chips(exp_gained : float) -> void:
 	if exp_gained <= 0.0:
 		return
