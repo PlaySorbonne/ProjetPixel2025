@@ -9,6 +9,7 @@ resource_local_to_scene = true
 script = ExtResource("2_jpmnc")
 enemy_type = "Standard Walker"
 description = "Le bro de base"
+experience_points = 5
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wg5dx"]
