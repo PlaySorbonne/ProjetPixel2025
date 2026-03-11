@@ -42,6 +42,7 @@ func _ready() -> void:
 	set_enemy_id()
 	living_enemies.append(self)
 	#print("enemy " + str(enemy_id) + " spawned!")
+	print("enemy exp = %s" % str(enemy_data.experience_points))
 
 func get_health() -> int:
 	return $DamageableObject.health
@@ -65,7 +66,7 @@ func follow_path() -> void:
 		# current_state = States.Attacking
 		
 	# move to target
-	mesh_animations.play("sprint")
+	mesh_animations.play(run_anim)
 	velocity = position.direction_to(target_position) * enemy_data.speed * 1.5
 	mesh.look_at(target_position)
 	
