@@ -3,29 +3,36 @@ extends MeshInstance3D
 class_name PokerChip
 
 
-enum ChipValues{Val_1, Val_5, Val_25, Val_50, Val_100, Val_500, Val_1000}
+enum ChipValues{
+	Val_1    = 1, 
+	Val_5    = 5, 
+	Val_25   = 25, 
+	Val_50   = 50, 
+	Val_100  = 100, 
+	Val_500  = 500, 
+	Val_1000 = 1000
+}
 
 const POKER_CHIP_RES := preload("res://scenes/casino/poker_chip.tscn")
 
-const CHIP_COLOR_OUTSIDE : Array[Color] = [
-	Color(0.102, 0.239, 0.655, 1.0),
-	Color(1.0, 1.0, 1.0, 1.0),
-	Color(1.0, 1.0, 1.0, 1.0),
-	Color(1.0, 1.0, 1.0, 1.0),
-	Color(1.0, 1.0, 1.0, 1.0),
-	Color(0.0, 0.0, 0.0, 1.0),
-	Color(0.0, 0.0, 0.0, 1.0),
-]
-const CHIP_COLOR_INSIDE : Array[Color] = [
-	Color(0.91, 0.91, 0.91, 1.0),
-	Color(0.729, 0.165, 0.176, 1.0),
-	Color(0.008, 0.612, 0.31, 1.0),
-	Color(0.098, 0.243, 0.667, 1.0),
-	Color(0.078, 0.078, 0.078, 1.0),
-	Color(0.988, 0.659, 0.153, 1.0),
-	Color(0.0, 0.0, 0.0, 1.0),
-]
-
+const CHIP_COLOR_OUTSIDE : Dictionary[ChipValues, Color] = {
+	PokerChip.ChipValues.Val_1 : Color(0.102, 0.239, 0.655, 1.0),
+	PokerChip.ChipValues.Val_5 : Color(1.0, 1.0, 1.0, 1.0),
+	PokerChip.ChipValues.Val_25 : Color(1.0, 1.0, 1.0, 1.0),
+	PokerChip.ChipValues.Val_50 : Color(1.0, 1.0, 1.0, 1.0),
+	PokerChip.ChipValues.Val_100 : Color(1.0, 1.0, 1.0, 1.0),
+	PokerChip.ChipValues.Val_500 : Color(0.0, 0.0, 0.0, 1.0),
+	PokerChip.ChipValues.Val_1000 : Color(0.0, 0.0, 0.0, 1.0),
+}
+const CHIP_COLOR_INSIDE : Dictionary[ChipValues, Color] = {
+	PokerChip.ChipValues.Val_1 : Color(0.91, 0.91, 0.91, 1.0),
+	PokerChip.ChipValues.Val_5 : Color(0.729, 0.165, 0.176, 1.0),
+	PokerChip.ChipValues.Val_25 : Color(0.008, 0.612, 0.31, 1.0),
+	PokerChip.ChipValues.Val_50 : Color(0.098, 0.243, 0.667, 1.0),
+	PokerChip.ChipValues.Val_100 : Color(0.078, 0.078, 0.078, 1.0),
+	PokerChip.ChipValues.Val_500 : Color(0.988, 0.659, 0.153, 1.0),
+	PokerChip.ChipValues.Val_1000 : Color(0.0, 0.0, 0.0, 1.0),
+}
 const MAX_FREEZE_TIMER := 1.0
 
 static func spawn_poker_chip(parent : Node, pos : Vector3, nval : ChipValues) -> PokerChip:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dolab87otvvep"]
+[gd_scene format=3 uid="uid://dolab87otvvep"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_bwjc1"]
 [ext_resource type="Script" uid="uid://rkat5tqppyk8" path="res://scripts/enemy_data.gd" id="2_lnbhj"]
@@ -9,43 +9,32 @@ resource_local_to_scene = true
 script = ExtResource("2_lnbhj")
 enemy_type = "Runner"
 description = "Small runner. Usually met in groups."
-mob_type = 0
-is_alpha = false
 difficulty = 0.7
 hitpoints = 60
 speed = 1.5
-defense = 1.0
-defense_type = 0
-resistances = Dictionary[int, float]({})
-damage_threshold = 0
 damage = 3
 attack_speed = 2.25
-attack_type = 0
-experience_points = 30
-resource_drop = 1
 spawn_probability = 0.75
-min_wave = -1
-max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0d6ec"]
 size = Vector3(0.308594, 0.53894, 0.848145)
 
-[node name="Runner" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_bwjc1")]
+[node name="Runner" unique_id=2028104625 node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_bwjc1")]
 enemy_data = SubResource("Resource_0d6ec")
 mesh = NodePath("Rat")
 mesh_animations = NodePath("Rat/AnimationPlayer")
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=165791750]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0380859, 0.21555, 0.0759277)
 shape = SubResource("BoxShape3D_0d6ec")
 
-[node name="Rat" parent="." index="5" instance=ExtResource("3_0d6ec")]
+[node name="Rat" parent="." index="5" unique_id=1935627456 instance=ExtResource("3_0d6ec")]
 
-[node name="Armature" parent="Rat" index="0"]
+[node name="Armature" parent="Rat" index="0" unique_id=1778805783]
 transform = Transform3D(-39.5492, 3.8147e-06, 5.68434e-13, 7.27318e-14, -4.71463e-06, 39.5492, 2.86102e-06, 39.5492, 4.71463e-06, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Rat/Armature" index="0"]
+[node name="Skeleton3D" parent="Rat/Armature" index="0" unique_id=818233578]
 bones/1/rotation = Quaternion(0.707107, -8.73846e-07, -8.73846e-07, 0.707107)
 bones/1/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(1.07553e-05, 0.00460416, -3.47083e-05)
@@ -56,7 +45,6 @@ bones/5/rotation = Quaternion(0.70811, -0.703483, -0.027541, 0.0541615)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(-1.71499e-10, 0.00390488, -5.52047e-10)
 bones/6/rotation = Quaternion(-0.290046, -0.0181664, -0.00550693, 0.956824)
-bones/6/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-0.00108967, 0.001676, -0.0037491)
 bones/8/rotation = Quaternion(-0.000261627, 0.000261216, 0.707107, 0.707107)
 bones/8/scale = Vector3(1, 1, 1)
@@ -114,7 +102,6 @@ bones/30/rotation = Quaternion(-0.00856659, -0.00843515, -0.0187161, 0.999753)
 bones/30/scale = Vector3(1, 1, 1)
 bones/31/position = Vector3(-3.33905e-11, 0.00278399, -2.25651e-10)
 bones/31/rotation = Quaternion(-0.178984, -0.254546, 0.0470415, 0.949188)
-bones/31/scale = Vector3(1, 1, 1)
 bones/33/position = Vector3(-6.45654e-05, 0.00258968, -0.00631942)
 bones/33/rotation = Quaternion(5.3612e-06, 0.695464, 0.718561, 5.18861e-06)
 bones/33/scale = Vector3(1, 1, 1)

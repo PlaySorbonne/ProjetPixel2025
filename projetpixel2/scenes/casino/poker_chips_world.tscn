@@ -153,67 +153,67 @@ surface_material_override/1 = SubResource("StandardMaterial3D_pdaxw")
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.2642562, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_5nbo4")
 surface_material_override/1 = SubResource("StandardMaterial3D_pettd")
-chip_value = 2
+chip_value = 25
 
 [node name="PokerChip10" parent="." unique_id=799546506 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.04953205, 0, 0.006824683, 0, 0.065, 0, -0.006824683, 0, 0.04953205, -0.2642562, -0.018386126, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_fyxbj")
 surface_material_override/1 = SubResource("StandardMaterial3D_x17ah")
-chip_value = 2
+chip_value = 25
 
 [node name="PokerChip4" parent="." unique_id=1120104536 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.054434836, -0.01863359, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_qbqyy")
 surface_material_override/1 = SubResource("StandardMaterial3D_qgijg")
-chip_value = 3
+chip_value = 50
 
 [node name="PokerChip12" parent="." unique_id=569242622 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.054434836, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_w5vgk")
 surface_material_override/1 = SubResource("StandardMaterial3D_a4g6i")
-chip_value = 3
+chip_value = 50
 
 [node name="PokerChip5" parent="." unique_id=204186494 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.370016, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_b1iov")
 surface_material_override/1 = SubResource("StandardMaterial3D_hlhus")
-chip_value = 4
+chip_value = 100
 
 [node name="PokerChip11" parent="." unique_id=1500056352 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.0484609, 0, 0.012310202, 0, 0.065, 0, -0.012310202, 0, 0.0484609, 0.38220802, -0.019388981, -0.07238568)
 surface_material_override/0 = SubResource("StandardMaterial3D_jlgyh")
 surface_material_override/1 = SubResource("StandardMaterial3D_8qw40")
-chip_value = 4
+chip_value = 100
 
 [node name="PokerChip6" parent="." unique_id=2022124919 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.6966814, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_mda0g")
 surface_material_override/1 = SubResource("StandardMaterial3D_76bdu")
-chip_value = 5
+chip_value = 500
 
 [node name="PokerChip8" parent="." unique_id=1319765232 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.6843481, -0.018304855, -0.06631456)
 surface_material_override/0 = SubResource("StandardMaterial3D_krcf1")
 surface_material_override/1 = SubResource("StandardMaterial3D_73yqn")
-chip_value = 5
+chip_value = 500
 
 [node name="PokerChip9" parent="." unique_id=573632434 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.048668765, 0, 0.01146087, 0, 0.065, 0, -0.01146087, 0, 0.048668765, 0.6966814, 0.014214158, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_snknv")
 surface_material_override/1 = SubResource("StandardMaterial3D_ec1vp")
-chip_value = 5
+chip_value = 500
 
 [node name="PokerChip7" parent="." unique_id=106300253 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 1.0152106, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_4bdqt")
 surface_material_override/1 = SubResource("StandardMaterial3D_18jq3")
-chip_value = 6
+chip_value = 1000
 
 [node name="PokerChip3" parent="." unique_id=27153194 groups=["chips_to_delete"] instance=ExtResource("2_lpcdg")]
 transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.5491247, -0.0503307, -0.07377373)
 surface_material_override/0 = SubResource("StandardMaterial3D_6m08m")
 surface_material_override/1 = SubResource("StandardMaterial3D_oolg8")
-chip_value = 1
+chip_value = 5
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1101170856]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4260186, 0.41133535)

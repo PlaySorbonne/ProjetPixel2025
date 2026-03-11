@@ -24,7 +24,7 @@ enum EnemyTypes {
 @export var damage : int = 10
 @export var attack_speed : float = 0.5
 @export var attack_type : DamageableObject.DamagingTypes = DamageableObject.DamagingTypes.Neutral
-@export var experience_points := 8
+@export var experience_points := PokerChip.ChipValues.Val_1
 @export var resource_drop := 1
 @export var spawn_probability := 0.5
 @export var min_wave := -1

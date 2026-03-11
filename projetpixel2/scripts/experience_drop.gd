@@ -40,7 +40,7 @@ signal xp_drop_collected(xp_amount : int)
 
 
 @export var hitpoints := MAX_HP
-@export var experience_points := 100:
+@export var experience_points := 1:
 	set(value):
 		experience_points = value
 		_apply_color()

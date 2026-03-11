@@ -120,8 +120,10 @@ func update_card_description(new_text := "") -> void:
 
 
 func gain_poker_chips(exp_gained : float) -> void:
-	print("LINK EXP_GAINED TO CHIP VALUE")
-	poker_chip_world.add_random_chip()
+	if exp_gained <= 0.0:
+		return
+	print("LINK EXP_GAINED=%s TO CHIP VALUE" % exp_gained)
+	poker_chip_world.add_chip(int(exp_gained))
 
 func update_experience() -> void:
 	var final_val := RunData.total_experience - RunData.previous_experience_threshold

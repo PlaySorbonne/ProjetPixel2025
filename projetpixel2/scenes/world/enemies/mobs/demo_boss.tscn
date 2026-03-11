@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://deix6gohaapif"]
+[gd_scene format=3 uid="uid://deix6gohaapif"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_vopqk"]
 [ext_resource type="Script" uid="uid://d1ghqp2o5egeo" path="res://scripts/ennemy_demo_boss.gd" id="2_15374"]
@@ -16,17 +16,12 @@ difficulty = 9.5
 hitpoints = 2000
 speed = 0.45
 defense = 1.5
-defense_type = 0
-resistances = Dictionary[int, float]({})
-damage_threshold = 0
 damage = 125
 attack_speed = 0.2
-attack_type = 0
-experience_points = 1000
+experience_points = 6
 resource_drop = 10
 spawn_probability = 0.1
 min_wave = 15
-max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwftm"]
@@ -35,7 +30,7 @@ size = Vector3(1.36127, 3.8653, 2.18665)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0h2yh"]
 size = Vector3(2.02527, 1, 3.68292)
 
-[node name="DemoBoss" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_vopqk")]
+[node name="DemoBoss" unique_id=1860422474 node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_vopqk")]
 script = ExtResource("2_15374")
 enemy_data = SubResource("Resource_pwftm")
 mesh = NodePath("Trex")
@@ -44,37 +39,37 @@ run_anim = "Armature|TRex_Run"
 attack_anim = "Armature|TRex_Attack"
 death_anim = "Armature|TRex_Death"
 
-[node name="CollisionShape3D" parent="." index="0"]
+[node name="CollisionShape3D" parent="." index="0" unique_id=165791750]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0850525, 1.0394, -0.501961)
 shape = SubResource("BoxShape3D_pwftm")
 
-[node name="DamageArea" parent="." index="2"]
+[node name="DamageArea" parent="." index="2" unique_id=343099490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000998616, 0.521029, 0.016819)
 
-[node name="CollisionShape3D" parent="DamageArea" index="0"]
+[node name="CollisionShape3D" parent="DamageArea" index="0" unique_id=1021190996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0357056, 0, -1.12894)
 shape = SubResource("BoxShape3D_0h2yh")
 
-[node name="TimerMinion" type="Timer" parent="." index="5"]
+[node name="TimerMinion" type="Timer" parent="." index="5" unique_id=1769494817]
 wait_time = 2.5
 autostart = true
 
-[node name="Label3D" type="Label3D" parent="." index="6"]
+[node name="Label3D" type="Label3D" parent="." index="6" unique_id=1745321733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -0.5665)
 billboard = 1
 text = "2000/2000"
 font_size = 42
 outline_size = 24
 
-[node name="TimerDefense" type="Timer" parent="." index="7"]
+[node name="TimerDefense" type="Timer" parent="." index="7" unique_id=1963959579]
 one_shot = true
 
-[node name="Trex" parent="." index="8" instance=ExtResource("4_pwftm")]
+[node name="Trex" parent="." index="8" unique_id=729321394 instance=ExtResource("4_pwftm")]
 
-[node name="Armature" parent="Trex" index="0"]
+[node name="Armature" parent="Trex" index="0" unique_id=1491742650]
 transform = Transform3D(-300, -2.62268e-05, -3.12648e-12, 0, -3.57628e-05, 300, -2.62268e-05, 300, 3.57628e-05, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Trex/Armature" index="0"]
+[node name="Skeleton3D" parent="Trex/Armature" index="0" unique_id=82723613]
 bones/1/position = Vector3(6.16324e-05, 0.00850204, 0.00208573)
 bones/1/rotation = Quaternion(0.0110151, -2.14939e-27, 2.44584e-18, 0.999939)
 bones/2/position = Vector3(-0.000411077, -0.00232551, 0.00113317)
@@ -120,7 +115,6 @@ bones/18/rotation = Quaternion(-0.343933, 0.00719181, -0.0372789, 0.938226)
 bones/18/scale = Vector3(1, 1, 1)
 bones/20/position = Vector3(0.000948382, -0.00295346, -0.00179169)
 bones/20/rotation = Quaternion(-0.728507, 4.89978e-07, -5.21069e-07, 0.685039)
-bones/20/scale = Vector3(1, 1, 1)
 bones/21/position = Vector3(3.98791e-13, 0.00117813, -1.00293e-09)
 bones/21/rotation = Quaternion(-0.22706, -0.0020595, 0.00893936, 0.973837)
 bones/21/scale = Vector3(1, 1, 1)
@@ -129,13 +123,10 @@ bones/22/rotation = Quaternion(0.134402, -0.000809209, -0.000684238, 0.990926)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/position = Vector3(-4.09487e-13, 0.00203043, -2.88157e-10)
 bones/23/rotation = Quaternion(0.240263, -0.000748845, -0.000591641, 0.970707)
-bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(1.47796e-13, 0.00272536, 4.81819e-10)
 bones/24/rotation = Quaternion(0.0955335, -0.00173827, -0.000856533, 0.995424)
-bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(-3.46179e-13, 0.00197477, 1.62717e-10)
 bones/25/rotation = Quaternion(-0.0172811, -0.00229205, -0.00116523, 0.999847)
-bones/25/scale = Vector3(1, 1, 1)
 bones/27/position = Vector3(-6.45654e-05, -0.00251846, -0.00115474)
 bones/27/rotation = Quaternion(1.39817e-07, 0.735314, 0.677727, 3.09957e-07)
 bones/28/position = Vector3(-3.93383e-16, 0.00138311, -6.18746e-10)

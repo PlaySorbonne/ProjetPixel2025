@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cocf7ikucw14y"]
+[gd_scene format=3 uid="uid://cocf7ikucw14y"]
 
 [ext_resource type="PackedScene" uid="uid://c6wednpvk2t26" path="res://scenes/world/enemies/base_enemy.tscn" id="1_xle50"]
 [ext_resource type="Script" uid="uid://bgecywqc8mw18" path="res://scripts/enemy_rock.gd" id="2_qgeih"]
@@ -11,25 +11,18 @@ script = ExtResource("3_b78ks")
 enemy_type = "Golem"
 description = "Strange sentient (?) boulder. Spawns little creatures when burned."
 mob_type = 2
-is_alpha = false
 difficulty = 3.5
 hitpoints = 250
 speed = 0.7
 defense = 1.2
-defense_type = 0
-resistances = Dictionary[int, float]({})
-damage_threshold = 0
 damage = 25
 attack_speed = 0.4
-attack_type = 0
-experience_points = 75
-resource_drop = 1
+experience_points = 1
 spawn_probability = 0.6
 min_wave = 2
-max_wave = -1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
-[node name="Rock" node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_xle50")]
+[node name="Rock" unique_id=104899725 node_paths=PackedStringArray("mesh", "mesh_animations") instance=ExtResource("1_xle50")]
 script = ExtResource("2_qgeih")
 max_minions = 15
 enemy_data = SubResource("Resource_68oic")
@@ -39,12 +32,12 @@ run_anim = "Armature|Slime_Walk"
 attack_anim = "Armature|Slime_Attack"
 death_anim = "Armature|Slime_Death"
 
-[node name="Slime" parent="." index="5" instance=ExtResource("4_68oic")]
+[node name="Slime" parent="." index="5" unique_id=2102855522 instance=ExtResource("4_68oic")]
 
-[node name="Armature" parent="Slime" index="0"]
+[node name="Armature" parent="Slime" index="0" unique_id=653572263]
 transform = Transform3D(1.31134e-05, -100, -1.19209e-05, 0, -1.19209e-05, 100, -100, -1.31134e-05, -1.56324e-12, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Slime/Armature" index="0"]
+[node name="Skeleton3D" parent="Slime/Armature" index="0" unique_id=1511796769]
 bones/2/rotation = Quaternion(-0.0627444, 0.00212884, -0.213248, 0.974979)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.100834, -0.698956, 0.0125015, 0.70791)

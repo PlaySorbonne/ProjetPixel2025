@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://guwcc5ngr5vp"]
+[gd_scene format=3 uid="uid://guwcc5ngr5vp"]
 
 [ext_resource type="Script" uid="uid://dyivm457wlh06" path="res://scripts/experience_drop.gd" id="1_12bmr"]
 [ext_resource type="Shader" uid="uid://dpo32s5y3juy0" path="res://resources/shaders/experience_drop.gdshader" id="2_chnow"]
@@ -16,8 +16,8 @@ seed = 190
 frequency = 0.0783
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dkkf5"]
-in_3d_space = true
 noise = SubResource("FastNoiseLite_1tvt0")
+in_3d_space = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4yd8v"]
 resource_local_to_scene = true
@@ -32,15 +32,15 @@ shader_parameter/glow_amount = 2.0
 shader_parameter/posMult = 0.5
 shader_parameter/noise = SubResource("NoiseTexture2D_dkkf5")
 
-[node name="ExperienceDrop" type="Area3D"]
+[node name="ExperienceDrop" type="Area3D" unique_id=780453487]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_12bmr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=162229889]
 shape = SubResource("SphereShape3D_qo8eh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2060697357]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 mesh = SubResource("SphereMesh_12bmr")
 surface_material_override/0 = SubResource("ShaderMaterial_4yd8v")
