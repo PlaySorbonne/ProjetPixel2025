@@ -42,7 +42,6 @@ func _ready() -> void:
 	set_enemy_id()
 	living_enemies.append(self)
 	#print("enemy " + str(enemy_id) + " spawned!")
-	print("enemy exp = %s" % str(enemy_data.experience_points))
 
 func get_health() -> int:
 	return $DamageableObject.health

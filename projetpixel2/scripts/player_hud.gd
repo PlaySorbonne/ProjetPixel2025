@@ -122,7 +122,6 @@ func update_card_description(new_text := "") -> void:
 func gain_poker_chips(exp_gained : float) -> void:
 	if exp_gained <= 0.0:
 		return
-	print("LINK EXP_GAINED=%s TO CHIP VALUE" % exp_gained)
 	poker_chip_world.add_chip(int(exp_gained))
 
 func update_experience() -> void:
