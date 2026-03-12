@@ -25,9 +25,12 @@ const POKER_CHIP_WIDTH := 0.032
 @onready var init_chip_height : float = $PokerChip1Marker.position.y
 
 var poker_chip_tweens : Dictionary[PokerChip.ChipValues, Tween]
+var descending_chip_values : Array = []
+var ascending_chip_values : Array = []
 
 
 func _ready() -> void:
+	_set_ordered_poker_chips_values()
 	for val : PokerChip.ChipValues in PokerChip.ChipValues.values():
 		poker_chip_tweens[val] = null
 	for obj : Node in get_children():
@@ -35,11 +38,71 @@ func _ready() -> void:
 			obj.queue_free()
 	RunData.chips_gained.connect(_update_chips)
 
+func _set_ordered_poker_chips_values() -> void:
+	descending_chip_values = PokerChip.ChipValues.values()
+	descending_chip_values.sort_custom(sort_descending)
+	ascending_chip_values = PokerChip.ChipValues.values()
+	ascending_chip_values.sort()
+
+func sort_descending(a : int, b : int):
+	return a > b
+
+func get_all_number_of_chips() -> Dictionary:
+	var n_dict : Dictionary
+	for k : int in ascending_chip_values:
+		n_dict[k] = get_number_of_chips(k)
+	return n_dict
+
 func _update_chips(chips_gained : int) -> void:
+	print("_update_chips -> " + str(chips_gained) + " ; new money = " + str(RunData.current_chips))
+	print("chips = " + str(get_all_number_of_chips()))
+	if chips_gained == 0:
+		return
 	if chips_gained > 0:
-		add_chip(chips_gained)
+		gain_chips(chips_gained)
 	else:
-		remove_chip(chips_gained)
+		lose_chips(abs(chips_gained))
+
+func gain_chips(money_gained : int) -> void:
+	print("  gain %s chips" %str(money_gained))
+	var chips_to_change : Dictionary[int, int] = money_to_chips(abs(money_gained))
+	for chip_val : int in chips_to_change.keys():
+			for _i in range(chips_to_change[chip_val]):
+				print("    gain " + str(chip_val))
+				add_chip(chip_val)
+
+func lose_chips(money_lost : int) -> void:
+	print("  lose %s chips" %str(money_lost))
+	for chip_val : int in descending_chip_values:
+		while money_lost > chip_val:
+			if get_number_of_chips(chip_val) > 0:
+				remove_chip(chip_val)
+				print("    lose " + str(chip_val))
+				money_lost -= chip_val
+			else:
+				make_change(chip_val)
+
+func make_change(target_value: int) -> void:
+	for chip_val : int in ascending_chip_values:
+		if chip_val == target_value:
+			continue
+		if get_number_of_chips(chip_val) * chip_val >= target_value:
+			var current_target_val := target_value
+			while current_target_val > 0:
+				remove_chip(chip_val)
+				current_target_val -= chip_val
+			add_chip(target_value)
+			return 
+
+func money_to_chips(amount : int) -> Dictionary[int, int]:
+	var chips : Dictionary[int, int] = {}
+	for val : int in descending_chip_values:
+		@warning_ignore("integer_division")
+		var count := amount / val
+		if count > 0:
+			chips[val] = count
+			amount -= count * val
+	return chips
 
 func _update_chip_tween(chip_value : PokerChip.ChipValues) -> Tween:
 	if poker_chip_tweens[chip_value]:
@@ -113,6 +176,6 @@ func add_random_chip() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_m"):
-		RunData.current_chips += 1
+		RunData.current_chips += randi_range(1, 32)
 	if Input.is_action_just_pressed("debug_l"):
-		RunData.current_chips -= 1
+		RunData.current_chips -= randi_range(1, 32)

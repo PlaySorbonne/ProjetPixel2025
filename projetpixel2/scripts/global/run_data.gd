@@ -30,7 +30,7 @@ var experience_multiplier := 3.0
 var current_chips : int = 0:
 	set(value):
 		var previous_val := current_chips
-		current_chips = value
+		current_chips = max(value, 0)
 		chips_gained.emit(value-previous_val)
 var total_experience := 0
 
