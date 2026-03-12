@@ -36,9 +36,10 @@ func _ready() -> void:
 	RunData.chips_gained.connect(_update_chips)
 
 func _update_chips(chips_gained : int) -> void:
-	if chips_gained <= 0:
-		return
-	poker_chip_world.add_chip(chips_gained)
+	if chips_gained > 0:
+		add_chip(chips_gained)
+	else:
+		remove_chip(chips_gained)
 
 func _update_chip_tween(chip_value : PokerChip.ChipValues) -> Tween:
 	if poker_chip_tweens[chip_value]:
