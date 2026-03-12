@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dpgx4b1ajw4qk" path="res://scenes/interface/casino_minigames/roulette_window.tscn" id="18_rwqbi"]
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -78,12 +79,19 @@ shader_parameter/flicker_intensity = 0.010000000475
 shader_parameter/color_offset = 1.5
 shader_parameter/blur = 0.17
 
+[sub_resource type="LabelSettings" id="LabelSettings_6usvi"]
+font = ExtResource("22_03tek")
+font_size = 32
+font_color = Color(0.7309045, 0.8675474, 0.67845386, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
 [node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
 layer = 2
 script = ExtResource("1_ldeku")
 
-[node name="GamePanel" type="Panel" parent="." unique_id=1054457954]
+[node name="GamePanelMain" type="Panel" parent="." unique_id=1054457954]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -439,9 +447,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_6usvi")
 
 [node name="ButtonRussianRoulette" parent="." unique_id=763556892 instance=ExtResource("18_616a6")]
 anchor_left = 0.884625
-anchor_top = 0.225282
+anchor_top = 0.08546719
 anchor_right = 0.985667
-anchor_bottom = 0.365097
+anchor_bottom = 0.22528218
 text = "Button
 Russian Roulette"
 game_delay = 30.0
@@ -449,10 +457,10 @@ current_delay = 5.0
 manually_start_minigame = true
 
 [node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
-anchor_left = 0.883678
-anchor_top = 0.386898
-anchor_right = 0.98472
-anchor_bottom = 0.526713
+anchor_left = 0.8836781
+anchor_top = 0.2470832
+anchor_right = 0.98472005
+anchor_bottom = 0.3868982
 text = "Button
 Dice"
 minigame_popup = ExtResource("16_gd21h")
@@ -460,10 +468,11 @@ game_delay = 30.0
 current_delay = 15.0
 
 [node name="ButtonRouletteWheel" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
-anchor_left = 0.883678
-anchor_top = 0.54178
-anchor_right = 0.98472
-anchor_bottom = 0.681595
+anchor_left = 0.8836781
+anchor_top = 0.40196517
+anchor_right = 0.98472005
+anchor_bottom = 0.5417802
+offset_bottom = 6.1035156e-05
 text = "Button
 Roulette Wheel"
 minigame_popup = ExtResource("18_rwqbi")
@@ -474,11 +483,10 @@ current_delay = 25.0
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 z_index = -16
 anchors_preset = -1
-anchor_left = 0.880729
-anchor_top = 0.69675
-anchor_right = 0.983333
-anchor_bottom = 0.827306
-offset_bottom = 6.10352e-05
+anchor_left = 0.8843511
+anchor_top = 0.5569352
+anchor_right = 0.9846266
+anchor_bottom = 0.68749124
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
@@ -499,15 +507,14 @@ color = Color(0, 0, 0, 1)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
 z_index = -20
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -360.0
-offset_top = -412.0
-offset_right = 360.0
-offset_bottom = -12.0
+offset_left = 1160.0
+offset_top = -419.0
+offset_right = -260.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -516,7 +523,7 @@ own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
-size = Vector2i(720, 400)
+size = Vector2i(500, 400)
 render_target_update_mode = 4
 
 [node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]
@@ -534,6 +541,19 @@ offset_right = 227.98291
 offset_bottom = 156.06848
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LabelChips" type="Label" parent="." unique_id=1064740027]
+anchors_preset = -1
+anchor_left = 0.878273
+anchor_top = 0.91801035
+anchor_right = 0.98868966
+anchor_bottom = 0.9674548
+text = "00000$"
+label_settings = SubResource("LabelSettings_6usvi")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]

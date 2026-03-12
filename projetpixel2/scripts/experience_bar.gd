@@ -16,7 +16,7 @@ func drop_card(card : CardData) -> void:
 		CardData.CardFamilies.Traders:
 			RunData.current_combo += int(100 * rarity_multiplier)
 		CardData.CardFamilies.Revolution:
-			RunData.current_experience = 0
+			RunData.current_chips = 0
 
 func set_experience_multiplier(mult : float, duration : float) -> void:
 	self_modulate = Color.DEEP_SKY_BLUE

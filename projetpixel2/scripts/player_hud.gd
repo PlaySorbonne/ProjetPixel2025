@@ -73,7 +73,7 @@ func _ready() -> void:
 	GV.hud = self
 	console.visible = GV.debug_mode
 	RunData.enemy_killed.connect(new_kill)
-	RunData.experience_gained.connect(gain_poker_chips)
+	RunData.chips_gained.connect(gain_poker_chips)
 	#RunData.experience_gained.connect(update_experience)
 	#RunData.level_gained.connect(update_level)
 	#level_updated.connect(gain_level)
@@ -118,10 +118,8 @@ func clear_card_description() -> void:
 func update_card_description(new_text := "") -> void:
 	$LabelCardDescription.text = new_text
 
-func gain_poker_chips(exp_gained : float) -> void:
-	if exp_gained <= 0.0:
-		return
-	poker_chip_world.add_chip(int(exp_gained))
+func gain_poker_chips(_chips_gained : int) -> void:
+	$LabelChips.text = "%05d$" % RunData.current_chips
 
 func update_experience() -> void:
 	var final_val := RunData.total_experience - RunData.previous_experience_threshold

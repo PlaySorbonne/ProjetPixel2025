@@ -33,6 +33,12 @@ func _ready() -> void:
 	for obj : Node in get_children():
 		if obj.is_in_group("chips_to_delete"):
 			obj.queue_free()
+	RunData.chips_gained.connect(_update_chips)
+
+func _update_chips(chips_gained : int) -> void:
+	if chips_gained <= 0:
+		return
+	poker_chip_world.add_chip(chips_gained)
 
 func _update_chip_tween(chip_value : PokerChip.ChipValues) -> Tween:
 	if poker_chip_tweens[chip_value]:
@@ -106,6 +112,6 @@ func add_random_chip() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_m"):
-		add_random_chip()
+		RunData.current_chips += 1
 	if Input.is_action_just_pressed("debug_l"):
-		remove_random_chip()
+		RunData.current_chips -= 1

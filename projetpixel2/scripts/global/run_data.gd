@@ -1,7 +1,7 @@
 extends Node
 
 signal enemy_killed
-signal experience_gained(exp_gained : float)
+signal chips_gained(exp_gained : int)
 signal level_gained
 
 
@@ -27,21 +27,21 @@ var current_level := 1:
 var level_experience_threshold : int = get_level_experience_threshold()
 var previous_experience_threshold : int = 0
 var experience_multiplier := 3.0
-var current_experience := 0:
+var current_chips : int = 0:
 	set(value):
-		var previous_val := current_experience
-		current_experience = value
-		experience_gained.emit(value-previous_val)
+		var previous_val := current_chips
+		current_chips = value
+		chips_gained.emit(value-previous_val)
 var total_experience := 0
 
 func gain_experience(amount : int) -> void:
 	#print("GAIN " + str(amount) + " * " + str(experience_multiplier))
 	var gain : int = int(amount * experience_multiplier) 
 	total_experience += gain
-	current_experience += gain
+	current_chips += gain
 
 func gain_level() -> void:
-	current_experience -= level_experience_threshold
+	current_chips -= level_experience_threshold
 	previous_experience_threshold = level_experience_threshold
 	current_level += 1
 	level_gained.emit()
@@ -50,7 +50,7 @@ func get_level_experience_threshold() -> int:
 	return experience_needed_equation.execute([], self)
 
 func get_experience_percentage() -> float:
-	return float(current_experience) / float(level_experience_threshold)
+	return float(current_chips) / float(level_experience_threshold)
 
 # combo
 var current_combo := 0:
@@ -94,7 +94,7 @@ func reset_run_data() -> void:
 	experience_needed_equation = default_levelling_expression()
 	current_level = 1
 	level_experience_threshold = experience_needed_equation.execute([], self)
-	current_experience = 0
+	current_chips = 0
 	experience_multiplier = 1.0
 	total_experience = 0
 	# combo
