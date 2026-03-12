@@ -44,8 +44,8 @@ rings = 2
 cap_top = false
 
 [node name="TowerBase" type="StaticBody3D" unique_id=1738831486 groups=["tower"]]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 32
+collision_mask = 32
 script = ExtResource("1_041tc")
 projectile_template = SubResource("Resource_715kj")
 

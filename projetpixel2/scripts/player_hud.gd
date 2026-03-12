@@ -222,3 +222,9 @@ func _on_button_spawn_tower_pressed() -> void:
 		$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
 	else:
 		$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
+
+func _on_cards_container_discard_pile_updated() -> void:
+	$LabelDiscardPile.text = str(len($CardsContainer.discard_pile))
+
+func _on_cards_container_draw_pile_updated() -> void:
+	$LabelDrawPile.text = str(len($CardsContainer.draw_pile))

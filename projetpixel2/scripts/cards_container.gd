@@ -2,6 +2,8 @@ extends Control
 class_name CardsContainer
 
 
+signal draw_pile_updated
+signal discard_pile_updated
 signal draw_pile_shuffled
 signal card_drawn
 
@@ -9,10 +11,15 @@ signal card_drawn
 @export var cards_hand : Array[CardObject] = []
 @export var draw_pile : Array[CardObject] = []
 @export var discard_pile : Array[CardObject] = []
+@export var initial_deck : Array[CardData] 
 
 
 func _ready() -> void:
-	pass
+	GV.wave_manager.new_wave_spawned.connect(draw_hand)
+	for card_data : CardData in initial_deck:
+		var new_card := create_card_object(card_data)
+		draw_pile.append(new_card)
+		draw_pile_updated.emit()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
@@ -24,14 +31,21 @@ func draw_hand() -> void:
 		await card_drawn
 
 func draw_card() -> void:
+	if len(cards_hand) >= hand_size:
+		print("Hand size reached")
+		return
 	if len(draw_pile) == 0:
 		discard_pile_to_draw_pile()
 		await draw_pile_shuffled
+	if len(draw_pile) == 0:
+		print("No more cards to draw")
+		return
 	var last_draw_pile_card := len(draw_pile)-1
 	_add_playable_card(draw_pile[last_draw_pile_card])
 	draw_pile.resize(last_draw_pile_card)
 	await get_tree().create_timer(0.15).timeout
 	card_drawn.emit()
+	draw_pile_updated.emit()
 
 func discard_pile_to_draw_pile() -> void:
 	draw_pile = discard_pile.duplicate()
@@ -39,10 +53,20 @@ func discard_pile_to_draw_pile() -> void:
 	discard_pile.resize(0)
 	await get_tree().create_timer(0.5).timeout
 	draw_pile_shuffled.emit()
+	draw_pile_updated.emit()
+	discard_pile_updated.emit()
 
-func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
+func create_card_object(card_data : CardData) -> CardObject:
 	var new_card : CardObject = PlayerHud.CARD_OBJ_RES.instantiate()
 	new_card.card = card_data
+	new_card.card_played.connect(on_card_played.bind(new_card))
+	return new_card
+
+func on_card_played(card : CardObject) -> void:
+	remove_card_from_hand(card)
+
+func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
+	var new_card := create_card_object(card_data)
 	if forced_position != Vector2.ZERO:
 		new_card.global_position = forced_position
 	_add_playable_card(new_card)
@@ -55,7 +79,10 @@ func _add_playable_card(new_card : CardObject) -> void:
 	new_card.can_be_dropped_on_objects = true
 
 func remove_card_from_hand(card_object : CardObject) -> void:
+	remove_child(card_object)
 	cards_hand.erase(card_object)
+	discard_pile.append(card_object)
+	discard_pile_updated.emit()
 	reorder_hand()
 
 func reorder_hand() -> void:
@@ -63,7 +90,7 @@ func reorder_hand() -> void:
 	if card_count == 0:
 		return
 	
-	var container_size : Vector2 = $CardsContainer.size
+	var container_size : Vector2 = size
 	var base_x : float = container_size.x / 2.0 - (cards_hand[0
 					].size.x * cards_hand[0].scale.x / 2.0) - 30.0
 	var base_y : float = -30.0

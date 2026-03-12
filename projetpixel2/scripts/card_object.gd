@@ -2,6 +2,7 @@ extends Button
 class_name CardObject
 
 
+signal card_played
 signal card_clicked
 
 const FAMILY_COLORS := {
@@ -207,9 +208,9 @@ func return_to_hand() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
 
 func destroy_card_object() -> void:
-	queue_free()
-	if is_instance_valid(GV.hud):
-		GV.hud.remove_card_from_hand(self)
+	card_played.emit()
+	#queue_free()
+	#GV.hud.remove_card_from_hand(self)
 
 func _on_mouse_entered() -> void:
 	mouse_over_card = true

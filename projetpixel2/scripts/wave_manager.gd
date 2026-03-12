@@ -2,6 +2,8 @@ extends Node
 class_name WaveManager
 
 
+signal new_wave_spawned
+
 enum EnemyTypes {Basic, Runner, Tank, Rock}
 
 const MAX_ENEMY_TYPES_PER_WAVE := 2
@@ -154,6 +156,7 @@ func spawn_next_wave() -> void:
 		wave_buttons[current_wave_id].set_next_wave()
 		$Timer.start(waves[current_wave_id].wave_duration)
 	generate_new_wave()
+	new_wave_spawned.emit()
 
 func _on_timer_timeout() -> void:
 	spawn_next_wave()

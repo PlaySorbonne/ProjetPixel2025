@@ -16,8 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
 [ext_resource type="Script" uid="uid://b1kg47jeov2kr" path="res://scripts/cards_container.gd" id="13_6usvi"]
+[ext_resource type="Script" uid="uid://bkgi8sauy56hj" path="res://scripts/card_data.gd" id="14_3kbv4"]
 [ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="15_gd21h"]
+[ext_resource type="Resource" uid="uid://j5bmavpiykqe" path="res://scenes/card_objects/cd_attack_up.tres" id="15_xy5hs"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
+[ext_resource type="Resource" uid="uid://b87bxg0hfmtu6" path="res://scenes/card_objects/cd_salvo.tres" id="16_xy5hs"]
 [ext_resource type="PackedScene" uid="uid://cd64tbsnnfau" path="res://scenes/interface/menus/objects/button_casino_minigame.tscn" id="18_616a6"]
 [ext_resource type="PackedScene" uid="uid://dpgx4b1ajw4qk" path="res://scenes/interface/casino_minigames/roulette_window.tscn" id="18_rwqbi"]
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
@@ -325,6 +328,7 @@ offset_top = 7.0
 offset_bottom = 7.0
 mouse_filter = 2
 script = ExtResource("13_6usvi")
+initial_deck = Array[ExtResource("14_3kbv4")]([ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs")])
 metadata/_edit_use_anchors_ = true
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=210749627]
@@ -559,9 +563,39 @@ vertical_alignment = 1
 clip_text = true
 metadata/_edit_use_anchors_ = true
 
+[node name="LabelDrawPile" type="Label" parent="." unique_id=2106286069]
+modulate = Color(1.8770993e-06, 0.74554, 0.3670423, 1)
+anchors_preset = -1
+anchor_left = 0.1963745
+anchor_top = 0.9042536
+anchor_right = 0.23724645
+anchor_bottom = 0.95695156
+text = "-1"
+label_settings = SubResource("LabelSettings_6usvi")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDiscardPile" type="Label" parent="." unique_id=193774555]
+modulate = Color(1.8770993e-06, 0.74554, 0.3670423, 1)
+anchors_preset = -1
+anchor_left = 0.13644333
+anchor_top = 0.9060002
+anchor_right = 0.17731526
+anchor_bottom = 0.9586982
+text = "-1"
+label_settings = SubResource("LabelSettings_6usvi")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
+[connection signal="discard_pile_updated" from="CardsContainer" to="." method="_on_cards_container_discard_pile_updated"]
+[connection signal="draw_pile_updated" from="CardsContainer" to="." method="_on_cards_container_draw_pile_updated"]

@@ -59,13 +59,26 @@ static func get_random_card_from_deck() -> CardData:
 	return current_deck.pick_random()
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
-	parsed_card_code.projectile = projectile
-	parsed_card_code.enemy = enemy
-	if trigger_condition.call():
-		effect.call()
-		return true
+	if card_code:
+		card_code.projectile = projectile
+		card_code.enemy = enemy
 	else:
-		return false
+		# Older version : parsed from csv
+		parsed_card_code.projectile = projectile
+		parsed_card_code.enemy = enemy
+	if card_code:
+		if card_code.check_condition():
+			card_code.run_effect()
+			return true
+		else:
+			return false
+	else:
+		# Older version : parsed from csv
+		if trigger_condition.call():
+			effect.call()
+			return true
+		else:
+			return false
 
 func parse_from_csv(csv_line : PackedStringArray) -> void:
 	for i : int in range(len(csv_line)):

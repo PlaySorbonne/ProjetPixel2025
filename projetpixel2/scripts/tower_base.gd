@@ -342,11 +342,11 @@ func _on_timer_shoot_timeout() -> void:
 	if current_mode == Modes.Firing:
 		try_shoot_enemy()
 
-func try_shoot_enemy() -> void:
+func try_shoot_enemy(is_bonus := false) -> void:
 	if len(get_focused_enemies()) > 0:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
-			shoot(focused_enemy)
+			shoot(focused_enemy, is_bonus)
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:
