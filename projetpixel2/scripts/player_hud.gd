@@ -228,3 +228,11 @@ func _on_cards_container_discard_pile_updated() -> void:
 
 func _on_cards_container_draw_pile_updated() -> void:
 	$LabelDrawPile.text = str(len($CardsContainer.draw_pile))
+
+
+func _on_button_shop_pressed() -> void:
+	var booster := Booster.spawn_booster($BoosterContainer, Vector2(108, 11))
+	booster.open_booster()
+	await booster.booster_opened
+	booster.destroy_booster()
+	gain_level(true)

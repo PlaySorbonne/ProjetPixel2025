@@ -26,13 +26,6 @@
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
-[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="26_0bo3y"]
-[ext_resource type="Script" uid="uid://f7107khk0084" path="res://scripts/booster.gd" id="26_cudfr"]
-[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="27_c20sh"]
-[ext_resource type="Texture2D" uid="uid://bpft5kl5l1fnv" path="res://resources/images/casino/rug_seamless_texture_contrast.png" id="28_n2kxx"]
-[ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="29_c20sh"]
-[ext_resource type="Shader" uid="uid://drua2dx2j8hw" path="res://resources/shaders/glow.gdshader" id="29_n2kxx"]
-[ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="31_ktv3t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -89,31 +82,6 @@ shader_parameter/flicker_speed = 30.0
 shader_parameter/flicker_intensity = 0.010000000475
 shader_parameter/color_offset = 1.5
 shader_parameter/blur = 0.17
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktv3t"]
-resource_local_to_scene = true
-shader = ExtResource("26_0bo3y")
-shader_parameter/scroll_speed = 0.750000035625
-shader_parameter/angle_degrees = 220.00001045
-shader_parameter/repeat_x = 1.00000004424012
-shader_parameter/repeat_y = 1.00000004424012
-shader_parameter/texture_to_scroll = ExtResource("27_c20sh")
-shader_parameter/glitch_chance = 0.02
-shader_parameter/glitch_speed = 7.0
-shader_parameter/slice_density = 14.0
-shader_parameter/slice_strength = 0.38
-shader_parameter/shake_strength = 0.02
-shader_parameter/chroma_offset = 0.016
-shader_parameter/noise_strength = 0.2
-shader_parameter/color_flash_strength = 0.4
-shader_parameter/scanline_strength = 0.18
-shader_parameter/local_warp_strength = 0.14
-shader_parameter/flip_chance = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cudfr"]
-shader = ExtResource("29_n2kxx")
-shader_parameter/speed = 2.0
-shader_parameter/glow_strength = 1.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_6usvi"]
 font = ExtResource("22_03tek")
@@ -582,105 +550,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Booster" type="Control" parent="BoosterContainer" unique_id=1770025656]
-layout_mode = 1
-anchor_left = 0.177
-anchor_top = -0.060000002
-anchor_right = 0.70100003
-anchor_bottom = 0.87000006
-offset_left = -0.10696411
-offset_top = -0.13536835
-offset_right = -0.10800171
-offset_bottom = -0.05154419
-script = ExtResource("26_cudfr")
-
-[node name="Background" type="TextureRect" parent="BoosterContainer/Booster" unique_id=812395783]
-show_behind_parent = true
-material = SubResource("ShaderMaterial_ktv3t")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("28_n2kxx")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="CornerRight" type="TextureRect" parent="BoosterContainer/Booster" unique_id=228007027]
-material = SubResource("ShaderMaterial_cudfr")
-layout_mode = 0
-anchor_left = 0.8064853
-anchor_top = 0.52756363
-anchor_right = 1.2504153
-anchor_bottom = 0.52756363
-offset_left = 15.533005
-offset_top = -37.5
-offset_right = -15.53302
-offset_bottom = 37.5
-rotation = -0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("29_c20sh")
-metadata/_edit_use_anchors_ = true
-
-[node name="CornerLeft" type="TextureRect" parent="BoosterContainer/Booster" unique_id=361479481]
-material = SubResource("ShaderMaterial_cudfr")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.252
-anchor_top = 0.54300004
-anchor_right = 0.192
-anchor_bottom = 0.54300004
-offset_left = 15.483543
-offset_top = -37.582962
-offset_right = -15.599213
-offset_bottom = 37.417038
-rotation = 2.3561945
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("29_c20sh")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="BoosterContainer/Booster" unique_id=248376372]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -55.0
-offset_right = 55.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 3.1415882
-pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("31_ktv3t")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="ColorRect1" type="ColorRect" parent="BoosterContainer/Booster" unique_id=691583352]
-custom_minimum_size = Vector2(250, 10)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 0.5882353)
-
-[node name="ColorRect2" type="ColorRect" parent="BoosterContainer/Booster" unique_id=1636106119]
-custom_minimum_size = Vector2(250, 10)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 0.5882353)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BoosterContainer/Booster" unique_id=2125911704]
-
 [node name="LabelChips" type="Label" parent="." unique_id=1064740027]
 anchors_preset = -1
 anchor_left = 0.878273
@@ -722,6 +591,13 @@ vertical_alignment = 1
 clip_text = true
 metadata/_edit_use_anchors_ = true
 
+[node name="ButtonShop" type="Button" parent="." unique_id=1612274037]
+offset_left = 1747.4308
+offset_top = 877.46423
+offset_right = 1823.7483
+offset_bottom = 949.623
+text = "$"
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
@@ -730,3 +606,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
 [connection signal="discard_pile_updated" from="CardsContainer" to="." method="_on_cards_container_discard_pile_updated"]
 [connection signal="draw_pile_updated" from="CardsContainer" to="." method="_on_cards_container_draw_pile_updated"]
+[connection signal="pressed" from="ButtonShop" to="." method="_on_button_shop_pressed"]
