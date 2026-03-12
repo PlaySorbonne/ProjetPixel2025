@@ -74,6 +74,8 @@ func gain_chips(money_gained : int) -> void:
 
 func check_chip_stacks_height() -> void:
 	for chip_val : int in ascending_chip_values:
+		if chip_val == PokerChip.ChipValues.Val_1000:
+			return
 		if get_number_of_chips(chip_val) > 30:
 			for _i in range(15):
 				remove_chip(chip_val)

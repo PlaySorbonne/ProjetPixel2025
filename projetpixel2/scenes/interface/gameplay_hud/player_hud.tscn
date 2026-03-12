@@ -511,19 +511,20 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1155.7483
-offset_top = -416.5537
-offset_right = -260.0
-offset_bottom = -4.0
+offset_left = 1016.44836
+offset_top = -506.70667
+offset_right = -203.55164
+offset_bottom = -26.706665
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
-size = Vector2i(500, 400)
+size = Vector2i(700, 480)
 render_target_update_mode = 4
 
 [node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]

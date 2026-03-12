@@ -135,7 +135,8 @@ metallic = 0.5
 script = ExtResource("1_pdaxw")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1449439736]
-transform = Transform3D(1, 0, 0, 0, 0.9990528, -0.043514773, 0, 0.043514773, 0.9990528, 0.06789464, 0.7106688, 1.1689413)
+transform = Transform3D(1, 0, 0, 0, 0.95557725, 0.2947409, 0, -0.2947409, 0.9555772, 0.0678944, 2.0308268, 3.6836925)
+fov = 25.0
 near = 0.5
 far = 20.0
 
@@ -215,10 +216,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6m08m")
 surface_material_override/1 = SubResource("StandardMaterial3D_oolg8")
 chip_value = 5
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1101170856]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4260186, 0.41133535)
-light_color = Color(0.7797167, 0.75603193, 0.7496491, 1)
-
 [node name="PokerChip1Marker" type="Marker3D" parent="." unique_id=1918892536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8772967, -0.0503307, -0.07377373)
 
@@ -239,3 +236,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6915559, -0.0503307, -0.073
 
 [node name="PokerChip1000Marker" type="Marker3D" parent="." unique_id=1227949867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0152106, -0.0503307, -0.07377373)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=711563542]
+transform = Transform3D(1, 0, 0, 0, 0.6406459, 0.76783645, 0, -0.76783645, 0.6406459, 0, 1.6232294, -1.7693021)
