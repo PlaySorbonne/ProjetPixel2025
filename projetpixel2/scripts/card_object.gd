@@ -62,6 +62,7 @@ var previous_dissolve_uv : Vector2
 
 func _ready() -> void:
 	await get_tree().process_frame
+	print("is_inside_tree = " + str(is_inside_tree()))
 	$CardTexture/Label.text = card.name
 	#card_texture.self_modulate = FAMILY_COLORS[card.family]
 	core_texture.material = FAMILY_CORE_SHADERS[card.family]

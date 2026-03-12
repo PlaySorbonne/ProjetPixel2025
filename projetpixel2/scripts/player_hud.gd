@@ -236,8 +236,8 @@ func _on_button_shop_pressed() -> void:
 	# all with their own prices and infos
 	# too much stuff for just one button
 	var booster := Booster.spawn_booster($BoosterContainer, Vector2(108, 11))
-	booster.open_booster()
-	await booster.booster_opened
-	booster.destroy_booster()
-	await get_tree().create_timer(1.0).timeout
-	gain_level(true)
+	var booster_cards : Array[CardData] = []
+	for _i : int in range(3):
+		var new_card : CardData = CardData.get_random_card()
+		booster_cards.append(new_card)
+	booster.open_booster(booster_cards)

@@ -4,6 +4,7 @@ const WORLD_FILE := "res://scenes/world/levels/level_default.tscn"
 const DEBUG_WORLD_FILE := "res://scenes/world/levels/level_debug.tscn"
 
 # game objects
+var cards_container : CardsContainer
 var world : World = null
 var space_ship : Spaceship = null
 var towers : Array[TowerBase] = []

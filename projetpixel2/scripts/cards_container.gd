@@ -15,6 +15,7 @@ signal card_drawn
 
 
 func _ready() -> void:
+	GV.cards_container = self
 	GV.wave_manager.new_wave_spawned.connect(draw_hand)
 	for card_data : CardData in initial_deck:
 		var new_card := create_card_object(card_data)
