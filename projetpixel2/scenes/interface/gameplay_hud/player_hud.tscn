@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
+[ext_resource type="Script" uid="uid://b1kg47jeov2kr" path="res://scripts/cards_container.gd" id="13_6usvi"]
 [ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="15_gd21h"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
 [ext_resource type="PackedScene" uid="uid://cd64tbsnnfau" path="res://scenes/interface/menus/objects/button_casino_minigame.tscn" id="18_616a6"]
@@ -323,6 +324,7 @@ anchor_bottom = 0.955556
 offset_top = 7.0
 offset_bottom = 7.0
 mouse_filter = 2
+script = ExtResource("13_6usvi")
 metadata/_edit_use_anchors_ = true
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=210749627]

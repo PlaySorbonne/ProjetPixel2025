@@ -11,7 +11,6 @@ const TOWERS_OFFSET := Vector2(-10, 0)
 var in_combo := false
 var available_towers := 2
 var new_level_cards : Array[CardObject] = []
-var cards_hand : Array[CardObject] = []
 var number_of_choosable_cards := 3
 
 # components
@@ -151,20 +150,6 @@ func _loop_exp_tween() -> void:
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
 
-func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
-	var new_card : CardObject = CARD_OBJ_RES.instantiate()
-	new_card.card = card_data
-	if forced_position != Vector2.ZERO:
-		new_card.global_position = forced_position
-	_add_playable_card(new_card)
-
-func _add_playable_card(new_card : CardObject) -> void:
-	cards_hand.append(new_card)
-	$CardsContainer.add_child(new_card)
-	reorder_hand()
-	await get_tree().process_frame
-	new_card.can_be_dropped_on_objects = true
-
 func gain_level(force_level_up := false) -> void:
 	if RunData.current_level > 1 or force_level_up:
 		Engine.time_scale = 0.0
@@ -178,54 +163,6 @@ func gain_level(force_level_up := false) -> void:
 			new_card.card = CardData.get_random_card_from_deck()
 			$NewCardsContainer.add_child(new_card)
 
-func remove_card_from_hand(card_object : CardObject) -> void:
-	cards_hand.erase(card_object)
-	reorder_hand()
-
-func reorder_hand() -> void:
-	var card_count : int = cards_hand.size()
-	if card_count == 0:
-		return
-	
-	var container_size : Vector2 = $CardsContainer.size
-	var base_x : float = container_size.x / 2.0 - (cards_hand[0
-					].size.x * cards_hand[0].scale.x / 2.0) - 30.0
-	var base_y : float = -30.0
-	if card_count == 1:
-		cards_hand[0].deck_position = Vector2(base_x, base_y)
-		cards_hand[0].deck_rotation = 0.0
-		cards_hand[0].return_to_hand()
-		return
-	
-	const MAX_X_SPACING := 150.0
-	const MAX_Y_SPACING := 40.0
-	const MAX_ROTATION_SPACING := PI / 6
-	
-	var spacing_x : float = min(container_size.x / max(card_count, 1), MAX_X_SPACING)
-	var spacing_rot : float = MAX_ROTATION_SPACING / max(card_count - 1, 1)
-	
-	for i in range(card_count):
-		var card : CardObject = cards_hand[i]
-		
-		var t : float = float(i) / max(card_count - 1, 1)
-		var x : float = t * (spacing_x * (card_count - 1))
-		var offset_x : float = x - (spacing_x * (card_count - 1) / 2.0)
-		
-		var offset_norm : float = offset_x / (spacing_x * (card_count - 1) / 2.0)
-		var y_offset : float = -pow(offset_norm, 2) * MAX_Y_SPACING
-		
-		card.deck_position = Vector2(
-			base_x + offset_x,
-			base_y - y_offset
-		)
-		card.deck_rotation = lerp(-MAX_ROTATION_SPACING / 2.0, MAX_ROTATION_SPACING / 2.0, t)
-		card.z_index = i
-	
-	for card : CardObject in cards_hand:
-		card.return_to_hand()
-
-
-
 func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
 	card_button.queue_free()
 	Engine.time_scale = 1.0
@@ -236,10 +173,8 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 	#add_card_to_hand(chosen_card.card, chosen_card.global_position)
 	#await get_tree().process_frame
 	#chosen_card.queue_free()
-	
-	
 	chosen_card.get_parent().remove_child(chosen_card)
-	_add_playable_card(chosen_card)
+	$CardsContainer._add_playable_card(chosen_card)
 	new_level_cards = []
 	#await get_tree().create_timer(0.1).timeout
 	#chosen_card.release_card()
