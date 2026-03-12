@@ -542,6 +542,7 @@ offset_right = 227.98291
 offset_bottom = 156.06848
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LabelChips" type="Label" parent="." unique_id=1064740027]
 anchors_preset = -1
