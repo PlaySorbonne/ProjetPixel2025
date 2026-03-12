@@ -18,7 +18,9 @@ static var current_deck : Array[CardData] = []
 @export var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
 @export var trigger_condition : Callable  # a boolean function to make sure the effect triggers
 @export var effect : Callable # the method to call when the effect triggers
-var card_code : RefCounted
+var parsed_card_code : RefCounted
+@export var card_code : CardBase
+
 
 static func rarity_to_multiplier(card_rarity : CardRarities) -> float:
 	match card_rarity:
@@ -57,8 +59,8 @@ static func get_random_card_from_deck() -> CardData:
 	return current_deck.pick_random()
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
-	card_code.projectile = projectile
-	card_code.enemy = enemy
+	parsed_card_code.projectile = projectile
+	parsed_card_code.enemy = enemy
 	if trigger_condition.call():
 		effect.call()
 		return true
@@ -96,9 +98,9 @@ func parse_from_csv(csv_line : PackedStringArray) -> void:
 			card_code_source.source_code += "\n\t" + effect_line
 	# create resource and connect everything
 	card_code_source.reload()
-	card_code = card_code_source.new()
-	trigger_condition = Callable(card_code, "check_condition")
-	effect = Callable(card_code, "run_effect")
+	parsed_card_code = card_code_source.new()
+	trigger_condition = Callable(parsed_card_code, "check_condition")
+	effect = Callable(parsed_card_code, "run_effect")
 	
 	family = CardFamilies.get(csv_line[7])
 

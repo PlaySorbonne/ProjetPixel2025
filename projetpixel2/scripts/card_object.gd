@@ -33,7 +33,7 @@ static func check_turned_card(new_card : CardObject) -> void:
 	currently_turned_card = new_card
 
 
-var card : CardData
+@export var card : CardData
 var is_dragged := false:
 	set(value):
 		if value:

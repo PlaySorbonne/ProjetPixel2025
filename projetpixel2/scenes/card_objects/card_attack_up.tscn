@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cp7crq4cm4nw0"]
+
+[ext_resource type="PackedScene" uid="uid://bt0sfajn3i7tr" path="res://scenes/interface/cards/card_object.tscn" id="1_vhhiu"]
+[ext_resource type="Shader" uid="uid://bkxxqbste5b4s" path="res://resources/shaders/dissolve_from_point.gdshader" id="2_50tly"]
+[ext_resource type="Script" uid="uid://dnfjcw4pfvcmu" path="res://scenes/card_objects/cards_res/attack_up.gd" id="2_i1ttp"]
+[ext_resource type="Script" uid="uid://bkgi8sauy56hj" path="res://scripts/card_data.gd" id="2_l7vsl"]
+
+[sub_resource type="Resource" id="Resource_6umbh"]
+script = ExtResource("2_i1ttp")
+metadata/_custom_type_script = "uid://dnfjcw4pfvcmu"
+
+[sub_resource type="Resource" id="Resource_i1ttp"]
+script = ExtResource("2_l7vsl")
+name = "AttackUp"
+card_code = SubResource("Resource_6umbh")
+metadata/_custom_type_script = "uid://bkgi8sauy56hj"
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l7vsl"]
+resource_local_to_scene = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1ttp"]
+resource_local_to_scene = true
+shader = ExtResource("2_50tly")
+shader_parameter/position = Vector2(0.5, 0.4)
+shader_parameter/radius = 0.0
+shader_parameter/borderWidth = 0.04
+shader_parameter/burnMult = 0.22
+shader_parameter/noiseTexture = SubResource("NoiseTexture2D_l7vsl")
+shader_parameter/burnColor = Color(0, 0, 0, 1)
+
+[node name="CardAttackUp" unique_id=2020991330 instance=ExtResource("1_vhhiu")]
+card = SubResource("Resource_i1ttp")
+
+[node name="CardTexture" parent="." index="2" unique_id=948306142]
+material = SubResource("ShaderMaterial_i1ttp")
+
+[node name="Label" parent="CardTexture" index="0" unique_id=1765882300]
+text = "Attack Up"

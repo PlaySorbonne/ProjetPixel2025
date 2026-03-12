@@ -11,6 +11,13 @@ signal card_drawn
 @export var discard_pile : Array[CardObject] = []
 
 
+func _ready() -> void:
+	pass
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("debug_p"):
+		draw_hand()
+
 func draw_hand() -> void:
 	for _i in range(hand_size):
 		draw_card()
