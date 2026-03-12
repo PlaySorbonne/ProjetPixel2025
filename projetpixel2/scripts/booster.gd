@@ -15,6 +15,7 @@ static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
 
 
 func open_booster() -> void:
+	await get_tree().create_timer(0.5).timeout
 	$AnimationPlayer.play("open_booster")
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
@@ -23,5 +24,5 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 func destroy_booster() -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
 	t.tween_property(self, "scale", Vector2.ZERO, 0.75)
-	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.35)
+	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
 	t.finished.connect(queue_free)

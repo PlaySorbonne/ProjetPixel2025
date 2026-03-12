@@ -330,6 +330,7 @@ custom_minimum_size = Vector2(240, 290)
 layout_mode = 3
 anchor_right = 0.125
 anchor_bottom = 0.2685185
+pivot_offset_ratio = Vector2(0.5, 0.5)
 script = ExtResource("1_3y7bt")
 metadata/_edit_use_anchors_ = true
 

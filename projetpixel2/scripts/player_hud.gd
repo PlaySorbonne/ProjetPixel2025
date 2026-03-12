@@ -239,4 +239,5 @@ func _on_button_shop_pressed() -> void:
 	booster.open_booster()
 	await booster.booster_opened
 	booster.destroy_booster()
+	await get_tree().create_timer(1.0).timeout
 	gain_level(true)
