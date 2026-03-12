@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cipkud1dh3vju"]
+[gd_scene format=3 uid="uid://cipkud1dh3vju"]
 
 [ext_resource type="Script" uid="uid://bctcnm1f8wrs2" path="res://scripts/global/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://d2dcudl2os28q" path="res://scenes/player/player_camera.tscn" id="2_1yooq"]
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_1yooq"]
+[ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="8_gb53w"]
 [ext_resource type="PackedScene" uid="uid://cnn16qnpvw2gh" path="res://scenes/spaceship/Spaceship.tscn" id="8_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://bvhewnwb52nqw" path="res://scenes/interface/debug/Console.tscn" id="9_gb53w"]
@@ -12,51 +13,81 @@
 
 [sub_resource type="Resource" id="Resource_gb53w"]
 script = ExtResource("6_1yooq")
-speed = 1.0
-damage = 50
-size = 1.0
-pierce = 0
-bounce = 0
-damage_type = 0
-critical_hit_chance = 0.01
-critical_hit_intensity = 10.0
 metadata/_custom_type_script = "uid://75ev58yopohy"
 
-[node name="World" type="Node3D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qq27"]
+resource_local_to_scene = true
+texture = ExtResource("8_gb53w")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dlabj"]
+resource_local_to_scene = true
+texture = ExtResource("8_gb53w")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_srmg5"]
+resource_local_to_scene = true
+texture = ExtResource("8_gb53w")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 67.45, 650, 650)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umvgx"]
+resource_local_to_scene = true
+texture = ExtResource("8_gb53w")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(31, 0, 650, 650)
+
+[node name="World" type="Node3D" unique_id=1340797072]
 script = ExtResource("1_sl2e5")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1144844228]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0545192, 0)
 
-[node name="PlayerCamera" parent="." instance=ExtResource("2_1yooq")]
+[node name="PlayerCamera" parent="." unique_id=1474757404 instance=ExtResource("2_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 0.539638, 0.841897, 0, -0.841897, 0.539638, 0, 9.75384, 8.86547)
 
-[node name="Spaceship" parent="." instance=ExtResource("8_j2gmx")]
+[node name="Spaceship" parent="." unique_id=1182852106 instance=ExtResource("8_j2gmx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, 0, -0.0715396)
 
-[node name="TowerBase" parent="." instance=ExtResource("9_1yooq")]
+[node name="TowerBase" parent="." unique_id=359880728 instance=ExtResource("9_1yooq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32037, 0.538725, 0.574564)
 projectile_template = SubResource("Resource_gb53w")
 
-[node name="WaveManager" parent="." instance=ExtResource("10_gb53w")]
+[node name="WaveManager" parent="." unique_id=1202996006 instance=ExtResource("10_gb53w")]
 
-[node name="PlayerHud" parent="." instance=ExtResource("12_dlabj")]
+[node name="PlayerHud" parent="." unique_id=599945295 instance=ExtResource("12_dlabj")]
 
-[node name="ExperienceBar" parent="PlayerHud" index="2"]
+[node name="ExperienceBar" parent="PlayerHud" index="2" unique_id=163028720]
 anchors_preset = 12
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Console" parent="PlayerHud" instance=ExtResource("9_gb53w")]
+[node name="CasinoBackground" parent="PlayerHud" index="14" unique_id=338876159]
+theme_override_styles/panel = SubResource("StyleBoxTexture_5qq27")
+
+[node name="CasinoBackground2" parent="PlayerHud" index="15" unique_id=5747742]
+theme_override_styles/panel = SubResource("StyleBoxTexture_dlabj")
+
+[node name="CasinoBackground4" parent="PlayerHud" index="16" unique_id=1806777291]
+theme_override_styles/panel = SubResource("StyleBoxTexture_srmg5")
+
+[node name="CasinoBackground3" parent="PlayerHud" index="17" unique_id=350991333]
+theme_override_styles/panel = SubResource("StyleBoxTexture_umvgx")
+
+[node name="Console" parent="PlayerHud" unique_id=1426458144 instance=ExtResource("9_gb53w")]
 visible = false
 offset_left = 1219.0
 offset_top = 308.0
 offset_right = -3.0
 offset_bottom = -362.0
 
-[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+[node name="AudioMusic" type="AudioStreamPlayer" parent="." unique_id=1758854586]
 stream = ExtResource("11_5qq27")
 autoplay = true
 parameters/looping = true
