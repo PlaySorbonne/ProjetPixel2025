@@ -27,10 +27,12 @@
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="26_0bo3y"]
+[ext_resource type="Script" uid="uid://f7107khk0084" path="res://scripts/booster.gd" id="26_cudfr"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="27_c20sh"]
 [ext_resource type="Texture2D" uid="uid://bpft5kl5l1fnv" path="res://resources/images/casino/rug_seamless_texture_contrast.png" id="28_n2kxx"]
 [ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="29_c20sh"]
 [ext_resource type="Shader" uid="uid://drua2dx2j8hw" path="res://resources/shaders/glow.gdshader" id="29_n2kxx"]
+[ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="31_ktv3t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -590,6 +592,7 @@ offset_left = -0.10696411
 offset_top = -0.13536835
 offset_right = -0.10800171
 offset_bottom = -0.05154419
+script = ExtResource("26_cudfr")
 
 [node name="Background" type="TextureRect" parent="BoosterContainer/Booster" unique_id=812395783]
 show_behind_parent = true
@@ -637,6 +640,46 @@ rotation = 2.3561945
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("29_c20sh")
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="BoosterContainer/Booster" unique_id=248376372]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.1415882
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("31_ktv3t")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect1" type="ColorRect" parent="BoosterContainer/Booster" unique_id=691583352]
+custom_minimum_size = Vector2(250, 10)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="ColorRect2" type="ColorRect" parent="BoosterContainer/Booster" unique_id=1636106119]
+custom_minimum_size = Vector2(250, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BoosterContainer/Booster" unique_id=2125911704]
 
 [node name="LabelChips" type="Label" parent="." unique_id=1064740027]
 anchors_preset = -1
