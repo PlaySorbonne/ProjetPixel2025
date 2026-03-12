@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chp3bd6blfvcj"]
+[gd_scene format=3 uid="uid://chp3bd6blfvcj"]
 
 [ext_resource type="Script" uid="uid://b3r8bg4qj7cug" path="res://scripts/casino_window.gd" id="1_sq5xb"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="2_esysp"]
@@ -14,7 +14,7 @@ texture_margin_top = 18.0
 texture_margin_right = 18.0
 texture_margin_bottom = 18.0
 
-[node name="CasinoWindow" type="Control"]
+[node name="CasinoWindow" type="Control" unique_id=1845943741]
 z_index = 20
 layout_mode = 3
 anchor_right = 0.226562
@@ -22,10 +22,10 @@ anchor_bottom = 0.210185
 script = ExtResource("1_sq5xb")
 metadata/_edit_use_anchors_ = true
 
-[node name="DragAndDrop2D" parent="." node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_esysp")]
+[node name="DragAndDrop2D" parent="." unique_id=1029744701 node_paths=PackedStringArray("dragged_object") instance=ExtResource("2_esysp")]
 dragged_object = NodePath("..")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=1367021014]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_3kbv4")
 
-[node name="Background" type="TextureRect" parent="Panel"]
+[node name="Background" type="TextureRect" parent="Panel" unique_id=1310582078]
 show_behind_parent = true
 material = ExtResource("4_06hwv")
 layout_mode = 1
@@ -53,7 +53,7 @@ texture = ExtResource("5_ips8e")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Contents" type="Control" parent="."]
+[node name="Contents" type="Control" parent="." unique_id=2095500290]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="CloseButton" type="Button" parent="Contents"]
+[node name="CloseButton" type="Button" parent="Contents" unique_id=1581008634]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
