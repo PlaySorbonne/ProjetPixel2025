@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://j5bmavpiykqe"]
+
+[ext_resource type="Script" uid="uid://dnfjcw4pfvcmu" path="res://scenes/card_objects/cards_res/attack_up.gd" id="1_ip4p2"]
+[ext_resource type="Script" uid="uid://bkgi8sauy56hj" path="res://scripts/card_data.gd" id="2_34wm3"]
+
+[sub_resource type="Resource" id="Resource_6umbh"]
+script = ExtResource("1_ip4p2")
+metadata/_custom_type_script = "uid://dnfjcw4pfvcmu"
+
+[resource]
+script = ExtResource("2_34wm3")
+name = "AttackUp"
+card_code = SubResource("Resource_6umbh")
+metadata/_custom_type_script = "uid://bkgi8sauy56hj"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://b87bxg0hfmtu6"]
+
+[ext_resource type="Script" uid="uid://b7of0gtninjmr" path="res://scenes/card_objects/cards_res/salvo.gd" id="1_stcdn"]
+[ext_resource type="Script" uid="uid://bkgi8sauy56hj" path="res://scripts/card_data.gd" id="2_ir07q"]
+
+[sub_resource type="Resource" id="Resource_ir07q"]
+script = ExtResource("1_stcdn")
+metadata/_custom_type_script = "uid://b7of0gtninjmr"
+
+[resource]
+script = ExtResource("2_ir07q")
+name = "Salvo"
+description = "The tower shoots three times."
+card_code = SubResource("Resource_ir07q")
+metadata/_custom_type_script = "uid://bkgi8sauy56hj"
