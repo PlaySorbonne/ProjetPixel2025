@@ -622,15 +622,17 @@ texture = ExtResource("29_c20sh")
 metadata/_edit_use_anchors_ = true
 
 [node name="CornerLeft" type="TextureRect" parent="BoosterContainer/Booster" unique_id=361479481]
-layout_mode = 0
-anchor_left = -0.25220704
-anchor_top = 0.54271436
-anchor_right = -0.25220704
-anchor_bottom = 0.54271436
-offset_left = 15.533009
-offset_top = -37.5
-offset_right = 90.533005
-offset_bottom = 37.5
+material = SubResource("ShaderMaterial_cudfr")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.252
+anchor_top = 0.54300004
+anchor_right = 0.192
+anchor_bottom = 0.54300004
+offset_left = 15.483543
+offset_top = -37.582962
+offset_right = -15.599213
+offset_bottom = 37.417038
 rotation = 2.3561945
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("29_c20sh")

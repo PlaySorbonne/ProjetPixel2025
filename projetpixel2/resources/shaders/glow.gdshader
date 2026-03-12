@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform float speed = 2.0;
-uniform float glow_strength = 1.5;
+uniform float speed = 20.0;
+uniform float glow_strength = .25;
 
 void fragment() {
     vec4 tex = texture(TEXTURE, UV);
