@@ -91,7 +91,7 @@ process_mode = 3
 layer = 2
 script = ExtResource("1_ldeku")
 
-[node name="GamePanelMain" type="Panel" parent="." unique_id=1054457954]
+[node name="GamePanel" type="Panel" parent="." unique_id=1054457954]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
