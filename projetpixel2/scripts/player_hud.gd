@@ -35,12 +35,11 @@ var displayed_total_experience := RunData.total_experience
 
 
 func _input(_event: InputEvent) -> void:
+	pass
 	#if Input.is_action_just_pressed("debug_l"):
 		#MessagePopupWindow.spawn_message_popup("SHIP SHIELDS\nRESTORED")
 	#if Input.is_action_just_pressed("debug_m"):
 		#WarningPopupWindow.spawn_warning_popup("HULL BREACH")
-	if Input.is_action_just_pressed("debug_p"):
-		_on_player_game_over()
 
 func _on_player_game_over() -> void:
 	const POPUP_SIZE := Vector2(261, 167) # size of the warning popup

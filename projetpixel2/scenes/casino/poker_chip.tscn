@@ -5,12 +5,13 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fyxbj"]
 resource_local_to_scene = true
-albedo_color = Color(0.008, 0.612, 0.31, 1)
+albedo_color = Color(0.91, 0.91, 0.91, 1)
 disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x17ah"]
 resource_local_to_scene = true
 resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
 metallic = 0.5
 
 [node name="Chip" type="MeshInstance3D" unique_id=115207421]

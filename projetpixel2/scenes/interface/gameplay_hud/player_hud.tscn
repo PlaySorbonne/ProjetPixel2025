@@ -511,10 +511,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1160.0
-offset_top = -419.0
+offset_left = 1155.7483
+offset_top = -416.5537
 offset_right = -260.0
-offset_bottom = -19.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 
