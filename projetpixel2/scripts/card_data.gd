@@ -12,6 +12,8 @@ static var current_deck : Array[CardData] = []
 
 @export var name := "blank_card"
 @export_multiline var description := "blank description"
+@export var consume := false
+@export var tactics := false
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common
 @export var family : CardFamilies = CardFamilies.Military

@@ -4,6 +4,7 @@ class_name CardsContainer
 
 signal draw_pile_updated
 signal discard_pile_updated
+signal consumed_pile_updated
 signal draw_pile_shuffled
 signal card_drawn
 
@@ -11,6 +12,7 @@ signal card_drawn
 @export var cards_hand : Array[CardObject] = []
 @export var draw_pile : Array[CardObject] = []
 @export var discard_pile : Array[CardObject] = []
+@export var consumed_pile : Array[CardObject] = []
 @export var initial_deck : Array[CardData] 
 
 
@@ -66,7 +68,10 @@ func create_card_object(card_data : CardData) -> CardObject:
 	return new_card
 
 func on_card_played(card : CardObject) -> void:
-	remove_card_from_hand(card)
+	if card.card.consume:
+		consume_card(card)
+	else:
+		discard_card(card)
 
 func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
 	var new_card := create_card_object(card_data)
@@ -81,7 +86,13 @@ func _add_playable_card(new_card : CardObject) -> void:
 	await get_tree().process_frame
 	new_card.can_be_dropped_on_objects = true
 
-func remove_card_from_hand(card_object : CardObject) -> void:
+func consume_card(card_object : CardObject) -> void:
+	remove_child(card_object)
+	consumed_pile.append(card_object)
+	cards_hand.erase(card_object)
+	consumed_pile_updated.emit()
+
+func discard_card(card_object : CardObject) -> void:
 	remove_child(card_object)
 	cards_hand.erase(card_object)
 	discard_pile.append(card_object)
