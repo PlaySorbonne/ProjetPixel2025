@@ -410,60 +410,50 @@ texture = ExtResource("5_bmvv6")
 expand_mode = 1
 
 [node name="ColorRect1" type="ColorRect" parent="." unique_id=2072638174]
-custom_minimum_size = Vector2(225, 10)
+custom_minimum_size = Vector2(240, 10)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 6.9625854
-offset_right = -6.9625244
-offset_bottom = 10.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=217622956]
-custom_minimum_size = Vector2(225, 10)
+custom_minimum_size = Vector2(240, 10)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 6.9625854
-offset_top = -10.0
-offset_right = -6.9625244
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1966613527]
-custom_minimum_size = Vector2(10, 270)
+custom_minimum_size = Vector2(10, 290)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = 10.185608
-offset_right = 10.0
-offset_bottom = -10.185608
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=53464760]
-custom_minimum_size = Vector2(10, 270)
+custom_minimum_size = Vector2(10, 290)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -10.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="CornerRight" type="TextureRect" parent="." unique_id=1807616675]
 material = SubResource("ShaderMaterial_cudfr")

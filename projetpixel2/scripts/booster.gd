@@ -10,7 +10,9 @@ var card_objects : Array[CardObject]
 var is_booster_open := false
 var is_mouse_over := false
 var is_card_selected := false
-
+@onready var sides : Array[ColorRect] = [
+	$ColorRect1, $ColorRect2, $ColorRect3, $ColorRect4
+]
 
 static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
 	var new_booster := BOOSTER_RES.instantiate()
@@ -113,12 +115,18 @@ func _on_background_mouse_entered() -> void:
 	if not is_booster_open:
 		$Shaker.shake(-1.0, 15, 5)
 		$AnimationPlayer.speed_scale = 1.75
+		var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+		for side : ColorRect in sides:
+			t.tween_property(side, "color", Color(0.0, 0.208, 0.094), 0.25)
 
 func _on_background_mouse_exited() -> void:
 	is_mouse_over = false
 	if not is_booster_open:
 		$Shaker.stop_shake()
 		$AnimationPlayer.speed_scale = 1.0
+		var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+		for side : ColorRect in sides:
+			t.tween_property(side, "color", Color.BLACK, 0.25)
 
 func get_scroll_speed() -> float:
 	return $Background.material.get_shader_parameter("scroll_speed")
