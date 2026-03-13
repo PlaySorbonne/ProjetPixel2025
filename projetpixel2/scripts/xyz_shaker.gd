@@ -8,11 +8,13 @@ const EASE = Tween.EASE_IN_OUT
 @export var object : Node
 @export var property := "offset"
 @export var reset_to_zero := true
+@export var continuous_shake := false
 var initial_value := Vector2.ZERO
 var amplitude := 0
 var priority := 0
 var shaking := false
 var frequency := 0.0
+
 
 
 
@@ -27,7 +29,11 @@ func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 30, priority_n :
 		initial_value = object.get(property)
 	frequency = 1/float(frequency_n)
 	_new_shake()
-	await get_tree().create_timer(duration_n).timeout
+	if not continuous_shake:
+		await get_tree().create_timer(duration_n).timeout
+		stop_shake()
+
+func stop_shake() -> void:
 	shaking = false
 	_reset()
 
@@ -47,4 +53,3 @@ func _tween_shake(new_pos : Vector2) -> Tween:
 func _reset():
 	_tween_shake(Vector2.ZERO)
 	priority = 0
-	await get_tree().create_timer(2.0).timeout
