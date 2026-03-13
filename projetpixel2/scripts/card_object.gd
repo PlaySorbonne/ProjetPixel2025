@@ -156,11 +156,11 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		return_to_hand()
 		return
 	if card.tactics:
-		run_card_tactics()
+		drop_tactics_card()
 	else:
 		drop_card_on_tower()
 
-func run_card_tactics() -> void:
+func drop_tactics_card() -> void:
 	print("run_card_tactics")
 	play_card(GV)
 
