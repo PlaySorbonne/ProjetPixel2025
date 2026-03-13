@@ -345,7 +345,8 @@ func try_shoot_enemy(is_bonus := false) -> void:
 		if focused_enemy != null:
 			shoot(focused_enemy, is_bonus)
 			return
-	shoot_position(get_random_direction(), is_bonus)
+	if is_bonus:
+		shoot_position(get_random_direction(), true)
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:

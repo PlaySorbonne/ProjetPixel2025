@@ -98,18 +98,18 @@ func release_card() -> void:
 func _input(event: InputEvent) -> void:
 	if is_dragged:
 		if event is InputEventMouseButton:
-			if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
 				$DragAndDrop2D.press()
-			elif event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
+			elif event.is_released():
 				$DragAndDrop2D.release()
-	elif mouse_over_card:
-		if event is InputEventMouseButton:
-			if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
-				check_turned_card(self)
-				turn_card(
-					not sacrificing_card,  # flip current card side
-					card_texture.get_local_mouse_position() / card_texture.size # uv
-				)
+	#elif mouse_over_card:
+		#if event is InputEventMouseButton:
+			#if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+				#check_turned_card(self)
+				#turn_card(
+					#not sacrificing_card,  # flip current card side
+					#card_texture.get_local_mouse_position() / card_texture.size # uv
+				#)
 
 func turn_card(new_turned : bool, uv : Vector2) -> void:
 	if sacrificing_card == new_turned:
