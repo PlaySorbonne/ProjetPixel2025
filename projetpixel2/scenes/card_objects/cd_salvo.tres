@@ -13,5 +13,6 @@ name = "Salvo"
 description = "The tower shoots three times."
 consume = true
 tactics = true
+trigger_signal = ""
 card_code = SubResource("Resource_ir07q")
 metadata/_custom_type_script = "uid://bkgi8sauy56hj"

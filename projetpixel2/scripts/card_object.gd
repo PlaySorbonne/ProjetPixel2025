@@ -156,12 +156,13 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		return_to_hand()
 		return
 	if card.tactics:
-		sacrifice_card()
+		run_card_tactics()
 	else:
 		drop_card_on_tower()
 
 func run_card_tactics() -> void:
-	pass
+	print("run_card_tactics")
+	play_card(GV)
 
 func drop_card_on_tower() -> void:
 	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
@@ -174,31 +175,45 @@ func drop_card_on_tower() -> void:
 				return
 	return_to_hand()
 
-func sacrifice_card() -> void:
-	# interaction2D
-	var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
-	#print("control object = " + str(control_object))
-	if control_object != null:
-		if control_object.has_method("drop_card"):
-			#print("card dropped on " + str(control_object))
-			control_object.drop_card(card)
-		destroy_card_object()
-		return
-	
-	# interaction3D
-	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
-	if spatial_object != null:
-		# match bahavior on spatial object
-		if spatial_object is TowerBase:
-			# ignore towers in sacrifice mode
-			pass
-		elif spatial_object is BaseEnemy:
-			#TODO
-			print_debug("TODO: handle card dropped on enemy")
-		elif spatial_object is Spaceship:
-			#TODO
-			print_debug("TODO: handle card dropped on spaceship")
-	return_to_hand()
+func play_card(on_object : Node) -> void:
+	if card.trigger_signal == "":
+		card.execute_card(null, null)
+	else:
+		if on_object.has_signal(card.trigger_signal):
+			on_object.connect(card.trigger_signal, card.execute_card)
+		else:
+			var obj_str : String
+			if card.tactics:
+				obj_str = "TACTICS: GV "
+			else:
+				obj_str = "UPGRADE: TOWER "
+			print_debug("%sDOESN'T HAVE SIGNAL " % obj_str + card.trigger_signal)
+
+#func sacrifice_card() -> void:
+	## interaction2D
+	#var control_object : Control = GV.mouse_2d_interaction.get_hovered_node()
+	##print("control object = " + str(control_object))
+	#if control_object != null:
+		#if control_object.has_method("drop_card"):
+			##print("card dropped on " + str(control_object))
+			#control_object.drop_card(card)
+		#destroy_card_object()
+		#return
+	#
+	## interaction3D
+	#var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
+	#if spatial_object != null:
+		## match bahavior on spatial object
+		#if spatial_object is TowerBase:
+			## ignore towers in sacrifice mode
+			#pass
+		#elif spatial_object is BaseEnemy:
+			##TODO
+			#print_debug("TODO: handle card dropped on enemy")
+		#elif spatial_object is Spaceship:
+			##TODO
+			#print_debug("TODO: handle card dropped on spaceship")
+	#return_to_hand()
 
 func return_to_hand() -> void:
 	tween_properties({

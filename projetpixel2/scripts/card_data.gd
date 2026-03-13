@@ -17,7 +17,7 @@ static var current_deck : Array[CardData] = []
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common
 @export var family : CardFamilies = CardFamilies.Military
-@export var trigger_signal : String = "tower_fired" # the target's signal that triggers the effect
+@export var trigger_signal : String = "" # the target's signal that triggers the effect
 @export var trigger_condition : Callable  # a boolean function to make sure the effect triggers
 @export var effect : Callable # the method to call when the effect triggers
 var parsed_card_code : RefCounted

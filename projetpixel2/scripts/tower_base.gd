@@ -171,17 +171,7 @@ func add_card(card_obj: CardObject) -> void:
 		card.parsed_card_code.tower = self
 	cards.append(card)
 	tower_card_added.emit(card)
-	if card.trigger_signal != "":
-		# connect signal specified in the card to corresponding tower 
-		# signal, to execution of card effect
-		if self.has_signal(card.trigger_signal):
-			self.connect(card.trigger_signal, card.execute_card)
-		else:
-			print_debug("TOWER DOESN'T HAVE SIGNAL " + card.trigger_signal)
-	else:
-		# if there is no signal, trigger the card immediately
-		card.execute_card(null, null)
-		print("execute card now")
+	card_obj.play_card(self)
 	card_obj.destroy_card_object()
 	TowerCard3DIndicator.add_card_indicator(self)
 
