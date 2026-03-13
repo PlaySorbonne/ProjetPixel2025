@@ -5,10 +5,18 @@ class_name ShopWindow
 const SHOP_RES := preload("res://scenes/interface/casino_minigames/shop_window.tscn")
 const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
 
+static var last_shop_window : ShopWindow
+
 static func spawn_shop_popup() -> ShopWindow:
-	var shop_popup : ShopWindow = SHOP_RES.instantiate()
-	spawn_popup(shop_popup)
-	return shop_popup
+	if last_shop_window:
+		last_shop_window.close_window()
+		last_shop_window = null
+		return null
+	else:
+		var shop_popup : ShopWindow = SHOP_RES.instantiate()
+		last_shop_window = shop_popup
+		spawn_popup(shop_popup)
+		return shop_popup
 
 
 @export var prices : Array[int] = [10, 13, 15]
