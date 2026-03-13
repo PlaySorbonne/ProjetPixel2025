@@ -5,8 +5,6 @@ class_name PlayerHud
 signal level_updated
 
 const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
-const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
-const TOWERS_OFFSET := Vector2(-10, 0)
 
 var in_combo := false
 var available_towers := 2
@@ -26,6 +24,7 @@ var number_of_choosable_cards := 3
 @onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
 @onready var poker_chip_world := $SubViewportContainer/SubViewport/PokerChipsWorld
 @onready var cards_container : CardsContainer = $CardsContainer
+@onready var booster_container := $BoosterContainer
 
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
@@ -178,16 +177,16 @@ func new_kill() -> void:
 func update_combo_label() -> void:
 	combo_label.text = "Combo: " + str(RunData.current_combo)
 
-func add_available_tower() -> void:
-	if available_towers == 0:
-		return
-	var tower_pos := GV.player_camera.project_position(
-		Vector2(50, 50) + TOWERS_OFFSET * available_towers, 50.0)
-	available_towers -= 1
-	var new_tower := TOWER_RES.instantiate()
-	new_tower.is_hologram = true
-	GV.world.add_child(new_tower)
-	new_tower.position = tower_pos
+#func add_available_tower() -> void:
+	#if available_towers == 0:
+		#return
+	#var tower_pos := GV.player_camera.project_position(
+		#Vector2(50, 50) + TOWERS_OFFSET * available_towers, 50.0)
+	#available_towers -= 1
+	#var new_tower := TOWER_RES.instantiate()
+	#new_tower.is_hologram = true
+	#GV.world.add_child(new_tower)
+	#new_tower.position = tower_pos
 
 func _on_create_tower_window_tower_placed() -> void:
 	tower_spawner.spawn_tower(
@@ -200,13 +199,13 @@ func _on_combo_timer_timeout() -> void:
 	RunData.current_combo = 0
 	update_combo_label()
 
-func _on_button_spawn_tower_pressed() -> void:
-	await get_tree().create_timer(0.1).timeout
-	add_available_tower()
-	if available_towers == 0:
-		$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
-	else:
-		$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
+#func _on_button_spawn_tower_pressed() -> void:
+	#await get_tree().create_timer(0.1).timeout
+	#add_available_tower()
+	#if available_towers == 0:
+		#$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
+	#else:
+		#$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
 
 func _on_cards_container_discard_pile_updated() -> void:
 	$LabelDiscardPile.text = str(len(cards_container.discard_pile))
@@ -217,3 +216,4 @@ func _on_cards_container_draw_pile_updated() -> void:
 
 func _on_button_shop_pressed() -> void:
 	ShopWindow.spawn_shop_popup()
+	print("Spawn Shop window")
