@@ -17,7 +17,7 @@ static func spawn_shop_popup() -> ShopWindow:
 func _ready() -> void:
 	super._ready()
 	await get_tree().process_frame
-	position = random_popup_position()
+	position = GV.hud.get_shop_pos()
 	open_window()
 
 func try_buy_item(item_price : int) -> bool:
@@ -30,17 +30,14 @@ func try_buy_item(item_price : int) -> bool:
 func _on_button_booster_pressed() -> void:
 	if try_buy_item(prices[0]):
 		Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
-		close_window()
 
 func _on_button_rare_booster_pressed() -> void:
 	if try_buy_item(prices[1]):
 		Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
-		close_window()
 
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
 		add_tower()
-		close_window()
 
 func add_tower() -> void:
 	await get_tree().create_timer(0.1).timeout

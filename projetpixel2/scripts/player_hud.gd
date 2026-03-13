@@ -91,6 +91,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	GV.space_ship.killed.connect(_on_player_game_over)
 
+func get_shop_pos() -> Vector2:
+	return $ShopPosMarker.position
+
 func _update_ship_health(new_health : int) -> void:
 	health_bar_tween = tween_progress_bar(health_bar_tween, new_health,
 		$ShipHealth/HealthProgressBar, health_bar_color)

@@ -19,7 +19,7 @@ z_index = 20
 layout_mode = 3
 anchor_right = 0.226562
 anchor_bottom = 0.210185
-mouse_default_cursor_shape = 2
+mouse_default_cursor_shape = 6
 script = ExtResource("1_sq5xb")
 metadata/_edit_use_anchors_ = true
 

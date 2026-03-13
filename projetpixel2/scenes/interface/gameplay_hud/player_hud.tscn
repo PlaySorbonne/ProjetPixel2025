@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dlnudc4cjsofl" path="res://resources/images/ui_assets/menu_elements/nine_patch_out_tower_defense_frame.png" id="2_rwqbi"]
 [ext_resource type="Texture2D" uid="uid://cm65knr3ijyao" path="res://resources/images/ui_assets/menu_elements/experience_bar_progress.png" id="2_tntee"]
 [ext_resource type="Script" uid="uid://yegcm3d0hvem" path="res://scripts/combo_counter.gd" id="4_htfe5"]
-[ext_resource type="Texture2D" uid="uid://lp27fa3tfgit" path="res://resources/images/ui_assets/menu_elements/info_square_container.png" id="4_tv5ih"]
 [ext_resource type="PackedScene" uid="uid://dqj0xmkv0v5ml" path="res://scenes/gameplay_systems/mouse_3d_interaction.tscn" id="5_jxin7"]
 [ext_resource type="PackedScene" uid="uid://g214vu1y26k1" path="res://scenes/gameplay_systems/mouse_2d_interaction.tscn" id="5_pfuso"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
@@ -172,39 +171,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="ButtonSpawnTower" type="Button" parent="hud_control" unique_id=1513702987]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.8093282
-anchor_top = 0.1022947
-anchor_right = 0.8509952
-anchor_bottom = 0.15877675
-offset_top = -6.10352e-05
-focus_mode = 0
-text = "Towers
-(2)"
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="MouseDetection2d" parent="hud_control/ButtonSpawnTower" unique_id=895218124 instance=ExtResource("2_pfuso")]
-
-[node name="TextureRect" type="TextureRect" parent="hud_control/ButtonSpawnTower" unique_id=1883296464]
-self_modulate = Color(0.841292, 0.514521, 0.599254, 1)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -7.0
-offset_right = 8.99939
-offset_bottom = 6.99939
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_tv5ih")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="TowerSpawner" parent="." unique_id=1284024973 instance=ExtResource("6_pfuso")]
 
@@ -612,8 +578,15 @@ icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
+[node name="ShopPosMarker" type="Control" parent="." unique_id=461366600]
+layout_mode = 3
+anchor_left = 0.73927915
+anchor_top = 0.22135556
+anchor_right = 0.73927915
+anchor_bottom = 0.22135556
+metadata/_edit_use_anchors_ = true
+
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
-[connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
