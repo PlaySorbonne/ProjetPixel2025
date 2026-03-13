@@ -9,11 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="7_ffih4"]
 [ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="8_q2jue"]
 [ext_resource type="Texture2D" uid="uid://yvy6eltlbe8x" path="res://resources/images/ui_assets/menu_elements/ui_corner.png" id="9_0oocy"]
+[ext_resource type="PackedScene" uid="uid://cjrj1tcaagv4v" path="res://scenes/gameplay_systems/shaker.tscn" id="11_1el8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktv3t"]
 resource_local_to_scene = true
 shader = ExtResource("2_ubgfo")
-shader_parameter/scroll_speed = 0.750000035625
+shader_parameter/scroll_speed = 0.250000011875
 shader_parameter/angle_degrees = 220.00001045
 shader_parameter/repeat_x = 1.00000004424012
 shader_parameter/repeat_y = 1.00000004424012
@@ -161,7 +162,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_rlb07"]
 resource_name = "open_booster"
 length = 3.0
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -253,10 +254,10 @@ tracks/7/path = NodePath("SpadeLogo:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.05, 2.5),
-"transitions": PackedFloat32Array(1.6245047, 1.6245047),
+"times": PackedFloat32Array(0, 0.4, 2.05, 2.5),
+"transitions": PackedFloat32Array(1.6245047, 1.6245047, 1.6245047, 1.6245047),
 "update": 0,
-"values": [3.1415882, 15.707963267948966]
+"values": [3.1415882, 9.42477796076938, 9.42477796076938, 21.991148575128552]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -265,10 +266,10 @@ tracks/8/path = NodePath("SpadeLogo:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(2.05, 2.5),
-"transitions": PackedFloat32Array(1.6245047, 1.6245047),
+"times": PackedFloat32Array(0, 0.20000002, 0.4, 2.05, 2.5),
+"transitions": PackedFloat32Array(1.6245047, 1.6245047, 1.6245047, 1.6245047, 1.6245047),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -331,6 +332,7 @@ layout_mode = 3
 anchor_right = 0.125
 anchor_bottom = 0.2685185
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 script = ExtResource("1_3y7bt")
 metadata/_edit_use_anchors_ = true
 
@@ -343,7 +345,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
 texture = ExtResource("4_v6amx")
 expand_mode = 1
 stretch_mode = 1
@@ -359,9 +362,9 @@ anchor_bottom = 0.993317
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("5_bmvv6")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect1" type="ColorRect" parent="." unique_id=2072638174]
 custom_minimum_size = Vector2(225, 10)
@@ -373,6 +376,7 @@ offset_right = -6.9625244
 offset_bottom = 10.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=217622956]
@@ -388,6 +392,7 @@ offset_right = -6.9625244
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="." unique_id=1966613527]
@@ -400,6 +405,7 @@ offset_right = 10.0
 offset_bottom = -10.185608
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="." unique_id=53464760]
@@ -413,6 +419,7 @@ offset_left = -10.0
 grow_horizontal = 0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [node name="CornerRight" type="TextureRect" parent="." unique_id=1807616675]
@@ -425,12 +432,12 @@ anchor_right = 1.3838986
 anchor_bottom = 0.52756363
 offset_left = -8.466995
 offset_top = -37.5
-offset_right = -39.532898
+offset_right = -39.532837
 offset_bottom = 37.5
 rotation = -0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("7_ffih4")
-metadata/_edit_use_anchors_ = true
 
 [node name="CornerLeft" type="TextureRect" parent="." unique_id=2082378986]
 material = SubResource("ShaderMaterial_cudfr")
@@ -446,8 +453,8 @@ offset_right = 8.400784
 offset_bottom = 37.417038
 rotation = 2.3561945
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("7_ffih4")
-metadata/_edit_use_anchors_ = true
 
 [node name="SpadeLogo" type="TextureRect" parent="." unique_id=2101724559]
 layout_mode = 1
@@ -464,6 +471,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.1415882
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("8_q2jue")
 expand_mode = 1
 stretch_mode = 5
@@ -477,6 +485,7 @@ offset_top = -10.0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("9_0oocy")
 expand_mode = 1
 stretch_mode = 5
@@ -492,10 +501,11 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -40.000107
 offset_top = -10.0
-offset_right = 9.999954
+offset_right = 9.999893
 offset_bottom = 40.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("9_0oocy")
 expand_mode = 1
 stretch_mode = 5
@@ -513,10 +523,11 @@ anchor_bottom = 1.0
 offset_left = -40.000107
 offset_top = -40.000214
 offset_right = 9.999893
-offset_bottom = 9.999847
+offset_bottom = 9.999878
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("9_0oocy")
 expand_mode = 1
 stretch_mode = 5
@@ -531,15 +542,16 @@ anchor_bottom = 1.0
 offset_left = -10.0
 offset_top = -40.371216
 offset_right = 40.0
-offset_bottom = 9.628784
+offset_bottom = 9.628845
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("9_0oocy")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
 
-[node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=835835745]
+[node name="NewCardsContainer" type="Control" parent="." unique_id=1269691884]
 custom_minimum_size = Vector2(850, 165)
 layout_mode = 1
 anchors_preset = 8
@@ -553,10 +565,19 @@ offset_right = 425.0
 offset_bottom = 82.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 28
-alignment = 1
+mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552113022]
 libraries/ = SubResource("AnimationLibrary_n7s3j")
 
+[node name="Shaker" parent="." unique_id=838499230 node_paths=PackedStringArray("object") instance=ExtResource("11_1el8l")]
+object = NodePath("../SpadeLogo")
+property = "position"
+reset_to_zero = false
+continuous_shake = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
+[connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
