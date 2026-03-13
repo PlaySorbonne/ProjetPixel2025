@@ -7,6 +7,7 @@ signal booster_opened
 const BOOSTER_RES := preload("res://scenes/interface/cards/booster.tscn")
 
 var booster_cards : Array[CardData]
+var card_objects : Array[CardObject]
 
 
 static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
@@ -33,20 +34,31 @@ func tween_intro(obj : CanvasItem) -> void:
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	booster_opened.emit()
-	var cards : Array[CardObject] = []
+	card_objects = []
 	for i : int in range(len(booster_cards)):
 		var card := GV.cards_container.create_card_object(booster_cards[i])
 		card.modulate = Color.TRANSPARENT
 		card.scale = Vector2(0.5, 0.5)
 		$NewCardsContainer.add_child(card)
-		cards.append(card)
+		card_objects.append(card)
+		var select_button := SelectCardButton.add_select_button_to_card(card)
+		select_button.card_selected.connect(_on_card_level_clicked.bind(card, select_button))
 	for i : int in range(len(booster_cards)):
-		tween_intro(cards[i])
+		tween_intro(card_objects[i])
 		if i != len(booster_cards)-1:
 			await get_tree().create_timer(0.25).timeout
 
-func destroy_booster() -> void:
+func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
+	card_button.queue_free()
+	#Engine.time_scale = 1.0
+	for card : CardObject in card_objects:
+		if card != chosen_card:
+			destroy_object(card)
+	chosen_card.get_parent().remove_child(chosen_card)
+	GV.hud.cards_container._add_playable_card(chosen_card)
+
+func destroy_object(obj : CanvasItem) -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	t.tween_property(self, "scale", Vector2.ZERO, 0.75)
-	t.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
+	t.tween_property(obj, "scale", Vector2.ZERO, 0.75)
+	t.tween_property(obj, "modulate", Color.TRANSPARENT, 0.5)
 	t.finished.connect(queue_free)

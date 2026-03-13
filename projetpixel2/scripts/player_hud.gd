@@ -25,6 +25,7 @@ var number_of_choosable_cards := 3
 @onready var shields_bar_color : Color = $ShipHealth/ShieldProgressBar.tint_progress
 @onready var health_bar_color : Color = $ShipHealth/HealthProgressBar.tint_progress
 @onready var poker_chip_world := $SubViewportContainer/SubViewport/PokerChipsWorld
+@onready var cards_container : CardsContainer = $CardsContainer
 
 var health_bar_tween : Tween
 var shields_bar_tween : Tween
@@ -150,34 +151,18 @@ func _loop_exp_tween() -> void:
 func update_available_towers() -> void:
 	$hud_control/ButtonSpawnTower.text = "Towers (" + str(available_towers) + ")"
 
-func gain_level(force_level_up := false) -> void:
-	if RunData.current_level > 1 or force_level_up:
-		Engine.time_scale = 0.0
-		new_level_cards = []
-		for i : int in range(number_of_choosable_cards):
-			var new_card : CardObject = CARD_OBJ_RES.instantiate()
-			var select_button := SelectCardButton.add_select_button_to_card(new_card)
-			#new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
-			select_button.card_selected.connect(_on_card_level_clicked.bind(new_card, select_button))
-			new_level_cards.append(new_card)
-			new_card.card = CardData.get_random_card_from_deck()
-			$NewCardsContainer.add_child(new_card)
-
-func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
-	card_button.queue_free()
-	Engine.time_scale = 1.0
-	#chosen_card.card_clicked.disconnect(_on_card_level_clicked)
-	for card : CardObject in new_level_cards:
-		if card != chosen_card:
-			card.destroy_card_object()
-	#add_card_to_hand(chosen_card.card, chosen_card.global_position)
-	#await get_tree().process_frame
-	#chosen_card.queue_free()
-	chosen_card.get_parent().remove_child(chosen_card)
-	$CardsContainer._add_playable_card(chosen_card)
-	new_level_cards = []
-	#await get_tree().create_timer(0.1).timeout
-	#chosen_card.release_card()
+#func gain_level(force_level_up := false) -> void:
+	#if RunData.current_level > 1 or force_level_up:
+		#Engine.time_scale = 0.0
+		#new_level_cards = []
+		#for i : int in range(number_of_choosable_cards):
+			#var new_card : CardObject = CARD_OBJ_RES.instantiate()
+			#var select_button := SelectCardButton.add_select_button_to_card(new_card)
+			##new_card.card_clicked.connect(_on_card_level_clicked.bind(new_card))
+			#select_button.card_selected.connect(_on_card_level_clicked.bind(new_card, select_button))
+			#new_level_cards.append(new_card)
+			#new_card.card = CardData.get_random_card_from_deck()
+			#$NewCardsContainer.add_child(new_card)
 
 func update_level() -> void:
 	update_experience()
@@ -224,10 +209,10 @@ func _on_button_spawn_tower_pressed() -> void:
 		$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
 
 func _on_cards_container_discard_pile_updated() -> void:
-	$LabelDiscardPile.text = str(len($CardsContainer.discard_pile))
+	$LabelDiscardPile.text = str(len(cards_container.discard_pile))
 
 func _on_cards_container_draw_pile_updated() -> void:
-	$LabelDrawPile.text = str(len($CardsContainer.draw_pile))
+	$LabelDrawPile.text = str(len(cards_container.draw_pile))
 
 
 func _on_button_shop_pressed() -> void:

@@ -539,9 +539,6 @@ expand_mode = 1
 stretch_mode = 5
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552113022]
-libraries/ = SubResource("AnimationLibrary_n7s3j")
-
 [node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=835835745]
 custom_minimum_size = Vector2(850, 165)
 layout_mode = 1
@@ -558,5 +555,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 28
 alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552113022]
+libraries/ = SubResource("AnimationLibrary_n7s3j")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -20,7 +20,9 @@ func _ready() -> void:
 	for card_data : CardData in initial_deck:
 		var new_card := create_card_object(card_data)
 		draw_pile.append(new_card)
-		draw_pile_updated.emit()
+	await get_tree().process_frame
+	draw_pile_updated.emit()
+	discard_pile_updated.emit()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):

@@ -165,7 +165,10 @@ func add_card(card_obj: CardObject) -> void:
 	if not can_add_card():
 		return 
 	var card : CardData = card_obj.card
-	card.card_code.tower = self
+	if card.card_code:
+		card.card_code.tower = self
+	else:
+		card.parsed_card_code.tower = self
 	cards.append(card)
 	tower_card_added.emit(card)
 	if card.trigger_signal != "":
