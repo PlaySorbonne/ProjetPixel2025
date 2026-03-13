@@ -11,7 +11,7 @@
 [sub_resource type="Curve3D" id="Curve3D_roffi"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.89303, 0, -63.882, 0, 0, 0, 0, 0, 0, 8.69322, 0, -46.5516, 0, 0, 0, 0, 0, 0, 12.2458, 0, -30.9694, 0, 0, 0, 0, 0, 0, 12.395, 0, -22.4221, 0, 0, 0, 0, 0, 0, 7.496, 0, -14.479, 0, 0, 0, 0, 0, 0, 4.535, 0, -10.5, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, -4.245, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -5.89303, 0, -63.882, 0, 0, 0, 0, 0, 0, 0.69322, 0, -46.5516, 0, 0, 0, 0, 0, 0, 4.2458, 0, -30.9694, 0, 0, 0, 0, 0, 0, 6.395, 0, -22.4221, 0, 0, 0, 0, 0, 0, 7.496, 0, -14.479, 0, 0, 0, 0, 0, 0, 4.535, 0, -10.5, 0, 0, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, -4.245, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -19,7 +19,7 @@ point_count = 8
 [sub_resource type="Curve3D" id="Curve3D_1ijjf"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 53.5012, -0.000342369, -34.4374, 0, 0, 0, 0, 0, 0, 39.558, 0, -34.83, 0, 0, 0, 0, 0, 0, 23.544, 0, -32.754, 0, 0, 0, 0, 0, 0, 17.581, 0, -26.651, 0, 0, 0, 0, 0, 0, 24.6312, 6.00815e-05, -15.9758, 0, 0, 0, 0, 0, 0, 20, 0, -10, 0, 0, 0, 0, 0, 0, 13, 0, -6, 0, 0, 0, 0, 0, 0, -5, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 53.5012, -0.000342369, -53.4374, 0, 0, 0, 0, 0, 0, 39.558, 0, -54.83, 0, 0, 0, 0, 0, 0, 10.544, 0, -55.754, 0, 0, 0, 0, 0, 0, 18.581, 6, -27.651, 0, 0, 0, 0, 0, 0, 18.6312, 6.00815e-05, -22.9758, 0, 0, 0, 0, 0, 0, 20, 0, -11, 0, 0, 0, 0, 0, 0, 14, 0, -6, 0, 0, 0, 0, 0, 0, -5, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -27,7 +27,7 @@ point_count = 8
 [sub_resource type="Curve3D" id="Curve3D_e6wfw"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 55.811, 0, -26.885, 0, 0, 0, 0, 0, 0, 53.9853, -0.000355721, -18.7852, 0, 0, 0, 0, 0, 0, 49.96, 0, -8.492, 0, 0, 0, 0, 0, 0, 39.696, 0, 3.516, 0, 0, 0, 0, 0, 0, 27.603, 0, 4.223, 0, 0, 0, 0, 0, 0, 17, 0, 3, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 55.811, 0, -45.885, 0, 0, 0, 0, 0, 0, 53.9853, -0.000355721, -24.7852, 0, 0, 0, 0, 0, 0, 50.96, 0, -8.492, 0, 0, 0, 0, 0, 0, 41.696, 0, 3.516, 0, 0, 0, 0, 0, 0, 30.603, 0, 4.223, 0, 0, 0, 0, 0, 0, 20, 0, 2, 0, 0, 0, 0, 0, 0, -5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -35,7 +35,7 @@ point_count = 8
 [sub_resource type="Curve3D" id="Curve3D_64k1o"]
 bake_interval = 5.0
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 49.499, 0, 24.475, 0, 0, 0, 0, 0, 0, 43.028, 0, 15.605, 0, 0, 0, 0, 0, 0, 38.528, 0, 7.224, 0, 0, 0, 0, 0, 0, 29.464, 0, 5.577, 0, 0, 0, 0, 0, 0, 20, 0, 4, 0, 0, 0, 0, 0, 0, -5, 0, 1),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 55.499, 0, 29.475, 0, 0, 0, 0, 0, 0, 48.028, 0, 22.605, 0, 0, 0, 0, 0, 0, 41.528, 1, 16.224, 0, 0, 0, 0, 0, 0, 33.464, 0, 7.577, 0, 0, 0, 0, 0, 0, 20, 0, 4, 0, 0, 0, 0, 0, 0, -5, 0, 1),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -43,7 +43,7 @@ point_count = 6
 [node name="LevelMap7" instance=ExtResource("1_xjwak")]
 
 [node name="PlayerCamera" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 15, 25, 9.471)
+transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 15, 27, 6.471)
 
 [node name="Spaceship" parent="." index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
@@ -56,15 +56,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95737, 0.357662, -63.1097)
 path = NodePath("../Path1")
 
 [node name="EnemySpawner2" parent="." index="8" node_paths=PackedStringArray("path") instance=ExtResource("2_3taye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2394, 0.357661, -34.8915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2394, 0.357661, -53.8915)
 path = NodePath("../Path2")
 
 [node name="EnemySpawner3" parent="." index="9" node_paths=PackedStringArray("path") instance=ExtResource("2_3taye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6858, 0.357662, -28.2803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.6858, 0.357662, -47.2803)
 path = NodePath("../Path3")
 
 [node name="EnemySpawner4" parent="." index="10" node_paths=PackedStringArray("path") instance=ExtResource("2_3taye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3881, 0.357662, 25.9725)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3881, 0.357662, 29.9725)
 path = NodePath("../Path4")
 
 [node name="EnvironmentTest" parent="." index="11" instance=ExtResource("3_rf2eb")]
@@ -95,19 +95,25 @@ transform = Transform3D(0.625199, 0, -2.5897, 0, 1.86, 0, 1.78529, 0, 0.906899, 
 [node name="Rochet_3" parent="." index="19" instance=ExtResource("6_t124t")]
 transform = Transform3D(-1.75354, 0, 1.42115, 0, 1.86, 0, -2.44031, 0, -1.0212, 34, -0.5, -19)
 
-[node name="Rochet_4" parent="." index="20" instance=ExtResource("6_t124t")]
+[node name="Rochet_5" parent="." index="20" instance=ExtResource("6_t124t")]
+transform = Transform3D(-3.84346, 0, 0.269097, 0, 1.86, 0, -0.629391, 0, -1.64328, 34, -0.5, -46)
+
+[node name="Rochet_4" parent="." index="21" instance=ExtResource("6_t124t")]
 transform = Transform3D(-0.820789, 0, -1.28655, 0, 1.86, 0, 3.58375, 0, -0.294659, 35, -0.5, -15)
 
-[node name="Gros_Rochet_02" parent="." index="21" instance=ExtResource("5_rf2eb")]
+[node name="Gros_Rochet_02" parent="." index="22" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(-5.24537e-08, 0, 1, 0, 2, 0, -1.2, 0, -4.37114e-08, 31, 1, 16)
 
-[node name="Gros_Rochet_06" parent="." index="22" instance=ExtResource("5_rf2eb")]
+[node name="Gros_Rochet_06" parent="." index="23" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(0.2525, 0, 0.866025, 0, 1.885, 0, -0.437343, 0, 0.5, 14, 1, -14)
 
-[node name="Gros_Rochet_04" parent="." index="23" instance=ExtResource("5_rf2eb")]
+[node name="Gros_Rochet_04" parent="." index="24" instance=ExtResource("5_rf2eb")]
 transform = Transform3D(-0.164933, 0, -0.990509, 0, 2, 0, 1.18861, 0, -0.137444, 27, 1, 29)
 
-[node name="Gros_Rochet_05" parent="." index="24" instance=ExtResource("5_rf2eb")]
-transform = Transform3D(1.1908, 0, 0.123601, 0, 2, 0, -0.148322, 0, 0.992332, 52, 1, -51)
+[node name="Gros_Rochet_05" parent="." index="25" instance=ExtResource("5_rf2eb")]
+transform = Transform3D(1.1908, 0, 0.123601, 0, 2, 0, -0.148322, 0, 0.992332, 49, 1, 10)
+
+[node name="Gros_Rochet_07" parent="." index="26" instance=ExtResource("5_rf2eb")]
+transform = Transform3D(-0.164934, 0, -0.990509, 0, 2, 0, 1.18861, 0, -0.137445, 49, 0, 6)
 
 [editable path="PlayerHud"]
