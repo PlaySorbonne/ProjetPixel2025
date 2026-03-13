@@ -155,10 +155,13 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
 		return
-	if card.consume:
+	if card.tactics:
 		sacrifice_card()
 	else:
 		drop_card_on_tower()
+
+func run_card_tactics() -> void:
+	pass
 
 func drop_card_on_tower() -> void:
 	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
