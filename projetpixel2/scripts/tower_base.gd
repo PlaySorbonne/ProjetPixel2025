@@ -299,28 +299,32 @@ func spawn_projectile(projectile_position : Vector3, projectile_direction : Vect
 	projectile_obj.direction = projectile_direction
 	return projectile_obj
 
-func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
-	if not is_instance_valid(enemy):
-		print_debug("Invalid enemy targeted")
-		return
+func shoot_position(pos : Vector3, is_bonus := false) -> void:
 	if not is_bonus:
 		can_shoot = false
 	look_at(Vector3(
-		enemy.position.x,
+		pos.x,
 		position.y,
-		enemy.position.z
+		pos.z
 	))
 	var projectile_pos := Vector3(
 		projectile_spawn_pos.global_position.x,
-		enemy.position.y,
+		pos.y,
 		projectile_spawn_pos.global_position.z
 	)
 	var projectile_obj := spawn_projectile(
 		projectile_pos,
-		projectile_pos.direction_to(enemy.position)
+		projectile_pos.direction_to(pos)
 	)
 	if not is_bonus:
 		tower_fired.emit(projectile_obj, null)
+
+func shoot(enemy : BaseEnemy, is_bonus := false) -> void:
+	if not is_instance_valid(enemy):
+		print_debug("Invalid enemy targeted")
+		return
+	shoot_position(enemy.position, is_bonus)
+	if not is_bonus:
 		$TimerShoot.start(1.0 / fire_rate)
 		for _i : int in range(number_of_projectiles-1):
 			await get_tree().create_timer(1.0 / (fire_rate * 10.0)).timeout
@@ -350,6 +354,8 @@ func try_shoot_enemy(is_bonus := false) -> void:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
 			shoot(focused_enemy, is_bonus)
+		else:
+			get_random_shoot_direction()
 
 func _on_clickable_object_object_selected() -> void:
 	if is_hologram:
