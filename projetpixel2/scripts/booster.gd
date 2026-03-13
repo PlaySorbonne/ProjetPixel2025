@@ -73,17 +73,17 @@ func arrange_new_cards(cards : Array[CardObject], spacing: float = 15.0) -> void
 	var container : Control = $NewCardsContainer
 	# Compute total width
 	var total_width := 0.0
-	for c : CardObject in cards:
-		total_width += c.size.x
+	for card : CardObject in cards:
+		total_width += card.size.x
 	total_width += spacing * (cards.size() - 1)
 	# Center row
 	var start_x := (container.size.x - total_width) / 2.0
 	# Position elements
 	var x := start_x
-	for c : CardObject in cards:
-		c.position.x = x
-		c.position.y = (container.size.y - c.size.y) / 2.0
-		x += c.size.x + spacing
+	for card : CardObject in cards:
+		card.position.x = x
+		card.position.y = (container.size.y - card.size.y) / 2.0
+		x += card.size.x + spacing
 
 func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
 	if is_card_selected:
