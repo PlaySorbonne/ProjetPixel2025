@@ -10,6 +10,7 @@ var card_objects : Array[CardObject]
 var is_booster_open := false
 var scroll_tween : Tween
 var is_mouse_over := false
+var is_card_selected := false
 
 
 static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
@@ -85,6 +86,9 @@ func arrange_new_cards(cards : Array[CardObject], spacing: float = 15.0) -> void
 		x += c.size.x + spacing
 
 func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
+	if is_card_selected:
+		return
+	is_card_selected = true
 	card_button.queue_free()
 	#Engine.time_scale = 1.0
 	for card : CardObject in card_objects:

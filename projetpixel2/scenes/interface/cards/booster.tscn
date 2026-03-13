@@ -576,8 +576,6 @@ property = "position"
 reset_to_zero = false
 continuous_shake = true
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]
 [connection signal="mouse_exited" from="Background" to="." method="_on_background_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
