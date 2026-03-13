@@ -87,10 +87,17 @@ func _add_playable_card(new_card : CardObject) -> void:
 	new_card.can_be_dropped_on_objects = true
 
 func consume_card(card_object : CardObject) -> void:
-	remove_child(card_object)
 	consumed_pile.append(card_object)
 	cards_hand.erase(card_object)
 	consumed_pile_updated.emit()
+	destroy_card(card_object)
+
+func destroy_card(card_object : CardObject) -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(card_object, "scale", Vector2(0.75, 0.75), 0.4)
+	t.tween_property(card_object, "modulate", Color.TRANSPARENT, 0.4)
+	t.finished.connect(card_object.queue_free)
+	t.finished.connect(reorder_hand)
 
 func discard_card(card_object : CardObject) -> void:
 	remove_child(card_object)
