@@ -53,6 +53,7 @@ var sacrificing_card := false
 var tween_dissolve : Tween
 var mouse_over_card := false
 var previous_dissolve_uv : Vector2
+@export var can_be_hovered := true
 
 @onready var card_texture : TextureRect = $CardTexture
 @onready var core_texture : TextureRect = $CoreTexture
@@ -213,6 +214,8 @@ func destroy_card_object() -> void:
 	#GV.hud.remove_card_from_hand(self)
 
 func _on_mouse_entered() -> void:
+	if not can_be_hovered:
+		return
 	mouse_over_card = true
 	CardDescription.add_card_description(self)
 	tween_properties({
@@ -221,6 +224,8 @@ func _on_mouse_entered() -> void:
 	})
 
 func _on_mouse_exited() -> void:
+	if not can_be_hovered:
+		return
 	mouse_over_card = false
 	if not is_dragged:
 		tween_properties({

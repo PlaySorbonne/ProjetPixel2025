@@ -32,6 +32,7 @@ func _input(event: InputEvent) -> void:
 func open_booster() -> void:
 	is_booster_open = true
 	_update_scroll_speed(.75)
+	GV.player_camera.shake()
 	$Background.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 	$Shaker.stop_shake()
 	$AnimationPlayer.play("open_booster")
@@ -53,15 +54,20 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		var card := GV.cards_container.create_card_object(booster_cards[i])
 		card.modulate = Color.TRANSPARENT
 		card.scale = Vector2(5.0, 5.0)
+		card.can_be_hovered = false
 		$NewCardsContainer.add_child(card)
 		card_objects.append(card)
 		var select_button := SelectCardButton.add_select_button_to_card(card)
 		select_button.card_selected.connect(_on_card_level_clicked.bind(card, select_button))
 	arrange_new_cards(card_objects)
 	for i : int in range(len(booster_cards)):
-		tween_intro(card_objects[i]).finished.connect(GV.player_camera.shake)
+		tween_intro(card_objects[i]).finished.connect(_card_ready.bind(card_objects[i]))
 		if i != len(booster_cards)-1:
 			await get_tree().create_timer(0.25).timeout
+
+func _card_ready(card : CardObject) -> void:
+	GV.player_camera.shake(0.1, 15, 0.5)
+	card.can_be_hovered = true
 
 func arrange_new_cards(cards : Array[CardObject], spacing: float = 15.0) -> void:
 	var container : Control = $NewCardsContainer
