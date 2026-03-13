@@ -488,12 +488,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1116.4484
+offset_left = 1106.4484
 offset_top = -431.70667
-offset_right = -203.55164
+offset_right = -213.55164
 offset_bottom = -31.706665
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(-1, 1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
