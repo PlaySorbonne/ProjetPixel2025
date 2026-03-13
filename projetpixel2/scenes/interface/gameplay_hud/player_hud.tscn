@@ -90,6 +90,9 @@ font_color = Color(0.7309045, 0.8675474, 0.67845386, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xy5hs"]
+load_path = "res://.godot/imported/swipe-card.png-f49e07b9f94d8feda873083e98940a2a.ctex"
+
 [node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
 layer = 2
@@ -595,11 +598,17 @@ clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonShop" type="Button" parent="." unique_id=1612274037]
-offset_left = 1747.4308
-offset_top = 877.46423
-offset_right = 1823.7483
-offset_bottom = 949.623
-text = "$"
+anchors_preset = -1
+anchor_left = 0.90186805
+anchor_top = 0.7909384
+anchor_right = 0.9654379
+anchor_bottom = 0.87782127
+offset_bottom = -6.1035156e-05
+icon = SubResource("CompressedTexture2D_xy5hs")
+flat = true
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="pressed" from="hud_control/ButtonSpawnTower" to="." method="_on_button_spawn_tower_pressed"]
