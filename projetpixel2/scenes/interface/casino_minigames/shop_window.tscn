@@ -4,6 +4,8 @@
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_385bn"]
 [ext_resource type="Script" uid="uid://i3wii288jqrc" path="res://scripts/shop_window.gd" id="2_n01tg"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_n01tg"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_n01tg"]
+[ext_resource type="Texture2D" uid="uid://csqkbwgas7h6b" path="res://resources/images/ui_assets/icons/swipe-card.png" id="6_den4x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_den4x"]
 resource_local_to_scene = true
@@ -25,8 +27,37 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
+[sub_resource type="LabelSettings" id="LabelSettings_den4x"]
+font = ExtResource("5_n01tg")
+font_size = 22
+
 [node name="ShopWindow" unique_id=1845943741 instance=ExtResource("1_frrwn")]
+anchor_right = 0.23083226
+anchor_bottom = 0.24055153
 script = ExtResource("2_n01tg")
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_den4x")
+
+[node name="Label" type="Label" parent="." index="3" unique_id=298247065]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 73.94632
+offset_top = 18.236313
+offset_right = 273.89673
+offset_bottom = 46.236313
+text = "Shop"
+label_settings = SubResource("LabelSettings_den4x")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." index="4" unique_id=594995862]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 18.392319
+offset_top = 12.431479
+offset_right = 58.39231
+offset_bottom = 52.43148
+texture = ExtResource("6_den4x")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
