@@ -538,6 +538,7 @@ render_target_update_mode = 4
 [node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]
 
 [node name="BoosterContainer" type="Control" parent="." unique_id=1599252161]
+z_index = 50
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

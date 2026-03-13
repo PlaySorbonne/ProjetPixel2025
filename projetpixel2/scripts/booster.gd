@@ -8,7 +8,6 @@ const BOOSTER_RES := preload("res://scenes/interface/cards/booster.tscn")
 
 var card_objects : Array[CardObject]
 var is_booster_open := false
-var scroll_tween : Tween
 var is_mouse_over := false
 var is_card_selected := false
 
@@ -33,6 +32,7 @@ func _input(event: InputEvent) -> void:
 
 func open_booster() -> void:
 	is_booster_open = true
+	$AnimationPlayer.speed_scale = 1.0
 	_update_scroll_speed(.75)
 	$Background.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 	$Shaker.stop_shake()
@@ -112,25 +112,13 @@ func _on_background_mouse_entered() -> void:
 	is_mouse_over = true
 	if not is_booster_open:
 		$Shaker.shake(-1.0, 15, 5)
-		#_tween_scroll_speed(0.75)
+		$AnimationPlayer.speed_scale = 1.75
 
 func _on_background_mouse_exited() -> void:
 	is_mouse_over = false
 	if not is_booster_open:
 		$Shaker.stop_shake()
-		#_tween_scroll_speed(0.25)
-
-func _tween_scroll_speed(to_val : float) -> void:
-	if scroll_tween:
-		scroll_tween.kill()
-	scroll_tween = create_tween().set_ease(Tween.EASE_IN_OUT)
-	scroll_tween.tween_method(
-		_update_scroll_speed, 
-		get_scroll_speed(), 
-		0.25, 
-		0.15
-	)
-	_update_scroll_speed(to_val)
+		$AnimationPlayer.speed_scale = 1.0
 
 func get_scroll_speed() -> float:
 	return $Background.material.get_shader_parameter("scroll_speed")
