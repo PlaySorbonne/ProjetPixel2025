@@ -49,17 +49,17 @@ prices = Array[int]([10, 13, 15])
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_den4x")
 
-[node name="Label" type="Label" parent="." index="3" unique_id=298247065]
+[node name="Label" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=298247065]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 73.94632
 offset_top = 18.236313
 offset_right = 273.89673
-offset_bottom = 46.236313
+offset_bottom = 48.236313
 text = "Shop"
 label_settings = SubResource("LabelSettings_den4x")
 
-[node name="TextureRect" type="TextureRect" parent="." index="4" unique_id=594995862]
+[node name="TextureRect" type="TextureRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=594995862]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 18.392319
@@ -71,7 +71,7 @@ texture = ExtResource("6_den4x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxItems" type="VBoxContainer" parent="." index="5" unique_id=66180772]
+[node name="VBoxItems" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=66180772]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12232655
@@ -81,7 +81,7 @@ anchor_bottom = 0.9225305
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonBooster" type="Button" parent="VBoxItems" index="0" unique_id=286524149]
+[node name="ButtonBooster" type="Button" parent="Contents/VBoxItems" index="0" unique_id=286524149]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -92,7 +92,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonRareBooster" type="Button" parent="VBoxItems" index="1" unique_id=1368245865]
+[node name="ButtonRareBooster" type="Button" parent="Contents/VBoxItems" index="1" unique_id=1368245865]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -103,7 +103,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonTower" type="Button" parent="VBoxItems" index="2" unique_id=2102572699]
+[node name="ButtonTower" type="Button" parent="Contents/VBoxItems" index="2" unique_id=2102572699]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -114,7 +114,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxPrices" type="VBoxContainer" parent="." index="6" unique_id=711194198]
+[node name="VBoxPrices" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=711194198]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75618696
@@ -124,7 +124,7 @@ anchor_bottom = 0.9225305
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBoxPrices" index="0" unique_id=1906639773]
+[node name="Label" type="Label" parent="Contents/VBoxPrices" index="0" unique_id=1906639773]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "10$"
@@ -133,7 +133,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="VBoxPrices" index="1" unique_id=923092975]
+[node name="Label2" type="Label" parent="Contents/VBoxPrices" index="1" unique_id=923092975]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "13$"
@@ -142,7 +142,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="VBoxPrices" index="2" unique_id=313909939]
+[node name="Label3" type="Label" parent="Contents/VBoxPrices" index="2" unique_id=313909939]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "15$"
@@ -151,6 +151,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="VBoxItems/ButtonBooster" to="." method="_on_button_booster_pressed"]
-[connection signal="pressed" from="VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
-[connection signal="pressed" from="VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
+[connection signal="pressed" from="Contents/VBoxItems/ButtonBooster" to="." method="_on_button_booster_pressed"]
+[connection signal="pressed" from="Contents/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
+[connection signal="pressed" from="Contents/VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
