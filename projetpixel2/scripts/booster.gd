@@ -4,7 +4,15 @@ class_name Booster
 
 signal booster_opened
 
+enum BoosterFamilies {Diamonds, Clubs, Hearts, Spades}
+
 const BOOSTER_RES := preload("res://scenes/interface/cards/booster.tscn")
+const BOOSTER_LOGOS : Dictionary[BoosterFamilies, Texture] = {
+	BoosterFamilies.Diamonds : preload("res://resources/images/cards/booster/diamonds_logo.png"),
+	BoosterFamilies.Clubs : preload("res://resources/images/cards/booster/clubs_logo.png"),
+	BoosterFamilies.Hearts : preload("res://resources/images/cards/booster/hearts_logo.png"),
+	BoosterFamilies.Spades : preload("res://resources/images/cards/booster/spade_logo.png"),
+}
 
 var card_objects : Array[CardObject]
 var is_booster_open := false
@@ -26,6 +34,9 @@ static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
 func _ready() -> void:
 	await tween_intro(self).finished
 	$AnimationPlayer.play("idle")
+
+func set_family(new_family : BoosterFamilies) -> void:
+	$SpadeLogo.texture = BOOSTER_LOGOS[new_family]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") \
@@ -69,7 +80,7 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 			await get_tree().create_timer(0.25).timeout
 
 func _card_ready(card : CardObject) -> void:
-	GV.player_camera.shake(0.1, 15, 0.5)
+	GV.player_camera.shake(0.1, 15, 0.65)
 	card.can_be_hovered = true
 
 func arrange_new_cards(cards : Array[CardObject], spacing: float = 15.0) -> void:

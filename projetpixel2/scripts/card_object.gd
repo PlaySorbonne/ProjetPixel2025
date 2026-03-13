@@ -163,6 +163,7 @@ func _on_drag_and_drop_2d_dropped() -> void:
 func drop_tactics_card() -> void:
 	print("run_card_tactics")
 	play_card(GV)
+	destroy_card_object()
 
 func drop_card_on_tower() -> void:
 	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object

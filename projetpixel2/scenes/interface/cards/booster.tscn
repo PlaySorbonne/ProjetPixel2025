@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ct6widxi5rwby" path="res://resources/images/ui_assets/menu_elements/ui_line.png" id="5_bmvv6"]
 [ext_resource type="Shader" uid="uid://drua2dx2j8hw" path="res://resources/shaders/glow.gdshader" id="6_i3rcf"]
 [ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="7_ffih4"]
-[ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="8_q2jue"]
+[ext_resource type="Texture2D" uid="uid://f4y6dgta7xm4" path="res://resources/images/cards/booster/diamonds_logo.png" id="8_ubgfo"]
 [ext_resource type="Texture2D" uid="uid://yvy6eltlbe8x" path="res://resources/images/ui_assets/menu_elements/ui_corner.png" id="9_0oocy"]
 [ext_resource type="PackedScene" uid="uid://cjrj1tcaagv4v" path="res://scenes/gameplay_systems/shaker.tscn" id="11_1el8l"]
 
@@ -506,7 +506,7 @@ grow_vertical = 2
 rotation = 3.1415882
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("8_q2jue")
+texture = ExtResource("8_ubgfo")
 expand_mode = 1
 stretch_mode = 5
 

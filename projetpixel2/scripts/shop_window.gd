@@ -41,7 +41,8 @@ func _on_button_booster_pressed() -> void:
 
 func _on_button_rare_booster_pressed() -> void:
 	if try_buy_item(prices[1]):
-		Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
+		var b := Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
+		b.set_family(Booster.BoosterFamilies.Spades)
 
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
