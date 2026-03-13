@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_n01tg"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_n01tg"]
 [ext_resource type="Texture2D" uid="uid://csqkbwgas7h6b" path="res://resources/images/ui_assets/icons/swipe-card.png" id="6_den4x"]
-[ext_resource type="Texture2D" uid="uid://7uf2yah3vwr2" path="res://resources/images/ui_assets/icons/card-burn.png" id="7_sjnq4"]
+[ext_resource type="Texture2D" path="res://resources/images/ui_assets/icons/card-burn.png" id="7_sjnq4"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_den4x"]
@@ -33,6 +33,9 @@ shader_parameter/flip_chance = 0.05
 font = ExtResource("5_n01tg")
 font_size = 24
 
+[sub_resource type="FontVariation" id="FontVariation_yufeb"]
+base_font = ExtResource("5_n01tg")
+
 [sub_resource type="LabelSettings" id="LabelSettings_sjnq4"]
 font = ExtResource("5_n01tg")
 font_size = 18
@@ -41,6 +44,7 @@ font_size = 18
 anchor_right = 0.23083226
 anchor_bottom = 0.24055153
 script = ExtResource("2_n01tg")
+prices = Array[int]([10, 13, 15])
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_den4x")
@@ -77,69 +81,45 @@ anchor_right = 0.7555903
 anchor_bottom = 0.9225305
 metadata/_edit_use_anchors_ = true
 
-[node name="BoosterItem" type="HBoxContainer" parent="VBoxItems" index="0" unique_id=1725042024]
-custom_minimum_size = Vector2(0, 40)
+[node name="ButtonBooster" type="Button" parent="VBoxItems" index="0" unique_id=286524149]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-
-[node name="ButtonBooster" type="Button" parent="VBoxItems/BoosterItem" index="0" unique_id=783866112]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Basic booster"
 icon = ExtResource("7_sjnq4")
-icon_alignment = 1
+alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBoxItems/BoosterItem" index="1" unique_id=809088963]
+[node name="ButtonRareBooster" type="Button" parent="VBoxItems" index="1" unique_id=1368245865]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-text = "Basic booster"
-label_settings = SubResource("LabelSettings_sjnq4")
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="RareBoosterItem" type="HBoxContainer" parent="VBoxItems" index="1" unique_id=1188548369]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="ButtonBooster" type="Button" parent="VBoxItems/RareBoosterItem" index="0" unique_id=1176277767]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Rare booster"
 icon = ExtResource("7_sjnq4")
-icon_alignment = 1
+alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="VBoxItems/RareBoosterItem" index="1" unique_id=1076645804]
+[node name="ButtonTower" type="Button" parent="VBoxItems" index="2" unique_id=2102572699]
+custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-text = "Rare booster"
-label_settings = SubResource("LabelSettings_sjnq4")
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TowerItem" type="HBoxContainer" parent="VBoxItems" index="2" unique_id=530927552]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="ButtonBooster" type="Button" parent="VBoxItems/TowerItem" index="0" unique_id=1501673574]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = " Tower"
 icon = ExtResource("8_yufeb")
-icon_alignment = 1
+alignment = 0
 expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="VBoxItems/TowerItem" index="1" unique_id=1433485971]
-layout_mode = 2
-text = "Tower"
-label_settings = SubResource("LabelSettings_sjnq4")
-vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxPrices" type="VBoxContainer" parent="." index="6" unique_id=711194198]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.73588
+anchor_left = 0.75618696
 anchor_top = 0.24431151
-anchor_right = 0.8828209
+anchor_right = 0.90312785
 anchor_bottom = 0.9225305
 metadata/_edit_use_anchors_ = true
 
@@ -169,3 +149,7 @@ label_settings = SubResource("LabelSettings_sjnq4")
 horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="VBoxItems/ButtonBooster" to="." method="_on_button_booster_pressed"]
+[connection signal="pressed" from="VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
+[connection signal="pressed" from="VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]

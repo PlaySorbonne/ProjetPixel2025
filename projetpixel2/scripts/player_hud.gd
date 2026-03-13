@@ -216,8 +216,4 @@ func _on_cards_container_draw_pile_updated() -> void:
 
 
 func _on_button_shop_pressed() -> void:
-	# add shop popup
-	# with boosters, towers, etc
-	# all with their own prices and infos
-	# too much stuff for just one button
-	Booster.spawn_booster($BoosterContainer, Vector2(108, 11))
+	ShopWindow.spawn_shop_popup()
