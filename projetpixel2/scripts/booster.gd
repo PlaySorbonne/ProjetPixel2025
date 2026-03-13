@@ -32,7 +32,6 @@ func _input(event: InputEvent) -> void:
 func open_booster() -> void:
 	is_booster_open = true
 	_update_scroll_speed(.75)
-	GV.player_camera.shake()
 	$Background.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 	$Shaker.stop_shake()
 	$AnimationPlayer.play("open_booster")
