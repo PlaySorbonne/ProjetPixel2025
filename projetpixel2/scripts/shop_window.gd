@@ -22,6 +22,7 @@ static func spawn_shop_popup() -> ShopWindow:
 @export var prices : Array[int] = [10, 13, 15]
 
 @onready var buy_message_label := $Contents/LabelBuyMessage
+var message_tween : Tween
 
 
 func _ready() -> void:
@@ -43,9 +44,13 @@ func try_buy_item(item_price : int) -> bool:
 
 func display_message(new_msg : String, msg_color : Color) -> void:
 	buy_message_label.text = new_msg
-	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
-	t.tween_property(buy_message_label, "modulate", msg_color, 0.25)
-	t.tween_property(buy_message_label, "scale", Vector2.ONE, 0.25)
+	buy_message_label.scale = Vector2(0.5, 0.5)
+	buy_message_label.modulate = Color.TRANSPARENT
+	if message_tween:
+		message_tween.kill()
+	message_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	message_tween.tween_property(buy_message_label, "modulate", msg_color, 0.25)
+	message_tween.tween_property(buy_message_label, "scale", Vector2.ONE, 0.25)
 	$MessageTimer.start(2.0)
 
 func _on_message_timer_timeout() -> void:
