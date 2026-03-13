@@ -11,7 +11,7 @@ static var cards_data : Dictionary[String, CardData] = {}
 static var current_deck : Array[CardData] = []
 
 @export var name := "blank_card"
-@export var description := "blank description"
+@export_multiline var description := "blank description"
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common
 @export var family : CardFamilies = CardFamilies.Military
