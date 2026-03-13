@@ -299,7 +299,7 @@ offset_top = 7.0
 offset_bottom = 7.0
 mouse_filter = 2
 script = ExtResource("13_6usvi")
-initial_deck = Array[ExtResource("14_3kbv4")]([ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs")])
+initial_deck = Array[ExtResource("14_3kbv4")]([ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs")])
 metadata/_edit_use_anchors_ = true
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=210749627]

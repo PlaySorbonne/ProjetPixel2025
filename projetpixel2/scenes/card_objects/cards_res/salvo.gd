@@ -2,7 +2,7 @@ extends CardBase
 class_name Salvo
 
 
-@export var number_of_shots = 10
+@export var number_of_shots = 11
 
 
 func check_condition():
@@ -12,4 +12,4 @@ func run_effect():
 	for _i in range(number_of_shots):
 		for t : TowerBase in GV.towers:
 			t.try_shoot_enemy(true)
-		await GV.get_tree().create_timer(0.25).timeout
+		await GV.get_tree().create_timer(0.4).timeout

@@ -10,8 +10,12 @@ enum CardFamilies {Military, Scientists, Traders, Revolution}
 static var cards_data : Dictionary[String, CardData] = {}
 static var current_deck : Array[CardData] = []
 
-@export var name := "blank_card"
-@export_multiline var description := "blank description"
+@export var name := "blank_card":
+	get():
+		return format_card_text(name)
+@export_multiline var description := "blank description":
+	get():
+		return format_card_text(description)
 @export var consume := false
 @export var tactics := false
 @export var value := 1
@@ -59,6 +63,22 @@ static func get_random_card() -> CardData:
 
 static func get_random_card_from_deck() -> CardData:
 	return current_deck.pick_random()
+
+func format_card_text(text: String) -> String:
+	var result := text
+	var start := result.find("{")
+	while start != -1:
+		var end := result.find("}", start)
+		if end == -1:
+			break
+		var key := result.substr(start+1, end-start-1)
+		if card_code:
+			var val := str(card_code.get(key))
+			result = result.substr(0, start) + val + result.substr(end + 1)
+			start = result.find("{", start + val.length())
+		else:
+			start = result.find("{", end + 1)
+	return result
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
 	if card_code:

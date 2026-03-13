@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3eh5oe37ijck"]
+[gd_scene format=3 uid="uid://c3eh5oe37ijck"]
 
 [ext_resource type="Script" uid="uid://e6j6mntovs1u" path="res://scripts/card_description.gd" id="1_ddsqd"]
 
@@ -11,7 +11,7 @@ font_size = 17
 [sub_resource type="LabelSettings" id="LabelSettings_a1yaa"]
 font_size = 20
 
-[node name="CardDescription" type="Control"]
+[node name="CardDescription" type="Control" unique_id=302558238]
 z_index = 20
 custom_minimum_size = Vector2(340, 165)
 layout_mode = 3
@@ -25,7 +25,7 @@ pivot_offset = Vector2(170, 82.5)
 script = ExtResource("1_ddsqd")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=303378144]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.14, 0.14, 0.14, 0.96)
 
-[node name="LabelTitle" type="Label" parent="."]
+[node name="LabelTitle" type="Label" parent="." unique_id=2079672423]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -44,7 +44,7 @@ text = "Card Name"
 label_settings = SubResource("LabelSettings_ddsqd")
 horizontal_alignment = 1
 
-[node name="LabelDescription" type="Label" parent="."]
+[node name="LabelDescription" type="Label" parent="." unique_id=1663652197]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +57,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="LabelFamily" type="Label" parent="."]
+[node name="LabelFamily" type="Label" parent="." unique_id=1416034500]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -71,7 +71,7 @@ label_settings = SubResource("LabelSettings_a1yaa")
 vertical_alignment = 2
 autowrap_mode = 2
 
-[node name="LabelRarity" type="Label" parent="."]
+[node name="LabelRarity" type="Label" parent="." unique_id=1105574331]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
