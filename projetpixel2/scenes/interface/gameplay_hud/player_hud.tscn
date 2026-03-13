@@ -25,6 +25,7 @@
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
+[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="26_xy5hs"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -579,6 +580,16 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 metadata/_edit_use_anchors_ = true
+
+[node name="XYZHoverAnimator" type="Node" parent="ButtonShop" unique_id=928974701]
+script = ExtResource("26_xy5hs")
+properties = Dictionary[String, Variant]({
+"modulate": Color(0.6686463, 0.68587065, 0, 1),
+"scale": Vector2(1.05, 1.05)
+})
+treat_as_offset = Array[String]([])
+anim_time = 0.2
+metadata/_custom_type_script = "uid://bkxuojfewrgp8"
 
 [node name="ShopPosMarker" type="Control" parent="." unique_id=461366600]
 layout_mode = 3

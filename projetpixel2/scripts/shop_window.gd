@@ -21,19 +21,37 @@ static func spawn_shop_popup() -> ShopWindow:
 
 @export var prices : Array[int] = [10, 13, 15]
 
+@onready var buy_message_label := $Contents/LabelBuyMessage
+
 
 func _ready() -> void:
 	super._ready()
 	await get_tree().process_frame
 	position = GV.hud.get_shop_pos()
+	buy_message_label.scale = Vector2(0.5, 0.5)
+	buy_message_label.modulate = Color.TRANSPARENT
 	open_window()
 
 func try_buy_item(item_price : int) -> bool:
 	if RunData.current_chips >= item_price:
 		RunData.current_chips -= item_price
+		display_message("Thank you for your patronage!", Color.GREEN)
 		return true
 	else:
+		display_message("Not enough chips!", Color.RED)
 		return false
+
+func display_message(new_msg : String, msg_color : Color) -> void:
+	buy_message_label.text = new_msg
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(buy_message_label, "modulate", msg_color, 0.25)
+	t.tween_property(buy_message_label, "scale", Vector2.ONE, 0.25)
+	$MessageTimer.start(2.0)
+
+func _on_message_timer_timeout() -> void:
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
+	t.tween_property(buy_message_label, "modulate", Color.TRANSPARENT, 0.25)
+	t.tween_property(buy_message_label, "scale", Vector2(0.5, 0.5), 0.25)
 
 func _on_button_booster_pressed() -> void:
 	if try_buy_item(prices[0]):

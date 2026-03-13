@@ -34,6 +34,10 @@ shader_parameter/flip_chance = 0.05
 font = ExtResource("5_n01tg")
 font_size = 24
 
+[sub_resource type="LabelSettings" id="LabelSettings_sxsyu"]
+font = ExtResource("5_n01tg")
+font_size = 20
+
 [sub_resource type="FontVariation" id="FontVariation_yufeb"]
 base_font = ExtResource("5_n01tg")
 
@@ -60,7 +64,24 @@ offset_bottom = 48.236313
 text = "Shop"
 label_settings = SubResource("LabelSettings_den4x")
 
-[node name="TextureRect" type="TextureRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=594995862]
+[node name="LabelBuyMessage" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=498735733]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Thank you for your patronage!"
+label_settings = SubResource("LabelSettings_sxsyu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=594995862]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 18.392319
@@ -72,7 +93,7 @@ texture = ExtResource("6_den4x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxItems" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=66180772]
+[node name="VBoxItems" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=66180772]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12232655
@@ -115,7 +136,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxPrices" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=711194198]
+[node name="VBoxPrices" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=711194198]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.75618696
@@ -152,6 +173,11 @@ horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="MessageTimer" type="Timer" parent="." index="3" unique_id=504440673]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="pressed" from="Contents/VBoxItems/ButtonBooster" to="." method="_on_button_booster_pressed"]
 [connection signal="pressed" from="Contents/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
 [connection signal="pressed" from="Contents/VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
