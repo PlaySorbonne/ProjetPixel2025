@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_n01tg"]
 [ext_resource type="Texture2D" uid="uid://csqkbwgas7h6b" path="res://resources/images/ui_assets/icons/swipe-card.png" id="6_den4x"]
 [ext_resource type="Texture2D" uid="uid://bsruqkckna5by" path="res://resources/images/ui_assets/icons/booster-icon.png" id="7_yufeb"]
+[ext_resource type="Texture2D" uid="uid://cptup3eeu0p0x" path="res://resources/images/ui_assets/icons/rare-booster-icon.png" id="8_sxsyu"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yufeb"]
@@ -98,7 +99,7 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = "  Rare booster"
-icon = ExtResource("7_yufeb")
+icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
