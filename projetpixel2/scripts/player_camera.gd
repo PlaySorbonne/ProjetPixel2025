@@ -5,10 +5,18 @@ class_name PlayerCamera
 const SPEED := 8.0
 
 var current_speed := 0.0
+@export var offset : Vector2:
+	set(value):
+		offset = value
+		h_offset = value.x
+		v_offset = value.y
 
 
 func _ready() -> void:
 	GV.player_camera = self
+
+func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 30) -> void:
+	$XYZShaker.shake(duration_n, frequency_n, amplitude_n)
 
 func _physics_process(delta: float) -> void:
 	var direction := Vector3.ZERO

@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2dcudl2os28q"]
+[gd_scene format=3 uid="uid://d2dcudl2os28q"]
 
 [ext_resource type="Script" uid="uid://bxh6dikswxlhb" path="res://scripts/player_camera.gd" id="1_61jux"]
+[ext_resource type="Script" uid="uid://dfdgtv8ho7l7e" path="res://scripts/xyz_shaker.gd" id="2_kw8wo"]
 
-[node name="PlayerCamera" type="Camera3D"]
+[node name="PlayerCamera" type="Camera3D" unique_id=1141540100]
 current = true
 script = ExtResource("1_61jux")
+
+[node name="XYZShaker" type="Node" parent="." unique_id=722163274 node_paths=PackedStringArray("object")]
+script = ExtResource("2_kw8wo")
+object = NodePath("..")
+metadata/_custom_type_script = "uid://dfdgtv8ho7l7e"
