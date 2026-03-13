@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_n01tg"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_n01tg"]
 [ext_resource type="Texture2D" uid="uid://csqkbwgas7h6b" path="res://resources/images/ui_assets/icons/swipe-card.png" id="6_den4x"]
-[ext_resource type="Texture2D" path="res://resources/images/ui_assets/icons/card-burn.png" id="7_sjnq4"]
+[ext_resource type="Texture2D" uid="uid://bsruqkckna5by" path="res://resources/images/ui_assets/icons/booster-icon.png" id="7_yufeb"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_den4x"]
@@ -58,7 +58,6 @@ offset_right = 273.89673
 offset_bottom = 46.236313
 text = "Shop"
 label_settings = SubResource("LabelSettings_den4x")
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="." index="4" unique_id=594995862]
 layout_mode = 1
@@ -67,10 +66,10 @@ offset_left = 18.392319
 offset_top = 12.431479
 offset_right = 58.39231
 offset_bottom = 52.43148
+mouse_filter = 2
 texture = ExtResource("6_den4x")
 expand_mode = 1
 stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxItems" type="VBoxContainer" parent="." index="5" unique_id=66180772]
 layout_mode = 1
@@ -79,6 +78,7 @@ anchor_left = 0.12232655
 anchor_top = 0.24431151
 anchor_right = 0.7555903
 anchor_bottom = 0.9225305
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonBooster" type="Button" parent="VBoxItems" index="0" unique_id=286524149]
@@ -87,7 +87,7 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = "  Basic booster"
-icon = ExtResource("7_sjnq4")
+icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
@@ -98,7 +98,7 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = "  Rare booster"
-icon = ExtResource("7_sjnq4")
+icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
@@ -121,6 +121,7 @@ anchor_left = 0.75618696
 anchor_top = 0.24431151
 anchor_right = 0.90312785
 anchor_bottom = 0.9225305
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="VBoxPrices" index="0" unique_id=1906639773]
