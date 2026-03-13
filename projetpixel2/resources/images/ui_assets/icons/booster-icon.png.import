@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7uf2yah3vwr2"
-path="res://.godot/imported/card-burn.png-fb0c80fd049002627183a016064f039c.ctex"
+uid="uid://bsruqkckna5by"
+path="res://.godot/imported/booster-icon.png-d3f1faf50821fedfca9ed135ca75e184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/ui_assets/icons/card-burn.png"
-dest_files=["res://.godot/imported/card-burn.png-fb0c80fd049002627183a016064f039c.ctex"]
+source_file="res://resources/images/ui_assets/icons/booster-icon.png"
+dest_files=["res://.godot/imported/booster-icon.png-d3f1faf50821fedfca9ed135ca75e184.ctex"]
 
 [params]
 
