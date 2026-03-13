@@ -95,9 +95,6 @@ func release_card() -> void:
 	is_dragged = false
 	$DragAndDrop2D.drop()
 
-#func press_card() -> void:
-	#$DragAndDrop2D.press()
-
 func _input(event: InputEvent) -> void:
 	if is_dragged:
 		if event is InputEventMouseButton:
@@ -158,8 +155,7 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
 		return
-	
-	if sacrificing_card:
+	if card.consume:
 		sacrifice_card()
 	else:
 		drop_card_on_tower()
@@ -170,8 +166,9 @@ func drop_card_on_tower() -> void:
 		# match bahavior on spatial object
 		if spatial_object is TowerBase:
 			var hovered_tower : TowerBase = spatial_object
-			hovered_tower.add_card(self)
-			return
+			if hovered_tower.can_add_card():
+				hovered_tower.add_card(self)
+				return
 	return_to_hand()
 
 func sacrifice_card() -> void:

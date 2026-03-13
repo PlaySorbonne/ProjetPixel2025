@@ -11,5 +11,7 @@ metadata/_custom_type_script = "uid://b7of0gtninjmr"
 script = ExtResource("2_ir07q")
 name = "Salvo"
 description = "The tower shoots three times."
+consume = true
+tactics = true
 card_code = SubResource("Resource_ir07q")
 metadata/_custom_type_script = "uid://bkgi8sauy56hj"
