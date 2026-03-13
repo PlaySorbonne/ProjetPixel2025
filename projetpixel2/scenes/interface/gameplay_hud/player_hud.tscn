@@ -99,13 +99,11 @@ layer = 2
 script = ExtResource("1_ldeku")
 
 [node name="GamePanel" type="Panel" parent="." unique_id=1054457954]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 236.00064
-offset_top = 85.0
-offset_right = -252.0
-offset_bottom = -23.999756
+anchors_preset = -1
+anchor_left = 0.122917004
+anchor_top = 0.0787037
+anchor_right = 0.86875
+anchor_bottom = 0.977778
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -374,11 +372,9 @@ metadata/_edit_use_anchors_ = true
 [node name="CasinoBackground" type="Panel" parent="." unique_id=338876159]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1681.4415
-offset_bottom = 0.5609131
+anchors_preset = -1
+anchor_right = 0.124249205
+anchor_bottom = 1.0005194
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -388,23 +384,23 @@ metadata/_edit_use_anchors_ = true
 [node name="CasinoBackground2" type="Panel" parent="." unique_id=5747742]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.84265137
-offset_bottom = -989.3914
+anchors_preset = -1
+anchor_right = 1.0004389
+anchor_bottom = 0.08389684
+offset_right = -0.00012207031
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_0or73")
+metadata/_edit_use_anchors_ = true
 
 [node name="CasinoBackground4" type="Panel" parent="." unique_id=1806777291]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.9660517
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1043.3358
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -414,14 +410,15 @@ metadata/_edit_use_anchors_ = true
 [node name="CasinoBackground3" type="Panel" parent="." unique_id=350991333]
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.8623698
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1655.75
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6usvi")
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonRussianRoulette" parent="." unique_id=763556892 instance=ExtResource("18_616a6")]
 anchor_left = 0.884625
