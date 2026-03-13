@@ -23,7 +23,8 @@ static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
 
 
 func _ready() -> void:
-	tween_intro(self)
+	await tween_intro(self).finished
+	$AnimationPlayer.play("idle")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") \
@@ -97,6 +98,7 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 	await get_tree().create_timer(0.5).timeout
 	chosen_card.get_parent().remove_child(chosen_card)
 	GV.hud.cards_container._add_playable_card(chosen_card)
+	$AnimationPlayer.stop(true)
 	await get_tree().create_timer(0.25).timeout
 	destroy_object(self)
 
@@ -104,7 +106,7 @@ func destroy_object(obj : CanvasItem) -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel()
 	t.tween_property(obj, "scale", Vector2.ZERO, 0.75)
 	t.tween_property(obj, "modulate", Color.TRANSPARENT, 0.5)
-	t.finished.connect(queue_free)
+	t.finished.connect(obj.queue_free)
 
 func _on_background_mouse_entered() -> void:
 	is_mouse_over = true
