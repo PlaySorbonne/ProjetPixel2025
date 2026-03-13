@@ -9,6 +9,7 @@ metadata/_custom_type_script = "uid://dnfjcw4pfvcmu"
 
 [resource]
 script = ExtResource("2_34wm3")
-name = "AttackUp"
+name = "Attack Up"
+description = "Increases the tower's damage by 5."
 card_code = SubResource("Resource_6umbh")
 metadata/_custom_type_script = "uid://bkgi8sauy56hj"
