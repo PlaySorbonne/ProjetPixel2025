@@ -10,7 +10,7 @@ const EASE = Tween.EASE_IN_OUT
 @export var reset_to_zero := true
 @export var continuous_shake := false
 var initial_value := Vector2.ZERO
-var amplitude := 0
+var amplitude := 0.0
 var priority := 0
 var shaking := false
 var frequency := 0.0
@@ -18,7 +18,7 @@ var frequency := 0.0
 
 
 
-func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 30, priority_n := 0):
+func shake(duration_n := 0.2, frequency_n := 15.0, amplitude_n := 30.0, priority_n := 0):
 	if priority_n >= priority :
 		priority = priority_n
 		amplitude = amplitude_n

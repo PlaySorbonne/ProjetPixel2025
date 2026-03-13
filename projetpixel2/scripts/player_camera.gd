@@ -15,7 +15,7 @@ var current_speed := 0.0
 func _ready() -> void:
 	GV.player_camera = self
 
-func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 30) -> void:
+func shake(duration_n := 0.2, frequency_n := 15, amplitude_n := 0.75) -> void:
 	$XYZShaker.shake(duration_n, frequency_n, amplitude_n)
 
 func _physics_process(delta: float) -> void:
