@@ -2,7 +2,7 @@ extends CardBase
 class_name Salvo
 
 
-@export var number_of_shots = 3
+@export var number_of_shots = 10
 
 
 func check_condition():

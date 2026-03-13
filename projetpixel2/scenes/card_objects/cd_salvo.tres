@@ -10,9 +10,8 @@ metadata/_custom_type_script = "uid://b7of0gtninjmr"
 [resource]
 script = ExtResource("2_ir07q")
 name = "Salvo"
-description = "The tower shoots three times."
+description = "Every tower immediately shoots 10 times at a random enemy."
 consume = true
 tactics = true
-trigger_signal = ""
 card_code = SubResource("Resource_ir07q")
 metadata/_custom_type_script = "uid://bkgi8sauy56hj"
