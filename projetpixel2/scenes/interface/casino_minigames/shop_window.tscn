@@ -107,23 +107,24 @@ layout_mode = 2
 alignment = 2
 
 [node name="VBoxItems" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="0" unique_id=66180772]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ShopItemButton" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
-custom_minimum_size = Vector2(200, 40)
+[node name="ShopCommonBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
-text = "  Basic booster"
+text = "  Common booster"
 icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonRareBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=1368245865]
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
@@ -134,7 +135,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=2102572699]
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
@@ -145,7 +146,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxPrices" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="1" unique_id=711194198]
-custom_minimum_size = Vector2(130, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
@@ -165,7 +166,7 @@ text = "15$"
 wait_time = 2.0
 one_shot = true
 
-[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopItemButton" to="." method="_on_button_booster_pressed"]
+[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopCommonBooster" to="." method="_on_button_booster_pressed"]
 [connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
 [connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
