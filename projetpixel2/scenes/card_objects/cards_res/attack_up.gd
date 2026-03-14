@@ -8,4 +8,5 @@ func check_condition():
 	return true
 
 func run_effect():
-	tower.projectile_template.damage += 5
+	for t : TowerBase in GV.towers:
+		t.projectile_template.damage += 5

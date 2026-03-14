@@ -11,6 +11,8 @@ metadata/_custom_type_script = "uid://dnfjcw4pfvcmu"
 [resource]
 script = ExtResource("2_fapo7")
 name = "Attack Up +"
-description = "Increases the tower's damage by {damage_increase}."
+description = "Increases every tower's damage by {damage_increase}."
+tactics = true
+rarity = 1
 card_code = SubResource("Resource_6umbh")
 metadata/_custom_type_script = "uid://bkgi8sauy56hj"
