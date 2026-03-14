@@ -46,7 +46,7 @@ base_font = ExtResource("5_n01tg")
 anchor_right = 0.23083226
 anchor_bottom = 0.24055153
 script = ExtResource("2_n01tg")
-prices = Array[int]([10, 13, 15])
+prices = Array[int]([5, 15, 19])
 can_drag_window = false
 can_close_window = false
 
@@ -115,6 +115,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ShopCommonBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = "  Common booster"
@@ -126,6 +127,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ButtonRareBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=1368245865]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = "  Rare booster"
@@ -137,6 +139,7 @@ metadata/_edit_use_anchors_ = true
 [node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=2102572699]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
+focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
 text = " Tower"

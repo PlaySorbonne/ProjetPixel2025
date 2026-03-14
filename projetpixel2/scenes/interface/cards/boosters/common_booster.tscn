@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://4qldgxk1ebf1" path="res://scripts/common_booster.gd" id="2_hugpo"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_hugpo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_024wc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2dojh"]
 resource_local_to_scene = true
 shader = ExtResource("2_2dojh")
 shader_parameter/scroll_speed = 0.250000011875
@@ -29,4 +29,4 @@ shader_parameter/flip_chance = 0.05
 script = ExtResource("2_hugpo")
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
-material = SubResource("ShaderMaterial_024wc")
+material = SubResource("ShaderMaterial_2dojh")
