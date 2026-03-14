@@ -4,35 +4,43 @@ class_name CardsContainer
 
 signal card_drawn
 
-@export var hand_size := 3
-@export var cards_hand : Array[CardObject] = []
-@export var draw_pile : Array[CardObject] = []
-@export var initial_deck : Array[CardData] 
+@export var common_cards : Array[CardData] 
+@export var rare_cards : Array[CardData] 
 
+var cards_hand : Array[CardObject] = []
+
+
+#GV.cards_container.draw_cards(3, CardData.CardRarities.Common)
 
 func _ready() -> void:
 	GV.cards_container = self
-	GV.wave_manager.new_wave_spawned.connect(draw_hand)
-	for card_data : CardData in initial_deck:
-		var new_card := create_card_object(card_data)
-		draw_pile.append(new_card)
+	draw_cards(3, CardData.CardRarities.Common)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
-		draw_hand()
+		draw_cards(3, CardData.CardRarities.Common)
 
-func draw_hand() -> void:
-	for _i in range(hand_size):
-		draw_card()
+func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities) -> void:
+	for _i in range(cards_to_draw):
+		_draw_card(rarity)
 		await card_drawn
 
-func draw_card() -> void:
-	if len(draw_pile) == 0:
-		print("No more cards to draw")
-		return
-	var last_draw_pile_card := len(draw_pile)-1
-	_add_playable_card(draw_pile[last_draw_pile_card])
-	draw_pile.resize(last_draw_pile_card)
+func _draw_card(rarity : CardData.CardRarities) -> void:
+	var draw_pile : Array[CardData]
+	match rarity:
+		CardData.CardRarities.Common:
+			draw_pile = common_cards
+		CardData.CardRarities.Uncommon:
+			draw_pile = common_cards
+		CardData.CardRarities.Rare:
+			draw_pile = rare_cards
+		CardData.CardRarities.Legendary:
+			draw_pile = rare_cards
+		CardData.CardRarities.Secret:
+			draw_pile = rare_cards
+	#
+	var new_card := create_card_object(draw_pile.pick_random())
+	_add_playable_card(new_card)
 	await get_tree().create_timer(0.15).timeout
 	card_drawn.emit()
 

@@ -16,7 +16,6 @@ static var current_deck : Array[CardData] = []
 @export_multiline var description := "blank description":
 	get():
 		return format_card_text(description)
-@export var consume := false
 @export var tactics := false
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common

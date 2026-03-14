@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bkgi8sauy56hj" path="res://scripts/card_data.gd" id="14_3kbv4"]
 [ext_resource type="Texture2D" uid="uid://8psis2unhufn" path="res://resources/images/casino/rug_green_seamless_2.png" id="15_gd21h"]
 [ext_resource type="Resource" uid="uid://j5bmavpiykqe" path="res://scenes/card_objects/cd_attack_up.tres" id="15_xy5hs"]
+[ext_resource type="Resource" uid="uid://c1hx1xm18of1i" path="res://scenes/card_objects/cd_attack_up_plus.tres" id="16_1v7h5"]
 [ext_resource type="PackedScene" uid="uid://dwct6yt0wfqph" path="res://scenes/interface/casino_minigames/dice_roll_window.tscn" id="16_gd21h"]
 [ext_resource type="Resource" uid="uid://b87bxg0hfmtu6" path="res://scenes/card_objects/cd_salvo.tres" id="16_xy5hs"]
 [ext_resource type="PackedScene" uid="uid://cd64tbsnnfau" path="res://scenes/interface/menus/objects/button_casino_minigame.tscn" id="18_616a6"]
@@ -296,7 +297,8 @@ offset_top = 7.0
 offset_bottom = 7.0
 mouse_filter = 2
 script = ExtResource("13_6usvi")
-initial_deck = Array[ExtResource("14_3kbv4")]([ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs"), ExtResource("15_xy5hs"), ExtResource("16_xy5hs"), ExtResource("15_xy5hs")])
+common_cards = Array[ExtResource("14_3kbv4")]([ExtResource("16_xy5hs"), ExtResource("15_xy5hs")])
+rare_cards = Array[ExtResource("14_3kbv4")]([ExtResource("16_1v7h5")])
 
 [node name="NewCardsContainer" type="HBoxContainer" parent="." unique_id=210749627]
 z_index = -1
