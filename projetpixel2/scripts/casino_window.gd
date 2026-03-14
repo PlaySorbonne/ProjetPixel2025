@@ -37,6 +37,8 @@ static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
 
 func _ready() -> void:
 	randomize_panel_background_parameters()
+	if not can_close_window:
+		$Contents/CloseButton.visible = false
 
 func random_popup_position() -> Vector2:
 	var pos_rect := GV.hud.game_panel.size * 0.9

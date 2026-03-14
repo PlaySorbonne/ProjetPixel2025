@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 [ext_resource type="PackedScene" uid="uid://c5nun15se40pi" path="res://scenes/interface/casino_minigames/sub_objects/label_shop_price.tscn" id="10_whj8p"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yufeb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj8p"]
 resource_local_to_scene = true
 shader = ExtResource("2_385bn")
 shader_parameter/scroll_speed = 0.08
@@ -47,9 +47,11 @@ anchor_right = 0.23083226
 anchor_bottom = 0.24055153
 script = ExtResource("2_n01tg")
 prices = Array[int]([10, 13, 15])
+can_drag_window = false
+can_close_window = false
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
-material = SubResource("ShaderMaterial_yufeb")
+material = SubResource("ShaderMaterial_whj8p")
 
 [node name="Label" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=298247065]
 layout_mode = 1

@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
 [ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="26_xy5hs"]
+[ext_resource type="PackedScene" uid="uid://dlb1o3bd74ea3" path="res://scenes/interface/casino_minigames/shop_window.tscn" id="27_1v7h5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
 texture = ExtResource("2_rwqbi")
@@ -70,7 +71,7 @@ resource_local_to_scene = true
 texture = ExtResource("15_gd21h")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-region_rect = Rect2(31, 0, 650, 650)
+region_rect = Rect2(125.84, 0, 650, 650)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0or73"]
 shader = ExtResource("20_gd21h")
@@ -102,7 +103,7 @@ script = ExtResource("1_ldeku")
 anchors_preset = -1
 anchor_left = 0.122917004
 anchor_top = 0.0787037
-anchor_right = 0.86875
+anchor_right = 0.74873453
 anchor_bottom = 0.977778
 grow_horizontal = 2
 grow_vertical = 2
@@ -411,7 +412,7 @@ metadata/_edit_use_anchors_ = true
 modulate = Color(0.380189, 0.380189, 0.38018897, 1)
 z_index = -16
 anchors_preset = -1
-anchor_left = 0.8623698
+anchor_left = 0.7427491
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -570,7 +571,10 @@ anchor_left = 0.90186805
 anchor_top = 0.7909384
 anchor_right = 0.9654379
 anchor_bottom = 0.87782127
-offset_bottom = -6.1035156e-05
+offset_left = 1017.93286
+offset_top = -27.138428
+offset_right = 1017.933
+offset_bottom = -27.138489
 mouse_default_cursor_shape = 2
 icon = SubResource("CompressedTexture2D_xy5hs")
 flat = true
@@ -595,6 +599,12 @@ anchor_top = 0.22135556
 anchor_right = 0.73927915
 anchor_bottom = 0.22135556
 metadata/_edit_use_anchors_ = true
+
+[node name="ShopWindow" parent="." unique_id=1845943741 instance=ExtResource("27_1v7h5")]
+offset_left = 1462.3551
+offset_top = 731.4304
+offset_right = 1462.355
+offset_bottom = 731.4304
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
