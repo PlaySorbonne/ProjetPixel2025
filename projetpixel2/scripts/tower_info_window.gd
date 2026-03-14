@@ -3,7 +3,13 @@ class_name TowerInfoWindow
 
 
 const CARD_INFOS := preload("res://scenes/interface/gameplay_hud/info_popups/card_infos.tscn")
+const TOWER_INFO_RES := preload("res://scenes/interface/casino_minigames/tower_info_window.tscn")
 
+static func spawn_tower_info_popup(t : TowerBase) -> TowerInfoWindow:
+	var popup : TowerInfoWindow =  TOWER_INFO_RES.instantiate()
+	popup.tower = t
+	spawn_popup(popup)
+	return popup
 
 var tower : TowerBase
 @onready var cards_container := $Contents/ScrollContainer/VBoxContainer
@@ -18,6 +24,7 @@ func _ready() -> void:
 	for card : CardData in tower.cards:
 		_add_card_infos(card)
 	_update_tower_stats()
+	open_window()
 
 func _update_tower_stats() -> void:
 	label_stat_vals_1.text = \
