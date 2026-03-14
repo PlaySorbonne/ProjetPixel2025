@@ -15,7 +15,7 @@ static var current_deck : Array[CardData] = []
 		return format_card_text(name)
 @export_multiline var description := "blank description":
 	get():
-		return format_card_text(description)
+		return format_card_text(description) + "\n" + get_text_card_properties()
 @export var tactics := false
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common
@@ -77,6 +77,12 @@ func format_card_text(text: String) -> String:
 			start = result.find("{", start + val.length())
 		else:
 			start = result.find("{", end + 1)
+	return result
+
+func get_text_card_properties() -> String:
+	var result := ""
+	if tactics:
+		result += "Consumable."
 	return result
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
