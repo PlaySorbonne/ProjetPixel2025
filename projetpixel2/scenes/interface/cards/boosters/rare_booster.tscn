@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://b1tjda7ior5vn"]
+
+[ext_resource type="PackedScene" uid="uid://c6e7keuh2h2nx" path="res://scenes/interface/cards/boosters/booster.tscn" id="1_e8ti5"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_b04cb"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_co8fb"]
+[ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="4_b04cb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e8ti5"]
+resource_local_to_scene = true
+shader = ExtResource("2_b04cb")
+shader_parameter/scroll_speed = 0.250000011875
+shader_parameter/angle_degrees = 220.00001045
+shader_parameter/repeat_x = 1.00000004424012
+shader_parameter/repeat_y = 1.00000004424012
+shader_parameter/texture_to_scroll = ExtResource("3_co8fb")
+shader_parameter/glitch_chance = 0.02
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.05
+
+[node name="RareBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
+
+[node name="Background" parent="." index="0" unique_id=1939155258]
+material = SubResource("ShaderMaterial_e8ti5")
+
+[node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
+texture = ExtResource("4_b04cb")

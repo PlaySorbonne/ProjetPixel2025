@@ -4,14 +4,11 @@ class_name Booster
 
 signal booster_opened
 
-enum BoosterFamilies {Diamonds, Clubs, Hearts, Spades}
+enum Rarity {Common, Rare}
 
-const BOOSTER_RES := preload("res://scenes/interface/cards/boosters/booster.tscn")
-const BOOSTER_LOGOS : Dictionary[BoosterFamilies, Texture] = {
-	BoosterFamilies.Diamonds : preload("res://resources/images/cards/booster/diamonds_logo.png"),
-	BoosterFamilies.Clubs : preload("res://resources/images/cards/booster/clubs_logo.png"),
-	BoosterFamilies.Hearts : preload("res://resources/images/cards/booster/hearts_logo.png"),
-	BoosterFamilies.Spades : preload("res://resources/images/cards/booster/spade_logo.png"),
+const BOOSTER_RES : Dictionary[Rarity, PackedScene] = {
+	Rarity.Common : preload("res://scenes/interface/cards/boosters/common_booster.tscn"),
+	Rarity.Rare : preload("res://scenes/interface/cards/boosters/rare_booster.tscn"),
 }
 
 var card_objects : Array[CardObject]
@@ -22,11 +19,10 @@ var is_card_selected := false
 	$ColorRect1, $ColorRect2, $ColorRect3, $ColorRect4
 ]
 
-static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
-	var new_booster := BOOSTER_RES.instantiate()
+static func spawn_booster(nparent : Node, rarity : Rarity) -> Booster:
+	var new_booster := BOOSTER_RES[rarity].instantiate()
 	new_booster.scale = Vector2(0.5, 0.5)
 	new_booster.modulate = Color.TRANSPARENT
-	new_booster.position = pos
 	nparent.add_child(new_booster)
 	return new_booster
 
@@ -34,9 +30,6 @@ static func spawn_booster(nparent : Node, pos : Vector2) -> Booster:
 func _ready() -> void:
 	await tween_intro(self).finished
 	$AnimationPlayer.play("idle")
-
-func set_family(new_family : BoosterFamilies) -> void:
-	$SpadeLogo.texture = BOOSTER_LOGOS[new_family]
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click") \

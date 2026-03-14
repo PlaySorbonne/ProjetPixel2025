@@ -60,12 +60,11 @@ func _on_message_timer_timeout() -> void:
 
 func _on_button_booster_pressed() -> void:
 	if try_buy_item(prices[0]):
-		Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
+		Booster.spawn_booster(GV.hud.booster_container, Booster.Rarity.Common)
 
 func _on_button_rare_booster_pressed() -> void:
 	if try_buy_item(prices[1]):
-		var b := Booster.spawn_booster(GV.hud.booster_container, Vector2(108, 11))
-		b.set_family(Booster.BoosterFamilies.Spades)
+		Booster.spawn_booster(GV.hud.booster_container, Booster.Rarity.Rare)
 
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
