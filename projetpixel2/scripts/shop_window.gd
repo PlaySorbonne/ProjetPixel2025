@@ -26,12 +26,11 @@ var message_tween : Tween
 
 
 func _ready() -> void:
-	pass
-	#super._ready()
+	super._ready()
+	buy_message_label.scale = Vector2(0.5, 0.5)
+	buy_message_label.modulate = Color.TRANSPARENT
 	#await get_tree().process_frame
 	#position = GV.hud.get_shop_pos()
-	#buy_message_label.scale = Vector2(0.5, 0.5)
-	#buy_message_label.modulate = Color.TRANSPARENT
 	#open_window()
 
 func try_buy_item(item_price : int) -> bool:
