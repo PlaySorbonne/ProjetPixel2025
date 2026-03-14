@@ -91,7 +91,7 @@ func _on_button_rare_booster_pressed() -> void:
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
 		@warning_ignore("narrowing_conversion")
-		prices[1] *= 1.5
+		prices[2] *= 1.5
 		update_prices()
 		add_tower()
 
