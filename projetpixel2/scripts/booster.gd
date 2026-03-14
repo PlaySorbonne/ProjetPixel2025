@@ -50,11 +50,13 @@ func tween_intro(obj : CanvasItem) -> Tween:
 	t.tween_property(obj, "modulate", Color.WHITE, 0.25)
 	return t
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	booster_opened.emit()
+func draw_cards(number_of_cards : int, rarity : CardData.CardRarities) -> void:
+	GV.cards_container.draw_cards(number_of_cards, rarity)
+
+func diplay_cards_choice(nb_cards_in_choice := 3) -> void:
 	card_objects = []
 	var booster_cards : Array[CardData] = []
-	for _i : int in range(3):
+	for _i : int in range(nb_cards_in_choice):
 		var new_card : CardData = CardData.get_random_card()
 		booster_cards.append(new_card)
 	for i : int in range(len(booster_cards)):
@@ -72,12 +74,14 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		if i != len(booster_cards)-1:
 			await get_tree().create_timer(0.25).timeout
 
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	booster_opened.emit()
+
 func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
 	if is_card_selected:
 		return
 	is_card_selected = true
 	card_button.queue_free()
-	#Engine.time_scale = 1.0
 	for card : CardObject in card_objects:
 		if card != chosen_card:
 			destroy_object(card)

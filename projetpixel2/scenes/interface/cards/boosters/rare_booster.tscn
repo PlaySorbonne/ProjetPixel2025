@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6e7keuh2h2nx" path="res://scenes/interface/cards/boosters/booster.tscn" id="1_e8ti5"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_b04cb"]
+[ext_resource type="Script" uid="uid://ba851y7ti0a8t" path="res://scripts/rare_booster.gd" id="2_co8fb"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_co8fb"]
 [ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="4_b04cb"]
 
@@ -26,6 +27,7 @@ shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
 [node name="RareBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
+script = ExtResource("2_co8fb")
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
 material = SubResource("ShaderMaterial_e8ti5")

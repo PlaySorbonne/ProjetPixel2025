@@ -10,8 +10,6 @@ signal card_drawn
 var cards_hand : Array[CardObject] = []
 
 
-#GV.cards_container.draw_cards(3, CardData.CardRarities.Common)
-
 func _ready() -> void:
 	GV.cards_container = self
 	draw_cards(3, CardData.CardRarities.Common)
