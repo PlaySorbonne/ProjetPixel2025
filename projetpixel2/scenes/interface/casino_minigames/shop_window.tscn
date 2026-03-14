@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bsruqkckna5by" path="res://resources/images/ui_assets/icons/booster-icon.png" id="7_yufeb"]
 [ext_resource type="Texture2D" uid="uid://cptup3eeu0p0x" path="res://resources/images/ui_assets/icons/rare-booster-icon.png" id="8_sxsyu"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
+[ext_resource type="PackedScene" uid="uid://c5nun15se40pi" path="res://scenes/interface/casino_minigames/sub_objects/label_shop_price.tscn" id="10_whj8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yufeb"]
 resource_local_to_scene = true
@@ -40,10 +41,6 @@ font_size = 20
 
 [sub_resource type="FontVariation" id="FontVariation_yufeb"]
 base_font = ExtResource("5_n01tg")
-
-[sub_resource type="LabelSettings" id="LabelSettings_sjnq4"]
-font = ExtResource("5_n01tg")
-font_size = 18
 
 [node name="ShopWindow" unique_id=1845943741 instance=ExtResource("1_frrwn")]
 anchor_right = 0.23083226
@@ -93,17 +90,26 @@ texture = ExtResource("6_den4x")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxItems" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=66180772]
+[node name="ScrollBoxItems" type="ScrollContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=204215330]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12232655
 anchor_top = 0.24431151
-anchor_right = 0.7555903
-anchor_bottom = 0.9225305
+anchor_right = 0.95101446
+anchor_bottom = 0.7596561
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonBooster" type="Button" parent="Contents/VBoxItems" index="0" unique_id=286524149]
+[node name="HBoxContainer" type="HBoxContainer" parent="Contents/ScrollBoxItems" index="0" unique_id=1737880619]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxItems" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="0" unique_id=66180772]
+layout_mode = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ShopItemButton" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -114,7 +120,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonRareBooster" type="Button" parent="Contents/VBoxItems" index="1" unique_id=1368245865]
+[node name="ButtonRareBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=1368245865]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -125,7 +131,7 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonTower" type="Button" parent="Contents/VBoxItems" index="2" unique_id=2102572699]
+[node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=2102572699]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
@@ -136,48 +142,28 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxPrices" type="VBoxContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=711194198]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.75618696
-anchor_top = 0.24431151
-anchor_right = 0.90312785
-anchor_bottom = 0.9225305
+[node name="VBoxPrices" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="1" unique_id=711194198]
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Contents/VBoxPrices" index="0" unique_id=1906639773]
-custom_minimum_size = Vector2(0, 40)
+[node name="LabelShopPrice" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxPrices" index="0" unique_id=2048592120 instance=ExtResource("10_whj8p")]
 layout_mode = 2
-text = "10$"
-label_settings = SubResource("LabelSettings_sjnq4")
-horizontal_alignment = 2
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Label2" type="Label" parent="Contents/VBoxPrices" index="1" unique_id=923092975]
-custom_minimum_size = Vector2(0, 40)
+[node name="LabelShopPrice2" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxPrices" index="1" unique_id=49641293 instance=ExtResource("10_whj8p")]
 layout_mode = 2
 text = "13$"
-label_settings = SubResource("LabelSettings_sjnq4")
-horizontal_alignment = 2
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="Label3" type="Label" parent="Contents/VBoxPrices" index="2" unique_id=313909939]
-custom_minimum_size = Vector2(0, 40)
+[node name="LabelShopPrice3" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxPrices" index="2" unique_id=52615249 instance=ExtResource("10_whj8p")]
 layout_mode = 2
 text = "15$"
-label_settings = SubResource("LabelSettings_sjnq4")
-horizontal_alignment = 2
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="MessageTimer" type="Timer" parent="." index="3" unique_id=504440673]
 wait_time = 2.0
 one_shot = true
 
-[connection signal="pressed" from="Contents/VBoxItems/ButtonBooster" to="." method="_on_button_booster_pressed"]
-[connection signal="pressed" from="Contents/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
-[connection signal="pressed" from="Contents/VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
+[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopItemButton" to="." method="_on_button_booster_pressed"]
+[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
+[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonTower" to="." method="_on_button_tower_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
