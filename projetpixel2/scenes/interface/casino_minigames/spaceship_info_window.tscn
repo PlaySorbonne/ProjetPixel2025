@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_78vlk"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_k5yv5"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_ik1ng"]
-[ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="6_p8vsk"]
+[ext_resource type="Texture2D" uid="uid://qkk6rydhy65j" path="res://resources/images/ui_assets/icons/spaceship-icon.png" id="6_oqg4o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqg4o"]
 resource_local_to_scene = true
@@ -52,7 +52,7 @@ focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_nf88c")
 theme_override_font_sizes/font_size = 24
 text = " Spaceship"
-icon = ExtResource("6_p8vsk")
+icon = ExtResource("6_oqg4o")
 flat = true
 alignment = 0
 expand_icon = true
@@ -74,12 +74,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 mouse_filter = 2
 
-[node name="LabelStats1" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=1068709704]
+[node name="LabelDescription" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=1068709704]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08279314
 anchor_top = 0.2827901
-anchor_right = 0.24937996
+anchor_right = 0.9043206
 anchor_bottom = 0.596
 offset_left = -0.0069389343
 offset_bottom = 0.013366699
@@ -87,53 +87,5 @@ text = "Dmg
 Spd
 Size
 Crit%"
-label_settings = SubResource("LabelSettings_5s1ji")
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsVals1" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=1968517835]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.23681648
-anchor_top = 0.2827901
-anchor_right = 0.4034033
-anchor_bottom = 0.596
-offset_left = -0.0069389343
-offset_bottom = 0.013366699
-text = "50
-1.0
-1.0
-0.01"
-label_settings = SubResource("LabelSettings_5s1ji")
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStatsVals2" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=2044001389]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7632544
-anchor_top = 0.2827901
-anchor_right = 0.9298413
-anchor_bottom = 0.596
-offset_left = -0.0069389343
-offset_bottom = 0.013366699
-text = "10.0
-0
-0
-Neutral"
-label_settings = SubResource("LabelSettings_5s1ji")
-metadata/_edit_use_anchors_ = true
-
-[node name="LabelStats2" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="6" unique_id=1816260859]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5195758
-anchor_top = 0.2827901
-anchor_right = 0.7195602
-anchor_bottom = 0.596
-offset_left = -0.0069389343
-offset_bottom = 0.013366699
-text = "Crit mult
-Pierce
-Bounce
-Type"
 label_settings = SubResource("LabelSettings_5s1ji")
 metadata/_edit_use_anchors_ = true
