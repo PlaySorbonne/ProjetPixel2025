@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	if pick_random_direction:
-		direction = POSSIBLE_OFFSETS.pick_random()
+		direction = POSSIBLE_OFFSETS.pick_random() * 3.0
 	var t : Tween = popup_animation.call()
 	t.finished.connect(_on_anim_finished)
 
