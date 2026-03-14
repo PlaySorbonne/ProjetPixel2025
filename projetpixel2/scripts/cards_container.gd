@@ -12,7 +12,6 @@ var cards_hand : Array[CardObject] = []
 
 func _ready() -> void:
 	GV.cards_container = self
-	draw_cards(3, CardData.CardRarities.Common)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
@@ -36,7 +35,7 @@ func _draw_card(rarity : CardData.CardRarities) -> void:
 			draw_pile = rare_cards
 		CardData.CardRarities.Secret:
 			draw_pile = rare_cards
-	#
+	
 	var new_card := create_card_object(draw_pile.pick_random())
 	_add_playable_card(new_card)
 	await get_tree().create_timer(0.15).timeout
@@ -59,6 +58,7 @@ func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> v
 
 func _add_playable_card(new_card : CardObject) -> void:
 	cards_hand.append(new_card)
+	new_card.global_position = GV.hud.booster_container.global_position
 	add_child(new_card)
 	reorder_hand()
 	await get_tree().process_frame

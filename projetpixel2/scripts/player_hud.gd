@@ -90,6 +90,7 @@ func _ready() -> void:
 							20.0, 52.0)
 	await get_tree().process_frame
 	GV.space_ship.killed.connect(_on_player_game_over)
+	RunData.current_chips += 19
 
 func get_shop_pos() -> Vector2:
 	return $ShopPosMarker.position
