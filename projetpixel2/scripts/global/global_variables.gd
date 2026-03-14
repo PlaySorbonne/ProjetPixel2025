@@ -1,6 +1,6 @@
 extends Node
 
-const WORLD_FILE := "res://scenes/world/levels/level_default.tscn"
+const WORLD_FILE := "res://scenes/world/levels/level_Map7.tscn"
 const DEBUG_WORLD_FILE := "res://scenes/world/levels/level_debug.tscn"
 
 # game objects
