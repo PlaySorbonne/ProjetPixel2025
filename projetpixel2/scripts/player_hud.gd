@@ -210,13 +210,6 @@ func _on_combo_timer_timeout() -> void:
 	#else:
 		#$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
 
-func _on_cards_container_discard_pile_updated() -> void:
-	$LabelDiscardPile.text = str(len(cards_container.discard_pile))
-
-func _on_cards_container_draw_pile_updated() -> void:
-	$LabelDrawPile.text = str(len(cards_container.draw_pile))
-
-
 func _on_button_shop_pressed() -> void:
 	ShopWindow.spawn_shop_popup()
 	print("Spawn Shop window")

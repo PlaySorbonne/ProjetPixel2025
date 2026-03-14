@@ -2,17 +2,11 @@ extends Control
 class_name CardsContainer
 
 
-signal draw_pile_updated
-signal discard_pile_updated
-signal consumed_pile_updated
-signal draw_pile_shuffled
 signal card_drawn
 
-@export var hand_size := 6
+@export var hand_size := 3
 @export var cards_hand : Array[CardObject] = []
 @export var draw_pile : Array[CardObject] = []
-@export var discard_pile : Array[CardObject] = []
-@export var consumed_pile : Array[CardObject] = []
 @export var initial_deck : Array[CardData] 
 
 
@@ -22,9 +16,6 @@ func _ready() -> void:
 	for card_data : CardData in initial_deck:
 		var new_card := create_card_object(card_data)
 		draw_pile.append(new_card)
-	await get_tree().process_frame
-	draw_pile_updated.emit()
-	discard_pile_updated.emit()
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
@@ -36,12 +27,6 @@ func draw_hand() -> void:
 		await card_drawn
 
 func draw_card() -> void:
-	if len(cards_hand) >= hand_size:
-		print("Hand size reached")
-		return
-	if len(draw_pile) == 0:
-		discard_pile_to_draw_pile()
-		await draw_pile_shuffled
 	if len(draw_pile) == 0:
 		print("No more cards to draw")
 		return
@@ -50,16 +35,6 @@ func draw_card() -> void:
 	draw_pile.resize(last_draw_pile_card)
 	await get_tree().create_timer(0.15).timeout
 	card_drawn.emit()
-	draw_pile_updated.emit()
-
-func discard_pile_to_draw_pile() -> void:
-	draw_pile = discard_pile.duplicate()
-	draw_pile.shuffle()
-	discard_pile.resize(0)
-	await get_tree().create_timer(0.5).timeout
-	draw_pile_shuffled.emit()
-	draw_pile_updated.emit()
-	discard_pile_updated.emit()
 
 func create_card_object(card_data : CardData) -> CardObject:
 	var new_card : CardObject = PlayerHud.CARD_OBJ_RES.instantiate()
@@ -68,10 +43,7 @@ func create_card_object(card_data : CardData) -> CardObject:
 	return new_card
 
 func on_card_played(card : CardObject) -> void:
-	if card.card.consume:
-		consume_card(card)
-	else:
-		discard_card(card)
+	consume_card(card)
 
 func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
 	var new_card := create_card_object(card_data)
@@ -87,9 +59,7 @@ func _add_playable_card(new_card : CardObject) -> void:
 	new_card.can_be_dropped_on_objects = true
 
 func consume_card(card_object : CardObject) -> void:
-	consumed_pile.append(card_object)
 	cards_hand.erase(card_object)
-	consumed_pile_updated.emit()
 	destroy_card(card_object)
 
 func destroy_card(card_object : CardObject) -> void:
@@ -99,12 +69,12 @@ func destroy_card(card_object : CardObject) -> void:
 	t.finished.connect(card_object.queue_free)
 	t.finished.connect(reorder_hand)
 
-func discard_card(card_object : CardObject) -> void:
-	remove_child(card_object)
-	cards_hand.erase(card_object)
-	discard_pile.append(card_object)
-	discard_pile_updated.emit()
-	reorder_hand()
+#func discard_card(card_object : CardObject) -> void:
+	#remove_child(card_object)
+	#cards_hand.erase(card_object)
+	#discard_pile.append(card_object)
+	#discard_pile_updated.emit()
+	#reorder_hand()
 
 func reorder_hand() -> void:
 	var card_count : int = cards_hand.size()
