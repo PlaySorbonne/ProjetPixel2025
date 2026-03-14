@@ -370,7 +370,7 @@ _data = {
 }
 
 [node name="Booster" type="Control" unique_id=2109309066]
-z_index = 20
+z_index = 50
 custom_minimum_size = Vector2(240, 290)
 layout_mode = 3
 anchor_right = 0.125

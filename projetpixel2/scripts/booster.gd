@@ -79,6 +79,20 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 		if i != len(booster_cards)-1:
 			await get_tree().create_timer(0.25).timeout
 
+func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
+	if is_card_selected:
+		return
+	is_card_selected = true
+	card_button.queue_free()
+	#Engine.time_scale = 1.0
+	for card : CardObject in card_objects:
+		if card != chosen_card:
+			destroy_object(card)
+	await get_tree().create_timer(0.5).timeout
+	chosen_card.get_parent().remove_child(chosen_card)
+	GV.hud.cards_container._add_playable_card(chosen_card)
+	destroy_booster()
+
 func _card_ready(card : CardObject) -> void:
 	GV.player_camera.shake(0.1, 15, 0.65)
 	card.can_be_hovered = true
@@ -99,18 +113,7 @@ func arrange_new_cards(cards : Array[CardObject], spacing: float = 15.0) -> void
 		card.position.y = (container.size.y - card.size.y) / 2.0
 		x += card.size.x + spacing
 
-func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardButton) -> void:
-	if is_card_selected:
-		return
-	is_card_selected = true
-	card_button.queue_free()
-	#Engine.time_scale = 1.0
-	for card : CardObject in card_objects:
-		if card != chosen_card:
-			destroy_object(card)
-	await get_tree().create_timer(0.5).timeout
-	chosen_card.get_parent().remove_child(chosen_card)
-	GV.hud.cards_container._add_playable_card(chosen_card)
+func destroy_booster() -> void:
 	$AnimationPlayer.stop(true)
 	await get_tree().create_timer(0.25).timeout
 	destroy_object(self)

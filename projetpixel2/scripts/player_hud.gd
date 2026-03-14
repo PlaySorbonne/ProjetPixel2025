@@ -209,7 +209,3 @@ func _on_combo_timer_timeout() -> void:
 		#$hud_control/ButtonSpawnTower.text = "No more\ntowers\n:("
 	#else:
 		#$hud_control/ButtonSpawnTower.text = "Towers\n(" + str(available_towers) + ")"
-
-func _on_button_shop_pressed() -> void:
-	ShopWindow.spawn_shop_popup()
-	print("Spawn Shop window")

@@ -25,7 +25,6 @@
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
-[ext_resource type="Script" uid="uid://bkxuojfewrgp8" path="res://scripts/xyz_hover_animator.gd" id="26_xy5hs"]
 [ext_resource type="PackedScene" uid="uid://dlb1o3bd74ea3" path="res://scenes/interface/casino_minigames/shop_window.tscn" id="27_1v7h5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
@@ -90,9 +89,6 @@ font_size = 32
 font_color = Color(0.7309045, 0.8675474, 0.67845386, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xy5hs"]
-load_path = "res://.godot/imported/swipe-card.png-f49e07b9f94d8feda873083e98940a2a.ctex"
 
 [node name="PlayerHud" type="CanvasLayer" unique_id=1645272439]
 process_mode = 3
@@ -473,13 +469,13 @@ anchor_left = 0.711
 anchor_top = 1.0
 anchor_right = 1.024
 anchor_bottom = 1.0
-offset_left = 0.11804199
-offset_top = -393.2041
-offset_right = -0.842041
-offset_bottom = 6.7958984
+offset_left = 16.118042
+offset_top = -398.2041
+offset_right = 15.157959
+offset_bottom = 1.7958984
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(-1, 1)
+scale = Vector2(0.95, 1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 
@@ -509,9 +505,9 @@ mouse_filter = 2
 z_index = 2
 anchors_preset = -1
 anchor_left = 0.74353904
-anchor_top = 0.8928251
+anchor_top = 0.7863437
 anchor_right = 1.0010884
-anchor_bottom = 0.9422696
+anchor_bottom = 0.83578813
 offset_right = -0.00012207031
 text = "00000$"
 label_settings = SubResource("LabelSettings_6usvi")
@@ -531,34 +527,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.3529412)
 
-[node name="ButtonShop" type="Button" parent="." unique_id=1612274037]
-z_index = 10
-anchors_preset = -1
-anchor_left = 0.90186805
-anchor_top = 0.7909384
-anchor_right = 0.9654379
-anchor_bottom = 0.87782127
-offset_left = 1017.93286
-offset_top = -27.138428
-offset_right = 1017.933
-offset_bottom = -27.138489
-mouse_default_cursor_shape = 2
-icon = SubResource("CompressedTexture2D_xy5hs")
-flat = true
-icon_alignment = 1
-expand_icon = true
-metadata/_edit_use_anchors_ = true
-
-[node name="XYZHoverAnimator" type="Node" parent="ButtonShop" unique_id=928974701]
-script = ExtResource("26_xy5hs")
-properties = Dictionary[String, Variant]({
-"modulate": Color(0.6686463, 0.68587065, 0, 1),
-"scale": Vector2(1.05, 1.05)
-})
-treat_as_offset = Array[String]([])
-anim_time = 0.2
-metadata/_custom_type_script = "uid://bkxuojfewrgp8"
-
 [node name="ShopPosMarker" type="Control" parent="." unique_id=461366600]
 layout_mode = 3
 anchor_left = 0.73927915
@@ -569,9 +537,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShopWindow" parent="." unique_id=1845943741 instance=ExtResource("27_1v7h5")]
 anchor_left = 0.7414163
-anchor_top = 0.6022504
+anchor_top = 0.53650963
 anchor_right = 1.0112001
-anchor_bottom = 0.8431212
+anchor_bottom = 0.7773804
 offset_right = -0.00012207031
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
@@ -579,4 +547,3 @@ offset_right = -0.00012207031
 [connection signal="pressed" from="PauseMenu/ButtonContinue" to="PauseMenu" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonRestart" to="PauseMenu" method="_on_button_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/ButtonQuit" to="PauseMenu" method="_on_button_quit_pressed"]
-[connection signal="pressed" from="ButtonShop" to="." method="_on_button_shop_pressed"]

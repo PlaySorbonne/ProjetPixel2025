@@ -22,7 +22,7 @@ const CHIP_COLOR_OUTSIDE : Dictionary[ChipValues, Color] = {
 	PokerChip.ChipValues.Val_50 : Color(1.0, 1.0, 1.0, 1.0),
 	PokerChip.ChipValues.Val_100 : Color(1.0, 1.0, 1.0, 1.0),
 	PokerChip.ChipValues.Val_500 : Color(0.0, 0.0, 0.0, 1.0),
-	PokerChip.ChipValues.Val_1000 : Color(0.0, 0.0, 0.0, 1.0),
+	PokerChip.ChipValues.Val_1000 : Color(0.887, 0.296, 1.0, 1.0),
 }
 const CHIP_COLOR_INSIDE : Dictionary[ChipValues, Color] = {
 	PokerChip.ChipValues.Val_1 : Color(0.91, 0.91, 0.91, 1.0),
@@ -31,7 +31,7 @@ const CHIP_COLOR_INSIDE : Dictionary[ChipValues, Color] = {
 	PokerChip.ChipValues.Val_50 : Color(0.098, 0.243, 0.667, 1.0),
 	PokerChip.ChipValues.Val_100 : Color(0.078, 0.078, 0.078, 1.0),
 	PokerChip.ChipValues.Val_500 : Color(0.988, 0.659, 0.153, 1.0),
-	PokerChip.ChipValues.Val_1000 : Color(0.0, 0.0, 0.0, 1.0),
+	PokerChip.ChipValues.Val_1000 : Color(10.0, 10.0, 10.0, 1.0),
 }
 const MAX_FREEZE_TIMER := 1.0
 
