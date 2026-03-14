@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bs8bkrp64k5g7"]
+
+[ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_oqg4o"]
+[ext_resource type="Script" uid="uid://b74gpjf6i5607" path="res://scripts/spaceship_info_window.gd" id="2_oqg4o"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_78vlk"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_k5yv5"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_ik1ng"]
+[ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="6_p8vsk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqg4o"]
+resource_local_to_scene = true
+shader = ExtResource("3_78vlk")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.2
+shader_parameter/repeat_y = 1.2
+shader_parameter/texture_to_scroll = ExtResource("4_k5yv5")
+shader_parameter/glitch_chance = 0.02
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.05
+
+[sub_resource type="FontVariation" id="FontVariation_nf88c"]
+base_font = ExtResource("5_ik1ng")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5s1ji"]
+font = ExtResource("5_ik1ng")
+
+[node name="SpaceshipInfoWindow" unique_id=1845943741 instance=ExtResource("1_oqg4o")]
+anchor_bottom = 0.2630665
+script = ExtResource("2_oqg4o")
+
+[node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
+material = SubResource("ShaderMaterial_oqg4o")
+
+[node name="ButtonTower" type="Button" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=110876301]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.052757017
+anchor_top = 0.06664971
+anchor_right = 0.62747097
+anchor_bottom = 0.24286132
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_nf88c")
+theme_override_font_sizes/font_size = 24
+text = " Spaceship"
+icon = ExtResource("6_p8vsk")
+flat = true
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=1754950667]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.62624
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contents/ScrollContainer" index="0" unique_id=1633549658]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelStats1" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=1068709704]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08279314
+anchor_top = 0.2827901
+anchor_right = 0.24937996
+anchor_bottom = 0.596
+offset_left = -0.0069389343
+offset_bottom = 0.013366699
+text = "Dmg
+Spd
+Size
+Crit%"
+label_settings = SubResource("LabelSettings_5s1ji")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelStatsVals1" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=1968517835]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23681648
+anchor_top = 0.2827901
+anchor_right = 0.4034033
+anchor_bottom = 0.596
+offset_left = -0.0069389343
+offset_bottom = 0.013366699
+text = "50
+1.0
+1.0
+0.01"
+label_settings = SubResource("LabelSettings_5s1ji")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelStatsVals2" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=2044001389]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7632544
+anchor_top = 0.2827901
+anchor_right = 0.9298413
+anchor_bottom = 0.596
+offset_left = -0.0069389343
+offset_bottom = 0.013366699
+text = "10.0
+0
+0
+Neutral"
+label_settings = SubResource("LabelSettings_5s1ji")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelStats2" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="6" unique_id=1816260859]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5195758
+anchor_top = 0.2827901
+anchor_right = 0.7195602
+anchor_bottom = 0.596
+offset_left = -0.0069389343
+offset_bottom = 0.013366699
+text = "Crit mult
+Pierce
+Bounce
+Type"
+label_settings = SubResource("LabelSettings_5s1ji")
+metadata/_edit_use_anchors_ = true
