@@ -3,11 +3,13 @@ class_name TowerInfoWindow
 
 
 const CARD_INFOS := preload("res://scenes/interface/gameplay_hud/info_popups/card_infos.tscn")
-const TOWER_INFO_RES := preload("res://scenes/interface/casino_minigames/tower_info_window.tscn")
+
+static var TOWER_INFO_RES := load("res://scenes/interface/casino_minigames/tower_info_window.tscn")
 
 static func spawn_tower_info_popup(t : TowerBase) -> TowerInfoWindow:
-	var popup : TowerInfoWindow =  TOWER_INFO_RES.instantiate()
+	var popup : TowerInfoWindow = TOWER_INFO_RES.instantiate()
 	popup.tower = t
+	popup.position = random_popup_position()
 	spawn_popup(popup)
 	return popup
 
@@ -20,7 +22,7 @@ var tower : TowerBase
 func _ready() -> void:
 	super._ready()
 	tower.tower_card_added.connect(_add_card_infos)
-	tower.projectile_updated.connect(_update_tower_stats)
+	tower.projectile_template.projectile_updated.connect(_update_tower_stats)
 	for card : CardData in tower.cards:
 		_add_card_infos(card)
 	_update_tower_stats()

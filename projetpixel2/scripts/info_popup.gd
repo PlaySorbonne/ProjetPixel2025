@@ -13,14 +13,13 @@ static func remove_all_popups() -> void:
 	reset_popups()
 
 static func add_popup(obj : Node) -> void:
-	var popup : InfoPopup
+	var popup : Node
 	if obj in popups.keys():
 		popup = popups[obj]
 	else:
 		if obj is TowerBase:
-			popup = TowerInfoPopup.popup_res.instantiate()
-			var tower_popup : TowerInfoPopup = popup
-			tower_popup.tower = obj
+			popup = TowerInfoWindow.spawn_tower_info_popup(obj)
+			return
 		elif obj is Spaceship:
 			popup = SpaceshipInfoPopup.popup_res.instantiate()
 		elif obj is BaseEnemy:

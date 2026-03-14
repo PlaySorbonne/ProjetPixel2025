@@ -40,7 +40,7 @@ func _ready() -> void:
 	if not can_close_window:
 		$Contents/CloseButton.visible = false
 
-func random_popup_position() -> Vector2:
+static func random_popup_position() -> Vector2:
 	var pos_rect := GV.hud.game_panel.size * 0.9
 	const POSITION_MAX_OFFSET := 15.0
 	# GV.hud.game_panel.position is popup min_pos (top left)
