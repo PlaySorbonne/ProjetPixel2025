@@ -60,8 +60,10 @@ func _add_playable_card(new_card : CardObject) -> void:
 	cards_hand.append(new_card)
 	new_card.global_position = GV.hud.booster_container.global_position
 	add_child(new_card)
-	reorder_hand()
 	await get_tree().process_frame
+	new_card.global_position = GV.hud.booster_container.global_position
+	await get_tree().process_frame
+	reorder_hand()
 	new_card.can_be_dropped_on_objects = true
 
 func consume_card(card_object : CardObject) -> void:

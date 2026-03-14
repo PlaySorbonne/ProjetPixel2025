@@ -16,6 +16,7 @@ shadow_color = Color(0, 0, 0, 0.180392)
 shadow_offset = Vector2(1.5, 1.5)
 
 [node name="CardObject" type="Button" unique_id=1687062181]
+z_index = 90
 custom_minimum_size = Vector2(157, 165)
 anchors_preset = -1
 anchor_right = 0.082
