@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://c6e7keuh2h2nx"]
 
-[ext_resource type="Script" uid="uid://f7107khk0084" path="res://scripts/booster.gd" id="1_3y7bt"]
-[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_ubgfo"]
-[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_1el8l"]
-[ext_resource type="Texture2D" uid="uid://bpft5kl5l1fnv" path="res://resources/images/casino/rug_seamless_texture_contrast.png" id="4_v6amx"]
-[ext_resource type="Texture2D" uid="uid://ct6widxi5rwby" path="res://resources/images/ui_assets/menu_elements/ui_line.png" id="5_bmvv6"]
-[ext_resource type="Shader" uid="uid://drua2dx2j8hw" path="res://resources/shaders/glow.gdshader" id="6_i3rcf"]
-[ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="7_ffih4"]
-[ext_resource type="Texture2D" uid="uid://f4y6dgta7xm4" path="res://resources/images/cards/booster/diamonds_logo.png" id="8_ubgfo"]
-[ext_resource type="Texture2D" uid="uid://yvy6eltlbe8x" path="res://resources/images/ui_assets/menu_elements/ui_corner.png" id="9_0oocy"]
-[ext_resource type="PackedScene" uid="uid://cjrj1tcaagv4v" path="res://scenes/gameplay_systems/shaker.tscn" id="11_1el8l"]
+[ext_resource type="Script" uid="uid://f7107khk0084" path="res://scripts/booster.gd" id="1_gdym0"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_wfcco"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_g66no"]
+[ext_resource type="Texture2D" uid="uid://bpft5kl5l1fnv" path="res://resources/images/casino/rug_seamless_texture_contrast.png" id="4_aflvs"]
+[ext_resource type="Texture2D" uid="uid://ct6widxi5rwby" path="res://resources/images/ui_assets/menu_elements/ui_line.png" id="5_xdoqd"]
+[ext_resource type="Shader" uid="uid://drua2dx2j8hw" path="res://resources/shaders/glow.gdshader" id="6_ljblc"]
+[ext_resource type="Texture2D" uid="uid://pwfwj84oruxe" path="res://resources/images/cards/booster/booster_corner_openings.png" id="7_32fqx"]
+[ext_resource type="Texture2D" uid="uid://f4y6dgta7xm4" path="res://resources/images/cards/booster/diamonds_logo.png" id="8_fmyag"]
+[ext_resource type="Texture2D" uid="uid://yvy6eltlbe8x" path="res://resources/images/ui_assets/menu_elements/ui_corner.png" id="9_evl62"]
+[ext_resource type="PackedScene" uid="uid://cjrj1tcaagv4v" path="res://scenes/gameplay_systems/shaker.tscn" id="10_rfo6s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ktv3t"]
 resource_local_to_scene = true
-shader = ExtResource("2_ubgfo")
+shader = ExtResource("2_wfcco")
 shader_parameter/scroll_speed = 0.250000011875
 shader_parameter/angle_degrees = 220.00001045
 shader_parameter/repeat_x = 1.00000004424012
 shader_parameter/repeat_y = 1.00000004424012
-shader_parameter/texture_to_scroll = ExtResource("3_1el8l")
+shader_parameter/texture_to_scroll = ExtResource("3_g66no")
 shader_parameter/glitch_chance = 0.02
 shader_parameter/glitch_speed = 7.0
 shader_parameter/slice_density = 14.0
@@ -32,7 +32,7 @@ shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cudfr"]
-shader = ExtResource("6_i3rcf")
+shader = ExtResource("6_ljblc")
 shader_parameter/speed = 15.0
 shader_parameter/glow_strength = -0.25
 
@@ -377,7 +377,7 @@ anchor_right = 0.125
 anchor_bottom = 0.2685185
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-script = ExtResource("1_3y7bt")
+script = ExtResource("1_gdym0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="." unique_id=1939155258]
@@ -391,7 +391,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 2
-texture = ExtResource("4_v6amx")
+texture = ExtResource("4_aflvs")
 expand_mode = 1
 stretch_mode = 1
 
@@ -407,7 +407,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("5_bmvv6")
+texture = ExtResource("5_xdoqd")
 expand_mode = 1
 
 [node name="ColorRect1" type="ColorRect" parent="." unique_id=2072638174]
@@ -471,7 +471,7 @@ offset_bottom = 37.5
 rotation = -0.7853982
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("7_ffih4")
+texture = ExtResource("7_32fqx")
 
 [node name="CornerLeft" type="TextureRect" parent="." unique_id=2082378986]
 material = SubResource("ShaderMaterial_cudfr")
@@ -488,7 +488,7 @@ offset_bottom = 37.417038
 rotation = 2.3561945
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("7_ffih4")
+texture = ExtResource("7_32fqx")
 
 [node name="SpadeLogo" type="TextureRect" parent="." unique_id=2101724559]
 layout_mode = 1
@@ -506,7 +506,7 @@ grow_vertical = 2
 rotation = 3.1415882
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("8_ubgfo")
+texture = ExtResource("8_fmyag")
 expand_mode = 1
 stretch_mode = 5
 
@@ -520,7 +520,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("9_0oocy")
+texture = ExtResource("9_evl62")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -540,7 +540,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("9_0oocy")
+texture = ExtResource("9_evl62")
 expand_mode = 1
 stretch_mode = 5
 flip_v = true
@@ -562,7 +562,7 @@ grow_horizontal = 0
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("9_0oocy")
+texture = ExtResource("9_evl62")
 expand_mode = 1
 stretch_mode = 5
 
@@ -580,7 +580,7 @@ offset_bottom = 9.628845
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("9_0oocy")
+texture = ExtResource("9_evl62")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -604,7 +604,7 @@ mouse_filter = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552113022]
 libraries/ = SubResource("AnimationLibrary_n7s3j")
 
-[node name="Shaker" parent="." unique_id=838499230 node_paths=PackedStringArray("object") instance=ExtResource("11_1el8l")]
+[node name="Shaker" parent="." unique_id=838499230 node_paths=PackedStringArray("object") instance=ExtResource("10_rfo6s")]
 object = NodePath("../SpadeLogo")
 property = "position"
 reset_to_zero = false

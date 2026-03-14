@@ -6,7 +6,7 @@ signal booster_opened
 
 enum BoosterFamilies {Diamonds, Clubs, Hearts, Spades}
 
-const BOOSTER_RES := preload("res://scenes/interface/cards/booster.tscn")
+const BOOSTER_RES := preload("res://scenes/interface/cards/boosters/booster.tscn")
 const BOOSTER_LOGOS : Dictionary[BoosterFamilies, Texture] = {
 	BoosterFamilies.Diamonds : preload("res://resources/images/cards/booster/diamonds_logo.png"),
 	BoosterFamilies.Clubs : preload("res://resources/images/cards/booster/clubs_logo.png"),
