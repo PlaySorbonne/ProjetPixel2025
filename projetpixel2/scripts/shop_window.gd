@@ -19,8 +19,10 @@ static func spawn_shop_popup() -> ShopWindow:
 		return shop_popup
 
 
-@export var prices : Array[int] = [10, 13, 15]
+@export var prices : Array[int] = [5, 15, 19]
 
+@onready var v_box_prices := $Contents/ScrollBoxItems/HBoxContainer/VBoxPrices
+@onready var price_labels : Array[Label] = get_price_labels()
 @onready var buy_message_label := $Contents/LabelBuyMessage
 var message_tween : Tween
 
@@ -29,9 +31,24 @@ func _ready() -> void:
 	super._ready()
 	buy_message_label.scale = Vector2(0.5, 0.5)
 	buy_message_label.modulate = Color.TRANSPARENT
+	update_prices()
 	#await get_tree().process_frame
 	#position = GV.hud.get_shop_pos()
 	#open_window()
+
+func get_price_labels() -> Array[Label]:
+	var labels : Array[Label] = []
+	for n : Node in v_box_prices.get_children():
+		if n is Label:
+			labels.append(n)
+	return labels
+
+func update_prices() -> void:
+	if not v_box_prices:
+		return
+	for i : int in range(len(price_labels)):
+		var l : Label = price_labels[i]
+		l.text = str(prices[i]) + "$"
 
 func try_buy_item(item_price : int) -> bool:
 	if RunData.current_chips >= item_price:
@@ -60,14 +77,22 @@ func _on_message_timer_timeout() -> void:
 
 func _on_button_booster_pressed() -> void:
 	if try_buy_item(prices[0]):
+		prices[0] += 2
+		update_prices()
 		CommonBooster.spawn_booster(GV.hud.booster_container)
 
 func _on_button_rare_booster_pressed() -> void:
 	if try_buy_item(prices[1]):
+		@warning_ignore("narrowing_conversion")
+		prices[1] *= 1.25
+		update_prices()
 		RareBooster.spawn_booster(GV.hud.booster_container)
 
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
+		@warning_ignore("narrowing_conversion")
+		prices[1] *= 1.5
+		update_prices()
 		add_tower()
 
 func add_tower() -> void:
