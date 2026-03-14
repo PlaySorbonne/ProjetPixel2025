@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl7c2fgghl20k"]
+[gd_scene format=3 uid="uid://dl7c2fgghl20k"]
 
 [ext_resource type="Script" uid="uid://dceruh1afv3mg" path="res://scripts/card_infos.gd" id="1_lx5qb"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="2_08mds"]
 
-[node name="CardInfos" type="HBoxContainer"]
+[sub_resource type="LabelSettings" id="LabelSettings_j6yn8"]
+font = ExtResource("2_08mds")
+
+[node name="CardInfos" type="HBoxContainer" unique_id=719935231]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,13 +14,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lx5qb")
 
-[node name="LabelName" type="Label" parent="."]
+[node name="LabelName" type="Label" parent="." unique_id=1725115645]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "Name"
+label_settings = SubResource("LabelSettings_j6yn8")
 
-[node name="LabelEffect" type="Label" parent="."]
+[node name="LabelEffect" type="Label" parent="." unique_id=1933214416]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "effect description"
+label_settings = SubResource("LabelSettings_j6yn8")
 autowrap_mode = 2

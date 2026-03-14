@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4qqkqs2ba0ta"]
+[gd_scene format=3 uid="uid://b4qqkqs2ba0ta"]
 
 [ext_resource type="PackedScene" uid="uid://7rm78j5yaeo2" path="res://scenes/interface/gameplay_hud/info_popups/info_popup.tscn" id="1_4vond"]
 [ext_resource type="Script" uid="uid://b8us0cbhgbx64" path="res://scripts/tower_info_popup.gd" id="2_a3dv5"]
 
-[node name="TowerInfoPopup" instance=ExtResource("1_4vond")]
+[node name="TowerInfoPopup" unique_id=712472098 instance=ExtResource("1_4vond")]
 offset_right = 463.0
 offset_bottom = 278.0
 script = ExtResource("2_a3dv5")
@@ -18,7 +18,7 @@ anchor_left = 0.285097
 anchor_top = 0.107914
 anchor_bottom = 0.413669
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." index="4"]
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="4" unique_id=303548039]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.438849
@@ -30,11 +30,11 @@ mouse_filter = 2
 horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" index="0" unique_id=1907927239]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="." index="5"]
+[node name="Button" type="Button" parent="." index="5" unique_id=1098406122]
 visible = false
 layout_mode = 1
 anchors_preset = -1
