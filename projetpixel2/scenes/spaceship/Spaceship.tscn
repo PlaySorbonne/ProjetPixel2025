@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnn16qnpvw2gh"]
+[gd_scene format=3 uid="uid://cnn16qnpvw2gh"]
 
 [ext_resource type="Script" uid="uid://b5pniqv2jh0ii" path="res://scripts/spaceship.gd" id="1_wr5m4"]
 [ext_resource type="Shader" uid="uid://br584q0blogcf" path="res://resources/shaders/force_shield.gdshader" id="3_aer3i"]
@@ -26,48 +26,48 @@ radius = 2.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
 size = Vector3(2.21545, 1, 1.38779)
 
-[node name="Spaceship" type="StaticBody3D"]
+[node name="Spaceship" type="StaticBody3D" unique_id=609006848]
 collision_mask = 3
 script = ExtResource("1_wr5m4")
 
-[node name="ShieldShader" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
+[node name="ShieldShader" type="MeshInstance3D" parent="." unique_id=1670267896]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.65, 0, 0)
 mesh = SubResource("SphereMesh_wr5m4")
 
-[node name="CollisionShield" type="CollisionShape3D" parent="."]
+[node name="CollisionShield" type="CollisionShape3D" parent="." unique_id=17280728]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0)
 shape = SubResource("SphereShape3D_aer3i")
 
-[node name="CollisionShip" type="CollisionShape3D" parent="."]
+[node name="CollisionShip" type="CollisionShape3D" parent="." unique_id=1386159006]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2222, 0, 0.0502777)
 shape = SubResource("BoxShape3D_aer3i")
 
-[node name="ShipHealth" type="Node" parent="."]
+[node name="ShipHealth" type="Node" parent="." unique_id=123731639]
 script = ExtResource("4_h40o1")
 max_health = 400
 health = 400
 type = 2
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
-[node name="ShieldHealth" type="Node" parent="."]
+[node name="ShieldHealth" type="Node" parent="." unique_id=2089832133]
 script = ExtResource("4_h40o1")
 max_health = 250
 health = 250
 type = 1
 metadata/_custom_type_script = "uid://f0gd0vfal03l"
 
-[node name="ClickableObject" parent="." node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
+[node name="ClickableObject" parent="." unique_id=1017202809 node_paths=PackedStringArray("custom_nodes") instance=ExtResource("5_6nyhl")]
 custom_nodes = [NodePath("../CraftSpeederD")]
 
-[node name="TimerShieldRegeneration" type="Timer" parent="."]
+[node name="TimerShieldRegeneration" type="Timer" parent="." unique_id=490825106]
 autostart = true
 
-[node name="Vaisseaux_Import" parent="." instance=ExtResource("6_5e64j")]
+[node name="Vaisseaux_Import" parent="." unique_id=1808352043 instance=ExtResource("6_5e64j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.421121, 0.462365, 0.37116)
 visible = false
 
-[node name="CraftSpeederD" type="MeshInstance3D" parent="."]
-transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 0.400753, 0, 0)
+[node name="CraftSpeederD" type="MeshInstance3D" parent="." unique_id=1992389362]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 0.400753, 0, 0)
 mesh = ExtResource("6_n0pd4")
 
 [connection signal="hit" from="." to="." method="_on_hit"]

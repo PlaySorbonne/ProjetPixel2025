@@ -16,6 +16,7 @@ static func add_popup(obj : Node) -> void:
 	var popup : Node
 	if obj in popups.keys():
 		popup = popups[obj]
+		popup.close_window()
 	else:
 		if obj is TowerBase:
 			popup = TowerInfoWindow.spawn_tower_info_popup(obj)
