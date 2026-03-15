@@ -49,6 +49,9 @@ static func random_popup_position() -> Vector2:
 		pos_rect.y * randf() + randf_range(-POSITION_MAX_OFFSET, POSITION_MAX_OFFSET)
 	)
 
+func get_mouse_position() -> Vector2:
+	return GV.hud.game_panel.get_global_mouse_position() + default_size / 2.0 + Vector2(10, 52.5)
+
 func randomize_panel_background_parameters() -> void:
 	for param_str : String in BACKGROUND_SHADER_PARAMS:
 		var param_value : float = background_material.get_shader_parameter(param_str)

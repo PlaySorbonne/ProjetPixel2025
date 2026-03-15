@@ -9,7 +9,6 @@ static var TOWER_INFO_RES := load("res://scenes/interface/casino_minigames/tower
 static func spawn_tower_info_popup(t : TowerBase) -> TowerInfoWindow:
 	var popup : TowerInfoWindow = TOWER_INFO_RES.instantiate()
 	popup.tower = t
-	popup.position = random_popup_position()
 	spawn_popup(popup)
 	return popup
 
@@ -26,6 +25,7 @@ func _ready() -> void:
 	for card : CardData in tower.cards:
 		_add_card_infos(card)
 	_update_tower_stats()
+	position = get_mouse_position()
 	open_window()
 
 func _update_tower_stats() -> void:

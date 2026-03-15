@@ -2,14 +2,14 @@ extends ColorRect
 class_name InfoPopup
 
 
-static var popups : Dictionary[Node, InfoPopup] = {}
+static var popups : Dictionary[Node, CasinoWindow] = {}
 
 static func reset_popups() -> void:
 	popups.clear()
 
 static func remove_all_popups() -> void:
-	for popup : InfoPopup in popups.values():
-		popup.close_popup()
+	for popup : CasinoWindow in popups.values():
+		popup.close_window()
 	reset_popups()
 
 static func add_popup(obj : Node) -> void:
@@ -19,19 +19,15 @@ static func add_popup(obj : Node) -> void:
 	else:
 		if obj is TowerBase:
 			popup = TowerInfoWindow.spawn_tower_info_popup(obj)
-			return
 		elif obj is Spaceship:
 			popup = SpaceshipInfoWindow.spawn_spaceship_info_popup()
-			return
 		elif obj is BaseEnemy:
-			popup = EnemyInfoPopup.popup_res.instantiate()
+			pass
+			print_debug("Create enemy popup!!")
 		else:
 			print_debug('trying to create popup for unknown object: ' + str(obj.get_class()))
 			return
-		popup.object = obj
 		popups[obj] = popup
-		GV.hud.add_child(popup)
-	popup.position = popup.get_global_mouse_position() + Vector2(100, -50)
 
 
 var object : Node
