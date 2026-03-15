@@ -1,10 +1,10 @@
 shader_type spatial;
 
 
-uniform vec4 highlight_color : source_color = vec4(0.0, 0.0, 1.0, 1.0);
+uniform vec4 highlight_color : source_color = vec4(0.0, 0.0, 1.0, 0.75);
 
 uniform float pulse_speed = 7.0;
-uniform float pulse_strength = 0.14;
+uniform float pulse_strength = 0.6;
 
 
 void fragment() {
