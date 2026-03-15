@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_5s1ji"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="6_bth1l"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s1ji"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf88c"]
 resource_local_to_scene = true
 shader = ExtResource("2_e00xv")
 shader_parameter/scroll_speed = 0.08
@@ -38,7 +38,7 @@ anchor_bottom = 0.2630665
 script = ExtResource("2_ha8ph")
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
-material = SubResource("ShaderMaterial_5s1ji")
+material = SubResource("ShaderMaterial_nf88c")
 
 [node name="ButtonTower" type="Button" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=110876301]
 custom_minimum_size = Vector2(250, 40)
@@ -49,6 +49,7 @@ anchor_top = 0.06664971
 anchor_right = 0.62747097
 anchor_bottom = 0.24286132
 focus_mode = 0
+mouse_filter = 2
 theme_override_fonts/font = SubResource("FontVariation_nf88c")
 theme_override_font_sizes/font_size = 24
 text = " Tower"
@@ -61,9 +62,10 @@ metadata/_edit_use_anchors_ = true
 [node name="ScrollContainer" type="ScrollContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=1754950667]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.62624
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.028943533
+anchor_top = 0.6569578
+anchor_right = 0.95768124
+anchor_bottom = 0.9360048
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2

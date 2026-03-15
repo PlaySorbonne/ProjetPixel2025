@@ -5,6 +5,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_j6yn8"]
 font = ExtResource("2_08mds")
+font_size = 14
 
 [node name="CardInfos" type="HBoxContainer" unique_id=719935231]
 anchors_preset = 15
@@ -15,13 +16,14 @@ grow_vertical = 2
 script = ExtResource("1_lx5qb")
 
 [node name="LabelName" type="Label" parent="." unique_id=1725115645]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_j6yn8")
+autowrap_mode = 1
 
 [node name="LabelEffect" type="Label" parent="." unique_id=1933214416]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "effect description"
 label_settings = SubResource("LabelSettings_j6yn8")

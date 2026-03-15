@@ -31,7 +31,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if get_node_or_null(hovered_object_path) != null:
 			deselect_current_object()
 			click_object(hovered_object)
-			InfoPopup.remove_all_popups()
+			print_debug("Do we want to remove all popups when we create a new one?")
+			#InfoPopup.remove_all_popups()
 			InfoPopup.add_popup(selected_object)
 			#print("Select object " + str(selected_object))
 		else:
