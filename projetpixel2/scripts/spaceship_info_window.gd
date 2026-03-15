@@ -21,6 +21,6 @@ func _update_stats() -> void:
 	$Contents/LabelStats.text = \
 	"Health: " + str(GV.space_ship.get_health()) + \
 	"/" + str(GV.space_ship.get_max_health()) + \
-	"Shields: " + str(GV.space_ship.get_shields()) + \
+	"\nShields: " + str(GV.space_ship.get_shields()) + \
 	"/" + str(GV.space_ship.get_max_shields())
 	
