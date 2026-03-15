@@ -15,6 +15,7 @@ func _ready() -> void:
 	super._ready()
 	GV.space_ship.hit.connect(self._update_stats)
 	_update_stats()
+	open_window()
 
 func _update_stats() -> void:
 	$Contents/LabelStats.text = \

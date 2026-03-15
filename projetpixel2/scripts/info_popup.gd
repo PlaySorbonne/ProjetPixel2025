@@ -21,7 +21,8 @@ static func add_popup(obj : Node) -> void:
 			popup = TowerInfoWindow.spawn_tower_info_popup(obj)
 			return
 		elif obj is Spaceship:
-			popup = SpaceshipInfoPopup.popup_res.instantiate()
+			popup = SpaceshipInfoWindow.spawn_spaceship_info_popup()
+			return
 		elif obj is BaseEnemy:
 			popup = EnemyInfoPopup.popup_res.instantiate()
 		else:
