@@ -15,7 +15,7 @@ script = ExtResource("2_j5p61")
 metadata/_custom_type_script = "uid://75ev58yopohy"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ih0ua"]
-radius = 1.5
+radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_041tc"]
 resource_local_to_scene = true
