@@ -21,7 +21,7 @@ radius = 2.25
 height = 4.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aer3i"]
-radius = 2.25
+radius = 2.845096
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aer3i"]
 size = Vector3(2.21545, 1, 1.38779)

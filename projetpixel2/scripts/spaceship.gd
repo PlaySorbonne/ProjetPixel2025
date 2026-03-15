@@ -62,7 +62,6 @@ func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : Da
 	hit.emit()
 
 func _on_shield_health_death() -> void:
-	$CollisionShip.disabled = true
 	has_shields = false
 	damageable = $ShipHealth
 	$TimerShieldRegeneration.start(loss_shields_regeneration_delay)
@@ -72,7 +71,6 @@ func _on_shield_health_death() -> void:
 	$ShieldShader.visible = false
 
 func restore_shields() -> void:
-	$CollisionShip.disabled = false
 	has_shields = true
 	damageable = $ShieldHealth
 	damageable.health = damageable.max_health * loss_shields_regeneration_amount
