@@ -12,5 +12,8 @@ static func spawn_upgrade_particles(pos : Vector3) -> UpgradeParticles:
 	return particles
 
 
+func _ready() -> void:
+	emitting = true
+
 func _on_finished() -> void:
 	queue_free()

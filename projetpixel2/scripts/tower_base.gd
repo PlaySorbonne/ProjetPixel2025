@@ -66,10 +66,15 @@ var mining_laser : TowerMiningLaser
 
 func _ready() -> void:
 	GV.towers.append(self)
+	projectile_template.projectile_updated.connect(display_upgrade)
 	if not is_hologram:
 		$TimerShoot.start()
 	else:
 		set_hologram()
+
+func display_upgrade() -> void:
+	print("hello")
+	UpgradeParticles.spawn_upgrade_particles(self.position)
 
 func _update_fire_range_shader(new_size : float) -> void:
 	$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_size)
