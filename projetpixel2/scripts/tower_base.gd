@@ -73,7 +73,6 @@ func _ready() -> void:
 		set_hologram()
 
 func display_upgrade() -> void:
-	print("hello")
 	UpgradeParticles.spawn_upgrade_particles(self.position)
 
 func _update_fire_range_shader(new_size : float) -> void:
