@@ -2,11 +2,15 @@ extends GPUParticles3D
 class_name UpgradeParticles
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const UPGRADE_PARTICLES_RES := preload("res://scenes/world/vfx/upgrade_particles.tscn")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+static func spawn_upgrade_particles(pos : Vector3) -> UpgradeParticles:
+	var particles : UpgradeParticles = UPGRADE_PARTICLES_RES.instantiate()
+	particles.position = pos
+	GV.world.add_child(particles)
+	return particles
+
+
+func _on_finished() -> void:
+	queue_free()

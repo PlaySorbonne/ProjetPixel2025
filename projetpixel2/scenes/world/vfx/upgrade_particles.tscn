@@ -35,3 +35,5 @@ explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_2r8oo")
 draw_pass_1 = SubResource("PrismMesh_u5vj2")
 script = ExtResource("1_opilo")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
