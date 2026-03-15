@@ -5,8 +5,6 @@
 [resource]
 render_priority = 1
 shader = ExtResource("1_688x8")
-shader_parameter/step_count = 3
-shader_parameter/thickness = 6.5
-shader_parameter/edge_color = Color(0, 0, 0.294118, 1)
-shader_parameter/depth_sensitivity = 0.0149999996205
-shader_parameter/compensate_distance = true
+shader_parameter/highlight_color = Color(0, 0, 1, 0.6666667)
+shader_parameter/pulse_speed = 7.0
+shader_parameter/pulse_strength = 0.14
