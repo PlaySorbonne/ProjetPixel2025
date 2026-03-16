@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" uid="uid://cmshjuw135udo" path="res://scripts/upgrade_particles.gd" id="1_opilo"]
 
-[sub_resource type="Curve" id="Curve_umqso"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.274306, 1), 0.0, 0.0, 0, 0, Vector2(0.645833, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_opilo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20208332, 1), 0.0, 0.0, 0, 0, Vector2(0.80625, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_opilo"]
-curve = SubResource("Curve_umqso")
+curve = SubResource("Curve_opilo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2r8oo"]
 emission_shape = 1
-emission_sphere_radius = 1.5
+emission_sphere_radius = 1.25
 direction = Vector3(0, 1, 0)
 spread = 0.0
-initial_velocity_min = 1.5
-initial_velocity_max = 3.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
 gravity = Vector3(0, 0, 0)
+scale_min = 0.59999996
+scale_max = 0.75
 scale_curve = SubResource("CurveTexture_opilo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umqso"]
@@ -24,14 +26,14 @@ albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_u5vj2"]
 material = SubResource("StandardMaterial3D_umqso")
-size = Vector3(0.8, 0.75, 0.1)
+size = Vector3(0.5, 0.47, 0.1)
 
 [node name="UpgradeParticles" type="GPUParticles3D" unique_id=1188658875]
 emitting = false
-amount = 12
+amount = 10
 lifetime = 2.0
 one_shot = true
-speed_scale = 2.5
+speed_scale = 2.0
 explosiveness = 0.5
 process_material = SubResource("ParticleProcessMaterial_2r8oo")
 draw_pass_1 = SubResource("PrismMesh_u5vj2")
