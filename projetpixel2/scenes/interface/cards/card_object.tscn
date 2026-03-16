@@ -1,16 +1,22 @@
 [gd_scene format=3 uid="uid://bt0sfajn3i7tr"]
 
 [ext_resource type="Script" uid="uid://lunxp3tn8g08" path="res://scripts/card_object.gd" id="1_xkj05"]
-[ext_resource type="Material" uid="uid://cc43x54kaecfd" path="res://resources/materials/card_dissolve_mat.tres" id="2_nggt0"]
 [ext_resource type="Texture2D" uid="uid://qpbl4s0uoacd" path="res://resources/images/floppy_disk_interior.png" id="2_ofve4"]
 [ext_resource type="Texture2D" uid="uid://d17ykoyupvrrm" path="res://resources/images/floppy_outside.png" id="3_kdff6"]
 [ext_resource type="PackedScene" uid="uid://ioadxkqkiabq" path="res://scenes/objects_components/drag_and_drop_2d.tscn" id="3_qlpjb"]
 [ext_resource type="Texture2D" uid="uid://u18sfsknvdt0" path="res://resources/images/floppy_disk_core.png" id="4_8ogd3"]
 [ext_resource type="PackedScene" uid="uid://dwkuod6mv6u0j" path="res://scenes/interface/cards/misc/select_card_button.tscn" id="4_xtsg7"]
+[ext_resource type="Shader" uid="uid://bygx8uokjeeua" path="res://resources/shaders/2d_outline.gdshader" id="5_ofve4"]
 [ext_resource type="Material" uid="uid://dy315vhqy3hya" path="res://resources/materials/flaring_star_alien.tres" id="6_ofve4"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="7_3pyru"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pyru"]
+shader = ExtResource("5_ofve4")
+shader_parameter/color = Color(0.5921569, 0.007843138, 0.09019608, 1)
+shader_parameter/width = 0.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_qlpjb"]
-font_size = 18
+font = ExtResource("7_3pyru")
 font_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 0.180392)
 shadow_offset = Vector2(1.5, 1.5)
@@ -59,7 +65,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="CardTexture" type="TextureRect" parent="." unique_id=948306142]
-material = ExtResource("2_nggt0")
+material = SubResource("ShaderMaterial_3pyru")
 custom_minimum_size = Vector2(95, 103)
 layout_mode = 1
 anchors_preset = 15
@@ -73,7 +79,6 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="CardTexture" unique_id=1765882300]
-use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.048
@@ -81,13 +86,15 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 19.536
-offset_top = -42.0
+offset_top = -40.0
 offset_right = -15.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "card_name"
 label_settings = SubResource("LabelSettings_qlpjb")
 horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
 
 [node name="DragAndDrop2D" parent="." unique_id=1633190882 node_paths=PackedStringArray("dragged_object") instance=ExtResource("3_qlpjb")]

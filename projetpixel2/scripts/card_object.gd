@@ -161,7 +161,6 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		drop_card_on_tower()
 
 func drop_tactics_card() -> void:
-	print("run_card_tactics")
 	play_card(GV)
 	destroy_card_object()
 
