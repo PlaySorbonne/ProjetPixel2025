@@ -37,7 +37,7 @@ void fragment() {
 	if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
 		COLOR.a = 0.0;
 	} else {
-		COLOR = texture(TEXTURE, uv);
+		COLOR = texture(TEXTURE, uv) * vec4(1.0, 1.0, 1.0, COLOR.a);
 	}
 	
 	if ((COLOR.a > 0.0) && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {

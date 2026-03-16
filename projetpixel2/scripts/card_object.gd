@@ -19,6 +19,7 @@ const FAMILY_CORE_SHADERS := {
 }
 const ANIM_TIME := 0.175
 const CARD_OBJ_RES := preload("res://scenes/interface/cards/card_object.tscn")
+const MAX_OUTLINE_WIDTH := 15.
 
 static var currently_turned_card : CardObject = null
 
@@ -47,6 +48,7 @@ var sacrificing_card := false
 var tween_dissolve : Tween
 var mouse_over_card := false
 var previous_dissolve_uv : Vector2
+var target_outline_width := 0.0
 @export var can_be_hovered := true
 
 @onready var card_texture : TextureRect = $CardTexture
@@ -63,6 +65,23 @@ func _ready() -> void:
 	if deck_position == Vector2.ZERO:
 		deck_position = position
 		deck_rotation = rotation
+
+func _process(_delta: float) -> void:
+	# set outline if can be dropped
+	if is_dragged and target_outline_width != MAX_OUTLINE_WIDTH\
+	and can_drop_card():
+			target_outline_width = MAX_OUTLINE_WIDTH
+			set_card_outline_width(target_outline_width)
+	# remove outline if can't be dropped
+	if target_outline_width == MAX_OUTLINE_WIDTH:
+		target_outline_width = 0.0
+		set_card_outline_width(target_outline_width)
+
+func can_drop_card() -> bool:
+	if card.tactics:
+		return GV.mouse_3d_interaction.hovered_object is TowerBase
+	else:
+		return global_position.y <= GV.hud.cards_container.global_position.y
 
 func set_card_outline_width(new_width : float) -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
