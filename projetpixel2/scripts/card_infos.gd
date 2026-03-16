@@ -14,4 +14,4 @@ func _ready() -> void:
 
 func update_card_data() -> void:
 	$LabelName.text = card.name
-	$LabelEffect.text = card.description
+	$LabelEffect.text = card.description.replace("\nTower upgrade.", "") 

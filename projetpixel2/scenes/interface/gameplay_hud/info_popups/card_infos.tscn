@@ -20,6 +20,7 @@ custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_j6yn8")
+vertical_alignment = 1
 autowrap_mode = 1
 
 [node name="LabelEffect" type="Label" parent="." unique_id=1933214416]
@@ -27,4 +28,5 @@ custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 text = "effect description"
 label_settings = SubResource("LabelSettings_j6yn8")
+vertical_alignment = 1
 autowrap_mode = 2
