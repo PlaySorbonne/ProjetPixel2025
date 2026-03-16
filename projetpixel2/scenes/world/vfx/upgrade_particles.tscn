@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cmshjuw135udo" path="res://scripts/upgrade_particles.gd" id="1_opilo"]
 
 [sub_resource type="Curve" id="Curve_opilo"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.20208332, 1), 0.0, 0.0, 0, 0, Vector2(0.80625, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2962963, 1), 0.0, 0.0, 0, 0, Vector2(0.70370376, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_opilo"]
@@ -38,8 +38,8 @@ emitting = false
 amount = 10
 lifetime = 1.25
 one_shot = true
-speed_scale = 2.0
-explosiveness = 0.5
+speed_scale = 1.6
+explosiveness = 0.35
 process_material = SubResource("ParticleProcessMaterial_2r8oo")
 draw_pass_1 = SubResource("PrismMesh_u5vj2")
 script = ExtResource("1_opilo")
