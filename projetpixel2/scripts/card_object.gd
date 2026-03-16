@@ -68,7 +68,6 @@ func _ready() -> void:
 		deck_rotation = rotation
 
 func _process(_delta: float) -> void:
-	print("label text = [%s]" % $CardTexture/Label.text)
 	# set outline if can be dropped
 	if is_dragged and can_drop_card():
 		if target_outline_width != MAX_OUTLINE_WIDTH:
