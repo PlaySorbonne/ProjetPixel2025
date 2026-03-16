@@ -41,28 +41,29 @@ var mining_laser : TowerMiningLaser
 @export var switch_mode_delay := 5.0 # delay after animation before tower can switch modes again
 @export var damage_to_xp := 90 # damage done to exp orbs per shot when mining
 @export var orbs_fire_rate := 3.0 # shots per second when mining orbs
-@export var fire_range := 10.0: # range of the tower
+@export var fire_range := 7.5: # range of the tower
 	set(value):
 		fire_range = value
 		var new_shader_size := value / 10.0 * 0.4  # value / CollisionShape3D.radius * MeshInstance3D.material.size
-		if is_visible_in_tree():
-			var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-			var initial_shader_size : float = $Area3D/MeshInstance3D.material_override.get_shader_parameter("size")
+		if range_mesh:
+			var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+			var initial_shader_size : float = range_mesh.material_override.get_shader_parameter("size")
 			t.tween_method(_update_fire_range_shader, initial_shader_size, new_shader_size, 0.1)
 		else:
-			$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_shader_size)
+			range_mesh.material_override.set_shader_parameter("size", new_shader_size)
 		$Area3D/CollisionShape3D.shape.radius = value
 @export var shooting_orbs := false 
 
 # components
 @onready var clickable : ClickableObject = $ClickableObject
-@onready var projectile_spawn_pos := $TourelleStandardV1/Tourelle/ProjectileSpawnPos
+@onready var projectile_spawn_pos := $TurretMesh/TurretSingle/ProjectileSpawnPos
 @onready var area3d := $Area3D
 @onready var areaXp := $AreaXP
 @onready var tower_meshes : Array[MeshInstance3D] = [
 	$TurretMesh/TurretSingle,
 	$TurretMesh/TurretSingle/MeshInstance3D
 ]
+@onready var range_mesh : MeshInstance3D = $Area3D/MeshInstance3D
 
 func _ready() -> void:
 	GV.towers.append(self)
