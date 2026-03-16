@@ -69,15 +69,14 @@ func _ready() -> void:
 	else:
 		set_hologram()
 
+func display_upgrade() -> void:
+	UpgradeParticles.spawn_upgrade_particles(self.position)
+
 func _update_tower_range_mesh() -> void:
 	var new_shader_size := fire_range / 10.0 * 0.4  # fire_range / CollisionShape3D.radius * MeshInstance3D.material.size
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
 	var initial_shader_size : float = range_mesh.material_override.get_shader_parameter("size")
 	t.tween_method(_update_fire_range_shader, initial_shader_size, new_shader_size, 0.1)
-	#$Area3D/CollisionShape3D.shape.radius = fire_range
-
-func display_upgrade() -> void:
-	UpgradeParticles.spawn_upgrade_particles(self.position)
 
 func _update_fire_range_shader(new_size : float) -> void:
 	$Area3D/MeshInstance3D.material_override.set_shader_parameter("size", new_size)
