@@ -62,11 +62,13 @@ func _ready() -> void:
 	$CardTexture/Label.text = card.name
 	#card_texture.self_modulate = FAMILY_COLORS[card.family]
 	core_texture.material = FAMILY_CORE_SHADERS[card.family]
+	size = custom_minimum_size
 	if deck_position == Vector2.ZERO:
 		deck_position = position
 		deck_rotation = rotation
 
 func _process(_delta: float) -> void:
+	print("label text = [%s]" % $CardTexture/Label.text)
 	# set outline if can be dropped
 	if is_dragged and can_drop_card():
 		if target_outline_width != MAX_OUTLINE_WIDTH:
