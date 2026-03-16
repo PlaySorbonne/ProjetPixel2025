@@ -41,17 +41,11 @@ var mining_laser : TowerMiningLaser
 @export var switch_mode_delay := 5.0 # delay after animation before tower can switch modes again
 @export var damage_to_xp := 90 # damage done to exp orbs per shot when mining
 @export var orbs_fire_rate := 3.0 # shots per second when mining orbs
-@export var fire_range := 7.5: # range of the tower
+@export var fire_range := 6.5: # range of the tower
 	set(value):
 		fire_range = value
-		var new_shader_size := value / 10.0 * 0.4  # value / CollisionShape3D.radius * MeshInstance3D.material.size
 		if range_mesh:
-			var t := create_tween().set_trans(Tween.TRANS_CUBIC)
-			var initial_shader_size : float = range_mesh.material_override.get_shader_parameter("size")
-			t.tween_method(_update_fire_range_shader, initial_shader_size, new_shader_size, 0.1)
-		else:
-			range_mesh.material_override.set_shader_parameter("size", new_shader_size)
-		$Area3D/CollisionShape3D.shape.radius = value
+			_update_tower_range_mesh()
 @export var shooting_orbs := false 
 
 # components
@@ -70,8 +64,17 @@ func _ready() -> void:
 	projectile_template.projectile_updated.connect(display_upgrade)
 	if not is_hologram:
 		$TimerShoot.start()
+		await get_tree().create_timer(0.2).timeout
+		_update_tower_range_mesh()
 	else:
 		set_hologram()
+
+func _update_tower_range_mesh() -> void:
+	var new_shader_size := fire_range / 10.0 * 0.4  # fire_range / CollisionShape3D.radius * MeshInstance3D.material.size
+	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
+	var initial_shader_size : float = range_mesh.material_override.get_shader_parameter("size")
+	t.tween_method(_update_fire_range_shader, initial_shader_size, new_shader_size, 0.1)
+	#$Area3D/CollisionShape3D.shape.radius = fire_range
 
 func display_upgrade() -> void:
 	UpgradeParticles.spawn_upgrade_particles(self.position)
@@ -197,6 +200,8 @@ func spawn_from_hologram() -> void:
 	set_tower_material(null)
 	$DragAndDrop.can_be_dragged = false
 	$Area3D/CollisionShape3D.disabled = false
+	await get_tree().create_timer(0.2).timeout
+	_update_tower_range_mesh()
 
 func set_tower_enable(new_enable : bool) -> void:
 	set_process(new_enable)
