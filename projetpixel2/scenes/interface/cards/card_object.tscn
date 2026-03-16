@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="7_3pyru"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3pyru"]
+resource_local_to_scene = true
 shader = ExtResource("5_ofve4")
 shader_parameter/color = Color(0.5921569, 0.007843138, 0.09019608, 1)
 shader_parameter/width = 0.0

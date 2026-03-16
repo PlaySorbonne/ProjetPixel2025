@@ -68,25 +68,27 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# set outline if can be dropped
-	if is_dragged and target_outline_width != MAX_OUTLINE_WIDTH\
-	and can_drop_card():
+	if is_dragged and can_drop_card():
+		if target_outline_width != MAX_OUTLINE_WIDTH:
 			target_outline_width = MAX_OUTLINE_WIDTH
 			set_card_outline_width(target_outline_width)
 	# remove outline if can't be dropped
-	if target_outline_width == MAX_OUTLINE_WIDTH:
+	elif target_outline_width == MAX_OUTLINE_WIDTH:
 		target_outline_width = 0.0
 		set_card_outline_width(target_outline_width)
 
 func can_drop_card() -> bool:
 	if card.tactics:
-		return GV.mouse_3d_interaction.hovered_object is TowerBase
+		return global_position.y <= \
+		GV.hud.cards_container.global_position.y \
+		- GV.hud.cards_container.size.y * 1.25
 	else:
-		return global_position.y <= GV.hud.cards_container.global_position.y
+		return GV.mouse_3d_interaction.hovered_object is TowerBase
 
 func set_card_outline_width(new_width : float) -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
 	var initial_width : float = $CardTexture.material.get_shader_parameter("width")
-	t.tween_method(_update_card_outline, initial_width, new_width, 0.1)
+	t.tween_method(_update_card_outline, initial_width, new_width, 0.25)
 
 func _update_card_outline(new_width : float) -> void:
 	$CardTexture.material.set_shader_parameter("width", new_width)
@@ -154,8 +156,11 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		drop_card_on_tower()
 
 func drop_tactics_card() -> void:
-	play_card(GV)
-	destroy_card_object()
+	if can_drop_card():
+		play_card(GV)
+		destroy_card_object()
+	else:
+		return_to_hand()
 
 func drop_card_on_tower() -> void:
 	var spatial_object : Node3D = GV.mouse_3d_interaction.hovered_object
