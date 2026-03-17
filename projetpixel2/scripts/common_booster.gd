@@ -4,6 +4,8 @@ class_name CommonBooster
 
 const COMMON_BOOSTER_RES := preload("res://scenes/interface/cards/boosters/common_booster.tscn")
 
+@export var number_of_cards := 3
+
 static func spawn_booster(nparent : Node) -> Booster:
 	return super._spawn_booster_from_res(nparent, COMMON_BOOSTER_RES)
 
