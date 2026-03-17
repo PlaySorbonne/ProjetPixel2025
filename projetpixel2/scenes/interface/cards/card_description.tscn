@@ -1,15 +1,23 @@
 [gd_scene format=3 uid="uid://c3eh5oe37ijck"]
 
 [ext_resource type="Script" uid="uid://e6j6mntovs1u" path="res://scripts/card_description.gd" id="1_ddsqd"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="2_a1yaa"]
+[ext_resource type="Material" uid="uid://dgun07cew08nn" path="res://resources/materials/ui/seamless_rug_glitch.tres" id="2_h4e65"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ddsqd"]
-font_size = 28
+font = ExtResource("2_a1yaa")
+font_size = 22
+outline_color = Color(0.041124262, 0.21987715, 0.09163616, 1)
+shadow_size = 8
+shadow_color = Color(0.039215688, 0.21960784, 0.09019608, 0.78431374)
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h4e65"]
-font_size = 17
+font = ExtResource("2_a1yaa")
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1yaa"]
-font_size = 20
+font = ExtResource("2_a1yaa")
+font_size = 18
 
 [node name="CardDescription" type="Control" unique_id=302558238]
 z_index = 20
@@ -26,13 +34,23 @@ script = ExtResource("1_ddsqd")
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=303378144]
+material = ExtResource("2_h4e65")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.14, 0.14, 0.14, 0.96)
+color = Color(0, 0, 0, 0.8235294)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1061106532]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27450982)
 
 [node name="LabelTitle" type="Label" parent="." unique_id=2079672423]
 layout_mode = 1
@@ -58,6 +76,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="LabelFamily" type="Label" parent="." unique_id=1416034500]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

@@ -29,7 +29,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	$LabelTitle.text = card_object.card.name
 	$LabelDescription.text = card_object.card.description
-	$LabelFamily.text = CardData.CardFamilies.keys()[card_object.card.family]
+	#$LabelFamily.text = CardData.CardFamilies.keys()[card_object.card.family]
 	$LabelRarity.text = CardData.CardRarities.keys()[card_object.card.rarity]
 	visible = true
 
