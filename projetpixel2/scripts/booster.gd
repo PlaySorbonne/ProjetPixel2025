@@ -92,7 +92,7 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 		false
 	)
 	destroy_booster()
-	await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.075).timeout
 	GV.hud.cards_container.reorder_hand()
 
 func _card_ready(card : CardObject) -> void:
