@@ -153,7 +153,6 @@ func _on_drag_and_drop_2d_dropped() -> void:
 	if not can_be_dropped_on_objects:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
-		print("return_to_hand")
 		return
 	if card.tactics:
 		drop_tactics_card()
