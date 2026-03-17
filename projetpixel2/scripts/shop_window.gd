@@ -7,6 +7,7 @@ enum {
 	ItemLargeBooster = 1,
 	ItemRareBooster = 2,
 	ItemEpicBooster = 3,
+	ItemTower = 4,
 }
 
 const SHOP_RES := preload("res://scenes/interface/casino_minigames/shop_window.tscn")
@@ -86,13 +87,6 @@ func _on_message_timer_timeout() -> void:
 	t.tween_property(buy_message_label, "modulate", Color.TRANSPARENT, 0.25)
 	t.tween_property(buy_message_label, "scale", Vector2(0.5, 0.5), 0.25)
 
-func _on_button_tower_pressed() -> void:
-	if try_buy_item(prices[2]):
-		@warning_ignore("narrowing_conversion")
-		prices[2] *= 1.5
-		update_prices()
-		add_tower()
-
 func try_buy_booster(index : int, new_price : int, 
 						booster_type : Booster.PackType) -> void:
 	if try_buy_item(prices[index]):
@@ -136,3 +130,10 @@ func _on_button_epic_booster_pressed() -> void:
 		int(prices[ItemEpicBooster] + 9),
 		Booster.PackType.Epic
 	)
+
+func _on_button_tower_pressed() -> void:
+	if try_buy_item(prices[ItemTower]):
+		@warning_ignore("narrowing_conversion")
+		prices[ItemTower] *= 1.5
+		update_prices()
+		add_tower()
