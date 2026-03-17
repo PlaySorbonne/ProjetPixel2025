@@ -2,8 +2,16 @@ extends CasinoWindow
 class_name ShopWindow
 
 
+enum {
+	ItemCommonBooster = 0,
+	ItemLargeBooster = 1,
+	ItemRareBooster = 2,
+	ItemEpicBooster = 3,
+}
+
 const SHOP_RES := preload("res://scenes/interface/casino_minigames/shop_window.tscn")
 const TOWER_RES := preload("res://scenes/spaceship/towers/tower_base.tscn")
+const SHOP_PRICE_RES := preload("res://scenes/interface/casino_minigames/sub_objects/label_shop_price.tscn")
 
 static var last_shop_window : ShopWindow
 
@@ -19,10 +27,11 @@ static func spawn_shop_popup() -> ShopWindow:
 		return shop_popup
 
 
-@export var prices : Array[int] = [5, 15, 19]
+@export var prices : Array[int] = [5, 7, 13, 20, 19]
 
 @onready var v_box_prices := $Contents/ScrollBoxItems/HBoxContainer/VBoxPrices
-@onready var price_labels : Array[Label] = get_price_labels()
+@onready var v_box_items := $Contents/ScrollBoxItems/HBoxContainer/VBoxItems
+@onready var price_labels : Array[Label] = set_price_labels()
 @onready var buy_message_label := $Contents/LabelBuyMessage
 var message_tween : Tween
 
@@ -36,11 +45,13 @@ func _ready() -> void:
 	#position = GV.hud.get_shop_pos()
 	#open_window()
 
-func get_price_labels() -> Array[Label]:
+func set_price_labels() -> Array[Label]:
 	var labels : Array[Label] = []
-	for n : Node in v_box_prices.get_children():
-		if n is Label:
-			labels.append(n)
+	for n : Node in v_box_items.get_children():
+		if n is Button:
+			var l : Label = SHOP_PRICE_RES.instantiate()
+			v_box_prices.add_child(l)
+			labels.append(l)
 	return labels
 
 func update_prices() -> void:
@@ -75,25 +86,19 @@ func _on_message_timer_timeout() -> void:
 	t.tween_property(buy_message_label, "modulate", Color.TRANSPARENT, 0.25)
 	t.tween_property(buy_message_label, "scale", Vector2(0.5, 0.5), 0.25)
 
-func _on_button_booster_pressed() -> void:
-	if try_buy_item(prices[0]):
-		prices[0] += 2
-		update_prices()
-		CommonBooster.spawn_booster(GV.hud.booster_container)
-
-func _on_button_rare_booster_pressed() -> void:
-	if try_buy_item(prices[1]):
-		@warning_ignore("narrowing_conversion")
-		prices[1] *= 1.25
-		update_prices()
-		RareBooster.spawn_booster(GV.hud.booster_container)
-
 func _on_button_tower_pressed() -> void:
 	if try_buy_item(prices[2]):
 		@warning_ignore("narrowing_conversion")
 		prices[2] *= 1.5
 		update_prices()
 		add_tower()
+
+func try_buy_booster(index : int, new_price : int, 
+						booster_type : Booster.PackType) -> void:
+	if try_buy_item(prices[index]):
+		prices[index] = new_price
+		update_prices()
+		RareBooster.spawn_booster(GV.hud.booster_container, booster_type)
 
 func add_tower() -> void:
 	await get_tree().create_timer(0.1).timeout
@@ -103,3 +108,31 @@ func add_tower() -> void:
 	new_tower.is_hologram = true
 	GV.world.add_child(new_tower)
 	new_tower.position = tower_pos
+
+func _on_button_booster_pressed() -> void:
+	try_buy_booster(
+		ItemCommonBooster,
+		int(prices[ItemCommonBooster] + 2),
+		Booster.PackType.Common
+	)
+
+func _on_button_rare_booster_pressed() -> void:
+	try_buy_booster(
+		ItemRareBooster,
+		int(prices[ItemRareBooster] + 4),
+		Booster.PackType.Rare
+	)
+
+func _on_shop_large_common_booster_pressed() -> void:
+	try_buy_booster(
+		ItemLargeBooster,
+		int(prices[ItemLargeBooster] + 6),
+		Booster.PackType.Large
+	)
+
+func _on_button_epic_booster_pressed() -> void:
+	try_buy_booster(
+		ItemEpicBooster,
+		int(prices[ItemEpicBooster] + 9),
+		Booster.PackType.Epic
+	)
