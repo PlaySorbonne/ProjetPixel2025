@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_hugpo"]
 [ext_resource type="Texture2D" uid="uid://bclvuh1t6hd2t" path="res://resources/images/cards/booster/diamonds_black_logo.png" id="5_hugpo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2dojh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hugpo"]
 resource_local_to_scene = true
 shader = ExtResource("2_2dojh")
 shader_parameter/scroll_speed = 0.250000011875
@@ -31,7 +31,7 @@ script = ExtResource("2_hugpo")
 number_of_cards = 3
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
-material = SubResource("ShaderMaterial_2dojh")
+material = SubResource("ShaderMaterial_hugpo")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
 texture = ExtResource("5_hugpo")

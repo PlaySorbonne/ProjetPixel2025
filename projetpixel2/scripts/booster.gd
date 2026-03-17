@@ -5,7 +5,14 @@ class_name Booster
 signal booster_opened
 signal card_selected
 
-enum Rarity {Common, Rare}
+enum PackType {Common, Large, Rare, Epic}
+
+static var BOOSTERS_RES : Dictionary[PackType, PackedScene] = {
+	PackType.Common : load("res://scenes/interface/cards/boosters/common_booster.tscn"),
+	PackType.Large : load("res://scenes/interface/cards/boosters/king_size_common_booster.tscn"),
+	PackType.Rare : load("res://scenes/interface/cards/boosters/rare_booster.tscn"),
+	PackType.Epic : load("res://scenes/interface/cards/boosters/king_size_rare_booster.tscn"),
+}
 
 var card_objects : Array[CardObject]
 var is_booster_open := false
@@ -15,17 +22,12 @@ var is_card_selected := false
 	$ColorRect1, $ColorRect2, $ColorRect3, $ColorRect4
 ]
 
-static func spawn_booster(_nparent : Node) -> Booster:
-	return null
-
-
-static func _spawn_booster_from_res(nparent : Node, booster_res : PackedScene = null) -> Booster:
-	var new_booster := booster_res.instantiate()
+static func spawn_booster(nparent : Node, pack_type : PackType) -> Booster:
+	var new_booster := BOOSTERS_RES[pack_type].instantiate()
 	new_booster.scale = Vector2(0.5, 0.5)
 	new_booster.modulate = Color.TRANSPARENT
 	nparent.add_child(new_booster)
-	return new_booster
-
+	return new_booster 
 
 func _ready() -> void:
 	await tween_intro(self).finished
