@@ -37,3 +37,5 @@ material = SubResource("ShaderMaterial_co8fb")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
 texture = ExtResource("4_b04cb")
+
+[connection signal="card_selected" from="." to="." method="_on_card_selected"]

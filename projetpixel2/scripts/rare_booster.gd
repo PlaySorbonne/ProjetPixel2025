@@ -21,5 +21,7 @@ func _on_common_cards_spawned(booster : Booster) -> void:
 
 func _on_card_selected() -> void:
 	cards_selected += 1
-	if cards_selected >= selected_cards_number:
+	if cards_selected < selected_cards_number:
 		display_cards_choice(cards_choice_size)
+	else:
+		destroy_booster()

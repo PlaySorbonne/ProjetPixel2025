@@ -94,7 +94,6 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 		card_global_pos,
 		false
 	)
-	destroy_booster()
 	await get_tree().create_timer(0.075).timeout
 	card_selected.emit()
 	is_card_selected = false
