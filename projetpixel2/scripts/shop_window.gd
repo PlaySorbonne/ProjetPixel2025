@@ -42,6 +42,7 @@ func _ready() -> void:
 	buy_message_label.scale = Vector2(0.5, 0.5)
 	buy_message_label.modulate = Color.TRANSPARENT
 	update_prices()
+	$Contents/ScrollBoxItems.grab_focus()
 	#await get_tree().process_frame
 	#position = GV.hud.get_shop_pos()
 	#open_window()

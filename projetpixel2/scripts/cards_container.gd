@@ -31,9 +31,6 @@ func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
 	await get_tree().create_timer(0.15).timeout
 	booster_cards_spawned.emit(booster)
 	await get_tree().create_timer(0.2).timeout
-	for card : CardObject in cards_hand:
-		card.set_can_be_dragged(true)
-		card.can_be_dropped_on_objects = true
 	booster_cards_drawn.emit(booster)
 	reorder_hand()
 
@@ -94,6 +91,9 @@ func _add_playable_card(new_card : CardObject,
 		var t := create_tween().set_ease(Tween.EASE_IN).set_parallel()
 		t.tween_property(new_card, "modulate", Color.WHITE, 0.075)
 		t.tween_property(new_card, "scale", Vector2.ONE, 0.075)
+	await get_tree().create_timer(0.25).timeout
+	new_card.set_can_be_dragged(true)
+	new_card.can_be_dropped_on_objects = true
 
 func consume_card(card_object : CardObject) -> void:
 	cards_hand.erase(card_object)
