@@ -37,7 +37,6 @@ script = ExtResource("1_xkj05")
 metadata/_edit_use_anchors_ = true
 
 [node name="CoreTextureBackground" type="TextureRect" parent="." unique_id=261306175]
-visible = false
 custom_minimum_size = Vector2(95, 103)
 layout_mode = 1
 anchors_preset = 15
