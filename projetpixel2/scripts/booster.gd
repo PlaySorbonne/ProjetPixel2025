@@ -50,7 +50,7 @@ func tween_intro(obj : CanvasItem) -> Tween:
 	return t
 
 func draw_cards(number_of_cards : int, rarity : CardData.CardRarities) -> void:
-	GV.cards_container.draw_cards(number_of_cards, rarity)
+	GV.cards_container.draw_cards(number_of_cards, rarity, self)
 
 func diplay_cards_choice(nb_cards_in_choice := 3) -> void:
 	card_objects = []
@@ -84,10 +84,16 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 	for card : CardObject in card_objects:
 		if card != chosen_card:
 			destroy_object(card)
-	await get_tree().create_timer(0.5).timeout
-	chosen_card.get_parent().remove_child(chosen_card)
-	GV.hud.cards_container._add_playable_card(chosen_card)
+	var card_global_pos := chosen_card.global_position
+	await get_tree().create_timer(0.3).timeout
+	GV.hud.cards_container._add_playable_card(
+		chosen_card, 
+		card_global_pos,
+		false
+	)
 	destroy_booster()
+	await get_tree().create_timer(0.15).timeout
+	GV.hud.cards_container.reorder_hand()
 
 func _card_ready(card : CardObject) -> void:
 	GV.player_camera.shake(0.1, 15, 0.65)

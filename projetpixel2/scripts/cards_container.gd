@@ -3,6 +3,8 @@ class_name CardsContainer
 
 
 signal card_drawn
+signal booster_cards_spawned(booster : Booster)
+signal booster_cards_drawn(booster : Booster)
 
 @export var common_cards : Array[CardData] 
 @export var rare_cards : Array[CardData] 
@@ -17,7 +19,8 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
 		draw_cards(3, CardData.CardRarities.Common)
 
-func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities) -> void:
+func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
+				booster : Booster = null) -> void:
 	const CARD_OFFSET_INCREMENT := Vector2(10.0, 10.0)
 	var card_pos_offset := Vector2.ZERO
 	for _i in range(cards_to_draw):
@@ -25,10 +28,13 @@ func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities) -> void:
 		card_pos_offset += CARD_OFFSET_INCREMENT
 		await card_drawn
 		await get_tree().create_timer(0.05).timeout
-	await get_tree().create_timer(0.35).timeout
+	await get_tree().create_timer(0.15).timeout
+	booster_cards_spawned.emit(booster)
+	await get_tree().create_timer(0.2).timeout
 	for card : CardObject in cards_hand:
 		card.set_can_be_dragged(true)
 		card.can_be_dropped_on_objects = true
+	booster_cards_drawn.emit(booster)
 	reorder_hand()
 
 func _draw_card(rarity : CardData.CardRarities, pos_offset := Vector2.ZERO) -> void:
@@ -46,7 +52,12 @@ func _draw_card(rarity : CardData.CardRarities, pos_offset := Vector2.ZERO) -> v
 			draw_pile = rare_cards
 	
 	var new_card := create_card_object(draw_pile.pick_random())
-	_add_playable_card(new_card, pos_offset)
+	var card_pos : Vector2 =                    \
+	GV.hud.booster_container.global_position    \
+	+ GV.hud.booster_container.size / 2.0       \
+	- new_card.custom_minimum_size / 2.0        \
+	+ pos_offset
+	_add_playable_card(new_card, card_pos)
 	await get_tree().create_timer(0.1).timeout
 	card_drawn.emit()
 
@@ -63,23 +74,26 @@ func add_card_to_hand(card_data: CardData, pos_offset := Vector2.ZERO) -> void:
 	var new_card := create_card_object(card_data)
 	_add_playable_card(new_card, pos_offset)
 
-func _add_playable_card(new_card : CardObject, pos_offset := Vector2.ZERO) -> void:
-	var card_pos : Vector2 =                    \
-	GV.hud.booster_container.global_position    \
-	+ GV.hud.booster_container.size / 2.0       \
-	- new_card.custom_minimum_size / 2.0        \
-	+ pos_offset
-	new_card.modulate = Color.TRANSPARENT
+func _add_playable_card(new_card : CardObject, 
+		forced_pos := Vector2.ZERO, with_anim := true) -> void:
+	if with_anim:
+		new_card.modulate = Color.TRANSPARENT
 	cards_hand.append(new_card)
 	new_card.set_can_be_dragged(false)
-	new_card.global_position = card_pos
-	add_child(new_card)
+	if forced_pos != Vector2.ZERO:
+		new_card.global_position = forced_pos
+	if new_card.get_parent():
+		new_card.reparent(self)
+	else:
+		add_child(new_card)
 	await get_tree().process_frame
-	new_card.global_position = card_pos
-	new_card.scale = Vector2(0.5, 0.5)
-	var t := create_tween().set_ease(Tween.EASE_IN).set_parallel()
-	t.tween_property(new_card, "modulate", Color.WHITE, 0.075)
-	t.tween_property(new_card, "scale", Vector2.ONE, 0.075)
+	if forced_pos != Vector2.ZERO:
+		new_card.global_position = forced_pos
+	if with_anim:
+		new_card.scale = Vector2(0.5, 0.5)
+		var t := create_tween().set_ease(Tween.EASE_IN).set_parallel()
+		t.tween_property(new_card, "modulate", Color.WHITE, 0.075)
+		t.tween_property(new_card, "scale", Vector2.ONE, 0.075)
 
 func consume_card(card_object : CardObject) -> void:
 	cards_hand.erase(card_object)
