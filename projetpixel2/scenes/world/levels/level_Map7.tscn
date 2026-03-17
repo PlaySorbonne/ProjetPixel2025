@@ -66,7 +66,7 @@ point_count = 8
 [node name="LevelMap7" unique_id=564383506 instance=ExtResource("1_xjwak")]
 
 [node name="PlayerCamera" parent="." index="1" unique_id=1474757404]
-transform = Transform3D(1, 0, 0, 0, 0.375594, 0.926784, 0, -0.926784, 0.375594, 15, 27, 6.471)
+transform = Transform3D(1, 0, 0, 0, 0.3755941, 0.9267843, 0, -0.9267843, 0.3755941, 17.748016, 28.033321, 7.4164367)
 
 [node name="Spaceship" parent="." index="2" unique_id=1182852106]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.18002, -0.527421, -0.0715396)
