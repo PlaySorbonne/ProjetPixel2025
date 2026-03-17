@@ -3,6 +3,7 @@ class_name Booster
 
 
 signal booster_opened
+signal card_selected
 
 enum Rarity {Common, Rare}
 
@@ -52,7 +53,7 @@ func tween_intro(obj : CanvasItem) -> Tween:
 func draw_cards(number_of_cards : int, rarity : CardData.CardRarities) -> void:
 	GV.cards_container.draw_cards(number_of_cards, rarity, self)
 
-func diplay_cards_choice(nb_cards_in_choice := 3) -> void:
+func display_cards_choice(nb_cards_in_choice := 3) -> void:
 	card_objects = []
 	var booster_cards : Array[CardData] = []
 	for _i : int in range(nb_cards_in_choice):
@@ -93,6 +94,8 @@ func _on_card_level_clicked(chosen_card : CardObject, card_button : SelectCardBu
 	)
 	destroy_booster()
 	await get_tree().create_timer(0.075).timeout
+	card_selected.emit()
+	is_card_selected = false
 	GV.hud.cards_container.reorder_hand()
 
 func _card_ready(card : CardObject) -> void:
