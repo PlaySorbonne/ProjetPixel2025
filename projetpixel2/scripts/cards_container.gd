@@ -18,11 +18,19 @@ func _input(_event: InputEvent) -> void:
 		draw_cards(3, CardData.CardRarities.Common)
 
 func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities) -> void:
+	const CARD_OFFSET_INCREMENT := Vector2(10.0, 10.0)
+	var card_pos_offset := Vector2.ZERO
 	for _i in range(cards_to_draw):
-		_draw_card(rarity)
+		_draw_card(rarity, card_pos_offset)
+		card_pos_offset += CARD_OFFSET_INCREMENT
 		await card_drawn
+	await get_tree().create_timer(0.35).timeout
+	for card : CardObject in cards_hand:
+		card.set_can_be_dragged(true)
+		card.can_be_dropped_on_objects = true
+	reorder_hand()
 
-func _draw_card(rarity : CardData.CardRarities) -> void:
+func _draw_card(rarity : CardData.CardRarities, pos_offset := Vector2.ZERO) -> void:
 	var draw_pile : Array[CardData]
 	match rarity:
 		CardData.CardRarities.Common:
@@ -37,7 +45,7 @@ func _draw_card(rarity : CardData.CardRarities) -> void:
 			draw_pile = rare_cards
 	
 	var new_card := create_card_object(draw_pile.pick_random())
-	_add_playable_card(new_card)
+	_add_playable_card(new_card, pos_offset)
 	await get_tree().create_timer(0.15).timeout
 	card_drawn.emit()
 
@@ -50,21 +58,18 @@ func create_card_object(card_data : CardData) -> CardObject:
 func on_card_played(card : CardObject) -> void:
 	consume_card(card)
 
-func add_card_to_hand(card_data: CardData, forced_position := Vector2.ZERO) -> void:
+func add_card_to_hand(card_data: CardData, pos_offset := Vector2.ZERO) -> void:
 	var new_card := create_card_object(card_data)
-	if forced_position != Vector2.ZERO:
-		new_card.global_position = forced_position
-	_add_playable_card(new_card)
+	_add_playable_card(new_card, pos_offset)
 
-func _add_playable_card(new_card : CardObject) -> void:
+func _add_playable_card(new_card : CardObject, pos_offset := Vector2.ZERO) -> void:
+	var card_pos : Vector2 = GV.hud.booster_container.global_position + pos_offset
 	cards_hand.append(new_card)
-	new_card.global_position = GV.hud.booster_container.global_position
+	new_card.set_can_be_dragged(false)
+	new_card.global_position = card_pos
 	add_child(new_card)
 	await get_tree().process_frame
-	new_card.global_position = GV.hud.booster_container.global_position
-	await get_tree().process_frame
-	reorder_hand()
-	new_card.can_be_dropped_on_objects = true
+	new_card.global_position = card_pos
 
 func consume_card(card_object : CardObject) -> void:
 	cards_hand.erase(card_object)

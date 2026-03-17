@@ -78,6 +78,9 @@ func _process(_delta: float) -> void:
 		target_outline_width = 0.0
 		set_card_outline_width(target_outline_width)
 
+func set_can_be_dragged(new_can_be_dragged : bool) -> void:
+	$DragAndDrop2D.can_be_dragged = new_can_be_dragged
+
 func can_drop_card() -> bool:
 	if card.tactics:
 		return global_position.y <= \
