@@ -99,6 +99,8 @@ anchor_top = 0.24431151
 anchor_right = 0.95101446
 anchor_bottom = 0.7596561
 mouse_filter = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/ScrollBoxItems" index="0" unique_id=1737880619]
