@@ -50,6 +50,7 @@ data = {
 image = SubResource("Image_0xy62")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0xy62"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34myw"]
 resource_name = "rock"
@@ -1391,6 +1392,7 @@ data = {
 image = SubResource("Image_gv6cw")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1wq3i"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q1p0"]
 resource_name = "rockTrack"
@@ -1466,6 +1468,7 @@ data = {
 image = SubResource("Image_trefj")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5j5o"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubpyq"]
 resource_name = "rock"
@@ -1539,6 +1542,9 @@ data = {
 
 [sub_resource type="ImageTexture" id="ImageTexture_xbksl"]
 image = SubResource("Image_td3vb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kqb5j"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yai6c"]
 resource_name = "rock"
@@ -1614,6 +1620,7 @@ data = {
 image = SubResource("Image_sflsl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7uvy3"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in5s1"]
 resource_name = "rock"
@@ -1689,6 +1696,7 @@ data = {
 image = SubResource("Image_6m1ap")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yva1b"]
+size = Vector3(1, 0.1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vfgeh"]
 resource_name = "rock"
@@ -1790,7 +1798,7 @@ item/6/name = "TerrainRoadEnd"
 item/6/mesh = SubResource("ArrayMesh_d30wm")
 item/6/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/6/mesh_cast_shadow = 1
-item/6/shapes = []
+item/6/shapes = [SubResource("BoxShape3D_kqb5j"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
 item/6/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/6/navigation_layers = 1
 item/6/preview = SubResource("ImageTexture_xbksl")
