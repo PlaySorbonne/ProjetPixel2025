@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bsruqkckna5by" path="res://resources/images/ui_assets/icons/booster-icon.png" id="7_yufeb"]
 [ext_resource type="Texture2D" uid="uid://cptup3eeu0p0x" path="res://resources/images/ui_assets/icons/rare-booster-icon.png" id="8_sxsyu"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
+[ext_resource type="Texture2D" uid="uid://cb487dcnfvifj" path="res://resources/images/ui_assets/menu_elements/nine_patch_red_line.png" id="10_whj8p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whj8p"]
 resource_local_to_scene = true
@@ -201,6 +202,17 @@ custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="7" unique_id=929591788]
+custom_minimum_size = Vector2(0, 7)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -3.0
+offset_bottom = 4.0
+grow_horizontal = 2
+texture = ExtResource("10_whj8p")
+expand_mode = 1
 
 [node name="MessageTimer" type="Timer" parent="." index="3" unique_id=504440673]
 wait_time = 2.0
