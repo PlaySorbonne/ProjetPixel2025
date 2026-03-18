@@ -39,7 +39,7 @@ func draw_cards_of_rarity(cards_rarities : Array[CardData.CardRarities],
 func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
 				booster : Booster = null) -> void:
 	var cards_rarities : Array[CardData.CardRarities] = []
-	for _i : int in range(len(cards_to_draw)):
+	for _i : int in range(cards_to_draw):
 		cards_rarities.append(rarity)
 	draw_cards_of_rarity(cards_rarities, booster)
 
