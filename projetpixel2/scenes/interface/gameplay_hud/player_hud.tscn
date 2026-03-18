@@ -431,9 +431,10 @@ manually_start_minigame = true
 
 [node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
 anchor_left = 0.7682292
-anchor_top = 0.2037037
+anchor_top = 0.18518518
 anchor_right = 0.9765625
-anchor_bottom = 0.3425926
+anchor_bottom = 0.32407406
+offset_bottom = 3.0517578e-05
 text = "Button
 Dice"
 minigame_popup = ExtResource("16_gd21h")
@@ -442,9 +443,9 @@ current_delay = 15.0
 
 [node name="ButtonRouletteWheel" parent="." unique_id=1480895567 instance=ExtResource("18_616a6")]
 anchor_left = 0.7682292
-anchor_top = 0.37037036
+anchor_top = 0.33333334
 anchor_right = 0.9765625
-anchor_bottom = 0.5092593
+anchor_bottom = 0.4722222
 text = "Button
 Roulette Wheel"
 minigame_popup = ExtResource("18_rwqbi")
@@ -530,7 +531,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.3529412)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="ShopPosMarker" type="Control" parent="." unique_id=461366600]
 layout_mode = 3
@@ -542,10 +543,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ShopWindow" parent="." unique_id=1845943741 instance=ExtResource("27_1v7h5")]
 anchor_left = 0.7414163
-anchor_top = 0.53650963
+anchor_top = 0.4846578
 anchor_right = 1.0112001
-anchor_bottom = 0.7773804
+anchor_bottom = 0.78142065
+offset_top = 6.0
 offset_right = -0.00012207031
+offset_bottom = 6.0
 
 [connection signal="timeout" from="ExperienceBar/TimerExperienceMult" to="ExperienceBar" method="_on_timer_experience_mult_timeout"]
 [connection signal="timeout" from="ComboCounter/ComboTimer" to="." method="_on_combo_timer_timeout"]
