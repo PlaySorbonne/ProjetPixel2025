@@ -4,6 +4,9 @@ class_name RareBooster
 
 @export var selected_cards_number := 1
 @export var cards_choice_size := 3
+@export var selected_cards_rarity_chance : Dictionary[CardData.CardRarities, float] = {
+	CardData.CardRarities.Common : 1.0
+}
 
 var cards_selected := 0
 
