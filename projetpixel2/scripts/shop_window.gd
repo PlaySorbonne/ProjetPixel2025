@@ -66,9 +66,11 @@ func set_price_labels() -> Array[Label]:
 func update_prices() -> void:
 	if not v_box_prices:
 		return
+	var shop_items := get_shop_items()
 	for i : int in range(len(price_labels)):
 		var l : Label = price_labels[i]
 		l.text = str(prices[i]) + "$"
+		l.visible = shop_items[i].visible
 
 func get_shop_items() -> Array[ShopItemButton]:
 	var shop_items : Array[ShopItemButton] = []
