@@ -1,12 +1,11 @@
-[gd_scene format=3 uid="uid://nsf061huhim3"]
+[gd_scene format=3 uid="uid://bnwxsy4mfeb0p"]
 
-[ext_resource type="PackedScene" uid="uid://vopecrn38vjd" path="res://scenes/interface/cards/boosters/standard_booster.tscn" id="1_0oumg"]
+[ext_resource type="PackedScene" uid="uid://b1tjda7ior5vn" path="res://scenes/interface/cards/boosters/premium_booster.tscn" id="1_f3ql5"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_87kci"]
-[ext_resource type="Script" uid="uid://ba851y7ti0a8t" path="res://scripts/rare_booster.gd" id="2_w5wfm"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_2p1qu"]
 [ext_resource type="Texture2D" uid="uid://ckvgh5jace1oq" path="res://resources/images/cards/booster/clubs_logo.png" id="4_0oumg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkq7j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3ql5"]
 resource_local_to_scene = true
 shader = ExtResource("2_87kci")
 shader_parameter/scroll_speed = 0.250000011875
@@ -26,17 +25,11 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
-[node name="SuperiorBooster" unique_id=2109309066 instance=ExtResource("1_0oumg")]
-script = ExtResource("2_w5wfm")
-selected_cards_number = 1
-cards_choice_size = 3
-selected_cards_rarity_chance = Dictionary[int, float]({
-0: 1.0
-})
+[node name="SuperiorBooster" unique_id=2109309066 instance=ExtResource("1_f3ql5")]
 drawn_cards_number = 0
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
-material = SubResource("ShaderMaterial_kkq7j")
+material = SubResource("ShaderMaterial_f3ql5")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
 texture = ExtResource("4_0oumg")

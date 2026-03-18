@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://641nnhq8u11k" path="res://resources/images/cards/booster/spade_flourish_logo.png" id="4_3spj3"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_s5afm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3spj3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xschl"]
 resource_local_to_scene = true
 shader = ExtResource("3_vs41k")
 shader_parameter/scroll_speed = 0.250000011875
@@ -25,12 +25,15 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
-[node name="KingSizeRareBooster" unique_id=2109309066 instance=ExtResource("1_48gtd")]
+[node name="DeluxeBooster" unique_id=2109309066 instance=ExtResource("1_48gtd")]
 selected_cards_number = 3
 cards_choice_size = 4
+selected_cards_rarity_chance = Dictionary[int, float]({
+0: 1.0
+})
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
-material = SubResource("ShaderMaterial_3spj3")
+material = SubResource("ShaderMaterial_xschl")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
 texture = ExtResource("4_3spj3")

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_co8fb"]
 [ext_resource type="Texture2D" uid="uid://cychun6vkck8f" path="res://resources/images/cards/booster/spade_logo.png" id="4_b04cb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_co8fb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ar38y"]
 resource_local_to_scene = true
 shader = ExtResource("2_b04cb")
 shader_parameter/scroll_speed = 0.250000011875
@@ -26,13 +26,16 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
-[node name="RareBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
+[node name="PremiumBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
 script = ExtResource("2_co8fb")
 selected_cards_number = 1
 cards_choice_size = 3
+selected_cards_rarity_chance = Dictionary[int, float]({
+0: 1.0
+})
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
-material = SubResource("ShaderMaterial_co8fb")
+material = SubResource("ShaderMaterial_ar38y")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
 texture = ExtResource("4_b04cb")

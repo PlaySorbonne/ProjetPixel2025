@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_2dojh"]
 [ext_resource type="Script" uid="uid://4qldgxk1ebf1" path="res://scripts/common_booster.gd" id="2_hugpo"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_hugpo"]
-[ext_resource type="Texture2D" uid="uid://bclvuh1t6hd2t" path="res://resources/images/cards/booster/diamonds_black_logo.png" id="5_hugpo"]
+[ext_resource type="Texture2D" uid="uid://ch0wiwfacenwa" path="res://resources/images/cards/booster/hearts_black_logo.png" id="5_277xl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_277xl"]
 resource_local_to_scene = true
@@ -34,4 +34,4 @@ drawn_cards_number = 3
 material = SubResource("ShaderMaterial_277xl")
 
 [node name="SpadeLogo" parent="." index="8" unique_id=2101724559]
-texture = ExtResource("5_hugpo")
+texture = ExtResource("5_277xl")
