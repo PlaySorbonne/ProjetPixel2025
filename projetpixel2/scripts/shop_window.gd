@@ -3,11 +3,15 @@ class_name ShopWindow
 
 
 enum {
-	ItemCommonBooster = 0,
-	ItemLargeBooster = 1,
-	ItemRareBooster = 2,
-	ItemEpicBooster = 3,
-	ItemTower = 4,
+	ItemStandardBooster = 0,
+	ItemSuperiorBooster = 1,
+	ItemLargeBooster = 2,
+	ItemPremiumBooster = 3,
+	ItemDeluxeBooster = 4,
+	ItemColossalBooster = 5,
+	ItemPrestigeBooster = 6,
+	ItemMasterworkBooster = 7,
+	ItemTower = 0,
 }
 
 const SHOP_RES := preload("res://scenes/interface/casino_minigames/shop_window.tscn")
@@ -28,7 +32,7 @@ static func spawn_shop_popup() -> ShopWindow:
 		return shop_popup
 
 
-@export var prices : Array[int] = [5, 7, 13, 20, 19]
+@export var prices : Array[int] = []
 
 @onready var v_box_prices := $Contents/ScrollBoxItems/HBoxContainer/VBoxPrices
 @onready var v_box_items := $Contents/ScrollBoxItems/HBoxContainer/VBoxItems
@@ -104,32 +108,60 @@ func add_tower() -> void:
 	GV.world.add_child(new_tower)
 	new_tower.position = tower_pos
 
-func _on_button_booster_pressed() -> void:
+func _on_button_standard_booster_pressed() -> void:
 	try_buy_booster(
-		ItemCommonBooster,
-		int(prices[ItemCommonBooster] + 2),
+		ItemStandardBooster,
+		int(prices[ItemStandardBooster] + 2),
 		Booster.PackType.Standard
 	)
 
-func _on_button_rare_booster_pressed() -> void:
+func _on_button_superior_booster_pressed() -> void:
 	try_buy_booster(
-		ItemRareBooster,
-		int(prices[ItemRareBooster] + 4),
-		Booster.PackType.Premium
+		ItemSuperiorBooster,
+		int(prices[ItemSuperiorBooster] + 4),
+		Booster.PackType.Superior
 	)
 
-func _on_shop_large_common_booster_pressed() -> void:
+func _on_shop_large_booster_pressed() -> void:
 	try_buy_booster(
 		ItemLargeBooster,
-		int(prices[ItemLargeBooster] + 6),
+		int(prices[ItemLargeBooster] + 7),
 		Booster.PackType.Large
 	)
 
-func _on_button_epic_booster_pressed() -> void:
+func _on_button_premium_booster_pressed() -> void:
 	try_buy_booster(
-		ItemEpicBooster,
-		int(prices[ItemEpicBooster] + 9),
+		ItemPremiumBooster,
+		int(prices[ItemPremiumBooster] + 10),
+		Booster.PackType.Premium
+	)
+
+func _on_button_deluxe_booster_pressed() -> void:
+	try_buy_booster(
+		ItemDeluxeBooster,
+		int(prices[ItemDeluxeBooster] + 15),
 		Booster.PackType.Deluxe
+	)
+
+func _on_button_colossal_booster_pressed() -> void:
+	try_buy_booster(
+		ItemColossalBooster,
+		int(prices[ItemColossalBooster] * 1.2),
+		Booster.PackType.Colossal
+	)
+
+func _on_button_prestige_booster_pressed() -> void:
+	try_buy_booster(
+		ItemPrestigeBooster,
+		int(prices[ItemPrestigeBooster] * 1.1 + 4),
+		Booster.PackType.Prestige
+	)
+
+func _on_button_masterwork_booster_pressed() -> void:
+	try_buy_booster(
+		ItemMasterworkBooster,
+		int(prices[ItemMasterworkBooster] * 1.25 + 5),
+		Booster.PackType.Masterwork
 	)
 
 func _on_button_tower_pressed() -> void:
