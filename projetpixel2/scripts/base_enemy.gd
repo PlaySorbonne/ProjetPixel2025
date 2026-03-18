@@ -52,6 +52,9 @@ func set_enemy_id() -> void:
 
 func follow_path() -> void:
 	# get target point
+	if not followed_path:
+		print_debug("Invalid followed path")
+		return
 	if not(followed_path.curve):
 		print_debug("Invalid followed path curve")
 		return
