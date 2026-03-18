@@ -108,14 +108,14 @@ func _on_button_booster_pressed() -> void:
 	try_buy_booster(
 		ItemCommonBooster,
 		int(prices[ItemCommonBooster] + 2),
-		Booster.PackType.Common
+		Booster.PackType.Standard
 	)
 
 func _on_button_rare_booster_pressed() -> void:
 	try_buy_booster(
 		ItemRareBooster,
 		int(prices[ItemRareBooster] + 4),
-		Booster.PackType.Rare
+		Booster.PackType.Premium
 	)
 
 func _on_shop_large_common_booster_pressed() -> void:
@@ -129,7 +129,7 @@ func _on_button_epic_booster_pressed() -> void:
 	try_buy_booster(
 		ItemEpicBooster,
 		int(prices[ItemEpicBooster] + 9),
-		Booster.PackType.Epic
+		Booster.PackType.Deluxe
 	)
 
 func _on_button_tower_pressed() -> void:

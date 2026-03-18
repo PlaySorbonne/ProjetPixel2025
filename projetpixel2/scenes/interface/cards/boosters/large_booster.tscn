@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bedisboyd2nnj"]
 
-[ext_resource type="PackedScene" uid="uid://vopecrn38vjd" path="res://scenes/interface/cards/boosters/common_booster.tscn" id="1_yxrvu"]
+[ext_resource type="PackedScene" uid="uid://vopecrn38vjd" path="res://scenes/interface/cards/boosters/standard_booster.tscn" id="1_yxrvu"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_cpocg"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_by7nr"]
 [ext_resource type="Texture2D" uid="uid://dgwsb755bivf1" path="res://resources/images/cards/booster/diamonds_pattern_logo.png" id="4_cpocg"]

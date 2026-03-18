@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vijp8w7ftowx"]
 
-[ext_resource type="PackedScene" uid="uid://b1tjda7ior5vn" path="res://scenes/interface/cards/boosters/rare_booster.tscn" id="1_48gtd"]
+[ext_resource type="PackedScene" uid="uid://b1tjda7ior5vn" path="res://scenes/interface/cards/boosters/premium_booster.tscn" id="1_48gtd"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_vs41k"]
 [ext_resource type="Texture2D" uid="uid://641nnhq8u11k" path="res://resources/images/cards/booster/spade_flourish_logo.png" id="4_3spj3"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_s5afm"]

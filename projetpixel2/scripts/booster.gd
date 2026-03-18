@@ -5,13 +5,26 @@ class_name Booster
 signal booster_opened
 signal card_selected
 
-enum PackType {Common, Large, Rare, Epic}
+enum PackType {
+	Standard,
+	Superior,
+	Large,
+	Premium,
+	Deluxe,
+	Colossal,
+	Prestige,
+	Masterwork
+}
 
 static var BOOSTERS_RES : Dictionary[PackType, PackedScene] = {
-	PackType.Common : load("res://scenes/interface/cards/boosters/common_booster.tscn"),
-	PackType.Large : load("res://scenes/interface/cards/boosters/king_size_common_booster.tscn"),
-	PackType.Rare : load("res://scenes/interface/cards/boosters/rare_booster.tscn"),
-	PackType.Epic : load("res://scenes/interface/cards/boosters/king_size_rare_booster.tscn"),
+	PackType.Standard : load("res://scenes/interface/cards/boosters/standard_booster.tscn"),
+	PackType.Superior : load("res://scenes/interface/cards/boosters/superior_booster.tscn"),
+	PackType.Large : load("res://scenes/interface/cards/boosters/large_booster.tscn"),
+	PackType.Premium : load("res://scenes/interface/cards/boosters/premium_booster.tscn"),
+	PackType.Deluxe : load("res://scenes/interface/cards/boosters/deluxe_booster.tscn"),
+	PackType.Prestige : load("res://scenes/interface/cards/boosters/prestige_booster.tscn"),
+	PackType.Colossal : load("res://scenes/interface/cards/boosters/colossal_booster.tscn"),
+	PackType.Masterwork : load("res://scenes/interface/cards/boosters/masterwork_booster.tscn"),
 }
 
 static func spawn_booster(nparent : Node, pack_type : PackType) -> Booster:

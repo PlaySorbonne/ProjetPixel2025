@@ -137,19 +137,31 @@ layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ShopCommonBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
+[node name="ShopStandardBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="0" unique_id=286524149]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
-text = "  Common booster"
+text = "  Standard booster"
 icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ShopLargeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=1452332049]
+[node name="ButtonSuperiorBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=535536094]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Superior booster"
+icon = ExtResource("8_sxsyu")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ShopLargeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=1452332049]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -161,20 +173,31 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonRareBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=1368245865]
+[node name="ButtonPremiumBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=2135279719]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_yufeb")
 theme_override_font_sizes/font_size = 18
-text = "  Rare booster"
+text = "  Premium booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonEpicBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=789497216]
-visible = false
+[node name="ButtonRareBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=1368245865]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Premium booster"
+icon = ExtResource("8_sxsyu")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonEpicBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="5" unique_id=789497216]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -186,7 +209,31 @@ alignment = 0
 expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=2102572699]
+[node name="ButtonEpicBooster2" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="6" unique_id=348003057]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Epic booster"
+icon = ExtResource("8_sxsyu")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonEpicBooster3" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="7" unique_id=873642721]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_yufeb")
+theme_override_font_sizes/font_size = 18
+text = "  Epic booster"
+icon = ExtResource("8_sxsyu")
+alignment = 0
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="8" unique_id=2102572699]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -219,7 +266,7 @@ expand_mode = 1
 wait_time = 2.0
 one_shot = true
 
-[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopCommonBooster" to="." method="_on_button_booster_pressed"]
+[connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopStandardBooster" to="." method="_on_button_booster_pressed"]
 [connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ShopLargeBooster" to="." method="_on_shop_large_common_booster_pressed"]
 [connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonRareBooster" to="." method="_on_button_rare_booster_pressed"]
 [connection signal="pressed" from="Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonEpicBooster" to="." method="_on_button_epic_booster_pressed"]
