@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_n01tg"]
 [ext_resource type="Texture2D" uid="uid://csqkbwgas7h6b" path="res://resources/images/ui_assets/icons/swipe-card.png" id="6_den4x"]
 [ext_resource type="Texture2D" uid="uid://bsruqkckna5by" path="res://resources/images/ui_assets/icons/booster-icon.png" id="7_yufeb"]
+[ext_resource type="Script" uid="uid://bb3rl5di3vj3" path="res://scripts/shop_item_button.gd" id="8_2rxam"]
 [ext_resource type="Texture2D" uid="uid://cptup3eeu0p0x" path="res://resources/images/ui_assets/icons/rare-booster-icon.png" id="8_sxsyu"]
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 [ext_resource type="Texture2D" uid="uid://cb487dcnfvifj" path="res://resources/images/ui_assets/menu_elements/nine_patch_red_line.png" id="10_whj8p"]
@@ -147,6 +148,7 @@ text = "  Standard booster"
 icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSuperiorBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=535536094]
@@ -174,6 +176,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPremiumBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=2135279719]
+visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -186,6 +189,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDeluxeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=1368245865]
+visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -198,6 +202,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonColossalBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="5" unique_id=789497216]
+visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -210,6 +215,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPrestigeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="6" unique_id=348003057]
+visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -222,6 +228,7 @@ expand_icon = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonMasterworkBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="7" unique_id=873642721]
+visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0

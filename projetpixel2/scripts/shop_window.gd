@@ -67,9 +67,27 @@ func update_prices() -> void:
 		var l : Label = price_labels[i]
 		l.text = str(prices[i]) + "$"
 
+func get_shop_items() -> Array[Button]:
+	var shop_items : Array[Button] = []
+	for item : Node in v_box_items.get_children():
+		if item is Button:
+			shop_items.append(item)
+	return shop_items
+
+func refresh_shop_items() -> void:
+	var shop_items : Array[Button] = get_shop_items()
+	var items_visibility : Array[bool] = []
+	items_visibility.resize(len(shop_items))
+	for i : int in range(4):
+		items_visibility[i] = true
+	items_visibility.shuffle()
+	for i : int in range(len(shop_items)):
+		shop_items[i].visible = items_visibility[i]
+
 func try_buy_item(item_price : int) -> bool:
 	if RunData.current_chips >= item_price:
 		RunData.current_chips -= item_price
+		refresh_shop_items()
 		display_message("Thank you for your patronage!", Color.GREEN)
 		return true
 	else:
