@@ -47,7 +47,6 @@ base_font = ExtResource("5_n01tg")
 anchor_right = 0.23083226
 anchor_bottom = 0.26162627
 script = ExtResource("2_n01tg")
-prices = Array[int]([])
 can_drag_window = false
 can_close_window = false
 
@@ -149,6 +148,7 @@ icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+price = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSuperiorBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=535536094]
@@ -161,6 +161,8 @@ text = "  Superior booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 12
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonLargeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=1452332049]
@@ -173,6 +175,8 @@ text = "  Large booster"
 icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 13
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPremiumBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=2135279719]
@@ -186,6 +190,8 @@ text = "  Premium booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 15
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDeluxeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=1368245865]
@@ -199,6 +205,8 @@ text = "  Deluxe booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 20
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonColossalBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="5" unique_id=789497216]
@@ -212,6 +220,8 @@ text = "  Colossal booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 22
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPrestigeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="6" unique_id=348003057]
@@ -225,6 +235,8 @@ text = "  Prestige booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 24
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonMasterworkBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="7" unique_id=873642721]
@@ -238,6 +250,8 @@ text = "  Masterwork booster"
 icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 50
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="8" unique_id=2102572699]
@@ -250,6 +264,8 @@ text = " Tower"
 icon = ExtResource("8_yufeb")
 alignment = 0
 expand_icon = true
+script = ExtResource("8_2rxam")
+price = 19
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxPrices" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="1" unique_id=711194198]
