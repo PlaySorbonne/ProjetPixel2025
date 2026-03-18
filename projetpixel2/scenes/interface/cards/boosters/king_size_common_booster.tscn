@@ -26,7 +26,7 @@ shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
 [node name="KingSizeCommonBooster" unique_id=2109309066 instance=ExtResource("1_yxrvu")]
-number_of_cards = 5
+drawn_cards_number = 5
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
 material = SubResource("ShaderMaterial_cpocg")
