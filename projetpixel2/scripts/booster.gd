@@ -14,6 +14,13 @@ static var BOOSTERS_RES : Dictionary[PackType, PackedScene] = {
 	PackType.Epic : load("res://scenes/interface/cards/boosters/king_size_rare_booster.tscn"),
 }
 
+static func spawn_booster(nparent : Node, pack_type : PackType) -> Booster:
+	var new_booster := BOOSTERS_RES[pack_type].instantiate()
+	new_booster.scale = Vector2(0.5, 0.5)
+	new_booster.modulate = Color.TRANSPARENT
+	nparent.add_child(new_booster)
+	return new_booster 
+
 var card_objects : Array[CardObject]
 var is_booster_open := false
 var is_mouse_over := false
@@ -22,12 +29,10 @@ var is_card_selected := false
 	$ColorRect1, $ColorRect2, $ColorRect3, $ColorRect4
 ]
 
-static func spawn_booster(nparent : Node, pack_type : PackType) -> Booster:
-	var new_booster := BOOSTERS_RES[pack_type].instantiate()
-	new_booster.scale = Vector2(0.5, 0.5)
-	new_booster.modulate = Color.TRANSPARENT
-	nparent.add_child(new_booster)
-	return new_booster 
+@export var drawn_cards_number := 2
+@export var draw_cards_rarity_chance : Dictionary[CardData.CardRarities, float] = {
+	CardData.CardRarities.Common : 1.0
+}
 
 func _ready() -> void:
 	await tween_intro(self).finished
@@ -52,8 +57,23 @@ func tween_intro(obj : CanvasItem) -> Tween:
 	t.tween_property(obj, "modulate", Color.WHITE, 0.25)
 	return t
 
-func draw_cards(number_of_cards : int, rarity : CardData.CardRarities) -> void:
-	GV.cards_container.draw_cards(number_of_cards, rarity, self)
+func draw_cards() -> void:
+	var cards_rarities : Array[CardData.CardRarities] = []
+	var total_card_chance : float = 0.0
+	for k : float in draw_cards_rarity_chance.values():
+		total_card_chance += k
+	# generate drawn cards rarities from draw_cards_rarity_chance
+	for _i : int in range(drawn_cards_number):
+		var current_rarity_chance := randf_range(0.0, total_card_chance)
+		for rarity : CardData.CardRarities in draw_cards_rarity_chance.keys():
+			current_rarity_chance -= draw_cards_rarity_chance[rarity]
+			if current_rarity_chance <= 0.0:
+				cards_rarities.append(rarity)
+				break
+	GV.cards_container.draw_cards_of_rarity(
+		cards_rarities,
+		self
+	)
 
 func display_cards_choice(nb_cards_in_choice := 3) -> void:
 	card_objects = []

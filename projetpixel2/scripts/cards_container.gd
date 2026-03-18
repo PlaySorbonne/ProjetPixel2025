@@ -6,6 +6,8 @@ signal card_drawn
 signal booster_cards_spawned(booster : Booster)
 signal booster_cards_drawn(booster : Booster)
 
+const CARD_OFFSET_INCREMENT := Vector2(10.0, 10.0)
+
 @export var common_cards : Array[CardData] 
 @export var rare_cards : Array[CardData] 
 
@@ -19,12 +21,12 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("debug_p"):
 		draw_cards(3, CardData.CardRarities.Common)
 
-func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
+func draw_cards_of_rarity(cards_rarities : Array[CardData.CardRarities],
 				booster : Booster = null) -> void:
-	const CARD_OFFSET_INCREMENT := Vector2(10.0, 10.0)
 	var card_pos_offset := Vector2.ZERO
-	for _i in range(cards_to_draw):
-		_draw_card(rarity, card_pos_offset)
+	var nb_cards_to_draw := len(cards_rarities)
+	for i : int in range(nb_cards_to_draw):
+		_draw_card(cards_rarities[i], card_pos_offset)
 		card_pos_offset += CARD_OFFSET_INCREMENT
 		await card_drawn
 		await get_tree().create_timer(0.05).timeout
@@ -33,6 +35,13 @@ func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
 	await get_tree().create_timer(0.2).timeout
 	booster_cards_drawn.emit(booster)
 	reorder_hand()
+
+func draw_cards(cards_to_draw : int, rarity : CardData.CardRarities,
+				booster : Booster = null) -> void:
+	var cards_rarities : Array[CardData.CardRarities] = []
+	for _i : int in range(len(cards_to_draw)):
+		cards_rarities.append(rarity)
+	draw_cards_of_rarity(cards_rarities, booster)
 
 func _draw_card(rarity : CardData.CardRarities, pos_offset := Vector2.ZERO) -> void:
 	var draw_pile : Array[CardData]
