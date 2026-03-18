@@ -701,7 +701,6 @@ offset_right = 92.7738
 offset_bottom = -30.454544
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-text = "Standard Booster"
 label_settings = SubResource("LabelSettings_g66no")
 horizontal_alignment = 1
 vertical_alignment = 1

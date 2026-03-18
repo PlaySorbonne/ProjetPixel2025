@@ -28,9 +28,6 @@ shader_parameter/flip_chance = 0.05
 [node name="DeluxeBooster" unique_id=2109309066 instance=ExtResource("1_48gtd")]
 selected_cards_number = 3
 cards_choice_size = 4
-selected_cards_rarity_chance = Dictionary[int, float]({
-0: 1.0
-})
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
 material = SubResource("ShaderMaterial_xschl")

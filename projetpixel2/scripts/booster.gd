@@ -50,7 +50,7 @@ var is_card_selected := false
 }
 
 func _ready() -> void:
-	$LabelPackType.text = booster_type_name
+	$Label.text = booster_type_name
 	await tween_intro(self).finished
 	$AnimationPlayer.play("idle")
 
