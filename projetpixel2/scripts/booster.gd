@@ -29,11 +29,13 @@ static var BOOSTERS_RES : Dictionary[PackType, PackedScene] = {
 
 static func spawn_booster(nparent : Node, pack_type : PackType) -> Booster:
 	var new_booster := BOOSTERS_RES[pack_type].instantiate()
+	new_booster.booster_type_name = PackType.keys()[pack_type] + "\nBooster"
 	new_booster.scale = Vector2(0.5, 0.5)
 	new_booster.modulate = Color.TRANSPARENT
 	nparent.add_child(new_booster)
 	return new_booster 
 
+var booster_type_name : String
 var card_objects : Array[CardObject]
 var is_booster_open := false
 var is_mouse_over := false
@@ -48,6 +50,7 @@ var is_card_selected := false
 }
 
 func _ready() -> void:
+	$LabelPackType.text = booster_type_name
 	await tween_intro(self).finished
 	$AnimationPlayer.play("idle")
 
