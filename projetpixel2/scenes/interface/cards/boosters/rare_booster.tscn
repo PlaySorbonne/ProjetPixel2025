@@ -28,7 +28,6 @@ shader_parameter/flip_chance = 0.05
 
 [node name="RareBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
 script = ExtResource("2_co8fb")
-drawn_cards_number = 2
 selected_cards_number = 1
 cards_choice_size = 3
 

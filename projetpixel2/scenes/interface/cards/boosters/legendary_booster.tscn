@@ -27,7 +27,7 @@ shader_parameter/flip_chance = 0.05
 
 [node name="LegendaryBooster" unique_id=2109309066 instance=ExtResource("1_idyti")]
 selected_cards_number = 3
-cards_choice_size = 4
+cards_choice_size = 5
 drawn_cards_number = 0
 
 [node name="Background" parent="." index="0" unique_id=1939155258]
