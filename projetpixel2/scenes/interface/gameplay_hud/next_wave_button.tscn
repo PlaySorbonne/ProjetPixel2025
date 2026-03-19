@@ -163,6 +163,7 @@ _data = {
 }
 
 [node name="NextWaveButton" type="Button" unique_id=324111278]
+z_index = 5
 custom_minimum_size = Vector2(200, 50)
 anchors_preset = 15
 anchor_right = 1.0
