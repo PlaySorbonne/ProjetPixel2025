@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cal6h55hvarv7"]
+
+[ext_resource type="Texture2D" uid="uid://c8s3jve3obmks" path="res://resources/images/ui_assets/menu_elements/small_gray_nine_patch_out_tower_defense_frame.png" id="1_umeb2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pe5m2"]
+texture = ExtResource("1_umeb2")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[node name="Panel" type="Panel" unique_id=455412098]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -2.9999924
+offset_right = 5.999359
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pe5m2")

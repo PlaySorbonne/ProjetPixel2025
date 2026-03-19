@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://e6j6mntovs1u" path="res://scripts/card_description.gd" id="1_ddsqd"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="2_a1yaa"]
 [ext_resource type="Material" uid="uid://dgun07cew08nn" path="res://resources/materials/ui/seamless_rug_glitch.tres" id="2_h4e65"]
-[ext_resource type="Texture2D" uid="uid://c8s3jve3obmks" path="res://resources/images/ui_assets/menu_elements/small_gray_nine_patch_out_tower_defense_frame.png" id="4_xasty"]
+[ext_resource type="PackedScene" uid="uid://cal6h55hvarv7" path="res://scenes/interface/subobjects/panel_gray.tscn" id="4_xasty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ddsqd"]
 font = ExtResource("2_a1yaa")
@@ -19,13 +19,6 @@ font = ExtResource("2_a1yaa")
 [sub_resource type="LabelSettings" id="LabelSettings_a1yaa"]
 font = ExtResource("2_a1yaa")
 font_size = 18
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pe5m2"]
-texture = ExtResource("4_xasty")
-texture_margin_left = 18.0
-texture_margin_top = 18.0
-texture_margin_right = 18.0
-texture_margin_bottom = 18.0
 
 [node name="CardDescription" type="Control" unique_id=302558238]
 z_index = 50
@@ -116,17 +109,6 @@ horizontal_alignment = 2
 vertical_alignment = 2
 autowrap_mode = 2
 
-[node name="Panel" type="Panel" parent="." unique_id=1979394886]
-z_index = 2
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -2.9999924
-offset_right = 5.999359
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_pe5m2")
+[node name="Panel" parent="." unique_id=455412098 instance=ExtResource("4_xasty")]
+layout_mode = 0
+anchors_preset = 0

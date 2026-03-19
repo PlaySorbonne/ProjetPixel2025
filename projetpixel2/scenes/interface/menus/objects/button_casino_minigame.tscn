@@ -2,32 +2,136 @@
 
 [ext_resource type="Script" uid="uid://dmv3vlkapdyqq" path="res://scripts/button_casino_minigame.gd" id="1_fnt73"]
 [ext_resource type="PackedScene" uid="uid://bnc37s2vpdjex" path="res://scenes/interface/casino_minigames/russian_roulette_window.tscn" id="2_7ukg2"]
+[ext_resource type="PackedScene" uid="uid://cal6h55hvarv7" path="res://scenes/interface/subobjects/panel_gray.tscn" id="3_7ukg2"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="3_dh83b"]
+[ext_resource type="Texture2D" uid="uid://vsaypert6454" path="res://resources/images/casino/rug_seamless_texture.png" id="4_46uiv"]
+[ext_resource type="Texture2D" uid="uid://cmbkym2hmxyxo" path="res://resources/images/ui_assets/icons/chip-icon.png" id="6_t1qtj"]
+[ext_resource type="Script" uid="uid://debrgf46bllr2" path="res://scripts/animated_button.gd" id="7_v2wiq"]
 
-[node name="ButtonRussianRoulette" type="Button" unique_id=1362970447]
+[sub_resource type="LabelSettings" id="LabelSettings_46uiv"]
+font = ExtResource("3_dh83b")
+font_size = 18
+
+[node name="ButtonCasinoMinigame" type="Button" unique_id=1362970447]
 process_mode = 1
-modulate = Color(0.43134, 0.43134, 0.43134, 1)
 anchors_preset = -1
-anchor_right = 0.101042
-anchor_bottom = 0.139815
-offset_right = 205.99936
-offset_bottom = -1.0001984
+anchor_right = 0.20833333
+anchor_bottom = 0.1388889
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 0
-text = "Button Russian
-Roulette"
+flat = true
 script = ExtResource("1_fnt73")
 minigame_popup = ExtResource("2_7ukg2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="." unique_id=2003675254]
+[node name="LabelTime" type="Label" parent="." unique_id=2003675254]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 25.845222
+grow_horizontal = 2
+grow_vertical = 2
+text = "30"
+label_settings = SubResource("LabelSettings_46uiv")
+horizontal_alignment = 1
+
+[node name="LabelCost" type="Label" parent="." unique_id=1445324818]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 228.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1000$"
+label_settings = SubResource("LabelSettings_46uiv")
+horizontal_alignment = 1
+
+[node name="LabelName" type="Label" parent="." unique_id=1710471014]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "30"
+text = "Russian Roulette"
+label_settings = SubResource("LabelSettings_46uiv")
 horizontal_alignment = 1
 
+[node name="LabelDescription" type="Label" parent="." unique_id=422883895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 55.187485
+grow_horizontal = 2
+grow_vertical = 2
+text = "Invested
+Effect 
+Reward"
+label_settings = SubResource("LabelSettings_46uiv")
+
+[node name="LabeStats" type="Label" parent="." unique_id=1002937513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 98.35394
+offset_top = 55.187485
+grow_horizontal = 2
+grow_vertical = 2
+text = "- 0 / 6$
+- 1 dice
+- 50$ per 6"
+label_settings = SubResource("LabelSettings_46uiv")
+
+[node name="Panel" parent="." unique_id=455412098 instance=ExtResource("3_7ukg2")]
+layout_mode = 1
+offset_left = -2.1404648
+offset_top = -3.2442398
+offset_right = 6.093628
+offset_bottom = 5.60791
+
+[node name="Background" type="TextureRect" parent="." unique_id=1230099600]
+modulate = Color(0.62233794, 0.622338, 0.62233794, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_46uiv")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ButtonBet" type="Button" parent="." unique_id=667349567]
+z_index = 3
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 252.44176
+offset_top = -109.5656
+offset_right = -20.440735
+offset_bottom = -12.500656
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(63.558754, 48.53247)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+focus_mode = 0
+mouse_default_cursor_shape = 2
+icon = ExtResource("6_t1qtj")
+flat = true
+expand_icon = true
+script = ExtResource("7_v2wiq")
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="mouse_entered" from="ButtonBet" to="ButtonBet" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ButtonBet" to="ButtonBet" method="_on_mouse_exited"]
+[connection signal="pressed" from="ButtonBet" to="." method="_on_button_bet_pressed"]
