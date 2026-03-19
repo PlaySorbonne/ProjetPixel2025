@@ -11,7 +11,7 @@ enum {
 	ItemColossalBooster = 5,
 	ItemPrestigeBooster = 6,
 	ItemMasterworkBooster = 7,
-	ItemTower = 0,
+	ItemTower = 8,
 }
 
 const SHOP_RES := preload("res://scenes/interface/casino_minigames/shop_window.tscn")

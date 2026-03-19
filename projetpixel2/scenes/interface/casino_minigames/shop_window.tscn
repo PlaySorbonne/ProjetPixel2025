@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_yufeb"]
 [ext_resource type="Texture2D" uid="uid://cb487dcnfvifj" path="res://resources/images/ui_assets/menu_elements/nine_patch_red_line.png" id="10_whj8p"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_whj8p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rxam"]
 resource_local_to_scene = true
 shader = ExtResource("2_385bn")
 shader_parameter/scroll_speed = 0.08
@@ -54,7 +54,7 @@ can_close_window = false
 visible = false
 
 [node name="Background" parent="Panel" index="0" unique_id=1310582078]
-material = SubResource("ShaderMaterial_whj8p")
+material = SubResource("ShaderMaterial_2rxam")
 
 [node name="ColorRect" type="ColorRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="0" unique_id=1914855150]
 z_index = -20
