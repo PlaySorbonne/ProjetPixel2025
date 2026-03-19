@@ -30,11 +30,11 @@ func init_text_popup(ntext_label : Label, ntitle_node : Control) -> void:
 
 func animate_text_popup() -> void:
 	var t := create_tween().set_parallel()
-	t.tween_property(title_node, "scale", Vector2.ONE, 0.3
+	t.tween_property(title_node, "scale", Vector2.ONE, 0.3 * anim_speed
 						).set_ease(Tween.EASE_OUT)
-	t.tween_property(text_label, "visible_ratio", 1.0, 0.2
-						).set_delay(0.1)
+	t.tween_property(text_label, "visible_ratio", 1.0, 0.2 * anim_speed
+						).set_delay(0.1 * anim_speed)
 	if lifetime >= 0.0:
-		t.tween_property(text_label, "visible_ratio", 0.0, 0.2
+		t.tween_property(text_label, "visible_ratio", 0.0, 0.2 * anim_speed
 							).set_delay(lifetime)
 		t.finished.connect(close_window)

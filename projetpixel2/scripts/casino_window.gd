@@ -14,6 +14,7 @@ var close_button_tween : Tween
 
 @export var can_drag_window := true
 @export var can_close_window := true
+@export var anim_speed : float = 1.0
 #@export var can_close_window := true:
 	#set(value):
 		#can_close_window = value
@@ -90,19 +91,20 @@ func open_window() -> void:
 	size = Vector2(0.0, MIN_Y_SIZE)
 	pivot_offset = Vector2(default_size.x, MIN_Y_SIZE) / 2.0
 	scale = Vector2(1.0, 0.25)
+	var true_anim_time : float = SIZE_ANIM_TIME / anim_speed
 	# horizontal
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
-			SIZE_ANIM_TIME)
-	size_tween.tween_property(self, "scale", Vector2.ONE, SIZE_ANIM_TIME)
+			true_anim_time)
+	size_tween.tween_property(self, "scale", Vector2.ONE, true_anim_time)
 	var next_window_pos := position - Vector2(default_size.x/2.0, 0.0)
-	size_tween.tween_property(self, "position", next_window_pos, SIZE_ANIM_TIME)
+	size_tween.tween_property(self, "position", next_window_pos, true_anim_time)
 	# vertical
-	size_tween.tween_property(self, "size", default_size, SIZE_ANIM_TIME
-			).set_delay(SIZE_ANIM_TIME)
+	size_tween.tween_property(self, "size", default_size, true_anim_time
+			).set_delay(true_anim_time)
 	size_tween.tween_property(self, "position", next_window_pos -
-			Vector2(0.0, default_size.y/2.0), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
-	size_tween.tween_property($Contents, "modulate", Color.WHITE, SIZE_ANIM_TIME
-			).set_delay(SIZE_ANIM_TIME)
+			Vector2(0.0, default_size.y/2.0), true_anim_time).set_delay(true_anim_time)
+	size_tween.tween_property($Contents, "modulate", Color.WHITE, true_anim_time
+			).set_delay(true_anim_time)
 	visible = true
 	size_tween.finished.connect(emit_signal.bind("window_opened"))
 
@@ -113,18 +115,19 @@ func close_window(force_close := false) -> void:
 	_init_size_tween()
 	$DragAndDrop2D.can_be_dragged = false
 	pivot_offset = Vector2(0.0, MIN_Y_SIZE/2.0)
+	var true_anim_time : float = SIZE_ANIM_TIME / anim_speed
 	# vertical
-	size_tween.tween_property($Contents, "modulate", Color.TRANSPARENT, SIZE_ANIM_TIME/2.0)
+	size_tween.tween_property($Contents, "modulate", Color.TRANSPARENT, true_anim_time/2.0)
 	size_tween.tween_property(self, "size", Vector2(default_size.x, MIN_Y_SIZE), 
-			SIZE_ANIM_TIME)
+			true_anim_time)
 	var next_window_pos := position + Vector2(0.0, default_size.y/2.0)
-	size_tween.tween_property(self, "position", next_window_pos, SIZE_ANIM_TIME)
+	size_tween.tween_property(self, "position", next_window_pos, true_anim_time)
 	# horizontal
-	size_tween.tween_property(self, "size", Vector2(0.0, MIN_Y_SIZE), SIZE_ANIM_TIME
-			).set_delay(SIZE_ANIM_TIME)
+	size_tween.tween_property(self, "size", Vector2(0.0, MIN_Y_SIZE), true_anim_time
+			).set_delay(true_anim_time)
 	size_tween.tween_property(self, "position", next_window_pos +
-			Vector2(default_size.x/2.0, 0.0), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
-	size_tween.tween_property(self, "scale", Vector2(1.0, 0.25), SIZE_ANIM_TIME).set_delay(SIZE_ANIM_TIME)
+			Vector2(default_size.x/2.0, 0.0), true_anim_time).set_delay(true_anim_time)
+	size_tween.tween_property(self, "scale", Vector2(1.0, 0.25), true_anim_time).set_delay(SIZE_ANIM_TIME)
 	size_tween.finished.connect(_destroy_window)
 
 func _destroy_window() -> void:

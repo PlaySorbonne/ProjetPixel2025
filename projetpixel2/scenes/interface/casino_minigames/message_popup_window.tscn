@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjty5hynqofyh"]
+[gd_scene format=3 uid="uid://cjty5hynqofyh"]
 
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_6lqtw"]
 [ext_resource type="Script" uid="uid://gs31u7ixogkd" path="res://scripts/info_popup_window.gd" id="2_fly66"]
 [ext_resource type="FontFile" uid="uid://v0jxcl38ttwu" path="res://resources/fonts/text_smooth_good_timing_bd.otf" id="4_ftava"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_rlwqh"]
 
-[sub_resource type="Shader" id="Shader_dbr32"]
+[sub_resource type="Shader" id="Shader_fly66"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -136,9 +136,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kyvrb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlwqh"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dbr32")
+shader = SubResource("Shader_fly66")
 shader_parameter/scroll_speed = 0.11
 shader_parameter/angle_degrees = 135.0
 shader_parameter/repeat_x = 1.4
@@ -172,19 +172,20 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(2, 2)
 
-[node name="MessagePopupWindow" instance=ExtResource("1_6lqtw")]
+[node name="MessagePopupWindow" unique_id=641853845 instance=ExtResource("1_6lqtw")]
 anchor_right = 0.135937
 anchor_bottom = 0.15463
 script = ExtResource("2_fly66")
-lifetime = 4.0
+lifetime = 1.5
 message = "Informational Message"
 forced_position = false
+anim_speed = 2.0
 
-[node name="Background" parent="Panel" index="0"]
-material = SubResource("ShaderMaterial_kyvrb")
+[node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
+material = SubResource("ShaderMaterial_rlwqh")
 texture = ExtResource("4_rlwqh")
 
-[node name="ColorRect" type="ColorRect" parent="Contents" index="1"]
+[node name="ColorRect" type="ColorRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=1790816417]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.02682
@@ -199,7 +200,7 @@ mouse_filter = 2
 color = Color(0.12549, 0.733333, 0.788235, 0.705882)
 metadata/_edit_use_anchors_ = true
 
-[node name="LabelMessage" type="Label" parent="Contents/ColorRect" index="0"]
+[node name="LabelMessage" type="Label" parent="Contents/ColorRect" index="0" unique_id=1918156702]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -212,7 +213,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ColorRectMessage" type="ColorRect" parent="Contents" index="2"]
+[node name="ColorRectMessage" type="ColorRect" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=510808428]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.306515
@@ -226,7 +227,7 @@ mouse_filter = 2
 color = Color(0.12549, 0.733333, 0.788235, 0.705882)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Contents/ColorRectMessage" index="0"]
+[node name="Label" type="Label" parent="Contents/ColorRectMessage" index="0" unique_id=1932969152]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,7 +240,7 @@ label_settings = SubResource("LabelSettings_06kx2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect3" type="ColorRect" parent="Contents/ColorRectMessage" index="1"]
+[node name="ColorRect3" type="ColorRect" parent="Contents/ColorRectMessage" index="1" unique_id=440924093]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
@@ -254,7 +255,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0.862745)
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="." index="3"]
+[node name="Timer" type="Timer" parent="." index="3" unique_id=726246650]
 wait_time = 4.0
 autostart = true
 
