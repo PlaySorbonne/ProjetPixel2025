@@ -124,7 +124,6 @@ offset_right = -20.440735
 offset_bottom = -12.500656
 grow_horizontal = 2
 grow_vertical = 0
-pivot_offset = Vector2(63.558754, 48.53247)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 focus_mode = 0
 mouse_default_cursor_shape = 2
