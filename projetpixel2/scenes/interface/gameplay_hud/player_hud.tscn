@@ -424,6 +424,8 @@ anchor_left = 0.7682292
 anchor_top = 0.037037037
 anchor_right = 0.9765625
 anchor_bottom = 0.17592593
+offset_right = 0.0
+offset_bottom = 0.0
 text = "Button
 Russian Roulette"
 game_delay = 30.0
@@ -435,6 +437,7 @@ anchor_left = 0.7682292
 anchor_top = 0.18518518
 anchor_right = 0.9765625
 anchor_bottom = 0.32407406
+offset_right = 0.0
 offset_bottom = 3.0517578e-05
 text = "Button
 Dice"
@@ -447,6 +450,8 @@ anchor_left = 0.7682292
 anchor_top = 0.33333334
 anchor_right = 0.9765625
 anchor_bottom = 0.4722222
+offset_right = 0.0
+offset_bottom = 0.0
 text = "Button
 Roulette Wheel"
 minigame_popup = ExtResource("18_rwqbi")

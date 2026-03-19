@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cc6p0gf5xhlgi"]
+[gd_scene format=3 uid="uid://cc6p0gf5xhlgi"]
 
 [ext_resource type="Script" uid="uid://bgu8sf6y2j2yn" path="res://scripts/next_wave_button.gd" id="1_ue2g8"]
 [ext_resource type="PackedScene" uid="uid://jl3gv6r2c8ku" path="res://scenes/gameplay_systems/mouse_detection_2d.tscn" id="2_ufntj"]
@@ -9,6 +9,69 @@
 font_size = 22
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ggpgp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Triangle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 50)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:custom_minimum_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 50)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LabelWaveNum:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_nlnyi"]
 resource_name = "remove_button"
@@ -92,69 +155,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(50, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ggpgp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Triangle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(200, 50)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:custom_minimum_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(200, 50)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LabelWaveNum:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ggpgp"]
 _data = {
 &"RESET": SubResource("Animation_ggpgp"),
@@ -162,7 +162,7 @@ _data = {
 &"set_current_wave": SubResource("Animation_xyic8")
 }
 
-[node name="NextWaveButton" type="Button"]
+[node name="NextWaveButton" type="Button" unique_id=324111278]
 custom_minimum_size = Vector2(200, 50)
 anchors_preset = 15
 anchor_right = 1.0
@@ -177,9 +177,9 @@ focus_mode = 0
 flat = true
 script = ExtResource("1_ue2g8")
 
-[node name="MouseDetection2d" parent="." instance=ExtResource("2_ufntj")]
+[node name="MouseDetection2d" parent="." unique_id=79484144 instance=ExtResource("2_ufntj")]
 
-[node name="LabelWaveNum" type="Label" parent="."]
+[node name="LabelWaveNum" type="Label" parent="." unique_id=1987666833]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
@@ -191,7 +191,7 @@ label_settings = SubResource("LabelSettings_ufntj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Triangle" type="TextureRect" parent="."]
+[node name="Triangle" type="TextureRect" parent="." unique_id=639798141]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,7 +202,7 @@ mouse_filter = 2
 texture = ExtResource("4_nlnyi")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Triangle"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Triangle" unique_id=120129101]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,7 +210,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Triangle"]
+[node name="TextureRect" type="TextureRect" parent="Triangle" unique_id=1704912025]
 z_index = -1
 layout_mode = 1
 anchors_preset = 9
@@ -221,9 +221,7 @@ mouse_filter = 2
 texture = ExtResource("3_ggpgp")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ggpgp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775477202]
+libraries/ = SubResource("AnimationLibrary_ggpgp")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

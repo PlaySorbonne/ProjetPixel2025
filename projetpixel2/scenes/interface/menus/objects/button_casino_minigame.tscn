@@ -4,10 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bnc37s2vpdjex" path="res://scenes/interface/casino_minigames/russian_roulette_window.tscn" id="2_7ukg2"]
 
 [node name="ButtonRussianRoulette" type="Button" unique_id=1362970447]
+process_mode = 1
 modulate = Color(0.43134, 0.43134, 0.43134, 1)
 anchors_preset = -1
 anchor_right = 0.101042
 anchor_bottom = 0.139815
+offset_right = 205.99936
+offset_bottom = -1.0001984
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 0

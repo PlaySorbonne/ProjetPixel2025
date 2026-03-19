@@ -168,10 +168,10 @@ anchor_bottom = 0.317593
 script = ExtResource("2_at3fp")
 can_close_window = false
 
-[node name="Background" parent="Panel" index="0"]
+[node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_at3fp")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=520402578]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=520402578]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

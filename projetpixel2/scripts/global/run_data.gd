@@ -5,6 +5,7 @@ signal chips_gained(exp_gained : int)
 signal level_gained
 
 
+var have_waves_started := false
 # probability
 var probability_multiplier := 1.0
 var better_luck := false
@@ -90,6 +91,7 @@ func new_kill(enemy_type : String, is_alpha : bool) -> void:
 
 func reset_run_data() -> void:
 	Engine.time_scale = 1.0
+	have_waves_started = false
 	# experience
 	experience_needed_equation = default_levelling_expression()
 	current_level = 1

@@ -6,7 +6,6 @@ class_name CasinoMinigameButton
 @export var game_delay := 20.0
 @export var current_delay := 20.0
 @export var manually_start_minigame := false
-@export var is_delay_progressing := false
 
 var can_launch_minigame := true
 
@@ -15,7 +14,7 @@ func _ready() -> void:
 	$Label.text = "%.2f" % current_delay
 
 func _process(delta: float) -> void:
-	if not is_delay_progressing:
+	if not RunData.have_waves_started:
 		return
 	current_delay -= delta
 	if current_delay <= 0.0:
@@ -31,7 +30,7 @@ func launch_minigame(force := false) -> void:
 	var popup : CasinoWindow = minigame_popup.instantiate()
 	CasinoWindow.spawn_popup(popup)
 	await get_tree().process_frame
-	popup.position = popup.random_popup_position()
+	popup.position = CasinoWindow.random_popup_position()
 	popup.open_window()
 
 func _on_pressed() -> void:

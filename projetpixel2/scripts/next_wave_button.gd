@@ -32,7 +32,7 @@ func set_wave(w : WaveManager.EnemyWave) -> void:
 		var chip := WAVE_ENEMY_CHIP.instantiate()
 		$Triangle/HBoxContainer.add_child(chip)
 	for enemy : BaseEnemy in wave.wave_enemies:
-		enemy.enemy_data.enemy_type
+		#enemy.enemy_data.enemy_type
 		print("wave.wave_enemies len = " + str(len(wave.wave_enemies)))
 
 func remove_button() -> void:
@@ -48,4 +48,5 @@ func trigger_wave() -> void:
 	emit_signal("next_wave_triggered")
 
 func _on_pressed() -> void:
+	RunData.have_waves_started = true
 	trigger_wave()
