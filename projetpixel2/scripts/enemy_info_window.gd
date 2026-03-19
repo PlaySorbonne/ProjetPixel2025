@@ -4,7 +4,7 @@ class_name EnemyInfoWindow
 
 static var ENEMY_INFO_RES := load("res://scenes/interface/casino_minigames/enemy_info_window.tscn")
 
-static func spawn_tower_info_popup(e : BaseEnemy) -> EnemyInfoWindow:
+static func spawn_enemy_info_popup(e : BaseEnemy) -> EnemyInfoWindow:
 	var popup : EnemyInfoWindow = ENEMY_INFO_RES.instantiate()
 	popup.enemy = e
 	spawn_popup(popup)
@@ -22,11 +22,8 @@ func _ready() -> void:
 	label_name.text = " " + enemy.enemy_data.enemy_type
 	label_description.text = enemy.enemy_data.description
 	label_power.text = "[Enemy power description (to add later)]"
-	#tower.tower_card_added.connect(_add_card_infos)
-	#tower.projectile_template.projectile_updated.connect(_update_tower_stats)
-	#for card : CardData in tower.cards:
-		#_add_card_infos(card)
-	#_update_tower_stats()
+	enemy.enemy_hit.connect(_update_enemy_stats)
+	_update_enemy_stats()
 	position = get_mouse_position()
 	open_window()
 
