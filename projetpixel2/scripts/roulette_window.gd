@@ -4,6 +4,7 @@ class_name RouletteWindow
 
 @onready var roulette : RouletteWheel = $Contents/SubViewportContainer/SubViewport/RouletteWheel
 
+var gained_chips := 0
 
 static func roulette_slot_to_color(slot_nb : int) -> String:
 	if slot_nb == 0:
@@ -21,11 +22,13 @@ func _on_window_opened() -> void:
 func _on_roulette_wheel_marble_landed(on_slot: int) -> void:
 	var marble_color := roulette_slot_to_color(on_slot)
 	if marble_color == "Red":
-		RunData.current_chips += 20
+		gained_chips += 20
 	elif marble_color == "Green":
-		RunData.current_chips += 500
+		gained_chips += 500
 	#$Contents/Label.text += "\n" + marble_color
-	MessagePopupWindow.spawn_message_popup("/ROULETTE WHEEL/\nMarble on %s!" % marble_color)
+	#MessagePopupWindow.spawn_message_popup("/ROULETTE WHEEL/\nMarble on %s!" % marble_color)
 
 func _on_roulette_wheel_wheel_result(_result: int) -> void:
+	MessagePopupWindow.spawn_message_popup("/ROULETTE WHEEL/\nTotal chips %s!" % str(gained_chips))
+	RunData.current_chips += gained_chips
 	get_tree().create_timer(3.0).timeout.connect(close_window.bind(true))

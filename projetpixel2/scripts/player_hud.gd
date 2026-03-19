@@ -41,6 +41,7 @@ func _input(_event: InputEvent) -> void:
 		#WarningPopupWindow.spawn_warning_popup("HULL BREACH")
 
 func _on_player_game_over() -> void:
+	RunData.have_waves_started = false
 	const POPUP_SIZE := Vector2(261, 167) # size of the warning popup
 	const POPUP_QUARTER_SIZE := POPUP_SIZE/4.0
 	var popup_positions : Array[Vector2]
