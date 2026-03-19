@@ -164,12 +164,13 @@ font = ExtResource("5_cx0bv")
 anchor_right = 0.320313
 anchor_bottom = 0.307407
 script = ExtResource("2_qgsof")
+minigame_level = 1
 can_close_window = false
 
-[node name="Background" parent="Panel" index="0"]
+[node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_b4rlw")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=1309089959]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=1309089959]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298851
@@ -194,7 +195,7 @@ render_target_update_mode = 4
 
 [node name="DiceRoller" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=327011497 instance=ExtResource("5_b4rlw")]
 
-[node name="Label" type="Label" parent="Contents" index="2" unique_id=749724029]
+[node name="Label" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=749724029]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.747128

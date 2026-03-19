@@ -164,11 +164,12 @@ font = ExtResource("5_l26f3")
 anchor_right = 0.244792
 anchor_bottom = 0.271296
 script = ExtResource("2_6hmnt")
+minigame_level = 1
 
-[node name="Background" parent="Panel" index="0"]
+[node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_nwlbt")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" index="1" unique_id=56363130]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=56363130]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0234043
@@ -193,7 +194,7 @@ render_target_update_mode = 4
 
 [node name="RouletteWheel" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=1644038160 instance=ExtResource("4_6hmnt")]
 
-[node name="Label" type="Label" parent="Contents" index="2" unique_id=567100435]
+[node name="Label" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=567100435]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.680851

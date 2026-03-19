@@ -1,4 +1,4 @@
-extends CasinoWindow
+extends CasinoMinigameWindow
 class_name DiceRollWindow
 
 
@@ -7,7 +7,7 @@ class_name DiceRollWindow
 
 func _on_window_opened() -> void:
 	await get_tree().create_timer(0.25).timeout
-	dice_roller.roll_dice(6)
+	dice_roller.roll_dice(minigame_level)
 
 func _on_dice_roller_die_rolled(result: int) -> void:
 	$Contents/Label.text += "\n    " + str(result)

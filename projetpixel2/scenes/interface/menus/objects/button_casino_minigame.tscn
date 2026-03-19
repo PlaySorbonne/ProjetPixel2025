@@ -64,27 +64,29 @@ horizontal_alignment = 1
 
 [node name="LabelDescription" type="Label" parent="." unique_id=422883895]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_top = 0.36800003
 anchor_bottom = 1.0
-offset_top = 55.187485
+offset_top = -0.012519836
+offset_right = 140.73389
 grow_horizontal = 2
 grow_vertical = 2
 text = "Invested
-Effect 
-Reward"
+Play
+Avg reward"
 label_settings = SubResource("LabelSettings_46uiv")
 
-[node name="LabeStats" type="Label" parent="." unique_id=1002937513]
+[node name="LabelInvestment" type="Label" parent="." unique_id=1002937513]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_top = 0.36800003
 anchor_bottom = 1.0
-offset_left = 98.35394
-offset_top = 55.187485
+offset_left = 117.90283
+offset_top = -0.012519836
+offset_right = 400.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "- 0 / 6$
+text = "- 0$
 - 1 dice
 - 50$ per 6"
 label_settings = SubResource("LabelSettings_46uiv")

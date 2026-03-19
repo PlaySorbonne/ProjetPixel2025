@@ -1,4 +1,4 @@
-extends CasinoWindow
+extends CasinoMinigameWindow
 class_name RouletteWindow
 
 
@@ -15,11 +15,15 @@ static func roulette_slot_to_color(slot_nb : int) -> String:
 
 func _on_window_opened() -> void:
 	await get_tree().create_timer(0.55).timeout
-	roulette.number_of_marbles = randi_range(1, 6)
+	roulette.number_of_marbles = minigame_level
 	roulette.spin_roulette()
 
 func _on_roulette_wheel_marble_landed(on_slot: int) -> void:
 	var marble_color := roulette_slot_to_color(on_slot)
+	if marble_color == "Red":
+		RunData.current_chips += 20
+	elif marble_color == "Green":
+		RunData.current_chips += 500
 	$Contents/Label.text += "\n" + marble_color
 	MessagePopupWindow.spawn_message_popup("/ROULETTE WHEEL/\nMarble on %s!" % marble_color)
 
