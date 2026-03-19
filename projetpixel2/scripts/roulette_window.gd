@@ -24,7 +24,7 @@ func _on_roulette_wheel_marble_landed(on_slot: int) -> void:
 		RunData.current_chips += 20
 	elif marble_color == "Green":
 		RunData.current_chips += 500
-	$Contents/Label.text += "\n" + marble_color
+	#$Contents/Label.text += "\n" + marble_color
 	MessagePopupWindow.spawn_message_popup("/ROULETTE WHEEL/\nMarble on %s!" % marble_color)
 
 func _on_roulette_wheel_wheel_result(_result: int) -> void:

@@ -72,7 +72,7 @@ offset_right = 140.73389
 grow_horizontal = 2
 grow_vertical = 2
 text = "Invested
-Play
+Level
 Avg reward"
 label_settings = SubResource("LabelSettings_46uiv")
 
@@ -87,8 +87,8 @@ offset_right = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "- 0$
-- 1 dice
-- 50$ per 6"
+- 1
+- 50$"
 label_settings = SubResource("LabelSettings_46uiv")
 
 [node name="Panel" parent="." unique_id=455412098 instance=ExtResource("3_7ukg2")]
