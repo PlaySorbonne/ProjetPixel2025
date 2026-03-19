@@ -14,17 +14,18 @@ var enemy : BaseEnemy
 @onready var label_description : Label = $Contents/LabelEnemyDescription
 @onready var label_power : Label = $Contents/LabelEnemyPower
 @onready var label_stats : Label = $Contents/LabelStatVals
-@onready var label_name : Label = $Contents/ButtonEnemy
+@onready var label_name : Button = $Contents/ButtonEnemy
 
 
 func _ready() -> void:
 	super._ready()
-	label_name.text = " " + enemy.enemy_data.enemy_type
+	label_name.text = "  " + enemy.enemy_data.enemy_type
 	label_description.text = enemy.enemy_data.description
 	label_power.text = "[Enemy power description (to add later)]"
 	enemy.enemy_hit.connect(_update_enemy_stats)
 	_update_enemy_stats()
 	position = get_mouse_position()
+	print("spawn enemy popup")
 	open_window()
 
 func _update_enemy_stats() -> void:
@@ -48,6 +49,7 @@ func _update_enemy_stats() -> void:
 		#res_str += str(DamageableObject.DamagingTypes.keys()[res])
 	stats_str += write_stats(res_str)
 	stats_str += write_stats(weak_str)
+	stats_str += "\n- " + EnemyData.EnemyTypes.keys()[enemy.enemy_data.mob_type]
 	label_stats.text = stats_str
 
 func write_stats(stats_str : String) -> String:
