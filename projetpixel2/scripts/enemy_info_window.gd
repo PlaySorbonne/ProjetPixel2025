@@ -25,7 +25,6 @@ func _ready() -> void:
 	enemy.enemy_hit.connect(_update_enemy_stats)
 	_update_enemy_stats()
 	position = get_mouse_position()
-	print("spawn enemy popup")
 	open_window()
 
 func _update_enemy_stats() -> void:
