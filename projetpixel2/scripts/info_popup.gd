@@ -25,8 +25,7 @@ static func add_popup(obj : Node) -> void:
 		elif obj is Spaceship:
 			popup = SpaceshipInfoWindow.spawn_spaceship_info_popup()
 		elif obj is BaseEnemy:
-			pass
-			print_debug("Create enemy popup!!")
+			popup
 		else:
 			print_debug('trying to create popup for unknown object: ' + str(obj.get_class()))
 			return
