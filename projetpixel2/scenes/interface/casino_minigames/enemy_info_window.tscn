@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chp3bd6blfvcj" path="res://scenes/interface/casino_minigames/casino_window.tscn" id="1_1dpwf"]
 [ext_resource type="Script" uid="uid://c3sugpopuf2r0" path="res://scripts/enemy_info_window.gd" id="2_360u1"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_tf7qd"]
-[ext_resource type="Texture2D" uid="uid://dne1ery4r85m7" path="res://resources/images/ui_assets/icons/tower-icon.png" id="8_4c7j5"]
+[ext_resource type="Texture2D" uid="uid://buxm70e28elyd" path="res://resources/images/ui_assets/icons/enemy-skull.png" id="5_tf7qd"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="8_kndqu"]
 
 [sub_resource type="Shader" id="Shader_4c7j5"]
@@ -200,37 +200,43 @@ metadata/_edit_use_anchors_ = true
 [node name="LabelStatsNames" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="3" unique_id=359662325]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.55637676
-anchor_top = 0.2727269
-anchor_right = 0.704251
+anchor_left = 0.55452836
+anchor_top = 0.12727255
+anchor_right = 0.70240253
 anchor_bottom = 0.7272717
+offset_right = 3.0517578e-05
 text = "HP
 Atk
+AtkSpd
 Def
 Spd
 Weak
-Res"
+Res
+Type"
 label_settings = SubResource("LabelSettings_lv6ga")
 metadata/_edit_use_anchors_ = true
 
 [node name="LabelStatVals" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="4" unique_id=1394951375]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.66728246
-anchor_top = 0.2727269
+anchor_left = 0.68445253
+anchor_top = 0.12727255
 anchor_right = 0.9630309
 anchor_bottom = 0.7272717
-offset_left = -3.0517578e-05
+offset_left = -0.28903198
+offset_right = -1.0
 text = "- 1000/1000
 - 10
 - 1.5
+- 1.0
 - 70
 - Curse
-- Fire, Ice, Energy"
+- Fire, Ice, Energy
+- Dinosaur"
 label_settings = SubResource("LabelSettings_lv6ga")
 metadata/_edit_use_anchors_ = true
 
-[node name="ButtonTower" type="Button" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=1760368190]
+[node name="ButtonEnemy" type="Button" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="5" unique_id=1760368190]
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 1
 anchors_preset = -1
@@ -243,7 +249,7 @@ mouse_filter = 2
 theme_override_fonts/font = SubResource("FontVariation_kndqu")
 theme_override_font_sizes/font_size = 24
 text = " BaseEnemy"
-icon = ExtResource("8_4c7j5")
+icon = ExtResource("5_tf7qd")
 flat = true
 alignment = 0
 expand_icon = true

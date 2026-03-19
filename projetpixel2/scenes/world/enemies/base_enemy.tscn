@@ -9,7 +9,6 @@
 resource_local_to_scene = true
 script = ExtResource("2_v2fdl")
 description = "Most basic enemy. The first one we discovered in this part of the universe."
-experience_points = 1
 metadata/_custom_type_script = "uid://rkat5tqppyk8"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ey0w8"]
