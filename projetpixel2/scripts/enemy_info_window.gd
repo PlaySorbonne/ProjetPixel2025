@@ -29,11 +29,11 @@ func _ready() -> void:
 
 func _update_enemy_stats() -> void:
 	var stats_str := "- " + str(enemy.damageable.health) \
-	+ "/" + str(enemy.damageable.max_health) + "\n- " \
+	+ "/" + str(enemy.enemy_data.hitpoints) + "\n- " \
 	+ str(enemy.enemy_data.damage) + "\n- " \
-	+ str(enemy.enemy_data.attack_speed) + "\n- " \
-	+ str(enemy.enemy_data.defense) + "\n- " \
-	+ str(enemy.enemy_data.speed)
+	+ "%.2f" % enemy.enemy_data.attack_speed + "\n- " \
+	+ "%.2f" % enemy.enemy_data.defense + "\n- " \
+	+ "%.2f" % enemy.enemy_data.speed
 	var weak_str := ""
 	var res_str := ""
 	for res : DamageableObject.DamagingTypes in enemy.enemy_data.resistances.keys():

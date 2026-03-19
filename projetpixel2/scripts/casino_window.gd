@@ -50,7 +50,15 @@ static func random_popup_position() -> Vector2:
 	)
 
 func get_mouse_position() -> Vector2:
-	return GV.hud.game_panel.get_global_mouse_position() + default_size / 2.0 + Vector2(10, 52.5)
+	var offset := default_size / 2.0 + Vector2(10, 0.0)
+	var mouse_pos := GV.hud.game_panel.get_global_mouse_position()
+	var screen_height : float = get_viewport().size.y
+	#print("screen_height = " + str(screen_height))
+	#print("mouse_pos.y = " + str(mouse_pos.y))
+	if mouse_pos.y > screen_height / 2:
+		offset.y *= -1.0
+	offset.y += 52.5
+	return mouse_pos + offset
 
 func randomize_panel_background_parameters() -> void:
 	for param_str : String in BACKGROUND_SHADER_PARAMS:

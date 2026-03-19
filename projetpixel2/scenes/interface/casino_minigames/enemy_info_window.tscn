@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://buxm70e28elyd" path="res://resources/images/ui_assets/icons/enemy-skull.png" id="5_tf7qd"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="8_kndqu"]
 
-[sub_resource type="Shader" id="Shader_4c7j5"]
+[sub_resource type="Shader" id="Shader_tf7qd"]
 resource_local_to_scene = true
 code = "shader_type canvas_item;
 
@@ -137,9 +137,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kndqu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj0yi"]
 resource_local_to_scene = true
-shader = SubResource("Shader_4c7j5")
+shader = SubResource("Shader_tf7qd")
 shader_parameter/scroll_speed = 0.05
 shader_parameter/angle_degrees = 315.0
 shader_parameter/repeat_x = 1.2
@@ -170,7 +170,7 @@ anchor_bottom = 0.25463
 script = ExtResource("2_360u1")
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
-material = SubResource("ShaderMaterial_kndqu")
+material = SubResource("ShaderMaterial_gj0yi")
 
 [node name="LabelEnemyDescription" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="1" unique_id=1684900219]
 layout_mode = 1
