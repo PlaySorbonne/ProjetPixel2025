@@ -39,12 +39,14 @@ texture_margin_bottom = 18.0
 font_size = 26
 
 [sub_resource type="LabelSettings" id="LabelSettings_jxin7"]
+font = ExtResource("22_03tek")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_pfuso"]
 font_size = 42
 
 [sub_resource type="LabelSettings" id="LabelSettings_8wi31"]
+font = ExtResource("22_03tek")
 font_size = 32
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqbi"]
@@ -145,6 +147,7 @@ script = ExtResource("2_e0ndd")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ExperienceBar" unique_id=984439516]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
