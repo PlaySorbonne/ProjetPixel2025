@@ -3,6 +3,7 @@ class_name CasinoMinigameButton
 
 
 @export var minigame_name := "Russian Roulette"
+@export_multiline var minigame_description := "Russian Roulette"
 @export var minigame_popup : PackedScene
 @export var game_delay := 20.0
 @export var current_delay := 20.0
@@ -74,3 +75,6 @@ func _on_button_bet_pressed() -> void:
 		var t : Tween = $ButtonBet.get_tween()
 		t.tween_property($ButtonBet, "scale", Vector2(0.9, 0.9), 0.15)
 		t.tween_property($ButtonBet, "scale", Vector2(1.05, 1.05), 0.15).set_delay(0.4)
+
+func _on_mouse_entered() -> void:
+	MinigameDescription.add_minigame_description(self)

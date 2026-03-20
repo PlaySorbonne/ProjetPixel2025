@@ -139,6 +139,7 @@ flat = true
 expand_icon = true
 script = ExtResource("7_v2wiq")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="mouse_entered" from="ButtonBet" to="ButtonBet" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ButtonBet" to="ButtonBet" method="_on_mouse_exited"]
