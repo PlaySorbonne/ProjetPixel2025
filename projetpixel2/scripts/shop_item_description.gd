@@ -22,5 +22,5 @@ func _ready() -> void:
 	await get_tree().process_frame
 	$LabelTitle.text = shop_item.text
 	$LabelDescription.text = shop_item.description
-	$LabelCurrentPrice.text = "Starting: " + str(shop_item.price)
-	$LabelPriceIncrease.text = "Increase: " + str(shop_item.price_increase)
+	$LabelCurrentPrice.text = "Starting: " + str(shop_item.price) + "$"
+	$LabelPriceIncrease.text = "Price increase: " + str(shop_item.price_increase)

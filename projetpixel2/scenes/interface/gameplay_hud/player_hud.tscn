@@ -432,6 +432,7 @@ If you win, gain 200 times the investment.
 If you lose, lose 500 times the investment."
 game_delay = 30.0
 current_delay = 5.0
+bet_cost = 15
 
 [node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
 anchor_left = 0.7682292
