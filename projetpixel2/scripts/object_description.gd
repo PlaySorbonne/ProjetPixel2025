@@ -30,7 +30,10 @@ func _set_description_position() -> Vector2:
 	var card_pos_x : float = parent_object.global_position.x + parent_object.size.x
 	var distance_from_right = viewport_width - card_pos_x
 	if distance_from_right < 400:
-		return Vector2(-self.size.x, 0.0) - spawn_offset
+		return Vector2(
+			-self.size.x - spawn_offset.x, 
+			spawn_offset.y
+		)
 	else:
 		return Vector2(parent_object.size.x, 0.0) + spawn_offset
 
