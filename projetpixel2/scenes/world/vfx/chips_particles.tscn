@@ -11,12 +11,17 @@ colors = PackedColorArray(0.007843138, 0.6117647, 0.30980393, 1, 0.7294118, 0.16
 gradient = SubResource("Gradient_i0njp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2r8oo"]
+particle_flag_rotate_y = true
 emission_shape = 3
 emission_box_extents = Vector3(0.75, 0, 0)
+angle_min = -179.99998
+angle_max = 180.00002
 direction = Vector3(0, 0, 1)
 spread = 5.0
 initial_velocity_min = 0.25
 initial_velocity_max = 0.45
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
 gravity = Vector3(0, 0, 0)
 attractor_interaction_enabled = false
 scale_min = 0.01
@@ -78,17 +83,14 @@ _surfaces = [{
 "vertex_count": 176,
 "vertex_data": PackedByteArray("/3///wAA7/r/f/9/AADv+vuw//++Ce/6+7D/f74J7/r7sAAAvgnv+v9/AAAAAO/6gdr//30lMvmB2v9/fSUy+UD2//8DTzL5QPb/fwNPMvlA9gAAA08y+YHaAAB9JTL5//////9/xv7///9//3/G/kD2///7sMb+QPb/f/uwxv5A9gAA+7DG/v//AAD/f8b+gdr//4HaQN2B2v9/gdpA3fuw//9A9kDd+7D/f0D2QN37sAAAQPZA3YHaAACB2kDd/3//////Urj/f/9///9SuANP//9A9lK4A0//f0D2UrgDTwAAQPZSuP9/AAD//1K4fSX//4HaVqp9Jf9/gdpWqr4J///7sFaqvgn/f/uwVqq+CQAA+7BWqn0lAACB2laqAAD///9/AsgAAP9//38CyL4J//8DTwLIvgn/fwNPAsi+CQAAA08CyAAAAAD/fwLIfSX//30laep9Jf9/fSVp6gNP//++CWnqA0//f74JaeoDTwAAvglp6n0lAAB9JWnqgdr//4Ha///7sP//QPb//022//9Ntv//Y53///PG////f///AAD///uw//++Cf///3///zMz//9jnf//Czn//30l//99Jf//A0///74J//+xSf//sUn//5ti//8LOf///3////////8DT///QPb///9////MzP//m2L///PG//+B2v//fSX//0D2//8DT///Tbb//7FJ///zxv//m2L//30l//+B2v//vgn///uw//+xSf//Tbb//ws5//9jnf////////9///9A9v//+7D//8zM////f///88b//2Od//8AAP///3///74J//8DT///MzP///9///8LOf//m2L//8zM////fwvI88b//2OdC8jQzOPtw38LyPfG4+0nnQvIMzP///9/rP4LOf//m2Ks/jcz4+3Df6z+Dznj7V9irP5Ntv//TbbE7GOd///zxsTsUbbj7RG2xOxnnePtt8bE7LFJ//+xSZvbm2L//ws5m9u1SePtdUmb259i4+3POJvb/3///zMzi7ljnf//CzmLuQOA4+33Mou5Z53j7c84i7n/f///zMzf9pti///zxt/2A4Dj7ZDM3/afYuPtt8bf9k22//+xSVCp88b//5tiUKlRtuPtdUlQqffG4+1fYlCpsUn//022d/cLOf//Y51397VJ4+0Rtnf3Dznj7Sedd/djnQAA88b///uwAABA9v//TbYAAE22//+B2gAAgdr//2OdAAALOf//+7AAAL4J////fwAAMzP///9/AAAAAP//m2IAAAs5//8DTwAAvgn//7FJAACxSf//fSUAAH0l//+bYgAA88b//wNPAABA9v///38AAMzM////fwAA//////PGAACbYv//QPYAAANP//9NtgAAsUn//4HaAAB9Jf//CzkAAGOd//++CQAA+7D//7FJAABNtv//fSUAAIHa///zxgAAY53//0D2AAD7sP//zMwAAP9//////wAA/3///ws5AACbYv//vgkAAANP//8zMwAA/3///wAAAAD/f///98YbEied/8fzxgAAY53/x9DMGxLDf//HzMwAAP9//8cPORsSX2Le/gs5AACbYt7+NzMbEsN/3v4zMwAA/3/e/medGxK3xl/oY50AAPPGX+hRthsSEbZf6E22AABNtl/on2IbEs84fN+bYgAACzl837VJGxJ1SXzfsUkAALFJfN9nnRsSzzj2uGOdAAALOfa4A4AbEvcy9rj/fwAAMzP2uJ9iGxK3xvf+m2IAAPPG9/4DgBsSkMz3/v9/AADMzPf+98YbEl9iy6vzxgAAm2LLq1G2GxJ1ScurTbYAALFJy6sPORsSJ531+gs5AABjnfX6tUkbEhG29fqxSQAATbb1+s3CYknNwmJJzcJiSc3CYknNwmJJzcJiSavKlXKrypVyq8qVcqvKlXKrypVyq8qVcjG5434xueN+MbnjfjG5434xueN+MbnjfsyaJ3PMmidzzJonc8yaJ3PMmidzzJonc6d1poyndaaMp3WmjKd1poyndaaMp3WmjNRwctTUcHLU1HBy1NRwctTUcHLU1HBy1Jl9ofuZfaH7mX2h+5l9ofuZfaH7mX2h+z1ayM49WsjOPVrIzj1ayM49WsjOPVrIzv9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/cn2m+XJ9pvlyfab5cn2m+bS41320uNd9tLjXfbS41301WpvKNVqbyjVam8o1WpvKqJf0baiX9G2ol/RtqJf0bb5tdIW+bXSFvm10hb5tdIX5w/VG+cP1RvnD9Ub5w/VGRWz81kVs/NZFbPzWRWz81kzNCHZMzQh2TM0IdkzNCHb/f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P8B9qf3Afan9wH2p/cB9qf2tufJ/rbnyf6258n+tufJ/n1oD1J9aA9SfWgPUn1oD1Myd1XjMndV4zJ3VeMyd1XjffX2T3319k999fZPffX2Ts8CBSrPAgUqzwIFKs8CBSiB1YdIgdWHSIHVh0iB1YdIbyGtvG8hrbxvIa28byGtv")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3sxvc")
 
 [node name="ChipsParticles" type="GPUParticles3D" unique_id=1188658875]
 transform = Transform3D(0.75, 0, 0, 0, -3.278354e-08, -0.75, 0, 0.75, -3.278354e-08, 0, 0.4226352, -0.50851905)
 cast_shadow = 0
 gi_mode = 0
-emitting = false
 amount = 24
 lifetime = 6.0
-one_shot = true
 speed_scale = 2.0
 explosiveness = 0.2
 local_coords = true
