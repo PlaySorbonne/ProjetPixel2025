@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c6uujyqhhcldc"]
+
+[ext_resource type="PackedScene" uid="uid://c3eh5oe37ijck" path="res://scenes/interface/descriptions/card_description.tscn" id="1_cdq16"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="2_24lwb"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_uuos1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbbkl"]
+resource_local_to_scene = true
+shader = ExtResource("2_24lwb")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.2
+shader_parameter/repeat_y = 1.2
+shader_parameter/texture_to_scroll = ExtResource("3_uuos1")
+shader_parameter/glitch_chance = 0.02
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.05
+
+[node name="MinigameDescription" unique_id=302558238 instance=ExtResource("1_cdq16")]
+
+[node name="ColorRect" parent="." index="0" unique_id=303378144]
+material = SubResource("ShaderMaterial_qbbkl")
