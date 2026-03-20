@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bvfmou50b7iv1"]
+
+[ext_resource type="PackedScene" uid="uid://c3eh5oe37ijck" path="res://scenes/interface/descriptions/object_description.tscn" id="1_cym2q"]
+[ext_resource type="Script" uid="uid://gxhcb4e02lkw" path="res://scripts/shop_item_description.gd" id="2_cym2q"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_v3vle"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_7chxf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmxt"]
+resource_local_to_scene = true
+shader = ExtResource("3_v3vle")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.2
+shader_parameter/repeat_y = 1.2
+shader_parameter/texture_to_scroll = ExtResource("4_7chxf")
+shader_parameter/glitch_chance = 0.02
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.05
+
+[node name="ShopItemDescription" unique_id=302558238 instance=ExtResource("1_cym2q")]
+custom_minimum_size = Vector2(300, 150)
+anchor_right = 0.15520833
+anchor_bottom = 0.13911112
+script = ExtResource("2_cym2q")
+
+[node name="ColorRect" parent="." index="0" unique_id=303378144]
+material = SubResource("ShaderMaterial_qkmxt")
+
+[node name="LabelTitle" parent="." index="2" unique_id=2079672423]
+text = "Shop item Name"
+
+[node name="LabelDescription" parent="." index="3" unique_id=1663652197]
+offset_top = 39.0
