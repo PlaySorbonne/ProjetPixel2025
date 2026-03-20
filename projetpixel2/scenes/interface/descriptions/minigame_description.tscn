@@ -30,7 +30,7 @@ custom_minimum_size = Vector2(300, 150)
 anchor_right = 0.15520833
 anchor_bottom = 0.13911112
 script = ExtResource("2_p46mw")
-spawn_offset = Vector2(330, 0)
+spawn_offset = Vector2(30, 0)
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
 material = SubResource("ShaderMaterial_p46mw")

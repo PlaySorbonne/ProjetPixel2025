@@ -432,7 +432,6 @@ If you win, gain 200 times the investment.
 If you lose, lose 500 times the investment."
 game_delay = 30.0
 current_delay = 5.0
-manually_start_minigame = true
 
 [node name="ButtonDice" parent="." unique_id=1378065156 instance=ExtResource("18_616a6")]
 anchor_left = 0.7682292
@@ -455,8 +454,7 @@ anchor_top = 0.33333334
 anchor_right = 0.9765625
 anchor_bottom = 0.4722222
 minigame_name = "Roulette Wheel"
-minigame_description = "If a marble lands on Red, gain 20 chips.
-If a marble lands on Green, gain 500 chips.
+minigame_description = "If a marble lands on Red, gain 20 chips. If a marble lands on Green, gain 500 chips.
 Each BET adds one marble to the roll."
 minigame_popup = ExtResource("18_rwqbi")
 game_delay = 30.0
