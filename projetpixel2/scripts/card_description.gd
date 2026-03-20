@@ -2,6 +2,17 @@ extends ObjectDescription
 class_name CardDescription
 
 
+const CARD_DESCRIPTION_RES := preload("res://scenes/interface/descriptions/card_description.tscn")
+
+static func add_card_description(n_card_object : CardObject) -> CardDescription:
+	var card_description : CardDescription = CARD_DESCRIPTION_RES.instantiate()
+	card_description.parent_object = n_card_object
+	card_description.card_object = n_card_object
+	card_description.visible = false
+	n_card_object.add_child(card_description)
+	return card_description
+
+
 var card_object : CardObject = null
 
 
