@@ -149,9 +149,10 @@ icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "2 common cards
-1 choice of 3 rare cards"
+description = "2 common cards.
+1 choice of 3 rare cards."
 price = 10
+price_increase = "+ 2"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonSuperiorBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="1" unique_id=535536094]
@@ -166,8 +167,9 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "1 choice of 3 rare cards"
+description = "1 choice of 3 rare cards."
 price = 12
+price_increase = "+ 4"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonLargeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="2" unique_id=1452332049]
@@ -182,8 +184,9 @@ icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "5 common cards"
+description = "5 common cards."
 price = 13
+price_increase = "+ 7"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPremiumBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=2135279719]
@@ -199,8 +202,10 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "idk cards"
+description = "2 common cards.
+2 choices of 4 rare cards."
 price = 15
+price_increase = "+ 10"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDeluxeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=1368245865]
@@ -216,8 +221,10 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "idk cards"
+description = "2 common cards.
+3 choice of 4 rare cards."
 price = 20
+price_increase = "+ 15"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonColossalBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="5" unique_id=789497216]
@@ -233,8 +240,9 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "9 common cards"
+description = "10 common cards."
 price = 22
+price_increase = "* 1.2"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPrestigeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="6" unique_id=348003057]
@@ -250,8 +258,9 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
-description = "idk cards"
+description = "1 choice of 5 legendary cards."
 price = 24
+price_increase = "* 1.1 + 4"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonMasterworkBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="7" unique_id=873642721]
@@ -269,6 +278,7 @@ expand_icon = true
 script = ExtResource("8_2rxam")
 description = "5 choices of 5 rare cards."
 price = 50
+price_increase = "+ 5"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonTower" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="8" unique_id=2102572699]
