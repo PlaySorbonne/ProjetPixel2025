@@ -28,8 +28,8 @@ shader_parameter/flip_chance = 0.05
 
 [node name="PremiumBooster" unique_id=2109309066 instance=ExtResource("1_e8ti5")]
 script = ExtResource("2_co8fb")
-selected_cards_number = 1
-cards_choice_size = 3
+selected_cards_number = 2
+cards_choice_size = 4
 selected_cards_rarity_chance = Dictionary[int, float]({
 0: 1.0
 })
