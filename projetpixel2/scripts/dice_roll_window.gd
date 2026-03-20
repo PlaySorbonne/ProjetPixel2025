@@ -17,7 +17,7 @@ func _on_dice_roller_die_rolled(_result: int) -> void:
 func _on_dice_roller_all_dice_rolled(result: int, nb_sixes : int) -> void:
 	$Contents/Label.text += "\n  TOTAL = " + str(result)
 	var total_reward : int = nb_sixes * REWARD_PER_SIX
-	MessagePopupWindow.spawn_message_popup("/DICE ROLL/\nTotal chips: " % str(total_reward))
+	MessagePopupWindow.spawn_message_popup("/DICE ROLL/\nTotal chips: " + str(total_reward))
 	RunData.current_chips += total_reward
 	await get_tree().create_timer(1.5).timeout
 	close_window(true)
