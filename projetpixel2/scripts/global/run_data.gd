@@ -32,7 +32,11 @@ var current_chips : int = 0:
 	set(value):
 		var previous_val := current_chips
 		current_chips = max(value, 0)
-		chips_gained.emit(value-previous_val)
+		var gain := value-previous_val
+		if gain > 40:
+			@warning_ignore("integer_division")
+			ChipsParticles.spawn_chips_particles(gain / 5)
+		chips_gained.emit(gain)
 var total_experience := 0
 
 func gain_experience(amount : int) -> void:
