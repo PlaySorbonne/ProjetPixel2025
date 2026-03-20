@@ -36,6 +36,7 @@ static func spawn_shop_popup() -> ShopWindow:
 @onready var v_box_items := $Contents/ScrollBoxItems/HBoxContainer/VBoxItems
 @onready var price_labels : Array[Label] = set_price_labels()
 @onready var buy_message_label := $Contents/LabelBuyMessage
+@onready var tower_shop_item := $Contents/ScrollBoxItems/HBoxContainer/VBoxItems/ButtonTower
 var message_tween : Tween
 var prices : Array[int] = []
 
@@ -45,7 +46,7 @@ func _ready() -> void:
 	buy_message_label.scale = Vector2(0.5, 0.5)
 	buy_message_label.modulate = Color.TRANSPARENT
 	# initialize prices
-	var shop_item_buttons : Array[ShopItemButton] = get_shop_items()
+	var shop_item_buttons : Array[ShopItemButton] = get_shop_items(true)
 	var item_index := 0
 	for shop_item : ShopItemButton in shop_item_buttons:
 		prices.append(shop_item.price)
@@ -69,24 +70,26 @@ func set_price_labels() -> Array[Label]:
 func update_prices() -> void:
 	if not v_box_prices:
 		return
-	var shop_items := get_shop_items()
+	var shop_items := get_shop_items(true)
 	for i : int in range(len(price_labels)):
 		var l : Label = price_labels[i]
 		l.text = str(prices[i]) + "$"
 		l.visible = shop_items[i].visible
 
-func get_shop_items() -> Array[ShopItemButton]:
+func get_shop_items(include_tower : bool) -> Array[ShopItemButton]:
 	var shop_items : Array[ShopItemButton] = []
 	for item : Node in v_box_items.get_children():
+		if not include_tower and item == tower_shop_item:
+			continue
 		if item is Button:
 			shop_items.append(item)
 	return shop_items
 
 func refresh_shop_items() -> void:
-	var shop_items : Array[ShopItemButton] = get_shop_items()
+	var shop_items : Array[ShopItemButton] = get_shop_items(false)
 	var items_visibility : Array[bool] = []
 	items_visibility.resize(len(shop_items))
-	for i : int in range(4):
+	for i : int in range(3):
 		items_visibility[i] = true
 	items_visibility.shuffle()
 	for i : int in range(len(shop_items)):
