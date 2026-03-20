@@ -2,11 +2,11 @@ extends Control
 class_name CardDescription
 
 
-const CARD_DECRIPTION_RES := preload("res://scenes/interface/descriptions/card_description.tscn")
+const CARD_DESCRIPTION_RES := preload("res://scenes/interface/descriptions/card_description.tscn")
 const X_OFFSET := 10.0
 
 static func add_card_description(n_card_object : CardObject) -> CardDescription:
-	var card_description : CardDescription = CARD_DECRIPTION_RES.instantiate()
+	var card_description : CardDescription = CARD_DESCRIPTION_RES.instantiate()
 	card_description.card_object = n_card_object
 	card_description.visible = false
 	n_card_object.add_child(card_description)
