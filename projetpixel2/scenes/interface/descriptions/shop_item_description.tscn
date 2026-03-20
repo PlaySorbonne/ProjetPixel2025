@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://gxhcb4e02lkw" path="res://scripts/shop_item_description.gd" id="2_cym2q"]
 [ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_v3vle"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_7chxf"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_qkmxt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmxt"]
 resource_local_to_scene = true
@@ -25,10 +26,14 @@ shader_parameter/scanline_strength = 0.18
 shader_parameter/local_warp_strength = 0.14
 shader_parameter/flip_chance = 0.05
 
+[sub_resource type="LabelSettings" id="LabelSettings_h4e65"]
+font = ExtResource("5_qkmxt")
+font_size = 14
+
 [node name="ShopItemDescription" unique_id=302558238 instance=ExtResource("1_cym2q")]
 custom_minimum_size = Vector2(300, 150)
 anchor_right = 0.15520833
-anchor_bottom = 0.13911112
+anchor_bottom = 0.16503704
 script = ExtResource("2_cym2q")
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
@@ -39,3 +44,36 @@ text = "Shop item Name"
 
 [node name="LabelDescription" parent="." index="3" unique_id=1663652197]
 offset_top = 39.0
+offset_bottom = -41.0
+
+[node name="LabelCurrentPrice" type="Label" parent="." index="4" unique_id=1907926823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 130.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Starting: 1000$"
+label_settings = SubResource("LabelSettings_h4e65")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LabelPriceIncrease" type="Label" parent="." index="5" unique_id=94111716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 130.0
+offset_right = -14.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Increase: * 1.5"
+label_settings = SubResource("LabelSettings_h4e65")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2

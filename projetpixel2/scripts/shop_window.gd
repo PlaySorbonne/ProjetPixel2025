@@ -46,8 +46,11 @@ func _ready() -> void:
 	buy_message_label.modulate = Color.TRANSPARENT
 	# initialize prices
 	var shop_item_buttons : Array[ShopItemButton] = get_shop_items()
+	var item_index := 0
 	for shop_item : ShopItemButton in shop_item_buttons:
 		prices.append(shop_item.price)
+		shop_item.item_index = item_index
+		item_index += 1
 	update_prices()
 
 	#await get_tree().process_frame

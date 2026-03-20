@@ -149,6 +149,8 @@ icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "2 common cards
+1 choice of 3 rare cards"
 price = 10
 metadata/_edit_use_anchors_ = true
 
@@ -164,6 +166,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "1 choice of 3 rare cards"
 price = 12
 metadata/_edit_use_anchors_ = true
 
@@ -179,6 +182,7 @@ icon = ExtResource("7_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "5 common cards"
 price = 13
 metadata/_edit_use_anchors_ = true
 
@@ -195,6 +199,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "idk cards"
 price = 15
 metadata/_edit_use_anchors_ = true
 
@@ -211,6 +216,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "idk cards"
 price = 20
 metadata/_edit_use_anchors_ = true
 
@@ -227,6 +233,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "9 common cards"
 price = 22
 metadata/_edit_use_anchors_ = true
 
@@ -243,6 +250,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "idk cards"
 price = 24
 metadata/_edit_use_anchors_ = true
 
@@ -259,6 +267,7 @@ icon = ExtResource("8_sxsyu")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "5 choices of 5 rare cards."
 price = 50
 metadata/_edit_use_anchors_ = true
 
@@ -274,6 +283,7 @@ icon = ExtResource("8_yufeb")
 alignment = 0
 expand_icon = true
 script = ExtResource("8_2rxam")
+description = "Add a tower to the map."
 price = 19
 metadata/_edit_use_anchors_ = true
 
