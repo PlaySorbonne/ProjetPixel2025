@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://gcpduvgqe5b6" path="res://scripts/minigame_description.gd" id="2_p46mw"]
 [ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="3_uuos1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4nao"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p46mw"]
 resource_local_to_scene = true
 shader = ExtResource("2_24lwb")
 shader_parameter/scroll_speed = 0.08
@@ -29,4 +29,4 @@ shader_parameter/flip_chance = 0.05
 script = ExtResource("2_p46mw")
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
-material = SubResource("ShaderMaterial_h4nao")
+material = SubResource("ShaderMaterial_p46mw")

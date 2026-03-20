@@ -2,13 +2,7 @@ extends Control
 class_name ObjectDescription
 
 
-const MINIGAME_DESCRIPTION_RES := preload("res://scenes/interface/descriptions/minigame_description.tscn")
 const X_OFFSET := 10.0
-
-
-static func add_minigame_description(minigame : Node) -> MinigameDescription:
-	
-	return null
 
 
 var parent_object : Control
