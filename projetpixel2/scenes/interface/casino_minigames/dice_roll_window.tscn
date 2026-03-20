@@ -161,7 +161,7 @@ shader_parameter/flip_chance = 0.05
 font = ExtResource("5_cx0bv")
 
 [node name="DiceRollWindow" unique_id=1456401038 instance=ExtResource("1_8ncrh")]
-anchor_right = 0.320313
+anchor_right = 0.26394513
 anchor_bottom = 0.307407
 script = ExtResource("2_qgsof")
 minigame_level = 1
@@ -174,9 +174,9 @@ material = SubResource("ShaderMaterial_b4rlw")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298851
-anchor_top = 0.0572688
-anchor_right = 0.740232
-anchor_bottom = 0.942732
+anchor_top = 0.057268795
+anchor_right = 0.9685837
+anchor_bottom = 0.9427319
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -190,12 +190,13 @@ handle_input_locally = false
 anisotropic_filtering_level = 0
 gui_disable_input = true
 gui_embed_subwindows = true
-size = Vector2i(436, 293)
+size = Vector2i(475, 293)
 render_target_update_mode = 4
 
 [node name="DiceRoller" parent="Contents/SubViewportContainer/SubViewport" index="0" unique_id=327011497 instance=ExtResource("5_b4rlw")]
 
 [node name="Label" type="Label" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="2" unique_id=749724029]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.747128
