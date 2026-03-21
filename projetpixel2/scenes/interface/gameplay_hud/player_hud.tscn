@@ -27,6 +27,7 @@
 [ext_resource type="Shader" uid="uid://gnd6x47t14dk" path="res://resources/shaders/crt_screen.gdshader" id="20_gd21h"]
 [ext_resource type="PackedScene" uid="uid://0e8d6vhpggeo" path="res://scenes/casino/poker_chips_world.tscn" id="21_0or73"]
 [ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="22_03tek"]
+[ext_resource type="Script" uid="uid://cs8ll4t1ectx4" path="res://scripts/chips_viewport_container.gd" id="27_0bo3y"]
 [ext_resource type="PackedScene" uid="uid://dlb1o3bd74ea3" path="res://scenes/interface/casino_minigames/shop_window.tscn" id="27_1v7h5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gd21h"]
@@ -479,7 +480,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
+[node name="ChipsViewportContainer" type="SubViewportContainer" parent="." unique_id=1879519725]
 z_index = 1
 anchors_preset = -1
 anchor_left = 0.711
@@ -495,8 +496,9 @@ grow_vertical = 0
 scale = Vector2(0.95, 1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
+script = ExtResource("27_0bo3y")
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1298646836]
+[node name="SubViewport" type="SubViewport" parent="ChipsViewportContainer" unique_id=1298646836]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -504,7 +506,7 @@ anisotropic_filtering_level = 0
 size = Vector2i(600, 400)
 render_target_update_mode = 4
 
-[node name="PokerChipsWorld" parent="SubViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]
+[node name="PokerChipsWorld" parent="ChipsViewportContainer/SubViewport" unique_id=1765417802 instance=ExtResource("21_0or73")]
 
 [node name="BoosterContainer" type="Control" parent="." unique_id=1599252161]
 layout_mode = 3
