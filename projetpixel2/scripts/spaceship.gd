@@ -57,9 +57,9 @@ func stop_all_towers() -> void:
 	for tower : TowerBase in GV.towers:
 		tower.set_tower_enable(false)
 
-func _on_shield_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
-	#print("shields hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
+func _on_shield_health_hit(_damage_amount: int, _new_health: int, _damage_type : DamageableObject.DamagingTypes) -> void:
 	shield_damage_animation()
+	WarningPopupWindow.spawn_warning_popup("SHIELDS BROKEN!")
 	hit.emit()
 
 func _on_shield_health_death() -> void:
@@ -74,6 +74,7 @@ func _on_shield_health_death() -> void:
 func restore_shields() -> void:
 	has_shields = true
 	damageable = $ShieldHealth
+	@warning_ignore("narrowing_conversion")
 	damageable.health = damageable.max_health * loss_shields_regeneration_amount
 	can_regenerate = true
 	$TimerShieldRegeneration.start(0.5)
@@ -81,8 +82,9 @@ func restore_shields() -> void:
 	shield_damage_animation()
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
 	t.tween_property($ShieldShader, "scale", Vector3.ONE, 0.3)
+	MessagePopupWindow.spawn_message_popup("SHIELDS RESTORED!")
 
-func _on_ship_health_hit(damage_amount: int, new_health: int, damage_type : DamageableObject.DamagingTypes) -> void:
+func _on_ship_health_hit(_damage_amount: int, _new_health: int, _damage_type : DamageableObject.DamagingTypes) -> void:
 	#print("ship hit for " + str(damage_amount) + " ; " + str(new_health) + " remaining")
 	hit.emit()
 
