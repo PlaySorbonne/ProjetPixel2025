@@ -17,8 +17,12 @@ func _ready() -> void:
 	super._ready()
 	await get_tree().process_frame
 	RunData.enemy_killed.connect(_update_text)
+	RunData.combo_reset.connect(_update_text)
+	_update_text()
 
 func _update_text() -> void:
 	$LabelDescription.text = "Combo increases when an enemy is killed, and resets after " \
-	+ str(RunData.combo_max_time) + " seconds." \
-	+ "\nCurrent combo " + str(RunData.current_combo) + "."
+	+ str(RunData.combo_max_time) + " seconds."
+	$LabelComboVal.text = "Current combo: " + \
+	str(RunData.current_combo) + ".\nMaximum run combo: " \
+	+ str(RunData.max_run_combo) + "."
