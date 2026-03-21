@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://g214vu1y26k1" path="res://scenes/gameplay_systems/mouse_2d_interaction.tscn" id="5_pfuso"]
 [ext_resource type="Script" uid="uid://cpp8htexcmhmp" path="res://scripts/pause_menu.gd" id="6_htfe5"]
 [ext_resource type="PackedScene" uid="uid://dlc1ldj1bt2fi" path="res://scenes/spaceship/towers/tower_spawner.tscn" id="6_pfuso"]
+[ext_resource type="Script" uid="uid://w2e2bgarkg8d" path="res://scripts/combo_label.gd" id="10_0lvx1"]
 [ext_resource type="Texture2D" uid="uid://0id615nc4jst" path="res://resources/images/ui_assets/menu_elements/ui_health_container.png" id="10_ovn5c"]
 [ext_resource type="Texture2D" uid="uid://c8ghx7owiehdx" path="res://resources/images/ui_assets/menu_elements/infor_bar_progress_texture.png" id="11_d078g"]
 [ext_resource type="Texture2D" uid="uid://ggnt25bvrce8" path="res://resources/images/ui_assets/menu_elements/ui_health_container_progress.png" id="12_3ed1r"]
@@ -196,6 +197,7 @@ grow_vertical = 2
 text = "Combo: 0"
 label_settings = SubResource("LabelSettings_jxin7")
 vertical_alignment = 1
+script = ExtResource("10_0lvx1")
 metadata/_edit_use_anchors_ = true
 
 [node name="ComboTimer" type="Timer" parent="ComboCounter" unique_id=1436814007]

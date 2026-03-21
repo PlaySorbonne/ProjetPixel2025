@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dac3damr7oxwb"]
+
+[ext_resource type="PackedScene" uid="uid://c3eh5oe37ijck" path="res://scenes/interface/descriptions/object_description.tscn" id="1_xaad3"]
+[ext_resource type="Script" uid="uid://dettvu6pcmfi4" path="res://scripts/combo_description.gd" id="2_xaad3"]
+[ext_resource type="Shader" uid="uid://dmu8u2o4iebse" path="res://resources/shaders/texture_glitch_scrolling.gdshader" id="3_qdlnk"]
+[ext_resource type="Texture2D" uid="uid://flq7ab6bhtyy" path="res://resources/images/casino/rug_seamless_texture_contrast_dark.png" id="4_yna0h"]
+[ext_resource type="FontFile" uid="uid://bkxfmoq2htvql" path="res://resources/fonts/text_hard_toxigenesis bd.otf" id="5_f5rq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xaad3"]
+resource_local_to_scene = true
+shader = ExtResource("3_qdlnk")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 1.2
+shader_parameter/repeat_y = 1.2
+shader_parameter/texture_to_scroll = ExtResource("4_yna0h")
+shader_parameter/glitch_chance = 0.02
+shader_parameter/glitch_speed = 7.0
+shader_parameter/slice_density = 14.0
+shader_parameter/slice_strength = 0.38
+shader_parameter/shake_strength = 0.02
+shader_parameter/chroma_offset = 0.016
+shader_parameter/noise_strength = 0.2
+shader_parameter/color_flash_strength = 0.4
+shader_parameter/scanline_strength = 0.18
+shader_parameter/local_warp_strength = 0.14
+shader_parameter/flip_chance = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4e65"]
+font = ExtResource("5_f5rq4")
+font_size = 14
+
+[node name="ComboDescription" unique_id=302558238 instance=ExtResource("1_xaad3")]
+custom_minimum_size = Vector2(300, 150)
+anchor_right = 0.15520833
+anchor_bottom = 0.13911112
+script = ExtResource("2_xaad3")
+
+[node name="ColorRect" parent="." index="0" unique_id=303378144]
+material = SubResource("ShaderMaterial_xaad3")
+
+[node name="LabelTitle" parent="." index="2" unique_id=2079672423]
+text = "Combo"
+
+[node name="LabelDescription" parent="." index="3" unique_id=1663652197]
+offset_top = 42.96694
+text = "Combo increases when an enemy is killed, and resets after 10 seconds."
+vertical_alignment = 0
+
+[node name="LabelComboVal" type="Label" parent="." index="4" unique_id=1497116407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.561996
+offset_top = 32.0
+offset_bottom = -12.950409
+grow_horizontal = 2
+grow_vertical = 2
+text = "Current combo: 0.
+Maximum run combo: 0."
+label_settings = SubResource("LabelSettings_h4e65")
+vertical_alignment = 2
+autowrap_mode = 2

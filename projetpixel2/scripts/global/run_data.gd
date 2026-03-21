@@ -3,6 +3,7 @@ extends Node
 signal enemy_killed
 signal chips_gained(exp_gained : int)
 signal level_gained
+signal combo_reset
 
 
 var have_waves_started := false
@@ -63,6 +64,8 @@ var current_combo := 0:
 		current_combo = value
 		if current_combo > max_run_combo:
 			max_run_combo = current_combo
+		if value == 0:
+			combo_reset.emit()
 var combo_increment := 1
 var combo_max_time := 2.0
 var max_run_combo := 0
