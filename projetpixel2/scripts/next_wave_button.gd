@@ -50,3 +50,6 @@ func trigger_wave() -> void:
 func _on_pressed() -> void:
 	RunData.have_waves_started = true
 	trigger_wave()
+
+func _on_mouse_entered() -> void:
+	WaveDescription.add_wave_description(self)

@@ -175,6 +175,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(0, 25)
 focus_mode = 0
+mouse_default_cursor_shape = 2
 flat = true
 script = ExtResource("1_ue2g8")
 
@@ -225,4 +226,5 @@ expand_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=775477202]
 libraries/ = SubResource("AnimationLibrary_ggpgp")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
