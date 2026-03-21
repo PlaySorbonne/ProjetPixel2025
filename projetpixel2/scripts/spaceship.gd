@@ -59,7 +59,6 @@ func stop_all_towers() -> void:
 
 func _on_shield_health_hit(_damage_amount: int, _new_health: int, _damage_type : DamageableObject.DamagingTypes) -> void:
 	shield_damage_animation()
-	WarningPopupWindow.spawn_warning_popup("SHIELDS BROKEN!")
 	hit.emit()
 
 func _on_shield_health_death() -> void:
@@ -70,6 +69,7 @@ func _on_shield_health_death() -> void:
 	t.tween_property($ShieldShader, "scale", Vector3.ZERO, 0.3)
 	await t.finished
 	$ShieldShader.visible = false
+	WarningPopupWindow.spawn_warning_popup("SHIELDS BROKEN!")
 
 func restore_shields() -> void:
 	has_shields = true
