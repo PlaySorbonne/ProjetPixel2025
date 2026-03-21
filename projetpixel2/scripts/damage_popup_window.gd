@@ -4,7 +4,7 @@ class_name WarningPopupWindow
 
 const WARNING_POPUP_RES := preload("res://scenes/interface/casino_minigames/warning_popup_window.tscn")
 
-static func spawn_warning_popup(warning_msg : String, popup_lifetime := 4.0) -> WarningPopupWindow:
+static func spawn_warning_popup(warning_msg : String, popup_lifetime := 3.0) -> WarningPopupWindow:
 	var popup : WarningPopupWindow = WARNING_POPUP_RES.instantiate()
 	popup.message = warning_msg
 	popup.lifetime = popup_lifetime
