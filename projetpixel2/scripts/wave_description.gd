@@ -25,4 +25,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	var wave := wave_btn.wave
 	$LabelTitle.text = "Wave " + str(wave.wave_number)
-	$LabelDescription.text = ""
+	var wave_difficulty := wave_btn.wave.wave_difficulty
+	var wave_nb_enemies := wave_btn.wave.wave_number_of_enemies
+	var wave_max_time := wave_btn.wave.wave_duration
+	$LabelDescription.text = "Difficulty: " + str(wave_difficulty)\
+	+ "\nNumber of enemies: " + str(wave_nb_enemies) \
+	+ "\nMaximum time: " + str(wave_max_time) + " seconds"

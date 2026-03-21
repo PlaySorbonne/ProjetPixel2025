@@ -39,5 +39,7 @@ text = "Wave -1"
 
 [node name="LabelDescription" parent="." index="3" unique_id=1663652197]
 offset_top = 39.0
-offset_bottom = -41.0
-text = ""
+offset_bottom = -10.999985
+text = "Difficulty: 1.0
+Number of enemies: 0
+Maximum time: 30 seconds"
