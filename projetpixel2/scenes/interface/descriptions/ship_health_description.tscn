@@ -27,19 +27,22 @@ shader_parameter/flip_chance = 0.05
 
 [node name="ShipHealthDescription" unique_id=302558238 instance=ExtResource("1_jvr71")]
 custom_minimum_size = Vector2(300, 130)
-anchor_right = 0.15520833
-anchor_bottom = 0.120592594
+anchor_right = 0.17043559
+anchor_bottom = 0.1508501
 script = ExtResource("2_jvr71")
+spawn_offset = Vector2(10, 20)
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
 material = SubResource("ShaderMaterial_jvr71")
 
 [node name="LabelTitle" parent="." index="2" unique_id=2079672423]
-text = "Chips"
+text = "Ship Statistics"
 
 [node name="LabelDescription" parent="." index="3" unique_id=1663652197]
-offset_left = 9.28894
+offset_left = 15.900513
 offset_top = 48.431053
 offset_right = -9.28894
-text = "Chips are used to bet in minigames and buy items from the shop."
+text = "Current Health : 0/0
+Current Shields: 0/0"
+horizontal_alignment = 0
 vertical_alignment = 0

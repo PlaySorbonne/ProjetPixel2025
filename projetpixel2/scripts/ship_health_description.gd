@@ -12,3 +12,14 @@ static func add_ship_health_description(ship_health : ShipHealthControl) -> Ship
 
 func _ready() -> void:
 	super._ready()
+	GV.space_ship.hit.connect(_update_text)
+	GV.space_ship.shield_regeneration.connect(_update_text)
+	_update_text()
+
+func _update_text() -> void:
+	$LabelDescription.text = "Current Health: " + \
+	str(GV.space_ship.get_health()) + "/" + \
+	str(GV.space_ship.get_max_health()) + \
+	"\nCurrent Shields: " + \
+	str(GV.space_ship.get_shields()) + "/" + \
+	str(GV.space_ship.get_max_shields())

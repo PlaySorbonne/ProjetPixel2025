@@ -4,6 +4,7 @@ class_name Spaceship
 
 signal hit
 signal killed
+signal shield_regeneration
 
 ## amount the shields will regen per 0.5 second
 @export var shields_regeneration := 2
@@ -105,6 +106,7 @@ func _on_timer_shield_regeneration_timeout() -> void:
 				$ShieldHealth.max_health, 
 				$ShieldHealth.health + shields_regeneration
 			)
+			shield_regeneration.emit()
 	else:
 		can_regenerate = true
 		$TimerShieldRegeneration.wait_time = 0.5
