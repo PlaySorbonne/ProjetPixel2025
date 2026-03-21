@@ -30,6 +30,7 @@ custom_minimum_size = Vector2(300, 150)
 anchor_right = 0.15520833
 anchor_bottom = 0.13911112
 script = ExtResource("2_ouknx")
+spawn_offset = Vector2(10, -50)
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
 material = SubResource("ShaderMaterial_3u2ut")
