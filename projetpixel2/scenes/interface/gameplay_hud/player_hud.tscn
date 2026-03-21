@@ -495,7 +495,8 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.95, 1)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
 script = ExtResource("27_0bo3y")
 
 [node name="SubViewport" type="SubViewport" parent="ChipsViewportContainer" unique_id=1298646836]

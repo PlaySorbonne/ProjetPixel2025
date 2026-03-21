@@ -30,6 +30,7 @@ custom_minimum_size = Vector2(300, 130)
 anchor_right = 0.15520833
 anchor_bottom = 0.120592594
 script = ExtResource("2_benkw")
+spawn_offset = Vector2(0, 200)
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
 material = SubResource("ShaderMaterial_benkw")
