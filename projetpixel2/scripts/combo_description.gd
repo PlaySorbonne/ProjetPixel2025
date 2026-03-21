@@ -6,12 +6,9 @@ const COMBO_DESCRIPTION_RES := preload("res://scenes/interface/descriptions/comb
 
 static func add_combo_description(n_combo : ComboLabel) -> ComboDescription:
 	var combo_descr : ComboDescription = COMBO_DESCRIPTION_RES.instantiate()
-	combo_descr.combo_label = n_combo
 	combo_descr._init_description_popup(n_combo)
 	return combo_descr
 
-
-var combo_label : ComboLabel
 
 func _ready() -> void:
 	super._ready()

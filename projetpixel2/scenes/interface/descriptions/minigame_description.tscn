@@ -27,8 +27,8 @@ shader_parameter/flip_chance = 0.05
 
 [node name="MinigameDescription" unique_id=302558238 instance=ExtResource("1_cdq16")]
 custom_minimum_size = Vector2(300, 150)
-anchor_right = 0.15520833
-anchor_bottom = 0.13911112
+anchor_right = 0.17135416
+anchor_bottom = 0.16040741
 script = ExtResource("2_p46mw")
 spawn_offset = Vector2(30, 0)
 
@@ -39,4 +39,6 @@ material = SubResource("ShaderMaterial_p46mw")
 text = "Minigame Name"
 
 [node name="LabelDescription" parent="." index="3" unique_id=1663652197]
+offset_left = 5.0
 offset_top = 39.0
+offset_right = -7.0

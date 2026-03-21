@@ -28,13 +28,14 @@ shader_parameter/flip_chance = 0.05
 
 [sub_resource type="LabelSettings" id="LabelSettings_h4e65"]
 font = ExtResource("5_f5rq4")
-font_size = 14
+font_size = 15
 
 [node name="ComboDescription" unique_id=302558238 instance=ExtResource("1_xaad3")]
 custom_minimum_size = Vector2(300, 150)
 anchor_right = 0.15520833
 anchor_bottom = 0.13911112
 script = ExtResource("2_xaad3")
+spawn_offset = Vector2(-90, -50)
 
 [node name="ColorRect" parent="." index="0" unique_id=303378144]
 material = SubResource("ShaderMaterial_xaad3")
