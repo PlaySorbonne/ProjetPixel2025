@@ -17,6 +17,7 @@ var player_camera : PlayerCamera = null
 var is_dragging_object := false
 var persistent_menu : PersistentMenu = null
 var persistent_menu_world : PersistentMenuWorld = null
+var minigame_buttons : Dictionary[CasinoMinigameButton.Minigames, CasinoMinigameButton] = {}
 
 # game parameters
 var debug_mode : bool = false
@@ -24,6 +25,7 @@ var debug_mode : bool = false
 func reset_gameplay_variables() -> void:
 	world = null
 	space_ship = null
+	minigame_buttons.clear()
 	BaseEnemy.living_enemies.clear()
 	towers = []
 	spawners = []

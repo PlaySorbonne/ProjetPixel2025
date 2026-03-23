@@ -2,7 +2,11 @@ extends Button
 class_name CasinoMinigameButton
 
 
+enum Minigames{Dice, RussianRoulette, RouletteWheel}
+
+
 @export var minigame_name := "Russian Roulette"
+@export var minigame_type : Minigames
 @export_multiline var minigame_description := "Russian Roulette"
 @export var minigame_popup : PackedScene
 @export var game_delay := 20.0
@@ -10,6 +14,7 @@ class_name CasinoMinigameButton
 @export var manually_start_minigame := false
 @export var bet_cost := 6
 @export var average_reward := 50
+@export var min_reset_level := 1
 
 var current_investment := 0
 var current_level := 1
@@ -22,6 +27,7 @@ func _ready() -> void:
 	$LabelName.text = minigame_name
 	$LabelCost.text = str(bet_cost) + "$"
 	_update_investment_text()
+	GV.minigame_buttons[minigame_type] = self
 
 func _process(delta: float) -> void:
 	if not RunData.have_waves_started:
@@ -56,7 +62,7 @@ func invest() -> void:
 
 func reset_investment() -> void:
 	current_investment = 0
-	current_level = 1
+	current_level = min_reset_level
 	_update_investment_text()
 
 func _update_investment_text() -> void:
