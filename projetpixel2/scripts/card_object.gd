@@ -168,8 +168,10 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		CardData.Types.TowerUpgrade:
 			drop_card_on_tower()
 		CardData.Types.MinigameUpgrade:
+			print_debug("TODO: Implement minigame card drop.")
 			pass
 		CardData.Types.WaveUpgrade:
+			print_debug("TODO: Implement wave card drop.")
 			pass
 		_:
 			print_debug("Unknown card type, can't drop card.")
