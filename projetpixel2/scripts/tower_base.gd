@@ -352,7 +352,10 @@ func try_shoot_enemy(is_bonus := false) -> void:
 	if len(get_focused_enemies()) > 0:
 		var focused_enemy : BaseEnemy = enemy_choice.call()
 		if focused_enemy != null:
-			shoot(focused_enemy, is_bonus)
+			shoot(
+				focused_enemy,
+				is_bonus
+			)
 			return
 	if is_bonus:
 		shoot_position(
