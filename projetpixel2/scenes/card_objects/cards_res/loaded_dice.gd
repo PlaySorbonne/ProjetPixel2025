@@ -7,4 +7,4 @@ func check_condition():
 
 func run_effect():
 	var dice_btn := GV.minigame_buttons[CasinoMinigameButton.Minigames.Dice]
-	dice_btn.min_reset_level
+	dice_btn.min_reset_level -= 1

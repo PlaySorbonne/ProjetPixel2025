@@ -82,12 +82,20 @@ func set_can_be_dragged(new_can_be_dragged : bool) -> void:
 	$DragAndDrop2D.can_be_dragged = new_can_be_dragged
 
 func can_drop_card() -> bool:
-	if card.tactics:
-		return global_position.y <= \
-		GV.hud.cards_container.global_position.y \
-		- GV.hud.cards_container.size.y * 1.25
-	else:
-		return GV.mouse_3d_interaction.hovered_object is TowerBase
+	match card.type:
+		CardData.Types.Tactics:
+			return global_position.y <= \
+			GV.hud.cards_container.global_position.y \
+			- GV.hud.cards_container.size.y * 1.25
+		CardData.Types.TowerUpgrade:
+			return GV.mouse_3d_interaction.hovered_object is TowerBase
+		CardData.Types.MinigameUpgrade:
+			return GV.mouse_2d_interaction.hovered_node is CasinoMinigameButton
+		CardData.Types.WaveUpgrade:
+			return GV.mouse_2d_interaction.hovered_node is NextWaveButton
+		_:
+			print_debug("Shouldn't be in this case ; card type is unknown.")
+			return false
 
 func set_card_outline_width(new_width : float) -> void:
 	var t := create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -154,10 +162,17 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		mouse_filter = Control.MOUSE_FILTER_PASS
 		return_to_hand()
 		return
-	if card.tactics:
-		drop_tactics_card()
-	else:
-		drop_card_on_tower()
+	match card.type:
+		CardData.Types.Tactics:
+			drop_tactics_card()
+		CardData.Types.TowerUpgrade:
+			drop_card_on_tower()
+		CardData.Types.MinigameUpgrade:
+			pass
+		CardData.Types.WaveUpgrade:
+			pass
+		_:
+			print_debug("Unknown card type, can't drop card.")
 
 func drop_tactics_card() -> void:
 	if can_drop_card():
@@ -185,7 +200,7 @@ func play_card(on_object : Node) -> void:
 			on_object.connect(card.trigger_signal, card.execute_card)
 		else:
 			var obj_str : String
-			if card.tactics:
+			if card.type == CardData.Types.Tactics:
 				obj_str = "TACTICS: GV "
 			else:
 				obj_str = "UPGRADE: TOWER "

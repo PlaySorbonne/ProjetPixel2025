@@ -6,6 +6,12 @@ const CARDS_FILE_PATH := "res://game_design/card_data.csv"
 
 enum CardRarities {Common, Uncommon, Rare, Legendary, Secret}
 enum CardFamilies {Military, Scientists, Traders, Revolution}
+enum Types {
+	Tactics,
+	TowerUpgrade,
+	MinigameUpgrade,
+	WaveUpgrade,
+}
 
 static var cards_data : Dictionary[String, CardData] = {}
 static var current_deck : Array[CardData] = []
@@ -16,7 +22,7 @@ static var current_deck : Array[CardData] = []
 @export_multiline var description := "blank description":
 	get():
 		return format_card_text(description) + get_text_card_properties()
-@export var tactics := false
+@export var type : Types = Types.Tactics
 @export var value := 1
 @export var rarity : CardRarities = CardRarities.Common
 @export var family : CardFamilies = CardFamilies.Military
@@ -81,10 +87,7 @@ func format_card_text(text: String) -> String:
 
 func get_text_card_properties() -> String:
 	var result := ""
-	if tactics:
-		result += "\nConsumable."
-	else:
-		result += "\nTower upgrade."
+	result += str("\n" + Types.keys()[type]).replace("Upgrade", " upgrade")
 	return result
 
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
