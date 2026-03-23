@@ -168,13 +168,18 @@ func _on_drag_and_drop_2d_dropped() -> void:
 		CardData.Types.TowerUpgrade:
 			drop_card_on_tower()
 		CardData.Types.MinigameUpgrade:
-			print_debug("TODO: Implement minigame card drop.")
-			pass
+			drop_card_on_ui()
 		CardData.Types.WaveUpgrade:
-			print_debug("TODO: Implement wave card drop.")
-			pass
+			drop_card_on_ui()
 		_:
 			print_debug("Unknown card type, can't drop card.")
+
+func drop_card_on_ui() -> void:
+	var current_ui_object : Control = GV.mouse_2d_interaction.hovered_node
+	play_card(current_ui_object)
+	destroy_card_object()
+	#card_obj.play_card(self)
+	#card_obj.destroy_card_object()
 
 func drop_tactics_card() -> void:
 	if can_drop_card():
