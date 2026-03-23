@@ -178,8 +178,6 @@ func drop_card_on_ui() -> void:
 	var current_ui_object : Control = GV.mouse_2d_interaction.hovered_node
 	play_card(current_ui_object)
 	destroy_card_object()
-	#card_obj.play_card(self)
-	#card_obj.destroy_card_object()
 
 func drop_tactics_card() -> void:
 	if can_drop_card():
