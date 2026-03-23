@@ -90,6 +90,13 @@ func get_text_card_properties() -> String:
 	result += str("\n" + Types.keys()[type]).replace("Upgrade", " upgrade")
 	return result
 
+func execute_card_from_obj(obj : Node) -> bool:
+	if card_code:
+		card_code.base_obj = obj
+	else:
+		print_debug("Deprecated")
+	return _card_exe()
+
 func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
 	if card_code:
 		card_code.projectile = projectile
@@ -98,6 +105,9 @@ func execute_card(projectile : ProjectileBase, enemy : BaseEnemy) -> bool:
 		# Older version : parsed from csv
 		parsed_card_code.projectile = projectile
 		parsed_card_code.enemy = enemy
+	return _card_exe()
+
+func _card_exe() -> bool:
 	if card_code:
 		if card_code.check_condition():
 			card_code.run_effect()

@@ -14,6 +14,7 @@ const BOOST_FIRE_RATE := preload("res://scenes/spaceship/towers/components/boost
 var tower : TowerBase # tower the card was added to
 var projectile : ProjectileBase # projectile that trigger the card (can be null if card was not triggered by a projectile)
 var enemy : BaseEnemy # enemy that triggered the card (can be null if card was not triggered by an enemy)
+var base_obj : Node
 
 # GAME DESIGNER FUNCTIONS
 func spawn_burning_aura(aura_position : Vector3) -> BurningAura:
