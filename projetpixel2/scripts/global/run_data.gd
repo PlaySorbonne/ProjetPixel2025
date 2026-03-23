@@ -9,7 +9,24 @@ signal combo_reset
 var have_waves_started := false
 # probability
 var probability_multiplier := 1.0
+var _better_luck_timer : SceneTreeTimer
 var better_luck := false
+func remove_better_luck() -> void:
+	if _better_luck_timer:
+		_better_luck_timer.free()
+		_better_luck_timer = null
+	better_luck = false
+func add_better_luck(duration : float) -> void:
+	better_luck = true
+	if not _better_luck_timer:
+		_better_luck_timer = GV.world.get_tree().create_timer(duration)
+		_better_luck_timer.timeout.connect(remove_better_luck)
+	else:
+		_better_luck_timer.time_left = max(
+			_better_luck_timer.time_left,
+			duration
+		)
+
 func roll_probability(base_probability : float) -> bool:
 	if better_luck:
 		return true
