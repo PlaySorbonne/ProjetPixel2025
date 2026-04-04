@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8jfaq1p25y4p"]
+[gd_scene format=3 uid="uid://b8jfaq1p25y4p"]
 
 [ext_resource type="Script" uid="uid://nvgdglcakquw" path="res://scripts/wave_manager.gd" id="1_2kkhg"]
 
-[node name="WaveManager" type="Node"]
+[node name="WaveManager" type="Node" unique_id=747538855]
 script = ExtResource("1_2kkhg")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=709361876]
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

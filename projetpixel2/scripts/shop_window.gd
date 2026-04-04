@@ -86,7 +86,6 @@ func get_shop_items(include_tower : bool) -> Array[ShopItemButton]:
 	return shop_items
 
 func refresh_shop_items() -> void:
-	return
 	var shop_items : Array[ShopItemButton] = get_shop_items(false)
 	var items_visibility : Array[bool] = []
 	items_visibility.resize(len(shop_items))
