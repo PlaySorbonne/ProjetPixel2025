@@ -115,23 +115,23 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ScrollBoxItems" type="ScrollContainer" parent="Contents" parent_id_path=PackedInt32Array(2095500290) index="6" unique_id=204215330]
-clip_contents = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12232655
 anchor_top = 0.22238208
 anchor_right = 0.95101446
-anchor_bottom = 0.8311102
+anchor_bottom = 0.81457263
 mouse_filter = 2
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Contents/ScrollBoxItems" index="0" unique_id=1737880619]
+clip_contents = true
 layout_mode = 2
 alignment = 2
 
 [node name="VBoxItems" type="VBoxContainer" parent="Contents/ScrollBoxItems/HBoxContainer" index="0" unique_id=66180772]
+clip_contents = true
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 mouse_filter = 2
@@ -190,7 +190,6 @@ price_increase = "+ 7"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPremiumBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="3" unique_id=2135279719]
-visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -209,7 +208,6 @@ price_increase = "+ 10"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonDeluxeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="4" unique_id=1368245865]
-visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -228,7 +226,6 @@ price_increase = "+ 15"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonColossalBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="5" unique_id=789497216]
-visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -246,7 +243,6 @@ price_increase = "* 1.2"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonPrestigeBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="6" unique_id=348003057]
-visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
@@ -264,7 +260,6 @@ price_increase = "* 1.1 + 4"
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonMasterworkBooster" type="Button" parent="Contents/ScrollBoxItems/HBoxContainer/VBoxItems" index="7" unique_id=873642721]
-visible = false
 custom_minimum_size = Vector2(250, 40)
 layout_mode = 2
 focus_mode = 0
