@@ -66,9 +66,9 @@ func reset_investment() -> void:
 	_update_investment_text()
 
 func _update_investment_text() -> void:
-	$LabelInvestment.text = "- " + str(current_investment) \
-	+ "$\n- " + str(current_level) \
-	+ "\n- " + str(average_reward * current_level) + "$ " 
+	$LabelInvestment.text = "  " + str(current_investment) \
+	+ "$\n  " + str(current_level) \
+	+ "\n  " + str(average_reward * current_level) + "$ " 
 
 func _on_button_bet_pressed() -> void:
 	if RunData.current_chips >= bet_cost:
