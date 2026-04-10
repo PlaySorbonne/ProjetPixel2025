@@ -102,7 +102,7 @@ func create_experience_object() -> void:
 	t.tween_property(self, "scale", Vector3.ONE, 0.15)
 
 func destroy_experience_object() -> void:
-	DamagePopup.display_experience(experience_points, global_position)
+	#DamagePopup.display_experience(experience_points, global_position)
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	t.tween_property(self, "global_position", GV.space_ship.global_position, 0.4)
 	await t.finished
