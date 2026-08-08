@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://d3g7cvo2b6311"]
 
+[ext_resource type="Script" uid="uid://bie0kl6luicmb" path="res://scripts/screen_cache.gd" id="1_lg5lw"]
+
 [node name="ScreenCache" type="ColorRect" unique_id=1813240847]
 z_index = 19
 anchors_preset = 15
@@ -8,3 +10,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.54901963)
+script = ExtResource("1_lg5lw")
