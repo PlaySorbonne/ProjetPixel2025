@@ -165,6 +165,8 @@ anchor_right = 0.15615563
 anchor_bottom = 0.271296
 script = ExtResource("2_6hmnt")
 minigame_level = 1
+can_close_window = false
+pause_game = true
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_nwlbt")

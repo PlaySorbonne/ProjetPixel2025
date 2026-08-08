@@ -19,6 +19,7 @@ var close_button_tween : Tween
 	#set(value):
 		#can_close_window = value
 		#$Contents/CloseButton.visible = value
+@export var pause_game := false
 
 @onready var default_size := size
 @onready var background_material : ShaderMaterial = $Panel/Background.material
@@ -38,6 +39,9 @@ static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
 
 func _ready() -> void:
 	randomize_panel_background_parameters()
+	if pause_game:
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().paused = true
 	if not can_close_window:
 		$Contents/CloseButton.visible = false
 
@@ -112,6 +116,8 @@ func close_window(force_close := false) -> void:
 	if closed or (not can_close_window and not force_close):
 		return
 	closed = true
+	if get_tree().paused:
+		get_tree().paused = false
 	_init_size_tween()
 	$DragAndDrop2D.can_be_dragged = false
 	pivot_offset = Vector2(0.0, MIN_Y_SIZE/2.0)

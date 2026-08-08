@@ -166,6 +166,7 @@ anchor_bottom = 0.307407
 script = ExtResource("2_qgsof")
 minigame_level = 1
 can_close_window = false
+pause_game = true
 
 [node name="Background" parent="Panel" parent_id_path=PackedInt32Array(1367021014) index="0" unique_id=1310582078]
 material = SubResource("ShaderMaterial_b4rlw")
