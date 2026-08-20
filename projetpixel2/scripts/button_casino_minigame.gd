@@ -11,7 +11,7 @@ enum Minigames{Dice, RussianRoulette, RouletteWheel}
 @export var minigame_popup : PackedScene
 @export var game_delay := 20.0
 @export var current_delay := 20.0
-@export var manually_start_minigame := false
+@export var manually_start_minigame := true
 @export var bet_cost := 6
 @export var average_reward := 50
 @export var min_reset_level := 1
