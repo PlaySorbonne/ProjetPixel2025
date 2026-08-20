@@ -43,6 +43,7 @@ func launch_minigame(force := false) -> void:
 	if not can_launch_minigame and not force:
 		return
 	current_delay = game_delay
+	var pause_cover : MinigamePauseCover = MinigamePauseCover.add_minigame_pause_cover()
 	var popup : CasinoMinigameWindow = minigame_popup.instantiate()
 	popup.minigame_level = current_level
 	CasinoWindow.spawn_popup(popup)
@@ -50,6 +51,7 @@ func launch_minigame(force := false) -> void:
 	popup.position = CasinoWindow.random_popup_position()
 	popup.open_window()
 	reset_investment()
+	popup.window_closed.connect(pause_cover.unpause_game)
 
 func _on_pressed() -> void:
 	if manually_start_minigame and current_delay <= 0.0:

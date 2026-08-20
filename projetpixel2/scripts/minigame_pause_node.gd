@@ -23,3 +23,4 @@ func pause_game() -> void:
 
 func unpause_game() -> void:
 	get_tree().paused = false
+	queue_free()
