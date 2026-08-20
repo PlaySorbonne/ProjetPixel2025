@@ -19,8 +19,9 @@ func _ready() -> void:
 		pause_game()
 
 func pause_game() -> void:
-	get_tree().paused = true
+	pass
+	#GV.world.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 func unpause_game() -> void:
-	get_tree().paused = false
+	#GV.world.process_mode = Node.PROCESS_MODE_PAUSABLE
 	queue_free()
