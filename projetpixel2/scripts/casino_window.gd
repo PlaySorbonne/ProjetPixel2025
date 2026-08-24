@@ -40,8 +40,9 @@ static func spawn_popup(popup : CasinoWindow) -> CasinoWindow:
 func _ready() -> void:
 	randomize_panel_background_parameters()
 	if pause_game:
-		process_mode = Node.PROCESS_MODE_ALWAYS
-		get_tree().paused = true
+		pass
+		#process_mode = Node.PROCESS_MODE_ALWAYS
+		#get_tree().paused = true
 	if not can_close_window:
 		$Contents/CloseButton.visible = false
 
