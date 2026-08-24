@@ -15,8 +15,9 @@ static func add_minigame_pause_cover() -> MinigamePauseCover:
 
 
 func _ready() -> void:
-	if pause_on_start:
-		pause_game()
+	pass
+	#if pause_on_start:
+		#pause_game()
 
 func pause_game() -> void:
 	pass
