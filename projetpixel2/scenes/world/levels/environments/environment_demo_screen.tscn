@@ -5,6 +5,10 @@
 [ext_resource type="Material" uid="uid://f2hv3e366oum" path="res://resources/3d_models/casino/dice/materials/dice_red_material.tres" id="3_nw821"]
 [ext_resource type="ArrayMesh" uid="uid://buvi6364r0k1i" path="res://resources/3d_models/kenney_space-kit/craft_speederD.obj" id="4_nw821"]
 [ext_resource type="PackedScene" uid="uid://b5dp33lof740e" path="res://resources/3d_models/enemies/Trex.fbx" id="5_bapev"]
+[ext_resource type="PackedScene" uid="uid://cgrlyuyns6mos" path="res://scenes/spaceship/towers/tower_base.tscn" id="5_i6yqf"]
+[ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_d7c7f"]
+[ext_resource type="PackedScene" uid="uid://geal6y33o55o" path="res://resources/3d_models/enemies/Slime.fbx" id="8_koovu"]
+[ext_resource type="PackedScene" uid="uid://by1xdfl74emxb" path="res://resources/3d_models/enemies/Velociraptor.fbx" id="9_t8vnj"]
 
 [sub_resource type="Environment" id="Environment_2o5j7"]
 ambient_light_source = 2
@@ -12,6 +16,36 @@ ambient_light_color = Color(0.670419, 0.847117, 0.72197205, 1)
 ambient_light_energy = 1.5
 tonemap_mode = 3
 tonemap_exposure = 0.6
+
+[sub_resource type="Resource" id="Resource_koovu"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="Resource" id="Resource_t8vnj"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="Resource" id="Resource_nk2ks"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="Resource" id="Resource_u2xvt"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="Resource" id="Resource_g27ct"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="Resource" id="Resource_dhao1"]
+resource_local_to_scene = true
+script = ExtResource("6_d7c7f")
+metadata/_custom_type_script = "uid://75ev58yopohy"
 
 [node name="LevelEnvironment" unique_id=2130639734 instance=ExtResource("1_g5pxr")]
 
@@ -26,162 +60,181 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="DiceMesh" type="MeshInstance3D" parent="." index="3" unique_id=581100738]
-transform = Transform3D(0.0056073354, 0.00034319094, -0.034546185, -0.02725383, -0.021464558, -0.004636916, -0.021231715, 0.027643353, -0.003171591, -0.52448285, 1.3126845, -1.9827472)
+transform = Transform3D(0.0056073354, 0.00034319094, -0.034546185, -0.02725383, -0.021464558, -0.004636916, -0.021231715, 0.027643353, -0.003171591, -0.52448285, 1.6349788, -2.303379)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh28" type="MeshInstance3D" parent="." index="4" unique_id=1916429392]
-transform = Transform3D(0.0063869455, -0.014818973, 0.031058073, -0.01093496, -0.030825252, -0.01245915, 0.03262871, -0.0074298056, -0.010254972, 0.7520678, 1.6533632, -0.47657073)
-mesh = ExtResource("2_coeht")
-surface_material_override/0 = ExtResource("3_nw821")
-
-[node name="DiceMesh4" type="MeshInstance3D" parent="." index="5" unique_id=1464150099]
+[node name="DiceMesh4" type="MeshInstance3D" parent="." index="4" unique_id=1464150099]
 transform = Transform3D(0.021589521, 0.01376222, 0.023864048, -0.026268333, 0.0011510907, 0.023100823, 0.008298549, -0.03216016, 0.011038922, -0.027300358, 0.5092766, -1.9338884)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh8" type="MeshInstance3D" parent="." index="6" unique_id=835181224]
+[node name="DiceMesh8" type="MeshInstance3D" parent="." index="5" unique_id=835181224]
 transform = Transform3D(0.03499998, 0, 0, 0, 0.034999993, 0, 0, 0, 0.03499998, -0.3893367, 0.2447083, -0.7642393)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh9" type="MeshInstance3D" parent="." index="7" unique_id=710767538]
+[node name="DiceMesh9" type="MeshInstance3D" parent="." index="6" unique_id=710767538]
 transform = Transform3D(-0.0034253441, 0, 0.034831963, 0, 0.034999993, 0, -0.034831963, 0, -0.0034253441, -0.017690957, 0.2447083, 0.259009)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh10" type="MeshInstance3D" parent="." index="8" unique_id=1915729292]
+[node name="DiceMesh10" type="MeshInstance3D" parent="." index="7" unique_id=1915729292]
 transform = Transform3D(-0.0314411, 0, -0.015377121, 0, 0.034999993, 0, 0.015377121, 0, -0.0314411, -1.148768, 0.2447083, -0.08619106)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh11" type="MeshInstance3D" parent="." index="9" unique_id=1879836858]
+[node name="DiceMesh11" type="MeshInstance3D" parent="." index="8" unique_id=1879836858]
 transform = Transform3D(-0.0314411, 0, -0.015377121, 0, 0.034999993, 0, 0.015377121, 0, -0.0314411, -0.9454129, 0.2447083, -1.415865)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh12" type="MeshInstance3D" parent="." index="10" unique_id=1612116873]
+[node name="DiceMesh12" type="MeshInstance3D" parent="." index="9" unique_id=1612116873]
 transform = Transform3D(1.3738903e-09, 0.031430956, -0.015397866, 0.03499998, -1.5298983e-09, 0, -6.730621e-10, -0.015397871, -0.03143095, 0.47350776, 0.30446988, -1.327997)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh13" type="MeshInstance3D" parent="." index="11" unique_id=2127922261]
+[node name="DiceMesh13" type="MeshInstance3D" parent="." index="10" unique_id=2127922261]
 transform = Transform3D(1.4346886e-09, 0.032821856, 0.012154214, 0.034999978, -1.5298982e-09, -5.583258e-17, 5.312776e-10, 0.012154216, -0.03282185, 0.23252779, 0.30447, 1.0473521)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh14" type="MeshInstance3D" parent="." index="12" unique_id=10766670]
+[node name="DiceMesh14" type="MeshInstance3D" parent="." index="11" unique_id=10766670]
 transform = Transform3D(1.4346886e-09, 0.032821856, 0.012154214, 0.034999978, -1.5298982e-09, -5.583258e-17, 5.312776e-10, 0.012154216, -0.03282185, -0.54190165, 0.30447, 0.045701742)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh15" type="MeshInstance3D" parent="." index="13" unique_id=544659163]
+[node name="DiceMesh15" type="MeshInstance3D" parent="." index="12" unique_id=544659163]
 transform = Transform3D(7.799301e-10, 0.017842725, -0.03011039, 0.034999974, -1.5298981e-09, -1.5484559e-16, -1.3161671e-09, -0.030110398, -0.017842723, -1.6753588, 0.30447, 1.0186408)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh16" type="MeshInstance3D" parent="." index="14" unique_id=1604262150]
+[node name="DiceMesh16" type="MeshInstance3D" parent="." index="13" unique_id=1604262150]
 transform = Transform3D(7.799301e-10, 0.017842725, -0.03011039, 0.034999974, -1.5298981e-09, -1.5484559e-16, -1.3161671e-09, -0.030110398, -0.017842723, -2.3084798, 0.30447, -0.6618254)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh17" type="MeshInstance3D" parent="." index="15" unique_id=772300328]
+[node name="DiceMesh17" type="MeshInstance3D" parent="." index="14" unique_id=772300328]
 transform = Transform3D(-9.250489e-10, -0.021162653, -0.027877241, 0.034999974, -1.5298981e-09, -8.5840695e-17, -1.2185529e-09, -0.027877249, 0.021162648, -2.4319742, 0.30447, -1.3638396)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh18" type="MeshInstance3D" parent="." index="16" unique_id=1708550075]
+[node name="DiceMesh18" type="MeshInstance3D" parent="." index="15" unique_id=1708550075]
 transform = Transform3D(1.5296062e-09, 0.03499332, 0.00068295375, 0.034999974, -1.5298981e-09, -8.58407e-17, 2.985301e-11, 0.0006829528, -0.034993313, -2.032867, 0.30447, 0.1153357)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh19" type="MeshInstance3D" parent="." index="17" unique_id=2025007282]
+[node name="DiceMesh19" type="MeshInstance3D" parent="." index="16" unique_id=2025007282]
 transform = Transform3D(6.0427563e-10, 0.013824224, -0.032154147, 0.034999974, -1.5298982e-09, -4.6976642e-17, -1.4055028e-09, -0.032154158, -0.01382422, -1.4829289, 0.30447, -0.3381431)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh20" type="MeshInstance3D" parent="." index="18" unique_id=276754520]
+[node name="DiceMesh20" type="MeshInstance3D" parent="." index="17" unique_id=276754520]
 transform = Transform3D(-3.5947295e-10, -0.008223782, -0.034020107, 0.034999974, -1.5298981e-09, -8.58407e-17, -1.4870662e-09, -0.034020115, 0.008223778, -2.2147448, 0.30447, -1.7862796)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh21" type="MeshInstance3D" parent="." index="19" unique_id=103969335]
+[node name="DiceMesh21" type="MeshInstance3D" parent="." index="18" unique_id=103969335]
 transform = Transform3D(-1.5128676e-09, -0.03461038, -0.005207724, 0.034999974, -1.5298982e-09, -4.6976642e-17, -2.2763691e-10, -0.005207724, 0.034610372, -2.792987, 0.30447, -2.2030656)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh22" type="MeshInstance3D" parent="." index="20" unique_id=530809738]
+[node name="DiceMesh22" type="MeshInstance3D" parent="." index="19" unique_id=530809738]
 transform = Transform3D(1.1166812e-09, 0.025546692, -0.023924153, 0.034999974, -1.5298982e-09, -8.8636896e-17, -1.0457578e-09, -0.023924159, -0.025546689, -1.4750934, 0.30447, -1.421783)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh23" type="MeshInstance3D" parent="." index="21" unique_id=1758706862]
+[node name="DiceMesh23" type="MeshInstance3D" parent="." index="20" unique_id=1758706862]
 transform = Transform3D(-5.4764293e-10, -0.012528602, -0.032680765, 0.034999974, -1.5298983e-09, -1.4306678e-16, -1.4285217e-09, -0.032680776, 0.012528596, -1.397476, 0.30447, -2.1303382)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh24" type="MeshInstance3D" parent="." index="22" unique_id=1765264829]
+[node name="DiceMesh24" type="MeshInstance3D" parent="." index="21" unique_id=1765264829]
 transform = Transform3D(1.5255446e-09, 0.034900397, 0.0026383474, 0.034999974, -1.5298981e-09, -8.1033624e-17, 1.15325666e-10, 0.0026383465, -0.03490039, -1.2736217, 0.30447, -1.175715)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh25" type="MeshInstance3D" parent="." index="23" unique_id=783811040]
+[node name="DiceMesh25" type="MeshInstance3D" parent="." index="22" unique_id=783811040]
 transform = Transform3D(6.8191175e-10, 0.015600322, -0.031330947, 0.034999974, -1.5298981e-09, -2.9341453e-17, -1.3695194e-09, -0.031330958, -0.015600321, -0.69919014, 0.30447, -1.5977376)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh26" type="MeshInstance3D" parent="." index="24" unique_id=2123638563]
+[node name="DiceMesh26" type="MeshInstance3D" parent="." index="23" unique_id=2123638563]
 transform = Transform3D(6.5161077e-10, 0.014907128, 0.031666644, 0.034999974, -1.5298982e-09, -1.5180584e-18, 1.3841926e-09, 0.031666644, -0.01490712, -1.8479427, 0.30447, -0.5840246)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh27" type="MeshInstance3D" parent="." index="25" unique_id=1856741560]
+[node name="DiceMesh27" type="MeshInstance3D" parent="." index="24" unique_id=1856741560]
 transform = Transform3D(1.5277133e-09, 0.03495001, -0.0018697381, 0.034999974, -1.5298983e-09, -1.7002817e-16, -8.172926e-11, -0.00186974, -0.03495, -1.1976064, 0.30447, -0.29224086)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh6" type="MeshInstance3D" parent="." index="26" unique_id=1309044183]
-transform = Transform3D(-0.0038850382, -0.03467955, -0.002689695, -0.026268333, 0.0011510912, 0.023100823, -0.022800872, 0.004582905, -0.02615561, -0.027300239, 1.6390325, -0.9588432)
+[node name="DiceMesh6" type="MeshInstance3D" parent="." index="25" unique_id=1309044183]
+transform = Transform3D(-0.0038850382, -0.03467955, -0.002689695, -0.026268333, 0.0011510912, 0.023100823, -0.022800872, 0.004582905, -0.02615561, -0.027300239, 1.7227381, -1.6610484)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh7" type="MeshInstance3D" parent="." index="27" unique_id=477741206]
+[node name="DiceMesh7" type="MeshInstance3D" parent="." index="26" unique_id=477741206]
 transform = Transform3D(0.023119066, 0.00025741756, 0.026276246, -0.02626833, 0.0011510911, 0.023100821, -0.00069427746, -0.034980103, 0.00095354975, -0.027300239, 1.5374808, 0.7284332)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh5" type="MeshInstance3D" parent="." index="28" unique_id=673695089]
+[node name="DiceMesh5" type="MeshInstance3D" parent="." index="27" unique_id=673695089]
 transform = Transform3D(-0.0063117407, 0.033273134, -0.008835144, -0.026268333, 0.0011510912, 0.023100823, 0.022251632, 0.0107968915, 0.024764705, -0.13661939, 0.68614244, 1.0000224)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh3" type="MeshInstance3D" parent="." index="29" unique_id=393188300]
+[node name="DiceMesh3" type="MeshInstance3D" parent="." index="28" unique_id=393188300]
 transform = Transform3D(-0.0067516332, 0.0011579407, 0.034323078, -0.02725383, -0.02146455, -0.0046369173, 0.020896012, -0.027621223, 0.0050422624, 0.41544127, 0.48797536, 0.023843348)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="DiceMesh2" type="MeshInstance3D" parent="." index="30" unique_id=1150522805]
+[node name="DiceMesh2" type="MeshInstance3D" parent="." index="29" unique_id=1150522805]
 transform = Transform3D(0.02671006, 0.02136622, 0.0074200486, -0.018128917, 0.013358196, 0.026793666, 0.013524602, -0.024290804, 0.021261277, 0.38431072, 1.0632782, 0.120918006)
 mesh = ExtResource("2_coeht")
 surface_material_override/0 = ExtResource("3_nw821")
 
-[node name="CraftSpeederD" type="MeshInstance3D" parent="." index="31" unique_id=2054477236]
-transform = Transform3D(-1.1354882, 0, 1.3966626, 0, 1.8, 0, -1.3966626, 0, -1.1354882, -5.81903, 0.2448504, 1.6956704)
+[node name="CraftSpeederD" type="MeshInstance3D" parent="." index="30" unique_id=2054477236]
+transform = Transform3D(-1.5770669, 0, 1.9398092, 0, 2.5, 0, -1.9398092, 0, -1.5770669, -5.81903, 0.2448504, 1.6956704)
 mesh = ExtResource("4_nw821")
 
-[node name="Camera3D" type="Camera3D" parent="." index="32" unique_id=190115276]
+[node name="Camera3D" type="Camera3D" parent="." index="31" unique_id=190115276]
 transform = Transform3D(-0.08028056, -0.43134147, 0.8986098, -0.017213145, 0.9019852, 0.4314239, -0.9966238, 0.019167047, -0.0798366, 1.2142143, 1.5227334, -0.6834469)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="33" unique_id=297172287]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="32" unique_id=297172287]
 transform = Transform3D(0.9749922, 0.075378746, 0.20906532, -0.22223921, 0.3306963, 0.91719663, 0, -0.94072205, 0.33917844, 0, 1.7824531, 0)
 light_color = Color(0.46740383, 0.60725975, 0.37904242, 1)
 light_energy = 0.8
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="34" unique_id=1696829607]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="33" unique_id=1696829607]
 environment = SubResource("Environment_2o5j7")
 
-[node name="Trex" parent="." index="35" unique_id=868070605 instance=ExtResource("5_bapev")]
+[node name="TowerBase" parent="." index="34" unique_id=1738831486 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.48152485, 0, 0.13466188, 0, 0.5, 0, -0.13466188, 0, 0.48152485, -1.3998029, 0.4658442, 0.50348747)
+projectile_template = SubResource("Resource_koovu")
+
+[node name="TowerBase2" parent="." index="35" unique_id=518569106 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.35607088, 0, -0.3510179, 0, 0.5, 0, 0.3510179, 0, 0.35607088, -3.750719, 0.4658442, -1.3394274)
+projectile_template = SubResource("Resource_t8vnj")
+
+[node name="TowerBase3" parent="." index="36" unique_id=1674604150 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.10083276, 0, 0.48972726, 0, 0.5, 0, -0.48972726, 0, 0.10083276, 0.29393673, 0.4658442, -1.8512757)
+projectile_template = SubResource("Resource_nk2ks")
+
+[node name="TowerBase4" parent="." index="37" unique_id=1559758504 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.46221313, 0, 0.19068033, 0, 0.5, 0, -0.19068033, 0, 0.46221313, -2.3571486, 0.4658442, 1.4038739)
+projectile_template = SubResource("Resource_u2xvt")
+
+[node name="TowerBase5" parent="." index="38" unique_id=34026297 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.10612989, 0, -0.48860663, 0, 0.5, 0, 0.48860663, 0, 0.10612989, -1.4979964, 0.4658441, 2.6994586)
+projectile_template = SubResource("Resource_g27ct")
+
+[node name="TowerBase6" parent="." index="39" unique_id=333445079 instance=ExtResource("5_i6yqf")]
+transform = Transform3D(0.4245633, 0, 0.26409477, 0, 0.5, 0, -0.26409477, 0, 0.4245633, -0.0016900301, 0.4658441, 1.7419386)
+projectile_template = SubResource("Resource_dhao1")
+
+[node name="Trex" parent="." index="40" unique_id=868070605 instance=ExtResource("5_bapev")]
 transform = Transform3D(0.29158205, 0, -0.2738246, 0, 0.4, 0, 0.2738246, 0, 0.29158205, -1.7909241, 0.50228727, -2.5934901)
 
 [node name="Skeleton3D" parent="Trex/Armature" parent_id_path=PackedInt32Array(868070605, 175567541) index="0" unique_id=737471906]
@@ -221,5 +274,20 @@ bones/33/position = Vector3(-0.0019317124, 0.0006885565, -0.0008166255)
 bones/33/rotation = Quaternion(0.7071068, -6.380431e-07, -9.41061e-07, 0.7071067)
 bones/35/position = Vector3(0.0019317128, 0.00017234088, -0.0016794442)
 bones/35/rotation = Quaternion(0.7071068, -9.4998603e-07, -1.3034678e-06, 0.7071067)
+
+[node name="Slime" parent="." index="41" unique_id=620909674 instance=ExtResource("8_koovu")]
+transform = Transform3D(0.43678284, 0, -0.38916028, 0, 0.585, 0, 0.38916028, 0, 0.43678284, 0.3467766, 0.19788241, -1.0752475)
+
+[node name="Velociraptor" parent="." index="42" unique_id=2060983531 instance=ExtResource("9_t8vnj")]
+transform = Transform3D(-0.16838317, 0, -0.4707941, 0, 0.5, 0, 0.4707941, 0, -0.16838317, 0.6846018, 0.25787753, 0.6240077)
+
+[node name="Velociraptor4" parent="." index="43" unique_id=542479539 instance=ExtResource("9_t8vnj")]
+transform = Transform3D(0.29057646, 0, -0.40689722, 0, 0.5, 0, 0.40689722, 0, 0.29057646, -0.5653001, 0.25787753, -2.2559154)
+
+[node name="Velociraptor2" parent="." index="44" unique_id=304776278 instance=ExtResource("9_t8vnj")]
+transform = Transform3D(0.033666223, 0, -0.49886537, 0, 0.5, 0, 0.49886537, 0, 0.033666223, 0.8149584, 0.25787753, -0.26294124)
+
+[node name="Velociraptor3" parent="." index="45" unique_id=1868794806 instance=ExtResource("9_t8vnj")]
+transform = Transform3D(0.033666223, 0, -0.49886537, 0, 0.5, 0, 0.49886537, 0, 0.033666223, 1.1419337, 0.25787753, 0.07978833)
 
 [editable path="Trex"]
