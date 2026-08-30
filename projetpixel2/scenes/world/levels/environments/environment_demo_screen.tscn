@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://75ev58yopohy" path="res://scripts/projectile.gd" id="6_d7c7f"]
 [ext_resource type="PackedScene" uid="uid://geal6y33o55o" path="res://resources/3d_models/enemies/Slime.fbx" id="8_koovu"]
 [ext_resource type="PackedScene" uid="uid://by1xdfl74emxb" path="res://resources/3d_models/enemies/Velociraptor.fbx" id="9_t8vnj"]
+[ext_resource type="PackedScene" uid="uid://b5en8xb7ml5c1" path="res://scenes/casino/poker_chip.tscn" id="10_t8vnj"]
 
 [sub_resource type="Environment" id="Environment_2o5j7"]
 ambient_light_source = 2
@@ -46,6 +47,478 @@ metadata/_custom_type_script = "uid://75ev58yopohy"
 resource_local_to_scene = true
 script = ExtResource("6_d7c7f")
 metadata/_custom_type_script = "uid://75ev58yopohy"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nk2ks"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u2xvt"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g27ct"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhao1"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c72si"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5yu75"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnonf"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36o08"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfsxt"]
+resource_local_to_scene = true
+albedo_color = Color(0.729, 0.165, 0.176, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sleqc"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fruox"]
+resource_local_to_scene = true
+albedo_color = Color(10, 10, 10, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a41xs"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.887, 0.296, 1, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eulds"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20pfq"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47id7"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gych"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_scaay"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d4uq"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fbgp"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvvsn"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqfde"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ga8by"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fslh"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmxq3"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1275"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdjlo"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_474ro"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg7xo"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvwxi"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dof3"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy4bo"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c6yr"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utr8r"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gty4m"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjkk3"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ms1rh"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujdna"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_co424"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujuat"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5xpei"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk57d"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oj4un"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mys0x"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biiha"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bay5w"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0mtjy"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obpob"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irf2h"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdkyc"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48q73"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6i2d"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lnac"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fswkl"]
+resource_local_to_scene = true
+albedo_color = Color(0.91, 0.91, 0.91, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3msg"]
+resource_local_to_scene = true
+resource_name = "white"
+albedo_color = Color(0.102, 0.239, 0.655, 1)
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kdhdi"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dt44d"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uregh"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbh14"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0sdq"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akuwq"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwes7"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpeq5"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4aqe"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc012"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p573y"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k2swi"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqtlb"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jq8mc"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qm5r"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38b5r"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dek54"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uttx"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1iov"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbdi1"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efcli"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oeuui"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbvx1"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bhbj"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkbyd"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6oi8"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4gxi"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wme2t"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sw0gv"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewo02"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_geksm"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25qaf"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fg444"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u4cv8"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82n72"]
+resource_local_to_scene = true
+albedo_color = Color(0.098, 0.243, 0.667, 1)
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14p6a"]
+resource_local_to_scene = true
+resource_name = "white"
+metallic = 0.5
 
 [node name="LevelEnvironment" unique_id=2130639734 instance=ExtResource("1_g5pxr")]
 
@@ -289,5 +762,254 @@ transform = Transform3D(0.033666223, 0, -0.49886537, 0, 0.5, 0, 0.49886537, 0, 0
 
 [node name="Velociraptor3" parent="." index="45" unique_id=1868794806 instance=ExtResource("9_t8vnj")]
 transform = Transform3D(0.033666223, 0, -0.49886537, 0, 0.5, 0, 0.49886537, 0, 0.033666223, 1.1419337, 0.25787753, 0.07978833)
+
+[node name="Chip" parent="." index="46" unique_id=115207421 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.30288285, 0.25642866, -1.08704)
+surface_material_override/0 = SubResource("StandardMaterial3D_nk2ks")
+surface_material_override/1 = SubResource("StandardMaterial3D_u2xvt")
+chip_value = 5
+
+[node name="Chip15" parent="." index="47" unique_id=1997852025 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.0498052, 0, 0.0044093113, 0, 0.065, 0, -0.0044093113, 0, 0.0498052, -0.30288285, 0.28982612, -1.08704)
+surface_material_override/0 = SubResource("StandardMaterial3D_g27ct")
+surface_material_override/1 = SubResource("StandardMaterial3D_dhao1")
+chip_value = 5
+
+[node name="Chip16" parent="." index="48" unique_id=229046950 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049568046, 0, -0.006558198, 0, 0.065, 0, 0.006558198, 0, 0.049568046, -0.30288285, 0.32327914, -1.08704)
+surface_material_override/0 = SubResource("StandardMaterial3D_c72si")
+surface_material_override/1 = SubResource("StandardMaterial3D_5yu75")
+chip_value = 5
+
+[node name="Chip17" parent="." index="49" unique_id=1481173724 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049819674, 0, -0.0042427946, 0, 0.065, 0, 0.0042427946, 0, 0.049819674, -0.30288285, 0.3514099, -1.08704)
+surface_material_override/0 = SubResource("StandardMaterial3D_jnonf")
+surface_material_override/1 = SubResource("StandardMaterial3D_36o08")
+chip_value = 5
+
+[node name="Chip18" parent="." index="50" unique_id=1800369169 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049983144, 0, 0.0012986469, 0, 0.065, 0, -0.0012986469, 0, 0.049983144, -0.30288285, 0.38380772, -1.08704)
+surface_material_override/0 = SubResource("StandardMaterial3D_jfsxt")
+surface_material_override/1 = SubResource("StandardMaterial3D_sleqc")
+chip_value = 5
+
+[node name="Chip2" parent="." index="51" unique_id=628505035 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.5053047, 0.25642866, 0.7373346)
+surface_material_override/0 = SubResource("StandardMaterial3D_fruox")
+surface_material_override/1 = SubResource("StandardMaterial3D_a41xs")
+chip_value = 1000
+
+[node name="Chip3" parent="." index="52" unique_id=743722032 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -1.739905, 0.25642866, -1.1404289)
+surface_material_override/0 = SubResource("StandardMaterial3D_eulds")
+surface_material_override/1 = SubResource("StandardMaterial3D_20pfq")
+
+[node name="Chip4" parent="." index="53" unique_id=204426606 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -1.2218904, 0.25642866, 1.0051337)
+surface_material_override/0 = SubResource("StandardMaterial3D_47id7")
+surface_material_override/1 = SubResource("StandardMaterial3D_7gych")
+
+[node name="Chip5" parent="." index="54" unique_id=1196618542 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -3.0524688, 0.25642866, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_scaay")
+surface_material_override/1 = SubResource("StandardMaterial3D_6d4uq")
+
+[node name="Chip19" parent="." index="55" unique_id=981653888 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.043555897, 0, 0.024553692, 0, 0.065, 0, -0.024553692, 0, 0.043555897, -3.0524688, 0.28521526, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_5fbgp")
+surface_material_override/1 = SubResource("StandardMaterial3D_cvvsn")
+
+[node name="Chip20" parent="." index="56" unique_id=1461814173 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049174286, 0, 0.009049283, 0, 0.065, 0, -0.009049283, 0, 0.049174286, -3.0524688, 0.3159364, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_jqfde")
+surface_material_override/1 = SubResource("StandardMaterial3D_ga8by")
+
+[node name="Chip21" parent="." index="57" unique_id=907447610 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.036544662, 0, 0.034124598, 0, 0.065, 0, -0.034124598, 0, 0.036544662, -3.0524688, 0.34882307, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_2fslh")
+surface_material_override/1 = SubResource("StandardMaterial3D_qmxq3")
+
+[node name="Chip22" parent="." index="58" unique_id=2119953672 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04096382, 0, 0.028669951, 0, 0.065, 0, -0.028669951, 0, 0.04096382, -3.0524688, 0.3808481, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_w1275")
+surface_material_override/1 = SubResource("StandardMaterial3D_tdjlo")
+
+[node name="Chip23" parent="." index="59" unique_id=427540519 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.043555897, 0, 0.024553692, 0, 0.065, 0, -0.024553692, 0, 0.043555897, -3.0524688, 0.41427702, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_474ro")
+surface_material_override/1 = SubResource("StandardMaterial3D_lg7xo")
+
+[node name="Chip24" parent="." index="60" unique_id=1251395654 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049174286, 0, 0.009049283, 0, 0.065, 0, -0.009049283, 0, 0.049174286, -3.0524688, 0.44499815, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_xvwxi")
+surface_material_override/1 = SubResource("StandardMaterial3D_0dof3")
+
+[node name="Chip25" parent="." index="61" unique_id=1082965998 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.036544662, 0, 0.034124598, 0, 0.065, 0, -0.034124598, 0, 0.036544662, -3.0524688, 0.47788483, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_sy4bo")
+surface_material_override/1 = SubResource("StandardMaterial3D_3c6yr")
+
+[node name="Chip26" parent="." index="62" unique_id=925061045 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04096382, 0, 0.028669951, 0, 0.065, 0, -0.028669951, 0, 0.04096382, -3.0524688, 0.50990987, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_utr8r")
+surface_material_override/1 = SubResource("StandardMaterial3D_gty4m")
+
+[node name="Chip27" parent="." index="63" unique_id=1492778780 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.043555897, 0, 0.024553692, 0, 0.065, 0, -0.024553692, 0, 0.043555897, -3.0524688, 0.54353434, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_wjkk3")
+surface_material_override/1 = SubResource("StandardMaterial3D_ms1rh")
+
+[node name="Chip28" parent="." index="64" unique_id=2005747865 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049174286, 0, 0.009049283, 0, 0.065, 0, -0.009049283, 0, 0.049174286, -3.0524688, 0.57425547, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_ujdna")
+surface_material_override/1 = SubResource("StandardMaterial3D_co424")
+
+[node name="Chip29" parent="." index="65" unique_id=1308262659 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.036544662, 0, 0.034124598, 0, 0.065, 0, -0.034124598, 0, 0.036544662, -3.0524688, 0.60714215, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_ujuat")
+surface_material_override/1 = SubResource("StandardMaterial3D_5xpei")
+
+[node name="Chip30" parent="." index="66" unique_id=1777653876 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04096382, 0, 0.028669951, 0, 0.065, 0, -0.028669951, 0, 0.04096382, -3.0524688, 0.6391672, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_hk57d")
+surface_material_override/1 = SubResource("StandardMaterial3D_oj4un")
+
+[node name="Chip31" parent="." index="67" unique_id=1506686571 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.043555897, 0, 0.024553692, 0, 0.065, 0, -0.024553692, 0, 0.043555897, -3.0524688, 0.66810554, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_mys0x")
+surface_material_override/1 = SubResource("StandardMaterial3D_biiha")
+
+[node name="Chip32" parent="." index="68" unique_id=498556975 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049174286, 0, 0.009049283, 0, 0.065, 0, -0.009049283, 0, 0.049174286, -3.0524688, 0.6988267, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_bay5w")
+surface_material_override/1 = SubResource("StandardMaterial3D_0mtjy")
+
+[node name="Chip33" parent="." index="69" unique_id=2042377225 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.036544662, 0, 0.034124598, 0, 0.065, 0, -0.034124598, 0, 0.036544662, -3.0524688, 0.73171335, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_obpob")
+surface_material_override/1 = SubResource("StandardMaterial3D_irf2h")
+
+[node name="Chip34" parent="." index="70" unique_id=515525781 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04096382, 0, 0.028669951, 0, 0.065, 0, -0.028669951, 0, 0.04096382, -3.0524688, 0.7637384, -0.68050396)
+surface_material_override/0 = SubResource("StandardMaterial3D_gdkyc")
+surface_material_override/1 = SubResource("StandardMaterial3D_48q73")
+
+[node name="Chip6" parent="." index="71" unique_id=533695415 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, 0.49972844, 0.25642866, -0.5216804)
+surface_material_override/0 = SubResource("StandardMaterial3D_f6i2d")
+surface_material_override/1 = SubResource("StandardMaterial3D_0lnac")
+
+[node name="Chip7" parent="." index="72" unique_id=886448159 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -1.9707024, 0.25642866, -2.234902)
+surface_material_override/0 = SubResource("StandardMaterial3D_fswkl")
+surface_material_override/1 = SubResource("StandardMaterial3D_x3msg")
+
+[node name="Chip8" parent="." index="73" unique_id=432554890 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.17025119, 0.25642866, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_kdhdi")
+surface_material_override/1 = SubResource("StandardMaterial3D_dt44d")
+chip_value = 50
+
+[node name="Chip35" parent="." index="74" unique_id=2128549148 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.03628249, 0, -0.034403212, 0, 0.065, 0, 0.034403212, 0, 0.03628249, -0.17025119, 0.28903493, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_uregh")
+surface_material_override/1 = SubResource("StandardMaterial3D_vbh14")
+chip_value = 50
+
+[node name="Chip36" parent="." index="75" unique_id=982854556 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04971241, 0, -0.005355056, 0, 0.065, 0, 0.005355056, 0, 0.04971241, -0.17025119, 0.32108527, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_x0sdq")
+surface_material_override/1 = SubResource("StandardMaterial3D_akuwq")
+chip_value = 50
+
+[node name="Chip37" parent="." index="76" unique_id=296765384 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.032389175, 0, -0.038091224, 0, 0.065, 0, 0.038091224, 0, 0.032389175, -0.17025119, 0.35369155, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_bwes7")
+surface_material_override/1 = SubResource("StandardMaterial3D_vpeq5")
+chip_value = 50
+
+[node name="Chip38" parent="." index="77" unique_id=129409971 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.17025119, 0.3841459, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_b4aqe")
+surface_material_override/1 = SubResource("StandardMaterial3D_gc012")
+chip_value = 50
+
+[node name="Chip39" parent="." index="78" unique_id=1249162122 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.03628249, 0, -0.034403212, 0, 0.065, 0, 0.034403212, 0, 0.03628249, -0.17025119, 0.41675216, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_p573y")
+surface_material_override/1 = SubResource("StandardMaterial3D_k2swi")
+chip_value = 50
+
+[node name="Chip40" parent="." index="79" unique_id=2074752214 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04971241, 0, -0.005355056, 0, 0.065, 0, 0.005355056, 0, 0.04971241, -0.17025119, 0.4488025, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_dqtlb")
+surface_material_override/1 = SubResource("StandardMaterial3D_jq8mc")
+chip_value = 50
+
+[node name="Chip41" parent="." index="80" unique_id=2047314122 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.032389175, 0, -0.038091224, 0, 0.065, 0, 0.038091224, 0, 0.032389175, -0.17025119, 0.48140877, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_8qm5r")
+surface_material_override/1 = SubResource("StandardMaterial3D_38b5r")
+chip_value = 50
+
+[node name="Chip42" parent="." index="81" unique_id=1087732738 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.17025119, 0.51637805, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_dek54")
+surface_material_override/1 = SubResource("StandardMaterial3D_4uttx")
+chip_value = 50
+
+[node name="Chip43" parent="." index="82" unique_id=1237727382 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.03628249, 0, -0.034403212, 0, 0.065, 0, 0.034403212, 0, 0.03628249, -0.17025119, 0.5489843, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_o1iov")
+surface_material_override/1 = SubResource("StandardMaterial3D_gbdi1")
+chip_value = 50
+
+[node name="Chip44" parent="." index="83" unique_id=1239916962 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04971241, 0, -0.005355056, 0, 0.065, 0, 0.005355056, 0, 0.04971241, -0.17025119, 0.58103466, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_efcli")
+surface_material_override/1 = SubResource("StandardMaterial3D_oeuui")
+chip_value = 50
+
+[node name="Chip45" parent="." index="84" unique_id=1191273 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.032389175, 0, -0.038091224, 0, 0.065, 0, 0.038091224, 0, 0.032389175, -0.17025119, 0.6136409, -0.51409477)
+surface_material_override/0 = SubResource("StandardMaterial3D_xbvx1")
+surface_material_override/1 = SubResource("StandardMaterial3D_2bhbj")
+chip_value = 50
+
+[node name="Chip9" parent="." index="85" unique_id=1152506516 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.05, 0, 0, 0, 0.065, 0, 0, 0, 0.05, -0.06508666, 0.25642866, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_mkbyd")
+surface_material_override/1 = SubResource("StandardMaterial3D_g6oi8")
+chip_value = 50
+
+[node name="Chip10" parent="." index="86" unique_id=1192944971 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.049613833, 0, 0.006202224, 0, 0.065, 0, -0.006202224, 0, 0.049613833, -0.06508666, 0.29111266, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_d4gxi")
+surface_material_override/1 = SubResource("StandardMaterial3D_wme2t")
+chip_value = 50
+
+[node name="Chip11" parent="." index="87" unique_id=1648884155 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04430701, 0, -0.02317087, 0, 0.06499999, 0, 0.02317087, 0, 0.04430701, -0.06508666, 0.3259027, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_sw0gv")
+surface_material_override/1 = SubResource("StandardMaterial3D_ewo02")
+chip_value = 50
+
+[node name="Chip12" parent="." index="88" unique_id=204701298 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.039994072, 0, -0.030007914, 0, 0.065, 0, 0.030007914, 0, 0.039994072, -0.06508666, 0.35879666, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_geksm")
+surface_material_override/1 = SubResource("StandardMaterial3D_25qaf")
+chip_value = 50
+
+[node name="Chip13" parent="." index="89" unique_id=558236753 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.048263617, 0, -0.013062304, 0, 0.06500001, 0, 0.013062304, 0, 0.048263617, -0.06508666, 0.3919382, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_fg444")
+surface_material_override/1 = SubResource("StandardMaterial3D_u4cv8")
+chip_value = 50
+
+[node name="Chip14" parent="." index="90" unique_id=1424777661 instance=ExtResource("10_t8vnj")]
+transform = Transform3D(0.04542721, 0, -0.020889454, 0, 0.065, 0, 0.020889454, 0, 0.04542721, -0.06508666, 0.42234528, -1.6882391)
+surface_material_override/0 = SubResource("StandardMaterial3D_82n72")
+surface_material_override/1 = SubResource("StandardMaterial3D_14p6a")
+chip_value = 50
 
 [editable path="Trex"]
